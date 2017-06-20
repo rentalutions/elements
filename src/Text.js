@@ -33,7 +33,8 @@ export default function Text ({
   hero,
   right,
   small,
-  title
+  title,
+  ...rest
 }) {
   const classes = classNames({
     center, right, hero, headline, title, small
