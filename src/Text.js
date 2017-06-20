@@ -38,7 +38,7 @@ export default function Text ({
   const classes = classNames({
     center, right, hero, headline, title, small
   }, className)
-  return <TextWrapper color={color} className={classes}>{children}</TextWrapper>
+  return <TextWrapper color={color} className={classes} {...rest}>{children}</TextWrapper>
 }
 
 Text.propTypes = {

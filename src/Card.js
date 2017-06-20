@@ -19,10 +19,11 @@ export default function Card ({
   title,
   cardActions,
   bgImage,
-  bgColor
+  bgColor,
+  ...rest
 }) {
   return (
-    <CardWrapper className={className} bgImage={bgImage} bgColor={bgColor}>
+    <CardWrapper className={className} bgImage={bgImage} bgColor={bgColor} {...rest}>
       {title && <Text title>{title}</Text>}
       {children}
     </CardWrapper>
