@@ -13,6 +13,7 @@
   "author": "Patrick Krawczykowski",
   "license": "ISC",
   "peerDependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.5.4",
     "react-router-dom": "^4.1.1"
   },
@@ -25,6 +26,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "classnames": "^2.2.5",
     "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-router-dom": "^4.1.1"
