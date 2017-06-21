@@ -1,4 +1,4 @@
-import TouchTarget from './TouchTarget'
+import Button from './Button'
 import Card from './Card'
 import Container from './Container'
 import Icon from './Icon'
@@ -8,6 +8,7 @@ import Text from './Text'
 import Tooltip from './Tooltip'
 
 export {
+  Button,
   Card,
   Container,
   Icon,
@@ -15,6 +16,5 @@ export {
   Input,
   Loader,
   Text,
-  Tooltip,
-  TouchTarget
+  Tooltip
 }
