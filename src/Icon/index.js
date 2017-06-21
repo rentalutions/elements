@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import classNames from 'classnames'
 import iconPaths from './iconData.js'
 
-import { colors } from './variables'
+import { colors } from '../variables'
 
 const getPaths = iconName => {
   const icon = iconPaths.icons.find(icon => icon.tags.includes(iconName))
