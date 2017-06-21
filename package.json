@@ -13,8 +13,11 @@
   "author": "Patrick Krawczykowski",
   "license": "ISC",
   "peerDependencies": {
+    "classnames": "^2.2.5",
+    "polished": "^1.2.0",
     "react": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "styled-components": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -25,9 +28,9 @@
     "jest": "^20.0.4",
     "polished": "^1.2.0",
     "prop-types": "^15.5.10",
-    "styled-components": "^2.1.0",
     "react": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "styled-components": "^2.1.0"
   },
   "babel": {
     "presets": [
