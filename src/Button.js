@@ -25,7 +25,7 @@ const TouchTarget = ({
 }
 
 const Button = styled(TouchTarget).attrs({
-  computedColor: returnColor(props)
+  computedColor: props => returnColor(props)
 })`
   padding: 0.5em 1em;
   background-color: ${({computedColor, primary}) => primary ? computedColor : 'transparent'};
