@@ -3,28 +3,9 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-const TextWrapper = styled.p`
-  margin: 1rem 0;
-  padding: 0;
-  color: #404040;
-  font-family: 'Open Sans';
-  font-size: 1rem;
-  &.small { font-size: 0.75rem; }
-  &.title {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  &.headline { font-size: 2rem; }
-  &.hero {
-    font-size: 3rem;
-    font-weight: 300;
-  }
-  &.center { text-align: center; }
-  &.right { text-align: right; }
-  &.bold { font-weight: bolder; }
-`
+import { colors } from './variables'
 
-export default function Text ({
+function TextLogic ({
   center,
   children,
   className,
@@ -39,8 +20,33 @@ export default function Text ({
   const classes = classNames({
     center, right, hero, headline, title, small
   }, className)
-  return <TextWrapper color={color} className={classes} {...rest}>{children}</TextWrapper>
+  return hero ? <h1 className={classes}>{children}</h1>
+  : headline ? <h2 className={classes}>{children}</h2>
+  : title ? <h3 className={classes}>{children}</h3>
+  : small ? <p className={classes}>{children}</p>
+  : <p className={classes} {...rest}>{children}</p>
 }
+
+const Text = styled(TextLogic)`
+  margin: 1rem 0;
+  padding: 0;
+  color: ${colors.grey.dark};
+  font-family: 'Nunito';
+  font-size: 1rem;
+  &.small { font-size: 0.75rem; }
+  &.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  &.headline { font-size: 2rem; }
+  &.hero {
+    font-size: 4rem;
+    font-weight: 300;
+  }
+  &.center { text-align: center; }
+  &.right { text-align: right; }
+  &.bold { font-weight: bolder; }
+`
 
 Text.propTypes = {
   center: PropTypes.bool,
@@ -54,10 +60,11 @@ Text.propTypes = {
 
 Text.defaultProps = {
   center: false,
-  color: '',
   headline: false,
   hero: false,
   right: false,
   small: false,
   title: false
 }
+
+export default Text

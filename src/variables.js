@@ -9,12 +9,14 @@ export const sizes = {
 export const colors = {
   brand: {
     primary: 'rgba(101, 126, 212, 1)',
-    accent: 'rgba(255, 51, 31, 1)',
-    dark: 'rgba(13, 1, 6, 1)',
-    light: 'rgba(251, 251, 255, 1)',
+    accent: 'rgba(255, 51, 31, 1)'
+  },
+  grey: {
+    dark: 'rgba(1, 12, 12, 1)',
     darkSecondary: 'rgba(13, 1, 6, 0.6)',
+    light: 'rgba(251, 251, 255, 1)',
     lightSecondary: 'rgba(251, 251, 255, 0.8)',
-    disabled: 'rgba(13, 1, 6, 0.4)',
+    disabled: 'rgba(13, 1, 6, 0.4)'
   },
   ui: {
     feedback: '#1FB6FF',
