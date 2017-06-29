@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { darken, timingFunctions } from 'polished'
 import { colors } from './variables'
 
@@ -14,22 +14,12 @@ const returnColor = (props) => (
   : colors.grey.darkSecondary
 )
 
-const TouchTarget = ({
-  to,
-  className,
-  children,
-  ...rest
-}) => {
-  if (to) return <Link to={to} className={className} {...rest}>{children}</Link>
-  else return <button className={className} {...rest}>{children}</button>
-}
-
-const Button = styled(TouchTarget).attrs({
+const ButtonWrapper = styled.button.attrs({
   computedColor: props => returnColor(props)
 })`
   padding: 0.5rem 1rem;
   background-color: ${({computedColor, primary}) => primary ? computedColor : 'transparent'};
-  border: 2px solid ${({computedColor}) => computedColor};
+  border: ${({bare, computedColor}) => bare ? 'none' : `2px solid ${computedColor}`};
   border-radius: 2px;
   color: ${({computedColor, primary}) => primary ? colors.grey.light : computedColor};
   cursor: pointer;
@@ -39,6 +29,7 @@ const Button = styled(TouchTarget).attrs({
   min-width: 90px;
   outline: none;
   text-transform: uppercase;
+  text-decoration: none;
   text-align: center;
   transition: all 200ms ${timingFunctions('easeInQuad')};
   &:hover {
@@ -48,6 +39,18 @@ const Button = styled(TouchTarget).attrs({
     color: ${colors.grey.light};
   }
 `
+
+const Link = ButtonWrapper.withComponent(RouterLink)
+
+const Button = ({
+  to,
+  className,
+  children,
+  ...rest
+}) => {
+  if (to) return <Link to={to} className={className}>{children}</Link>
+  else return <ButtonWrapper className={className}>{children}</ButtonWrapper>
+}
 
 Button.displayName = 'Button'
 
