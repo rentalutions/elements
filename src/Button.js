@@ -42,14 +42,9 @@ const ButtonWrapper = styled.button.attrs({
 
 const Link = ButtonWrapper.withComponent(RouterLink)
 
-const Button = ({
-  to,
-  className,
-  children,
-  ...rest
-}) => {
-  if (to) return <Link to={to} className={className}>{children}</Link>
-  else return <ButtonWrapper className={className}>{children}</ButtonWrapper>
+const Button = props => {
+  if (props.to) return <Link {...props}>{children}</Link>
+  else return <ButtonWrapper {...props}>{children}</ButtonWrapper>
 }
 
 Button.displayName = 'Button'
