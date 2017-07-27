@@ -17,6 +17,7 @@ const returnColor = (props) => (
 const ButtonWrapper = styled.button.attrs({
   computedColor: props => returnColor(props)
 })`
+  display: inline-block;
   padding: 0.5rem 1rem;
   background-color: ${({computedColor, primary}) => primary ? computedColor : 'transparent'};
   border: ${({bare, computedColor}) => bare ? 'none' : `2px solid ${computedColor}`};
