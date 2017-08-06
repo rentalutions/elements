@@ -20,10 +20,10 @@ function TextLogic ({
   const classes = classNames({
     center, right, hero, headline, title, small
   }, className)
-  return hero ? <h1 className={classes}>{children}</h1>
-  : headline ? <h2 className={classes}>{children}</h2>
-  : title ? <h3 className={classes}>{children}</h3>
-  : small ? <p className={classes}>{children}</p>
+  return hero ? <h1 className={classes} {...rest}>{children}</h1>
+  : headline ? <h2 className={classes} {...rest}>{children}</h2>
+  : title ? <h3 className={classes} {...rest}>{children}</h3>
+  : small ? <p className={classes} {...rest}>{children}</p>
   : <p className={classes} {...rest}>{children}</p>
 }
 

@@ -3,17 +3,17 @@ import styled from 'styled-components'
 import { colors } from './variables'
 import classNames from 'classnames'
 
-const InputMarkup = props => {
+const FieldMarkup = props => {
   const classes = classNames('input-group', props.className)
   return (
-    <div className={classes}>
+    <fieldset className={classes}>
       <input id={props.id} type={props.type} placeholder={props.placeholder}/>
       <label htmlFor={props.id}>{props.label}</label>
-    </div>
+    </fieldset>
   )
 }
 
-const Input = styled(InputMarkup)`
+const Field = styled(InputMarkup)`
   input {
     width: 100%;
     &:focus {
@@ -25,6 +25,6 @@ const Input = styled(InputMarkup)`
   }
 `
 
-Input.displayName = 'Input'
+Field.displayName = 'Field'
 
-export default Input
+export default Field

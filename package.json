@@ -4,17 +4,22 @@
   "description": "A suite of elements for the consistent and responsive UI",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "build": "npm run clean && babel src -d lib",
     "dev": "babel -w src -d lib",
     "clean": "rm -rf lib/*",
     "prepublish": "npm run build"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/pkrawc/rentalutions-elements.git"
+  },
   "author": "Patrick Krawczykowski",
   "license": "ISC",
-  "peerDependencies": {
+  "dependencies": {
     "classnames": "^2.2.5",
     "polished": "^1.2.0",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-router-dom": "^4.1.1",
     "styled-components": "^2.1.0"
@@ -24,13 +29,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "classnames": "^2.2.5",
-    "jest": "^20.0.4",
-    "polished": "^1.2.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-router-dom": "^4.1.1",
-    "styled-components": "^2.1.0"
+    "jest": "^20.0.4"
   },
   "babel": {
     "presets": [

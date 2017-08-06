@@ -29,14 +29,15 @@ const IconMarkup = ({
     stroke="#676065"
     strokeWidth="85.333"
     fill="none"
-    >
-      {getPaths(name).map((path, i) => (
-        <path strokeLinecap="round"
-          strokeLinejoin="round"
-          d={path}
-          key={`path-${i}`}
-        ></path>
-        ))}
+  >
+    {getPaths(name).map((path, i) => (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d={path}
+        key={`path-${i}`}
+      ></path>
+    ))}
   </svg>
   )
 }
