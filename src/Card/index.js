@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { tint } from 'polished'
-import Text from './Text'
-import { colors } from './variables'
+import Text from '../Text'
+import { colors } from '../variables'
 
 const CardWrapper = styled.div`
   padding: 1em;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { darken, timingFunctions } from 'polished'
-import { colors } from './variables'
+import { colors } from '../variables'
 
 const returnColor = (props) => (
   props.primary ? colors.brand.primary
@@ -41,10 +41,10 @@ const ButtonWrapper = styled.button.attrs({
   }
 `
 
-const NavLink = ButtonWrapper.withComponent(Link)
+const RntLink = ButtonWrapper.withComponent(Link)
 
 const Button = props => {
-  if (props.to) return <NavLink {...props}>{props.children}</NavLink>
+  if (props.to) return <RntLink {...props}>{props.children}</RntLink>
   else return <ButtonWrapper {...props}>{props.children}</ButtonWrapper>
 }
 

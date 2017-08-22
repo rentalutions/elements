@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { colors } from './variables'
+import { colors } from '../variables'
 
 function TextLogic ({
   center,

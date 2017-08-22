@@ -8,11 +8,13 @@
     "build": "npm run clean && babel src -d lib",
     "dev": "babel -w src -d lib",
     "clean": "rm -rf lib/*",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/pkrawc/rentalutions-elements.git"
+    "type": "git",
+    "url": "https://github.com/pkrawc/rentalutions-elements.git"
   },
   "author": "Patrick Krawczykowski",
   "license": "ISC",
@@ -25,16 +27,20 @@
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.5",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "jest": "^20.0.4"
+    "babel-preset-stage-1": "^6.24.1",
+    "jest": "^20.0.4",
+    "react-dom": "^15.6.1"
   },
   "babel": {
     "presets": [
       "latest",
-      "react"
+      "react",
+      "stage-1"
     ],
     "plugins": [
       "transform-object-rest-spread"

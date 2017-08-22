@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
 
-import { colors } from './variables'
-import Text from './Text'
+import { colors } from '../variables'
+import Text from '../Text'
 
 const AvatarLogic = ({
   className,

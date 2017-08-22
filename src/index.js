@@ -10,7 +10,7 @@ import Avatar from './Avatar'
 import Button from './Button'
 import Card from './Card'
 import Container from './Container'
-import Icon from './Icon'
+import Dropdown from './Dropdown'
 import Field from './Field'
 import Loader from './Loader'
 import Text from './Text'
@@ -21,9 +21,9 @@ export {
   Button,
   Card,
   Container,
-  Icon,
+  Dropdown,
   Image,
-  Input,
+  Field,
   Loader,
   Text,
   Tooltip

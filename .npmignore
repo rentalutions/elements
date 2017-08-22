@@ -5,3 +5,6 @@ npm_debug.log
 
 docs
 coverage
+
+.storybook
+stories
