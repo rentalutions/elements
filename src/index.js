@@ -27,5 +27,6 @@ export {
   Field,
   Loader,
   Text,
-  Tooltip
+  Tooltip,
+  Toggle
 }
