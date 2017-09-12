@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import classNames from 'classnames'
-import propTypes from 'prop-types'
-import { colors } from '../variables'
+import React, { Component } from "react"
+import styled from "styled-components"
+import classNames from "classnames"
+import propTypes from "prop-types"
+import { colors } from "../variables"
 
 const FieldWrapper = styled.fieldset`
   position: relative;
@@ -12,7 +12,7 @@ const FieldWrapper = styled.fieldset`
   input {
     padding: 1rem;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     font-size: 1em;
     width: 100%;
     &:focus {
@@ -20,7 +20,8 @@ const FieldWrapper = styled.fieldset`
     }
     + label {
       position: absolute;
-      top: 0.5rem; left: 0;
+      top: 0.5rem;
+      left: 0;
       font-size: 1em;
       transition: all 300ms ease-in-out;
       pointer-events: none;
@@ -33,6 +34,14 @@ const FieldWrapper = styled.fieldset`
 `
 
 class Field extends Component {
+  static propTypes = {
+    id: propTypes.string,
+    type: propTypes.string.isRequired,
+    placeholder: propTypes.string,
+    label: propTypes.string
+  }
+
+  static displayName = "Field"
 
   state = {
     focused: this.props.placeholder ? true : false
@@ -40,19 +49,26 @@ class Field extends Component {
 
   handleFocus = e => {
     e.preventDefault()
-    this.setState({focused: true})
+    this.setState({ focused: true })
   }
 
   handleBlur = e => {
     e.preventDefault()
-    this.setState({focused: this.input.value ? true : false})
+    this.setState({ focused: this.input.value ? true : false })
   }
 
   handleChange = e => this.props.onChange && this.props.onChange(e.target.value)
 
   render() {
-
-    const {className, id, innerRef, label, multiLine, onChange, placeholder} = this.props
+    const {
+      className,
+      id,
+      innerRef,
+      label,
+      multiLine,
+      onChange,
+      placeholder
+    } = this.props
 
     const passedProps = {
       id: id,
@@ -68,23 +84,21 @@ class Field extends Component {
     }
 
     return (
-      <FieldWrapper hasValue={this.input ? !!this.input.value.length : false }>
-        {multiLine ? <textarea {...passedProps}/> : <input type="text" {...passedProps} />} 
-        <label className={
-          this.state.focused && !placeholder ? 'raised' : ''
-        } htmlFor={id}>{label}</label>
+      <FieldWrapper hasValue={this.input ? !!this.input.value.length : false}>
+        {multiLine ? (
+          <textarea {...passedProps} />
+        ) : (
+          <input type="text" {...passedProps} />
+        )}
+        <label
+          className={this.state.focused && !placeholder ? "raised" : ""}
+          htmlFor={id}
+        >
+          {label}
+        </label>
       </FieldWrapper>
     )
   }
-}
-
-Field.displayName = 'Field'
-
-Field.propTypes = {
-  id: propTypes.string,
-  type: propTypes.string.isRequired,
-  placeholder: propTypes.string,
-  label: propTypes.string
 }
 
 export default Field
