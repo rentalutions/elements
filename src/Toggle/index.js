@@ -44,3 +44,5 @@ const Toggle = props => (
     <div className="slider" />
   </StyledToggle>
 )
+
+export default Toggle
