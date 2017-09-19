@@ -1,53 +1,48 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { darken, timingFunctions } from 'polished'
-import { colors } from '../variables'
+import React from "react"
+import styled from "styled-components"
+import PropTypes from "prop-types"
+import { Link } from "react-router-dom"
+import { sizing, colors } from "../variables"
 
-const returnColor = (props) => (
-  props.primary ? colors.brand.primary
-  : props.success ? colors.ui.positive
-  : props.failure ? colors.ui.negative
-  : props.warning ? colors.ui.warning
-  : props.btnColor ? props.btnColor
-  : colors.grey.darkSecondary
-)
+const getColor = ({ primary, success, alert, warning, color }) =>
+  primary
+    ? colors.primary
+    : success
+      ? colors.success
+      : alert
+        ? colors.alert
+        : warning ? colors.warning : color ? color : colors.darkGray
 
-const ButtonWrapper = styled.button.attrs({
-  computedColor: props => returnColor(props)
-})`
+const StyledButton = styled.button`
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: ${({computedColor, primary}) => primary ? computedColor : 'transparent'};
-  border: ${({bare, computedColor}) => bare ? 'none' : `2px solid ${computedColor}`};
+  padding: ${sizing / 2}px ${sizing}px;
+  background-color: ${({ bare, ...props }) =>
+    bare ? "transparent" : getColor(props)};
+  border: ${({ bare, ...props }) =>
+    bare ? `2px solid ${getColor(props)}` : "none"};
   border-radius: 2px;
-  color: ${({computedColor, primary}) => primary ? colors.grey.light : computedColor};
+  color: ${({ bare, ...props }) => (bare ? getColor(props) : colors.light)};
   cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 600;
-  min-width: 90px;
-  outline: none;
-  text-transform: uppercase;
-  text-decoration: none;
+  min-width: ${sizing * 4}px;
   text-align: center;
-  transition: all 200ms ${timingFunctions('easeInQuad')};
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 200ms ease-in-out;
   &:hover {
-    background: ${props => props.primary ? darken(0.24, props.computedColor) : props.computedColor};
-    border: 2px solid ${props => props.primary ? darken(0.24, props.computedColor) : props.computedColor};
-    box-shadow: ${({primary}) => primary ? '0 1px 3px rgba(0,0,0,0.12)' : 'inital'};
-    color: ${colors.grey.light};
+    box-shadow: ${({ bare }) => (bare ? "none" : "0 1px 3px rgba(0,0,0,0.12)")};
+    background-color: ${props => getColor(props)};
   }
 `
 
-const RntLink = ButtonWrapper.withComponent(Link)
+const StyledLink = StyledButton.withComponent(Link)
 
 const Button = props => {
-  if (props.to) return <RntLink {...props}>{props.children}</RntLink>
-  else return <ButtonWrapper {...props}>{props.children}</ButtonWrapper>
+  if (props.to) return <StyledLink {...props}>{props.children}</StyledLink>
+  else return <StyledButton {...props}>{props.children}</StyledButton>
 }
 
-Button.displayName = 'Button'
+Button.displayName = "Button"
 
 export default Button

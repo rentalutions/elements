@@ -1,25 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
-import { tint } from 'polished'
-import Text from '../Text'
-import { colors } from '../variables'
+import React from "react"
+import styled from "styled-components"
+import Text from "../Text"
+import { sizing, colors } from "../variables"
 
-const CardWrapper = styled.div`
-  padding: 1em;
-  background: ${
-    ({bgImage, bgColor}) => (
-      bgImage ? `url(${bgImage})` : bgColor ? bgColor : colors.grey.light
-    )
-  };
+const Wrapper = styled.div`
+  padding: ${sizing / 2}px;
+  background: ${({ bgImage, bgColor }) =>
+    bgImage ? `url(${bgImage})` : bgColor ? bgColor : colors.light};
   border-radius: 2px;
-  box-shadow: 0 1px 3px ${tint(0.12, colors.grey.dark)};
-  > ${Text} {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  .card-title {
     margin-top: 0;
-    color: ${colors.grey.darkSecondary};
+    color: ${colors.darkGray};
+  }
+  @media (min-width: ${sizing * 30}px) {
+    padding: ${sizing}px;
   }
 `
 
-export default function Card ({
+export default function Card({
   className,
   children,
   title,
@@ -29,9 +28,18 @@ export default function Card ({
   ...rest
 }) {
   return (
-    <CardWrapper className={className} bgImage={bgImage} bgColor={bgColor} {...rest}>
-      {title && <Text title>{title}</Text>}
+    <Wrapper
+      className={className}
+      bgImage={bgImage}
+      bgColor={bgColor}
+      {...rest}
+    >
+      {title && (
+        <Text title className="card-title">
+          {title}
+        </Text>
+      )}
       {children}
-    </CardWrapper>
+    </Wrapper>
   )
 }

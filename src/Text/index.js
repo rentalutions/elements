@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import React from "react"
+import styled from "styled-components"
+import PropTypes from "prop-types"
+import classNames from "classnames"
 
-import { colors } from '../variables'
+import { colors } from "../variables"
 
-function TextLogic ({
+function TextLogic({
   center,
   children,
   className,
@@ -17,35 +17,69 @@ function TextLogic ({
   title,
   ...rest
 }) {
-  const classes = classNames({
-    center, right, hero, headline, title, small
-  }, className)
-  return hero ? <h1 className={classes} {...rest}>{children}</h1>
-  : headline ? <h2 className={classes} {...rest}>{children}</h2>
-  : title ? <h3 className={classes} {...rest}>{children}</h3>
-  : small ? <p className={classes} {...rest}>{children}</p>
-  : <p className={classes} {...rest}>{children}</p>
+  const classes = classNames(
+    {
+      center,
+      right,
+      hero,
+      headline,
+      title,
+      small
+    },
+    className
+  )
+  return hero ? (
+    <h1 className={classes} {...rest}>
+      {children}
+    </h1>
+  ) : headline ? (
+    <h2 className={classes} {...rest}>
+      {children}
+    </h2>
+  ) : title ? (
+    <h3 className={classes} {...rest}>
+      {children}
+    </h3>
+  ) : small ? (
+    <p className={classes} {...rest}>
+      {children}
+    </p>
+  ) : (
+    <p className={classes} {...rest}>
+      {children}
+    </p>
+  )
 }
 
 const Text = styled(TextLogic)`
   margin: 1rem 0;
   padding: 0;
-  color: ${colors.grey.dark};
-  font-family: 'Nunito';
+  color: ${colors.dark};
+  font-family: "Nunito";
   font-size: 1rem;
-  &.small { font-size: 0.75rem; }
+  &.small {
+    font-size: 0.75rem;
+  }
   &.title {
     font-size: 1.5rem;
     font-weight: 600;
   }
-  &.headline { font-size: 2rem; }
+  &.headline {
+    font-size: 2rem;
+  }
   &.hero {
     font-size: 4rem;
     font-weight: 300;
   }
-  &.center { text-align: center; }
-  &.right { text-align: right; }
-  &.bold { font-weight: bolder; }
+  &.center {
+    text-align: center;
+  }
+  &.right {
+    text-align: right;
+  }
+  &.bold {
+    font-weight: bolder;
+  }
 `
 
 Text.propTypes = {
