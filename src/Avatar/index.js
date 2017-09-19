@@ -18,7 +18,10 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: ${sizing / 2}px;
-    background: ${({ photo }) => (photo ? `url(${photo}` : colors.lightGray)};
+    background-image: ${({ photo }) => (photo ? `url(${photo})` : "")};
+    background-color: ${colors.lightGray};
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 50%;
     font-size: 0.75rem;
     font-family: "Open Sans", sans-serif;
@@ -78,7 +81,7 @@ const Avatar = ({
     {...rest}
   >
     <div className="photo-area">
-      {name ? null : initials}
+      {name || photo ? null : initials}
       {indicator && <span className="indicator" />}
     </div>
     {name && <span className="name">{name}</span>}

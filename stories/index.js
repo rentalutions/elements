@@ -1,4 +1,4 @@
-import React from "react"
+import React, { PureComponent } from "react"
 import { injectGlobal } from "styled-components"
 
 import { storiesOf } from "@storybook/react"
@@ -21,10 +21,20 @@ injectGlobal`
 `
 
 storiesOf("Avatar", module)
-  .add("Basic", () => <Avatar initials="JK" />)
+  .add("Basic", () => (
+    <Avatar
+      initials="JK"
+      photo="https://randomuser.me/api/portraits/med/men/83.jpg"
+    />
+  ))
   .add("With name", () => (
     <div>
-      <Avatar initials="JK" indicator="#404040" name="Laurence Jankelow" />
+      <Avatar
+        initials="JK"
+        indicator="#404040"
+        name="Laurence Jankelow"
+        photo="https://randomuser.me/api/portraits/med/men/83.jpg"
+      />
       <Avatar initials="JK" indicator="#404040" name="Kasia Manolas" />
       <Avatar initials="JK" indicator="#404040" name="Ryan Coon" />
       <Avatar initials="JK" indicator="#404040" name="Kyle Ramirez" />
@@ -40,10 +50,26 @@ storiesOf("Avatar", module)
     />
   ))
 
-storiesOf("Full Page Modal", module).add("Basic", () => (
-  <FullPageModal>
-    {toggle => <Button onClick={toggle}>Click me to open the modal</Button>}
-  </FullPageModal>
-))
+class ModalContainer extends PureComponent {
+  state = {
+    open: false
+  }
+  render() {
+    return (
+      <div>
+        <Button onClick={() => this.setState({ open: true })}>
+          Hello world
+        </Button>
+        <FullPageModal
+          open={this.state.open}
+          onHide={() => this.setState({ open: false })}
+          modalBody={<div>hello world</div>}
+        />
+      </div>
+    )
+  }
+}
+
+storiesOf("Full Page Modal", module).add("Basic", () => <ModalContainer />)
 
 storiesOf("Card", module).add("Basic", () => <Card title="hello react card" />)

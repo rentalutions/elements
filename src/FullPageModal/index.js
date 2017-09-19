@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { sizing, colors } from "../variables"
 
@@ -39,27 +40,17 @@ const ModalContainer = styled.div`
   }
 `
 
-export default class FullPageModal extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      open: false
-    }
-    this.toggleModal = this.toggleModal.bind(this)
-  }
-  toggleModal(e) {
-    e.preventDefault()
-    this.setState({ open: !this.state.open })
-  }
-  render() {
-    return (
-      <div>
-        {this.props.children(this.toggleModal)}
-        <ModalContainer open={this.state.open}>
-          <span className="rnt-close" onClick={this.toggleModal} />
-          <div className="rnt-modal-body">{this.props.modalBody}</div>
-        </ModalContainer>
-      </div>
-    )
-  }
+const FullPageModal = ({ open, onHide, modalBody }) => (
+  <ModalContainer open={open}>
+    <span className="rnt-close" onClick={onHide} />
+    <div className="rnt-modal-body">{modalBody}</div>
+  </ModalContainer>
+)
+
+FullPageModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
+  modalBody: PropTypes.element.isRequired
 }
+
+export default FullPageModal
