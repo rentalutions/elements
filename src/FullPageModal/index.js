@@ -26,7 +26,6 @@ const ModalContainer = styled.div`
     font-size: 2rem;
     height: ${sizing}px;
     width: ${sizing}px;
-    background-color: ${colors.dark};
   }
   .rnt-modal-body {
     padding: 0 ${sizing}px;
@@ -42,7 +41,15 @@ const ModalContainer = styled.div`
 
 const FullPageModal = ({ open, onHide, modalBody }) => (
   <ModalContainer open={open}>
-    <span className="rnt-close" onClick={onHide} />
+    <svg className="rnt-close" onClick={onHide} viewBox="0 0 36 36">
+      <g transform="translate(-6 -6)" fill="none">
+        <polygon
+          fill={colors.darkGray}
+          points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
+          transform="translate(6 6)"
+        />
+      </g>
+    </svg>
     <div className="rnt-modal-body">{modalBody}</div>
   </ModalContainer>
 )

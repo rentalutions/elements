@@ -4,14 +4,16 @@ import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import { sizing, colors } from "../variables"
 
-const getColor = ({ primary, success, alert, warning, color }) =>
+const getColor = ({ primary, success, alert, warning, external, color }) =>
   primary
     ? colors.primary
     : success
       ? colors.success
       : alert
         ? colors.alert
-        : warning ? colors.warning : color ? color : colors.darkGray
+        : warning
+          ? colors.warning
+          : external ? colors.external : color ? color : colors.darkGray
 
 const StyledButton = styled.button`
   display: inline-block;
@@ -33,6 +35,7 @@ const StyledButton = styled.button`
   &:hover {
     box-shadow: ${({ bare }) => (bare ? "none" : "0 1px 3px rgba(0,0,0,0.12)")};
     background-color: ${props => getColor(props)};
+    color: ${colors.light};
   }
 `
 

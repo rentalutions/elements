@@ -50,6 +50,24 @@ storiesOf("Avatar", module)
     />
   ))
 
+storiesOf("Button", module)
+  .add("Basic", () => <Button>a cool button</Button>)
+  .add("Bare", () => <Button bare>a cool button</Button>)
+  .add("Primary", () => <Button primary>a cool button</Button>)
+  .add("Ui buttons", () => (
+    <div>
+      <Button bare alert>
+        a cool button
+      </Button>
+      <Button bare warning>
+        a cool button
+      </Button>
+      <Button bare external>
+        a cool button
+      </Button>
+    </div>
+  ))
+
 class ModalContainer extends PureComponent {
   state = {
     open: false
@@ -73,3 +91,9 @@ class ModalContainer extends PureComponent {
 storiesOf("Full Page Modal", module).add("Basic", () => <ModalContainer />)
 
 storiesOf("Card", module).add("Basic", () => <Card title="hello react card" />)
+
+storiesOf("Tooltip", module).add("Off right", () => (
+  <div>
+    <Button primary />
+  </div>
+))
