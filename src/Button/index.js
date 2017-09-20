@@ -17,11 +17,11 @@ const getColor = ({ primary, success, alert, warning, external, color }) =>
 
 const StyledButton = styled.button`
   display: inline-block;
-  padding: ${sizing / 2}px ${sizing}px;
+  padding: ${sizing / 2 - 2}px ${sizing}px;
+  margin: 0;
   background-color: ${({ bare, ...props }) =>
     bare ? "transparent" : getColor(props)};
-  border: ${({ bare, ...props }) =>
-    bare ? `2px solid ${getColor(props)}` : "none"};
+  border: ${props => `2px solid ${getColor(props)}`};
   border-radius: 2px;
   color: ${({ bare, ...props }) => (bare ? getColor(props) : colors.light)};
   cursor: pointer;
@@ -32,18 +32,54 @@ const StyledButton = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   transition: 200ms ease-in-out;
+  line-height: 1.334;
   &:hover {
-    box-shadow: ${({ bare }) => (bare ? "none" : "0 1px 3px rgba(0,0,0,0.12)")};
+    box-shadow: ${({ bare }) => (bare ? "none" : "0 3px 6px rgba(0,0,0,0.24)")};
     background-color: ${props => getColor(props)};
     color: ${colors.light};
+  }
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: ${colors.darkGray};
+    background: ${colors.lightGray};
+    border: 2px solid ${colors.lightGray};
   }
 `
 
 const StyledLink = StyledButton.withComponent(Link)
 
-const Button = props => {
-  if (props.to) return <StyledLink {...props}>{props.children}</StyledLink>
-  else return <StyledButton {...props}>{props.children}</StyledButton>
+const Button = ({ children, className, to, disabled, ...props }) => {
+  if (to)
+    return (
+      <StyledLink
+        className={`${className ? className : ""} ${disabled
+          ? "disabled"
+          : ""}`}
+        to={to}
+        {...props}
+      >
+        {children}
+      </StyledLink>
+    )
+  else
+    return (
+      <StyledButton className={className} disabled={disabled} {...props}>
+        {children}
+      </StyledButton>
+    )
+}
+
+Button.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  success: PropTypes.bool,
+  alert: PropTypes.bool,
+  warning: PropTypes.bool,
+  external: PropTypes.bool,
+  to: PropTypes.string
 }
 
 Button.displayName = "Button"
