@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { sizing, colors } from "../variables"
 
-const ModalContainer = styled.div`
+const ModalContainer = styled(({ show, ...rest }) => <div {...rest}></div>)`
   position: fixed;
   top: 0;
   right: 0;
@@ -14,9 +14,9 @@ const ModalContainer = styled.div`
   justify-content: center;
   padding: ${sizing / 2}px;
   background: rgba(249, 249, 249, 0.96);
-  visibility: ${({ open }) => (open ? "visible" : "hidden")};
-  opacity: ${({ open }) => (open ? "1" : "0")};
-  transform: ${({ open }) => (open ? "scale(1)" : "scale(1.25)")};
+  visibility: ${({ show }) => (show ? "visible" : "hidden")};
+  opacity: ${({ show }) => (show ? "1" : "0")};
+  transform: ${({ show }) => (show ? "scale(1)" : "scale(1.25)")};
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   .rnt-close {
     position: absolute;
@@ -39,8 +39,8 @@ const ModalContainer = styled.div`
   }
 `
 
-const FullPageModal = ({ open, onHide, children }) => (
-  <ModalContainer open={open}>
+const FullPageModal = ({ show, onHide, children, ...props }) => (
+  <ModalContainer {...props} show={show}>
     <svg className="rnt-close" onClick={onHide} viewBox="0 0 36 36">
       <g transform="translate(-6 -6)" fill="none">
         <polygon
@@ -55,7 +55,7 @@ const FullPageModal = ({ open, onHide, children }) => (
 )
 
 FullPageModal.propTypes = {
-  open: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired
 }
 

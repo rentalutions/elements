@@ -4,17 +4,17 @@ import { FullPageModal, Button } from "../src/"
 
 class ModalContainer extends PureComponent {
   state = {
-    open: false
+    show: false
   }
   render() {
     return (
       <div>
-        <Button onClick={() => this.setState({ open: true })}>
+        <Button onClick={() => this.setState({ show: true })}>
           Hello world
         </Button>
         <FullPageModal
-          open={this.state.open}
-          onHide={() => this.setState({ open: false })}
+          show={this.state.show}
+          onHide={() => this.setState({ show: false })}
         >
           <pre style={{
             margin:"0",
