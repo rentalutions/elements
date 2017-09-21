@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/pkrawc/rentalutions-elements.git"
   },
-  "author": "Patrick Krawczykowski",
+  "contributors": ["Patrick Krawczykowski <pkrawz@gmail.com>", "Kyle Ramirez"],
   "license": "ISC",
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.6",
@@ -45,8 +45,6 @@
     "styled-components": "^2.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/"]
   }
 }
