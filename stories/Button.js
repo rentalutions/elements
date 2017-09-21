@@ -1,7 +1,16 @@
 import React from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import { storiesOf } from "@storybook/react"
+import styled from "styled-components"
 import { Button } from "../src/"
+
+const Wrapper = styled.div`
+  position: relative;
+  button,
+  a {
+    margin: 0.5em;
+  }
+`
 
 export default storiesOf("Button", module)
   .add("Basic", () => <Button>a cool button</Button>)
@@ -9,11 +18,11 @@ export default storiesOf("Button", module)
   .add("Primary", () => <Button primary>a cool button</Button>)
   .add("Ui buttons", () => (
     <Router>
-      <div>
+      <Wrapper>
         <Button bare success>
           success button
         </Button>
-        <Button to="/hello" bare alert>
+        <Button to="hello" bare alert>
           alert button
         </Button>
         <Button bare warning onClick={() => console.log("Not Disabled")}>
@@ -25,6 +34,6 @@ export default storiesOf("Button", module)
         <Button bare external disabled>
           disabled button
         </Button>
-      </div>
+      </Wrapper>
     </Router>
   ))

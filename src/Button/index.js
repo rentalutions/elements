@@ -33,6 +33,7 @@ const StyledButton = styled.button`
   text-transform: uppercase;
   transition: 200ms ease-in-out;
   line-height: 1.334;
+  outline: none;
   &:hover {
     box-shadow: ${({ bare }) => (bare ? "none" : "0 3px 6px rgba(0,0,0,0.24)")};
     background-color: ${props => getColor(props)};
@@ -41,10 +42,12 @@ const StyledButton = styled.button`
   &:disabled,
   &.disabled {
     cursor: not-allowed;
-    pointer-events: none;
     color: ${colors.darkGray};
     background: ${colors.lightGray};
     border: 2px solid ${colors.lightGray};
+  }
+  &.disabled {
+    pointer-events: none;
   }
 `
 
