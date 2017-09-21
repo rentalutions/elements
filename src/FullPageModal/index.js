@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { sizing, colors } from "../variables"
 
-const ModalContainer = styled(({ show, ...rest }) => <div {...rest}></div>)`
+const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   position: fixed;
   top: 0;
   right: 0;
@@ -42,13 +42,10 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest}></div>)`
 const FullPageModal = ({ show, onHide, children, ...props }) => (
   <ModalContainer {...props} show={show}>
     <svg className="rnt-close" onClick={onHide} viewBox="0 0 36 36">
-      <g transform="translate(-6 -6)" fill="none">
-        <polygon
-          fill={colors.darkGray}
-          points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
-          transform="translate(6 6)"
-        />
-      </g>
+      <polygon
+        fill={colors.darkGray}
+        points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
+      />
     </svg>
     <div className="rnt-modal-body">{children}</div>
   </ModalContainer>
