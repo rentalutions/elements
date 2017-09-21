@@ -39,7 +39,7 @@ const ModalContainer = styled.div`
   }
 `
 
-const FullPageModal = ({ open, onHide, modalBody }) => (
+const FullPageModal = ({ open, onHide, children }) => (
   <ModalContainer open={open}>
     <svg className="rnt-close" onClick={onHide} viewBox="0 0 36 36">
       <g transform="translate(-6 -6)" fill="none">
@@ -50,14 +50,13 @@ const FullPageModal = ({ open, onHide, modalBody }) => (
         />
       </g>
     </svg>
-    <div className="rnt-modal-body">{modalBody}</div>
+    <div className="rnt-modal-body">{children}</div>
   </ModalContainer>
 )
 
 FullPageModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  modalBody: PropTypes.element.isRequired
+  onHide: PropTypes.func.isRequired
 }
 
 export default FullPageModal

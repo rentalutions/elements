@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { sizing, colors } from "../variables"
 
 const getColor = ({ primary, success, alert, warning, external, color }) =>
@@ -51,22 +51,22 @@ const StyledButton = styled.button`
   }
 `
 
-const StyledLink = StyledButton.withComponent(Link)
+// const StyledLink = StyledButton.withComponent(Link)
 
 const Button = ({ children, className, to, disabled, ...props }) => {
-  if (to)
-    return (
-      <StyledLink
-        className={`${className ? className : ""} ${disabled
-          ? "disabled"
-          : ""}`}
-        to={to}
-        {...props}
-      >
-        {children}
-      </StyledLink>
-    )
-  else
+  // if (to)
+  //   return (
+  //     <StyledLink
+  //       className={`${className ? className : ""} ${disabled
+  //         ? "disabled"
+  //         : ""}`}
+  //       to={to}
+  //       {...props}
+  //     >
+  //       {children}
+  //     </StyledLink>
+  //   )
+  // else
     return (
       <StyledButton className={className} disabled={disabled} {...props}>
         {children}
@@ -82,7 +82,7 @@ Button.propTypes = {
   alert: PropTypes.bool,
   warning: PropTypes.bool,
   external: PropTypes.bool,
-  to: PropTypes.string
+  // to: PropTypes.string
 }
 
 Button.displayName = "Button"
