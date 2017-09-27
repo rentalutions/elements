@@ -1,6 +1,6 @@
 {
   "name": "@rentalutions/elements",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "A suite of elements for the consistent and responsive UI",
   "main": "lib/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/pkrawc/rentalutions-elements.git"
   },
-  "contributors": ["Patrick Krawczykowski <pkrawz@gmail.com>", "Kyle Ramirez"],
+  "contributors": ["Patrick Krawczykowski <pkrawz@gmail.com>", "Kyle Ramirez", "Prakash Koneru"],
   "license": "ISC",
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.6",

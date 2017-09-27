@@ -18,7 +18,7 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   opacity: ${({ show }) => (show ? "1" : "0")};
   transform: ${({ show }) => (show ? "scale(1)" : "scale(1.25)")};
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  .rnt-close {
+  .svg-close {
     position: absolute;
     top: ${sizing}px;
     right: ${sizing}px;
@@ -41,7 +41,7 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
 
 const FullPageModal = ({ show, onHide, children, ...props }) => (
   <ModalContainer {...props} show={show}>
-    <svg className="rnt-close" onClick={onHide} viewBox="0 0 36 36">
+    <svg className="svg-close" onClick={onHide} viewBox="0 0 36 36">
       <polygon
         fill={colors.darkGray}
         points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
