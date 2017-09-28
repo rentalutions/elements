@@ -1,3 +1,6 @@
+### 1.7.0
+- Added `scroll-container` element to the modal component to stretch the scrollbar to the left of the page.
+
 ### 1.6.8
 - Changed the className for the svg from "rnt-close" to "svg-close" since it is breaking every rnt-close we define on page.
 - Removed the group in FullPageModal, it was unneeded.
