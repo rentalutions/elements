@@ -8,7 +8,7 @@
     "test:update": "jest -u",
     "test:dev": "jest --watch",
     "build": "npm run clean && babel src -d lib --ignore **/*.test.js",
-    "dev": "babel -w src -d lib",
+    "dev": "babel -w src -d lib --ignore **/*.test.js",
     "clean": "rm -rf lib/*",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
@@ -25,14 +25,12 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.2.6",
     "@storybook/addon-knobs": "^3.2.8",
-    "@storybook/addon-links": "^3.2.6",
     "@storybook/react": "^3.2.8",
     "babel-cli": "^6.24.1",
+    "babel-core": "^6.26.0",
     "babel-jest": "^21.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "enzyme": "^2.9.1",
@@ -49,8 +47,6 @@
     "styled-components": "^2.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/"]
   }
 }
