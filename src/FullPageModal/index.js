@@ -11,8 +11,6 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: ${sizing / 2}px;
   background: rgba(249, 249, 249, 0.96);
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
   opacity: ${({ show }) => (show ? "1" : "0")};
@@ -27,15 +25,20 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
     height: ${sizing}px;
     width: ${sizing}px;
   }
-  .rnt-modal-body {
-    padding: 0 ${sizing}px;
-    max-width: ${sizing * 40}px;
+  .scroll-container {
+    display: flex;
+    padding: ${sizing / 2}px;
+    overflow-y: auto;
     max-height: 100%;
-    overflow: auto;
     width: 100%;
+    @media (min-width: ${sizing * 40}px) {
+      padding: 0 ${sizing}px;
+    }
   }
-  @media (min-width: ${sizing * 30}px) {
-    padding: 0 ${sizing}px;
+  .rnt-modal-body {
+    margin: 0 auto;
+    max-width: ${sizing * 40}px;
+    width: 100%;
   }
 `
 
@@ -47,7 +50,9 @@ const FullPageModal = ({ show, onHide, children, ...props }) => (
         points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
       />
     </svg>
-    <div className="rnt-modal-body">{children}</div>
+    <div className="scroll-container">
+      <div className="rnt-modal-body">{children}</div>
+    </div>
   </ModalContainer>
 )
 
