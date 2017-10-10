@@ -7,10 +7,4 @@ import FullPageModal from "./FullPageModal"
 import Text from "./Text"
 import Tooltip from "./Tooltip"
 
-injectGlobal`
-*,*:before,*:after {
-  box-sizing: border-box;
-}
-`
-
 export { Avatar, Button, Card, Container, FullPageModal, Text, Tooltip }
