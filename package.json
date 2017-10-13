@@ -1,6 +1,6 @@
 {
   "name": "@rentalutions/elements",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "A suite of elements for the consistent and responsive UI",
   "main": "lib/index.js",
   "scripts": {
@@ -47,6 +47,8 @@
     "styled-components": "^2.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
