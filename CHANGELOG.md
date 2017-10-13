@@ -1,3 +1,5 @@
+### 1.7.2
+- CSS adjustments to `<Avatar />`
 ### 1.7.1
 - Removed globally injected CSS
 ## 1.7.0

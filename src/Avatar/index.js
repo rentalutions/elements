@@ -5,18 +5,18 @@ import { sizing, colors } from "../variables"
 import { Text } from "../index"
 
 const Wrapper = styled.div`
-  display: ${({ email, phone, block }) =>
-    block || email ? "flex" : "inline-flex"};
-  flex-wrap: wrap;
+  ${({ email, block }) => !email && !block ? "display: inline-block;" : null}
   background-color: ${({ email }) => (email ? "transparent" : colors.ui)};
-  align-items: center;
   border-radius: ${sizing}px;
   color: ${colors.dark};
-  .photo-area {
+  .photo-name-area {
     display: flex;
-    position: relative;
     align-items: center;
-    justify-content: center;
+  }
+  .photo-area {
+    position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
     padding: ${sizing / 2}px;
     background-image: ${({ photo }) => (photo ? `url(${photo})` : "")};
     background-color: ${colors.lightGray};
@@ -36,24 +36,26 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: -0.05em;
     right: -0.05em;
+    box-sizing: border-box;
     width: ${sizing / 2}px;
     height: ${sizing / 2}px;
     background: ${({ indicator }) => indicator && indicator};
     border: 2px solid ${colors.light};
     border-radius: 50%;
   }
-  .name {
-    margin: 0 ${sizing / 2}px;
-    font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
-    font-weight: ${({ email }) => (email ? "600" : "500")};
+  .name,
+  .contact-info {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 7.5em;
+  }
+  .name {
+    padding: 0 ${sizing / 2}px;
+    font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
+    font-weight: ${({ email }) => (email ? "600" : "500")};
   }
   .contact-info {
-    display: flex;
-    width: 100%;
+    flex: 0 0 100%;
     padding: ${sizing / 2}px 0;
     font-size: 0.75rem;
     color: ${colors.darkGray};
@@ -80,15 +82,18 @@ const Avatar = ({
     photo={photo}
     {...rest}
   >
-    <div className="photo-area">
-      {name || photo ? null : initials}
-      {indicator && <span className="indicator" />}
+    <div className="photo-name-area">
+      <div className="photo-area">
+        {name || photo ? null : initials}
+        {indicator && <span className="indicator" />}
+      </div>
+      {name && <span className="name">{name}</span>}
     </div>
-    {name && <span className="name">{name}</span>}
     {email && (
       <div className="contact-info">
-        <span className="email">{email}</span>
-        {phone && <span> | {phone}</span>}
+        <span className="email">
+          {[email,phone].filter(Boolean).join(" | ")}
+        </span>
       </div>
     )}
   </Wrapper>

@@ -4,7 +4,6 @@ import Button from "./Button"
 import Card from "./Card"
 import Container from "./Container"
 import FullPageModal from "./FullPageModal"
-// import Stepper, { Step } from "./Stepper"
 import Text from "./Text"
 import Tooltip from "./Tooltip"
 
@@ -14,8 +13,6 @@ export {
   Card,
   Container,
   FullPageModal,
-  // Stepper,
-  // Step,
   Text,
   Tooltip
 }
