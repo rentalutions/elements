@@ -66,12 +66,11 @@ const Button = ({ children, className, to, disabled, ...props }) => {
   //       {children}
   //     </StyledLink>
   //   )
-  // else
-    return (
-      <StyledButton className={className} disabled={disabled} {...props}>
-        {children}
-      </StyledButton>
-    )
+  return (
+    <StyledButton className={className} disabled={disabled} {...props}>
+      {children}
+    </StyledButton>
+  )
 }
 
 Button.propTypes = {
@@ -81,7 +80,7 @@ Button.propTypes = {
   success: PropTypes.bool,
   alert: PropTypes.bool,
   warning: PropTypes.bool,
-  external: PropTypes.bool,
+  external: PropTypes.bool
   // to: PropTypes.string
 }
 

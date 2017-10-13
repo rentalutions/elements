@@ -9,7 +9,6 @@ function TextLogic({
   center,
   children,
   className,
-  color,
   headline,
   hero,
   right,
@@ -54,21 +53,24 @@ function TextLogic({
 const Text = styled(TextLogic)`
   margin: 1rem 0;
   padding: 0;
-  color: ${colors.dark};
-  font-family: "Nunito";
-  font-size: 1rem;
+  color: ${({ color }) => (color ? color : colors.dark)};
+  font-size: 1em;
+  line-height: 1.334;
   &.small {
-    font-size: 0.75rem;
+    font-size: 0.75em;
   }
-  &.title {
-    font-size: 1.5rem;
+  &.subtitle {
+    font-size: 1.25em;
     font-weight: 600;
   }
+  &.title {
+    font-size: 1.5em;
+  }
   &.headline {
-    font-size: 2rem;
+    font-size: 2em;
   }
   &.hero {
-    font-size: 4rem;
+    font-size: 4em;
     font-weight: 300;
   }
   &.center {
@@ -81,6 +83,8 @@ const Text = styled(TextLogic)`
     font-weight: bolder;
   }
 `
+
+Text.displayName = "Text"
 
 Text.propTypes = {
   center: PropTypes.bool,

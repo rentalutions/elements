@@ -4,6 +4,7 @@ import Button from "./Button"
 import Card from "./Card"
 import Container from "./Container"
 import FullPageModal from "./FullPageModal"
+// import Stepper, { Step } from "./Stepper"
 import Text from "./Text"
 import Tooltip from "./Tooltip"
 
@@ -13,4 +14,14 @@ injectGlobal`
 }
 `
 
-export { Avatar, Button, Card, Container, FullPageModal, Text, Tooltip }
+export {
+  Avatar,
+  Button,
+  Card,
+  Container,
+  FullPageModal,
+  // Stepper,
+  // Step,
+  Text,
+  Tooltip
+}

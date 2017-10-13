@@ -10,6 +10,7 @@ import { Button, Card, Tooltip } from "../src"
 import AvatarStories from "./Avatar"
 import ButtonStories from "./Button"
 import FullPageModalStories from "./FullPageModal"
+import Stepper from "./Stepper"
 
 injectGlobal`
   *,*:before,*:after {
