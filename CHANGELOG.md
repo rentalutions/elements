@@ -1,3 +1,5 @@
+### 1.7.4
+- More CSS adjustments to `<Avatar />`
 ### 1.7.3
 - CSS adjustments to `<Avatar />`
 ### 1.7.1

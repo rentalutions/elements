@@ -15,22 +15,24 @@ const Wrapper = styled.div`
   }
   .photo-area {
     position: relative;
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    padding: ${sizing / 2}px;
-    background-image: ${({ photo }) => (photo ? `url(${photo})` : "")};
-    background-color: ${colors.lightGray};
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    font-size: 0.75rem;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
     height: ${({ email, name }) =>
       email || !name ? `${sizing * 2}px` : `${sizing / 2}px`};
     width: ${({ email, name }) =>
       email || !name ? `${sizing * 2}px` : `${sizing / 2}px`};
+    box-sizing: border-box;
+    padding: ${sizing / 2}px;
+    border-radius: 50%;
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: ${colors.lightGray};
+    background-image: ${({ photo }) => (photo ? `url(${photo})` : "")};
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .indicator {
     position: absolute;
@@ -51,13 +53,14 @@ const Wrapper = styled.div`
   }
   .name {
     padding: 0 ${sizing / 2}px;
-    font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
+    line-height: 1;
+    font-size: ${({ email }) => (email ? "1.5rem" : "0.875rem")};
     font-weight: ${({ email }) => (email ? "600" : "500")};
   }
   .contact-info {
     flex: 0 0 100%;
     padding: ${sizing / 2}px 0;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     color: ${colors.darkGray};
   }
 `
