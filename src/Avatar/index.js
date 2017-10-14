@@ -53,15 +53,18 @@ const Wrapper = styled.div`
   }
   .name {
     padding: 0 ${sizing / 2}px;
-    line-height: 1;
+    line-height: ${({ email, phone }) => email || phone ? "1.5" : "1.3" };
     font-size: ${({ email }) => (email ? "1.5rem" : "0.875rem")};
     font-weight: ${({ email }) => (email ? "600" : "500")};
   }
   .contact-info {
     flex: 0 0 100%;
-    padding: ${sizing / 2}px 0;
-    font-size: 0.875rem;
+    margin-top: 0.25em;
+    font-size: 0.875em;
     color: ${colors.darkGray};
+  }
+  & + & {
+    margin-top: 1em;
   }
 `
 
@@ -106,7 +109,7 @@ Avatar.propTypes = {
   block: PropTypes.bool,
   email: PropTypes.string,
   indicator: PropTypes.string,
-  initials: PropTypes.string.isRequired,
+  initials: PropTypes.string,
   name: PropTypes.string,
   phone: PropTypes.string,
   photo: PropTypes.string
