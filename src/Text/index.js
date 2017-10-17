@@ -13,6 +13,7 @@ function TextLogic({
   hero,
   right,
   small,
+  subtitle,
   title,
   ...rest
 }) {
@@ -23,7 +24,8 @@ function TextLogic({
       hero,
       headline,
       title,
-      small
+      small,
+      "rnt-text": true
     },
     className
   )
@@ -39,10 +41,10 @@ function TextLogic({
     <h3 className={classes} {...rest}>
       {children}
     </h3>
-  ) : small ? (
-    <p className={classes} {...rest}>
+  ) : subtitle ? (
+    <h4 className={classes} {...rest}>
       {children}
-    </p>
+    </h4>
   ) : (
     <p className={classes} {...rest}>
       {children}
