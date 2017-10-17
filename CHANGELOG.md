@@ -1,3 +1,5 @@
+### 1.7.6
+Removed unused exports breaking build
 ### 1.7.5
 CSS adjustments
 ### 1.7.4
