@@ -1,4 +1,4 @@
 {
-  "presets": ["react", "stage-1"],
-  "plugins": ["transform-object-rest-spread"]
+  presets: [["es2015", { "modules": false }], "react", "stage-0"],
+  plugins: [["transform-runtime", { polyfill: false }]]
 }
