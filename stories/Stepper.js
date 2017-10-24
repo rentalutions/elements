@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { BrowserRouter as Router } from "react-router-dom"
-import { Stepper, Step } from "../src"
+import Stepper, { Step } from "../src/Stepper"
 import styled from "styled-components"
 
 export default storiesOf("Stepper", module).add("Basic", () => (

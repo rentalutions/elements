@@ -65,9 +65,6 @@ const Wrapper = styled.div`
     font-size: 0.875em;
     color: ${colors.darkGray};
   }
-  ${"" /* what is the purpose of giving the second avatar a top margin? */} & + & {
-    margin-top: 1em;
-  }
 `
 
 const Avatar = ({

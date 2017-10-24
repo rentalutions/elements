@@ -64,6 +64,10 @@ class Stepper extends PureComponent {
     console.log(this.props.match)
     return (
       <Wrapper>
+        {/*
+        Covers 99% of mobile use. Not many people are manually changing their
+        viewport size.
+        */}
         {window.innerWidth > 720 ? (
           [
             <ul className="step-list">
