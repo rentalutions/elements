@@ -1,11 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 import { sizing, colors } from "../variables"
 import { Text } from "../index"
 
 const Wrapper = styled.div`
-  ${({ email, block }) => !email && !block ? "display: inline-block;" : null}
+  display: ${({ email, block }) =>
+    !email && !block ? "inline-block" : "initial"};
   background-color: ${({ email }) => (email ? "transparent" : colors.ui)};
   border-radius: ${sizing}px;
   color: ${colors.dark};
@@ -53,9 +54,10 @@ const Wrapper = styled.div`
   }
   .name {
     padding: 0 ${sizing / 2}px;
-    line-height: ${({ email, phone }) => email || phone ? "1.5" : "1.3" };
+    line-height: ${({ email, phone }) => (email || phone ? "1.5" : "1.3")};
     font-size: ${({ email }) => (email ? "1.5rem" : "0.875rem")};
     font-weight: ${({ email }) => (email ? "600" : "500")};
+    max-width: ${({ phone, email }) => (email || phone ? "none" : "12em")};
   }
   .contact-info {
     flex: 0 0 100%;
@@ -63,7 +65,7 @@ const Wrapper = styled.div`
     font-size: 0.875em;
     color: ${colors.darkGray};
   }
-  & + & {
+  ${"" /* what is the purpose of giving the second avatar a top margin? */} & + & {
     margin-top: 1em;
   }
 `
@@ -98,7 +100,7 @@ const Avatar = ({
     {email && (
       <div className="contact-info">
         <span className="email">
-          {[email,phone].filter(Boolean).join(" | ")}
+          {[email, phone].filter(Boolean).join(" | ")}
         </span>
       </div>
     )}

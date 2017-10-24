@@ -10,11 +10,12 @@ import { Button, Card, Tooltip } from "../src"
 import AvatarStories from "./Avatar"
 import ButtonStories from "./Button"
 import FullPageModalStories from "./FullPageModal"
+import Stepper from "./Stepper"
 
 injectGlobal`
   :root {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.3;
   }
   body {
     font-family: 'Open Sans';
