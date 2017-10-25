@@ -2,7 +2,7 @@
 
 If you find elements breaking your build, make sure all peerDependencies are installed or that youre importing each components directly
 
-`import Avatar from "@rentalutions/elements/lib/Avatar"
+`import Avatar from "@rentalutions/elements/lib/Avatar"`
 
 # A Set of Reusable Components
 
