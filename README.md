@@ -1,3 +1,5 @@
+# Do not deprecate elements from this library without warning or following true semvar. This is a public package.
+
 # A Set of Reusable Components
 
 **Documentation needed**
