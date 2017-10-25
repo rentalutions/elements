@@ -1,5 +1,9 @@
 # Do not deprecate elements from this library without warning or following true semvar. This is a public package.
 
+If you find elements breaking your build, make sure all peerDependencies are installed or that youre importing each components directly
+
+`import Avatar from "@rentalutions/elements/lib/Avatar"
+
 # A Set of Reusable Components
 
 **Documentation needed**
