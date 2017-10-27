@@ -53,7 +53,7 @@ function TextLogic({
 }
 
 const Text = styled(TextLogic)`
-  margin: 0;
+  margin: 24px 0;
   padding: 0;
   color: ${({ color }) => (color ? color : colors.dark)};
   font-size: 1em;
