@@ -24,9 +24,9 @@ function TextLogic({
       hero,
       headline,
       title,
-      small,
-      "rnt-text": true
+      small
     },
+    "rnt-text",
     className
   )
   return hero ? (
@@ -53,7 +53,7 @@ function TextLogic({
 }
 
 const Text = styled(TextLogic)`
-  margin: 1rem 0;
+  margin: 0;
   padding: 0;
   color: ${({ color }) => (color ? color : colors.dark)};
   font-size: 1em;

@@ -54,8 +54,8 @@ const Wrapper = styled.div`
   }
   .name {
     padding: 0 ${sizing / 2}px;
-    line-height: ${({ email, phone }) => (email || phone ? "1.5" : "1.3")};
-    font-size: ${({ email }) => (email ? "1.5rem" : "0.875rem")};
+    line-height: 1.3;
+    font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
     font-weight: ${({ email }) => (email ? "600" : "500")};
     max-width: ${({ phone, email }) => (email || phone ? "none" : "12em")};
   }
