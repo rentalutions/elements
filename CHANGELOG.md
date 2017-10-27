@@ -1,3 +1,5 @@
+### 1.7.9
+re-added exports (not unused in some projects)
 ### 1.7.7
 Added babel options for production-ready code
 ### 1.7.6
