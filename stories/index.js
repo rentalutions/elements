@@ -5,12 +5,13 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { linkTo } from "@storybook/addon-links"
 
-import { Button, Card, Tooltip } from "../src"
+import { Button, Card } from "../src"
 
 import AvatarStories from "./Avatar"
 import ButtonStories from "./Button"
 import FullPageModalStories from "./FullPageModal"
 import Stepper from "./Stepper"
+import ProgressBar from "./ProgressBar"
 
 injectGlobal`
   :root {
@@ -24,10 +25,10 @@ injectGlobal`
 
 storiesOf("Card", module).add("Basic", () => <Card title="hello react card" />)
 
-storiesOf("Tooltip", module).add("Off right", () => (
-  <div>
-    <Tooltip content={<p>Steve Bruhle</p>}>
-      <Button primary />
-    </Tooltip>
-  </div>
-))
+// storiesOf("Tooltip", module).add("Off right", () => (
+//   <div>
+//     <Tooltip content={<p>Steve Bruhle</p>}>
+//       <Button primary />
+//     </Tooltip>
+//   </div>
+// ))

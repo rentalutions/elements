@@ -1,3 +1,7 @@
+### 1.8.0
+Built a ProgressBar component as proof of concept. Only available through "lib/ProgressBar".
+### 1.7.10
+re-added margin on Text component
 ### 1.7.9
 re-added exports (not unused in some projects)
 ### 1.7.7
