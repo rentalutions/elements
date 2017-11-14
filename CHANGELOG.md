@@ -1,3 +1,5 @@
+### 1.8.1
+Refactored ProgreessBar to use clip-path better. Will fallback to a different yet usable alternative on IE and Edge.
 ### 1.8.0
 Built a ProgressBar component as proof of concept. Only available through "lib/ProgressBar".
 ### 1.7.10
