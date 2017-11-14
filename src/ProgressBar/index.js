@@ -7,7 +7,7 @@ const ProgressWrapper = styled.div`display: flex;`
 const StepMarkup = props => (
   <div {...props}>
     <div className="bar" />
-    <div className="arrow" />
+    {/* <div className="arrow" /> */}
     {props.title && <div className="title">{props.title}</div>}
   </div>
 )
@@ -18,29 +18,32 @@ const ProgressStep = styled(StepMarkup)`
   display: flex;
   &:first-of-type .bar {
     border-radius: 12px 0 0 12px;
+    clip-path: polygon(
+      calc(100% - 12px) 0%,
+      100% 50%,
+      calc(100% - 12px) 100%,
+      0% 100%,
+      0% 0%
+    );
   }
-  &:last-of-type {
-    .bar {
-      border-radius: 0 12px 12px 0;
-    }
-    .arrow {
-      display: none;
-    }
+  &:last-of-type .bar {
+    border-radius: 0 12px 12px 0;
+    clip-path: polygon(100% 0, 100% 99%, 0% 100%, 12px 50%, 0% 0%);
   }
-  &:not(:first-of-type) .bar {
-    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 12px 50%, 0% 0%);
-  }
-  .bar,
-  .arrow {
-    background: ${({ complete }) => (complete ? "#137bb5" : "#f2f2f2")};
-    height: 24px;
+  &:not(:first-of-type):not(:last-of-type) .bar {
+    clip-path: polygon(
+      calc(100% - 12px) 0%,
+      100% 50%,
+      calc(100% - 12px) 100%,
+      0% 100%,
+      12px 50%,
+      0% 0%
+    );
   }
   .bar {
     flex: 1;
-  }
-  .arrow {
-    width: 12px;
-    clip-path: polygon(0 0, 0 100%, 99% 50%);
+    background: ${({ complete }) => (complete ? "#137bb5" : "#f2f2f2")};
+    height: 24px;
   }
   .title {
     position: absolute;

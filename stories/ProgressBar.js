@@ -13,3 +13,11 @@ export default storiesOf("Progress Bar", module).add("Basic", () => (
     ]}
   />
 ))
+
+const Alt = () => (
+  <ProgressBar>
+    <Bar title="Lease Drafted" complete={false} />
+    <Bar title="Lease Sent for Signing" complete={false} />
+    <Bar title="Lease Sent for Signing" complete={false} />
+  </ProgressBar>
+)
