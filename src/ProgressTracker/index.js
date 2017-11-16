@@ -4,11 +4,10 @@ import PropTypes from "prop-types"
 
 const ProgressWrapper = styled.div`display: flex;`
 
-const StepMarkup = props => (
-  <div {...props}>
+const StepMarkup = ({ className, title, complete, current }) => (
+  <div className={className} current complete>
     <div className="bar" />
-    {/* <div className="arrow" /> */}
-    {props.title && <div className="title">{props.title}</div>}
+    {title && <div className="title">{title}</div>}
   </div>
 )
 
@@ -42,7 +41,8 @@ const ProgressStep = styled(StepMarkup)`
   }
   .bar {
     flex: 1;
-    background: ${({ complete }) => (complete ? "#137bb5" : "#f2f2f2")};
+    background: ${({ complete, current }) =>
+      complete ? "#137bb5" : current ? "#9EA8B2" : "#f2f2f2"};
     height: 24px;
   }
   .title {
@@ -53,20 +53,15 @@ const ProgressStep = styled(StepMarkup)`
   }
 `
 
-const ProgressBar = ({ steps = [] }) => (
-  <ProgressWrapper>
-    {steps.map(step => (
-      <ProgressStep title={step.title} complete={step.complete} />
-    ))}
-  </ProgressWrapper>
+const ProgressTracker = ({ children }) => (
+  <ProgressWrapper>{children}</ProgressWrapper>
 )
 
-ProgressBar.displayName = "ProgressBar"
+ProgressTracker.displayName = "ProgressTracker"
 
-ProgressBar.propTypes = {
+ProgressStep.propTypes = {
   steps: PropTypes.arrayOf(PropTypes.object),
-  currentStep: PropTypes.number,
   complete: PropTypes.bool
 }
 
-export default ProgressBar
+export { ProgressTracker, ProgressStep }

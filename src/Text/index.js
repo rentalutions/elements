@@ -24,7 +24,8 @@ function TextLogic({
       hero,
       headline,
       title,
-      small
+      small,
+      subtitle
     },
     "rnt-text",
     className

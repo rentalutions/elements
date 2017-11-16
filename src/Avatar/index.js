@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     padding: ${sizing / 2}px;
     border-radius: 50%;
-    font-size: 0.875em;
+    font-size: 0.75em;
     font-weight: 600;
     text-transform: uppercase;
     background-color: ${colors.lightGray};
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
   }
   .name {
     padding: 0 ${sizing / 2}px;
-    line-height: 1.3;
+    line-height: 1.5;
     font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
     font-weight: ${({ email }) => (email ? "600" : "500")};
     max-width: ${({ phone, email }) => (email || phone ? "none" : "12em")};

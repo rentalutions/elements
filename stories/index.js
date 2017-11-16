@@ -11,12 +11,12 @@ import AvatarStories from "./Avatar"
 import ButtonStories from "./Button"
 import FullPageModalStories from "./FullPageModal"
 import Stepper from "./Stepper"
-import ProgressBar from "./ProgressBar"
+import ProgressTracker from "./ProgressTracker"
+import Text from "./Text"
 
 injectGlobal`
   :root {
     font-size: 18px;
-    line-height: 1.3;
   }
   body {
     font-family: 'Open Sans';

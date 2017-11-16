@@ -32,7 +32,6 @@ const StyledButton = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   transition: 200ms ease-in-out;
-  line-height: 1.334;
   outline: none;
   &:hover {
     box-shadow: ${({ bare }) => (bare ? "none" : "0 3px 6px rgba(0,0,0,0.24)")};
