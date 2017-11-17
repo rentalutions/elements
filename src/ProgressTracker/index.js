@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-const ProgressWrapper = styled.div`display: flex;`
+const ProgressTracker = styled.div`display: flex;`
 
 const StepMarkup = ({ className, title, complete, current }) => (
   <div className={className} current complete>
@@ -53,15 +53,14 @@ const ProgressStep = styled(StepMarkup)`
   }
 `
 
-const ProgressTracker = ({ children }) => (
-  <ProgressWrapper>{children}</ProgressWrapper>
-)
-
 ProgressTracker.displayName = "ProgressTracker"
 
+ProgressStep.displayName = "ProgressStep"
+
 ProgressStep.propTypes = {
-  steps: PropTypes.arrayOf(PropTypes.object),
-  complete: PropTypes.bool
+  title: PropTypes.string,
+  complete: PropTypes.bool,
+  current: PropTypes.bool
 }
 
 export { ProgressTracker, ProgressStep }

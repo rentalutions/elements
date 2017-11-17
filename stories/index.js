@@ -10,8 +10,8 @@ import { Button, Card } from "../src"
 import AvatarStories from "./Avatar"
 import ButtonStories from "./Button"
 import FullPageModalStories from "./FullPageModal"
-import Stepper from "./Stepper"
 import ProgressTracker from "./ProgressTracker"
+import Stepper from "./Stepper"
 import Text from "./Text"
 
 injectGlobal`
