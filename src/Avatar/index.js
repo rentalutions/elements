@@ -109,7 +109,10 @@ Avatar.propTypes = {
   email: PropTypes.string,
   indicator: PropTypes.string,
   initials: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   phone: PropTypes.string,
   photo: PropTypes.string
 }

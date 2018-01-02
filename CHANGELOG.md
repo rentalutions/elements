@@ -1,3 +1,5 @@
+### 1.8.2
+Made `<Avatar />` accept both JSX and strings for `name` prop.
 ### 1.8.1
 Refactored ProgreessBar to use clip-path better. Will fallback to a different yet usable alternative on IE and Edge.
 ### 1.8.0
