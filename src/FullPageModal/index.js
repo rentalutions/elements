@@ -10,7 +10,7 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   bottom: 0;
   left: 0;
   display: flex;
-  align-items: center;
+  align-items: ${({ top }) => (top ? "flex-start" : "center")};
   background: rgba(249, 249, 249, 0.96);
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
   opacity: ${({ show }) => (show ? "1" : "0")};
@@ -42,7 +42,7 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   }
 `
 
-const FullPageModal = ({ show, onHide, children, ...props }) => (
+const FullPageModal = ({ show, onHide, top = false, children, ...props }) => (
   <ModalContainer {...props} show={show}>
     <svg className="svg-close" onClick={onHide} viewBox="0 0 36 36">
       <polygon
@@ -58,6 +58,7 @@ const FullPageModal = ({ show, onHide, children, ...props }) => (
 
 FullPageModal.propTypes = {
   show: PropTypes.bool.isRequired,
+  top: PropTypes.bool,
   onHide: PropTypes.func.isRequired
 }
 

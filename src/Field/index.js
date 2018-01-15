@@ -80,7 +80,8 @@ class Field extends Component {
       },
       onFocus: this.handleFocus,
       onBlur: this.handleBlur,
-      onChange: this.handleChange
+      onChange: this.handleChange,
+      value: ""
     }
 
     return (
