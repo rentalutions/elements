@@ -9,7 +9,7 @@ export default class Form extends Component {
   state = {}
   componentDidMount = _ => {
     Children.forEach(this.props.children, child => {
-      if (child.type.displayName === "Input")
+      if (child.type.displayName === "Field")
         this.setState({ [child.props.name]: "" })
     })
   }
@@ -29,12 +29,16 @@ export default class Form extends Component {
   }
   render = _ => (
     <form onSubmit={this.handleSubmit}>
-      {Children.map(this.props.children, child =>
-        cloneElement(child, {
-          ...child.props,
-          onChange: this.handleOnChange,
-          value: this.state[child.props.name]
-        })
+      {Children.map(
+        this.props.children,
+        child =>
+          child.type.displayName === "Field" || child.displayName === "Field"
+            ? cloneElement(child, {
+                ...child.props,
+                onChange: this.handleOnChange,
+                value: this.state[child.props.name]
+              })
+            : child
       )}
     </form>
   )
