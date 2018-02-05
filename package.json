@@ -33,6 +33,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "draft-js": "^0.10.5",
     "enzyme": "^2.9.1",
     "jest": "^20.0.4",
     "prop-types": "^15.5.10",
@@ -42,13 +43,15 @@
     "styled-components": "^2.1.0"
   },
   "peerDependencies": {
+    "draft-js": "^0.10.5",
     "prop-types": "^15.5.10",
     "react": "^15.0.0-0 || ^16.0.0-0",
     "styled-components": "^2.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/"]
+  },
+  "dependencies": {
+    "@sambego/storybook-styles": "^1.0.0"
   }
 }
