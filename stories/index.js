@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react"
+import React, { PureComponent, Children } from "react"
 import styled, { injectGlobal } from "styled-components"
 
 import { storiesOf } from "@storybook/react"
@@ -84,11 +84,16 @@ const FormWrapper = styled.div`
 
 const DocThumbWrapper = styled.section`
   display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px;
   .doc {
-    flex-basis: 25%;
-    margin: 12px;
+    flex-basis: 33%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     background-color: var(--ui-light);
+    &:not(:last-of-type) {
+      margin-right: 12px;
+    }
     summary {
       padding: 12px;
     }
@@ -117,13 +122,6 @@ storiesOf("Doc Thumbnail", module)
   )
   .add("Something", () => (
     <DocThumbWrapper>
-      <div className="doc">
-        <DocumentThumbnail />
-        <summary>
-          <Text subtitle>Hello World</Text>
-          <Text>we don't have much time</Text>
-        </summary>
-      </div>
       <div className="doc">
         <DocumentThumbnail />
         <summary>
