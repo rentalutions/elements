@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
-import { sizing, colors } from "../variables"
+import theme, { sizing, colors } from "../variables"
 import { Text } from "../index"
 
 const Wrapper = styled.div`
@@ -9,7 +9,6 @@ const Wrapper = styled.div`
     !email && !block ? "inline-block" : "initial"};
   background-color: ${({ email }) => (email ? "transparent" : colors.ui)};
   border-radius: ${sizing}px;
-  color: ${colors.dark};
   .photo-name-area {
     display: flex;
     align-items: center;
@@ -20,10 +19,10 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    height: ${({ email, name }) =>
-      email || !name ? `${sizing * 2}px` : `${sizing / 2}px`};
-    width: ${({ email, name }) =>
-      email || !name ? `${sizing * 2}px` : `${sizing / 2}px`};
+    height: ${({ email, name, theme }) =>
+    email || !name ? theme.sizing * 2 : theme.sizing / 2}px;
+    width: ${({ email, name, theme }) =>
+    email || !name ? theme.sizing * 2 : theme.sizing / 2}px;
     box-sizing: border-box;
     padding: ${sizing / 2}px;
     border-radius: 50%;
@@ -40,8 +39,8 @@ const Wrapper = styled.div`
     bottom: -0.05em;
     right: -0.05em;
     box-sizing: border-box;
-    width: ${sizing / 2}px;
-    height: ${sizing / 2}px;
+    width: ${({ theme }) => theme.sizing / 2}px;
+    height: ${({ theme }) => theme.sizing / 2}px;
     background: ${({ indicator }) => indicator && indicator};
     border: 2px solid ${colors.light};
     border-radius: 50%;
@@ -53,10 +52,10 @@ const Wrapper = styled.div`
     text-overflow: ellipsis;
   }
   .name {
-    padding: 0 ${sizing / 2}px;
-    line-height: 1.5;
-    font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")};
-    font-weight: ${({ email }) => (email ? "600" : "500")};
+    padding: 0 ${({ theme }) => theme.sizing / 2}px;
+    margin: ${({ theme }) => theme.sizing / 4}px;
+    ${'' /* font-size: ${({ email }) => (email ? "1.5rem" : "0.75rem")}; */}
+    ${'' /* font-weight: ${({ email }) => (email ? "600" : "500")}; */}
     max-width: ${({ phone, email }) => (email || phone ? "none" : "12em")};
   }
   .contact-info {
@@ -78,31 +77,31 @@ const Avatar = ({
   photo,
   ...rest
 }) => (
-  <Wrapper
-    block={block}
-    name={name}
-    email={email}
-    className={className}
-    indicator={indicator}
-    photo={photo}
-    {...rest}
-  >
-    <div className="photo-name-area">
-      <div className="photo-area">
-        {name || photo ? null : initials}
-        {indicator && <span className="indicator" />}
+    <Wrapper
+      block={block}
+      name={name}
+      email={email}
+      className={className}
+      indicator={indicator}
+      photo={photo}
+      {...rest}
+    >
+      <div className="photo-name-area">
+        <div className="photo-area">
+          {name || photo ? null : initials}
+          {indicator && <span className="indicator" />}
+        </div>
+        {name && <Text subtitle={!!email} small={!email} className="name">{name}</Text>}
       </div>
-      {name && <span className="name">{name}</span>}
-    </div>
-    {email && (
-      <div className="contact-info">
-        <span className="email">
-          {[email, phone].filter(Boolean).join(" | ")}
-        </span>
-      </div>
-    )}
-  </Wrapper>
-)
+      {email && (
+        <div className="contact-info">
+          <span className="email">
+            {[email, phone].filter(Boolean).join(" | ")}
+          </span>
+        </div>
+      )}
+    </Wrapper>
+  )
 
 Avatar.propTypes = {
   block: PropTypes.bool,
@@ -115,6 +114,10 @@ Avatar.propTypes = {
   ]),
   phone: PropTypes.string,
   photo: PropTypes.string
+}
+
+Avatar.defaultProps = {
+  theme
 }
 
 export default Avatar
