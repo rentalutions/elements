@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 // import { Link } from "react-router-dom"
-import { sizing, colors } from "../variables"
+import theme, { sizing, colors } from "../variables"
 
 const getColor = ({ primary, success, alert, warning, external, color }) =>
   primary
@@ -23,11 +23,12 @@ const StyledButton = styled.button`
     bare ? "transparent" : getColor(props)};
   border: ${props => `2px solid ${getColor(props)}`};
   border-radius: 2px;
-  color: ${({ bare, ...props }) => (bare ? getColor(props) : colors.light)};
+  color: ${({ bare, theme, ...props }) => (bare ? getColor(props) : theme.colors.ui.light)};
   cursor: pointer;
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.fontSize};
   font-weight: 600;
-  min-width: ${sizing * 4}px;
+  font-family: ${({ theme }) => theme.fontFamily};
+  min-width: ${({ theme }) => theme.sizing * 4}px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -36,14 +37,14 @@ const StyledButton = styled.button`
   &:hover {
     box-shadow: ${({ bare }) => (bare ? "none" : "0 3px 6px rgba(0,0,0,0.24)")};
     background-color: ${props => getColor(props)};
-    color: ${colors.light};
+    color: ${({ theme }) => theme.colors.ui.light};
   }
   &:disabled,
   &.disabled {
     cursor: not-allowed;
-    color: ${colors.darkGray};
-    background: ${colors.lightGray};
-    border: 2px solid ${colors.lightGray};
+    color: ${({ theme }) => theme.colors.ui.main};
+    background: ${({ theme }) => theme.colors.ui.semiLight};
+    border: 2px solid ${({ theme }) => theme.colors.ui.semiLight};
   }
   &.disabled {
     pointer-events: none;
@@ -84,5 +85,9 @@ Button.propTypes = {
 }
 
 Button.displayName = "Button"
+
+Button.defaultProps = {
+  theme
+}
 
 export default Button
