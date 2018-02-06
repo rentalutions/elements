@@ -3,7 +3,7 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 
-import { colors } from "../variables"
+import theme from "../variables"
 
 function TextLogic({
   center,
@@ -47,33 +47,40 @@ function TextLogic({
       {children}
     </h4>
   ) : (
-    <p className={classes} {...rest}>
-      {children}
-    </p>
-  )
+            <p className={classes} {...rest}>
+              {children}
+            </p>
+          )
 }
 
-const Text = styled(TextLogic)`
-  margin: 24px 0;
+const Text = styled(TextLogic) `
+  margin: ${({ theme }) => theme.sizing}px 0 ${({ theme }) => theme.sizing / 2}px;
   padding: 0;
-  color: ${({ color }) => (color ? color : colors.dark)};
-  font-size: 1em;
-  line-height: 1.334;
+  color: ${({ theme }) => theme.colors.ui.dark};
+  font-family: ${({ theme }) => theme.fontFamily};
+  font-size: ${({ theme }) => theme.fontSize};
+  line-height: 1.5;
+  &.subtitle,
+  &.title,
+  &.headline,
+  &.hero {
+    line-height: 1.125;
+  }
   &.small {
-    font-size: 0.75em;
+    font-size: 0.875em;
   }
   &.subtitle {
-    font-size: 1.25em;
+    font-size: 1.5em;
     font-weight: 600;
   }
   &.title {
-    font-size: 1.5em;
+    font-size: 2.25em;
   }
   &.headline {
-    font-size: 2em;
+    font-size: 3em;
   }
   &.hero {
-    font-size: 4em;
+    font-size: 4.5em;
     font-weight: 300;
   }
   &.center {
@@ -105,7 +112,8 @@ Text.defaultProps = {
   hero: false,
   right: false,
   small: false,
-  title: false
+  title: false,
+  theme
 }
 
 export default Text
