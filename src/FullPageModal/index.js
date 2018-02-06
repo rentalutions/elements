@@ -1,9 +1,9 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { sizing, colors } from "../variables"
+import theme, { sizing, colors } from "../variables"
 
-const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
+const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />) `
   position: fixed;
   top: 0;
   right: 0;
@@ -42,24 +42,43 @@ const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   }
 `
 
-const FullPageModal = ({ show, onHide, top = false, children, ...props }) => (
-  <ModalContainer {...props} show={show}>
-    <svg className="svg-close" onClick={onHide} viewBox="0 0 36 36">
-      <polygon
-        fill={colors.darkGray}
-        points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
-      />
-    </svg>
-    <div className="scroll-container">
-      <div className="rnt-modal-body">{children}</div>
-    </div>
-  </ModalContainer>
-)
-
-FullPageModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  top: PropTypes.bool,
-  onHide: PropTypes.func.isRequired
+class FullPageModal extends Component {
+  static propTypes = {
+    show: PropTypes.bool.isRequired,
+    top: PropTypes.bool,
+    onHide: PropTypes.func.isRequired
+  }
+  static displayName = "FullPageModal"
+  static defaultProps = {
+    theme,
+    top: false
+  }
+  componentDidMount = _ => {
+    document.body.style.overflowY = "hidden"
+  }
+  handleHide = _ => {
+    document.body.style.overflowY = "visible"
+    this.props.onHide()
+  }
+  componentWillUnMount = _ => {
+    document.body.style.overflowY = "visible"
+  }
+  render = _ => {
+    const { show, onHide, top, children, ...props } = this.props
+    return (
+      <ModalContainer {...props} show={show}>
+        <svg className="svg-close" onClick={this.handleHide} viewBox="0 0 36 36">
+          <polygon
+            fill={colors.darkGray}
+            points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
+          />
+        </svg>
+        <div className="scroll-container">
+          <div className="rnt-modal-body">{children}</div>
+        </div>
+      </ModalContainer>
+    )
+  }
 }
 
 export default FullPageModal
