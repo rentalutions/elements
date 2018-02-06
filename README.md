@@ -20,3 +20,7 @@ If you find elements breaking your build, make sure all peerDependencies are ins
 1. Loader
 1. Text
 1. Tooltip
+
+## TODO:
+
+- move all variables into styled components theme provider so they can be overwritten easier
