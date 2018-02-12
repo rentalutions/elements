@@ -1,9 +1,10 @@
 import React, { Component } from "react"
+import { createPortal } from "react-dom"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import theme, { sizing, colors } from "../variables"
 
-const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />) `
+const ModalContainer = styled(({ show, ...rest }) => <div {...rest} />)`
   position: fixed;
   top: 0;
   right: 0;
@@ -51,10 +52,13 @@ class FullPageModal extends Component {
   static displayName = "FullPageModal"
   static defaultProps = {
     theme,
-    top: false
+    top: false,
+    onHide: _ => null
   }
+  element = document.createElement("aside")
   componentDidMount = _ => {
     document.body.style.overflowY = "hidden"
+    document.body.appendChild(this.element)
   }
   handleHide = _ => {
     document.body.style.overflowY = "visible"
@@ -65,9 +69,13 @@ class FullPageModal extends Component {
   }
   render = _ => {
     const { show, onHide, top, children, ...props } = this.props
-    return (
+    return createPortal(
       <ModalContainer {...props} show={show}>
-        <svg className="svg-close" onClick={this.handleHide} viewBox="0 0 36 36">
+        <svg
+          className="svg-close"
+          onClick={this.handleHide}
+          viewBox="0 0 36 36"
+        >
           <polygon
             fill={colors.darkGray}
             points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
@@ -76,7 +84,8 @@ class FullPageModal extends Component {
         <div className="scroll-container">
           <div className="rnt-modal-body">{children}</div>
         </div>
-      </ModalContainer>
+      </ModalContainer>,
+      this.element
     )
   }
 }
