@@ -9,6 +9,7 @@ If you find elements breaking your build, make sure all peerDependencies are ins
 **Documentation needed**
 
 ### Components included in package
+
 1. Avatar
 1. Button
 1. Card
@@ -23,4 +24,14 @@ If you find elements breaking your build, make sure all peerDependencies are ins
 
 ## TODO:
 
-- move all variables into styled components theme provider so they can be overwritten easier
+* move all variables into styled components theme provider so they can be overwritten easier
+
+## Contributing
+
+#### Make sure you align your contribution with the Style Guide
+
+1. Submit a PR
+2. On approval, merge into master
+3. Pull master locally.
+4. `npm version <major|minor|patch> -m "tell us about the change"`
+5. `git push origin master && git push origin v<version-npm-gives-you>`
