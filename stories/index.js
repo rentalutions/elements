@@ -127,6 +127,7 @@ storiesOf("Doc Thumbnail", module)
         <summary>
           <Text subtitle>Hello World</Text>
           <Text>we don't have much time</Text>
+          <Button style={{ width: "100%", display: "block" }}>view lease</Button>
         </summary>
       </div>
       <div className="doc">
