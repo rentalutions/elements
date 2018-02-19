@@ -14,8 +14,9 @@ function safeBind(cb) {
 }
 function Aux({ children }) { return children }
 
-export default function FullPageModal({ show, onHide, children, className, ...props }) {
-
+export default function FullPageModal({ show, onHide, children, className, BodyClassName, ...props }) {
+  const Wrapper = BodyClassName ? BodyClassName : Aux;
+  const propsForWrapper = BodyClassName ? { className: "full-page-modal-in" } : {}
   return (
     <TransitionGroup
       component={Aux}
@@ -30,9 +31,11 @@ export default function FullPageModal({ show, onHide, children, className, ...pr
     >
       {
         show ?
-          <div className={["rnt-modal-body", className].filter(Boolean).join(" ")}>
-            {children}
-          </div>
+          <Wrapper>
+            <div className={["rnt-modal-body", className].filter(Boolean).join(" ")}>
+              {children}
+            </div>
+          </Wrapper>
         :
           null
       }
@@ -132,6 +135,8 @@ const TransitionContainer = styled.div`
     padding-right: 1em;
     @media (min-width:1080px) {
       margin: 0 auto;
+      padding-top: 1em;
+      padding-bottom: 1em;
     }
     max-width: ${sizing * 40}px;
     width: 100%;
