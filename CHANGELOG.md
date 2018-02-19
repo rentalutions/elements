@@ -1,3 +1,5 @@
+### 1.9.1
+CSS change for `<FullPageModal />`
 ## 1.9.0
 React 16, Made `<FullPageModal />` use `<Portal />` to end of DOM.
 ### 1.8.2

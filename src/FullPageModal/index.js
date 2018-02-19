@@ -102,6 +102,7 @@ const TransitionContainer = styled.div`
   opacity: 0;
   transform: scale(1.25);
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 4;
 
   &.in {
     opacity: 1;
@@ -126,6 +127,9 @@ const TransitionContainer = styled.div`
   }
   .rnt-modal-body {
     margin: 3.5em auto;
+    box-sizing: border-box;
+    padding-left: 1em;
+    padding-right: 1em;
     @media (min-width:1080px) {
       margin: 0 auto;
     }
