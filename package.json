@@ -1,6 +1,6 @@
 {
   "name": "@rentalutions/elements",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "A suite of elements for the consistent and responsive UI",
   "main": "lib/index.js",
   "scripts": {

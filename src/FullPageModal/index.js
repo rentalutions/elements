@@ -12,11 +12,11 @@ function safeBind(cb) {
     }
   }
 }
+
 function Aux({ children }) { return children }
 
-export default function FullPageModal({ show, onHide, children, className, BodyClassName, ...props }) {
-  const Wrapper = BodyClassName ? BodyClassName : Aux;
-  const propsForWrapper = BodyClassName ? { className: "full-page-modal-in" } : {}
+function FullPageModal({ show, onHide, children, className, ...props }) {
+  const { BodyClassName } = FullPageModal
   return (
     <TransitionGroup
       component={Aux}
@@ -31,17 +31,21 @@ export default function FullPageModal({ show, onHide, children, className, BodyC
     >
       {
         show ?
-          <Wrapper>
+          <BodyClassName className="full-page-modal-in">
             <div className={["rnt-modal-body", className].filter(Boolean).join(" ")}>
               {children}
             </div>
-          </Wrapper>
+          </BodyClassName>
         :
           null
       }
     </TransitionGroup>
   )
 }
+
+FullPageModal.BodyClassName = Aux
+
+export default FullPageModal
 
 class ModalContainer extends Component {
   state = { className: "" }

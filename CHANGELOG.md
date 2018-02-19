@@ -1,3 +1,5 @@
+### 1.9.3
+CSS change for `<FullPageModal />`
 ### 1.9.2
 CSS change for `<FullPageModal />`
 ### 1.9.1
