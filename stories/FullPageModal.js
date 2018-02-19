@@ -25,7 +25,8 @@ class ModalContainer extends PureComponent {
               color: "white",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              boxShadow: "inset 0 0 0 5px tomato, inset 0 0 0 10px khaki"
             }}
           >
             Hello world
@@ -38,7 +39,8 @@ class ModalContainer extends PureComponent {
               height: "100vh",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              boxShadow: "inset 0 0 0 5px purple, inset 0 0 0 10px antiquewhite"
             }}
           >
             Hello world, again.
