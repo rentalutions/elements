@@ -86,9 +86,7 @@ class ModalContainer extends Component {
               points="35.498 3.414 32.668 .586 18.084 15.172 3.498 .586 .668 3.414 15.254 18 .668 32.586 3.498 35.414 18.084 20.828 32.668 35.414 35.498 32.586 20.912 18"
             />
           </svg>
-          <div className="scroll-container">
-            {props.children}
-          </div>
+          {props.children}
         </TransitionContainer>
       </Portal>
     )
@@ -105,15 +103,28 @@ const TransitionContainer = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  padding: 3em 1em;
+  overflow: auto;
   background: rgba(249, 249, 249, 0.96);
   opacity: 0;
-  transform: scale(1.25);
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 4;
+  -webkit-overflow-scrolling: touch;
+
+  &:not(.in) {
+    transform: scale(1.25);
+  }
 
   &.in {
     opacity: 1;
-    transform: none;
+  }
+
+  .rnt-modal-body {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: ${sizing * 40}px;
+    margin: auto;
   }
 
   .svg-close {
@@ -124,25 +135,9 @@ const TransitionContainer = styled.div`
     font-size: 2rem;
     height: ${sizing}px;
     width: ${sizing}px;
-  }
-  .scroll-container {
-    box-sizing: border-box;
-    overflow-y: auto;
-    max-height: 100%;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-  }
-  .rnt-modal-body {
-    margin: 3.5em auto;
-    box-sizing: border-box;
-    padding-left: 1em;
-    padding-right: 1em;
-    @media (min-width:1080px) {
-      margin: 0 auto;
-      padding-top: 1em;
-      padding-bottom: 1em;
+
+    @media (min-width: 1060px) {
+      position: fixed;
     }
-    max-width: ${sizing * 40}px;
-    width: 100%;
   }
 `
