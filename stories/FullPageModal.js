@@ -2,6 +2,18 @@ import React, { PureComponent } from "react"
 import { storiesOf } from "@storybook/react"
 import { FullPageModal, Button } from "../src/"
 
+class Toggle extends PureComponent {
+  state = { toggle: false }
+  handleToggle = (e=new Event("toggle"))=> {
+    e.preventDefault()
+    this.setState({ toggle: !this.state.toggle })
+  }
+  render() {
+    return this.props.children(this.state.toggle, this.handleToggle)
+  }
+}
+
+
 class ModalContainer extends PureComponent {
   state = {
     show: false
@@ -61,4 +73,45 @@ export default storiesOf("Full Page Modal", module)
         Hello world, again.
       </pre>
     </ModalContainer>
+  ))
+  .add("Inline Styling", () => (
+    <Toggle>
+      {(show, onHide) => (
+        <div>
+          <button onClick={onHide}>Show</button>
+          <FullPageModal
+            show={show}
+            onHide={onHide}
+            style={{
+              background: "url(http://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg)",
+              backgroundSize: "201px",
+              transformOrigin: "50% 100%",
+              transform: "perspective(200px) rotateX(13deg) scale(2)"
+            }}
+          >
+            <marquee
+              direction="up"
+              style={{
+                fontSize: "36px",
+                fontWeight: "bold",
+                color: "gold",
+                textAlign: "justify",
+                height: "100vh",
+                width: "50vw",
+                margin: "0 auto",
+                display: "block"
+              }}
+            >
+              <div style={{textAlign: "center"}}>
+                Episode VIII<br /><br />
+                THE LAST JEDI<br /><br />
+              </div>
+              The FIRST ORDER reigns. Having decimated the peaceful Republic, Supreme Leader Snoke now deploys his merciless legions to seize military control of the galaxy.<br /><br />
+              Only General Leia Organa’s band of RESISTANCE fighters stand against the rising tyranny, certain that Jedi Master Luke Skywalker will return and restore a spark of hope to the fight.<br /><br />
+              But the Resistance has been exposed. As the First Order speeds toward the rebel base, the brave heroes mount a desperate escape....
+            </marquee>
+          </FullPageModal>
+        </div>
+      )}
+    </Toggle>
   ))
