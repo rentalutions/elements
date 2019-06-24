@@ -4,15 +4,13 @@
   "description": "A suite of elements for the consistent and responsive UI",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
-    "test:update": "jest -u",
-    "test:dev": "jest --watch",
-    "build": "npm run clean && babel src -d lib --ignore **/*.test.js",
-    "dev": "babel -w src -d lib --ignore **/*.test.js",
-    "clean": "rm -rf lib/*",
-    "prepublish": "npm run build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "clean": "rimraf dist",
+    "copy": "cp package.json dist",
+    "build": "npm run clean && babel src -d dist && npm run copy",
+    "dist": "npm run build && cd dist && npm publish",
+    "start:dev": "docz dev",
+    "build:docz": "doz build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,32 +22,21 @@
     "Prakash Koneru"
   ],
   "license": "ISC",
-  "devDependencies": {
-    "@sambego/storybook-styles": "^1.0.0",
-    "@storybook/addon-knobs": "^3.2.8",
-    "@storybook/react": "^3.2.8",
-    "babel-cli": "^6.24.1",
-    "babel-jest": "^21.0.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "draft-js": "^0.10.5",
-    "enzyme": "^2.9.1",
-    "jest": "^20.0.4",
-    "prop-types": "^15.5.10",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "styled-components": "^2.1.0"
-  },
-  "peerDependencies": {
-    "draft-js": "^0.10.5",
-    "prop-types": "^15.5.10",
-    "react": "^16.0.0-0",
-    "styled-components": "^2.1.0"
-  },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.2",
+    "clsx": "^1.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   }
 }
