@@ -1,8 +1,20 @@
+### 1.9.5
+CSS change for `<FullPageModal />`
+### 1.9.4
+CSS change for `<FullPageModal />`
+### 1.9.3
+CSS change for `<FullPageModal />`
+### 1.9.2
+CSS change for `<FullPageModal />`
+### 1.9.1
+CSS change for `<FullPageModal />`
+## 1.9.0
+React 16, Made `<FullPageModal />` use `<Portal />` to end of DOM.
 ### 1.8.2
 Made `<Avatar />` accept both JSX and strings for `name` prop.
 ### 1.8.1
 Refactored ProgreessBar to use clip-path better. Will fallback to a different yet usable alternative on IE and Edge.
-### 1.8.0
+## 1.8.0
 Built a ProgressBar component as proof of concept. Only available through "lib/ProgressBar".
 ### 1.7.10
 re-added margin on Text component
