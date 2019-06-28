@@ -2,14 +2,16 @@
   "name": "@rentalutions/elements",
   "version": "1.8.2",
   "description": "A suite of elements for the consistent and responsive UI",
-  "main": "lib/index.js",
+  "keywords": [
+    "ui",
+    "ui library",
+    "design system"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "copy": "cp package.json dist",
-    "build": "npm run clean && babel src -d dist && npm run copy",
+    "build": "npm run clean && babel components -d dist && npm run copy",
     "dist": "npm run build && cd dist && npm publish",
-    "start:dev": "docz dev",
-    "build:docz": "doz build",
     "test": "jest"
   },
   "repository": {
@@ -17,11 +19,9 @@
     "url": "https://github.com/rentalutions/elements.git"
   },
   "contributors": [
-    "Patrick Krawczykowski <pkrawz@gmail.com>",
-    "Kyle Ramirez",
-    "Prakash Koneru"
+    "Patrick Krawczykowski <patrick@dreadful.design>"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/"
@@ -34,6 +34,13 @@
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.2",
+    "clsx": "^1.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "styled-components": "^4.3.2"
+  },
+  "peerDependencies": {
     "clsx": "^1.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

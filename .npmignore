@@ -1,8 +1,10 @@
+# system files
 .DS_Store
-.tm_properties
+
+# package manager
 node_modules
-src
-.storybook
-stories
+**/*.log
 coverage
-*.log
+
+# src files
+components

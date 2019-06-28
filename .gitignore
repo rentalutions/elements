@@ -1,5 +1,10 @@
+#system files
 .DS_Store
+
+# package management
 node_modules
 *.log
-lib
+
+# build files
+dist
 coverage
