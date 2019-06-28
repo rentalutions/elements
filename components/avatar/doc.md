@@ -3,7 +3,7 @@
 An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
 
 ## Usage
-```javascript
+```jsx
 import Avatar from "@rentalutions/elements/avatar"
 
 <Avatar
