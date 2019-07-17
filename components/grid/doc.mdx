@@ -1,0 +1,21 @@
+---
+name: Grids
+menu: Components
+route: /components/grid
+---
+
+import Playground from "utils/playground"
+import { Grid, Col } from "../grid"
+
+# Grids
+
+Grids are used to build consistent, responsive layouts. They use css-grid under the hood and are absracted to give you as little headache as possible. They've been redesigned from v1 to work with an array prop syntaxt.
+
+<Playground column>
+  <Grid style={{ height: "20rem" }}>
+    <Col style={{ background: "#000" }} col={[12]} />
+    <Col style={{ background: "#000" }} col={[4]} />
+    <Col style={{ background: "#000" }} col={[4]} />
+    <Col style={{ background: "#000" }} col={[4]} />
+  </Grid>
+</Playground>
