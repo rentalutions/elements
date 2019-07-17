@@ -3,7 +3,7 @@ import { css } from "styled-components"
 export default {
   title: "Avail Design Kit",
   wrapper: "utils/wrapper.js",
-  menu: ["Getting Started", "Colors", { name: "Components", menu: ["Base"] }],
+  menu: ["Getting Started", "Colors", { name: "Components", menu: ["Overview", "Base"] }],
   base: "/",
   themeConfig: {
     mode: "light",

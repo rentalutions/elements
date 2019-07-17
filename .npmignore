@@ -8,3 +8,6 @@ coverage
 
 # src files
 components
+
+# Documentation files
+.docz
