@@ -1,10 +1,14 @@
-import { css } from "styled-components"
-
 export default {
   title: "Avail Design Kit",
   wrapper: "utils/wrapper.js",
-  menu: ["Getting Started", "Colors", { name: "Components", menu: ["Overview", "Base"] }],
+  menu: [
+    "Getting Started",
+    "Colors",
+    "Baseline Grids",
+    { name: "Components", menu: ["Overview", "Base"] }
+  ],
   base: "/",
+  public: "/public",
   themeConfig: {
     mode: "light",
     showPlaygroundEditor: true,
@@ -20,7 +24,7 @@ export default {
     },
     codemirrorTheme: "material",
     styles: {
-      playground: css`
+      playground: `
         padding: 4rem;
       `
     }
