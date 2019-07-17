@@ -34,9 +34,6 @@ export default createGlobalStyle`
   time, mark, audio, video {
     margin: 0;
     padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
   }
 
   h1,h2,h3,h4,h5 {
