@@ -32,33 +32,33 @@ The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blu
 ## Atoms
 
 ### Basic
-- [Base](./components/avatar/doc.md)
+- [Base](./components/avatar/doc.mdx)
 
 ### Controls
-- [Buttons](./components/button/doc.md)
-- [Checkboxes](./components/checkbox/doc.md)
-- [Select](./components/select/doc.md)
-- [TextField](./components/text-field/doc.md)
-- [RadioButtons](./components/radio-button/doc.md)
-- [Toggles](./components/toggle/doc.md)
+- [Buttons](./components/button/doc.mdx)
+- [Checkboxes](./components/checkbox/doc.mdx)
+- [Select](./components/select/doc.mdx)
+- [TextField](./components/text-field/doc.mdx)
+- [RadioButtons](./components/radio-button/doc.mdx)
+- [Toggles](./components/toggle/doc.mdx)
 
 ### Layout
-- [Cards](./components/card/doc.md)
-- [Containers](./components/container/doc.md)
-- [Grids](./components/grid/doc.md)
-- [Menu](./components/menu/doc.md)
-- [Modals](./components/modal/doc.md)
+- [Cards](./components/card/doc.mdx)
+- [Containers](./components/container/doc.mdx)
+- [Grids](./components/grid/doc.mdx)
+- [Menu](./components/menu/doc.mdx)
+- [Modals](./components/modal/doc.mdx)
 
 ### User Info
-- [Avatars](./components/avatar/doc.md)
+- [Avatars](./components/avatar/doc.mdx)
 
 ### Feedback
-- [Loaders](./components/loader/doc.md)
-- [ProgressBars](./components/progress-bar/doc.md)
-- [Tooltip](./components/tooltip/doc.md)
+- [Loaders](./components/loader/doc.mdx)
+- [ProgressBars](./components/progress-bar/doc.mdx)
+- [Tooltip](./components/tooltip/doc.mdx)
 
 ## Molecules
-- [Avatars](./components/avatar/doc.md)
+- [Avatars](./components/avatar/doc.mdx)
 
 ## Organisms
-- [DatePicker](./components/date-picker/doc.md)
+- [DatePicker](./components/date-picker/doc.mdx)
