@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import { colors } from "../constants"
 
 export default createGlobalStyle`
   *, *::before, *::after {
@@ -18,6 +19,7 @@ export default createGlobalStyle`
     font-family: "Nunito", sans-serif;
     font-size: 1.5rem;
     line-height: 1.333;
+    color: ${colors.ui_900};
   }
 
   html, body, div, span, object, iframe,

@@ -4,9 +4,9 @@ import { colors } from "../constants"
 
 export default styled.section`
   padding: 2rem;
-  border: 1px solid ${colors.grey_500};
+  border: 1px solid ${colors.ui_500};
   border-radius: 4px;
-  background: ${colors.grey_100};
+  background: ${colors.ui_100};
   box-shadow: 0 12px 12px -12px rgba(0, 0, 0, 0.12);
   .card__actions {
     display: flex;

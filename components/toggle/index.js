@@ -11,7 +11,7 @@ const StyledToggle = styled.label`
     &:checked + .slider {
       background-color: ${colors.blue_500};
       &:before {
-        background-color: ${colors.grey_100};
+        background-color: ${colors.ui_100};
         border: 0.25rem solid ${colors.blue_500};
         transform: translateX(2rem);
       }
@@ -21,7 +21,7 @@ const StyledToggle = styled.label`
     position: relative;
     height: 2rem;
     width: 4rem;
-    background-color: ${colors.grey_500};
+    background-color: ${colors.ui_500};
     border-radius: 1rem;
     transition: 200ms;
     flex-shrink: 0;
@@ -33,8 +33,8 @@ const StyledToggle = styled.label`
       border-radius: 50%;
       height: 2rem;
       width: 2rem;
-      background-color: ${colors.grey_100};
-      border: 0.25rem solid ${colors.grey_500};
+      background-color: ${colors.ui_100};
+      border: 0.25rem solid ${colors.ui_500};
       transition: 200ms;
     }
   }

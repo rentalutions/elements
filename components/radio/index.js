@@ -17,7 +17,7 @@ const StyledRadioButton = styled.label`
     height: 2rem;
     border-radius: 50%;
     flex-shrink: 0;
-    border: 2px solid ${colors.grey_500};
+    border: 2px solid ${colors.ui_500};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +39,7 @@ const StyledRadioButton = styled.label`
     }
   }
   input:disabled ~ .radio__target {
-    border: 2px solid ${colors.grey_300};
+    border: 2px solid ${colors.ui_300};
     cursor: disabled;
   }
   .label {

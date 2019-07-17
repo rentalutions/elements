@@ -28,7 +28,7 @@ const StyledFixed = styled.div`
     display: block;
     height: 2rem;
     width: 100%;
-    background: ${colors.grey_500};
+    background: ${colors.ui_500};
     margin-bottom: 1rem;
     clip-path: polygon(
       calc(100% - 1rem) 0%,
@@ -76,7 +76,7 @@ const StyledFluid = styled.section`
   .track {
     position: relative;
     height: 2rem;
-    background: ${colors.grey_500};
+    background: ${colors.ui_500};
     border-radius: 1rem;
   }
   .steps {

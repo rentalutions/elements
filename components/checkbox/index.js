@@ -15,7 +15,7 @@ const StyledCheckbox = styled.label`
   .input__target {
     width: 2rem;
     height: 2rem;
-    border: 2px solid ${colors.grey_500};
+    border: 2px solid ${colors.ui_500};
     border-radius: 4px;
     flex-shrink: 0;
     display: flex;
@@ -26,7 +26,7 @@ const StyledCheckbox = styled.label`
       stroke-dasharray: 24;
       stroke-dashoffset: 24;
       transition: 300ms;
-      color: ${colors.grey_100};
+      color: ${colors.ui_100};
       will-change: stroke-dashoffset;
     }
   }

@@ -38,8 +38,10 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.2",
     "clsx": "^1.0.4",
+    "clipboard-copy": "^3.0.0",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rimraf": "^2.6.3",
@@ -50,8 +52,5 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.3.2"
-  },
-  "dependencies": {
-    "prop-types": "^15.7.2"
   }
 }

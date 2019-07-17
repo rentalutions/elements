@@ -13,7 +13,7 @@ const StyledAvatar = styled.div`
   position: relative;
   padding: 1rem 2rem 1rem 1rem;
   border-radius: 2rem;
-  background: ${colors.grey_300};
+  background: ${colors.ui_300};
   display: inline-flex;
   align-items: center;
   height: 4rem;

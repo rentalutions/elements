@@ -18,14 +18,14 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     background-color: ${colors.blue_500};
-    color: ${colors.grey_100};
+    color: ${colors.ui_100};
   }
   ${({ primary }) => primary && primaryStyles}
 `
 
 const primaryStyles = css`
   background-color: ${colors.blue_500};
-  color: ${colors.grey_100};
+  color: ${colors.ui_100};
   &:hover {
     color: ${colors.blue_100};
     background: ${colors.blue_900};
