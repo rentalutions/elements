@@ -1,4 +1,4 @@
-![Avail Design Kit](./designkit_cover.png)
+![Avail Design Kit](./public/designkit_cover.png)
 # Avail Design Kit
 
 A set of components built to be `composable`, `extendable`, and `usable`
