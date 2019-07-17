@@ -45,3 +45,10 @@ export default function Avatar({ small, name = "", photo_url = null, initials = 
     </StyledAvatar>
   )
 }
+
+export const AvatarGroup = styled.div`
+  display: flex;
+  > * {
+    margin-left: -1rem;
+  }
+`
