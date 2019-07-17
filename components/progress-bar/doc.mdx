@@ -1,0 +1,33 @@
+---
+name: Progress Bar
+menu: Components
+---
+
+import { Playground } from "docz"
+import { FixedProgress, FluidProgress } from "../progress-bar"
+
+# Progress Bar
+
+A progress bar indicates the status of a user inside a process. It help a user understand what they've accomplished and what is yet to come. This gives them a realistic idea of time to completion and lowers uncertainty.
+
+## Fixed
+
+A fixed progress bar has a certain amount of steps and those steps are done in a set order. A fixed bar is used for smaller amounts of steps where the process won't be completed in one sitting.
+
+<Playground>
+  <FixedProgress
+    steps={{
+      "Step One": true,
+      "Step Two": false,
+      "Step Three": false
+    }}
+  />
+</Playground>
+
+## Fluid
+
+A fluid progress bar can have an almost unlimited amount of steps. It is usually used when the process contains a lot of smaller pieces and can be accomplished in one sitting.
+
+<Playground>
+  <FluidProgress label="Here is the correct thing" current={2} total={6} />
+</Playground>
