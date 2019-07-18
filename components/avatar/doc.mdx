@@ -1,0 +1,36 @@
+---
+name: Avatars
+menu: Components
+route: /components/avatar
+---
+
+import { Props } from "docz"
+import Playground from "utils/playground"
+import Avatar, { AvatarGroup } from "../avatar"
+
+# Avatars
+
+An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
+
+<Playground>
+  <Avatar small initials="JW" />
+  <Avatar
+    name="Janet Wood"
+    photoUrl="https://source.unsplash.com/collection/802865/48x48"
+  />
+</Playground>
+
+<Props of={Avatar} />
+
+## Avatar Group
+
+Stacked avatars represent a group of people
+
+<Playground>
+  <AvatarGroup>
+    <Avatar small initials="PK" />
+    <Avatar small initials="PS" />
+    <Avatar small initials="ND" />
+    <Avatar small initials="RB" />
+  </AvatarGroup>
+</Playground>

@@ -1,0 +1,33 @@
+---
+name: Checkboxes
+menu: Components
+route: /components/checkbox
+---
+
+import Playground from "utils/playground"
+import Checkbox from "./index.js"
+
+# Checkboxes
+
+Checkboxes are user selection tools when multiple options can be chosen at the same time. A user should be able to select one or more options from a set.
+
+## Basic
+
+<Playground>
+  <Checkbox />
+  <Checkbox checked />
+  <Checkbox />
+</Playground>
+
+## With a label
+
+<Playground column>
+  <h4>Which kinds of pets do you allow?</h4>
+  <Checkbox>Allow Dogs</Checkbox>
+  <Checkbox>Allow Cats</Checkbox>
+  <Checkbox>Allow Parrots</Checkbox>
+</Playground>
+
+### TODO
+
+1. Build an indeterminate state for the checkbox

@@ -1,0 +1,32 @@
+---
+name: Toggles
+route: /components/toggle
+menu: Components
+---
+
+import Playground from "utils/playground"
+import Toggle from "../toggle"
+
+# Toggles
+
+Toggles are selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
+
+<Playground>
+  <Toggle />
+</Playground>
+
+Any children of the toggle will be rendered as it's label.
+
+<Playground>
+  <Toggle>I'm a label</Toggle>
+</Playground>
+
+A common UI pattern is to have a list of toggles with their labels on the lefthand side. This is easily achievable by passing in a `block` prop to the toggle.
+
+<Playground column>
+  <h3>Email settings</h3>
+  <Toggle block>Payments Emails</Toggle>
+  <Toggle block>Applications Emails</Toggle>
+  <Toggle block>Maintenance Emails</Toggle>
+  <Toggle block>Listings Emails</Toggle>
+</Playground>

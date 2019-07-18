@@ -1,0 +1,24 @@
+---
+name: "Base"
+menu: "Components"
+route: /components/base
+---
+
+# Base
+
+This includes base stylings that help make UI across Avail products consistent. You can think of this as our css-reset.
+
+Place the `Base` component at the root of your application. It creates a global reset stylesheet that brings the base font size to 18px as well as setting the root em to 12px.
+
+```js
+// React + ReactDOM imports
+
+ReactDOM.render(
+  <App>
+    <Base />
+    {/* The rest of your application */}
+    <Page />
+  </App>,
+  document.getElementById("root")
+)
+```

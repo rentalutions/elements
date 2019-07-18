@@ -1,0 +1,40 @@
+---
+name: Text Inputs
+menu: Components
+route: /components/text-input
+---
+
+import { useState } from "react"
+import Playground from "utils/playground"
+import Input from "../text-input"
+import { Anchor } from "react-feather"
+
+# Text Inputs
+
+Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
+
+<Playground>
+  <Input label="Payment Amount" icon={Anchor} />
+  <Input label="A really long label to make things extra clear for the user." />
+</Playground>
+
+By default inputs are uncontrolled. You gotta wire them up in whatever way you wish. All event handlers happen on the `input` node as expected and refs are forwarded accurately.
+
+_How do I control my inputs?!_ you might ask... Well let me show you! If you haven't read up on [react hooks](https://reactjs.org/docs/hooks-intro.html) now would be a great time to do that as that's what we're going to use here.
+
+<Playground column>
+  {() => {
+    // Hook to have explicitly set values
+    const [userName, setUserName] = useState("Janet Wood")
+    // Handler to update state when user changes the value
+    const handleChange = e => setUserName(e.target.value)
+    return (
+      <div>
+        <h4 style={{ marginBottom: "2rem" }}>{userName}</h4>
+        <Input label="User Name" value={userName} onChange={handleChange} />
+      </div>
+    )
+
+}}
+
+</Playground>

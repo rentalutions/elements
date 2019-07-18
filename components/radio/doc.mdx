@@ -1,0 +1,32 @@
+---
+name: Radio Buttons
+menu: Components
+route: /components/radio-button
+---
+
+import { Playground } from "docz"
+import Radio, { RadioGroup } from "../radio"
+
+# Radio Buttons
+
+Radio buttons are used to select one option from a set. Use radio buttons when it's helpful for the user to see all the available choices when selecting.
+
+<Playground>
+  <Radio checked />
+  <Radio />
+</Playground>
+
+## Radio Group
+
+To easily group buttons into usable forms, use the `RadioGroup` component
+
+<Playground>
+  <RadioGroup inline>
+    <Radio name="user-type" />
+    <Radio name="user-type" />
+  </RadioGroup>
+  <RadioGroup style={{ marginTop: "2rem" }}>
+    <Radio name="payment-type" />
+    <Radio name="payment-type" />
+  </RadioGroup>
+</Playground>
