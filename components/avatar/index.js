@@ -45,7 +45,8 @@ export default function Avatar({
   small = false,
   name = "",
   photoUrl = null,
-  initials = ""
+  initials = "",
+  icon: Icon
 }) {
   if (small) {
     return (
@@ -58,6 +59,7 @@ export default function Avatar({
     <StyledAvatar>
       <img src={photoUrl} alt={`${name}'s profile photo`} className="profile-photo" />
       <span className="name">{name}</span>
+      {Icon && <Icon />}
     </StyledAvatar>
   )
 }
