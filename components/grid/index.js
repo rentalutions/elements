@@ -6,5 +6,5 @@ export const Grid = styled.section`
   grid-gap: 2rem;
 `
 export const Col = styled.div`
-  grid-column: span ${({ col = [12] }) => col[0]};
+  grid-column: span ${({ span = [12] }) => span[0]};
 `

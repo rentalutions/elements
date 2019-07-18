@@ -6,6 +6,7 @@ route: /components/grid
 
 import Playground from "utils/playground"
 import { Grid, Col } from "../grid"
+import { colors } from "../constants.js"
 
 # Grids
 
@@ -13,9 +14,9 @@ Grids are used to build consistent, responsive layouts. They use css-grid under 
 
 <Playground column>
   <Grid style={{ height: "20rem" }}>
-    <Col style={{ background: "#000" }} col={[12]} />
-    <Col style={{ background: "#000" }} col={[4]} />
-    <Col style={{ background: "#000" }} col={[4]} />
-    <Col style={{ background: "#000" }} col={[4]} />
+    <Col style={{ background: colors.green_500 }} span={[12]} />
+    <Col style={{ background: colors.green_500 }} span={[4]} />
+    <Col style={{ background: colors.green_500 }} span={[4]} />
+    <Col style={{ background: colors.green_500 }} span={[4]} />
   </Grid>
 </Playground>
