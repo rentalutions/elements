@@ -12,14 +12,20 @@ import Button from "../button"
 
 Cards contain information and actions about a single subject. Cards should be scannable for relevant information. Elements like text and images should be placed on them in a way that clearly indicates hierarchy.
 
-## Usage
-
 <Playground>
   <Card>
-    <header>Card Header</header>
-    <section>Card Body</section>
+    <header>
+      <h3>Autopay Settings</h3>
+    </header>
+    <section
+      style={{
+        marginBottom: "2rem"
+      }}
+    >
+      <p>Turn on and off your auto-pay settings here.</p>
+    </section>
     <CardActions>
-      <Button>Primary Action</Button>
+      <Button primary>Primary Action</Button>
       <Button>Secondary Action</Button>
     </CardActions>
   </Card>
