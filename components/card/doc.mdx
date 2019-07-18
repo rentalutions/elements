@@ -5,8 +5,11 @@ route: /components/card
 ---
 
 import { Playground } from "docz"
-import Card, { CardActions } from "./index.js"
+import Card, { CardActions } from "../card"
+import { Grid, Col } from "../grid"
+import Avatar, { AvatarGroup } from "../avatar"
 import Button from "../button"
+import styled from "styled-components"
 
 # Cards
 
@@ -29,4 +32,34 @@ Cards contain information and actions about a single subject. Cards should be sc
       <Button>Secondary Action</Button>
     </CardActions>
   </Card>
+</Playground>
+
+Cards should be used to contain logical pieces of information they shouldn't be used a just a visual divider or container. A good rule of thumb is to think about the number of similar pieces of content, are there 5 sets of similar things? That's when you'd use cards.
+
+<Playground>
+  <Grid>
+    <Col span={[6]}>
+      <Card style={{ padding: 0 }}>
+        <img src="https://source.unsplash.com/MP0bgaS_d1c/800x600" alt="unit cover" />
+        <div style={{ padding: "2rem" }}>
+          <h4>124 N Milwuakee Ave</h4>
+          <p style={{ marginBottom: "2rem" }}>Chicago IL 60647</p>
+          <Avatar small initials="CS" />
+        </div>
+      </Card>
+    </Col>
+    <Col span={[6]}>
+      <Card style={{ padding: 0 }}>
+        <img src="https://source.unsplash.com/Wv65tpVIdDg/800x600" alt="unit cover" />
+        <div style={{ padding: "2rem" }}>
+          <h4>124 N Milwuakee Ave</h4>
+          <p style={{ marginBottom: "2rem" }}>Chicago IL 60647</p>
+          <AvatarGroup>
+            <Avatar small initials="JW" />
+            <Avatar small initials="JT" />
+          </AvatarGroup>
+        </div>
+      </Card>
+    </Col>
+  </Grid>
 </Playground>
