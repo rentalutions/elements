@@ -30,10 +30,6 @@ export default {
         {
           rel: "stylesheet",
           href: "https://codemirror.net/theme/material.css"
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Nunito:200,400,800&display=swap"
         }
       ]
     }
