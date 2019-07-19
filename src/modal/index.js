@@ -3,7 +3,7 @@ import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { X } from "react-feather"
 import PropTypes from "prop-types"
-import { useTransition, animated } from "react-spring"
+import { useTransition, animated, config } from "react-spring"
 import { colors } from "../constants"
 import { usePortal } from "../hooks"
 
@@ -52,11 +52,7 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     from: { opacity: 0, transform: "scale(1.1)" },
     enter: { opacity: 1, transform: "scale(1)" },
     leave: { opacity: 0, transform: "scale(1.1)" },
-    config: {
-      mass: 1,
-      tension: 360,
-      friction: 36
-    }
+    config: config.stiff
   })
   return animation.map(({ item, key, props }) => {
     console.log(props)
