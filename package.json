@@ -13,8 +13,7 @@
     "build": "npm run clean && babel components -d dist && npm run copy",
     "dist": "npm run build && cd dist && npm publish",
     "test": "jest",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build",
+    "start": "docz dev",
     "now-build": "docz build"
   },
   "repository": {

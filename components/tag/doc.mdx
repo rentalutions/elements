@@ -1,0 +1,32 @@
+---
+name: Tags
+route: /components/tag
+---
+
+import { Props } from "docz"
+import { Anchor, Calendar } from "react-feather"
+import Playground from "utils/playground"
+import { colors } from "../constants"
+import Tag from "../tag"
+
+# Tags
+
+Tags highlight the metadata or progress of an item, such as wouldn't be valuable or useful on it's own. Tags should always be used in context with the UI they're helping to explain.
+
+<Playground>
+  <Tag>Payment Pending</Tag>
+  <Tag bg={colors.green_500} color={colors.green_900}>
+    Payment Processed
+  </Tag>
+</Playground>
+
+<Props of={Tag} />
+
+Tags can contain text and icons. They simply take their children and display it naturally.
+
+<Playground>
+  <Tag bg={colors.blue_500} color={colors.ui_100}>
+    <Anchor /> Payment Made
+  </Tag>
+  <Tag bg={colors.green_300}>Leased for $1,200/mo</Tag>
+</Playground>
