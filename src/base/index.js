@@ -18,6 +18,7 @@ export default createGlobalStyle`
   body {
     font-family: "Nunito", sans-serif;
     font-size: 1.5rem;
+    font-weight: 400;
     line-height: 1.333;
     color: ${colors.ui_900};
   }
@@ -62,7 +63,7 @@ export default createGlobalStyle`
   h5,
   .emphasis {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   img {

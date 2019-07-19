@@ -1,5 +1,5 @@
 import React from "react"
-import Base from "../components/base"
+import Base from "../src/base"
 import { ThemeProvider } from "styled-components"
 import { useConfig } from "docz"
 

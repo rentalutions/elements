@@ -1,8 +1,8 @@
 import React from "react"
 import { theme, useConfig, ComponentsProvider } from "docz"
 import { ThemeProvider } from "styled-components"
-import { colors } from "../components/constants"
-import Base from "../components/base"
+import { colors } from "../src/constants"
+import Base from "../src/base"
 
 function Theme({ children }) {
   const config = useConfig()
