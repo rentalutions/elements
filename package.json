@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "copy": "cp package.json dist",
-    "build": "npm run clean && babel components -d dist && npm run copy",
+    "build": "npm run clean && babel src -d dist && npm run copy",
     "dist": "npm run build && cd dist && npm publish",
     "test": "jest",
     "start": "docz dev",
@@ -48,9 +48,11 @@
     "styled-components": "^4.3.2"
   },
   "peerDependencies": {
-    "clsx": "^1.0.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.3.2"
+    "clsx": "^1.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-feather": "^2.0.0",
+    "react-spring": "^8.0.27",
+    "styled-components": "^4.3.0"
   }
 }

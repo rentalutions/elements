@@ -1,0 +1,94 @@
+---
+name: Modals
+route: /components/modal
+---
+
+import { useState } from "react"
+import Playground from "utils/playground"
+import { colors } from "../constants"
+import Modal from "../modal"
+import Button from "../button"
+
+# Modals
+
+Modals are ways to ask a user for confirmation or to take action without losing context of the current screen. Modals should always be something that would best be done now, but don't make sense to navigate the user away from their current process for.
+
+<Playground>
+  {() => {
+    const [open, setOpen] = useState(false)
+    const handleOpen = e => setOpen(!open)
+    return (
+      <div>
+        <Button onClick={handleOpen}>Toggle Modal</Button>
+        <Modal open={open} toggle={handleOpen}>
+          Hello World
+        </Modal>
+      </div>
+    )
+  }}
+</Playground>
+
+Let's see what happens with a really long modal.
+
+<Playground>
+  {() => {
+    const [open, setOpen] = useState(false)
+    const handleOpen = e => setOpen(!open)
+    return (
+      <div>
+        <Button onClick={handleOpen}>Toggle Modal</Button>
+        <Modal open={open} toggle={handleOpen}>
+          <h3>Begin the process of renting a better home.</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique natus
+            repudiandae asperiores reiciendis porro rerum officiis laudantium corrupti,
+            perspiciatis iusto expedita obcaecati maxime alias odit necessitatibus ullam
+            nam. Tempora, illum?
+          </p>
+        </Modal>
+      </div>
+    )
+  }}
+</Playground>

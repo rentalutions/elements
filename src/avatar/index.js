@@ -15,9 +15,8 @@ const StyledAvatar = styled.div`
     height: 3rem;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0;
+    margin-left: 0.5rem;
     padding: 0;
-    margin: 0.5rem;
   }
   .name {
     margin-left: 1rem;
