@@ -16,6 +16,7 @@ export default createGlobalStyle`
   }
 
   body {
+    @import url("https://fonts.googleapis.com/css?family=Nunito:200,400,800&display=swap");
     font-family: "Nunito", sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
