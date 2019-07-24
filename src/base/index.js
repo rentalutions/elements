@@ -9,21 +9,6 @@ export default createGlobalStyle`
     font-size: 75%;
   }
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    @import url("https://fonts.googleapis.com/css?family=Nunito:200,400,800&display=swap");
-    font-family: "Nunito", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.333;
-    color: ${colors.ui_900};
-  }
-
   html, body, div, span, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, address, big, cite, code,
@@ -40,6 +25,14 @@ export default createGlobalStyle`
     padding: 0;
   }
 
+  body {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.333;
+    color: ${colors.ui_900};
+  }
+
   h1,h2,h3,h4,h5 {
     line-height: 1.5;
   }
@@ -52,14 +45,17 @@ export default createGlobalStyle`
   h2,
   .headline {
     font-size: 4rem;
+    font-weight: 400;
   }
   h3,
   .title {
     font-size: 3rem;
+    font-weight: 400;
   }
   h4,
   .subtitle {
     font-size: 2rem;
+    font-weight: 400;
   }
   h5,
   .emphasis {

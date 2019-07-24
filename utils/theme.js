@@ -9,7 +9,7 @@ function Theme({ children }) {
   return (
     <ThemeProvider theme={config}>
       <>
-        <Base></Base>
+        <Base />
         <ComponentsProvider>{children}</ComponentsProvider>
       </>
     </ThemeProvider>

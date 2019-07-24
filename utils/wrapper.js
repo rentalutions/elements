@@ -5,6 +5,7 @@ import { useConfig } from "docz"
 
 export default function({ children }) {
   const config = useConfig()
+  console.log(config)
   return (
     <ThemeProvider theme={config}>
       <>
