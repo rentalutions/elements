@@ -1,0 +1,35 @@
+---
+name: Buttons
+route: /components/button
+---
+
+import Playground from "utils/playground"
+import { Props } from "docz"
+import Button from "../button"
+
+# Buttons
+
+Buttons allow users to take action or make choices with a quick click. They're placed throughout the UI in places like `cards`, `modals`, `forms`, and `toolbars`. A basic button is below.
+
+<Playground>
+  <Button>Hello World</Button>
+</Playground>
+
+Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting from the rest of the UI. If you have a set of buttons together use the `primary` button to distinguish the most desirable action.
+
+<Playground>
+  <Button>view charge</Button>
+  <Button primary>schedule payment</Button>
+</Playground>
+
+If you need the look and feel of a button need it to be a link you can do so by using the `as` prop. You can inspect the element below and see that it's rendering an anchor tag.
+
+This will work with most any element, including react components, as long as it passes on its `className` prop.
+
+<Playground>
+  <Button as="a" href="https://avail.co">
+    I'm really a link
+  </Button>
+</Playground>
+
+<Props of={Button} />

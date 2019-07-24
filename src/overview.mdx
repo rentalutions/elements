@@ -1,0 +1,35 @@
+---
+name: Component Overview
+route: /components
+---
+
+# Building Blocks
+
+This DesignKit is build with an atomic methodology. Each component was designed specifically to fix a UI problem.
+
+## Installation
+
+Installing with your favorite (as long as that favorite is npm) package manager is as easy as
+
+```shell
+npm install @rentalutions/elements
+```
+
+Each element lives in it's own folder. We're not bundling the library into a single file so that you can `import` each component as you need. This leads to space saving.
+
+```js
+import Button from "@rentalutions/elements/button"
+import Grid from "@rentalutions/elements/grid"
+```
+
+The design kit is built with `styled-components`. This means that each component can be changed easily and undestructively.
+
+```js
+import styled from "styled-components"
+import Button from "@rentalutions/elements/button"
+
+const MySpecialButton = styled(Button)`
+  border-color: red;
+  color: red;
+`
+```
