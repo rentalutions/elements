@@ -11,9 +11,9 @@ export default {
     mode: "light",
     showPlaygroundEditor: true,
     fonts: {
-      display: "Nunito, sans-serif",
-      ui: "Nunito, sans-serif",
-      mono: "'IBM Plex Mono', monospace"
+      display: "font-family: 'Nunito', sans-serif",
+      ui: "font-family: 'Nunito', sans-serif",
+      mono: "font-family: 'IBM Plex Mono', monospace"
     },
     colors: {
       primary: "#0f3e6f",
@@ -32,6 +32,7 @@ export default {
       h1: css`
         font-size: 5rem !important;
         font-weight: 200 !important;
+        margin-top: 4rem;
       `,
       a: css`
         font-weight: 400 !important;
