@@ -5,8 +5,10 @@
 node_modules
 *.log
 
+# Documentation
+coverage
+.docz
+
 # build files
 dist
 lib
-coverage
-.docz
