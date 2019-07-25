@@ -29,6 +29,9 @@ export default {
       pre: css`
         font-size: 1.33rem;
       `,
+      code: css`
+        font-family: "IBM Plex Mono", monospace;
+      `,
       h1: css`
         font-size: 5rem !important;
         font-weight: 200 !important;
