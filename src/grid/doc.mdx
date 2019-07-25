@@ -9,18 +9,52 @@ import { colors } from "../constants.js"
 
 # Grids
 
-Grids are used to build consistent, responsive layouts. They use css-grid under the hood and are absracted to give you as little headache as possible. They've been redesigned from v1 to work with an array prop syntaxt.
+Grids are used to build consistent, responsive layouts. The `<Grid/>` component can be used as a row or an entire grid. They use css-grid under the hood and are absracted to give you as little headache as possible. The `<Col />` component should be the immediate child of a grid component. Columns have been redesigned from v1 to work with an array prop syntaxt. Each `<Col />` takes a `span` prop with a number of columns to span, by default the column with span all 12 columns.
 
 <Playground column>
   {() => {
-    const styles = { background: colors.green_500 }
+    const styles = { background: colors.green_500, height: "20rem" }
     return (
-      <Grid style={{ height: "20rem" }}>
-        <Col style={styles} span={[12, 6]} />
-        <Col style={styles} span={[4, 6]} />
-        <Col style={styles} span={[4, 6]} />
-        <Col style={styles} span={[4, 6]} />
+      <Grid>
+        <Col style={styles} span={[12, 6, 4, 3, 12]} />
+        <Col style={styles} span={[4, 6, 4, 3, 4]} />
+        <Col style={styles} span={[4, 6, 4, 3, 4]} />
+        <Col style={styles} span={[4, 6, 12, 3, 4]} />
       </Grid>
     )
   }}
 </Playground>
+
+You can easily offset columns in the same manner as the `span` prop.
+
+<Playground column>
+  {() => {
+    const styles = { background: colors.blue_500, height: "20rem" }
+    return (
+      <Grid>
+        <Col style={styles} span={[6]} offset={[4]} />
+      </Grid>
+    )
+  }}
+</Playground>
+
+## Props
+
+### Grid
+
+| Prop       | Default  | Required | Description                                                                                  |
+| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
+| `column`   | 12       | false    | Optional override on the number of columns the grid contains.                                |
+| `gap`      | 2        | false    | Optional override on the gap inbetween columns and rows. Is always expressed as a `rem` unit |
+| `xsmBreak` | `40rem`  | false    | Optional override for the extra small breakpoint.                                            |
+| `smBreak`  | `60rem`  | false    | Optional override for the small breakpoint.                                                  |
+| `mdBreak`  | `80rem`  | false    | Optional override for the medium breakpoint.                                                 |
+| `lgBreak`  | `100rem` | false    | Optional override for the large breakpoint.                                                  |
+| `xlgBreak` | `120rem` | false    | Optional override for the extra large breakpoint.                                            |
+
+### Col
+
+| Prop     | Default | Required | Description                                                                          |
+| -------- | ------- | -------- | ------------------------------------------------------------------------------------ |
+| `span`   | 12      | false    | The number of columns to span in a row, cannot exceed the columns allowed on parent. |
+| `offset` | `auto`  | false    | Optional amount of spaces from left to offset the column                             |
