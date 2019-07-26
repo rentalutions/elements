@@ -1,7 +1,14 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { colors } from "../constants"
 import PropTypes from "prop-types"
+import { colors } from "../constants"
+
+const smallStyles = css`
+  width: 4rem;
+  > *:not(.initials) {
+    display: none;
+  }
+`
 
 const StyledAvatar = styled.div`
   position: relative;
@@ -33,19 +40,8 @@ const StyledAvatar = styled.div`
   ${({ small }) => small && smallStyles}
 `
 
-const smallStyles = css`
-  width: 4rem;
-  > *:not(.initials) {
-    display: none;
-  }
-`
-
 export default function Avatar({
-  small = false,
-  name = "",
-  photoUrl = null,
-  initials = "",
-  icon: Icon
+  small, name, email, photoUrl, initials, icon: Icon
 }) {
   if (small) {
     return (
@@ -56,8 +52,8 @@ export default function Avatar({
   }
   return (
     <StyledAvatar>
-      <img src={photoUrl} alt={`${name}'s profile photo`} className="profile-photo" />
-      <span className="name">{name}</span>
+      <img src={photoUrl} alt={`${name}'s profile shot`} className="profile-photo" />
+      <span className="name">{name || email}</span>
       {Icon && <Icon />}
     </StyledAvatar>
   )
@@ -71,7 +67,17 @@ Avatar.propTypes = {
   /** User profile photo. Icon used by default */
   photoUrl: PropTypes.string,
   initials: PropTypes.string,
-  email: PropTypes.string
+  email: PropTypes.string,
+  icon: PropTypes.element
+}
+
+Avatar.defaultProps = {
+  small: false,
+  name: null,
+  photoUrl: null,
+  initials: null,
+  email: null,
+  icon: null
 }
 
 export const AvatarGroup = styled.div`
