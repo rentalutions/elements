@@ -1,11 +1,11 @@
 import React from "react"
-import Base from "../src/base"
 import { ThemeProvider } from "styled-components"
 import { useConfig } from "docz"
+import PropTypes from "prop-types"
+import Base from "../src/base"
 
-export default function({ children }) {
+export default function Wrapper({ children }) {
   const config = useConfig()
-  console.log(config)
   return (
     <ThemeProvider theme={config}>
       <>
@@ -14,4 +14,8 @@ export default function({ children }) {
       </>
     </ThemeProvider>
   )
+}
+
+Wrapper.propTypes = {
+  children: PropTypes.node.isRequired
 }
