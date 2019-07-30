@@ -1,15 +1,26 @@
 ---
-name: Date Pickers
-route: /components/date-picker
+name: Date Inputs
+route: /components/date-inputs
 ---
 
+import { useState } from "react"
 import Playground from "utils/playground"
-import DatePicker from "../date-picker"
+import { DatePicker, DateSearch } from "../date-picker"
 
-# Date Pickers
+# Date Inputs
 
-Date pickers are used to consistently select the correct date and format it in a way
+Date pickers are used to consistently select the correct date. There are two types of date selection tools. A `DatePicker` and a `DateSearch`. The `DatePicker` should be used when the user is likely to know the exact date they'll choose, such as a birthday or anniversary.
 
 <Playground>
-  <DatePicker label="Birthday" />
+  {() => {
+    const [birthday, set] = useState("")
+    return (
+      <DatePicker
+        label={`Your Birthday is: ${birthday}`}
+        onBlur={(event, date) => set(date)}
+      />
+    )
+  }}
 </Playground>
+
+If the user is unlikely to know the exact date or might be weighing multiple dates to choose the correct one a `DateSearch` should be used. This let's the user see a calendar view of dates and lets them select the optimal one.

@@ -34,8 +34,20 @@ export function usePortal() {
 
 const dateReducer = (state, action) => {
   switch (action.type) {
-    case "GET_DATES":
-      return { ...state, dates: action.payload }
+    case "GET_DATES": {
+      const {
+        payload: {
+          monthName, monthNum, dates, fullYear
+        }
+      } = action
+      return {
+        ...state,
+        monthName,
+        monthNum,
+        dates,
+        fullYear
+      }
+    }
     default:
       throw Error("DATE REDUCER: Dispatch a known action.")
   }
@@ -44,23 +56,40 @@ const dateReducer = (state, action) => {
 export function useDates() {
   const datesRef = useRef(new CalendarDates())
   const date = new Date()
-  const year = date.getFullYear()
-  const monthNum = date.getMonth()
-  const month = date.toLocaleString("default", { month: "long" })
+  const monthName = date.toLocaleString(navigator.language, { month: "long" })
+
   const [state, dispatch] = useReducer(dateReducer, {
-    month,
-    dates: null
+    monthName,
+    dates: null,
+    monthNum: date.getMonth(),
+    fullYear: date.getFullYear()
   })
-  const getDates = async () => {
-    const dates = await datesRef.current.getMatrix(new Date(year, monthNum))
-    dispatch({ type: "GET_DATES", payload: dates })
+
+  async function getDates(change) {
+    const newDate = new Date(state.fullYear, state.monthNum + change)
+    const calendarDates = await datesRef.current.getMatrix(newDate)
+    dispatch({
+      type: "GET_DATES",
+      payload: {
+        dates: calendarDates,
+        monthName: newDate.toLocaleString(navigator.language, {
+          month: "long"
+        }),
+        monthNum: newDate.getMonth(),
+        fullYear: newDate.getFullYear()
+      }
+    })
   }
+
   useEffect(() => {
     let canceled = false
-    if (!canceled) getDates()
+    if (!canceled) getDates(0)
     return () => {
       canceled = true
     }
-  }, [datesRef.current])
-  return state
+  }, [])
+  return {
+    state,
+    getDates
+  }
 }

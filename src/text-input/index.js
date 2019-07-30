@@ -30,9 +30,8 @@ const StyledInput = styled.label`
     text-overflow: ellipsis;
     transition: 100ms;
     will-change: font-size, transform;
-    ${({ hasValue }) =>
-      hasValue &&
-      `
+    ${({ hasValue }) => hasValue
+      && `
       font-size: 1.333rem;
       transform: translate3d(0, -1.333rem, 0);
     `}
@@ -55,9 +54,11 @@ const StyledInput = styled.label`
   }
 `
 
-export default forwardRef(({ className, icon: Icon, label, onChange, ...props }, ref) => {
+export default forwardRef(({
+  className, icon: Icon, label, onChange, ...props
+}, ref) => {
   const [hasValue, setHasValue] = useState(false)
-  const handleChange = e => {
+  const handleChange = (e) => {
     if (onChange) onChange(e)
     if (e.target.value.length) setHasValue(true)
     else setHasValue(false)
