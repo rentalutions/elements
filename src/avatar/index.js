@@ -41,17 +41,17 @@ const StyledAvatar = styled.div`
 `
 
 export default function Avatar({
-  small, name, email, photoUrl, initials, icon: Icon
+  small, name, email, photoUrl, initials, icon: Icon, ...props
 }) {
   if (small) {
     return (
-      <StyledAvatar small>
+      <StyledAvatar small {...props}>
         <p className="initials">{initials.substring(0, 2)}</p>
       </StyledAvatar>
     )
   }
   return (
-    <StyledAvatar>
+    <StyledAvatar {...props}>
       <img src={photoUrl} alt={`${name}'s profile shot`} className="profile-photo" />
       <span className="name">{name || email}</span>
       {Icon && <Icon />}
