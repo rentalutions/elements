@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 import { colors } from "../constants"
 
 export default styled.section`
@@ -24,4 +25,8 @@ export function CardActions({ children, ...props }) {
       {children}
     </nav>
   )
+}
+
+CardActions.propTypes = {
+  children: PropTypes.node.isRequired
 }

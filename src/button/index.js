@@ -2,6 +2,15 @@ import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 import { colors } from "../constants"
 
+const primaryStyles = css`
+  background-color: ${colors.blue_500};
+  color: ${colors.ui_100};
+  &:hover {
+    color: ${colors.blue_100};
+    background: ${colors.blue_900};
+  }
+`
+
 const Button = styled.button`
   all: unset;
   box-sizing: border-box;
@@ -21,15 +30,6 @@ const Button = styled.button`
     color: ${colors.ui_100};
   }
   ${({ primary }) => primary && primaryStyles}
-`
-
-const primaryStyles = css`
-  background-color: ${colors.blue_500};
-  color: ${colors.ui_100};
-  &:hover {
-    color: ${colors.blue_100};
-    background: ${colors.blue_900};
-  }
 `
 
 Button.propTypes = {
