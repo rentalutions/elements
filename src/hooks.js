@@ -16,7 +16,7 @@ export function useMeasure() {
 }
 
 export function usePortal() {
-  if (!document) return null // Don't bother if we're on the server.
+  if (typeof window === "undefined") return null // Don't bother if we're on the server.
   const rootElement = useRef(null)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")
@@ -26,6 +26,6 @@ export function usePortal() {
     return () => {
       rootElement.current.remove()
     }
-  }, [])
+  }, [rootElement.current])
   return rootElement.current
 }
