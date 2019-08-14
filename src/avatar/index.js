@@ -5,6 +5,7 @@ import { colors } from "../constants"
 
 const smallStyles = css`
   width: 4rem;
+  padding-right: initial;
   > *:not(.initials) {
     display: none;
   }
@@ -17,25 +18,29 @@ const StyledAvatar = styled.div`
   display: inline-flex;
   align-items: center;
   height: 4rem;
+  padding-right: 2rem;
   img {
+    display: block;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     object-fit: cover;
     margin-left: 0.5rem;
-    padding: 0;
   }
   .name {
     margin-left: 1rem;
-    margin-right: 2rem;
     overflow: hidden;
     max-width: 20rem;
     text-overflow: ellipsis;
     white-space: nowrap;
+    line-height: 24px;
   }
   .initials {
     text-align: center;
     width: 100%;
+  }
+  .icon {
+    margin-left: 2rem;
   }
   ${({ small }) => small && smallStyles}
 `
@@ -54,7 +59,7 @@ export default function Avatar({
     <StyledAvatar {...props}>
       <img src={photoUrl} alt={`${name}'s profile shot`} className="profile-photo" />
       <span className="name">{name || email}</span>
-      {Icon && <Icon />}
+      {Icon && <Icon className="icon" />}
     </StyledAvatar>
   )
 }
