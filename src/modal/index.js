@@ -37,9 +37,11 @@ const StyledModal = styled.section`
   }
 `
 
-const Modal = ({ children, open, toggle, ...passedProps }) => {
+const Modal = ({
+  children, open, toggle, ...passedProps
+}) => {
   const target = usePortal()
-  const handleToggle = e => {
+  const handleToggle = (e) => {
     if (e.target !== e.currentTarget) return
     toggle(e)
   }
@@ -47,7 +49,7 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     if (!document) return // return early if server rendering
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
-    return () => (document.body.style.overflow = "initial")
+    return () => {document.body.style.overflow = "initial"}
   }, [open])
   const animation = useTransition(open, null, {
     from: { opacity: 0, transform: "scale(1.1)" },
