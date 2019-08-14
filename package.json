@@ -1,6 +1,6 @@
 {
   "name": "@rentalutions/elements",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.5",
   "description": "A suite of elements for the consistent and responsive UI",
   "keywords": [
     "ui",
@@ -38,7 +38,6 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.2",
     "clipboard-copy": "^3.0.0",
-    "clsx": "^1.0.4",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
     "eslint": "^5.3.0",
@@ -55,13 +54,15 @@
     "styled-components": "^4.3.2"
   },
   "peerDependencies": {
-    "clsx": "^1.0.X",
     "prop-types": "^15.7.X",
     "react": "^16.8.X",
     "react-dom": "^16.8.X",
     "react-feather": "^2.0.X",
     "react-spring": "^8.0.X",
-    "resize-observer-polyfill": "^1.5.X",
     "styled-components": "^4.3.X"
+  },
+  "dependencies": {
+    "clsx": "^1.0.4",
+    "resize-observer-polyfill": "^1.5.1"
   }
 }
