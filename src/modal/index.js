@@ -44,6 +44,7 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     toggle(e)
   }
   useLayoutEffect(() => {
+    if (!document) return // return early if server rendering
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
     return () => (document.body.style.overflow = "initial")
