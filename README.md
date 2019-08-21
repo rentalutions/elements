@@ -1,4 +1,5 @@
 ![Avail Design Kit](./public/designkit_cover.png)
+
 # Avail Design Kit
 
 A set of components built to be `composable`, `extendable`, and `usable`
@@ -19,7 +20,7 @@ import { colors } from "@rentalutions/elements/constants"
 
 The colors object comes with all brand colors as well as accepted variations.
 
-1. grey
+1. ui
 2. blue
 3. green
 4. yellow
@@ -28,13 +29,14 @@ The colors object comes with all brand colors as well as accepted variations.
 
 The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blue would be `blue_900`
 
-
-## Atoms
+## Components
 
 ### Basic
+
 - [Base](./components/avatar/doc.mdx)
 
 ### Controls
+
 - [Buttons](./components/button/doc.mdx)
 - [Checkboxes](./components/checkbox/doc.mdx)
 - [Select](./components/select/doc.mdx)
@@ -43,6 +45,7 @@ The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blu
 - [Toggles](./components/toggle/doc.mdx)
 
 ### Layout
+
 - [Cards](./components/card/doc.mdx)
 - [Containers](./components/container/doc.mdx)
 - [Grids](./components/grid/doc.mdx)
@@ -50,15 +53,17 @@ The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blu
 - [Modals](./components/modal/doc.mdx)
 
 ### User Info
+
 - [Avatars](./components/avatar/doc.mdx)
 
 ### Feedback
+
 - [Loaders](./components/loader/doc.mdx)
 - [ProgressBars](./components/progress-bar/doc.mdx)
 - [Tooltip](./components/tooltip/doc.mdx)
 
-## Molecules
-- [Avatars](./components/avatar/doc.mdx)
+Install this package under an alias. Works with `npm@6.9.0` and up.
 
-## Organisms
-- [DatePicker](./components/date-picker/doc.mdx)
+```bash
+npm i <my-alias>@npm:@rentalutions/elements@<version|beta|latest>
+```
