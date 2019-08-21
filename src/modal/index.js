@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react"
+import React, { useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { X } from "react-feather"
@@ -45,7 +45,8 @@ const Modal = ({
     if (e.target !== e.currentTarget) return
     toggle(e)
   }
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (typeof window === "undefined") return // Bail early on server render.
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
     return () => {
