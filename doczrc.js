@@ -67,6 +67,7 @@ export default {
         font-weight: 400 !important;
       `,
       ol: css`
+        margin: 2rem 0;
         list-style: decimal inside !important;
         counter-reset: none !important;
         li {
