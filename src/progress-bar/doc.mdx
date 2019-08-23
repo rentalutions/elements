@@ -8,26 +8,80 @@ import { FixedProgress, FluidProgress } from "../progress-bar"
 
 # Progress Bar
 
+```
+import {
+  FixedProgress,
+  FluidProgress
+} from "@rent_avail/elements/progress-bar"
+```
+
+## Description
+
 A progress bar indicates the status of a user inside a process. It help a user understand what they've accomplished and what is yet to come. This gives them a realistic idea of time to completion and lowers uncertainty.
 
-## Fixed
+## Anatomy
+
+![Anatomy](../../public/progress-bar-anatomy.png)
+
+### Fixed Progress
+
+1. Step - `.step`
+2. Step Label - `.label`
 
 A fixed progress bar has a certain amount of steps and those steps are done in a set order. A fixed bar is used for smaller amounts of steps where the process won't be completed in one sitting.
+
+| Prop  | Default | Required | Description                                                                                  |
+| ----- | ------- | -------- | -------------------------------------------------------------------------------------------- |
+| Steps | null    | true     | An object with where the key is the step label and the value is whether the step is complete |
 
 <Playground>
   <FixedProgress
     steps={{
-      "Step One": true,
-      "Step Two": false,
-      "Step Three": false
+      "Report Submitted": true,
+      "Rent Verified": false,
+      "Tradeline Created": false
     }}
   />
 </Playground>
 
-## Fluid
+### Fluid Progress
+
+3. Progress Bar -`.progress`
+4. Current label - `.label`
+5. Track - `.track`
+6. Current / Total - `.steps`
 
 A fluid progress bar can have an almost unlimited amount of steps. It is usually used when the process contains a lot of smaller pieces and can be accomplished in one sitting.
 
+| Prop    | Default | Required | Description                                                                        |
+| ------- | ------- | -------- | ---------------------------------------------------------------------------------- |
+| label   | null    | true     | The label currently displayed on the progressBar, should be updated on each render |
+| current | null    | true     | The index of the current step.                                                     |
+| total   | null    | true     | The length of the total steps                                                      |
+
 <Playground>
-  <FluidProgress label="Here is the correct thing" current={2} total={6} />
+  <FluidProgress label="Contact info" current={2} total={6} />
 </Playground>
+
+## Extension
+
+The fixed progress bar renders an array of steps with the class `.step` if these steps are `true` they get a class of `.complete`. If you're wanting to change the color of a completed or "next step" you'll want to key off this class name inside of the FixedProgress.
+
+```js
+import { FixedProgress, FluidProgress } from "@rent_avail/elements/progress-bar"
+
+const CustomFixed = styled(FixedProgress)`
+  .step.complete {
+    background: red;
+  }
+`
+
+const CustomeFluid = styled(FluidProgress)`
+  .track,
+  .steps,
+  .progress,
+  .label {
+    background: black; // will make the whole thing black;
+  }
+`
+```
