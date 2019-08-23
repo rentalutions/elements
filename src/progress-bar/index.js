@@ -92,6 +92,7 @@ const StyledFluid = styled.section`
     height: 100%;
     background: ${colors.green_500};
     border-radius: 1rem;
+    transition: 200ms;
   }
   .label {
     margin-top: 1rem;
