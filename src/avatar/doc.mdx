@@ -10,14 +10,30 @@ import Avatar, { AvatarGroup } from "../avatar"
 
 # Avatars
 
+```
+import Avatar, { AvatarGroup } from "@rent_avail/elements/avatar"
+```
+
+## Description
+
 An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
+
+## Anatomy
+
+![Anatomy](../../public/anatomy-avatar.png)
+
+1. User Photo
+2. User Name
+3. Icon
+4. Avatar Group
+
+## Usage
+
+### Avatar
 
 <Playground>
   <Avatar small initials="JW" />
-  <Avatar
-    name="Janet Wood"
-    photoUrl="https://source.unsplash.com/collection/802865/48x48"
-  />
+  <Avatar name="Janet Wood" photoUrl="https://source.unsplash.com/collection/802865/48x48" />
   <Avatar
     name="Janet Wood"
     photoUrl="https://source.unsplash.com/collection/802865/48x48"
@@ -25,7 +41,7 @@ An avatar component is used to display user information to another user. It can 
   />
 </Playground>
 
-## Avatar Group
+### Avatar Group
 
 Stacked avatars represent a group of people
 
@@ -37,3 +53,14 @@ Stacked avatars represent a group of people
     <Avatar small initials="RB" />
   </AvatarGroup>
 </Playground>
+
+## Extension
+
+The avatar component passes all props to its underlying dom node.
+
+```js
+const CustomAvatar = styled(Avatar)`
+  background: red;
+  color: green;
+`
+```
