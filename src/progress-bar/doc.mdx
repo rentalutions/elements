@@ -34,16 +34,6 @@ A fixed progress bar has a certain amount of steps and those steps are done in a
 | ----- | ------- | -------- | -------------------------------------------------------------------------------------------- |
 | Steps | null    | true     | An object with where the key is the step label and the value is whether the step is complete |
 
-<Playground>
-  <FixedProgress
-    steps={{
-      "Report Submitted": true,
-      "Rent Verified": false,
-      "Tradeline Created": false
-    }}
-  />
-</Playground>
-
 ### Fluid Progress
 
 3. Progress Bar -`.progress`
@@ -59,6 +49,18 @@ A fluid progress bar can have an almost unlimited amount of steps. It is usually
 | current | null    | true     | The index of the current step.                                                     |
 | total   | null    | true     | The length of the total steps                                                      |
 
+## Usage
+
+<Playground>
+  <FixedProgress
+    steps={{
+      "Report Submitted": true,
+      "Rent Verified": false,
+      "Tradeline Created": false
+    }}
+  />
+</Playground>
+
 <Playground>
   <FluidProgress label="Contact info" current={2} total={6} />
 </Playground>
@@ -68,8 +70,6 @@ A fluid progress bar can have an almost unlimited amount of steps. It is usually
 The fixed progress bar renders an array of steps with the class `.step` if these steps are `true` they get a class of `.complete`. If you're wanting to change the color of a completed or "next step" you'll want to key off this class name inside of the FixedProgress.
 
 ```js
-import { FixedProgress, FluidProgress } from "@rent_avail/elements/progress-bar"
-
 const CustomFixed = styled(FixedProgress)`
   .step.complete {
     background: red;
