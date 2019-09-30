@@ -72,7 +72,13 @@ const StyledAvatar = styled.div`
 `
 
 export default function Avatar({
-  small, name, email, photoUrl, initials, icon: Icon, ...props
+  small,
+  name,
+  email,
+  photoUrl,
+  initials,
+  icon: Icon,
+  ...props
 }) {
   if (small) {
     return (
@@ -96,7 +102,7 @@ Avatar.defaultProps = defaultProps
 
 export const AvatarGroup = styled.div`
   display: flex;
-  > * {
+  > *:not(:first-of-type) {
     margin-left: -1rem;
   }
 `
