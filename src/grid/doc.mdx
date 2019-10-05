@@ -52,6 +52,39 @@ You can easily offset columns in the same manner as the `span` prop.
   }}
 </Playground>
 
+## Rows
+
+<Playground column>
+  {() => {
+    const styles = {
+      background: colors.green_500,
+      minHeight: "5rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+    return (
+      <Grid>
+        <Col style={styles} span={[12]}>
+          <p>1</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>2</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>3</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
+      </Grid>
+    )
+  }}
+</Playground>
+
 ## Props
 
 ### Grid
