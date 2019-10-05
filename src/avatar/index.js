@@ -11,6 +11,32 @@ const smallStyles = css`
   }
 `
 
+const propTypes = {
+  small: PropTypes.bool,
+  name: PropTypes.string,
+  photoUrl: (props, name) => {
+    if (!props.small && typeof props[name] === "undefined") {
+      return new Error("Photo URL required if not small.")
+    }
+  },
+  initials: (props, name, componentName) => {
+    if (props.small && typeof props[name] === "undefined") {
+      return new Error(`Please provide intials if ${componentName} has small prop`)
+    }
+  },
+  email: PropTypes.string,
+  icon: PropTypes.node
+}
+
+const defaultProps = {
+  small: false,
+  name: null,
+  initials: null,
+  email: null,
+  icon: null,
+  photoUrl: null
+}
+
 const StyledAvatar = styled.div`
   position: relative;
   border-radius: 2rem;
@@ -46,7 +72,13 @@ const StyledAvatar = styled.div`
 `
 
 export default function Avatar({
-  small, name, email, photoUrl, initials, icon: Icon, ...props
+  small,
+  name,
+  email,
+  photoUrl,
+  initials,
+  icon: Icon,
+  ...props
 }) {
   if (small) {
     return (
@@ -64,30 +96,13 @@ export default function Avatar({
   )
 }
 
-Avatar.propTypes = {
-  /** Adjust the size of an avatar. Small removes the need for photos or names. */
-  small: PropTypes.bool,
-  /** User name, used in place of an email if present */
-  name: PropTypes.string,
-  /** User profile photo. Icon used by default */
-  photoUrl: PropTypes.string,
-  initials: PropTypes.string,
-  email: PropTypes.string,
-  icon: PropTypes.element
-}
+Avatar.propTypes = propTypes
 
-Avatar.defaultProps = {
-  small: false,
-  name: null,
-  photoUrl: null,
-  initials: null,
-  email: null,
-  icon: null
-}
+Avatar.defaultProps = defaultProps
 
 export const AvatarGroup = styled.div`
   display: flex;
-  > * {
+  > *:not(:first-of-type) {
     margin-left: -1rem;
   }
 `

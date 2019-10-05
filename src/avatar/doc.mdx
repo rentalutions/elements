@@ -10,14 +10,36 @@ import Avatar, { AvatarGroup } from "../avatar"
 
 # Avatars
 
+```
+import Avatar, { AvatarGroup } from "@rent_avail/elements/avatar"
+```
+
+## Description
+
 An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
+
+## Anatomy
+
+<iframe
+  style={{ border: "none" }}
+  width="840"
+  height="600"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FComponents%3Fnode-id%3D142%253A1"
+  allowfullscreen
+/>
+
+1. User Photo
+2. User Name
+3. Icon
+4. Avatar Group
+
+## Usage
+
+### Avatar
 
 <Playground>
   <Avatar small initials="JW" />
-  <Avatar
-    name="Janet Wood"
-    photoUrl="https://source.unsplash.com/collection/802865/48x48"
-  />
+  <Avatar name="Janet Wood" photoUrl="https://source.unsplash.com/collection/802865/48x48" />
   <Avatar
     name="Janet Wood"
     photoUrl="https://source.unsplash.com/collection/802865/48x48"
@@ -25,7 +47,7 @@ An avatar component is used to display user information to another user. It can 
   />
 </Playground>
 
-## Avatar Group
+### Avatar Group
 
 Stacked avatars represent a group of people
 
@@ -37,3 +59,14 @@ Stacked avatars represent a group of people
     <Avatar small initials="RB" />
   </AvatarGroup>
 </Playground>
+
+## Extension
+
+The avatar component passes all props to its underlying dom node.
+
+```js
+const CustomAvatar = styled(Avatar)`
+  background: red;
+  color: green;
+`
+```

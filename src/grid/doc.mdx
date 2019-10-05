@@ -13,13 +13,27 @@ Grids are used to build consistent, responsive layouts. The `<Grid/>` component 
 
 <Playground column>
   {() => {
-    const styles = { background: colors.green_500, height: "20rem" }
+    const styles = {
+      background: colors.green_500,
+      height: "20rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
     return (
       <Grid>
-        <Col style={styles} span={[12, 6, 4, 3, 12]} />
-        <Col style={styles} span={[4, 6, 4, 3, 4]} />
-        <Col style={styles} span={[4, 6, 4, 3, 4]} />
-        <Col style={styles} span={[4, 6, 12, 3, 4]} />
+        <Col style={styles} span={[12, 6, 4, 3, 12]}>
+          <p>1</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 4, 3, 4]}>
+          <p>2</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 4, 3, 4]}>
+          <p>3</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 12, 3, 4]}>
+          <p>4</p>
+        </Col>
       </Grid>
     )
   }}
@@ -33,6 +47,39 @@ You can easily offset columns in the same manner as the `span` prop.
     return (
       <Grid>
         <Col style={styles} span={[6]} offset={[3]} />
+      </Grid>
+    )
+  }}
+</Playground>
+
+## Rows
+
+<Playground column>
+  {() => {
+    const styles = {
+      background: colors.green_500,
+      minHeight: "5rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+    return (
+      <Grid>
+        <Col style={styles} span={[12]}>
+          <p>1</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>2</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>3</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
       </Grid>
     )
   }}

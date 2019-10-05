@@ -10,10 +10,10 @@ A set of components built to be `composable`, `extendable`, and `usable`
 
 ## Constants
 
-You can import some primitives such as color and utilites from `@rentalutions/elements/constants`
+You can import some primitives such as color and utilites from `@rent_avail/elements/constants`
 
 ```javascript
-import { colors } from "@rentalutions/elements/constants"
+import { colors } from "@rent_avail/elements/constants"
 ```
 
 ### Colors
@@ -61,9 +61,3 @@ The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blu
 - [Loaders](./components/loader/doc.mdx)
 - [ProgressBars](./components/progress-bar/doc.mdx)
 - [Tooltip](./components/tooltip/doc.mdx)
-
-Install this package under an alias. Works with `npm@6.9.0` and up.
-
-```bash
-npm i <my-alias>@npm:@rentalutions/elements@<version|beta|latest>
-```
