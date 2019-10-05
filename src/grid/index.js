@@ -11,13 +11,16 @@ export const Grid = ({
   xlgBreak = "120rem",
   ...props
 }) => {
-  const renderChildren = () => React.Children.map(children, child => React.cloneElement(child, {
-    xsmBreak,
-    smBreak,
-    mdBreak,
-    lgBreak,
-    xlgBreak
-  }))
+  const renderChildren = () =>
+    React.Children.map(children, child =>
+      React.cloneElement(child, {
+        xsmBreak,
+        smBreak,
+        mdBreak,
+        lgBreak,
+        xlgBreak
+      })
+    )
   return <StyledGrid {...props}>{renderChildren()}</StyledGrid>
 }
 
@@ -53,41 +56,57 @@ function getIndex(arr, index) {
 }
 
 function getOffset(offset, index) {
-  const startColumn = getIndex(offset, index)
-  return startColumn === "auto" ? "auto" : startColumn + 1
+  const start = getIndex(offset, index)
+  return start === "auto" ? "auto" : start + 1
 }
 
 export const Col = styled.div`
   grid-column: ${({ offset }) => `${getOffset(offset, 0)} /`} span
     ${({ span }) => getIndex(span, 0)};
+  grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 0)} /`} span
+    ${({ spanRow }) => getIndex(spanRow, 0)};
   @media (min-width: ${({ xsmBreak }) => xsmBreak}) {
     grid-column: ${({ offset }) => `${getOffset(offset, 1)} /`} span
       ${({ span }) => getIndex(span, 1)};
+    grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 1)} /`} span
+      ${({ spanRow }) => getIndex(spanRow, 1)};
   }
   @media (min-width: ${({ smBreak }) => smBreak}) {
     grid-column: ${({ offset }) => `${getOffset(offset, 2)} /`} span
       ${({ span }) => getIndex(span, 2)};
+    grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 2)} /`} span
+      ${({ spanRow }) => getIndex(spanRow, 2)};
   }
   @media (min-width: ${({ mdBreak }) => mdBreak}) {
     grid-column: ${({ offset }) => `${getOffset(offset, 3)} /`} span
       ${({ span }) => getIndex(span, 3)};
+    grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 3)} /`} span
+      ${({ spanRow }) => getIndex(spanRow, 3)};
   }
   @media (min-width: ${({ lgBreak }) => lgBreak}) {
     grid-column: ${({ offset }) => `${getOffset(offset, 4)} /`} span
       ${({ span }) => getIndex(span, 4)};
+    grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 4)} /`} span
+      ${({ spanRow }) => getIndex(spanRow, 4)};
   }
   @media (min-width: ${({ xlgBreak }) => xlgBreak}) {
     grid-column: ${({ offset }) => `${getOffset(offset, 5)} /`} span
       ${({ span }) => getIndex(span, 5)};
+    grid-row: ${({ offsetRow }) => `${getOffset(offsetRow, 5)} /`} span
+      ${({ spanRow }) => getIndex(spanRow, 5)};
   }
 `
 
 Col.defaultProps = {
   span: [12],
-  offset: ["auto"]
+  spanRow: [1],
+  offset: ["auto"],
+  offsetRow: ["auto"]
 }
 
 Col.propTypes = {
   span: PropTypes.arrayOf(PropTypes.number),
-  offset: PropTypes.arrayOf(PropTypes.number)
+  spanRow: PropTypes.arrayOf(PropTypes.number),
+  offset: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number)),
+  offsetRow: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number))
 }
