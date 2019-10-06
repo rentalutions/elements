@@ -4,60 +4,12 @@
 
 A set of components built to be `composable`, `extendable`, and `usable`
 
-## Design Resources
+## [Documentation](https://avail-design.now.sh)
 
-[Figma Library](https://www.figma.com/file/RqpXARK3vSrZbzWw6GrEnKqg/Components?node-id=0%3A1)
+## Contributing
 
-## Constants
+The best way to contribute to this library is to look at open issues or file an issue yourself if one doesn't already exist.
 
-You can import some primitives such as color and utilites from `@rent_avail/elements/constants`
+To suggest a component be added to the library open an issue and spec out the component with it's API. No component will be added without proper documentation. You can tag @pkrawc or @wade00 with reviewing the issue and weighing in when necessary.
 
-```javascript
-import { colors } from "@rent_avail/elements/constants"
-```
-
-### Colors
-
-The colors object comes with all brand colors as well as accepted variations.
-
-1. ui
-2. blue
-3. green
-4. yellow
-5. gold
-6. red (500 only)
-
-The naming structure follows `<color>_<100|300|500|700|900>`, so the darkest blue would be `blue_900`
-
-## Components
-
-### Basic
-
-- [Base](./components/avatar/doc.mdx)
-
-### Controls
-
-- [Buttons](./components/button/doc.mdx)
-- [Checkboxes](./components/checkbox/doc.mdx)
-- [Select](./components/select/doc.mdx)
-- [TextField](./components/text-field/doc.mdx)
-- [RadioButtons](./components/radio-button/doc.mdx)
-- [Toggles](./components/toggle/doc.mdx)
-
-### Layout
-
-- [Cards](./components/card/doc.mdx)
-- [Containers](./components/container/doc.mdx)
-- [Grids](./components/grid/doc.mdx)
-- [Menu](./components/menu/doc.mdx)
-- [Modals](./components/modal/doc.mdx)
-
-### User Info
-
-- [Avatars](./components/avatar/doc.mdx)
-
-### Feedback
-
-- [Loaders](./components/loader/doc.mdx)
-- [ProgressBars](./components/progress-bar/doc.mdx)
-- [Tooltip](./components/tooltip/doc.mdx)
+To finish, create a pull request that solves the issue. At least one commit in the PR should be `resolves #[ISSUE_NUMER]`, this will auto-close the issue when the PR is merged into master.
