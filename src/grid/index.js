@@ -107,6 +107,6 @@ Col.defaultProps = {
 Col.propTypes = {
   span: PropTypes.arrayOf(PropTypes.number),
   spanRow: PropTypes.arrayOf(PropTypes.number),
-  offset: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number)),
-  offsetRow: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number))
+  offset: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  offsetRow: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
 }
