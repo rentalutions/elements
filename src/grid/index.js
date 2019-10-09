@@ -1,34 +1,43 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-export const Grid = ({
-  children,
-  xsmBreak = "40rem",
-  smBreak = "60rem",
-  mdBreak = "80rem",
-  lgBreak = "100rem",
-  xlgBreak = "120rem",
-  ...props
-}) => {
-  const renderChildren = () =>
-    React.Children.map(children, child =>
-      React.cloneElement(child, {
-        xsmBreak,
-        smBreak,
-        mdBreak,
-        lgBreak,
-        xlgBreak
-      })
-    )
-  return <StyledGrid {...props}>{renderChildren()}</StyledGrid>
-}
-
-export const StyledGrid = styled.section`
+const StyledGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
   grid-gap: ${({ gap }) => gap};
 `
+
+export const Grid = forwardRef(
+  (
+    {
+      children,
+      xsmBreak = "40rem",
+      smBreak = "60rem",
+      mdBreak = "80rem",
+      lgBreak = "100rem",
+      xlgBreak = "120rem",
+      ...props
+    },
+    ref
+  ) => {
+    const renderChildren = () =>
+      React.Children.map(children, child =>
+        React.cloneElement(child, {
+          xsmBreak,
+          smBreak,
+          mdBreak,
+          lgBreak,
+          xlgBreak
+        })
+      )
+    return (
+      <StyledGrid ref={ref} {...props}>
+        {renderChildren()}
+      </StyledGrid>
+    )
+  }
+)
 
 Grid.propTypes = {
   columns: PropTypes.number,
