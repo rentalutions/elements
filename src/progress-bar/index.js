@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { colors } from "../constants"
 
@@ -11,11 +12,15 @@ export function FixedProgress({ steps, ...props }) {
     <StyledFixed {...props}>
       {Object.keys(steps).map(step => (
         <div className={`step ${steps[step] && "complete"}`}>
-          <p className="small">{step}</p>
+          <p className="small label">{step}</p>
         </div>
       ))}
     </StyledFixed>
   )
+}
+
+FixedProgress.propTypes = {
+  steps: PropTypes.objectOf(PropTypes.bool).isRequired
 }
 
 const StyledFixed = styled.div`
@@ -41,13 +46,7 @@ const StyledFixed = styled.div`
   }
   .step:first-of-type::before {
     border-radius: 1rem 0 0 1rem;
-    clip-path: polygon(
-      0% 0%,
-      calc(100% - 1rem) 0%,
-      100% 50%,
-      calc(100% - 1rem) 100%,
-      0% 100%
-    );
+    clip-path: polygon(0% 0%, calc(100% - 1rem) 0%, 100% 50%, calc(100% - 1rem) 100%, 0% 100%);
   }
   .step:last-of-type::before {
     border-radius: 0 1rem 1rem 0;
@@ -63,13 +62,17 @@ export function FluidProgress({ label, current, total }) {
     <StyledFluid>
       <div className="track">
         <div className="progress" style={{ width: `${(current / total) * 100}%` }} />
-        <p className="steps">
-          {current} / {total}
-        </p>
+        <p className="steps">{`${current} / ${total}`}</p>
       </div>
       <p className="small label">{label}</p>
     </StyledFluid>
   )
+}
+
+FluidProgress.propTypes = {
+  label: PropTypes.string.isRequired,
+  current: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired
 }
 
 const StyledFluid = styled.section`
@@ -89,6 +92,7 @@ const StyledFluid = styled.section`
     height: 100%;
     background: ${colors.green_500};
     border-radius: 1rem;
+    transition: 200ms;
   }
   .label {
     margin-top: 1rem;

@@ -32,13 +32,49 @@ export default {
       code: css`
         font-family: "IBM Plex Mono", monospace;
       `,
-      h1: css`
-        font-size: 5rem !important;
-        font-weight: 200 !important;
-        margin-top: 4rem;
-      `,
+      // h1: css`
+      //   all: unset;
+      //   display: block;
+      //   font-size: 5rem !important;
+      //   font-weight: 200 !important;
+      //   margin-top: 5rem;
+      // `,
+      // h2: css`
+      //   all: unset;
+      //   display: block;
+      //   font-size: 4rem !important;
+      //   font-weight: 400 !important;
+      // `,
+      // h3: css`
+      //   all: unset;
+      //   display: block;
+      //   font-size: 3rem !important;
+      //   font-weight: 400 !important;
+      // `,
+      // h4: css`
+      //   all: unset;
+      //   display: block;
+      //   font-size: 2rem !important;
+      //   font-weight: 400 !important;
+      // `,
+      // h5: css`
+      //   all: unset;
+      //   display: block;
+      //   font-size: 1.5rem !important;
+      //   font-weight: 800 !important;
+      // `,
       a: css`
         font-weight: 400 !important;
+      `,
+      ol: css`
+        margin: 2rem 0;
+        list-style: decimal inside !important;
+        counter-reset: none !important;
+        li {
+          &::before {
+            display: none !important;
+          }
+        }
       `
     }
   },

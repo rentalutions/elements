@@ -1,6 +1,6 @@
 {
-  "name": "@rentalutions/elements",
-  "version": "2.0.0-beta.3",
+  "name": "@rent_avail/elements",
+  "version": "1.2.2",
   "description": "A suite of elements for the consistent and responsive UI",
   "keywords": [
     "ui",
@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "copy": "cp package.json dist",
     "build": "npm run clean && babel src -d dist && npm run copy",
-    "dist": "npm run build && cd dist && npm publish",
+    "dist": "npm run build && cd dist && npm publish --access=public",
     "test": "jest",
     "start": "docz dev",
     "now-build": "docz build"
@@ -39,7 +39,6 @@
     "babel-plugin-styled-components": "^1.10.2",
     "calendar-dates": "^2.6.0",
     "clipboard-copy": "^3.0.0",
-    "clsx": "^1.0.4",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
     "eslint": "^5.3.0",
@@ -64,7 +63,10 @@
     "react-dom": "^16.8.X",
     "react-feather": "^2.0.X",
     "react-spring": "^8.0.X",
-    "resize-observer-polyfill": "^1.5.X",
     "styled-components": "^4.3.X"
+  },
+  "dependencies": {
+    "clsx": "^1.0.4",
+    "resize-observer-polyfill": "^1.5.1"
   }
 }

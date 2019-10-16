@@ -13,13 +13,27 @@ Grids are used to build consistent, responsive layouts. The `<Grid/>` component 
 
 <Playground column>
   {() => {
-    const styles = { background: colors.green_500, height: "20rem" }
+    const styles = {
+      background: colors.green_500,
+      height: "20rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
     return (
       <Grid>
-        <Col style={styles} span={[12, 6, 4, 3, 12]} />
-        <Col style={styles} span={[4, 6, 4, 3, 4]} />
-        <Col style={styles} span={[4, 6, 4, 3, 4]} />
-        <Col style={styles} span={[4, 6, 12, 3, 4]} />
+        <Col style={styles} span={[12, 6, 4, 3, 12]}>
+          <p>1</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 4, 3, 4]}>
+          <p>2</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 4, 3, 4]}>
+          <p>3</p>
+        </Col>
+        <Col style={styles} span={[4, 6, 12, 3, 4]}>
+          <p>4</p>
+        </Col>
       </Grid>
     )
   }}
@@ -32,7 +46,40 @@ You can easily offset columns in the same manner as the `span` prop.
     const styles = { background: colors.blue_500, height: "20rem" }
     return (
       <Grid>
-        <Col style={styles} span={[6]} offset={[4]} />
+        <Col style={styles} span={[6]} offset={[3]} />
+      </Grid>
+    )
+  }}
+</Playground>
+
+## Rows
+
+<Playground column>
+  {() => {
+    const styles = {
+      background: colors.green_500,
+      minHeight: "5rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+    return (
+      <Grid>
+        <Col style={styles} span={[12]}>
+          <p>1</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>2</p>
+        </Col>
+        <Col style={styles} span={[4]} spanRow={[2]}>
+          <p>3</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
+        <Col style={styles} span={[4]}>
+          <p>4</p>
+        </Col>
       </Grid>
     )
   }}
@@ -42,15 +89,15 @@ You can easily offset columns in the same manner as the `span` prop.
 
 ### Grid
 
-| Prop       | Default  | Required | Description                                                                                  |
-| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
-| `column`   | 12       | false    | Optional override on the number of columns the grid contains.                                |
-| `gap`      | 2        | false    | Optional override on the gap inbetween columns and rows. Is always expressed as a `rem` unit |
-| `xsmBreak` | `40rem`  | false    | Optional override for the extra small breakpoint.                                            |
-| `smBreak`  | `60rem`  | false    | Optional override for the small breakpoint.                                                  |
-| `mdBreak`  | `80rem`  | false    | Optional override for the medium breakpoint.                                                 |
-| `lgBreak`  | `100rem` | false    | Optional override for the large breakpoint.                                                  |
-| `xlgBreak` | `120rem` | false    | Optional override for the extra large breakpoint.                                            |
+| Prop       | Default  | Required | Description                                                   |
+| ---------- | -------- | -------- | ------------------------------------------------------------- |
+| `column`   | 12       | false    | Optional override on the number of columns the grid contains. |
+| `gap`      | `2rem`   | false    | Optional override on the gap inbetween columns and rows.      |
+| `xsmBreak` | `40rem`  | false    | Optional override for the extra small breakpoint.             |
+| `smBreak`  | `60rem`  | false    | Optional override for the small breakpoint.                   |
+| `mdBreak`  | `80rem`  | false    | Optional override for the medium breakpoint.                  |
+| `lgBreak`  | `100rem` | false    | Optional override for the large breakpoint.                   |
+| `xlgBreak` | `120rem` | false    | Optional override for the extra large breakpoint.             |
 
 ### Col
 

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react"
+import React, { useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { X } from "react-feather"
@@ -37,16 +37,21 @@ const StyledModal = styled.section`
   }
 `
 
-const Modal = ({ children, open, toggle, ...passedProps }) => {
+const Modal = ({
+  children, open, toggle, ...passedProps
+}) => {
   const target = usePortal()
-  const handleToggle = e => {
+  const handleToggle = (e) => {
     if (e.target !== e.currentTarget) return
     toggle(e)
   }
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (typeof window === "undefined") return // Bail early on server render.
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
-    return () => (document.body.style.overflow = "initial")
+    return () => {
+      document.body.style.overflow = "initial"
+    }
   }, [open])
   const animation = useTransition(open, null, {
     from: { opacity: 0, transform: "scale(1.1)" },
@@ -54,24 +59,17 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     leave: { opacity: 0, transform: "scale(1.1)" },
     config: config.stiff
   })
-  return animation.map(({ item, key, props }) => {
-    console.log(props)
-    return item
-      ? createPortal(
-          <StyledModal
-            {...passedProps}
-            onClick={handleToggle}
-            style={{ opacity: props.opacity }}
-          >
-            <animated.div key={key} className="modal-body" style={props}>
-              <X className="close" onClick={e => toggle(e)} />
-              {children}
-            </animated.div>
-          </StyledModal>,
-          target
-        )
-      : null
-  })
+  return animation.map(({ item, key, props }) => (item
+    ? createPortal(
+      <StyledModal {...passedProps} onClick={handleToggle} style={{ opacity: props.opacity }}>
+        <animated.div key={key} className="modal-body" style={props}>
+          <X className="close" onClick={e => toggle(e)} />
+          {children}
+        </animated.div>
+      </StyledModal>,
+      target
+    )
+    : null))
 }
 
 Modal.propTypes = {

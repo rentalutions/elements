@@ -5,10 +5,37 @@ import { colors } from "../constants"
 
 const smallStyles = css`
   width: 4rem;
+  padding-right: initial;
   > *:not(.initials) {
     display: none;
   }
 `
+
+const propTypes = {
+  small: PropTypes.bool,
+  name: PropTypes.string,
+  photoUrl: (props, name) => {
+    if (!props.small && typeof props[name] === "undefined") {
+      return new Error("Photo URL required if not small.")
+    }
+  },
+  initials: (props, name, componentName) => {
+    if (props.small && typeof props[name] === "undefined") {
+      return new Error(`Please provide intials if ${componentName} has small prop`)
+    }
+  },
+  email: PropTypes.string,
+  icon: PropTypes.node
+}
+
+const defaultProps = {
+  small: false,
+  name: null,
+  initials: null,
+  email: null,
+  icon: null,
+  photoUrl: null
+}
 
 const StyledAvatar = styled.div`
   position: relative;
@@ -17,72 +44,65 @@ const StyledAvatar = styled.div`
   display: inline-flex;
   align-items: center;
   height: 4rem;
+  padding-right: 2rem;
   img {
+    display: block;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     object-fit: cover;
     margin-left: 0.5rem;
-    padding: 0;
   }
   .name {
     margin-left: 1rem;
-    margin-right: 2rem;
     overflow: hidden;
     max-width: 20rem;
     text-overflow: ellipsis;
     white-space: nowrap;
+    line-height: 24px;
   }
   .initials {
     text-align: center;
     width: 100%;
   }
+  .icon {
+    margin-left: 2rem;
+  }
   ${({ small }) => small && smallStyles}
 `
 
 export default function Avatar({
-  small, name, email, photoUrl, initials, icon: Icon
+  small,
+  name,
+  email,
+  photoUrl,
+  initials,
+  icon: Icon,
+  ...props
 }) {
   if (small) {
     return (
-      <StyledAvatar small>
+      <StyledAvatar small {...props}>
         <p className="initials">{initials.substring(0, 2)}</p>
       </StyledAvatar>
     )
   }
   return (
-    <StyledAvatar>
+    <StyledAvatar {...props}>
       <img src={photoUrl} alt={`${name}'s profile shot`} className="profile-photo" />
       <span className="name">{name || email}</span>
-      {Icon && <Icon />}
+      {Icon && <Icon className="icon" />}
     </StyledAvatar>
   )
 }
 
-Avatar.propTypes = {
-  /** Adjust the size of an avatar. Small removes the need for photos or names. */
-  small: PropTypes.bool,
-  /** User name, used in place of an email if present */
-  name: PropTypes.string,
-  /** User profile photo. Icon used by default */
-  photoUrl: PropTypes.string,
-  initials: PropTypes.string,
-  email: PropTypes.string,
-  icon: PropTypes.element
-}
+Avatar.propTypes = propTypes
 
-Avatar.defaultProps = {
-  small: false,
-  name: null,
-  photoUrl: null,
-  initials: null,
-  email: null,
-  icon: null
-}
+Avatar.defaultProps = defaultProps
 
 export const AvatarGroup = styled.div`
   display: flex;
-  > * {
+  > *:not(:first-of-type) {
     margin-left: -1rem;
   }
 `
