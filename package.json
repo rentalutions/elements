@@ -37,7 +37,6 @@
     "babel-eslint": "^10.0.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.2",
-    "calendar-dates": "^2.6.0",
     "clipboard-copy": "^3.0.0",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
@@ -56,8 +55,6 @@
     "styled-components": "^4.3.2"
   },
   "peerDependencies": {
-    "calendar-dates": "^2.6.X",
-    "clsx": "^1.0.X",
     "prop-types": "^15.7.X",
     "react": "^16.8.X",
     "react-dom": "^16.8.X",
@@ -66,6 +63,7 @@
     "styled-components": "^4.3.X"
   },
   "dependencies": {
+    "calendar-dates": "^2.6.1",
     "clsx": "^1.0.4",
     "resize-observer-polyfill": "^1.5.1"
   }

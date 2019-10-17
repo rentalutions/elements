@@ -9,18 +9,29 @@ import { DatePicker, DateSearch } from "../date-picker"
 
 # Date Inputs
 
-Date pickers are used to consistently select the correct date. There are two types of date selection tools. A `DatePicker` and a `DateSearch`. The `DatePicker` should be used when the user is likely to know the exact date they'll choose, such as a birthday or anniversary.
+## Description
+
+Date pickers are used to consistently select the correct date. There are two types of date selection tools for use situationally. A `DateSearch` is used when the user will likely not know the exact date they are going to want _and_ the date itself is not more than a couple days or weeks away in either direction. A `DatePicker` is used for a known or exact date and can be months or years from the current date such as a birthday or a lease start date.
+
+## Anatomy
+
+<iframe
+  style={{ border: "none" }}
+  width="800"
+  height="450"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FComponents%3Fnode-id%3D274%253A50"
+  allowfullscreen
+/>
+
+1. Date Input
+2. Current Month
+3. Current Year
+4. Days of the Week
+5. Selected Day
+6. Previous and Next Month Buttons
+
+## Usage
 
 <Playground>
-  {() => {
-    const [birthday, set] = useState("")
-    return (
-      <DatePicker
-        label={`Your Birthday is: ${birthday}`}
-        onBlur={(event, date) => set(date)}
-      />
-    )
-  }}
+  <DateSearch label="Birthday" />
 </Playground>
-
-If the user is unlikely to know the exact date or might be weighing multiple dates to choose the correct one a `DateSearch` should be used. This let's the user see a calendar view of dates and lets them select the optimal one.

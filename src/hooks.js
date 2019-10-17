@@ -1,6 +1,4 @@
-import {
-  useRef, useEffect, useState, useReducer
-} from "react"
+import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
 import CalendarDates from "calendar-dates"
 
@@ -33,13 +31,13 @@ export function usePortal() {
   return rootElement.current
 }
 
+const NEW_DATES = "avail/actions/GET_DATES"
+
 const dateReducer = (state, action) => {
   switch (action.type) {
-    case "GET_DATES": {
+    case NEW_DATES: {
       const {
-        payload: {
-          monthName, monthNum, dates, fullYear
-        }
+        payload: { monthName, monthNum, dates, fullYear }
       } = action
       return {
         ...state,
@@ -54,30 +52,28 @@ const dateReducer = (state, action) => {
   }
 }
 
-export function useDates() {
+export function useDates(startDate) {
   const datesRef = useRef(new CalendarDates())
-  const date = new Date()
-  const monthName = date.toLocaleString(navigator.language, { month: "long" })
-
+  const date = startDate ? new Date(startDate) : new Date()
   const [state, dispatch] = useReducer(dateReducer, {
-    monthName,
     dates: null,
-    monthNum: date.getMonth(),
-    fullYear: date.getFullYear()
+    month: date.getMonth(),
+    monthName: date.toLocaleString(navigator.language, { month: "long" }),
+    year: date.getFullYear()
   })
 
   async function getDates(change) {
-    const newDate = new Date(state.fullYear, state.monthNum + change)
+    const newDate = new Date(state.year, state.month + change)
     const calendarDates = await datesRef.current.getMatrix(newDate)
     dispatch({
-      type: "GET_DATES",
+      type: NEW_DATES,
       payload: {
         dates: calendarDates,
         monthName: newDate.toLocaleString(navigator.language, {
           month: "long"
         }),
-        monthNum: newDate.getMonth(),
-        fullYear: newDate.getFullYear()
+        month: newDate.getMonth(),
+        year: newDate.getFullYear()
       }
     })
   }
