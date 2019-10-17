@@ -49,20 +49,23 @@ export function usePortal() {
   return rootElement.current
 }
 
-const NEW_DATES = "avail/actions/GET_DATES"
+const GET_DATES = "avail/actions/GET_DATES"
+const UPDATE_DATES = "avail/actions/UPDATE_DATES"
 
 const dateReducer = (state, action) => {
   switch (action.type) {
-    case NEW_DATES: {
-      const {
-        payload: { monthName, monthNum, dates, fullYear }
-      } = action
+    case GET_DATES: {
+      const { payload } = action
       return {
         ...state,
-        monthName,
-        monthNum,
-        dates,
-        fullYear
+        dates: payload
+      }
+    }
+    case UPDATE_DATES: {
+      const { payload } = action
+      return {
+        ...state,
+        ...payload
       }
     }
     default:
@@ -70,27 +73,50 @@ const dateReducer = (state, action) => {
   }
 }
 
-export function useDates(startDate) {
-  const datesRef = useRef(new CalendarDates())
-  const date = startDate ? startDate : new Date()
+export function useDates(startDate = new Date()) {
+  const calendarDates = useRef(new CalendarDates())
   const [state, dispatch] = useReducer(dateReducer, {
     dates: null,
-    month: date.getMonth(),
-    monthName: date.toLocaleString(navigator.language, { month: "long" }),
-    year: date.getFullYear()
+    month: startDate.getMonth(),
+    monthName: startDate.toLocaleString(navigator.language, { month: "long" }),
+    year: startDate.getFullYear()
   })
 
-  async function getDates(change) {
-    const newDate = new Date(state.year, state.month + change)
-    const calendarDates = await datesRef.current.getMatrix(newDate)
+  async function getDates() {
+    const dates = await calendarDates.current.getMatrix(startDate)
     dispatch({
-      type: NEW_DATES,
+      type: GET_DATES,
+      payload: dates
+    })
+  }
+
+  async function getNextMonth() {
+    const month = (state.month + 1) % 12
+    const year = (state.month + 1) % 12 === 0 ? state.year + 1 : state.year
+    const newDate = new Date(year, month)
+    const dates = await calendarDates.current.getMatrix(newDate)
+    dispatch({
+      type: UPDATE_DATES,
       payload: {
-        dates: calendarDates,
-        monthName: newDate.toLocaleString(navigator.language, {
-          month: "long"
-        }),
+        dates,
         month: newDate.getMonth(),
+        monthName: newDate.toLocaleString(navigator.language, { month: "long" }),
+        year: newDate.getFullYear()
+      }
+    })
+  }
+
+  async function getPrevMonth() {
+    const month = state.month - 1 < 0 ? 12 : state.month - 1
+    const year = state.month - 1 < 0 ? state.year - 1 : state.year
+    const newDate = new Date(year, month)
+    const dates = await calendarDates.current.getMatrix(newDate)
+    dispatch({
+      type: UPDATE_DATES,
+      payload: {
+        dates,
+        month: newDate.getMonth(),
+        monthName: newDate.toLocaleString(navigator.language, { month: "long" }),
         year: newDate.getFullYear()
       }
     })
@@ -98,13 +124,14 @@ export function useDates(startDate) {
 
   useEffect(() => {
     let canceled = false
-    if (!canceled) getDates(0)
+    if (!canceled) getDates(state.year, state.month)
     return () => {
       canceled = true
     }
   }, [])
   return {
     state,
-    getDates
+    getNextMonth,
+    getPrevMonth
   }
 }
