@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
+import IntersectionObserver from "intersection-observer-polyfill"
 import CalendarDates from "calendar-dates"
 
 export function useMeasure() {
@@ -14,6 +15,23 @@ export function useMeasure() {
   // eslint-disable-next-line no-sequences
   useEffect(() => (ro.observe(ref.current), ro.disconnect), [])
   return [{ ref }, bounds]
+}
+
+export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
+  const [entry, setEntry] = useState({})
+  const [target, setTarget] = useState(null)
+  const observer = useRef(null)
+  useEffect(() => {
+    if (observer.current) observer.current.disconnect()
+    observer.current = new IntersectionObserver(([entry]) => setEntry(entry), {
+      root,
+      rootMargin,
+      threshold
+    })
+    if (target) observer.current.observe(target)
+    return () => observer.current.disconnect()
+  }, [target])
+  return [setTarget, entry]
 }
 
 export function usePortal() {
@@ -54,7 +72,7 @@ const dateReducer = (state, action) => {
 
 export function useDates(startDate) {
   const datesRef = useRef(new CalendarDates())
-  const date = startDate ? new Date(startDate) : new Date()
+  const date = startDate ? startDate : new Date()
   const [state, dispatch] = useReducer(dateReducer, {
     dates: null,
     month: date.getMonth(),

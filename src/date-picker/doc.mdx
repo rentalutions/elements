@@ -5,7 +5,7 @@ route: /components/date-inputs
 
 import { useState } from "react"
 import Playground from "utils/playground"
-import { DatePicker, DateSearch } from "../date-picker"
+import { DatePicker, DateSearch, Calendar } from "../date-picker"
 
 # Date Inputs
 
@@ -32,6 +32,18 @@ Date pickers are used to consistently select the correct date. There are two typ
 
 ## Usage
 
+### Base Calendar
+
+This component is at the heart of the `DateSearch` and can techincally be used on it's own in situations necessary.
+
 <Playground>
-  <DateSearch label="Birthday" />
+  <Calendar />
+</Playground>
+
+### DateSearch
+
+The date search is used for unknown dates close to the current day. It opens a `Calendar` component inline that can automatically fill the input with a correct date.
+
+<Playground>
+  <DateSearch label="Due Date" />
 </Playground>
