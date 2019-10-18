@@ -7,17 +7,12 @@ import { useDates } from "../hooks"
 
 const StyledCalendar = styled.section`
   display: grid;
-  grid-template-columns: repeat(7, 2rem);
-  /* grid-auto-rows: 2rem; */
-  grid-gap: 1rem 2rem;
-  padding: 2rem;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 0 1rem;
+  padding: 2rem 1.5rem;
   background: ${colors.ui_100};
   border: 1px solid ${colors.ui_500};
   border-radius: 4px;
-  span {
-    line-height: 2rem;
-    vertical-align: middle;
-  }
   .current-month {
     grid-column: span 4;
     text-align: left;
@@ -29,12 +24,17 @@ const StyledCalendar = styled.section`
   .current-month,
   .current-year {
     font-weight: 700;
+    padding: 0 0.5rem;
   }
   .week-days {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    color: ${colors.ui_700};
   }
   .date {
     all: unset;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 200ms;
     &:hover {
       background: ${colors.blue_100};
     }
@@ -42,6 +42,8 @@ const StyledCalendar = styled.section`
   .week-days,
   .date {
     text-align: center;
+    width: 3rem;
+    height: 3rem;
   }
   .previous {
     color: ${colors.ui_500};
@@ -49,6 +51,14 @@ const StyledCalendar = styled.section`
   .actions {
     grid-column: span 7;
     text-align: right;
+    padding: 1rem 0.5rem 0;
+    svg {
+      cursor: pointer;
+      transition: 200ms;
+      &:hover {
+        color: ${colors.blue_300};
+      }
+    }
     svg:first-of-type {
       margin-right: 2rem;
     }
@@ -56,19 +66,19 @@ const StyledCalendar = styled.section`
 `
 
 const Calendar = forwardRef(
-  ({ currentMonth = new Date(), allowPast = false, onSelect, ...props }, ref) => {
+  ({ startDate = new Date(), allowPast = false, onSelect, ...props }, ref) => {
     const {
       state: { dates, month, monthName, year },
       getNextMonth,
       getPrevMonth
-    } = useDates(currentMonth)
+    } = useDates(startDate)
     const days = ["S", "M", "T", "W", "T", "F", "S"]
     function isPast(iso) {
       if (allowPast) return false
       return Date.now() > new Date(iso)
     }
-    function handleSelect(evt, eventDate) {
-      if (onSelect) onSelect(evt, eventDate)
+    function handleSelect(eventDate) {
+      if (onSelect) onSelect(eventDate)
     }
     return (
       <StyledCalendar {...props} ref={ref}>

@@ -20,7 +20,7 @@ Date pickers are used to consistently select the correct date. There are two typ
   width="800"
   height="450"
   src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FComponents%3Fnode-id%3D274%253A50"
-  allowfullscreen
+  allowFullScreen
 />
 
 1. Date Input
@@ -37,13 +37,31 @@ Date pickers are used to consistently select the correct date. There are two typ
 This component is at the heart of the `DateSearch` and can techincally be used on it's own in situations necessary.
 
 <Playground>
-  <Calendar onSelect={date => console.log(date)} />
+  <Calendar onSelect={iso => console.log(iso)} />
 </Playground>
+
+| Prop      | Default | Required | Description                                                                                                |
+| --------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| onSelect  | null    | false    | A callback fired when a date is selected from the calendar. It returns an iso-string of the date selected. |
+| startDate | null    | false    | The date to open the calendar on.                                                                          |
+| allowPast | false   | false    | Allow a user to select a date that is in the past. Defaults to false.                                      |
 
 ### DateSearch
 
 The date search is used for unknown dates close to the current day. It opens a `Calendar` component inline that can automatically fill the input with a correct date.
 
 <Playground>
-  <DateSearch label="Due Date" />
+  <DateSearch
+    label="Due Date"
+    // Will fire when a date is selected from the calendar.
+    onSelect={iso => console.log(iso)}
+    // Will fire on change, do whatever you want with the input.
+    onChange={e => console.log(e.target.value)}
+  />
 </Playground>
+
+| Prop     | Default | Required | Description                                                                                                |
+| -------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| label    | ""      | true     | A label for the text input.                                                                                |
+| onSelect | null    | false    | A callback fired when a date is selected from the calendar. It returns an iso-string of the date selected. |
+| onChange | null    | false    | A callback fired when the text input changes. It returns the change event.                                 |

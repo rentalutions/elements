@@ -10,35 +10,52 @@ import Calendar from "./calendar"
 const StyledSearch = styled.div`
   position: relative;
   outline: none;
+  z-index: 10;
   .date-search__calendar {
     position: absolute;
     z-index: 10;
     left: 0;
     box-shadow: 0 2rem 2rem -2rem rgba(0, 0, 0, 0.24);
   }
-  .calendar-label {
+  .scrim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.75);
   }
 `
 
-const DateSearch = forwardRef((props, ref) => {
+const DateSearch = forwardRef(({ onChange, onSelect, ...props }, ref) => {
   const [focus, setIsFocused] = useState(false)
   const [date, setDate] = useState("")
   const [setTarget, entry] = useObserver()
   const calenderRef = useRef(null)
+  const parentRef = useRef(null)
   const clientBottom =
     entry && entry.boundingClientRect ? entry.boundingClientRect.bottom : 0
   function handleSelect(iso) {
     setDate(iso)
+    if (onSelect) onSelect(iso)
     setIsFocused(false)
   }
   function handleChange(e) {
+    if (onChange) onChange(e)
     setDate(e.target.value)
   }
   useEffect(() => {
     setTarget(calenderRef.current)
   }, [])
   return (
-    <StyledSearch tabIndex="-1">
+    <StyledSearch tabIndex="-1" ref={parentRef}>
+      <div
+        className="scrim"
+        onClick={e => {
+          if (e.target == e.currentTarget) setIsFocused(false)
+        }}
+        style={{ display: focus ? "block" : "none" }}
+      />
       <Input
         ref={ref}
         icon={CalendarIcon}
