@@ -31,3 +31,5 @@ export const colors = {
 
   red_500: "#ec4261"
 }
+
+export const mediaQueries = ["40rem", "60rem", "80rem", "100rem", "120rem"]

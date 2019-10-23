@@ -11,8 +11,8 @@ export default {
     mode: "light",
     showPlaygroundEditor: true,
     fonts: {
-      display: "font-family: 'Nunito', sans-serif",
-      ui: "font-family: 'Nunito', sans-serif",
+      display: "'Nunito', sans-serif",
+      ui: "'Nunito', sans-serif",
       mono: "font-family: 'IBM Plex Mono', monospace"
     },
     colors: {
@@ -75,6 +75,13 @@ export default {
             display: none !important;
           }
         }
+      `,
+      table: css`
+        text-align: left;
+        vertical-align: text-top;
+      `,
+      td: css`
+        padding: 1rem;
       `
     }
   },

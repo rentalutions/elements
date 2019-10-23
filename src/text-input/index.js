@@ -55,21 +55,23 @@ const StyledInput = styled.label`
   }
 `
 
-export default forwardRef(({ className, icon: Icon, label, onChange, ...props }, ref) => {
-  const [hasValue, setHasValue] = useState(false)
-  const handleChange = e => {
-    if (onChange) onChange(e)
-    if (e.target.value.length) setHasValue(true)
-    else setHasValue(false)
+export default forwardRef(
+  ({ className, icon: Icon, label, onChange, initialValue = false, ...props }, ref) => {
+    const [hasValue, setHasValue] = useState(initialValue)
+    const handleChange = e => {
+      if (onChange) onChange(e)
+      if (e.target.value.length) setHasValue(true)
+      else setHasValue(false)
+    }
+    useEffect(() => {
+      if (props.value && props.value.length) setHasValue(true)
+    }, [props.value])
+    return (
+      <StyledInput className={className} icon={!!Icon} hasValue={hasValue}>
+        <input type="text" ref={ref} {...props} onChange={handleChange} />
+        {Icon && <Icon className="input__icon" width={24} height={24} />}
+        <span className="label">{label}</span>
+      </StyledInput>
+    )
   }
-  useEffect(() => {
-    if (props.value && props.value.length) setHasValue(true)
-  }, [])
-  return (
-    <StyledInput className={className} icon={!!Icon} hasValue={hasValue}>
-      <input type="text" ref={ref} {...props} onChange={handleChange} />
-      {Icon && <Icon className="input__icon" width={24} height={24} />}
-      <span className="label">{label}</span>
-    </StyledInput>
-  )
-})
+)
