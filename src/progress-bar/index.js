@@ -46,7 +46,13 @@ const StyledFixed = styled.div`
   }
   .step:first-of-type::before {
     border-radius: 1rem 0 0 1rem;
-    clip-path: polygon(0% 0%, calc(100% - 1rem) 0%, 100% 50%, calc(100% - 1rem) 100%, 0% 100%);
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 1rem) 0%,
+      100% 50%,
+      calc(100% - 1rem) 100%,
+      0% 100%
+    );
   }
   .step:last-of-type::before {
     border-radius: 0 1rem 1rem 0;
@@ -57,9 +63,9 @@ const StyledFixed = styled.div`
   }
 `
 
-export function FluidProgress({ label, current, total }) {
+export function FluidProgress({ label, current, total, ...props }) {
   return (
-    <StyledFluid>
+    <StyledFluid {...props}>
       <div className="track">
         <div className="progress" style={{ width: `${(current / total) * 100}%` }} />
         <p className="steps">{`${current} / ${total}`}</p>
