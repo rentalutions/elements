@@ -8,13 +8,14 @@
     "design system"
   ],
   "scripts": {
+    "test": "jest",
     "clean": "rimraf dist",
     "copy": "cp package.json dist",
-    "build": "npm run clean && babel src -d dist && npm run copy",
-    "dist": "npm run build && cd dist && npm publish --access=public",
-    "test": "jest",
-    "start": "docz dev",
-    "now-build": "docz build"
+    "build:package": "npm run clean && babel src -d dist && npm run copy",
+    "publish:package": "npm run build:package && cd dist && npm publish --access=public",
+    "start:docs": "docz dev",
+    "build:docs": "docz build",
+    "now-build": "npm run build:docs"
   },
   "repository": {
     "type": "git",
