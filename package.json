@@ -5,7 +5,10 @@
   "keywords": [
     "ui",
     "ui library",
-    "design system"
+    "design system",
+    "react",
+    "styled components",
+    "a11y"
   ],
   "scripts": {
     "test": "jest",
