@@ -5,7 +5,7 @@ import { colors } from "src/constants"
 
 const StyledStatus = styled.span`
   margin-top: 2rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 2rem;
   font-size: 1.5rem;
   line-height: 1.334;
