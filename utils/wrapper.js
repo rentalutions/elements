@@ -2,7 +2,7 @@ import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { useConfig } from "docz"
 import PropTypes from "prop-types"
-import Base from "../src/base"
+import Base from "src/base"
 
 const DocBase = createGlobalStyle`
   img[alt="intro-personality"] {
