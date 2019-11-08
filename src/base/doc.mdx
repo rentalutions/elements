@@ -3,7 +3,19 @@ name: Base
 route: /components/base
 ---
 
+import Status from "utils/status"
+
 # Base
+
+<Status status="production" />
+
+## Installation
+
+```javascript
+import Base from "@rent_avail/elements/base"
+```
+
+## Description
 
 This includes base stylings that help make UI across Avail products consistent. You can think of this as our css-reset.
 
@@ -11,7 +23,7 @@ Place the `Base` component at the root of your application. It creates a global 
 
 ```js
 // React + ReactDOM imports
-import Base from "@rentalutions/elements/base"
+import Base from "@rent_avail/elements/base"
 
 ReactDOM.render(
   <App>

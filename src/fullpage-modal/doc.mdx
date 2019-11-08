@@ -5,12 +5,38 @@ route: /components/full-page-modal
 
 import { useState } from "react"
 import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
 import FullPageModal from "../fullpage-modal"
 import Button from "../button"
 
 # Full Page Modals
 
+<Status status="production" />
+
+## Installation
+
+```js
+import FullPageModal from "@rent_avail/elements/fullpage-modal"
+```
+
+## Description
+
 Full page modals are used for complicated or input heavy processes that we want to keep a measure of context about such as requesting an application or signing a lease document. These can be multi-step and should have the user finish on the same page that they opened the modal on. Don't use full page modals if the user hasn't taken an action to start the process (eg. advertising or partner processes).
+
+## Anatomy
+
+### Props
+
+<Prop name="open" type="boolean" default="false">
+  A boolean property that determines if the modal is currently shown or not.
+</Prop>
+
+<Prop name="toggle" type="function" defaultValue="() => null">
+  A boolean property that determines if the modal is currently shown or not.
+</Prop>
+
+## Usage
 
 <Playground>
   {() => {

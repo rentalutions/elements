@@ -5,9 +5,19 @@ route: /components/date-inputs
 
 import { useState } from "react"
 import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
 import { DatePicker, DateSearch, Calendar } from "../date-picker"
 
 # Date Inputs
+
+<Status status="beta" />
+
+## Installation
+
+```js
+import { DatePicker, DateSearch, Calendar } from "@rent_avail/elements/date-picker"
+```
 
 ## Description
 
@@ -30,6 +40,36 @@ Date pickers are used to consistently select the correct date. There are two typ
 5. Selected Day
 6. Previous and Next Month Buttons
 
+### Calendar Props
+
+<Prop name="onSelect" type="function">
+  A callback fired when a date is selected from the calendar. It returns an iso-string of
+  the date selected.
+</Prop>
+
+<Prop name="allowPase" type="boolean" defaultValue="false">
+  Allow a user to select a date that is in the past. Defaults to false.
+</Prop>
+
+<Prop name="startDate" type="date" defaultValue="null">
+  The date to open the calendar on.
+</Prop>
+
+### DateSearch Props
+
+<Prop name="label" type="string">
+  A label for the text input.
+</Prop>
+
+<Prop name="onSelect" type="function">
+  A callback fired when a date is selected from the calendar. It returns an iso-string of
+  the date selected.
+</Prop>
+
+<Prop name="onChange" type="function">
+  A callback fired when the text input changes. It returns the change event.
+</Prop>
+
 ## Usage
 
 ### Base Calendar
@@ -39,12 +79,6 @@ This component is at the heart of the `DateSearch` and can techincally be used o
 <Playground>
   <Calendar onSelect={iso => console.log(iso)} />
 </Playground>
-
-| Prop      | Default | Required | Description                                                                                                |
-| --------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| onSelect  | null    | false    | A callback fired when a date is selected from the calendar. It returns an iso-string of the date selected. |
-| startDate | null    | false    | The date to open the calendar on.                                                                          |
-| allowPast | false   | false    | Allow a user to select a date that is in the past. Defaults to false.                                      |
 
 ### DateSearch
 
@@ -59,9 +93,3 @@ The date search is used for unknown dates close to the current day. It opens a `
     onChange={e => console.log(e.target.value)}
   />
 </Playground>
-
-| Prop     | Default | Required | Description                                                                                                |
-| -------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| label    | ""      | true     | A label for the text input.                                                                                |
-| onSelect | null    | false    | A callback fired when a date is selected from the calendar. It returns an iso-string of the date selected. |
-| onChange | null    | false    | A callback fired when the text input changes. It returns the change event.                                 |

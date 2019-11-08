@@ -4,11 +4,33 @@ route: /components/toggle
 ---
 
 import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
 import Toggle from "../toggle"
 
-# Toggles
+# Toggle
+
+<Status status="production" />
+
+## Installation
+
+```js
+import Toggle from "@rent_avail/elements/toggle"
+```
+
+## Description
 
 Toggles are selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
+
+## Anatomy
+
+### Props
+
+<Prop name="block" type="boolean" defaultValue="false">
+  Controls whether the toggle component displays as block or inline block.
+</Prop>
+
+## Usage
 
 <Playground>
   <Toggle />

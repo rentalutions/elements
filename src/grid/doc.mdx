@@ -4,12 +4,71 @@ route: /components/grid
 ---
 
 import Playground from "utils/playground"
+import Prop from "utils/prop"
+import Status from "utils/status"
 import { Grid, Col } from "../grid"
 import { colors } from "../constants.js"
 
 # Grids
 
+<Status status="production" />
+
+## Installation
+
+```js
+import { Grid, Col } from "@rent_avail/elements/grid"
+```
+
+## Description
+
 Grids are used to build consistent, responsive layouts. The `<Grid/>` component can be used as a row or an entire grid. They use css-grid under the hood and are absracted to give you as little headache as possible. The `<Col />` component should be the immediate child of a grid component. Columns have been redesigned from v1 to work with an array prop syntaxt. Each `<Col />` takes a `span` prop with a number of columns to span, by default the column with span all 12 columns.
+
+## Anatomy
+
+### Grid Props
+
+<Prop name="column" type="number" defaultValue="12">
+  Optional override on the number of columns the grid contains.
+</Prop>
+
+<Prop name="gap" type="string" defaultValue="2rem">
+  Optional override on the gap inbetween columns and rows.
+</Prop>
+
+<Prop name="xsmBreak" type="string" defaultValue="40rem">
+  Optional override for the extra small breakpoint.
+</Prop>
+
+<Prop name="smBreak" type="string" defaultValue="60rem">
+  Optional override for the small breakpoint.
+</Prop>
+
+<Prop name="mdBreak" type="string" defaultValue="80rem">
+  Optional override for the medium breakpoint.
+</Prop>
+
+<Prop name="lgBreak" type="string" defaultValue="100rem">
+  Optional override for the large breakpoint.
+</Prop>
+
+<Prop name="xlgBreak" type="string" defaultValue="120rem">
+  Optional override for the extra large breakpoint.
+</Prop>
+
+### Col Props
+
+<Prop name="span" type="array" defaultValue={`[12]`}>
+  The number of columns to span in a row, cannot exceed the columns allowed on parent in
+  any one element.
+</Prop>
+
+<Prop name="offset" type="array" defaultValue={`["auto"]`}>
+  Optional amount of spaces from left to offset the column.
+</Prop>
+
+## Usage
+
+### Columns
 
 <Playground column>
   {() => {
@@ -52,7 +111,7 @@ You can easily offset columns in the same manner as the `span` prop.
   }}
 </Playground>
 
-## Rows
+### Rows
 
 <Playground column>
   {() => {
@@ -84,24 +143,3 @@ You can easily offset columns in the same manner as the `span` prop.
     )
   }}
 </Playground>
-
-## Props
-
-### Grid
-
-| Prop       | Default  | Required | Description                                                   |
-| ---------- | -------- | -------- | ------------------------------------------------------------- |
-| `column`   | 12       | false    | Optional override on the number of columns the grid contains. |
-| `gap`      | `2rem`   | false    | Optional override on the gap inbetween columns and rows.      |
-| `xsmBreak` | `40rem`  | false    | Optional override for the extra small breakpoint.             |
-| `smBreak`  | `60rem`  | false    | Optional override for the small breakpoint.                   |
-| `mdBreak`  | `80rem`  | false    | Optional override for the medium breakpoint.                  |
-| `lgBreak`  | `100rem` | false    | Optional override for the large breakpoint.                   |
-| `xlgBreak` | `120rem` | false    | Optional override for the extra large breakpoint.             |
-
-### Col
-
-| Prop     | Default | Required | Description                                                                          |
-| -------- | ------- | -------- | ------------------------------------------------------------------------------------ |
-| `span`   | 12      | false    | The number of columns to span in a row, cannot exceed the columns allowed on parent. |
-| `offset` | `auto`  | false    | Optional amount of spaces from left to offset the column                             |

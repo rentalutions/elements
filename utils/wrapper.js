@@ -5,6 +5,9 @@ import PropTypes from "prop-types"
 import Base from "src/base"
 
 const DocBase = createGlobalStyle`
+  h1 {
+    font-weight: 200;
+  }
   img[alt="intro-personality"] {
     width: 100%;
     max-width: 120px;

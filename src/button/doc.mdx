@@ -4,14 +4,19 @@ route: /components/button
 ---
 
 import Playground from "utils/playground"
-import { Props } from "docz"
 import Status from "utils/status"
 import Prop from "utils/prop"
-import Button from "../button"
+import Button from "src/button"
 
 # Buttons
 
 <Status status="production" />
+
+## Installation
+
+```js
+import Button from "@rent_avail/elements/button"
+```
 
 ## Description
 
@@ -32,7 +37,7 @@ Buttons at Avail (like in Material Design) have uppercase text labels. Buttons c
 1. Border
 2. Background
 
-## Props
+### Props
 
 <Prop name="primary" type="boolean" defaultValue="false">
   A boolean attribute to determine the visual weight of a button.

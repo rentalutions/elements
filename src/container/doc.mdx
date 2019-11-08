@@ -3,12 +3,34 @@ name: Container
 route: /components/container
 ---
 
-import { Playground } from "docz"
-import Container from "../container"
+import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Container from "src/container"
 
 # Container
 
-Containers are used to prevent the layout from becoming unusable on large scale screens. They have a default max-width of `960px` or `80rem`.
+<Status status="production" />
+
+## Installation
+
+```js
+import Container from "@rent_avail/elements/container"
+```
+
+## Description
+
+Containers are used to prevent the layout from becoming unusable on large scale screens. They have a max-width and automatically center to their parent.
+
+## Anatomy
+
+### Props
+
+<Prop name="maxWidth" type="string" defaultValue="80rem">
+  The default maximum width that a container will stretch to.
+</Prop>
+
+## Usage
 
 <Playground>
   {/* Use the fullscreen mode to see the container in action. */}

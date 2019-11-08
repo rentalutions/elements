@@ -12,6 +12,7 @@ const StyledProp = styled.section`
     code {
       padding: 0.25rem 0.5rem;
       border-radius: 4px;
+      letter-spacing: 0.5px;
     }
     > *:not(:last-of-type) {
       margin-right: 2rem;
@@ -41,12 +42,12 @@ const StyledProp = styled.section`
 export default function Prop({ name, type, defaultValue, required, children, ...props }) {
   return (
     <StyledProp {...props}>
-      <h4 className="prop__line">
+      <h5 className="prop__line">
         <code className="name">{name}</code>
         <code className="type">{type}</code>
         {defaultValue && <code className="default">= {defaultValue}</code>}
         {required && !defaultValue && <code className="required">required</code>}
-      </h4>
+      </h5>
       <div className="prop__description">{children}</div>
     </StyledProp>
   )

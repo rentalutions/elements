@@ -5,12 +5,44 @@ route: /components/text-input
 
 import { useState } from "react"
 import Playground from "utils/playground"
-import Input from "../text-input"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Input from "src/text-input"
 import { Anchor } from "react-feather"
 
 # Text Inputs
 
+<Status status="production" />
+
+## Installation
+
+```js
+import Input from "@rent_avail/elements/text-input"
+```
+
+## Description
+
 Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
+
+## Anatomy
+
+### Props
+
+<Prop name="label" type="string" required>
+  The label of the input. Should describe what the user is expected to enter.
+</Prop>
+
+<Prop name="icon" type="ReactElement">
+  An icon that is positioned to the left of the text. Icons should be used to make inputs
+  more scannable and recognizable
+</Prop>
+
+<Prop name="required" type="boolean" defaultValue="false">
+  Require that the input not be empty, or pass validation before the containing form will
+  submit. Uses browser api require.
+</Prop>
+
+## Usage
 
 <Playground>
   <Input label="Payment Amount" icon={Anchor} />
