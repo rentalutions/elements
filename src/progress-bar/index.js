@@ -5,7 +5,7 @@ import { colors } from "../constants"
 
 /**
  *
- * @param {object} props
+ * @param {object} steps - An object of with a key of the step title and a boolean complete.
  */
 export function FixedProgress({ steps, ...props }) {
   return (
@@ -62,7 +62,18 @@ const StyledFixed = styled.div`
     background: ${colors.blue_500};
   }
 `
+/**
+ * FluidProgress Props
+ * @typedef {object} FluidProgressProps
+ * @prop {string} label - Label for the current step.
+ * @prop {number} current - Number of the current step.
+ * @prop {number} total - Length of total number of steps.
+ */
 
+/**
+ * Fluid Progress Bar
+ * @param {FluidProgressProps} props
+ */
 export function FluidProgress({ label, current, total, ...props }) {
   return (
     <StyledFluid {...props}>
