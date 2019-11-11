@@ -29,6 +29,10 @@ const Button = styled.button`
     background-color: ${colors.blue_500};
     color: ${colors.ui_100};
   }
+  &:disabled {
+    background-color: ${colors.ui_500};
+    color: ${colors.ui_700};
+  }
   ${({ primary }) => primary && primaryStyles}
 `
 
