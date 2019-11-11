@@ -109,7 +109,8 @@ export default {
           rel: "stylesheet",
           href:
             "https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Nunito:200,400,800&display=swap"
-        }
+        },
+        { rel: "icon", type: "image/png", href: "/icon-100.png" }
       ]
     }
   }

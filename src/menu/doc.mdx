@@ -6,7 +6,7 @@ route: /components/menus
 import Status from "utils/status"
 import Prop from "utils/prop"
 import Playground from "utils/playground"
-// import {DropDown, DropDownInput} from "src/menu"
+import { DropdownMenu, MenuItem } from "src/menu"
 
 # Menus
 
@@ -15,7 +15,7 @@ import Playground from "utils/playground"
 ## Installation
 
 ```js
-import { DropDown, DropDownInput } from "@rent_avail/elements/menu"
+import { Dropdown, DropdownInput, DropdownItem } from "@rent_avail/elements/menu"
 ```
 
 ## Description
@@ -29,3 +29,18 @@ Menus display a list of actions on a temporary surface. They appear when users i
 <Prop name="open" type="boolean" defaultValue="false">
   The boolean attribute that determines if the dropdown is open or not.
 </Prop>
+
+### DropDownInput Props
+
+<Prop name="open" type="boolean" defaultValue="false">
+  The boolean attribute that determines if the dropdown is open or not.
+</Prop>
+
+<Playground>
+  <DropdownMenu>
+    <MenuItem>Hello World</MenuItem>
+    <MenuItem>Hello Planet</MenuItem>
+    <MenuItem>Hello System</MenuItem>
+    <MenuItem>Hello Universe</MenuItem>
+  </DropdownMenu>
+</Playground>
