@@ -4,7 +4,7 @@
 
 A set of components built to be `composable`, `extendable`, and `usable`
 
-## [Documentation](https://avail-design.now.sh)
+## [Documentation](https://design.avail.co)
 
 ## Contributing
 
