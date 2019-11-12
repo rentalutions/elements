@@ -3,10 +3,12 @@ name: Dropdown Menus
 route: /components/menus
 ---
 
+import { useState, useRef } from "react"
 import Status from "utils/status"
 import Prop from "utils/prop"
 import Playground from "utils/playground"
 import { DropdownMenu, MenuItem } from "src/menu"
+import Button from "src/button"
 
 # Menus
 
@@ -14,8 +16,12 @@ import { DropdownMenu, MenuItem } from "src/menu"
 
 ## Installation
 
-```js
-import { Dropdown, DropdownInput, DropdownItem } from "@rent_avail/elements/menu"
+```
+import {
+  DropdownMenu,
+  MenuItem,
+  DropdownInput
+} from "@rent_avail/elements/menu"
 ```
 
 ## Description
@@ -24,23 +30,41 @@ Menus display a list of actions on a temporary surface. They appear when users i
 
 ## Anatomy
 
-### DropDown Props
+### Shared Props
 
-<Prop name="open" type="boolean" defaultValue="false">
+<Prop name="open" type="boolean" required>
   The boolean attribute that determines if the dropdown is open or not.
 </Prop>
+<Prop name="setOpen" type="function" required>
+  The boolean attribute that determines if the dropdown is open or not.
+</Prop>
+<Prop name="anchor" type="ref" defaultValue="null">
+  A reference to an element that the dropdown will anchor to.
+</Prop>
+
+### DropDownMenu Props
 
 ### DropDownInput Props
 
-<Prop name="open" type="boolean" defaultValue="false">
-  The boolean attribute that determines if the dropdown is open or not.
-</Prop>
+## Usage
 
 <Playground>
-  <DropdownMenu>
-    <MenuItem>Hello World</MenuItem>
-    <MenuItem>Hello Planet</MenuItem>
-    <MenuItem>Hello System</MenuItem>
-    <MenuItem>Hello Universe</MenuItem>
-  </DropdownMenu>
+  {() => {
+    const [open, set] = useState(false)
+    const anchor = useRef(null)
+    function handleOpen(e) {
+      set(true)
+    }
+    return (
+      <section className="dropdown__anchor" style={{ flex: 1 }}>
+        <Button onClick={handleOpen}>Open Dropdown</Button>
+        <DropdownMenu open={open} setOpen={set} anchor={anchor.current}>
+          <MenuItem>Hello World</MenuItem>
+          <MenuItem>Hello Planet</MenuItem>
+          <MenuItem>Hello System</MenuItem>
+          <MenuItem>Hello Universe</MenuItem>
+        </DropdownMenu>
+      </section>
+    )
+  }}
 </Playground>

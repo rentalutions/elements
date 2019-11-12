@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { forwardRef, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 import { Calendar as CalendarIcon } from "react-feather"
-import PropTypes from "prop-types"
-import { colors } from "../constants"
+// import PropTypes from "prop-types"
+// import { colors } from "../constants"
 import Input from "../text-input"
 import { useObserver } from "../hooks"
 import Calendar from "./calendar"
@@ -50,6 +52,7 @@ const DateSearch = forwardRef(({ onChange, onSelect, ...props }, ref) => {
   return (
     <StyledSearch tabIndex="-1" ref={parentRef}>
       <div
+        role="region"
         className="scrim"
         onClick={e => {
           if (e.target == e.currentTarget) setIsFocused(false)
