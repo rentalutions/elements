@@ -10,6 +10,7 @@ const StyledProp = styled.section`
     padding-bottom: 1rem;
     border-bottom: 2px solid ${colors.ui_300};
     code {
+      font-family: "IBM Plex Mono", monospace;
       padding: 0.25rem 0.5rem;
       border-radius: 4px;
       letter-spacing: 0.5px;
