@@ -14,7 +14,7 @@ export function useMeasure() {
   const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)))
   // eslint-disable-next-line no-sequences
   useEffect(() => (ro.observe(ref.current), ro.disconnect), [])
-  return [{ ref }, bounds]
+  return [ref, bounds]
 }
 
 export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
