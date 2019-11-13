@@ -46,35 +46,43 @@ export default {
       h1: css`
         all: unset;
         display: block;
-        font-size: 4rem !important;
+        font-size: 5rem !important;
         font-weight: 200 !important;
-        margin-top: 5rem;
+        margin-top: 4rem;
         margin-bottom: 3rem;
       `,
-      // h2: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 4rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h3: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 3rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h4: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 2rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h5: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 1.5rem !important;
-      //   font-weight: 800 !important;
-      // `,
+      h2: css`
+        all: unset;
+        display: block;
+        font-size: 4rem !important;
+        font-weight: 400 !important;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+      `,
+      h3: css`
+        all: unset;
+        display: block;
+        font-size: 3rem !important;
+        font-weight: 400 !important;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      `,
+      h4: css`
+        all: unset;
+        display: block;
+        font-size: 2rem !important;
+        font-weight: 400 !important;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      `,
+      h5: css`
+        all: unset;
+        display: block;
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      `,
       a: css`
         font-weight: 400 !important;
       `,
@@ -109,7 +117,8 @@ export default {
           rel: "stylesheet",
           href:
             "https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Nunito:200,400,800&display=swap"
-        }
+        },
+        { rel: "icon", type: "image/png", href: "/icon-100.png" }
       ]
     }
   }

@@ -14,7 +14,7 @@ export function useMeasure() {
   const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)))
   // eslint-disable-next-line no-sequences
   useEffect(() => (ro.observe(ref.current), ro.disconnect), [])
-  return [{ ref }, bounds]
+  return [ref, bounds]
 }
 
 export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
@@ -23,7 +23,7 @@ export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
-    observer.current = new IntersectionObserver(([entry]) => setEntry(entry), {
+    observer.current = new IntersectionObserver(([e]) => setEntry(e), {
       root,
       rootMargin,
       threshold

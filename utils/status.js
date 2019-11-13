@@ -33,7 +33,5 @@ export default function Status({ status = "production", className, ...props }) {
 }
 
 Status.propTypes = {
-  status: PropTypes.oneOf(
-    PropTypes.arrayOf(["production", "beta", "alpha", "deprecated"])
-  )
+  status: PropTypes.oneOf(["production", "beta", "alpha", "deprecated"])
 }
