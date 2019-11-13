@@ -23,7 +23,7 @@ export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
-    observer.current = new IntersectionObserver(([entry]) => setEntry(entry), {
+    observer.current = new IntersectionObserver(([e]) => setEntry(e), {
       root,
       rootMargin,
       threshold
