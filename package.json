@@ -72,7 +72,7 @@
   "dependencies": {
     "calendar-dates": "^2.6.1",
     "clsx": "^1.0.4",
-    "intersection-observer-polyfill": "^0.1.0",
+    "intersection-observer": "^0.7.0",
     "resize-observer-polyfill": "^1.5.1"
   }
 }

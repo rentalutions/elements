@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
-import IntersectionObserver from "intersection-observer-polyfill"
+import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
 export function useMeasure() {
