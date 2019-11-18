@@ -11,9 +11,12 @@ export function useMeasure() {
     width: 0,
     height: 0
   })
+  if (typeof window === "undefined") return [ref, bounds] // bail on server render.
   const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)))
-  // eslint-disable-next-line no-sequences
-  useEffect(() => (ro.observe(ref.current), ro.disconnect), [])
+  useEffect(() => {
+    ro.observe(ref.current)
+    return ro.disconnect
+  }, [])
   return [ref, bounds]
 }
 
@@ -23,11 +26,14 @@ export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
-    observer.current = new IntersectionObserver(([e]) => setEntry(e), {
-      root,
-      rootMargin,
-      threshold
-    })
+    if (typeof window !== "undefined") {
+      // Only set observer if window exists.
+      observer.current = new IntersectionObserver(([e]) => setEntry(e), {
+        root,
+        rootMargin,
+        threshold
+      })
+    }
     if (target) observer.current.observe(target)
     return () => observer.current.disconnect()
   }, [target])
@@ -35,7 +41,7 @@ export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
 }
 
 export function usePortal() {
-  if (typeof window === "undefined") return null // Don't bother if we're on the server.
+  if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef(null)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")
