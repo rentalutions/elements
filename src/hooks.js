@@ -3,7 +3,7 @@ import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
-export function useMeasure() {
+export function useResize() {
   const ref = useRef()
   const [bounds, set] = useState({
     left: 0,
@@ -20,9 +20,9 @@ export function useMeasure() {
   return [ref, bounds]
 }
 
-export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
+export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
   const [entry, setEntry] = useState({})
-  const [target, setTarget] = useState(null)
+  const target = useRef(null)
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
@@ -34,10 +34,10 @@ export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
         threshold
       })
     }
-    if (target) observer.current.observe(target)
+    if (target.current) observer.current.observe(target.current)
     return () => observer.current.disconnect()
   }, [target])
-  return [setTarget, entry]
+  return [target, entry]
 }
 
 export function usePortal() {
