@@ -29,7 +29,7 @@ export default createGlobalStyle`
     font-family: "Nunito", sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
-    line-height: 1.333;
+    line-height: 1.334;
     color: ${colors.ui_900};
   }
 

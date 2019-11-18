@@ -7,12 +7,12 @@ route: /hooks
 
 These hooks were written for general use. They abstract logic away from the render function and are generally pretty fun to use.
 
-## useMeasure
+## useResize
 
 Returns the bounds for a given element.
 
 ```js
-const [ref, { top, left, width, height }] = useMeasure()
+const [ref, { top, left, width, height }] = useResize()
 return (
   <section ref={ref}>
     <h1>Hello World</h1>
@@ -20,14 +20,13 @@ return (
 )
 ```
 
-## useObserver
+## useIntersect
 
 Returns the entry state (whether an element is in the viewport) for a target. The `IntersectionObserver` spec allows the target to be a NodeList but this hook only set the entry properties for the first entry, so beware I guess.
 
 ```js
-const ref = useRef(null)
 const [
-  setTarget,
+  ref,
   {
     boundingClientRect,
     intersectionRatio,
@@ -37,10 +36,7 @@ const [
     target,
     time
   }
-] = useObserver() // options can be added here.
-useEffect(() => {
-  if (ref.current) setTarget(ref.current)
-}, [])
+] = useIntersect() // options can be added here.
 return (
   <section ref={ref}>
     <h1>Hello World</h1>

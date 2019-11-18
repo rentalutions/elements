@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
-import IntersectionObserver from "intersection-observer-polyfill"
+import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
-export function useMeasure() {
+export function useResize() {
   const ref = useRef()
   const [bounds, set] = useState({
     left: 0,
@@ -11,31 +11,37 @@ export function useMeasure() {
     width: 0,
     height: 0
   })
+  if (typeof window === "undefined") return [ref, bounds] // bail on server render.
   const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)))
-  // eslint-disable-next-line no-sequences
-  useEffect(() => (ro.observe(ref.current), ro.disconnect), [])
+  useEffect(() => {
+    ro.observe(ref.current)
+    return ro.disconnect
+  }, [])
   return [ref, bounds]
 }
 
-export function useObserver({ root = null, rootMargin, threshold = 0 } = {}) {
+export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
   const [entry, setEntry] = useState({})
-  const [target, setTarget] = useState(null)
+  const target = useRef(null)
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
-    observer.current = new IntersectionObserver(([e]) => setEntry(e), {
-      root,
-      rootMargin,
-      threshold
-    })
-    if (target) observer.current.observe(target)
+    if (typeof window !== "undefined") {
+      // Only set observer if window exists.
+      observer.current = new IntersectionObserver(([e]) => setEntry(e), {
+        root,
+        rootMargin,
+        threshold
+      })
+    }
+    if (target.current) observer.current.observe(target.current)
     return () => observer.current.disconnect()
   }, [target])
-  return [setTarget, entry]
+  return [target, entry]
 }
 
 export function usePortal() {
-  if (typeof window === "undefined") return null // Don't bother if we're on the server.
+  if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef(null)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")
