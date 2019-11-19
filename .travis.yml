@@ -1,16 +1,18 @@
 language: node_js
+node_js: node
 stages:
-- test
-- compile
-- deploy
+  - test
+  - compile
+  - name: deploy
+    if: branch = master
 jobs:
   include:
-  - stage: test
-    script: npm test
-  - stage: compile
-    script: npm run build:package
-  - stage: deploy
-    script: npm run publish:package
+    - stage: test
+      script: npm test
+    - stage: compile
+      script: npm run build:package
+    - stage: deploy
+      script: npm run publish:package
 deploy:
   provider: npm
   email: patrick@dreadful.design
