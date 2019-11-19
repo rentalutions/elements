@@ -1,15 +1,9 @@
 language: node_js
 node_js: node
-stages:
-  - test
-  - compile
-jobs:
-  include:
-    - stage: test
-      script: npm test
-    - stage: compile
-      script: npm run build:package
+before_script: npm test
+script: npm run build && cd dist
 deploy:
+  skip_cleanup: true
   provider: npm
   email: patrick@dreadful.design
   on:
