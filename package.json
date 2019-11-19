@@ -20,6 +20,9 @@
     "build:docs": "docz build",
     "now-build": "npm run build:docs"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rentalutions/elements.git"
