@@ -4,31 +4,31 @@ import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
 export function useResize() {
-  const ref = useRef()
+  const ref = useRef(null)
   const [bounds, set] = useState({
     left: 0,
     top: 0,
     width: 0,
     height: 0
   })
-  if (typeof window === "undefined") return [ref, bounds] // bail on server render.
+  // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
   const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)))
   useEffect(() => {
-    ro.observe(ref.current)
-    return ro.disconnect
+    if (ref.current) ro.observe(ref.current)
+    return () => ro.disconnect()
   }, [])
   return [ref, bounds]
 }
 
 export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
-  const [entry, setEntry] = useState({})
+  const [result, setResult] = useState({})
   const target = useRef(null)
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
     if (typeof window !== "undefined") {
       // Only set observer if window exists.
-      observer.current = new IntersectionObserver(([e]) => setEntry(e), {
+      observer.current = new IntersectionObserver(([entry]) => setResult(entry), {
         root,
         rootMargin,
         threshold
@@ -37,11 +37,11 @@ export function useIntersection({ root = null, rootMargin, threshold = 0 } = {})
     if (target.current) observer.current.observe(target.current)
     return () => observer.current.disconnect()
   }, [target])
-  return [target, entry]
+  return [target, result]
 }
 
 export function usePortal() {
-  if (typeof window === "undefined") return null // bail on server render.
+  if (typeof window === "undefined") return { current: null } // bail on server render.
   const rootElement = useRef(null)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")
