@@ -12,6 +12,6 @@ describe("<Avatar />", () => {
       <Avatar small initials="PK" name="Patrick Krawczykowski" />
     )
     const result = getByText("PK")
-    expect(result).not.toHaveTextContent()
+    expect(result).not.toHaveTextContent("Patrick Krawczykowski")
   })
 })
