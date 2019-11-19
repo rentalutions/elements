@@ -1,0 +1,23 @@
+language: node_js
+node_js: node
+stages:
+  - test
+  - compile
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: test
+      script: npm test
+    - stage: compile
+      script: npm run build:package
+    - stage: deploy
+      script: npm run publish:package
+deploy:
+  provider: npm
+  email: patrick@dreadful.design
+  on:
+    tags: true
+    branch: master
+  api_key:
+    secure: POlPGjbUrEem/aFQW08tUSmoxPnH+BG0uxlpWyMAxoeQSAu6riNvOa7+ZEjPS8Nb8GMBAoG1HJR7p/NW5aUb2f8VcmERxd/uDQPC5i7i9sDKzxE20O06FjOobi1vwVQb/Hyylf/JAq5aJ7UBs34YUsX25h5LCaxU4MAHHeC7GAl5+xkclrCJh1lJq6t17QX3h9cTvMyYineM/m/BKahhdoo5IhrB+rAhX46bcYkOHjWK1D533KN9FCBHPZnizEz7wh/XuHDpY25qC4PCLdnAHxk4muXAd6is2fvbOLBiEZu56CHFXk+8fkWoW/iKvUSKuKldgsaGhuVKqG0/o/yXPmyuiGdv2rHKDRpjUnGst5ouEDbRaBH6ucw/J/rMRmB/YsRYAVirNKXAuQrJlgOv/YZ2a34fFDK7rXflFMInTYoGDEwNmB6yOxmgRDYOGmnr3UE26H9jgm5S4Ws5Q/lnd0+QQX+ayf4CUkcwuHEObISXgR1K6P7aVxl2/2zaHD0eu13DOBJJoIxeCky0qMUzmShoLlJiEq86k7LmIKPYpgyZnnqhI/OKvKs2BtoV4f7hWvJhczGQK5mDqzE0LKYEjhuX4WtKIVvlUqLzeCVEbKyQ5cxmBwfHQvnenoxDh6Ar16tbDNslcFh03Akprnyda26PGRH6ffXv3EgHEBvf5hQ=
