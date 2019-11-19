@@ -48,7 +48,7 @@ const StyledRadioButton = styled.label`
 `
 
 export default forwardRef(({ children, className, disabled, ...props }, ref) => (
-  <StyledRadioButton className={className} disabled={disabled}>
+  <StyledRadioButton className={className}>
     <input type="radio" {...props} ref={ref} disabled={disabled} />
     <div className="radio__target" />
     {children && <span className="label">{children}</span>}
