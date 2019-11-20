@@ -5,13 +5,39 @@ route: /components/modal
 
 import { useState } from "react"
 import Playground from "utils/playground"
-import { colors } from "../constants"
-import Modal from "../modal"
-import Button from "../button"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import { colors } from "src/constants"
+import Modal from "src/modal"
+import Button from "src/button"
 
 # Modals
 
+<Status status="production" />
+
+## Installation
+
+```js
+import Modal from "@rent_avail/elements/modal"
+```
+
+## Description
+
 Modals are ways to ask a user for confirmation or to take action without losing context of the current screen. Modals should always be something that would best be done now, but don't make sense to navigate the user away from their current process for.
+
+## Anatomy
+
+### Props
+
+<Prop name="open" type="boolean" defaultValue="false">
+  Boolean that determines whether the modal is currently shown.
+</Prop>
+
+<Prop name="toggle" type="function" defaultValue="() => null">
+  Callback function that should update the state of the open boolean.
+</Prop>
+
+## Usage
 
 <Playground>
   {() => {

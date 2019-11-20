@@ -4,13 +4,35 @@ route: /components/checkbox
 ---
 
 import Playground from "utils/playground"
-import Checkbox from "./index.js"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Checkbox from "src/checkbox"
 
 # Checkboxes
 
+<Status status="production" />
+
+## Installation
+
+```javascript
+import Checkbox from "@rent_avail/elements/checkbox"
+```
+
+## Description
+
 Checkboxes are user selection tools when multiple options can be chosen at the same time. A user should be able to select one or more options from a set.
 
-## Basic
+## Anatomy
+
+### Props
+
+<Prop name="checked" type="boolean" defaultValue="false">
+  Boolean to determine the visual state of the checkbox.
+</Prop>
+
+## Usage
+
+### Basic
 
 <Playground>
   <Checkbox />
@@ -18,7 +40,9 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
   <Checkbox />
 </Playground>
 
-## With a label
+### With a label
+
+A checkbox's children will render as the lable to the right of the element. Checkbox's default to inline and don't have any native padding or margin.
 
 <Playground column>
   <h4>Which kinds of pets do you allow?</h4>
@@ -27,6 +51,6 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
   <Checkbox>Allow Parrots</Checkbox>
 </Playground>
 
-### TODO
+#### TODO
 
 1. Build an indeterminate state for the checkbox

@@ -5,7 +5,7 @@ import { colors } from "../constants"
 const StyledRadioButton = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: ${isDisabled => (isDisabled ? "not-allowed" : "cursor")};
   input[type="radio"] {
     width: 0;
     height: 0;
@@ -38,9 +38,11 @@ const StyledRadioButton = styled.label`
       background: ${colors.blue_500};
     }
   }
+  input:disabled {
+    pointer-events: none;
+  }
   input:disabled ~ .radio__target {
     border: 2px solid ${colors.ui_300};
-    cursor: disabled;
   }
   .label {
     margin-left: 1rem;
@@ -48,7 +50,7 @@ const StyledRadioButton = styled.label`
 `
 
 export default forwardRef(({ children, className, disabled, ...props }, ref) => (
-  <StyledRadioButton className={className} disabled={disabled}>
+  <StyledRadioButton className={className} isDisabled={disabled}>
     <input type="radio" {...props} ref={ref} disabled={disabled} />
     <div className="radio__target" />
     {children && <span className="label">{children}</span>}

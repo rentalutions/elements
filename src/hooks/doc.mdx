@@ -1,0 +1,71 @@
+---
+name: Hooks
+route: /hooks
+---
+
+# Hooks
+
+These hooks were written for general use. They abstract logic away from the render function and are generally pretty fun to use.
+
+## useResize
+
+Returns the bounds for a given element.
+
+```js
+const [ref, { top, left, width, height }] = useResize()
+return (
+  <section ref={ref}>
+    <h1>Hello World</h1>
+  </section>
+)
+```
+
+## useIntersect
+
+Returns the entry state (whether an element is in the viewport) for a target. The `IntersectionObserver` spec allows the target to be a NodeList but this hook only set the entry properties for the first entry, so beware I guess.
+
+```js
+const [
+  ref,
+  {
+    boundingClientRect,
+    intersectionRatio,
+    intersectionRect,
+    isIntersecting,
+    rootBounds,
+    target,
+    time
+  }
+] = useIntersect() // options can be added here.
+return (
+  <section ref={ref}>
+    <h1>Hello World</h1>
+  </section>
+)
+```
+
+## usePortal
+
+Returns a target for a portal to attach to.
+
+```js
+const target = usePortal()
+const [open, set] = useState()
+return open
+  ? createPortal(
+      <section onClick={e => set(false) /* Close Portal */}>
+        <h1>hello world</h1>
+      </section>,
+      target
+    )
+  : null
+```
+
+## useDates
+
+Returns an array of dates of the current or specified month as well as actions to get the next and previous month.
+
+```js
+const [dates, next, prev] = useDates()
+return dates.map(weeks => weeks.map(day => <h2>{day.iso}</h2>))
+```

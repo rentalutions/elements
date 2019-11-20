@@ -4,10 +4,19 @@ route: /components/button
 ---
 
 import Playground from "utils/playground"
-import { Props } from "docz"
-import Button from "../button"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Button from "src/button"
 
 # Buttons
+
+<Status status="production" />
+
+## Installation
+
+```js
+import Button from "@rent_avail/elements/button"
+```
 
 ## Description
 
@@ -21,17 +30,23 @@ Buttons at Avail (like in Material Design) have uppercase text labels. Buttons c
   style={{ border: "none" }}
   width="840"
   height="600"
-  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FComponents%3Fnode-id%3D144%253A0"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FProduct%3Fnode-id%3D802%253A1599"
   allowfullscreen
 />
 
 1. Border
 2. Background
 
-| Props   | Default | Required | Description                                                                               |
-| ------- | ------- | -------- | ----------------------------------------------------------------------------------------- |
-| primary | false   | false    | A boolean attribute to determine the visual weight of a button.                           |
-| subtle  | false   | false    | A boolean attribute to determine the visual weight of a button. Is overrriden by primary. |
+### Props
+
+<Prop name="primary" type="boolean" defaultValue="false">
+  A boolean attribute to determine the visual weight of a button.
+</Prop>
+
+<Prop name="subtle" type="boolean">
+  A boolean attribute to determine the visual weight of a button. Is overrriden by
+  primary.
+</Prop>
 
 ## Usage
 

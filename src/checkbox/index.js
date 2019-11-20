@@ -1,12 +1,11 @@
 import React, { forwardRef } from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
-import { colors } from "../constants"
+import { colors } from "src/constants"
 
 const StyledCheckbox = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: pointer;
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
   input {
     opacity: 0;
     width: 0;
@@ -31,6 +30,7 @@ const StyledCheckbox = styled.label`
       will-change: stroke-dashoffset;
     }
   }
+
   input:checked ~ .input__target {
     border: 2px solid ${colors.blue_500};
     background: ${colors.blue_500};
@@ -39,14 +39,18 @@ const StyledCheckbox = styled.label`
     }
   }
 
+  input:disabled ~ .input__target {
+    border: 2px solid ${colors.ui_300};
+  }
+
   .label {
     margin-left: 1rem;
   }
 `
 
-const Checkbox = forwardRef(({ children, className, ...props }, ref) => (
-  <StyledCheckbox className={className}>
-    <input type="checkbox" ref={ref} {...props} />
+const Checkbox = forwardRef(({ children, className, disabled, ...props }, ref) => (
+  <StyledCheckbox className={className} isDisabled={disabled}>
+    <input type="checkbox" ref={ref} disabled={disabled} {...props} />
     <div className="input__target">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -65,15 +69,5 @@ const Checkbox = forwardRef(({ children, className, ...props }, ref) => (
     {children && <span className="label">{children}</span>}
   </StyledCheckbox>
 ))
-
-Checkbox.defaultProps = {
-  children: null,
-  className: null
-}
-
-Checkbox.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
-}
 
 export default Checkbox

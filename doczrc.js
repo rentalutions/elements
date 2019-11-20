@@ -1,9 +1,17 @@
 import { css } from "styled-components"
-
+import { colors } from "src/constants"
 export default {
   title: "Avail Design Kit",
   wrapper: "utils/wrapper.js",
-  menu: ["Getting Started", "Colors", "Baseline Grids", "Component Overview", "Base"],
+  menu: [
+    "Getting Started",
+    "Colors",
+    "Typography",
+    "Spacing",
+    "Motion",
+    "Component Overview",
+    "Base"
+  ],
   base: "/",
   public: "/public",
   // theme: "utils/theme.js"
@@ -11,8 +19,8 @@ export default {
     mode: "light",
     showPlaygroundEditor: true,
     fonts: {
-      display: "font-family: 'Nunito', sans-serif",
-      ui: "font-family: 'Nunito', sans-serif",
+      display: "'Nunito', sans-serif",
+      ui: "'Nunito', sans-serif",
       mono: "font-family: 'IBM Plex Mono', monospace"
     },
     colors: {
@@ -30,39 +38,51 @@ export default {
         font-size: 1.33rem;
       `,
       code: css`
-        font-family: "IBM Plex Mono", monospace;
+        font-family: "IBM Plex Mono", monospace !important;
+        background: ${colors.ui_300};
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
       `,
-      // h1: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 5rem !important;
-      //   font-weight: 200 !important;
-      //   margin-top: 5rem;
-      // `,
-      // h2: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 4rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h3: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 3rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h4: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 2rem !important;
-      //   font-weight: 400 !important;
-      // `,
-      // h5: css`
-      //   all: unset;
-      //   display: block;
-      //   font-size: 1.5rem !important;
-      //   font-weight: 800 !important;
-      // `,
+      h1: css`
+        all: unset;
+        display: block;
+        font-size: 5rem !important;
+        font-weight: 200 !important;
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+      `,
+      h2: css`
+        all: unset;
+        display: block;
+        font-size: 4rem !important;
+        font-weight: 400 !important;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+      `,
+      h3: css`
+        all: unset;
+        display: block;
+        font-size: 3rem !important;
+        font-weight: 400 !important;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      `,
+      h4: css`
+        all: unset;
+        display: block;
+        font-size: 2rem !important;
+        font-weight: 400 !important;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      `,
+      h5: css`
+        all: unset;
+        display: block;
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      `,
       a: css`
         font-weight: 400 !important;
       `,
@@ -75,6 +95,13 @@ export default {
             display: none !important;
           }
         }
+      `,
+      table: css`
+        text-align: left;
+        vertical-align: text-top;
+      `,
+      td: css`
+        padding: 1rem;
       `
     }
   },
@@ -90,7 +117,8 @@ export default {
           rel: "stylesheet",
           href:
             "https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Nunito:200,400,800&display=swap"
-        }
+        },
+        { rel: "icon", type: "image/png", href: "/icon-100.png" }
       ]
     }
   }

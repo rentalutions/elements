@@ -1,20 +1,28 @@
 {
   "name": "@rent_avail/elements",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "A suite of elements for the consistent and responsive UI",
   "keywords": [
     "ui",
     "ui library",
-    "design system"
+    "design system",
+    "react",
+    "styled components",
+    "a11y"
   ],
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
     "clean": "rimraf dist",
     "copy": "cp package.json dist",
-    "build": "npm run clean && babel src -d dist && npm run copy",
-    "dist": "npm run build && cd dist && npm publish --access=public",
-    "test": "jest",
-    "start": "docz dev",
-    "now-build": "docz build"
+    "build:package": "npm run clean && babel src -d dist && npm run copy",
+    "publish:package": "npm run build:package && cd dist && npm publish --access=public",
+    "start:docs": "docz dev",
+    "build:docs": "docz build",
+    "now-build": "npm run build:docs"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -34,6 +42,9 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.2.1",
     "babel-eslint": "^10.0.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.2",
@@ -42,14 +53,20 @@
     "docz-theme-default": "^1.2.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-spring": "^8.0.27",
+    "react-test-renderer": "^16.12.0",
+    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^2.6.3",
     "styled-components": "^4.3.2"
   },
@@ -62,7 +79,9 @@
     "styled-components": "^4.3.X"
   },
   "dependencies": {
+    "calendar-dates": "^2.6.1",
     "clsx": "^1.0.4",
+    "intersection-observer": "^0.7.0",
     "resize-observer-polyfill": "^1.5.1"
   }
 }

@@ -29,5 +29,11 @@ export const colors = {
   straw_700: "#e7e4ba",
   straw_900: "#a2a082",
 
-  red_500: "#ec4261"
+  red_300: "#F6A5B4",
+  red_500: "#EC4261",
+
+  purple_300: "#B7B5EE",
+  purple_500: "#6965D5"
 }
+
+export const mediaQueries = ["40rem", "60rem", "80rem", "100rem", "120rem"]

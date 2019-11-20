@@ -3,44 +3,48 @@ name: Progress Bar
 route: /components/progress-bar
 ---
 
-import { Playground } from "docz"
-import { FixedProgress, FluidProgress } from "../progress-bar"
+import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import { FixedProgress, FluidProgress } from "src/progress-bar"
 
 # Progress Bar
 
-```
-import {
-  FixedProgress,
-  FluidProgress
-} from "@rent_avail/elements/progress-bar"
+<Status status="production" />
+
+## Installation
+
+```js
+import { FixedProgress, FluidProgress } from "@rent_avail/elements/progress-bar"
 ```
 
 ## Description
 
 A progress bar indicates the status of a user inside a process. It help a user understand what they've accomplished and what is yet to come. This gives them a realistic idea of time to completion and lowers uncertainty.
 
-## Anatomy
-
 <iframe
   style={{ border: "none" }}
   width="840"
   height="600"
   src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FComponents%3Fnode-id%3D132%253A148"
-  allowfullscreen
+  allowFullScreen
 />
 
-### Fixed Progress
+## Fixed Progress Anatomy
 
 1. Step - `.step`
 2. Step Label - `.label`
 
 A fixed progress bar has a certain amount of steps and those steps are done in a set order. A fixed bar is used for smaller amounts of steps where the process won't be completed in one sitting.
 
-| Prop  | Default | Required | Description                                                                                  |
-| ----- | ------- | -------- | -------------------------------------------------------------------------------------------- |
-| Steps | null    | true     | An object with where the key is the step label and the value is whether the step is complete |
+### Props
 
-### Fluid Progress
+<Prop name="steps" type="object" required>
+  An object with where the key is the step label and the value is whether the step is
+  complete.
+</Prop>
+
+## Fluid Progress Anatomy
 
 3. Progress Bar -`.progress`
 4. Current label - `.label`
@@ -49,15 +53,23 @@ A fixed progress bar has a certain amount of steps and those steps are done in a
 
 A fluid progress bar can have an almost unlimited amount of steps. It is usually used when the process contains a lot of smaller pieces and can be accomplished in one sitting.
 
-| Prop    | Default | Required | Description                                                                        |
-| ------- | ------- | -------- | ---------------------------------------------------------------------------------- |
-| label   | null    | true     | The label currently displayed on the progressBar, should be updated on each render |
-| current | null    | true     | The index of the current step.                                                     |
-| total   | null    | true     | The length of the total steps                                                      |
+### Props
+
+<Prop name="label" type="string">
+  The label currently displayed on the progressBar, should be updated on each render.
+</Prop>
+
+<Prop name="current" type="number" required>
+  The index of the current step.
+</Prop>
+
+<Prop name="total" type="number" required>
+  The length of the total steps.
+</Prop>
 
 ## Usage
 
-<Playground>
+<Playground column>
   <FixedProgress
     steps={{
       "Report Submitted": true,
@@ -67,7 +79,7 @@ A fluid progress bar can have an almost unlimited amount of steps. It is usually
   />
 </Playground>
 
-<Playground>
+<Playground column>
   <FluidProgress label="Contact info" current={2} total={6} />
 </Playground>
 

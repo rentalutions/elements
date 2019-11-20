@@ -5,13 +5,13 @@ import { colors } from "../constants"
 
 /**
  *
- * @param {object} props
+ * @param {object} steps - An object of with a key of the step title and a boolean complete.
  */
 export function FixedProgress({ steps, ...props }) {
   return (
     <StyledFixed {...props}>
       {Object.keys(steps).map(step => (
-        <div className={`step ${steps[step] && "complete"}`}>
+        <div key={step} className={`step ${steps[step] && "complete"}`}>
           <p className="small label">{step}</p>
         </div>
       ))}
@@ -46,7 +46,13 @@ const StyledFixed = styled.div`
   }
   .step:first-of-type::before {
     border-radius: 1rem 0 0 1rem;
-    clip-path: polygon(0% 0%, calc(100% - 1rem) 0%, 100% 50%, calc(100% - 1rem) 100%, 0% 100%);
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 1rem) 0%,
+      100% 50%,
+      calc(100% - 1rem) 100%,
+      0% 100%
+    );
   }
   .step:last-of-type::before {
     border-radius: 0 1rem 1rem 0;
@@ -56,10 +62,21 @@ const StyledFixed = styled.div`
     background: ${colors.blue_500};
   }
 `
+/**
+ * FluidProgress Props
+ * @typedef {object} FluidProgressProps
+ * @prop {string} label - Label for the current step.
+ * @prop {number} current - Number of the current step.
+ * @prop {number} total - Length of total number of steps.
+ */
 
-export function FluidProgress({ label, current, total }) {
+/**
+ * Fluid Progress Bar
+ * @param {FluidProgressProps} props
+ */
+export function FluidProgress({ label, current, total, ...props }) {
   return (
-    <StyledFluid>
+    <StyledFluid {...props}>
       <div className="track">
         <div className="progress" style={{ width: `${(current / total) * 100}%` }} />
         <p className="steps">{`${current} / ${total}`}</p>

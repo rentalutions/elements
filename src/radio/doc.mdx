@@ -3,23 +3,55 @@ name: Radio Buttons
 route: /components/radio-button
 ---
 
-import { Playground } from "docz"
-import Radio, { RadioGroup } from "../radio"
+import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Radio, { RadioGroup } from "src/radio"
 
 # Radio Buttons
 
+<Status status="production" />
+
+## Installation
+
+```js
+import Radio, { RadioGroup } from "@rent_avail/elements/radio"
+```
+
+## Description
+
 Radio buttons are used to select one option from a set. Use radio buttons when it's helpful for the user to see all the available choices when selecting.
+
+## Radio Anatomy
+
+### Props
+
+<Prop name="checked" type="boolean">
+  Controls the checked nature of the radio button to give the user feedback.
+</Prop>
+
+## RadioGroup Anatomy
+
+### Props
+
+<Prop name="inline" type="boolean">
+  Controls whether the radio buttons render on the same line or on different rows.
+</Prop>
+
+## Usage
+
+### Radio
 
 <Playground>
   <Radio checked />
   <Radio />
 </Playground>
 
-## Radio Group
+### Radio Group
 
 To easily group buttons into usable forms, use the `RadioGroup` component
 
-<Playground>
+<Playground column>
   <RadioGroup inline>
     <Radio name="user-type" />
     <Radio name="user-type" />

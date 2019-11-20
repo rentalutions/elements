@@ -4,9 +4,9 @@ import styled from "styled-components"
 import { useTransition, animated, config } from "react-spring"
 import PropTypes from "prop-types"
 import { X } from "react-feather"
-import { colors } from "../constants"
-import { usePortal } from "../hooks"
-import Container from "../container"
+import { colors } from "src/constants"
+import { usePortal } from "src/hooks"
+import Container from "src/container"
 
 const StyledFullPageModal = styled(animated.section)`
   position: fixed;
@@ -41,7 +41,9 @@ const FullPageModal = ({ children, open, toggle, ...passedProps }) => {
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
-    return () => (document.body.style.overflow = "initial")
+    return () => {
+      document.body.style.overflow = "initial"
+    }
   }, [open])
   return animation.map(({ item, key, props }) => {
     return item
