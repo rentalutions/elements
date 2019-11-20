@@ -4,16 +4,21 @@ import Radio from "src/radio"
 
 describe("<Radio />", () => {
   it("Is checked when toggled.", () => {
-    const { getByTestId } = render(<Radio data-testid="radio-input" />)
-    const element = getByTestId("radio-input")
-    expect(element).not.toBeChecked()
+    const { container, getByTestId } = render(<Radio data-testid="input" />)
+    const element = container.firstChild
+    const input = getByTestId("input")
+    expect(input).not.toBeChecked()
     fireEvent.click(element)
-    expect(element).toBeChecked()
+    expect(input).toBeChecked()
   })
   it("Cannot be checked when disabled.", () => {
-    const { getByTestId } = render(<Radio data-testid="radio-input" disabled />)
-    const element = getByTestId("radio-input")
+    const { getByTestId, container } = render(
+      <Radio data-testid="radio-input" disabled />
+    )
+    const element = container.firstChild
+    const input = getByTestId("radio-input")
     fireEvent.click(element)
-    expect(element).toBeChecked()
+    expect(input).not.toBeChecked()
+    expect(input).toBeDisabled()
   })
 })
