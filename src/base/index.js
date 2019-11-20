@@ -67,7 +67,7 @@ export default createGlobalStyle`
     h1 {
       font-size: 4rem;
     }
-    h3 {
+    h2 {
       font-size: 3rem;
     }
     h3 {
