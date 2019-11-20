@@ -33,34 +33,35 @@ export default createGlobalStyle`
     color: ${colors.ui_900};
   }
 
-  h1,h2,h3,h4,h5 {
-    line-height: 1.25;
-  }
-
   h1,
   .hero {
     font-size: 5rem;
     font-weight: 200;
+    line-height: 1.2;
   }
   h2,
   .headline {
     font-size: 4rem;
     font-weight: 400;
+    line-height: 1.25;
   }
   h3,
   .title {
     font-size: 3rem;
     font-weight: 400;
+    line-height: 1.334;
   }
   h4,
   .subtitle {
     font-size: 2rem;
     font-weight: 400;
+    line-height: 1.5;
   }
   h5,
   .emphasis {
     font-size: 1.5rem;
     font-weight: 800;
+    line-height: 1.334;
   }
 
   .no-sizing {
