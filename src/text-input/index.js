@@ -1,6 +1,7 @@
+import PropTypes from "prop-types"
 import React, { forwardRef, useState, useEffect } from "react"
 import styled from "styled-components"
-import { colors } from "../constants"
+import { colors } from "src/constants"
 
 const StyledInput = styled.label`
   position: relative;
@@ -55,23 +56,24 @@ const StyledInput = styled.label`
   }
 `
 
-export default forwardRef(
-  ({ className, icon: Icon, label, onChange, initialValue = false, ...props }, ref) => {
-    const [hasValue, setHasValue] = useState(initialValue)
-    const handleChange = e => {
-      if (onChange) onChange(e)
-      if (e.target.value.length) setHasValue(true)
-      else setHasValue(false)
-    }
-    useEffect(() => {
-      if (props.value && props.value.length) setHasValue(true)
-    }, [props.value])
-    return (
-      <StyledInput className={className} icon={!!Icon} hasValue={hasValue}>
-        <input type="text" ref={ref} {...props} onChange={handleChange} />
-        {Icon && <Icon className="input__icon" width={24} height={24} />}
-        <span className="label">{label}</span>
-      </StyledInput>
-    )
+export default forwardRef(function TextInput(
+  { className, icon: Icon, label, onChange, initialValue, value, ...props },
+  ref
+) {
+  const [hasValue, setHasValue] = useState(initialValue)
+  const handleChange = e => {
+    if (onChange) onChange(e)
+    if (e.target.value.length) setHasValue(true)
+    else setHasValue(false)
   }
-)
+  useEffect(() => {
+    if (value && value.length) setHasValue(true)
+  }, [value])
+  return (
+    <StyledInput className={className} icon={!!Icon} hasValue={hasValue}>
+      <input type="text" ref={ref} {...props} value={value} onChange={handleChange} />
+      {Icon && <Icon className="input__icon" width={24} height={24} />}
+      <span className="label">{label}</span>
+    </StyledInput>
+  )
+})

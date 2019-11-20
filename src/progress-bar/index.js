@@ -11,7 +11,7 @@ export function FixedProgress({ steps, ...props }) {
   return (
     <StyledFixed {...props}>
       {Object.keys(steps).map(step => (
-        <div className={`step ${steps[step] && "complete"}`}>
+        <div key={step} className={`step ${steps[step] && "complete"}`}>
           <p className="small label">{step}</p>
         </div>
       ))}
