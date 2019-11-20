@@ -1,18 +1,11 @@
 import React, { forwardRef } from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { colors } from "../constants"
-
-const disabledMixin = css`
-  cursor: not-allowed;
-  pointer-events: none;
-`
 
 const StyledRadioButton = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: pointer;
-  pointer-events: initial;
-  ${isDisabled => isDisabled && disabledMixin}
+  cursor: ${isDisabled => (isDisabled ? "not-allowed" : "cursor")};
   input[type="radio"] {
     width: 0;
     height: 0;
