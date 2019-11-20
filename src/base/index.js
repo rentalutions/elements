@@ -64,6 +64,12 @@ export default createGlobalStyle`
   }
 
   .no-sizing {
+    h1 {
+      font-size: 4rem;
+    }
+    h3 {
+      font-size: 3rem;
+    }
     h3 {
       font-size: 2rem;
     }
