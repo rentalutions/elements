@@ -9,7 +9,7 @@ describe("<Modal />", () => {
     const handleOpen = () => setOpen(!open)
     return (
       <div>
-        <Button data-testid="modal-button" onClick={handleOpen}>
+        <Button data-testid="button" onClick={handleOpen}>
           Toggle Modal
         </Button>
         <Modal open={open} toggle={handleOpen} data-testid="modal">
@@ -24,12 +24,12 @@ describe("<Modal />", () => {
     expect(modal).toBeNull()
   })
   it("Is has the modal body in the DOM after open is set to true.", async () => {
-    const { getByText, getByTestId } = render(<Component />)
-    const button = getByTestId("modal-button")
+    const { findByText, queryByTestId } = render(<Component />)
+    const button = queryByTestId(/button/)
     await act(async () => {
-      await fireEvent.click(button)
+      fireEvent.click(button)
     })
-    const modalHeader = getByText("Hello World")
-    expect(modalHeader).toBeInTheDocument()
+    const header = await findByText(/Hello World/)
+    expect(header).toBeInTheDocument()
   })
 })
