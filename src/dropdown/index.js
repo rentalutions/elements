@@ -25,11 +25,11 @@ const StyledDropdown = styled.ul`
 `
 
 export const DropdownMenu = forwardRef(
-  ({ children, open, setOpen, anchor, ...props }, ref) => {
+  ({ children, open, toggle, anchor, ...props }, ref) => {
     const dropdownRef = useRef(null)
     function handleClickOutside(e) {
       if (open && !dropdownRef.current.contains(e.target)) {
-        setOpen(false)
+        toggle(e)
       }
     }
     useImperativeHandle(ref, () => ({ ...dropdownRef.current }))
@@ -52,7 +52,7 @@ export const DropdownMenu = forwardRef(
 
 DropdownMenu.propTypes = {
   open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   anchor: PropTypes.oneOfType([
     PropTypes.func,
@@ -64,7 +64,7 @@ DropdownMenu.defaultProps = {
   anchor: null
 }
 
-export const MenuItem = styled.li`
+export const DropdownItem = styled.li`
   padding: 2rem;
   cursor: pointer;
   &:hover {
@@ -75,4 +75,4 @@ export const MenuItem = styled.li`
   }
 `
 
-MenuItem.displayName = "MenuItem"
+DropdownItem.displayName = "MenuItem"
