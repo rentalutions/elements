@@ -63,7 +63,15 @@ export default createGlobalStyle`
     font-weight: 800;
   }
 
-  img {
-    max-width: 100%;
+  .no-sizing {
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
   }
 `
