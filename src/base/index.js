@@ -75,8 +75,4 @@ export default createGlobalStyle`
       font-size: 2rem;
     }
   }
-
-  img {
-    max-width: 100%;
-  }
 `
