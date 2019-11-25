@@ -8,6 +8,9 @@ const DocBase = createGlobalStyle`
   h1 {
     font-weight: 200;
   }
+  img {
+    max-width: 100%;
+  }
   img[alt="intro-personality"] {
     width: 100%;
     max-width: 120px;

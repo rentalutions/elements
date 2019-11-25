@@ -104,6 +104,9 @@ export default {
       `,
       td: css`
         padding: 1rem;
+      `,
+      img: css`
+        max-width: 100% !important;
       `
     }
   },
