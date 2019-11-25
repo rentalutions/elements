@@ -16,7 +16,7 @@ const StyledModal = styled.section`
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   overflow-y: auto;
-  .modal-body {
+  .modal__body {
     position: relative;
     background: ${colors.ui_100};
     border-radius: 4px;
@@ -65,7 +65,7 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
             onClick={handleToggle}
             style={{ opacity: props.opacity }}
           >
-            <animated.div role="dialog" key={key} className="modal-body" style={props}>
+            <animated.div role="dialog" key={key} className="modal__body" style={props}>
               <X className="close" onClick={e => toggle(e)} />
               {children}
             </animated.div>
