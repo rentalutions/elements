@@ -20,9 +20,14 @@ export function useResize() {
   return [ref, bounds]
 }
 
-export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
+export function useIntersection({
+  root = null,
+  rootMargin,
+  threshold = 0,
+  initialTarget
+} = {}) {
   const [result, setResult] = useState({})
-  const target = useRef(null)
+  const target = useRef(initialTarget.current)
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
