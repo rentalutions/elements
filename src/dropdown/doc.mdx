@@ -3,11 +3,12 @@ name: Dropdowns
 route: /components/dropdown
 ---
 
-import {useState} from "react"
+import {Fragment, useState, useRef} from "react"
 import Status from "utils/status"
 import Prop from "utils/prop"
 import Playground from "utils/playground"
 import { DropdownMenu, DropdownItem } from "src/dropdown"
+import Button from "src/button"
 
 # Dropdowns
 
@@ -62,10 +63,16 @@ Dropdowns display a list of actions or choices on a temporary card. They offer a
 <Playground>
   {() => {
   const [open, set] = useState(false)
-    return (<DropdownMenu open={open} toggle={e => set(false)}>
-      <DropdownItem>Hello</DropdownItem>
-      <DropdownItem>World</DropdownItem>
-    </DropdownMenu>)
+  const buttonRef = useRef(null)
+    return (
+      <Fragment>
+        <Button ref={buttonRef} onClick={e => set(true)}>click me</Button>
+        <DropdownMenu anchor={buttonRef} open={open} toggle={e => set(false)}>
+          <DropdownItem>Hello</DropdownItem>
+          <DropdownItem>World</DropdownItem>
+        </DropdownMenu>
+      </Fragment>
+    )
   }}
 </Playground>
 

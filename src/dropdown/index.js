@@ -1,16 +1,16 @@
-import React, { forwardRef, useRef, useImperativeHandle, useEffect } from "react"
-import styled, { createGlobalStyle } from "styled-components"
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+  useState
+} from "react"
+import styled from "styled-components"
 import { colors } from "src/constants"
 import PropTypes from "prop-types"
 
-const Anchors = createGlobalStyle`
-  .dropdown__anchor {
-    position: relative;
-  }
-`
-
 const StyledDropdown = styled.ul`
-  position: absolute;
+  position: fixed;
   display: block;
   top: calc(100% + 1em);
   left: 1rem;
@@ -27,23 +27,38 @@ const StyledDropdown = styled.ul`
 export const DropdownMenu = forwardRef(
   ({ children, open, toggle, anchor, ...props }, ref) => {
     const dropdownRef = useRef(null)
-    function handleClickOutside(e) {
+    const [{ top, left }, setPosition] = useState({ top: 0, left: 0 })
+    function handleOutsideClick(e) {
       if (open && !dropdownRef.current.contains(e.target)) {
         toggle(e)
       }
     }
+    function handleTargetClick() {
+      const { x, y } = anchor.current.getBoundingClientRect()
+      setPosition({ top: y, left: x })
+    }
+    function handleScroll() {
+      const { x, y } = anchor.current.getBoundingClientRect()
+      setPosition({ top: y, left: x })
+    }
     useImperativeHandle(ref, () => ({ ...dropdownRef.current }))
     useEffect(() => {
-      if (open) {
-        document.addEventListener("click", handleClickOutside)
+      if (anchor) {
+        anchor.current.addEventListener("click", handleTargetClick)
       }
-      return () => document.removeEventListener("click", handleClickOutside)
-    }, [open, dropdownRef])
+      if (open) {
+        document.addEventListener("click", handleOutsideClick)
+        document.addEventListener("scroll", handleScroll)
+      }
+      return () => {
+        document.removeEventListener("click", handleOutsideClick)
+        document.removeEventListener("scroll", handleScroll)
+      }
+    }, [open, dropdownRef, anchor])
     return (
       open && (
-        <StyledDropdown {...props} ref={dropdownRef}>
+        <StyledDropdown {...props} ref={dropdownRef} style={{ top, left }}>
           {children}
-          <Anchors />
         </StyledDropdown>
       )
     )
