@@ -45,17 +45,17 @@ const FullPageModal = ({ children, open, toggle, ...passedProps }) => {
       document.body.style.overflow = "initial"
     }
   }, [open])
-  return animation.map(({ item, key, props }) => {
-    return item
-      ? createPortal(
-          <StyledFullPageModal {...passedProps} key={key} style={props}>
-            <X className="close" onClick={e => toggle(e)} />
-            <Container>{children}</Container>
-          </StyledFullPageModal>,
-          target
-        )
-      : null
-  })
+  return createPortal(
+    animation.map(({ item, key, props }) => {
+      return item ? (
+        <StyledFullPageModal {...passedProps} key={key} style={props}>
+          <X className="close" onClick={e => toggle(e)} />
+          <Container>{children}</Container>
+        </StyledFullPageModal>
+      ) : null
+    }),
+    target
+  )
 }
 
 FullPageModal.propTypes = {

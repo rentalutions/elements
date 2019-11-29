@@ -44,7 +44,7 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     toggle(e)
   }
   useEffect(() => {
-    if (typeof window === "undefined") return // Bail early on server render.
+    if (typeof window === "undefined") return // Bail early if server side.
     if (open) document.body.style.overflow = "hidden"
     else document.body.style.overflow = "initial"
     return () => {
@@ -57,22 +57,22 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     leave: { opacity: 0, transform: "scale(1.1)" },
     config: config.stiff
   })
-  return animation.map(({ item, key, props }) =>
-    item
-      ? createPortal(
-          <StyledModal
-            {...passedProps}
-            onClick={handleToggle}
-            style={{ opacity: props.opacity }}
-          >
-            <animated.div role="dialog" key={key} className="modal-body" style={props}>
-              <X className="close" onClick={e => toggle(e)} />
-              {children}
-            </animated.div>
-          </StyledModal>,
-          target
-        )
-      : null
+  return createPortal(
+    animation.map(({ item, key, props }) => {
+      return item ? (
+        <StyledModal
+          {...passedProps}
+          onClick={handleToggle}
+          style={{ opacity: props.opacity }}
+        >
+          <animated.div role="dialog" key={key} className="modal-body" style={props}>
+            <X className="close" onClick={e => toggle(e)} />
+            {children}
+          </animated.div>
+        </StyledModal>
+      ) : null
+    }),
+    target
   )
 }
 
