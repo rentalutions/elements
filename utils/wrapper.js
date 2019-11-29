@@ -19,15 +19,12 @@ const DocBase = createGlobalStyle`
 `
 
 export default function Wrapper({ children }) {
-  const config = useConfig()
   return (
-    <ThemeProvider theme={config}>
-      <>
-        <Base />
-        <DocBase />
-        {children}
-      </>
-    </ThemeProvider>
+    <>
+      <Base />
+      <DocBase />
+      {children}
+    </>
   )
 }
 

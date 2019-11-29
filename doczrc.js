@@ -4,15 +4,7 @@ import { colors } from "src/constants"
 export default {
   title: "Avail Design Kit",
   wrapper: "utils/wrapper.js",
-  menu: [
-    "Getting Started",
-    "Colors",
-    "Typography",
-    "Spacing",
-    "Motion",
-    "Component Overview",
-    "Base"
-  ],
+  menu: ["Getting Started", "Foundations", { name: "Components", menu: ["Overview"] }],
   base: "/",
   public: "/public",
   // theme: "utils/theme.js"

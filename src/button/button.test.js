@@ -1,14 +1,14 @@
-import React from "react"
-import { render } from "@testing-library/react"
+import React, { useState } from "react"
+import { render, act, fireEvent } from "@testing-library/react"
 import Button from "src/button"
 import { colors } from "src/constants"
 
 describe("<Button />", () => {
-  test("It renders a button with the correct text.", () => {
+  it("Should render a button with the correct text.", () => {
     const { getByTestId } = render(<Button data-testid="button">Hello World</Button>)
     expect(getByTestId("button")).toHaveTextContent("Hello World")
   })
-  test("It renders a primary button with a blue background and white text.", () => {
+  it("Should render a primary button with a blue background and white text.", () => {
     const { getByTestId } = render(
       <Button data-testid="button" primary>
         Hello World
@@ -20,4 +20,19 @@ describe("<Button />", () => {
       color: ${colors.ui_100};
     `)
   })
+  // it("Should register a click.", async () => {
+  //   const { findByTestId } = render(() => {
+  //     const [count, set] = useState(0)
+  //     return (
+  //       <Button data-testid="button" onClick={e => set(count + 1)}>
+  //         Count: {count}
+  //       </Button>
+  //     )
+  //   })
+  //   const button = await findByTestId("button")
+  //   await act(async () => {
+  //     fireEvent.click(button)
+  //   })
+  //   expect(button).toHaveTextContent("Count: 1")
+  // })
 })
