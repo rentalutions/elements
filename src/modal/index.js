@@ -57,23 +57,25 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
     leave: { opacity: 0, transform: "scale(1.1)" },
     config: config.stiff
   })
-  return createPortal(
-    animation.map(({ item, key, props }) => {
-      return item ? (
-        <StyledModal
-          {...passedProps}
-          onClick={handleToggle}
-          style={{ opacity: props.opacity }}
-        >
-          <animated.div role="dialog" key={key} className="modal-body" style={props}>
-            <X className="close" onClick={e => toggle(e)} />
-            {children}
-          </animated.div>
-        </StyledModal>
-      ) : null
-    }),
-    target
-  )
+  return target
+    ? createPortal(
+        animation.map(({ item, key, props }) => {
+          return item ? (
+            <StyledModal
+              {...passedProps}
+              onClick={handleToggle}
+              style={{ opacity: props.opacity }}
+            >
+              <animated.div role="dialog" key={key} className="modal-body" style={props}>
+                <X className="close" onClick={e => toggle(e)} />
+                {children}
+              </animated.div>
+            </StyledModal>
+          ) : null
+        }),
+        target
+      )
+    : null
 }
 
 Modal.propTypes = {
