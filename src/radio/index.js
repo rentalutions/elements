@@ -5,7 +5,7 @@ import { colors } from "../constants"
 const StyledRadioButton = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: ${isDisabled => (isDisabled ? "not-allowed" : "cursor")};
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "cursor")};
   input[type="radio"] {
     width: 0;
     height: 0;
