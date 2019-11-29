@@ -1,6 +1,7 @@
 ---
 name: Progress Bar
 route: /components/progress-bar
+menu: Components
 ---
 
 import Playground from "utils/playground"
@@ -58,16 +59,16 @@ A fluid progress bar can have an almost unlimited amount of steps. It is usually
 <Prop name="label" type="string">
   The label currently displayed on the progressBar, should be updated on each render.
 </Prop>
-
 <Prop name="current" type="number" required>
   The index of the current step.
 </Prop>
-
 <Prop name="total" type="number" required>
   The length of the total steps.
 </Prop>
 
 ## Usage
+
+#### Fixed
 
 <Playground column>
   <FixedProgress
@@ -78,6 +79,8 @@ A fluid progress bar can have an almost unlimited amount of steps. It is usually
     }}
   />
 </Playground>
+
+#### Fluid
 
 <Playground column>
   <FluidProgress label="Contact info" current={2} total={6} />
