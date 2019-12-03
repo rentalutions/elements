@@ -34,36 +34,37 @@ export default createGlobalStyle`
   }
 
   h1,
-  .hero {
+  .type--hero {
     font-size: 5rem;
     font-weight: 200;
     line-height: 1.2;
   }
   h2,
-  .headline {
+  .type--headline {
     font-size: 4rem;
     font-weight: 400;
     line-height: 1.25;
   }
   h3,
-  .title {
+  .type--title {
     font-size: 3rem;
     font-weight: 400;
     line-height: 1.334;
   }
   h4,
-  .subtitle {
+  .type--subtitle {
     font-size: 2rem;
     font-weight: 400;
     line-height: 1.5;
   }
   h5,
-  .emphasis {
+  .type--emphasis {
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.334;
   }
 
+  ${"" /* Override for the timid */}
   .no-sizing {
     h1 {
       font-size: 4rem;
