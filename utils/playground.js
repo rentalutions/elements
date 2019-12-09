@@ -1,11 +1,6 @@
 import { Playground } from "docz"
 import styled, { css } from "styled-components"
 
-export default styled(Playground)`
-  display: flex;
-  ${({ column }) => (column ? columnStyles : rowStyles)};
-`
-
 const rowStyles = css`
   flex-direction: row;
   > *:not(:last-child) {
@@ -18,4 +13,9 @@ const columnStyles = css`
   > *:not(:last-child) {
     margin-bottom: 2rem;
   }
+`
+
+export default styled(Playground)`
+  display: flex;
+  ${({ column }) => (column ? columnStyles : rowStyles)};
 `

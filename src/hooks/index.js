@@ -41,7 +41,7 @@ export function useIntersection({ root = null, rootMargin, threshold = 0 } = {})
 }
 
 export function usePortal() {
-  if (typeof window === "undefined") return { current: null } // bail on server render.
+  if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef(null)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")

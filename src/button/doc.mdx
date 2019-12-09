@@ -1,12 +1,14 @@
 ---
 name: Buttons
 route: /components/button
+menu: Components
 ---
 
 import Playground from "utils/playground"
 import Status from "utils/status"
 import Prop from "utils/prop"
 import Button from "src/button"
+import { colors } from "src/constants"
 
 # Buttons
 
@@ -20,18 +22,23 @@ import Button from "@rent_avail/elements/button"
 
 ## Description
 
-Buttons allow users to take action or make choices with a quick click. They're placed throughout the UI in places like `cards`, `modals`, `forms`, and `toolbars`.
+Buttons allow users to take action or make choices with a quick click. They're placed
+throughout the UI in places like `cards`, `modals`, `forms`, and `toolbars`.
 
 ## Anatomy
 
-Buttons at Avail (like in Material Design) have uppercase text labels. Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting from the rest of the UI. If you have a set of buttons together use the `primary` button to distinguish the most desirable action.
+Buttons at Avail (like in Material Design) have uppercase text labels. Buttons come with
+two variants baked in and are extendable in whatever way you wish. The default button
+should be used the most. It is seen as clickable without being too distracting from the
+rest of the UI. If you have a set of buttons together use the `primary` button to
+distinguish the most desirable action.
 
 <iframe
   style={{ border: "none" }}
   width="840"
   height="600"
   src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FProduct%3Fnode-id%3D802%253A1599"
-  allowfullscreen
+  allowFullScreen
 />
 
 1. Border
@@ -42,28 +49,41 @@ Buttons at Avail (like in Material Design) have uppercase text labels. Buttons c
 <Prop name="primary" type="boolean" defaultValue="false">
   A boolean attribute to determine the visual weight of a button.
 </Prop>
-
-<Prop name="subtle" type="boolean">
+<Prop name="subtle" type="boolean" defaultValue="false">
   A boolean attribute to determine the visual weight of a button. Is overrriden by
   primary.
+</Prop>
+<Prop name="color" type="string">
+  An override to change the border (or background if primary) color of a button.
+</Prop>
+<Prop name="textColor" type="string">
+  An override needed for the hover state or primary state of the text within a button if
+  the <code>color</code> prop is used.
 </Prop>
 
 ## Usage
 
 <Playground>
   <Button>Hello World</Button>
+  <Button primary>schedule payment</Button>
+  <Button danger>dont click me</Button>
 </Playground>
 
+#### Buttons can also be passed `color` and `textColor` props to customize them.
+
 <Playground>
-  <Button>view charge</Button>
-  <Button primary>schedule payment</Button>
+  <Button primary color={colors.gold_500} textColor={colors.gold_900}>
+    oh you fancy huh
+  </Button>
 </Playground>
 
 ## Extension
 
-If you need the look and feel of a button need it to be a link you can do so by using the `as` prop. You can inspect the element below and see that it's rendering an anchor tag.
+If you need the look and feel of a button need it to be a link you can do so by using the
+`as` prop. You can inspect the element below and see that it's rendering an anchor tag.
 
-This will work with most any element, including react components, as long as it passes on its `className` prop.
+This will work with most any element, including react components, as long as it passes on
+its `className` prop.
 
 <Playground>
   <Button as="a" href="https://avail.co">

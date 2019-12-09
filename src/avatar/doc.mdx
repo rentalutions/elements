@@ -1,6 +1,7 @@
 ---
 name: Avatars
 route: /components/avatar
+menu: Components
 ---
 
 import Playground from "utils/playground"
@@ -44,24 +45,20 @@ An avatar component is used to display user information to another user. It can 
   Boolean to dictate the size and layout of an avatar. Small avatars should only be used
   in an <code>AvatarGroup</code>
 </Prop>
-
 <Prop name="initials" type="string">
   The intials of the user associated with the avatar.{" "}
   <strong>Only used in small avatars.</strong>
 </Prop>
-
 <Prop name="name" type="string">
   The name of the user associated with the avatar.{" "}
   <strong>Not used in small avatars.</strong>
 </Prop>
-
 <Prop name="photoUrl" type="string:url">
   <p>
     The profile photo of the user if there is one. Defaults to a solid color if no photo
     is present. <strong>Not used in small avatars.</strong>
   </p>
 </Prop>
-
 <Prop name="icon" type="ReactElement">
   <p>
     an icon to be displayed to the right of a users name.{" "}
