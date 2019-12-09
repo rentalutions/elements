@@ -16,7 +16,7 @@ const StyledModal = styled.section`
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   overflow-y: auto;
-  .modal-body {
+  .modal__body {
     position: relative;
     background: ${colors.ui_100};
     border-radius: 4px;
@@ -37,7 +37,7 @@ const StyledModal = styled.section`
   }
 `
 
-const Modal = ({ children, open, toggle, ...passedProps }) => {
+const Modal = ({ children, open, toggle, ...props }) => {
   const target = usePortal()
   const handleToggle = e => {
     if (e.target !== e.currentTarget) return
@@ -59,15 +59,15 @@ const Modal = ({ children, open, toggle, ...passedProps }) => {
   })
   return target
     ? createPortal(
-        animation.map(({ item, key, props }) => {
+        animation.map(({ item, key, props: style }) => {
           return item ? (
             <StyledModal
-              {...passedProps}
+              {...props}
               onClick={handleToggle}
-              style={{ opacity: props.opacity }}
+              style={{ opacity: style.opacity }}
             >
-              <animated.div role="dialog" key={key} className="modal-body" style={props}>
-                <X className="close" onClick={e => toggle(e)} />
+              <animated.div role="dialog" key={key} className="modal__body" style={style}>
+                <X className="modal__close" onClick={e => toggle(e)} />
                 {children}
               </animated.div>
             </StyledModal>

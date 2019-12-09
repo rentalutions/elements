@@ -5,6 +5,7 @@ menu: Components
 ---
 
 import Status from "utils/status"
+import { Link } from "docz"
 
 # Base
 
@@ -12,7 +13,7 @@ import Status from "utils/status"
 
 ## Installation
 
-```javascript
+```js
 import Base from "@rent_avail/elements/base"
 ```
 
@@ -20,17 +21,15 @@ import Base from "@rent_avail/elements/base"
 
 This includes base stylings that help make UI across Avail products consistent. You can think of this as our css-reset.
 
-Place the `Base` component at the root of your application. It creates a global reset stylesheet that brings the base font size to 18px as well as setting the root em to 12px.
+Place the `Base` component at the root of your application. It creates a global reset stylesheet that brings the base font size to 18px as well as setting the root em to 12px.This component uses the `createGlobalStyle` method from `styled-components` to set these base styles in the head of the html document at runtime. The styles include a spacing reset as well as the base typography stack.
+
+## Usage
 
 ```js
-// React + ReactDOM imports
-import Base from "@rent_avail/elements/base"
-
 ReactDOM.render(
   <App>
     <Base />
-    {/* The rest of your application */}
-    <Page />
+    <Page>{/* The rest of your application */}</Page>
   </App>,
   document.getElementById("root")
 )

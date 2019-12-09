@@ -35,6 +35,7 @@ export default {
         background: ${colors.ui_300};
         padding: 0.25rem 0.5rem;
         border-radius: 4px;
+        font-size: 1.334rem;
       `,
       h1: css`
         all: unset;
@@ -95,6 +96,9 @@ export default {
       `,
       td: css`
         padding: 1rem;
+      `,
+      img: css`
+        max-width: 100% !important;
       `
     }
   },
