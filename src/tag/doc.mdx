@@ -4,10 +4,11 @@ route: /components/tag
 menu: Components
 ---
 
+import { Fragment, useReducer } from "react"
 import Prop from "utils/prop"
 import Status from "utils/status"
 import Playground from "utils/playground"
-import { Anchor, Calendar } from "react-feather"
+import { DollarSign, Calendar } from "react-feather"
 import { colors } from "src/constants"
 import Tag from "src/tag"
 
@@ -35,6 +36,15 @@ Tags highlight the metadata or progress of an item, such as wouldn't be valuable
 <Prop name="color" type="string" defaultValue="#2d2d2d">
   The font color of the tag.
 </Prop>
+<Prop name="filter" type="boolean" defaultValue="false">
+  Determine variant of chip and adds accessability attributes.
+</Prop>
+<Prop name="icon" type="Element" defaultValue="null">
+  Leading icon for the tag.
+</Prop>
+<Prop name="onChange" type="function" defaultValue="(e) => null">
+  Determine variant of tag and adds accessability attributes.
+</Prop>
 
 ## Usage
 
@@ -45,11 +55,32 @@ Tags highlight the metadata or progress of an item, such as wouldn't be valuable
   </Tag>
 </Playground>
 
-Tags can contain text and icons. They simply take their children and display it naturally.
+Tags can contain text and icons. They display text content naturally. Icons are passed in via an `icon` prop.
 
 <Playground>
-  <Tag bg={colors.blue_500} color={colors.ui_100}>
-    <Anchor /> Payment Made
+  <Tag bg={colors.blue_500} color={colors.ui_100} icon={DollarSign}>
+    Payment Made
   </Tag>
   <Tag bg={colors.green_300}>Leased for $1,200/mo</Tag>
+</Playground>
+
+### Filter Tags
+
+<Playground>
+  {() => {
+    const petPolicy = [
+      { type: "Cats", allowed: true },
+      { type: "Small Dogs", allowed: false },
+      { type: "Large Dogs", allowed: false }
+    ]
+    return (
+      <Fragment>
+        {petPolicy.map(({ type, allowed }) => (
+          <Tag key={type} filter checked={allowed}>
+            {type}
+          </Tag>
+        ))}
+      </Fragment>
+    )
+  }}
 </Playground>
