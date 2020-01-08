@@ -68,16 +68,21 @@ Tags can contain text and icons. They display text content naturally. Icons are 
 
 <Playground>
   {() => {
-    const petPolicy = [
-      { type: "Cats", allowed: true },
-      { type: "Small Dogs", allowed: false },
-      { type: "Large Dogs", allowed: false }
-    ]
+    const initialState = {
+      Cats: false,
+      "Small Dogs": true,
+      "Large Dogs": false
+    }
+    const reducer = (state, action) => ({ ...state, ...action })
+    const [state, set] = useReducer(reducer, initialState)
+    function handleChange(e) {
+      set({ [e.target.name]: e.target.checked })
+    }
     return (
       <Fragment>
-        {petPolicy.map(({ type, allowed }) => (
-          <Tag key={type} filter checked={allowed}>
-            {type}
+        {Object.keys(state).map(key => (
+          <Tag filter key={key} name={key} checked={state[key]} onChange={handleChange}>
+            {key}
           </Tag>
         ))}
       </Fragment>

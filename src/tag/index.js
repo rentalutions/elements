@@ -1,75 +1,76 @@
-import React, { useState } from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 import { Check } from "react-feather"
 import { colors } from "../constants"
 
 const filterStyles = css`
-  cursor: pointer;
   background: ${colors.ui_300};
-  outline: none;
+  color: ${colors.ui_700};
+  cursor: pointer;
   transition: 100ms;
+  user-select: none;
   &:hover {
     background: ${colors.blue_100};
+    color: ${colors.blue_700};
   }
   &.checked {
     background: ${colors.blue_500};
     color: ${colors.ui_100};
   }
+  input[type="checkbox"] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
 `
 
-const StyledTag = styled.span.attrs({
-  checked: ({ isChecked }) => isChecked,
-  role: ({ filter }) => (filter ? "checkbox" : "row"),
-  tabIndex: 0,
-  "aria-checked": ({ isChecked }) => isChecked
-})`
+const StyledTag = styled.span`
+  position: relative;
   display: inline-flex;
   align-items: center;
-  font-size: 1.333rem;
-  line-height: 2rem;
-  vertical-align: center;
   padding: 0 1rem;
   border-radius: 1rem;
   background: ${({ bg }) => bg};
   color: ${({ color }) => color};
+  font-size: 1.334rem;
+  line-height: 1.5;
   svg {
-    width: 1.333rem;
-    height: 1.333rem;
+    width: 1.334rem;
+    height: 1.334rem;
     margin-right: 0.5rem;
   }
-  ${({ filter }) => filter && filterStyles};
+  ${({ isFilter }) => isFilter && filterStyles}
 `
 
 export default function Tag({
   children,
-  checked,
   className,
-  icon: Icon,
   filter,
+  icon: Icon,
+  checked,
   onChange,
   ...props
 }) {
-  const [isChecked, setIsChecked] = useState(checked)
-  function handleChange(e) {
-    setIsChecked(!isChecked)
-    onChange(e)
+  function handleCheck(e) {
+    if (onChange) onChange(e)
   }
   if (!filter)
     return (
-      <StyledTag className={className} {...props}>
-        {Icon && <Icon />} {children}
+      <StyledTag {...props}>
+        {Icon && <Icon />}
+        {children}
       </StyledTag>
     )
   return (
     <StyledTag
-      className={`${className} ${isChecked && "checked"}`}
-      onClick={handleChange}
-      filter={filter}
-      checked={isChecked}
-      {...props}
+      className={`${className} ${checked && "checked"}`}
+      as="label"
+      isFilter={filter}
     >
-      {isChecked ? <Check /> : Icon ? <Icon /> : null}
+      <input type="checkbox" onChange={handleCheck} checked={checked} {...props} />
+      {checked ? <Check /> : Icon ? <Icon /> : null}
       {children}
     </StyledTag>
   )
@@ -79,7 +80,7 @@ Tag.propTypes = {
   bg: PropTypes.string,
   color: PropTypes.string,
   checked: PropTypes.bool,
-  children: PropTypes.element,
+  children: PropTypes.node,
   className: PropTypes.string,
   filter: PropTypes.bool,
   icon: PropTypes.element,
