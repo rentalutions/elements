@@ -64,7 +64,9 @@ Tags can contain text and icons. They display text content naturally. Icons are 
   <Tag bg={colors.green_300}>Leased for $1,200/mo</Tag>
 </Playground>
 
-### Filter Tags
+### Selection Tags
+
+Selection tags use descriptive words to select or filter content, they're a good alternative to checkboxes when used with a lot of choices that benefit from being inline. Tap a chip to select it, multiple chips be selected at once.
 
 <Playground>
   {() => {
@@ -81,7 +83,7 @@ Tags can contain text and icons. They display text content naturally. Icons are 
     return (
       <Fragment>
         {Object.keys(state).map(key => (
-          <Tag filter key={key} name={key} checked={state[key]} onChange={handleChange}>
+          <Tag select key={key} name={key} checked={state[key]} onChange={handleChange}>
             {key}
           </Tag>
         ))}

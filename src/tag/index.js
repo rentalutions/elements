@@ -47,7 +47,7 @@ const StyledTag = styled.span`
 export default function Tag({
   children,
   className,
-  filter,
+  select,
   icon: Icon,
   checked,
   onChange,
@@ -60,7 +60,7 @@ export default function Tag({
     if (onChange) onChange(e)
     set(e.target.checked)
   }
-  if (!filter)
+  if (!select)
     return (
       <StyledTag className={className} bg={bg} color={color} {...props}>
         {Icon && <Icon />}
@@ -71,7 +71,7 @@ export default function Tag({
     <StyledTag
       className={`${className} ${internalChecked ? "checked" : ""}`}
       as="label"
-      isFilter={filter}
+      isFilter={select}
       bg={bg}
       color={color}
     >
@@ -93,7 +93,7 @@ Tag.propTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  filter: PropTypes.bool,
+  select: PropTypes.bool,
   icon: PropTypes.element,
   onChange: PropTypes.func
 }
@@ -104,7 +104,7 @@ Tag.defaultProps = {
   checked: false,
   children: null,
   className: "",
-  filter: false,
+  select: false,
   icon: null,
   onChange: () => null
 }
