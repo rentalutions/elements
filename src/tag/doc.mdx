@@ -30,17 +30,23 @@ Tags highlight the metadata or progress of an item, such as wouldn't be valuable
 
 ### Props
 
+<Prop name="spreadProps" type="spread">
+  All Props not explicitly defined here will be spread into the as expected.
+</Prop>
 <Prop name="bg" type="string" defaultValue="#f9de89">
   The background color of the tag.
 </Prop>
 <Prop name="color" type="string" defaultValue="#2d2d2d">
   The font color of the tag.
 </Prop>
-<Prop name="filter" type="boolean" defaultValue="false">
+<Prop name="select" type="boolean" defaultValue="false">
   Determine variant of chip and adds accessability attributes.
 </Prop>
 <Prop name="icon" type="Element" defaultValue="null">
   Leading icon for the tag.
+</Prop>
+<Prop name="checked" type="boolean" defaultValue="false">
+  Determine variant of tag and adds accessability attributes.
 </Prop>
 <Prop name="onChange" type="function" defaultValue="(e) => null">
   Determine variant of tag and adds accessability attributes.
