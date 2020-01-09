@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 import { Check } from "react-feather"
@@ -51,26 +51,37 @@ export default function Tag({
   icon: Icon,
   checked,
   onChange,
+  bg,
+  color,
   ...props
 }) {
+  const [internalChecked, set] = useState(checked)
   function handleCheck(e) {
     if (onChange) onChange(e)
+    set(e.target.checked)
   }
   if (!filter)
     return (
-      <StyledTag {...props}>
+      <StyledTag className={className} bg={bg} color={color} {...props}>
         {Icon && <Icon />}
         {children}
       </StyledTag>
     )
   return (
     <StyledTag
-      className={`${className} ${checked && "checked"}`}
+      className={`${className} ${internalChecked ? "checked" : ""}`}
       as="label"
       isFilter={filter}
+      bg={bg}
+      color={color}
     >
-      <input type="checkbox" onChange={handleCheck} checked={checked} {...props} />
-      {checked ? <Check /> : Icon ? <Icon /> : null}
+      <input
+        type="checkbox"
+        onChange={handleCheck}
+        checked={internalChecked}
+        {...props}
+      />
+      {internalChecked ? <Check /> : Icon ? <Icon /> : null}
       {children}
     </StyledTag>
   )
