@@ -9,7 +9,6 @@ export default styled.section`
   border-radius: 4px;
   background: ${colors.ui_100};
   box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.12);
-  overflow: hidden;
   .card__actions {
     display: flex;
     flex-direction: row-reverse;
