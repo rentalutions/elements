@@ -1,0 +1,45 @@
+---
+name: Tooltips
+route: /components/tooltip
+menu: Components
+---
+
+import { Fragment, useRef } from "react"
+import Playground from "utils/playground"
+import Status from "utils/status"
+import Prop from "utils/prop"
+import Tooltip from "src/tooltip"
+import Button from "src/button"
+
+# Tooltips
+
+<Status status="beta" />
+
+## Installation
+
+```js
+import Tooltip from "@rent_avail/elements/tooltip"
+```
+
+## Description
+
+Tooltips offer greater context to an action or element on the page. Tooltips should never contain information needed to complete a task.
+
+## Anatomy
+
+### Props
+
+<Prop name="id" type="string">
+  ID needed for accesability
+</Prop>
+<Prop name="content" type="element">
+  The internal content of the tooltip.
+</Prop>
+
+## Usage
+
+<Playground column>
+  <Tooltip id="button-target" content="Hello World">
+    <Button>Hello World</Button>
+  </Tooltip>
+</Playground>
