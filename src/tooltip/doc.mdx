@@ -36,14 +36,29 @@ Tooltips offer greater context to an action or element on the page. Tooltips sho
 <Prop name="content" type="element">
   The internal content of the tooltip.
 </Prop>
+<Prop name="targetRef" type="ref">
+  Reference to target dom node that triggers the visibly hidden content.
+</Prop>
 
 ## Usage
 
 <Playground>
   {() => {
     const buttonRef = useRef()
+    const TooltipContent = props => {
+      return (
+        <div>
+          <h3>Look at this button</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A quisquam suscipit
+            hic nisi cum dolorem quasi, nesciunt, animi assumenda enim autem consectetur,
+            tenetur eius excepturi eum asperiores explicabo eligendi tempora!
+          </p>
+        </div>
+      )
+    }
     return (
-      <Tooltip targetRef={buttonRef} id="button-target" content="Hello World">
+      <Tooltip targetRef={buttonRef} id="button-target" content={<TooltipContent/>}>
         <Button ref={buttonRef}>Hello World</Button>
       </Tooltip>
     )

@@ -11,12 +11,12 @@ import { colors } from "src/constants"
 import Popover from "src/popover"
 
 const StyledTooltip = styled(Popover)`
-  position: relative;
   min-width: 10rem;
   background: ${colors.blue_700};
   color: ${colors.ui_100};
   padding: 1rem;
   border-radius: 4px;
+  margin-right: 2rem;
 `
 
 function Tooltip({ children, targetRef, content = null, id, ...props }, ref) {
@@ -42,7 +42,7 @@ function Tooltip({ children, targetRef, content = null, id, ...props }, ref) {
   return (
     <Fragment>
       {cloneElement(child, {
-        "aria-labeledby": id,
+        "aria-labelledby": id,
         onFocus,
         onBlur,
         onMouseEnter,
