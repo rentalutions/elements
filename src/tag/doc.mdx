@@ -4,10 +4,11 @@ route: /components/tag
 menu: Components
 ---
 
+import { Fragment, useReducer } from "react"
 import Prop from "utils/prop"
 import Status from "utils/status"
 import Playground from "utils/playground"
-import { Anchor, Calendar } from "react-feather"
+import { DollarSign, Calendar } from "react-feather"
 import { colors } from "src/constants"
 import Tag from "src/tag"
 
@@ -29,11 +30,26 @@ Tags highlight the metadata or progress of an item, such as wouldn't be valuable
 
 ### Props
 
+<Prop name="spreadProps" type="spread">
+  All Props not explicitly defined here will be spread into the as expected.
+</Prop>
 <Prop name="bg" type="string" defaultValue="#f9de89">
   The background color of the tag.
 </Prop>
 <Prop name="color" type="string" defaultValue="#2d2d2d">
   The font color of the tag.
+</Prop>
+<Prop name="select" type="boolean" defaultValue="false">
+  Determine variant of chip and adds accessability attributes.
+</Prop>
+<Prop name="icon" type="Element" defaultValue="null">
+  Leading icon for the tag.
+</Prop>
+<Prop name="checked" type="boolean" defaultValue="false">
+  Determine the state of the select tag variant
+</Prop>
+<Prop name="onChange" type="function" defaultValue="(event) => null">
+  Fires when a user changes the state of a select tag.
 </Prop>
 
 ## Usage
@@ -45,11 +61,39 @@ Tags highlight the metadata or progress of an item, such as wouldn't be valuable
   </Tag>
 </Playground>
 
-Tags can contain text and icons. They simply take their children and display it naturally.
+Tags can contain text and icons. They display text content naturally. Icons are passed in via an `icon` prop.
 
 <Playground>
-  <Tag bg={colors.blue_500} color={colors.ui_100}>
-    <Anchor /> Payment Made
+  <Tag bg={colors.blue_500} color={colors.ui_100} icon={DollarSign}>
+    Payment Made
   </Tag>
   <Tag bg={colors.green_300}>Leased for $1,200/mo</Tag>
+</Playground>
+
+### Selection Tags
+
+Selection tags use descriptive words to select or filter content, they're a good alternative to checkboxes when used with a lot of choices that benefit from being inline. Tap a chip to select it, multiple chips be selected at once.
+
+<Playground>
+  {() => {
+    const initialState = {
+      Cats: false,
+      "Small Dogs": true,
+      "Large Dogs": false
+    }
+    const reducer = (state, action) => ({ ...state, ...action })
+    const [state, set] = useReducer(reducer, initialState)
+    function handleChange(e) {
+      set({ [e.target.name]: e.target.checked })
+    }
+    return (
+      <Fragment>
+        {Object.keys(state).map(key => (
+          <Tag select key={key} name={key} checked={state[key]} onChange={handleChange}>
+            {key}
+          </Tag>
+        ))}
+      </Fragment>
+    )
+  }}
 </Playground>
