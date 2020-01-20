@@ -1,49 +1,67 @@
-import React, { cloneElement, useState, forwardRef } from "react"
+import React, {
+  Fragment,
+  cloneElement,
+  useState,
+  forwardRef,
+  Children,
+  useImperativeHandle
+} from "react"
 import styled from "styled-components"
 import { colors } from "src/constants"
+import Popover from "src/popover"
 
-const StyledTooltip = styled.div`
+const StyledTooltip = styled(Popover)`
   position: relative;
-  .tooltip {
-    position: absolute;
-    display: block;
-    top: calc(100% + 1rem);
-    left: 0;
-    min-width: 10rem;
-    background: ${colors.blue_700};
-    color: ${colors.ui_100};
-    padding: 1rem;
-    border-radius: 4px;
-  }
-  .tooltip[aria-hidden="true"] {
-    display: none;
-  }
-  .tooltip[aria-hidden="false"] {
-    display: block;
-  }
+  min-width: 10rem;
+  background: ${colors.blue_700};
+  color: ${colors.ui_100};
+  padding: 1rem;
+  border-radius: 4px;
 `
 
-function Tooltip({ children, content: Content = null, id, ...props }, ref) {
-  const [show, setShow] = useState(true)
-  function showTooltip() {
-    setShow(false)
+function Tooltip({ children, targetRef, content = null, id, ...props }, ref) {
+  const [isOpen, setIsOpen] = useState(false)
+  const child = Children.only(children)
+  function onFocus(e) {
+    if (child.props.onFocus) child.props.onFocus(e)
+    setIsOpen(true)
   }
-  function hideTooltip() {
-    setShow(true)
+  function onBlur(e) {
+    if (child.props.onBlur) child.props.onBlur(e)
+    setIsOpen(false)
   }
+  function onMouseEnter(e) {
+    if (child.props.onMouseEnter) child.props.onMouseEnter(e)
+    setIsOpen(true)
+  }
+  function onMouseLeave(e) {
+    if (child.props.onMouseLeave) child.props.onMouseLeave(e)
+    setIsOpen(false)
+  }
+  useImperativeHandle(ref, () => ({ ...targetRef }))
   return (
-    <StyledTooltip ref={ref} {...props}>
-      <span className="tooltip" role="tooltip" tabIndex="0" aria-hidden={show} id={id}>
-        {Content}
-      </span>
-      {cloneElement(children, {
-        "aria-describedby": id,
-        onFocus: showTooltip,
-        onBlur: hideTooltip,
-        onMouseEnter: showTooltip,
-        onMouseLeave: hideTooltip
+    <Fragment>
+      {cloneElement(child, {
+        "aria-labeledby": id,
+        onFocus,
+        onBlur,
+        onMouseEnter,
+        onMouseLeave
       })}
-    </StyledTooltip>
+      {isOpen && (
+        <StyledTooltip
+          {...props}
+          targetRef={targetRef}
+          ref={ref}
+          role="tooltip"
+          tabIndex="0"
+          aria-hidden={!isOpen}
+          id={id}
+        >
+          {content}
+        </StyledTooltip>
+      )}
+    </Fragment>
   )
 }
 
