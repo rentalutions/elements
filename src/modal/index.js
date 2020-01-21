@@ -25,7 +25,7 @@ const StyledModal = styled.section`
     max-width: 54rem;
     margin: 4rem auto;
   }
-  .close {
+  .modal__close {
     position: absolute;
     right: 2rem;
     top: 2rem;
@@ -63,6 +63,7 @@ const Modal = ({ children, open, toggle, ...props }) => {
           return item ? (
             <StyledModal
               {...props}
+              key={key}
               onClick={handleToggle}
               style={{ opacity: style.opacity }}
             >

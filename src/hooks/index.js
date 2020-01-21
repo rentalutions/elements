@@ -3,6 +3,16 @@ import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
+export function useRect(ref) {
+  const [rect, setRect] = useState(null)
+  useEffect(() => {
+    if (ref.current) {
+      setRect(ref.current.getBoundingClientRect())
+    }
+  }, [ref])
+  return rect
+}
+
 export function useResize() {
   const ref = useRef(null)
   const [bounds, set] = useState({
@@ -22,12 +32,11 @@ export function useResize() {
 
 export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
   const [result, setResult] = useState({})
-  const target = useRef(null)
+  const target = useRef()
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
     if (typeof window !== "undefined") {
-      // Only set observer if window exists.
       observer.current = new IntersectionObserver(([entry]) => setResult(entry), {
         root,
         rootMargin,
