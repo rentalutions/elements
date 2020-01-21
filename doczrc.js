@@ -1,17 +1,10 @@
 import { css } from "styled-components"
 import { colors } from "src/constants"
+
 export default {
   title: "Avail Design Kit",
   wrapper: "utils/wrapper.js",
-  menu: [
-    "Getting Started",
-    "Colors",
-    "Typography",
-    "Spacing",
-    "Motion",
-    "Component Overview",
-    "Base"
-  ],
+  menu: ["Getting Started", "Foundations", { name: "Components", menu: ["Overview"] }],
   base: "/",
   public: "/public",
   // theme: "utils/theme.js"
@@ -42,6 +35,7 @@ export default {
         background: ${colors.ui_300};
         padding: 0.25rem 0.5rem;
         border-radius: 4px;
+        font-size: 1.334rem;
       `,
       h1: css`
         all: unset;
@@ -102,6 +96,9 @@ export default {
       `,
       td: css`
         padding: 1rem;
+      `,
+      img: css`
+        max-width: 100% !important;
       `
     }
   },

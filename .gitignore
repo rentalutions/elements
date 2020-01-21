@@ -1,7 +1,7 @@
-#system files
+# System files
 .DS_Store
 
-# package management
+# Package management
 node_modules
 *.log
 
@@ -9,6 +9,6 @@ node_modules
 coverage
 .docz
 
-# build files
+# Build files
 dist
 lib

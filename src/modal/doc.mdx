@@ -1,6 +1,7 @@
 ---
 name: Modals
 route: /components/modal
+menu: Components
 ---
 
 import { useState } from "react"
@@ -32,7 +33,6 @@ Modals are ways to ask a user for confirmation or to take action without losing 
 <Prop name="open" type="boolean" defaultValue="false">
   Boolean that determines whether the modal is currently shown.
 </Prop>
-
 <Prop name="toggle" type="function" defaultValue="() => null">
   Callback function that should update the state of the open boolean.
 </Prop>
@@ -54,7 +54,7 @@ Modals are ways to ask a user for confirmation or to take action without losing 
   }}
 </Playground>
 
-Let's see what happens with a really long modal.
+#### A really long modal.
 
 <Playground>
   {() => {
