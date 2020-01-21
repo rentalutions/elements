@@ -12,6 +12,7 @@ import Popover from "src/popover"
 
 const StyledTooltip = styled(Popover)`
   min-width: 10rem;
+  max-width: 40rem;
   background: ${colors.blue_700};
   color: ${colors.ui_100};
   padding: 1rem;
