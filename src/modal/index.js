@@ -63,6 +63,7 @@ const Modal = ({ children, open, toggle, ...props }) => {
           return item ? (
             <StyledModal
               {...props}
+              key={key}
               onClick={handleToggle}
               style={{ opacity: style.opacity }}
             >
