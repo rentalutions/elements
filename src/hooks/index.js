@@ -30,19 +30,13 @@ export function useResize() {
   return [ref, bounds]
 }
 
-export function useIntersection({
-  root = null,
-  rootMargin,
-  threshold = 0,
-  initialTarget
-} = {}) {
+export function useIntersection({ root = null, rootMargin, threshold = 0 } = {}) {
   const [result, setResult] = useState({})
-  const target = useRef(initialTarget.current)
+  const target = useRef()
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
     if (typeof window !== "undefined") {
-      // Only set observer if window exists.
       observer.current = new IntersectionObserver(([entry]) => setResult(entry), {
         root,
         rootMargin,
