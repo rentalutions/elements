@@ -8,7 +8,7 @@ describe("useIntersection", () => {
     }
   } = renderHook(() => useIntersection())
   test("It returns null if no window.", () => {
-    expect(target.current).toBeNull()
+    expect(target.current).toBeUndefined()
   })
 })
 
