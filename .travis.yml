@@ -3,6 +3,7 @@ node_js: node
 before_script: npm test
 script: npm run build:package
 deploy:
+  edge: true
   skip_cleanup: true
   provider: npm
   email: patrick@dreadful.design
