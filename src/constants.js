@@ -37,3 +37,22 @@ export const colors = {
 }
 
 export const mediaQueries = ["40rem", "60rem", "80rem", "100rem", "120rem"]
+
+export function throttle(fn, ms) {
+  let timeout
+  function exec() {
+    fn.apply()
+  }
+  function clear() {
+    timeout == undefined ? null : clearTimeout(timeout)
+  }
+  if (fn !== undefined && ms !== undefined) {
+    timeout = setTimeout(exec, ms)
+  } else {
+    console.error("callback function and the timeout must be supplied")
+  }
+  // API to clear the timeout
+  throttle.clearTimeout = function() {
+    clear()
+  }
+}
