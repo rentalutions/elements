@@ -8,8 +8,7 @@ import { Fragment, useRef } from "react"
 import Playground from "utils/playground"
 import Status from "utils/status"
 import Prop from "utils/prop"
-import Popover from "src/popover"
-import Tooltip from "src/tooltip"
+import Tooltip, { TooltipTarget, TooltipContent } from "src/tooltip"
 import Button from "src/button"
 
 # Tooltips
@@ -44,22 +43,14 @@ Tooltips offer greater context to an action or element on the page. Tooltips sho
 
 <Playground>
   {() => {
-    const buttonRef = useRef()
-    const TooltipContent = props => {
-      return (
-        <div>
-          <h3>Look at this button</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. A quisquam suscipit
-            hic nisi cum dolorem quasi, nesciunt, animi assumenda enim autem consectetur,
-            tenetur eius excepturi eum asperiores explicabo eligendi tempora!
-          </p>
-        </div>
-      )
-    }
     return (
-      <Tooltip targetRef={buttonRef} id="button-target" content={<TooltipContent/>}>
-        <Button ref={buttonRef}>Hello World</Button>
+      <Tooltip id="button-target">
+        <TooltipTarget>
+          <Button>Hello World</Button>
+        </TooltipTarget>
+        <TooltipContent>
+          <p>Hello World</p>
+        </TooltipContent>
       </Tooltip>
     )
   }}
