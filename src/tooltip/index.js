@@ -5,7 +5,8 @@ import React, {
   createContext,
   useReducer,
   useRef,
-  useContext
+  useContext,
+  Children
 } from "react"
 import styled from "styled-components"
 import { colors } from "src/constants"
@@ -55,23 +56,25 @@ function Target({ children, ...props }, ref) {
     dispatch
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...targetRef }))
+  const child = Children.only(children)
+  const { onBlur, onFocus, onMouseEnter, onMouseLeave } = child.props
   function handleToggle() {
     dispatch({ type: OPEN_TOOLTIP })
   }
   function handleClose() {
     dispatch({ type: CLOSE_TOOLTIP })
   }
-  return cloneElement(children, {
+  return cloneElement(child, {
     ...props,
     ref: targetRef,
     id,
     type: "button",
     "aria-haspopup": "menu",
     "aria-expanded": isOpen,
-    onFocus: wrapEvent(children.props.onFocus, handleToggle),
-    onBlur: wrapEvent(children.props.onBlur, handleClose),
-    onMouseEnter: wrapEvent(children.props.onMouseEnter, handleToggle),
-    onMouseLeave: wrapEvent(children.props.onMouseLeave, handleClose)
+    onFocus: wrapEvent(onFocus, handleToggle),
+    onBlur: wrapEvent(onBlur, handleClose),
+    onMouseEnter: wrapEvent(onMouseEnter, handleToggle),
+    onMouseLeave: wrapEvent(onMouseLeave, handleClose)
   })
 }
 
@@ -89,6 +92,7 @@ const StyledTooltip = styled.aside`
 
 function Content({ children, ...props }, ref) {
   const {
+    id,
     state: { isOpen },
     tooltipRef,
     popoverRef,
@@ -97,7 +101,13 @@ function Content({ children, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...tooltipRef }))
   return isOpen ? (
     <Popover targetRef={targetRef} ref={popoverRef}>
-      <StyledTooltip {...props} ref={tooltipRef}>
+      <StyledTooltip
+        {...props}
+        ref={tooltipRef}
+        role="tooltip"
+        id={id}
+        aria-hidden={!isOpen}
+      >
         {children}
       </StyledTooltip>
     </Popover>
