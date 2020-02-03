@@ -58,7 +58,7 @@ export function usePortal() {
   useEffect(() => {
     document.body.appendChild(rootElement.current)
     return () => {
-      rootElement.current.remove()
+      document.body.removeChild(rootElement.current)
     }
   }, [rootElement.current])
   return rootElement.current
