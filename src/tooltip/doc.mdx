@@ -17,8 +17,12 @@ import Button from "src/button"
 
 ## Installation
 
-```js
-import Tooltip from "@rent_avail/elements/tooltip"
+```
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTarget
+} from "@rent_avail/elements/tooltip"
 ```
 
 ## Description
@@ -26,6 +30,17 @@ import Tooltip from "@rent_avail/elements/tooltip"
 Tooltips offer greater context to an action or element on the page. Tooltips should never contain information needed to complete a task.
 
 ## Anatomy
+
+<iframe
+  style={{ border: "none" }}
+  width="840"
+  height="600"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRqpXARK3vSrZbzWw6GrEnKqg%2FProduct%3Fnode-id%3D1835%253A594"
+  allowFullscreen
+/>
+
+1. Tooltip Content
+2. Tooltip Target
 
 ### Props
 
@@ -40,14 +55,23 @@ Tooltips offer greater context to an action or element on the page. Tooltips sho
 <Playground>
   {() => {
     return (
-      <Tooltip id="button-target">
-        <TooltipTarget>
-          <Button>Hello World</Button>
-        </TooltipTarget>
-        <TooltipContent>
-          <p>Hello World</p>
-        </TooltipContent>
-      </Tooltip>
+      <p>
+        <Tooltip id="button-target">
+          <TooltipTarget>
+            <strong style={{
+              cursor: "pointer",
+              padding: "0 1rem",
+              marginRight: "1rem",
+              background: "#f3f3f3",
+              borderRadius: "4px"
+            }}>i</strong>
+          </TooltipTarget>
+          <TooltipContent style={{maxWidth: "10rem"}}>
+            <p>I'm a small expainer for the text you just read.</p>
+          </TooltipContent>
+        </Tooltip>
+        <span>Some confusing text that might need explaining.</span>
+      </p>
     )
   }}
 </Playground>
