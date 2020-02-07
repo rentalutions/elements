@@ -69,7 +69,7 @@ function Target({ children, style, ...rest }, ref) {
   } = useContext(MenuContext)
   const child = Children.only(children)
   useImperativeHandle(ref, () => ({ ...targetRef }))
-  function handleMouseDown(e) {
+  function handleMouseDown() {
     dispatch({ type: TOGGLE_MENU })
   }
   return cloneElement(child, {
