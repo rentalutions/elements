@@ -1,11 +1,11 @@
-import React, { forwardRef } from "react"
+import React, { forwardRef, useState, useReducer } from "react"
 import styled from "styled-components"
 import { colors } from "src/constants"
 
 const StyledCheckbox = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   input {
     opacity: 0;
     width: 0;
@@ -21,22 +21,17 @@ const StyledCheckbox = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
     transition: 300ms;
-    svg {
-      stroke-dasharray: 24;
-      stroke-dashoffset: 24;
-      transition: 300ms;
-      color: ${colors.ui_100};
-      will-change: stroke-dashoffset;
-    }
+    color: ${colors.ui_100};
+    will-change: stroke-dashoffset;
   }
 
   input:checked ~ .input__target {
     border: 2px solid ${colors.blue_500};
     background: ${colors.blue_500};
-    svg {
-      stroke-dashoffset: 0;
-    }
+    stroke-dashoffset: 0;
   }
 
   input:disabled ~ .input__target {
@@ -48,12 +43,39 @@ const StyledCheckbox = styled.label`
   }
 `
 
-const Checkbox = forwardRef(({ children, className, disabled, ...props }, ref) => (
-  <StyledCheckbox className={className} isDisabled={disabled}>
-    <input type="checkbox" ref={ref} disabled={disabled} {...props} />
-    <div className="input__target">
+function Checkbox(
+  {
+    children,
+    className = "",
+    disabled,
+    onChange = null,
+    defaultChecked = false,
+    ...props
+  },
+  ref
+) {
+  const reducer = (state, action) => ({ ...state, ...action })
+  const [{ checked }, dispatch] = useReducer(reducer, { checked: defaultChecked })
+  function handleChange(event) {
+    if (onChange) onChange(event)
+    dispatch({ checked: event.target.checked })
+  }
+  return (
+    <StyledCheckbox
+      disabled={disabled}
+      className={`${checked ? "checked" : ""} ${className}`}
+    >
+      <input
+        {...props}
+        type="checkbox"
+        ref={ref}
+        onChange={handleChange}
+        disabled={disabled}
+        checked={checked}
+      />
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        role="button"
+        className="input__target"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -65,9 +87,9 @@ const Checkbox = forwardRef(({ children, className, disabled, ...props }, ref) =
       >
         <polyline points="20 6 9 17 4 12" />
       </svg>
-    </div>
-    {children && <span className="label">{children}</span>}
-  </StyledCheckbox>
-))
+      {children && <span className="label">{children}</span>}
+    </StyledCheckbox>
+  )
+}
 
-export default Checkbox
+export default forwardRef(Checkbox)
