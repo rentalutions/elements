@@ -35,13 +35,13 @@ const initialState = {
 function selectReducer(state, action) {
   switch (action.type) {
     case types.OPEN_LIST:
-      return { ...state, isOpen: true, selectValue: "" }
+      return { ...state, isOpen: true }
     case types.CLOSE_LIST:
       return { ...state, isOpen: false, inputValue: "" }
     case types.UPDATE_WIDTH:
       return { ...state, width: action.width }
     case types.UPDATE_INPUT:
-      return { ...state, inputValue: action.value }
+      return { ...state, inputValue: action.value, selectValue: "" }
     case types.SET_VALUE:
       return { ...state, isOpen: false, selectValue: action.value }
     default:
@@ -110,12 +110,19 @@ const StyledSelectInput = styled.label`
   }
   .select__value {
     top: 3rem;
-    left: 2rem;
+    left: 2.25rem;
   }
 `
 
 function Input(
-  { className, onFocus = () => {}, onChange = () => {}, onSelect, label, ...props },
+  {
+    className,
+    onFocus = () => {},
+    onChange = () => {},
+    label,
+    searchable = true,
+    ...props
+  },
   ref
 ) {
   const {
@@ -127,7 +134,7 @@ function Input(
     dispatch({ type: types.OPEN_LIST })
   }
   function handleChange({ target }) {
-    dispatch({ type: types.UPDATE_INPUT, value: target.value })
+    if (searchable) dispatch({ type: types.UPDATE_INPUT, value: target.value })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
@@ -136,6 +143,7 @@ function Input(
       ref={inputRef}
       isOpen={isOpen}
       hasValue={inputValue.length || selectValue.length}
+      searchable
     >
       <input
         ref={ref}
@@ -237,7 +245,7 @@ function Item(
   const classes = currentValue === value ? `selected ${className}` : className
   useEffect(() => {
     function isFiltered() {
-      const matcher = new RegExp(inputValue)
+      const matcher = new RegExp(inputValue, "i")
       const search = searchValue || value
       if (!inputValue.length) return true
       if (search.match(matcher)) return true
