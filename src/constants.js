@@ -58,6 +58,6 @@ export function throttle(fn, ms) {
 export function wrapEvent(first, second) {
   return event => {
     if (first) first(event)
-    if (!event.defaultPrevented) second(event)
+    if (!event.defaultPrevented) return second(event)
   }
 }

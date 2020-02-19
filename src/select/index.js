@@ -27,7 +27,7 @@ const types = {
 function selectReducer(state, action) {
   switch (action.type) {
     case types.OPEN_LIST:
-      return { ...state, isOpen: true }
+      return { ...state, isOpen: true, currentValue: "" }
     case types.CLOSE_LIST:
       return { ...state, isOpen: false }
     case types.UPDATE_WIDTH:
@@ -93,6 +93,7 @@ function Input(props, ref) {
 const StyledList = styled(Card)`
   display: block;
   padding: 0;
+  margin-bottom: 2rem;
   background: ${colors.ui_100};
   border: 1px solid ${colors.ui_500};
   border-radius: 0.25rem;
@@ -144,12 +145,19 @@ function List({ children, ...props }, ref) {
 
 const StyledItem = styled.li`
   padding: 2rem;
+  cursor: pointer;
+  &:hover {
+    background: ${colors.ui_300};
+  }
+  &.selected {
+    background: ${colors.blue_100};
+  }
   &:not(:last-of-type) {
     border-bottom: 1px solid ${colors.ui_500};
   }
 `
 
-function Item({ children, value = "", onClick = () => null, ...props }, ref) {
+function Item({ className, children, value = "", onClick = () => null, ...props }, ref) {
   const {
     state: { currentValue },
     dispatch
@@ -157,12 +165,14 @@ function Item({ children, value = "", onClick = () => null, ...props }, ref) {
   function handleClick(event) {
     dispatch({ type: types.SET_VALUE, value: event.target.dataset.value })
   }
+  const classes = currentValue === value ? `selected ${className}` : className
   return (
     <StyledItem
       {...props}
       ref={ref}
       data-value={value}
       onClick={wrapEvent(handleClick, onClick)}
+      className={classes}
     >
       {children}
     </StyledItem>
