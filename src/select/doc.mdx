@@ -1,0 +1,64 @@
+---
+name: Select Inputs
+route: /components/select
+menu: Components
+---
+
+import Prop from "utils/prop"
+import Status from "utils/status"
+import Playground from "utils/playground"
+import Select, { SelectInput, SelectList, SelectItem } from "src/select"
+
+# Select Inputs
+
+<Status status="beta" />
+
+## Installation
+
+```js
+import Select, { SelectInput, SelectList, SelectItem } from "src/select"
+```
+
+## Description
+
+Select inputs display the currently selected option above a menu that lets the user choose from a list of pre-defined values.
+
+## Anatomy
+
+1. Search Input
+1. Dropdown List
+1. Dropdown Indicator
+
+### Props
+
+<Prop name="options" type="array" defaultValue="[]">
+  Options list for the field.
+</Prop>
+
+## Usage
+
+<Playground column>
+  {() => {
+    const options = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut"
+    ]
+    return (
+      <Select id="select-id">
+        <SelectInput label="Choose a state" />
+        <SelectList>
+          {options.map(option => (
+            <SelectItem key={option} value={option}>
+              {option}
+            </SelectItem>
+          ))}
+        </SelectList>
+      </Select>
+    )
+  }}
+</Playground>
