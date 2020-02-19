@@ -16,27 +16,17 @@ import { colors, wrapEvent } from "src/constants"
 
 const MenuContext = createContext()
 
-/**
- * Actions
- */
-
-const TOGGLE_MENU = "@rent_avail/menu/toggle"
-
-/**
- * Initial State
- */
+const types = {
+  TOGGLE_MENU: "@rent_avail/menu/toggle"
+}
 
 const initialState = {
   isOpen: false
 }
 
-/**
- * Reducer
- */
-
 function reducer(state, action) {
   switch (action.type) {
-    case TOGGLE_MENU:
+    case types.TOGGLE_MENU:
       return { ...state, isOpen: !state.isOpen }
 
     default:
@@ -68,9 +58,9 @@ function Target({ children, ...rest }, ref) {
     state: { isOpen }
   } = useContext(MenuContext)
   const child = Children.only(children)
-  const { onClick, onBlur } = child.props
+  const { onClick } = child.props
   function handleToggleMenu() {
-    dispatch({ type: TOGGLE_MENU })
+    dispatch({ type: types.TOGGLE_MENU })
   }
   useImperativeHandle(ref, () => ({ ...targetRef }))
   return cloneElement(child, {
@@ -105,8 +95,8 @@ function List({ children, position, ...rest }, ref) {
     if (!isOpen) return null
     const menuEl = menuRef.current
     const targetEl = targetRef.current
-    if (!menuEl.contains(target) && !targetEl.contains(target)) {
-      dispatch({ type: TOGGLE_MENU })
+    if (!menuEl?.contains(target) && !targetEl?.contains(target)) {
+      dispatch({ type: types.TOGGLE_MENU })
     }
   }
   useEffect(() => {
