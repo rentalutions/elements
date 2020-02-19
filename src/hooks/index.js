@@ -13,6 +13,20 @@ export function useRect(ref) {
   return rect
 }
 
+export function useWindowResize(ref) {
+  const [size, setSize] = useState({})
+  useEffect(() => {
+    function handleResize() {
+      if (!ref.current) return false
+      setSize(ref.current.getBoundingClientRect())
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+  return size
+}
+
 export function useResize() {
   const ref = useRef(null)
   const [bounds, set] = useState({
