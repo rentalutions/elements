@@ -37,6 +37,7 @@ Select inputs display the currently selected option above a menu that lets the u
 <Prop name="id" type="string">
   Unique identifier for the select group.
 </Prop>
+
 <Prop name="onSelect" type="function">
   Fires when the user selects an item from the dropdown list.
 </Prop>
@@ -47,13 +48,22 @@ Select inputs display the currently selected option above a menu that lets the u
   Label for the text input of the select box.
 </Prop>
 
+<Prop name="search" type="boolean" defaultValue="true">
+  Optional toggle allowing users to search options of the select input.
+</Prop>
+
 #### Select Item
 
 <Prop name="value" type="string">
   This will override the input when the user selects an option.
 </Prop>
-<Prop name="searchValue" type="string">
+
+<Prop name="label" type="string">
   This will be used to filter item results instead of value if used.
+</Prop>
+
+<Prop name="children" type="element">
+  This can be any react element equivalent.
 </Prop>
 
 ## Usage
@@ -77,7 +87,7 @@ Select inputs display the currently selected option above a menu that lets the u
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
-            <SelectItem key={value} value={value} searchValue={label}>
+            <SelectItem key={value} value={value} label={label}>
               {label}
             </SelectItem>
           ))}

@@ -222,7 +222,7 @@ const StyledItem = styled.li`
 // Use Keydown
 
 function Item(
-  { className, children, value = "", searchValue = "", onClick = () => {}, ...props },
+  { className, children, value = "", label = "", onClick = () => {}, ...props },
   ref
 ) {
   const {
@@ -239,7 +239,7 @@ function Item(
   useEffect(() => {
     function isFiltered() {
       const matcher = new RegExp(inputValue, "i")
-      const search = searchValue || value
+      const search = label || value
       if (!inputValue.length) return true
       if (search.match(matcher)) return true
       return false
