@@ -122,7 +122,7 @@ function List({ children, ...props }, ref) {
     if (!isOpen) return null
     const listEl = listRef.current
     const targetEl = inputRef.current
-    if (isOpen && !listEl?.contains(target) && !targetEl?.contains(target)) {
+    if (!listEl?.contains(target) && !targetEl?.contains(target)) {
       dispatch({ type: types.CLOSE_LIST })
     }
   }
@@ -156,6 +156,8 @@ const StyledItem = styled.li`
     border-bottom: 1px solid ${colors.ui_500};
   }
 `
+
+// Use Keydown
 
 function Item({ className, children, value = "", onClick = () => null, ...props }, ref) {
   const {
