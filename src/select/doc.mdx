@@ -4,6 +4,7 @@ route: /components/select
 menu: Components
 ---
 
+import {Fragment, useState} from "react"
 import Prop from "utils/prop"
 import Status from "utils/status"
 import Playground from "utils/playground"
@@ -31,8 +32,28 @@ Select inputs display the currently selected option above a menu that lets the u
 
 ### Props
 
-<Prop name="options" type="array" defaultValue="[]">
-  Options list for the field.
+#### Select
+
+<Prop name="id" type="string">
+  Unique identifier for the select group.
+</Prop>
+<Prop name="onSelect" type="function">
+  Fires when the user selects an item from the dropdown list.
+</Prop>
+
+#### Select Input
+
+<Prop name="label" type="string">
+  Label for the text input of the select box.
+</Prop>
+
+#### Select Item
+
+<Prop name="value" type="string">
+  This will override the input when the user selects an option.
+</Prop>
+<Prop name="searchValue" type="string">
+  This will be used to filter item results instead of value if used.
 </Prop>
 
 ## Usage
@@ -40,32 +61,29 @@ Select inputs display the currently selected option above a menu that lets the u
 <Playground column>
   {() => {
     const options = [
-      "Alabama",
-      "Alaska",
-      "Arizona",
-      "Arkansas",
-      "California",
-      "Colorado",
-      "Connecticut",
-      "Delaware",
-      "Florida",
-      "Georgia",
-      "Hawaii",
-      "Idaho",
-      "Illinois",
-      "Indiana"
+      { label: "Alabama", value: "AL" },
+      { label: "Alaska", value: "AK" },
+      { label: "Arizona", value: "AZ" },
+      { label: "Arkansas", value: "AR" },
+      { label: "California", value: "CA" },
+      { label: "Colorado", value: "CO" },
+      { label: "Connecticut", value: "CT" }
     ]
+    const [state, setState] = useState("")
     return (
-      <Select id="select-id">
+      <Fragment>
+        <p>Selected State: {state}</p>
+        <Select id="select-id" onSelect={value => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
-          {options.map(option => (
-            <SelectItem key={option} value={option}>
-              {option}
+          {options.map(({ label, value }) => (
+            <SelectItem key={value} value={value} searchValue={label}>
+              {label}
             </SelectItem>
           ))}
         </SelectList>
       </Select>
+      </Fragment>
     )
   }}
 </Playground>
