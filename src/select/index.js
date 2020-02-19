@@ -115,14 +115,7 @@ const StyledSelectInput = styled.label`
 `
 
 function Input(
-  {
-    className,
-    onFocus = () => {},
-    onChange = () => {},
-    label,
-    searchable = true,
-    ...props
-  },
+  { className, onFocus = () => {}, onChange = () => {}, label, search = true, ...props },
   ref
 ) {
   const {
@@ -134,7 +127,7 @@ function Input(
     dispatch({ type: types.OPEN_LIST })
   }
   function handleChange({ target }) {
-    if (searchable) dispatch({ type: types.UPDATE_INPUT, value: target.value })
+    if (search) dispatch({ type: types.UPDATE_INPUT, value: target.value })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
