@@ -11,8 +11,8 @@ import styled from "styled-components"
 import TextField from "src/text-input"
 import Popover from "src/popover"
 import Card from "src/card"
-import { useRect, useResize } from "src/hooks"
-import { colors } from "src/constants"
+import { useWindowResize } from "src/hooks"
+import { colors, wrapEvent } from "src/constants"
 import { ChevronDown } from "react-feather"
 
 const SelectContext = createContext()
@@ -20,7 +20,8 @@ const SelectContext = createContext()
 const types = {
   OPEN_LIST: "@rent_avail/elements/select/open",
   CLOSE_LIST: "@rent_avail/elements/select/close",
-  UPDATE_WIDTH: "@rent_avail/elements/select/update_width"
+  UPDATE_WIDTH: "@rent_avail/elements/select/width",
+  UPDATE_VALUE: "@rent_avail/elements/select/value"
 }
 
 function selectReducer(state, action) {
@@ -30,7 +31,10 @@ function selectReducer(state, action) {
     case types.CLOSE_LIST:
       return { ...state, isOpen: false }
     case types.UPDATE_WIDTH:
-      return { ...state, listWidth: action.width }
+      return { ...state, width: action.width }
+    case types.SET_VALUE:
+      console.log(action.value)
+      return { ...state, currentValue: action.value, isOpen: false }
     default:
       throw Error("Must dispatch a known action.")
   }
@@ -39,7 +43,7 @@ function selectReducer(state, action) {
 function Select({ children, id }) {
   const inputRef = useRef()
   const listRef = useRef()
-  const [state, dispatch] = useReducer(selectReducer, { isOpen: false, listWidth: 0 })
+  const [state, dispatch] = useReducer(selectReducer, { isOpen: false, width: 0 })
   const context = {
     inputRef,
     listRef,
@@ -66,13 +70,23 @@ const StyledTextField = styled(TextField)`
 `
 
 function Input(props, ref) {
-  const { inputRef, dispatch } = useContext(SelectContext)
+  const {
+    state: { currentValue },
+    inputRef,
+    dispatch
+  } = useContext(SelectContext)
   function handleFocus() {
     dispatch({ type: types.OPEN_LIST })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
-    <StyledTextField {...props} ref={inputRef} icon={ChevronDown} onFocus={handleFocus} />
+    <StyledTextField
+      {...props}
+      value={currentValue}
+      ref={inputRef}
+      icon={ChevronDown}
+      onFocus={handleFocus}
+    />
   )
 }
 
@@ -89,13 +103,13 @@ const StyledList = styled(Card)`
 
 function List({ children, ...props }, ref) {
   const {
-    state: { isOpen },
+    state: { isOpen, width },
     dispatch,
     listRef,
     inputRef,
     id
   } = useContext(SelectContext)
-  const inputBounds = useRect(inputRef)
+  const inputBounds = useWindowResize(inputRef)
   function position(popoverRect, targetRect) {
     if (!popoverRect || !targetRect) return {}
     return {
@@ -107,18 +121,21 @@ function List({ children, ...props }, ref) {
     if (!isOpen) return null
     const listEl = listRef.current
     const targetEl = inputRef.current
-    if (isOpen && !listEl.contains(target) && !targetEl.contains(target)) {
+    if (isOpen && !listEl?.contains(target) && !targetEl?.contains(target)) {
       dispatch({ type: types.CLOSE_LIST })
     }
   }
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
-    document.addEventListener("click", handleBlur)
+    if (isOpen) document.addEventListener("click", handleBlur)
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen])
+  useEffect(() => {
+    if (isOpen) dispatch({ type: types.UPDATE_WIDTH, width: inputBounds.width })
+  }, [inputBounds, isOpen])
   return isOpen ? (
     <Popover getPosition={position} id={id} targetRef={inputRef}>
-      <StyledList {...props} as="ul" ref={listRef} style={{ width: inputBounds.width }}>
+      <StyledList {...props} as="ul" ref={listRef} style={{ width }}>
         {children}
       </StyledList>
     </Popover>
@@ -132,9 +149,21 @@ const StyledItem = styled.li`
   }
 `
 
-function Item({ children, value = "", ...props }, ref) {
+function Item({ children, value = "", onClick = () => null, ...props }, ref) {
+  const {
+    state: { currentValue },
+    dispatch
+  } = useContext(SelectContext)
+  function handleClick(event) {
+    dispatch({ type: types.SET_VALUE, value: event.target.dataset.value })
+  }
   return (
-    <StyledItem {...props} ref={ref} value={value}>
+    <StyledItem
+      {...props}
+      ref={ref}
+      data-value={value}
+      onClick={wrapEvent(handleClick, onClick)}
+    >
       {children}
     </StyledItem>
   )
@@ -145,6 +174,3 @@ const SelectList = forwardRef(List)
 const SelectItem = forwardRef(Item)
 
 export { Select as default, SelectInput, SelectList, SelectItem }
-
-// 1. When the list opens. Check the width of the input. Set the width of the list to the width of the input.
-// 2. When the width of the input changes. Change the width of the list.
