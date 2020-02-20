@@ -190,9 +190,18 @@ function List({ children, ...props }, ref) {
   }
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
-    if (isOpen) document.addEventListener("click", handleBlur)
+    if (isOpen) {
+      const { height } = listRef.current.getBoundingClientRect()
+      // Note, scrollBy behavior needs to be smooth to prevent the list appearing in the wrong spot.
+      // This is not supported by IE or Edge, so they're just going to have to scroll themselves.
+      window.scrollBy({
+        top: height,
+        behavior: "smooth"
+      })
+      document.addEventListener("click", handleBlur)
+    }
     return () => document.removeEventListener("click", handleBlur)
-  }, [isOpen])
+  }, [isOpen, handleBlur])
   useEffect(() => {
     if (isOpen) dispatch({ type: types.UPDATE_WIDTH, width: inputBounds.width })
   }, [inputBounds, isOpen])
