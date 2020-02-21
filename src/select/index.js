@@ -12,7 +12,7 @@ import styled, { css } from "styled-components"
 import Popover from "src/popover"
 import Card from "src/card"
 import { useWindowResize } from "src/hooks"
-import { colors, wrapEvent } from "src/constants"
+import { colors, wrapEvent, noop } from "src/constants"
 import { ChevronDown } from "react-feather"
 
 const SelectContext = createContext()
@@ -115,7 +115,7 @@ const StyledSelectInput = styled.label`
 `
 
 function Input(
-  { className, onFocus = () => {}, onChange = () => {}, label, search = true, ...props },
+  { className, onFocus = noop, onChange = noop, label, search = true, ...props },
   ref
 ) {
   const {
@@ -228,10 +228,8 @@ const StyledItem = styled.li`
   }
 `
 
-// Use Keydown
-
 function Item(
-  { className, children, value = "", label = "", onClick = () => {}, ...props },
+  { className, children, value = "", label = "", onClick = noop, ...props },
   ref
 ) {
   const {

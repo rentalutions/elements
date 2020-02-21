@@ -61,3 +61,5 @@ export function wrapEvent(first, second) {
     if (!event.defaultPrevented) return second(event)
   }
 }
+
+export function noop() {}
