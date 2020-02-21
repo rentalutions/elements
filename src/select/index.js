@@ -142,8 +142,8 @@ function Input(
         ref={ref}
         className="select__input"
         value={inputValue}
-        onChange={wrapEvent(handleChange, onChange)}
-        onFocus={wrapEvent(handleFocus, onFocus)}
+        onChange={wrapEvent(onChange, handleChange)}
+        onFocus={wrapEvent(onFocus, handleFocus)}
       />
       <span className="select__label">{label}</span>
       {selectValue && <span className="select__value">{selectValue}</span>}
@@ -258,7 +258,7 @@ function Item(
       {...props}
       ref={ref}
       data-value={value}
-      onClick={wrapEvent(handleClick, onClick)}
+      onClick={wrapEvent(onClick, handleClick)}
       className={classes}
     >
       {children}

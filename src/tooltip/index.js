@@ -9,7 +9,7 @@ import React, {
   Children
 } from "react"
 import styled from "styled-components"
-import { colors } from "src/constants"
+import { colors, wrapEvent } from "src/constants"
 import Popover from "src/popover"
 
 const TooltipContext = createContext()
@@ -41,13 +41,6 @@ function Tooltip({ children, id }) {
   return <TooltipContext.Provider value={context}>{children}</TooltipContext.Provider>
 }
 
-function wrapEvent(first, second) {
-  return event => {
-    if (first) first(event)
-    if (!event.defaultPrevented) second(event)
-  }
-}
-
 function Target({ children, ...props }, ref) {
   const {
     id,
@@ -58,7 +51,7 @@ function Target({ children, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...targetRef }))
   const child = Children.only(children)
   const { onBlur, onFocus, onMouseEnter, onMouseLeave } = child.props
-  function handleToggle() {
+  function handleOpen() {
     dispatch({ type: OPEN_TOOLTIP })
   }
   function handleClose() {
@@ -71,9 +64,9 @@ function Target({ children, ...props }, ref) {
     type: "button",
     "aria-haspopup": "menu",
     "aria-expanded": isOpen,
-    onFocus: wrapEvent(onFocus, handleToggle),
+    onFocus: wrapEvent(onFocus, handleOpen),
     onBlur: wrapEvent(onBlur, handleClose),
-    onMouseEnter: wrapEvent(onMouseEnter, handleToggle),
+    onMouseEnter: wrapEvent(onMouseEnter, handleOpen),
     onMouseLeave: wrapEvent(onMouseLeave, handleClose)
   })
 }
@@ -81,8 +74,8 @@ function Target({ children, ...props }, ref) {
 const TooltipTarget = forwardRef(Target)
 
 const StyledTooltip = styled.aside`
-  min-width: 10rem;
-  max-width: 40rem;
+  display: block;
+  max-width: 20rem;
   background: ${colors.blue_700};
   color: ${colors.ui_100};
   padding: 1rem;
