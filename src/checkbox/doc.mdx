@@ -4,6 +4,7 @@ route: /components/checkbox
 menu: Components
 ---
 
+import { useState } from "react"
 import Playground from "utils/playground"
 import Status from "utils/status"
 import Prop from "utils/prop"
@@ -37,7 +38,7 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
 
 <Playground>
   <Checkbox />
-  <Checkbox checked />
+  <Checkbox defaultChecked />
   <Checkbox />
 </Playground>
 
@@ -52,6 +53,33 @@ A checkbox's children will render as the lable to the right of the element. Chec
   <Checkbox>Allow Parrots</Checkbox>
 </Playground>
 
-#### TODO
+### Controlled input
 
-1. Build an indeterminate state for the checkbox
+<Playground>
+  {() => {
+    const [checked, set] = useState(false)
+    function handleChange(event) {
+      set(event.target.checked)
+    }
+    return (
+      <Checkbox checked={checked} onChange={handleChange}>
+        I am {checked ? "checked" : "not checked"}
+      </Checkbox>
+    )
+  }}
+</Playground>
+
+## Extension
+
+### `.checked`
+
+The checkbox component will have a checked class when the input is checked
+
+```js
+const CustomChecked = styled(Checkbox)`
+  background: ${colors.ui_300};
+  &.checked {
+    background: ${colors.blue_100};
+  }
+`
+```

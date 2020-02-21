@@ -1,6 +1,12 @@
-import React, { useRef, forwardRef, useImperativeHandle } from "react"
+import React, {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+  useEffect
+} from "react"
 import { createPortal } from "react-dom"
-import { usePortal, useRect } from "src/hooks"
+import { usePortal, useWindowResize } from "src/hooks"
 
 function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0) {
   const collisions = {
@@ -14,7 +20,7 @@ function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0
   return { right, up }
 }
 
-function getPosition(popoverRect, targetRect) {
+function calculate(popoverRect, targetRect) {
   if (!popoverRect || !targetRect) return {}
   const { right, up } = getCollisions(popoverRect, targetRect)
   return {
@@ -31,18 +37,21 @@ function getPosition(popoverRect, targetRect) {
   }
 }
 
-function PopOver({ targetRef, position = getPosition, style, children, ...rest }, ref) {
+function PopOver({ targetRef, getPosition = calculate, style, children, ...rest }, ref) {
   const portalTarget = usePortal()
   const popoverRef = useRef(null)
-  const popoverRect = useRect(popoverRef)
-  const targetRect = useRect(targetRef)
+  const popoverRect = useWindowResize(popoverRef)
+  const targetRect = useWindowResize(targetRef)
+  const [position, setPosition] = useState({})
   useImperativeHandle(ref, () => ({ ...popoverRef.current }))
-  const positionStyles = position(popoverRect, targetRect)
+  useEffect(() => {
+    setPosition(getPosition(popoverRect, targetRect))
+  }, [targetRect])
   return createPortal(
     <aside
       {...rest}
       ref={popoverRef}
-      style={{ ...style, position: "absolute", ...positionStyles }}
+      style={{ ...style, position: "absolute", ...position }}
     >
       {children}
     </aside>,

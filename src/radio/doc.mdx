@@ -31,6 +31,11 @@ Radio buttons are used to select one option from a set. Use radio buttons when i
   Controls the checked nature of the radio button to give the user feedback.
 </Prop>
 
+<Prop name="value" type="string">
+  Value of the radio input.
+</Prop>
+
+
 ## RadioGroup Anatomy
 
 ### Props
@@ -44,8 +49,8 @@ Radio buttons are used to select one option from a set. Use radio buttons when i
 ### Radio
 
 <Playground>
-  <Radio checked />
   <Radio />
+  <Radio value="delivery" />
 </Playground>
 
 ### Radio Group
@@ -54,11 +59,11 @@ To easily group buttons into usable forms, use the `RadioGroup` component
 
 <Playground column>
   <RadioGroup inline>
-    <Radio name="user-type" />
-    <Radio name="user-type" />
+    <Radio name="user-type" value="landlord" />
+    <Radio name="user-type" value="tenant" />
   </RadioGroup>
   <RadioGroup style={{ marginTop: "2rem" }}>
-    <Radio name="payment-type" />
-    <Radio name="payment-type" />
+    <Radio name="payment-type" value="ach" />
+    <Radio name="payment-type" value="debit" />
   </RadioGroup>
 </Playground>

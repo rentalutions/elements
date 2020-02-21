@@ -28,33 +28,23 @@ Grids are used to build consistent, responsive layouts. The `<Grid/>` component 
 
 ### Grid Props
 
-<Prop name="column" type="number" defaultValue="12">
-  Optional override on the number of columns the grid contains.
+<Prop name="theme" type="object" defaultValue="themeObject">
+  Optional override on columns, gap, and break points.
 </Prop>
 
-<Prop name="gap" type="string" defaultValue="2rem">
-  Optional override on the gap inbetween columns and rows.
-</Prop>
-
-<Prop name="xsmBreak" type="string" defaultValue="40rem">
-  Optional override for the extra small breakpoint.
-</Prop>
-
-<Prop name="smBreak" type="string" defaultValue="60rem">
-  Optional override for the small breakpoint.
-</Prop>
-
-<Prop name="mdBreak" type="string" defaultValue="80rem">
-  Optional override for the medium breakpoint.
-</Prop>
-
-<Prop name="lgBreak" type="string" defaultValue="100rem">
-  Optional override for the large breakpoint.
-</Prop>
-
-<Prop name="xlgBreak" type="string" defaultValue="120rem">
-  Optional override for the extra large breakpoint.
-</Prop>
+```js
+themeObject = {
+  columns: 12,
+  gap: 2,
+  breakPoints: {
+    xsm: 40,
+    sm: 60,
+    md: 80,
+    lg: 100,
+    xlg: 120
+  }
+}
+```
 
 ### Col Props
 

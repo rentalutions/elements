@@ -1,11 +1,11 @@
-import React, { forwardRef } from "react"
+import React, { forwardRef, useReducer } from "react"
 import styled from "styled-components"
 import { colors } from "../constants"
 
-const StyledRadioButton = styled.label`
+const StyledRadio = styled.label`
   position: relative;
   display: inline-flex;
-  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "cursor")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "cursor")};
   input[type="radio"] {
     width: 0;
     height: 0;
@@ -13,6 +13,7 @@ const StyledRadioButton = styled.label`
     opacity: 0;
   }
   .radio__target {
+    all: unset;
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -44,25 +45,27 @@ const StyledRadioButton = styled.label`
   input:disabled ~ .radio__target {
     border: 2px solid ${colors.ui_300};
   }
-  .label {
+  .radio__label {
     margin-left: 1rem;
   }
 `
 
-export default forwardRef(({ children, className, disabled, ...props }, ref) => (
-  <StyledRadioButton className={className} isDisabled={disabled}>
-    <input type="radio" {...props} ref={ref} disabled={disabled} />
-    <div className="radio__target" />
-    {children && <span className="label">{children}</span>}
-  </StyledRadioButton>
-))
-
 export const RadioGroup = styled.fieldset`
-  border: none;
-  padding: 0;
-  margin: 0;
+  all: unset;
   display: ${({ inline }) => (inline ? "block" : "flex")};
   > *:not(:last-child) {
     ${({ inline }) => (inline ? `margin-right: 2rem;` : `margin-bottom: 2rem;`)}
   }
 `
+
+function Radio({ children = null, className = "", disabled = false, ...props }, ref) {
+  return (
+    <StyledRadio className={className} disabled={disabled}>
+      <input {...props} ref={ref} type="radio" disabled={disabled} />
+      <div role="button" className="radio__target" />
+      {children && <span className="radio__label">{children}</span>}
+    </StyledRadio>
+  )
+}
+
+export default forwardRef(Radio)
