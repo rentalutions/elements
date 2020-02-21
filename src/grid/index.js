@@ -38,7 +38,7 @@ function GridContainer(
   const childProps = { ...theme.breakPoints }
   return (
     <StyledGrid ref={ref} theme={theme} {...props}>
-      {Children.map(children, child => cloneElement(child, childProps))}
+      {Children.map(children, child => (child ? cloneElement(child, childProps) : null))}
     </StyledGrid>
   )
 }
