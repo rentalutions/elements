@@ -12,31 +12,21 @@ import React, {
 import styled from "styled-components"
 import Popover from "src/popover"
 import Card from "src/card"
-import { colors } from "src/constants"
+import { colors, wrapEvent } from "src/constants"
 
 const MenuContext = createContext()
 
-/**
- * Actions
- */
-
-const TOGGLE_MENU = "@rent_avail/menu/toggle"
-
-/**
- * Initial State
- */
+const types = {
+  TOGGLE_MENU: "@rent_avail/menu/toggle"
+}
 
 const initialState = {
   isOpen: false
 }
 
-/**
- * Reducer
- */
-
 function reducer(state, action) {
   switch (action.type) {
-    case TOGGLE_MENU:
+    case types.TOGGLE_MENU:
       return { ...state, isOpen: !state.isOpen }
 
     default:
@@ -60,7 +50,7 @@ function Menu({ children, id }) {
   return <MenuContext.Provider value={context}>{children}</MenuContext.Provider>
 }
 
-function Target({ children, style, ...rest }, ref) {
+function Target({ children, ...rest }, ref) {
   const {
     id,
     targetRef,
@@ -68,10 +58,11 @@ function Target({ children, style, ...rest }, ref) {
     state: { isOpen }
   } = useContext(MenuContext)
   const child = Children.only(children)
-  useImperativeHandle(ref, () => ({ ...targetRef }))
-  function handleMouseDown() {
-    dispatch({ type: TOGGLE_MENU })
+  const { onClick } = child.props
+  function handleToggleMenu() {
+    dispatch({ type: types.TOGGLE_MENU })
   }
+  useImperativeHandle(ref, () => ({ ...targetRef }))
   return cloneElement(child, {
     ...rest,
     id,
@@ -79,10 +70,7 @@ function Target({ children, style, ...rest }, ref) {
     ref: targetRef,
     "aria-expanded": isOpen,
     "aria-haspopup": "menu",
-    onMouseDown: e => {
-      if (child.props.onMouseDown) child.props.onMouseDown(e)
-      handleMouseDown(e)
-    }
+    onClick: wrapEvent(onClick, handleToggleMenu)
   })
 }
 
@@ -94,7 +82,7 @@ const StyledList = styled(Card)`
   min-width: 20rem;
 `
 
-function List({ children, ...rest }, ref) {
+function List({ children, position, ...rest }, ref) {
   const {
     targetRef,
     menuRef,
@@ -103,21 +91,20 @@ function List({ children, ...rest }, ref) {
     state: { isOpen }
   } = useContext(MenuContext)
   useImperativeHandle(ref, () => ({ ...menuRef }))
-  function handleOutsideClick(e) {
-    if (
-      isOpen &&
-      !menuRef.current.contains(e.target) &&
-      !targetRef.current.contains(e.target)
-    ) {
-      dispatch({ type: TOGGLE_MENU })
+  function handleBlur({ target }) {
+    if (!isOpen) return null
+    const menuEl = menuRef.current
+    const targetEl = targetRef.current
+    if (!menuEl?.contains(target) && !targetEl?.contains(target)) {
+      dispatch({ type: types.TOGGLE_MENU })
     }
   }
   useEffect(() => {
-    if (isOpen) document.addEventListener("click", handleOutsideClick)
-    return () => document.removeEventListener("click", handleOutsideClick)
+    document.addEventListener("click", handleBlur)
+    return () => document.removeEventListener("click", handleBlur)
   }, [isOpen])
   return isOpen ? (
-    <Popover targetRef={targetRef} ref={popoverRef}>
+    <Popover targetRef={targetRef} ref={popoverRef} position={position}>
       <StyledList as="ul" {...rest} ref={menuRef} role="menu">
         {children}
       </StyledList>
@@ -127,9 +114,13 @@ function List({ children, ...rest }, ref) {
 
 const MenuList = forwardRef(List)
 
-const StyledItem = styled.li`
+const MenuItem = styled.li.attrs({
+  role: "menuitem"
+})`
+  display: block;
   padding: 2rem;
   cursor: pointer;
+  outline: none;
   &:hover {
     background: ${colors.ui_300};
   }
@@ -137,20 +128,5 @@ const StyledItem = styled.li`
     border-bottom: 1px solid ${colors.ui_500};
   }
 `
-
-function Item({ children, ...rest }, ref) {
-  return (
-    <StyledItem {...rest} role="none" ref={ref}>
-      {cloneElement(children, {
-        ...rest,
-        style: { ...children.style, padding: "2rem" },
-        role: "menuitem",
-        tabIndex: "-1"
-      })}
-    </StyledItem>
-  )
-}
-
-const MenuItem = forwardRef(Item)
 
 export { Menu, MenuTarget, MenuList, MenuItem }

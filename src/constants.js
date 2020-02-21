@@ -44,7 +44,7 @@ export function throttle(fn, ms) {
     fn.apply()
   }
   function clear() {
-    timeout == undefined ? null : clearTimeout(timeout)
+    return timeout === "undefined" ? null : clearTimeout(timeout)
   }
   if (fn !== undefined && ms !== undefined) {
     timeout = setTimeout(exec, ms)
@@ -52,7 +52,14 @@ export function throttle(fn, ms) {
     console.error("callback function and the timeout must be supplied")
   }
   // API to clear the timeout
-  throttle.clearTimeout = function() {
-    clear()
+  throttle.clearTimeout = clear()
+}
+
+export function wrapEvent(first, second) {
+  return event => {
+    if (first) first(event)
+    if (!event.defaultPrevented) return second(event)
   }
 }
+
+export function noop() {}
