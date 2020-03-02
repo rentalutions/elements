@@ -1,12 +1,13 @@
 import React, {
+  memo,
   forwardRef,
-  useImperativeHandle,
-  useRef,
   createContext,
+  useRef,
   useReducer,
   useContext,
   useEffect,
-  useState
+  useState,
+  useImperativeHandle
 } from "react"
 import styled, { css } from "styled-components"
 import Popover from "src/popover"
@@ -22,7 +23,8 @@ const types = {
   CLOSE_LIST: "@rent_avail/elements/select/close_list",
   UPDATE_WIDTH: "@rent_avail/elements/select/update_width",
   UPDATE_INPUT: "@rent_avail/elements/select/update_input",
-  SET_VALUE: "@rent_avail/elements/select/set_value"
+  SET_VALUE: "@rent_avail/elements/select/set_value",
+  SET_ERROR: "@rent_avail/elements/select/set_value"
 }
 
 const initialState = {
@@ -39,13 +41,13 @@ function selectReducer(state, action) {
     case types.CLOSE_LIST:
       return { ...state, isOpen: false, inputValue: "" }
     case types.UPDATE_WIDTH:
-      return { ...state, width: action.width }
+      return { ...state, width: action.payload }
     case types.UPDATE_INPUT:
-      return { ...state, inputValue: action.value, selectValue: "" }
+      return { ...state, inputValue: action.payload, selectValue: "" }
     case types.SET_VALUE:
-      return { ...state, isOpen: false, selectValue: action.value }
+      return { ...state, isOpen: false, selectValue: action.payload }
     default:
-      throw Error("Must dispatch a known action.")
+      throw Error(`Unknown action type ${action.type}.`)
   }
 }
 
@@ -73,10 +75,6 @@ const iconTransform = css`
   transform: rotate(180deg);
 `
 
-const inputTransform = css`
-  border-color: ${colors.blue_500};
-`
-
 const StyledSelectInput = styled.label`
   position: relative;
   display: block;
@@ -84,11 +82,16 @@ const StyledSelectInput = styled.label`
     all: unset;
     box-sizing: border-box;
     padding: 3rem 2rem 1rem 2rem;
-    border: 2px solid ${colors.ui_500};
+    border-width: 2px;
+    border-style: solid;
+    border-color: ${({ hasError, hasValue, isOpen }) => {
+      if (hasError) return colors.red_500
+      if (hasValue || isOpen) return colors.blue_500
+      return colors.ui_500
+    }};
     border-radius: 0.25rem;
     width: 100%;
     transition: 100ms;
-    ${({ hasValue, isOpen }) => (hasValue || isOpen) && inputTransform}
   }
   .select__value,
   .select__label,
@@ -112,10 +115,27 @@ const StyledSelectInput = styled.label`
     top: 3rem;
     left: 2.25rem;
   }
+  .select__error {
+    display: block;
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    color: ${colors.red_500};
+    line-height: 1.5;
+    font-size: 1.334rem;
+  }
 `
 
 function Input(
-  { className, onFocus = noop, onChange = noop, label, search = true, ...props },
+  {
+    className,
+    onFocus = noop,
+    onChange = noop,
+    label,
+    search = true,
+    error = null,
+    ...props
+  },
   ref
 ) {
   const {
@@ -127,13 +147,14 @@ function Input(
     dispatch({ type: types.OPEN_LIST })
   }
   function handleChange({ target }) {
-    if (search) dispatch({ type: types.UPDATE_INPUT, value: target.value })
+    if (search) dispatch({ type: types.UPDATE_INPUT, payload: target.value })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
     <StyledSelectInput
       {...props}
       ref={inputRef}
+      hasError={!!error}
       isOpen={isOpen}
       hasValue={inputValue.length || selectValue.length}
       searchable
@@ -146,6 +167,7 @@ function Input(
         onFocus={wrapEvent(onFocus, handleFocus)}
       />
       <span className="select__label">{label}</span>
+      {error && <span className="select__error">{error}</span>}
       {selectValue && <span className="select__value">{selectValue}</span>}
       <ChevronDown className={`select__icon ${isOpen && "icon--is-open"}`} />
     </StyledSelectInput>
@@ -203,7 +225,7 @@ function List({ children, ...props }, ref) {
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
   useEffect(() => {
-    if (isOpen) dispatch({ type: types.UPDATE_WIDTH, width: inputBounds.width })
+    if (isOpen) dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
   }, [inputBounds, isOpen])
   return isOpen ? (
     <Popover getPosition={position} id={id} targetRef={inputRef}>
@@ -239,7 +261,7 @@ function Item(
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
   function handleClick({ target }) {
-    dispatch({ type: types.SET_VALUE, value: target.dataset.value })
+    dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
     if (onSelect) onSelect(target.dataset.value)
   }
   const classes = currentValue === value ? `selected ${className}` : className
@@ -266,8 +288,8 @@ function Item(
   ) : null
 }
 
-const SelectInput = forwardRef(Input)
-const SelectList = forwardRef(List)
-const SelectItem = forwardRef(Item)
+const SelectInput = memo(forwardRef(Input))
+const SelectList = memo(forwardRef(List))
+const SelectItem = memo(forwardRef(Item))
 
 export { Select as default, SelectInput, SelectList, SelectItem }
