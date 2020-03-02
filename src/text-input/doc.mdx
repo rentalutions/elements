@@ -43,6 +43,10 @@ Text inputs let users enter and edit text information. They are made up of a lab
   submit. Uses browser api require.
 </Prop>
 
+<Prop name="error" type="node">
+  Error value for the input. If present will display the input in an error state.
+</Prop>
+
 ## Usage
 
 <Playground>
@@ -50,9 +54,10 @@ Text inputs let users enter and edit text information. They are made up of a lab
   <Input label="A really long label to make things extra clear for the user." />
 </Playground>
 
+### Controlled Inputs.
 By default inputs are uncontrolled. You gotta wire them up in whatever way you wish. All event handlers happen on the `input` node as expected and refs are forwarded accurately.
 
-_How do I control my inputs?!_ you might ask... Well let me show you! If you haven't read up on [react hooks](https://reactjs.org/docs/hooks-intro.html) now would be a great time to do that as that's what we're going to use here.
+If you haven't read up on [react hooks](https://reactjs.org/docs/hooks-intro.html) now would be a great time, we're going to use them in this next example.
 
 <Playground column>
   {() => {
@@ -68,5 +73,35 @@ _How do I control my inputs?!_ you might ask... Well let me show you! If you hav
     )
 
 }}
-
 </Playground>
+
+### Error handling
+Simple error handling is provided by the input. We don't track dirty vs clean inputs so you'll have to handle that yourself. An example of how to handle a simple implemenation is below.
+
+<Playground column>
+  {() => {
+    const [userName, setUserName] = useState("")
+    const [isTouched, setTouched] = useState(false)
+    const [error, setError] = useState(null)
+    const handleChange = ({target: {value}}) => {
+      setUserName(value)
+      setError(value.length < 3 ? "Must be greater than 2" : null)
+    }
+    const handleBlur = e => setTouched(true)
+    return (
+      <div>
+        <h4 style={{ marginBottom: "2rem", height: "3rem" }}>{userName}</h4>
+        <Input
+          style={{ marginBottom: "1rem" }}
+          label="User Name"
+          value={userName}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={isTouched && error}
+        />
+      </div>
+    )
+
+}}
+</Playground>
+

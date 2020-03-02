@@ -1,7 +1,6 @@
-import PropTypes from "prop-types"
-import React, { forwardRef, useState, useEffect } from "react"
+import React, { memo, forwardRef, useState, useEffect } from "react"
 import styled from "styled-components"
-import { colors } from "src/constants"
+import { colors, wrapEvent, noop } from "src/constants"
 
 const StyledInput = styled.label`
   position: relative;
@@ -14,13 +13,28 @@ const StyledInput = styled.label`
     width: 100%;
     box-sizing: border-box;
     padding: 3rem 2rem 1rem 2rem;
-    border: 2px solid ${({ hasValue }) => (hasValue ? colors.blue_500 : colors.ui_500)};
+    border: 2px solid
+      ${({ hasValue, hasError }) => {
+        if (hasError) return colors.red_500
+        if (hasValue) return colors.blue_500
+        return colors.ui_500
+      }};
     border-radius: 4px;
-    ${({ icon }) => icon && `padding-left: 5rem;`}
+    ${({ hasIcon }) => hasIcon && `padding-left: 5rem;`}
+    &:focus {
+      border-color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
+      & ~ .input__label {
+        font-size: 1.333rem;
+        transform: translate3d(0, -1.333rem, 0);
+      }
+      & ~ .input__icon {
+        color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
+      }
+    }
   }
-  .label {
+  .input__label {
     position: absolute;
-    left: calc(${({ icon }) => (icon ? "5rem" : "2rem")} + 2px);
+    left: calc(${({ hasIcon }) => (hasIcon ? "5rem" : "2rem")} + 2px);
     top: calc(2rem + 2px);
     right: calc(2rem - 2px);
     font-size: 1.5rem;
@@ -42,27 +56,30 @@ const StyledInput = styled.label`
     position: absolute;
     left: calc(2rem + 2px);
     top: calc(2rem + 2px);
-    color: ${({ hasValue }) => (hasValue ? colors.blue_500 : colors.ui_700)};
+    color: ${({ hasValue, hasError }) => {
+      if (hasError) return colors.red_500
+      if (hasValue) return colors.blue_500
+      return colors.ui_700
+    }};
   }
-  input:focus {
-    border-color: ${colors.blue_500};
-    & ~ .label {
-      font-size: 1.333rem;
-      transform: translate3d(0, -1.333rem, 0);
-    }
-    & ~ .input__icon {
-      color: ${colors.blue_500};
-    }
+  .input__error {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    display: block;
+    color: ${colors.red_500};
+    font-size: 1.334rem;
+    line-height: 1.5;
+    text-align: right;
   }
 `
 
-export default forwardRef(function TextInput(
-  { className, icon: Icon, label, onChange, initialValue, value, ...props },
+function TextInput(
+  { className, icon: Icon, label, onChange = noop, initialValue, value, error, ...props },
   ref
 ) {
   const [hasValue, setHasValue] = useState(initialValue)
   const handleChange = e => {
-    if (onChange) onChange(e)
     if (e.target.value.length) setHasValue(true)
     else setHasValue(false)
   }
@@ -70,10 +87,24 @@ export default forwardRef(function TextInput(
     if (value && value.length) setHasValue(true)
   }, [value])
   return (
-    <StyledInput className={className} icon={!!Icon} hasValue={hasValue}>
-      <input type="text" ref={ref} {...props} value={value} onChange={handleChange} />
+    <StyledInput
+      className={className}
+      hasError={!!error?.length}
+      hasIcon={!!Icon}
+      hasValue={hasValue}
+    >
+      <input
+        type="text"
+        ref={ref}
+        {...props}
+        value={value}
+        onChange={wrapEvent(onChange, handleChange)}
+      />
       {Icon && <Icon className="input__icon" width={24} height={24} />}
-      <span className="label">{label}</span>
+      <span className="input__label">{label}</span>
+      {error && <span className="input__error">{error}</span>}
     </StyledInput>
   )
-})
+}
+
+export default memo(forwardRef(TextInput))
