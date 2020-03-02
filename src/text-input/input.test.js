@@ -6,7 +6,7 @@ import { Home } from "react-feather"
 describe("<Input />", () => {
   test("It renders the correct label.", () => {
     const { container } = render(<Input label="Some Label" />)
-    const label = container.querySelector(".label")
+    const label = container.querySelector(".input__label")
     expect(label).toHaveTextContent("Some Label")
   })
 
