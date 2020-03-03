@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, forwardRef } from "react"
 import styled, { css } from "styled-components"
-import PropTypes from "prop-types"
 import { Check } from "react-feather"
-import { colors } from "../constants"
+import { colors, noop, wrapEvent } from "src/constants"
 
 const filterStyles = css`
   background: ${colors.ui_300};
@@ -44,25 +43,28 @@ const StyledTag = styled.span`
   ${({ isFilter }) => isFilter && filterStyles}
 `
 
-export default function Tag({
-  children,
-  className,
-  select,
-  icon: Icon,
-  checked,
-  onChange,
-  bg,
-  color,
-  ...props
-}) {
-  const [internalChecked, set] = useState(checked)
+function Tag(
+  {
+    children,
+    className,
+    select,
+    icon: Icon = null,
+    checked,
+    defaultChecked,
+    onChange = noop,
+    bg = colors.gold_500,
+    color = colors.ui_900,
+    ...props
+  },
+  ref
+) {
+  const [internalChecked, set] = useState(defaultChecked)
   function handleCheck(e) {
-    if (onChange) onChange(e)
     set(e.target.checked)
   }
   if (!select)
     return (
-      <StyledTag className={className} bg={bg} color={color} {...props}>
+      <StyledTag {...props} ref={ref} className={className} bg={bg} color={color}>
         {Icon && <Icon />}
         {children}
       </StyledTag>
@@ -76,10 +78,11 @@ export default function Tag({
       color={color}
     >
       <input
-        type="checkbox"
-        onChange={handleCheck}
-        checked={internalChecked}
         {...props}
+        ref={ref}
+        type="checkbox"
+        onChange={wrapEvent(onChange, handleCheck)}
+        checked={internalChecked}
       />
       {internalChecked ? <Check /> : Icon ? <Icon /> : null}
       {children}
@@ -87,24 +90,4 @@ export default function Tag({
   )
 }
 
-Tag.propTypes = {
-  bg: PropTypes.string,
-  color: PropTypes.string,
-  checked: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  select: PropTypes.bool,
-  icon: PropTypes.element,
-  onChange: PropTypes.func
-}
-
-Tag.defaultProps = {
-  bg: colors.gold_500,
-  color: colors.ui_900,
-  checked: false,
-  children: null,
-  className: "",
-  select: false,
-  icon: null,
-  onChange: () => null
-}
+export default forwardRef(Tag)
