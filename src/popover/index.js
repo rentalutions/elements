@@ -21,19 +21,18 @@ function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0
 }
 
 function calculate(popoverRect, targetRect) {
-  if (!popoverRect || !targetRect) return {}
+  if (!popoverRect || !targetRect) return null
   const { right, up } = getCollisions(popoverRect, targetRect)
+  const top = up
+    ? targetRect.top - 12 - popoverRect.height + window.pageYOffset
+    : targetRect.top + 12 + targetRect.height + window.pageYOffset
+  const left = right
+    ? targetRect.right - popoverRect.width + window.pageXOffset
+    : targetRect.left + window.pageXOffset
+  if (isNaN(top) || isNaN(left)) return null
   return {
-    top: `${
-      up
-        ? targetRect.top - 12 - popoverRect.height + window.pageYOffset
-        : targetRect.top + 12 + targetRect.height + window.pageYOffset
-    }px`,
-    left: `${
-      right
-        ? targetRect.right - popoverRect.width + window.pageXOffset
-        : targetRect.left + window.pageXOffset
-    }px`
+    top: `${top}px`,
+    left: `${left}px`,
   }
 }
 
@@ -42,11 +41,12 @@ function PopOver({ targetRef, getPosition = calculate, style, children, ...rest 
   const popoverRef = useRef(null)
   const popoverRect = useWindowResize(popoverRef)
   const targetRect = useWindowResize(targetRef)
-  const [position, setPosition] = useState({})
+  const [position, setPosition] = useState(null)
   useImperativeHandle(ref, () => ({ ...popoverRef.current }))
   useEffect(() => {
     setPosition(getPosition(popoverRect, targetRect))
   }, [targetRect])
+  if (!position) return null
   return createPortal(
     <aside
       {...rest}
