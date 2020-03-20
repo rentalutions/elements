@@ -186,7 +186,7 @@ const StyledList = styled(Card)`
   overflow-y: auto;
 `
 
-function List({ children, ...props }, ref) {
+function List({ children, style, ...props }, ref) {
   const {
     state: { isOpen, width },
     dispatch,
@@ -228,8 +228,13 @@ function List({ children, ...props }, ref) {
     if (isOpen) dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
   }, [inputBounds, isOpen])
   return isOpen ? (
-    <Popover getPosition={position} id={id} targetRef={inputRef}>
-      <StyledList {...props} as="ul" ref={listRef} style={{ width }}>
+    <Popover
+      style={{ zIndex: "1050" }}
+      getPosition={position}
+      id={id}
+      targetRef={inputRef}
+    >
+      <StyledList {...props} as="ul" ref={listRef} style={{ ...style, width }}>
         {children}
       </StyledList>
     </Popover>
