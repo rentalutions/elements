@@ -42,7 +42,7 @@ function PopOver({ targetRef, getPosition = calculate, style, children, ...rest 
   const popoverRef = useRef(null)
   const popoverRect = useWindowResize(popoverRef)
   const targetRect = useWindowResize(targetRef)
-  const [position, setPosition] = useState({ top: 0, left: 0 })
+  const [position, setPosition] = useState({ top: 0, left: 0, visibility: "hidden" })
   useImperativeHandle(ref, () => ({ ...popoverRef.current }))
   useEffect(() => {
     setPosition(getPosition(popoverRect, targetRect))
