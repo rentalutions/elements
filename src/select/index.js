@@ -229,7 +229,7 @@ function List({ children, style, ...props }, ref) {
   }, [inputBounds, isOpen])
   return isOpen ? (
     <Popover
-      style={{ zIndex: "1050" }}
+      style={{ zIndex: "9999" }}
       getPosition={position}
       id={id}
       targetRef={inputRef}
