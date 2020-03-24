@@ -8,7 +8,7 @@ import React, {
 import { createPortal } from "react-dom"
 import { usePortal, useWindowResize } from "src/hooks"
 
-function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0) {
+export function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0) {
   const collisions = {
     top: targetRect.top - popoverRect.height < 0,
     right: window.innerWidth < targetRect.left + popoverRect.width - offsetLeft,
@@ -20,7 +20,7 @@ function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0
   return { right, up }
 }
 
-function calculate(popoverRect, targetRect) {
+export function defaultPosition(popoverRect, targetRect) {
   if (!popoverRect || !targetRect) return null
   const { right, up } = getCollisions(popoverRect, targetRect)
   const top = up
@@ -37,7 +37,10 @@ function calculate(popoverRect, targetRect) {
   }
 }
 
-function PopOver({ targetRef, getPosition = calculate, style, children, ...rest }, ref) {
+function PopOver(
+  { targetRef, getPosition = defaultPosition, style, children, ...rest },
+  ref
+) {
   const portalTarget = usePortal()
   const popoverRef = useRef(null)
   const popoverRect = useWindowResize(popoverRef)
