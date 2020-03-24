@@ -84,7 +84,7 @@ const StyledTooltip = styled.aside`
   border-radius: 4px;
 `
 
-function Content({ children, ...props }, ref) {
+function Content({ children, getPosition, ...props }, ref) {
   const {
     id,
     state: { isOpen },
@@ -94,7 +94,12 @@ function Content({ children, ...props }, ref) {
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...tooltipRef }))
   return isOpen ? (
-    <Popover targetRef={targetRef} ref={popoverRef} style={{ zIndex: "9999" }}>
+    <Popover
+      style={{ zIndex: "9999" }}
+      targetRef={targetRef}
+      ref={popoverRef}
+      getPosition={getPosition}
+    >
       <StyledTooltip
         {...props}
         ref={tooltipRef}
