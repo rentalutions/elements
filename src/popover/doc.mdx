@@ -1,0 +1,60 @@
+---
+name: Popovers
+route: /components/popover
+menu: Components
+---
+
+import Status from "utils/status"
+import Prop from "utils/prop"
+
+# Popovers
+
+A popover is really a utility component that is used by the tooltip and select box. This API is not something usually needed to layout a page.
+
+<Status status="production" />
+
+## Installation
+
+```
+import Popover, {handlePosition} from "@rent_avail/elements/popover"
+```
+
+## Props
+
+<Prop name="targetRef" type="element">
+  Target for the popover to attach to. If this is null the popover will appear hidden.
+</Prop>
+<Prop name="position" type="function" defaultValue="getPosition">
+  Collision and position calculation. Must return an object with a top, left, and
+  visibility property.
+</Prop>
+
+## handlePosition
+
+```js
+function getPosition({ popover, target }) {
+  if (!popover || !target) return null
+  const collisions = {
+    top: target.top - popover.height < 0,
+    right: window.innerWidth < target.left + popover.width,
+    bottom: window.innerHeight < target.bottom + popover.height,
+    left: target.left - popover.width < 0
+  }
+  const rightCollision = collisions.right && !collisions.left
+  const topCollision = collisions.bottom && !collisions.top
+  const alignTop = target.top - 12 - popover.height + window.pageYOffset
+  const alignBottom = target.top + 12 + target.height + window.pageYOffset
+  const alignRight = target.right - popover.width + window.pageXOffset
+  const alignLeft = target.left + window.pageXOffset
+  const top = topCollision ? alignTop : alignBottom
+  const left = rightCollision ? alignRight : alignLeft
+  if (Number.isNaN(top + left)) {
+    return { top: 0, left: 0, visibility: "hidden" }
+  }
+  return {
+    visibility: "visible",
+    top,
+    left
+  }
+}
+```

@@ -10,7 +10,7 @@ import React, {
   useImperativeHandle
 } from "react"
 import styled, { css } from "styled-components"
-import Popover from "src/popover"
+import Popover, { getPosition } from "src/popover"
 import Card from "src/card"
 import { useWindowResize } from "src/hooks"
 import { colors, wrapEvent, noop } from "src/constants"
@@ -195,11 +195,12 @@ function List({ children, style, ...props }, ref) {
     id
   } = useContext(SelectContext)
   const inputBounds = useWindowResize(inputRef)
-  function position(popoverRect, targetRect) {
-    if (!popoverRect || !targetRect) return {}
+  function position({ popover: popoverRect, target: targetRect }) {
+    if (!popoverRect || !targetRect) return { top: 0, left: 0, visibility: "hidden" }
     return {
       top: `${targetRect.top + targetRect.height + window.pageYOffset + 12}px`,
-      left: `${targetRect.left + window.pageXOffset}px`
+      left: `${targetRect.left + window.pageXOffset}px`,
+      visibility: "visible"
     }
   }
   function handleBlur({ target }) {
@@ -228,12 +229,7 @@ function List({ children, style, ...props }, ref) {
     if (isOpen) dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
   }, [inputBounds, isOpen])
   return isOpen ? (
-    <Popover
-      style={{ zIndex: "9999" }}
-      getPosition={position}
-      id={id}
-      targetRef={inputRef}
-    >
+    <Popover id={id} targetRef={inputRef} position={position} style={{ zIndex: "9999" }}>
       <StyledList {...props} as="ul" ref={listRef} style={{ ...style, width }}>
         {children}
       </StyledList>
