@@ -8,28 +8,23 @@ import React, {
 import { createPortal } from "react-dom"
 import { usePortal, useWindowResize } from "src/hooks"
 
-export function getCollisions(popoverRect, targetRect, offsetLeft = 0, offsetBottom = 0) {
+export function handlePosition({ popover, target, forceRight = false, forceUp = false }) {
+  if (!popover || !target) return null
   const collisions = {
-    top: targetRect.top - popoverRect.height < 0,
-    right: window.innerWidth < targetRect.left + popoverRect.width - offsetLeft,
-    bottom: window.innerHeight < targetRect.bottom + popoverRect.height - offsetBottom,
-    left: targetRect.left - popoverRect.width < 0
+    top: target.top - popover.height < 0,
+    right: window.innerWidth < target.left + popover.width,
+    bottom: window.innerHeight < target.bottom + popover.height,
+    left: target.left - popover.width < 0
   }
-  const right = collisions.right && !collisions.left
-  const up = collisions.bottom && !collisions.top
-  return { right, up }
-}
-
-export function defaultPosition(popoverRect, targetRect) {
-  if (!popoverRect || !targetRect) return null
-  const { right, up } = getCollisions(popoverRect, targetRect)
+  const right = forceRight ? true : collisions.right && !collisions.left
+  const up = forceUp ? true : collisions.bottom && !collisions.top
   const top = up
-    ? targetRect.top - 12 - popoverRect.height + window.pageYOffset
-    : targetRect.top + 12 + targetRect.height + window.pageYOffset
+    ? target.top - 12 - popover.height + window.pageYOffset
+    : target.top + 12 + target.height + window.pageYOffset
   const left = right
-    ? targetRect.right - popoverRect.width + window.pageXOffset
-    : targetRect.left + window.pageXOffset
-  if (isNaN(top) || isNaN(left)) return { top: 0, left: 0, visibility: "hidden" }
+    ? target.right - popover.width + window.pageXOffset
+    : target.left + window.pageXOffset
+  if (Number.isNaN(top + left)) return { top: 0, left: 0, visibility: "hidden" }
   return {
     visibility: "visible",
     top,
@@ -38,17 +33,21 @@ export function defaultPosition(popoverRect, targetRect) {
 }
 
 function PopOver(
-  { targetRef, getPosition = defaultPosition, style, children, ...rest },
+  { targetRef, onPosition = handlePosition, style, children, ...rest },
   ref
 ) {
-  const portalTarget = usePortal()
+  const portal = usePortal()
   const popoverRef = useRef(null)
   const popoverRect = useWindowResize(popoverRef)
   const targetRect = useWindowResize(targetRef)
   const [position, setPosition] = useState({ top: 0, left: 0, visibility: "hidden" })
   useImperativeHandle(ref, () => ({ ...popoverRef.current }))
   useEffect(() => {
-    setPosition(getPosition(popoverRect, targetRect))
+    const newPos = onPosition({
+      popover: popoverRect,
+      target: targetRect
+    })
+    setPosition(newPos)
   }, [targetRect])
   return createPortal(
     <aside
@@ -58,7 +57,7 @@ function PopOver(
     >
       {children}
     </aside>,
-    portalTarget
+    portal
   )
 }
 
