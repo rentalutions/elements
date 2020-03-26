@@ -50,7 +50,7 @@ function Target({ children, ...props }, ref) {
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...targetRef }))
   const child = Children.only(children)
-  const { onBlur, onFocus, onMouseEnter, onMouseLeave } = child.props
+  const { onBlur, onFocus, onMouseEnter, onMouseLeave, style } = child.props
   function handleOpen() {
     dispatch({ type: OPEN_TOOLTIP })
   }
@@ -61,9 +61,11 @@ function Target({ children, ...props }, ref) {
     ...props,
     ref: targetRef,
     id,
+    tabIndex: 0,
     type: "button",
     "aria-haspopup": "menu",
     "aria-expanded": isOpen,
+    style: { outline: "none", ...style },
     onFocus: wrapEvent(onFocus, handleOpen),
     onBlur: wrapEvent(onBlur, handleClose),
     onMouseEnter: wrapEvent(onMouseEnter, handleOpen),
@@ -80,10 +82,9 @@ const StyledTooltip = styled.aside`
   color: ${colors.ui_100};
   padding: 1rem;
   border-radius: 4px;
-  margin-right: 2rem;
 `
 
-function Content({ children, ...props }, ref) {
+function Content({ children, getPosition, ...props }, ref) {
   const {
     id,
     state: { isOpen },
@@ -93,7 +94,12 @@ function Content({ children, ...props }, ref) {
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...tooltipRef }))
   return isOpen ? (
-    <Popover targetRef={targetRef} ref={popoverRef}>
+    <Popover
+      style={{ zIndex: "9999" }}
+      targetRef={targetRef}
+      ref={popoverRef}
+      getPosition={getPosition}
+    >
       <StyledTooltip
         {...props}
         ref={tooltipRef}
