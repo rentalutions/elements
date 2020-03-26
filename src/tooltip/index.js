@@ -84,7 +84,7 @@ const StyledTooltip = styled.aside`
   border-radius: 4px;
 `
 
-function Content({ children, getPosition, ...props }, ref) {
+function Content({ children, position, ...props }, ref) {
   const {
     id,
     state: { isOpen },
@@ -98,7 +98,7 @@ function Content({ children, getPosition, ...props }, ref) {
       style={{ zIndex: "9999" }}
       targetRef={targetRef}
       ref={popoverRef}
-      getPosition={getPosition}
+      position={position}
     >
       <StyledTooltip
         {...props}
