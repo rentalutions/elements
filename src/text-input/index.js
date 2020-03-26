@@ -7,7 +7,26 @@ const StyledInput = styled.label`
   cursor: text;
   display: block;
   width: 100%;
+  &.required {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 3rem;
+      right: 2rem;
+      background: ${colors.red_500};
+      border-radius: 50%;
+      height: 0.5rem;
+      width: 0.5rem;
+    }
+    input {
+      padding-right: 4rem;
+    }
+    .input__label {
+      right: calc(4rem - 2px);
+    }
+  }
   input {
+    position: relative;
     all: unset;
     display: block;
     width: 100%;
@@ -20,6 +39,7 @@ const StyledInput = styled.label`
         return colors.ui_500
       }};
     border-radius: 4px;
+    height: 6.5rem;
     ${({ hasIcon }) => hasIcon && `padding-left: 5rem;`}
     &:focus {
       border-color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
@@ -63,41 +83,55 @@ const StyledInput = styled.label`
     }};
   }
   .input__error {
-    position: absolute;
-    bottom: -2rem;
-    right: 0;
     display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
     color: ${colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
-    text-align: right;
+    text-align: left;
+    width: 100%;
   }
 `
 
 function TextInput(
-  { className, icon: Icon, label, onChange = noop, initialValue, value, error, ...props },
+  {
+    type = "text",
+    className,
+    icon: Icon,
+    label,
+    onChange = noop,
+    initialValue,
+    value,
+    error,
+    required,
+    ...props
+  },
   ref
 ) {
   const [hasValue, setHasValue] = useState(initialValue)
   const handleChange = e => {
-    if (e.target.value.length) setHasValue(true)
+    if (e.target.value.length || type === "date") setHasValue(true)
     else setHasValue(false)
   }
   useEffect(() => {
+    if (type === "date") setHasValue(true)
     if (value && value.length) setHasValue(true)
   }, [value])
   return (
     <StyledInput
-      className={className}
+      className={`${className} ${required && "required"}`}
       hasError={!!error?.length}
       hasIcon={!!Icon}
       hasValue={hasValue}
     >
       <input
-        type="text"
-        ref={ref}
         {...props}
+        type={type}
+        ref={ref}
         value={value}
+        required={required}
         onChange={wrapEvent(onChange, handleChange)}
       />
       {Icon && <Icon className="input__icon" width={24} height={24} />}
