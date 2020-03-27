@@ -25,7 +25,6 @@ const dangerStyles = css`
 `
 
 const Button = styled.button`
-  all: unset;
   box-sizing: border-box;
   padding: 1rem 2rem;
   background-color: transparent;
@@ -36,10 +35,13 @@ const Button = styled.button`
   border-radius: 4px;
   font-family: "Nunito", sans-serif;
   font-weight: 700;
+  font-size: 1.5rem;
   text-transform: uppercase;
   text-align: center;
   transition: 200ms;
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   &:hover {
     background-color: ${({ color }) => color || colors.blue_500};
     color: ${({ textColor }) => textColor || colors.ui_100};
