@@ -34,7 +34,7 @@ const StyledInput = styled.label`
   .input__label {
     position: absolute;
     left: 2rem;
-    top: 2rem;
+    top: 2.25rem;
     transition: 80ms;
     color: ${colors.ui_700};
     white-space: nowrap;
@@ -86,7 +86,7 @@ const StyledInput = styled.label`
     &:before {
       content: "";
       position: absolute;
-      top: 2.75rem;
+      top: 3rem;
       right: 2rem;
       width: 0.5rem;
       height: 0.5rem;
