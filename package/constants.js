@@ -55,10 +55,10 @@ export function throttle(fn, ms) {
   throttle.clearTimeout = clear()
 }
 
-export function wrapEvent(first, second) {
+export function wrapEvent(original, additional) {
   return event => {
-    if (first) first(event)
-    if (!event.defaultPrevented) return second(event)
+    if (original) original(event)
+    if (!event.defaultPrevented) return additional(event)
   }
 }
 
