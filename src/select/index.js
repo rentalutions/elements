@@ -10,7 +10,7 @@ import React, {
   useImperativeHandle
 } from "react"
 import styled, { css } from "styled-components"
-import Popover, { getPosition } from "src/popover"
+import Popover from "src/popover"
 import Card from "src/card"
 import { useWindowResize } from "src/hooks"
 import { colors, wrapEvent, noop } from "src/constants"
@@ -51,10 +51,13 @@ function selectReducer(state, action) {
   }
 }
 
-function Select({ children, id, onSelect }) {
+function Select({ children, id, onSelect, defaultValue = "" }) {
   const inputRef = useRef()
   const listRef = useRef()
-  const [state, dispatch] = useReducer(selectReducer, initialState)
+  const [state, dispatch] = useReducer(selectReducer, {
+    ...initialState,
+    selectValue: defaultValue
+  })
   const context = {
     inputRef,
     listRef,

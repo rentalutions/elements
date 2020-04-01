@@ -87,7 +87,7 @@ Select inputs display the currently selected option above a menu that lets the u
     return (
       <Fragment>
         <p>Selected State: {state}</p>
-        <Select id="select-id" onSelect={value => setState(value)}>
+        <Select id="select-id" onSelect={value => setState(value)} defaultValue={options[0].value}>
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
