@@ -15,6 +15,7 @@ import Card from "src/card"
 import { useWindowResize } from "src/hooks"
 import { colors, wrapEvent, noop } from "src/constants"
 import { ChevronDown } from "react-feather"
+import clsx from "clsx"
 
 const SelectContext = createContext()
 
@@ -95,18 +96,36 @@ const StyledSelectInput = styled.label`
     border-radius: 0.25rem;
     width: 100%;
     transition: 100ms;
+    height: 6.5rem;
   }
   .select__value,
-  .select__label,
+  .select__label-row,
   .select__icon {
     position: absolute;
   }
-  .select__label {
-    top: 2rem;
+  .select__label-row {
+    display: flex;
+    align-items: center;
     left: 2rem;
-    transition: 100ms;
+    top: 2.25rem;
+    transition: 80ms;
     color: ${colors.ui_700};
-    ${({ hasValue, isOpen }) => (hasValue || isOpen) && labelTransform}
+    width: calc(100% - 4rem);
+    ${({ hasValue, isOpen }) => (hasValue || isOpen) && labelTransform};
+    .select__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .select__required {
+      color: ${colors.red_500};
+      width: 0.5rem;
+      height: 0.5rem;
+      background: ${colors.red_500};
+      border-radius: 50%;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
   }
   .select__icon {
     right: 2rem;
@@ -135,8 +154,10 @@ function Input(
     onFocus = noop,
     onChange = noop,
     label,
+    required,
     search = true,
     error = null,
+    style,
     ...props
   },
   ref
@@ -156,20 +177,25 @@ function Input(
   return (
     <StyledSelectInput
       {...props}
-      ref={inputRef}
-      hasError={!!error}
+      className={className}
+      style={style}
+      hasError={Boolean(error)}
       isOpen={isOpen}
       hasValue={inputValue.length || selectValue.length}
       searchable
     >
       <input
-        ref={ref}
+        {...props}
+        ref={inputRef}
         className="select__input"
         value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
       />
-      <span className="select__label">{label}</span>
+      <div className="select__label-row">
+        <span className="select__label">{label}</span>
+        {required && <span className="select__required" />}
+      </div>
       {error && <span className="select__error">{error}</span>}
       {selectValue && <span className="select__value">{selectValue}</span>}
       <ChevronDown className={`select__icon ${isOpen && "icon--is-open"}`} />
