@@ -1,15 +1,16 @@
 os: linux
 language: node_js
 node_js: node
-before_script: npm test
-script: npm run build:package
-before_deploy: cd ./dist
+script:
+  - npm test
+before_deploy:
+  - npm run build:package
 deploy:
-  edge: true
+  skip_cleanup: true
   provider: npm
-  email: patrick@dreadful.design
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  script: cd ./dist && npm publish
   on:
     tags: true
     branch: master
-  api_key:
-    secure: qDtcWSPN3NW1gZOQPXs2r4Ix0qAKbgBfRCLZpubF8gMcllcQKrlDKhF2nOnm9RMJtRmxs5l6xqsCVXn1kggc4JgujiTEl3wVAyJAtC+sDaZvJPz2s1KZT2nMfvcqxof0Lytn5oVoWB0OfhwU12VOustxdP2dcPzvzY2cOmskrqVmxi/ciBfyISKb7P1jKZnQnDdhTRRNeoREJkiXT8gCUY8RDtOW3OIPImhUrnv5Cl2/G+oq1DVbgJ7gWzRBGTZDN+kINHoWsmy92zFXyihnvHaJX8ZldYuqqNKIesooteZKXYiGDd/sJrbDgUTlTIxvwd6WzQ7luOb1g+/7FOQGPTQ3MnNlGfthQt4dVgP48N8sHMUFkAUvZO1c6vDfxIToKp7OfYdTitIb9RQY0CrhuLhiyt2ZDK9OKSCTZ8Sb/YfxvqdM2w97hp9+UGbEGG50zneeZYyvpXDO6L6Fbt6zkgyRG+hiNW0K70Apc6SovzU06RYUTn1aX67sYKxC510XEqro46ofpZqpFDiVkvCFaGvQ7J/wDCNq0JeXZDlNUCB1XoZnxHkFnjBHfH1daeEhXgSd9JMObzssIZ4uCweGlYBRhRTDAdME98EpIsdc1wFW6s8li9yWyIYatsRJU+pmYonMCqZwwsM/L80RCJDUHeQRmAZG/GH7mH8OsXyW3xI=
