@@ -24,77 +24,68 @@ const StyledInput = styled.label`
     width: 100%;
     &:focus {
       border-color: ${colors.blue_500};
-      ~ .input__label {
+      ~ .input__label-row {
         font-size: 1.334rem;
         transform: translate3d(0, -1rem, 0);
         color: ${colors.blue_500};
       }
     }
   }
-  .input__label {
+  .input__label-row {
     position: absolute;
+    display: flex;
+    align-items: center;
     left: 2rem;
     top: 2.25rem;
     transition: 80ms;
     color: ${colors.ui_700};
-    white-space: nowrap;
-    overflow: hidden;
     width: calc(100% - 4rem);
-    text-overflow: ellipsis;
+    .input__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .input__required {
+      color: ${colors.red_500};
+      width: 0.5rem;
+      height: 0.5rem;
+      background: ${colors.red_500};
+      border-radius: 50%;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
   }
   .input__icon {
     position: absolute;
     left: 2rem;
-    top: 2rem;
-  }
-  .input__error,
-  .input__required {
-    position: absolute;
-    top: 100%;
-    font-size: 1.334rem;
-    line-height: 1.5;
+    top: 2.25rem;
   }
   .input__error {
+    position: absolute;
+    top: 100%;
     left: 0;
-    color: ${colors.red_500};
-    width: calc(100% - 5rem);
-  }
-  .input__required {
-    margin-left: auto;
-    color: ${colors.ui_700};
     right: 0;
+    color: ${colors.red_500};
+    font-size: 1.334rem;
+    line-height: 1.5;
   }
   &.icon {
     input {
       padding-left: 5rem;
     }
-    .input__label {
+    .input__label-row {
       left: 5rem;
+      width: calc(100% - 7rem);
     }
   }
   &.raised {
     input {
       border-color: ${colors.blue_500};
     }
-    .input__label {
+    .input__label-row {
       font-size: 1.334rem;
       transform: translate3d(0, -1rem, 0);
       color: ${colors.blue_500};
-    }
-  }
-  &.required {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 3rem;
-      right: 2rem;
-      width: 0.5rem;
-      height: 0.5rem;
-      background: ${colors.red_500};
-      border-radius: 50%;
-    }
-    .input__label {
-      width: calc(100% - 6rem);
     }
   }
   &.error {
@@ -130,7 +121,7 @@ function TextInput(
   }
   return (
     <StyledInput
-      className={clsx({ className, raised, error, required, icon: !!Icon })}
+      className={clsx(className, { raised, error, required, icon: !!Icon })}
       style={style}
     >
       <input
@@ -142,9 +133,11 @@ function TextInput(
         onChange={wrapEvent(onChange, handleChange)}
       />
       {Icon && <Icon className="input__icon" width={24} height={24} />}
-      <span className="input__label">{label}</span>
+      <div className="input__label-row">
+        <span className="input__label">{label}</span>
+        {required && <span className="input__required" />}
+      </div>
       {error && <span className="input__error">{error}</span>}
-      {required && <span className="input__required">Required</span>}
     </StyledInput>
   )
 }
