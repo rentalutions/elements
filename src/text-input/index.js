@@ -1,97 +1,100 @@
-import React, { memo, forwardRef, useState, useEffect } from "react"
+import React, { memo, forwardRef, useState } from "react"
 import styled from "styled-components"
 import { colors, wrapEvent, noop } from "src/constants"
+import clsx from "clsx"
 
 const StyledInput = styled.label`
   position: relative;
-  cursor: text;
   display: block;
   width: 100%;
-  &.required {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 3rem;
-      right: 2rem;
-      background: ${colors.red_500};
-      border-radius: 50%;
-      height: 0.5rem;
-      width: 0.5rem;
-    }
-    input {
-      padding-right: 4rem;
-    }
-    .input__label {
-      right: calc(4rem - 2px);
-    }
-  }
   input {
     position: relative;
     all: unset;
     display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 3rem 2rem 1rem 2rem;
-    border: 2px solid
-      ${({ hasValue, hasError }) => {
-        if (hasError) return colors.red_500
-        if (hasValue) return colors.blue_500
-        return colors.ui_500
-      }};
+    padding: 3rem 2rem 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: ${colors.ui_500};
     border-radius: 4px;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: inherit;
     height: 6.5rem;
-    ${({ hasIcon }) => hasIcon && `padding-left: 5rem;`}
+    outline: none;
+    width: 100%;
     &:focus {
-      border-color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
-      & ~ .input__label {
-        font-size: 1.333rem;
-        transform: translate3d(0, -1.333rem, 0);
-      }
-      & ~ .input__icon {
-        color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
+      border-color: ${colors.blue_500};
+      ~ .input__label-row {
+        font-size: 1.334rem;
+        transform: translate3d(0, -1rem, 0);
+        color: ${colors.blue_500};
       }
     }
   }
-  .input__label {
+  .input__label-row {
     position: absolute;
-    left: calc(${({ hasIcon }) => (hasIcon ? "5rem" : "2rem")} + 2px);
-    top: calc(2rem + 2px);
-    right: calc(2rem - 2px);
-    font-size: 1.5rem;
-    line-height: 2rem;
+    display: flex;
+    align-items: center;
+    left: 2rem;
+    top: 2.25rem;
+    transition: 80ms;
     color: ${colors.ui_700};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: 100ms;
-    will-change: font-size, transform;
-    ${({ hasValue }) =>
-      hasValue &&
-      `
-      font-size: 1.333rem;
-      transform: translate3d(0, -1.333rem, 0);
-    `}
+    width: calc(100% - 4rem);
+    .input__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .input__required {
+      color: ${colors.red_500};
+      width: 0.5rem;
+      height: 0.5rem;
+      background: ${colors.red_500};
+      border-radius: 50%;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
   }
   .input__icon {
     position: absolute;
-    left: calc(2rem + 2px);
-    top: calc(2rem + 2px);
-    color: ${({ hasValue, hasError }) => {
-      if (hasError) return colors.red_500
-      if (hasValue) return colors.blue_500
-      return colors.ui_700
-    }};
+    left: 2rem;
+    top: 2.25rem;
   }
   .input__error {
-    display: block;
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     color: ${colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
-    text-align: left;
-    width: 100%;
+  }
+  &.icon {
+    input {
+      padding-left: 5rem;
+    }
+    .input__label-row {
+      left: 5rem;
+      width: calc(100% - 7rem);
+    }
+  }
+  &.raised {
+    input {
+      border-color: ${colors.blue_500};
+    }
+    .input__label-row {
+      font-size: 1.334rem;
+      transform: translate3d(0, -1rem, 0);
+      color: ${colors.blue_500};
+    }
+  }
+  &.error {
+    input {
+      border-color: ${colors.red_500};
+    }
+    .input__icon {
+      color: ${colors.red_500};
+    }
   }
 `
 
@@ -106,25 +109,20 @@ function TextInput(
     value,
     error,
     required,
+    style,
     ...props
   },
   ref
 ) {
-  const [hasValue, setHasValue] = useState(initialValue)
-  const handleChange = e => {
-    if (e.target.value.length || type === "date") setHasValue(true)
-    else setHasValue(false)
+  const [raised, setRaised] = useState(!!value || type === "date")
+  const handleChange = ({ target: { value: inputValue } }) => {
+    if (inputValue.length || type === "date") setRaised(true)
+    else setRaised(false)
   }
-  useEffect(() => {
-    if (type === "date") setHasValue(true)
-    if (value && value.length) setHasValue(true)
-  }, [value])
   return (
     <StyledInput
-      className={`${className} ${required && "required"}`}
-      hasError={!!error?.length}
-      hasIcon={!!Icon}
-      hasValue={hasValue}
+      className={clsx(className, { raised, error, required, icon: !!Icon })}
+      style={style}
     >
       <input
         {...props}
@@ -135,7 +133,10 @@ function TextInput(
         onChange={wrapEvent(onChange, handleChange)}
       />
       {Icon && <Icon className="input__icon" width={24} height={24} />}
-      <span className="input__label">{label}</span>
+      <div className="input__label-row">
+        <span className="input__label">{label}</span>
+        {required && <span className="input__required" />}
+      </div>
       {error && <span className="input__error">{error}</span>}
     </StyledInput>
   )

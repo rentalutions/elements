@@ -28,18 +28,19 @@ const Button = styled.button`
   box-sizing: border-box;
   padding: 1rem 2rem;
   background-color: transparent;
-  color: ${({ color }) => color || colors.blue_500};
   border-width: 2px;
   border-style: solid;
   border-color: ${({ color }) => color || colors.blue_500};
   border-radius: 4px;
+  color: ${({ color }) => color || colors.blue_500};
+  cursor: pointer;
   font-family: "Nunito", sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  text-transform: uppercase;
   text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: 200ms;
-  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   &:hover {
@@ -53,7 +54,8 @@ const Button = styled.button`
     border-color: ${colors.ui_500};
     pointer-events: none;
   }
-  ${({ danger, primary }) => (danger ? dangerStyles : primary ? primaryStyles : "")};
+  ${({ primary }) => primary && primaryStyles};
+  ${({ danger }) => danger && dangerStyles};
 `
 
 Button.propTypes = {
