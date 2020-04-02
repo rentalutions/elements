@@ -11,6 +11,7 @@ jobs:
       before_deploy: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > "$HOME/.npmrc"
       deploy:
         provider: script
+        skip_cleanup: true
         script: cd ./dist && npm publish
         on:
           tags: true
