@@ -6,6 +6,7 @@ jobs:
     - stage: Test
       script: npm test
     - stage: Release
+      if: tag =~ ^v[0-9]
       before_script: npm run build:package
       script: echo "Publishing $TRAVIS_TAG to npm..."
       before_deploy: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > "$HOME/.npmrc"
