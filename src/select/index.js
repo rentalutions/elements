@@ -226,8 +226,9 @@ function List({ children, style, ...props }, ref) {
   const inputBounds = useWindowResize(inputRef)
   function position({ popover: popoverRect, target: targetRect }) {
     if (!popoverRect || !targetRect) return { top: 0, left: 0, visibility: "hidden" }
+    const top = targetRect.top + targetRect.height + window.pageYOffset + 12
     return {
-      top: `${targetRect.top + targetRect.height + window.pageYOffset + 12}px`,
+      top: `${top}px`,
       left: `${targetRect.left + window.pageXOffset}px`,
       visibility: "visible"
     }
@@ -243,11 +244,13 @@ function List({ children, style, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
     if (isOpen) {
-      const { height } = listRef.current.getBoundingClientRect()
-      // Note, scrollBy behavior needs to be smooth to prevent the list appearing in the wrong spot.
-      // This is not supported by IE or Edge, so they're just going to have to scroll themselves.
+      const { current: input } = inputRef
+      const { current: list } = listRef
+      const { top } = input.getBoundingClientRect()
+      const { height } = list.getBoundingClientRect()
+      const fromBottom = window.innerHeight - height
       window.scrollBy({
-        top: height,
+        top: Math.max(top - fromBottom + 120, 0),
         behavior: "smooth"
       })
       document.addEventListener("click", handleBlur)
@@ -256,7 +259,7 @@ function List({ children, style, ...props }, ref) {
   }, [isOpen, handleBlur])
   useEffect(() => {
     if (isOpen) dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
-  }, [inputBounds, isOpen])
+  }, [isOpen, inputBounds])
   return isOpen ? (
     <Popover id={id} targetRef={inputRef} position={position} style={{ zIndex: "9999" }}>
       <StyledList {...props} as="ul" ref={listRef} style={{ ...style, width }}>
