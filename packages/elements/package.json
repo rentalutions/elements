@@ -2,47 +2,25 @@
   "name": "@rent_avail/elements",
   "version": "1.6.9",
   "description": "A suite of elements for the consistent and responsive UI",
-  "keywords": [
-    "ui",
-    "ui library",
-    "design system",
-    "react",
-    "styled components",
-    "a11y"
-  ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
     "clean": "rimraf dist",
-    "build:package": "npm run clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js"
+    "build": "npm run clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rentalutions/elements.git"
   },
   "contributors": [
     "Patrick Krawczykowski <patrick@dreadful.design>"
   ],
   "license": "MIT",
-  "peerDependencies": {
-    "prop-types": "^15.X.X",
-    "react": "^16.X.X",
-    "react-dom": "^16.X.X",
-    "react-feather": "^2.X.X",
-    "react-spring": "^8.X.X",
-    "styled-components": "^4.X.X"
-  },
   "dependencies": {
-    "calendar-dates": "^2.6.1",
-    "intersection-observer": "^0.7.0",
     "polished": "^3.4.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-spring": "^8.0.27",
-    "resize-observer-polyfill": "^1.5.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-system": "^5.1.5"
   }
 }

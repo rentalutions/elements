@@ -3,10 +3,27 @@
   "private": true,
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
+  "scripts": {
+    "build": "lerna run build --stream",
+    "start": "start-storybook -p 8080"
+  },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "lerna": "^3.20.2",
+    "prettier": "^2.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "packages/**/*"
+  ],
+  "prettier": {
+    "semi": false
+  }
 }
