@@ -53,7 +53,7 @@ function selectReducer(state, action) {
   }
 }
 
-function Select({ children, id, onSelect, disabled = false, defaultValue = "" }) {
+function Select({ children, id, onSelect = noop, disabled = false, defaultValue = "" }) {
   const inputRef = useRef()
   const listRef = useRef()
   const [state, dispatch] = useReducer(selectReducer, {
@@ -317,16 +317,15 @@ function Item(
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
   const itemRef = useRef()
-  function handleClick({ target }) {
+  function selectValue({ target }) {
     dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
-    if (onSelect) onSelect(target.dataset.value)
+    onSelect(target.dataset.value)
   }
   function handleKeyDown({ key, target }) {
     const itemEl = itemRef.current
     if (key === "ArrowDown" && itemEl.nextSibling) itemEl.nextSibling.focus()
     if (key === "ArrowUp" && itemEl.previousSibling) itemEl.previousSibling.focus()
-    if (key === "Enter")
-      dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
+    if (key === "Enter") selectValue({ target })
   }
   useImperativeHandle(ref, () => ({ ...itemRef }))
   useEffect(() => {
@@ -346,7 +345,7 @@ function Item(
       className={clsx(className, { selected: currentValue === value })}
       data-value={value}
       tabIndex="0"
-      onClick={wrapEvent(onClick, handleClick)}
+      onClick={wrapEvent(onClick, selectValue)}
       onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
     >
       {children}
