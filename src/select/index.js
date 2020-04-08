@@ -146,7 +146,8 @@ const StyledSelectInput = styled.label`
     display: block;
     position: absolute;
     top: 100%;
-    right: 0;
+    left: 0;
+    width: 100%;
     color: ${colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
