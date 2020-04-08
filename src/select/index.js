@@ -7,7 +7,8 @@ import React, {
   useContext,
   useEffect,
   useState,
-  useImperativeHandle
+  useImperativeHandle,
+  useMemo
 } from "react"
 import styled, { css } from "styled-components"
 import Popover from "src/popover"
@@ -46,27 +47,31 @@ function selectReducer(state, action) {
     case types.UPDATE_INPUT:
       return { ...state, inputValue: action.payload, selectValue: "" }
     case types.SET_VALUE:
-      return { ...state, isOpen: false, selectValue: action.payload }
+      return { ...state, isOpen: false, selectValue: action.payload, inputValue: "" }
     default:
       throw Error(`Unknown action type ${action.type}.`)
   }
 }
 
-function Select({ children, id, onSelect, defaultValue = "" }) {
+function Select({ children, id, onSelect, disabled = false, defaultValue = "" }) {
   const inputRef = useRef()
   const listRef = useRef()
   const [state, dispatch] = useReducer(selectReducer, {
     ...initialState,
     selectValue: defaultValue
   })
-  const context = {
-    inputRef,
-    listRef,
-    state,
-    dispatch,
-    onSelect,
-    id
-  }
+  const context = useMemo(
+    () => ({
+      inputRef,
+      listRef,
+      state,
+      dispatch,
+      onSelect,
+      id,
+      disabled
+    }),
+    [state, dispatch, id, disabled]
+  )
   return <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
 }
 
@@ -129,7 +134,7 @@ const StyledSelectInput = styled.label`
   }
   .select__icon {
     right: 2rem;
-    top: calc(2rem);
+    top: calc(2.25rem);
     transition: 100ms;
     ${({ isOpen }) => isOpen && iconTransform}
   }
@@ -140,11 +145,11 @@ const StyledSelectInput = styled.label`
   .select__error {
     display: block;
     position: absolute;
-    bottom: -2rem;
+    top: 100%;
     right: 0;
     color: ${colors.red_500};
-    line-height: 1.5;
     font-size: 1.334rem;
+    line-height: 1.5;
   }
 `
 
@@ -153,6 +158,7 @@ function Input(
     className,
     onFocus = noop,
     onChange = noop,
+    onKeyDown = noop,
     label,
     required,
     search = true,
@@ -164,6 +170,7 @@ function Input(
 ) {
   const {
     state: { inputValue, selectValue, isOpen },
+    listRef,
     inputRef,
     dispatch
   } = useContext(SelectContext)
@@ -173,10 +180,12 @@ function Input(
   function handleChange({ target }) {
     if (search) dispatch({ type: types.UPDATE_INPUT, payload: target.value })
   }
+  function handleKeyDown({ key }) {
+    if (key === "ArrowDown") listRef.current.firstChild.focus()
+  }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
     <StyledSelectInput
-      {...props}
       className={className}
       style={style}
       hasError={Boolean(error)}
@@ -191,6 +200,7 @@ function Input(
         value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
+        onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
       />
       <div className="select__label-row">
         <span className="select__label">{label}</span>
@@ -272,6 +282,7 @@ function List({ children, style, ...props }, ref) {
 const StyledItem = styled.li`
   padding: 2rem;
   cursor: pointer;
+  outline: none;
   &:hover {
     background: ${colors.ui_300};
   }
@@ -281,10 +292,21 @@ const StyledItem = styled.li`
   &:not(:last-of-type) {
     border-bottom: 1px solid ${colors.ui_500};
   }
+  &:focus {
+    background: ${colors.blue_100};
+  }
 `
 
 function Item(
-  { className, children, value = "", label = "", onClick = noop, ...props },
+  {
+    className,
+    children,
+    value = "",
+    label = "",
+    onClick = noop,
+    onKeyDown = noop,
+    ...props
+  },
   ref
 ) {
   const {
@@ -293,11 +315,19 @@ function Item(
     dispatch
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
+  const itemRef = useRef()
   function handleClick({ target }) {
     dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
     if (onSelect) onSelect(target.dataset.value)
   }
-  const classes = currentValue === value ? `selected ${className}` : className
+  function handleKeyDown({ key, target }) {
+    const itemEl = itemRef.current
+    if (key === "ArrowDown" && itemEl.nextSibling) itemEl.nextSibling.focus()
+    if (key === "ArrowUp" && itemEl.previousSibling) itemEl.previousSibling.focus()
+    if (key === "Enter")
+      dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
+  }
+  useImperativeHandle(ref, () => ({ ...itemRef }))
   useEffect(() => {
     function isFiltered() {
       const matcher = new RegExp(inputValue, "i")
@@ -311,10 +341,12 @@ function Item(
   return visibility ? (
     <StyledItem
       {...props}
-      ref={ref}
+      ref={itemRef}
+      className={clsx(className, { selected: currentValue === value })}
       data-value={value}
+      tabIndex="0"
       onClick={wrapEvent(onClick, handleClick)}
-      className={classes}
+      onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
     >
       {children}
     </StyledItem>

@@ -49,8 +49,7 @@ function Tag(
     className,
     select,
     icon: Icon = null,
-    checked,
-    defaultChecked,
+    checked = false,
     onChange = noop,
     bg = colors.gold_500,
     color = colors.ui_900,
@@ -58,7 +57,7 @@ function Tag(
   },
   ref
 ) {
-  const [internalChecked, set] = useState(defaultChecked)
+  const [internalChecked, set] = useState(checked)
   function handleCheck(e) {
     set(e.target.checked)
   }
