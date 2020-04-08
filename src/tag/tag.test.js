@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent, act } from "@testing-library/react"
+import { render, fireEvent } from "@testing-library/react"
 import Tag from "src/tag"
 
 describe("<Tag/>", () => {
@@ -12,9 +12,7 @@ describe("<Tag/>", () => {
     const input = getByTestId("filter-tag")
     const element = container.firstChild
     expect(input).not.toBeChecked()
-    await act(async () => {
-      fireEvent.click(element)
-    })
+    fireEvent.click(element)
     expect(input).toBeChecked()
   })
 })
