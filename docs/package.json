@@ -1,0 +1,25 @@
+{
+  "name": "documentation",
+  "description": "Documentation site for Avail Design",
+  "main": "index.js",
+  "author": "Patrick Krawczykowski <patrick@dreadful.design>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^1.5.8",
+    "next": "^9.3.4",
+    "next-mdx-enhanced": "^2.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-import-glob-array": "^0.2.0",
+    "babel-plugin-styled-components": "^1.10.7"
+  }
+}

@@ -1,9 +1,7 @@
 import React from "react"
 import { addDecorator } from "@storybook/react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import Base from "@rent_avail/elements/src/base"
-
-const theme = {}
+import Base, { theme } from "@rent_avail/base"
 
 const ExtendedBase = createGlobalStyle`
   body {

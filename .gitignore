@@ -6,9 +6,8 @@ node_modules
 *.log
 
 # Documentation
-coverage
-.docz
+.next
+.mdx-data
 
 # Build files
 dist
-lib
