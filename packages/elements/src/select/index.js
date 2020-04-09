@@ -7,13 +7,13 @@ import React, {
   useContext,
   useEffect,
   useState,
-  useImperativeHandle
+  useImperativeHandle,
 } from "react"
 import styled, { css } from "styled-components"
-import Popover, { getPosition } from "src/popover"
-import Card from "src/card"
-import { useWindowResize } from "src/hooks"
-import { colors, wrapEvent, noop } from "src/constants"
+import Popover, { getPosition } from "../popover"
+import Card from "../card"
+import { useWindowResize } from "@rent_avail/hooks"
+import { colors, wrapEvent, noop } from "../constants"
 import { ChevronDown } from "react-feather"
 
 const SelectContext = createContext()
@@ -24,14 +24,14 @@ const types = {
   UPDATE_WIDTH: "@rent_avail/elements/select/update_width",
   UPDATE_INPUT: "@rent_avail/elements/select/update_input",
   SET_VALUE: "@rent_avail/elements/select/set_value",
-  SET_ERROR: "@rent_avail/elements/select/set_value"
+  SET_ERROR: "@rent_avail/elements/select/set_value",
 }
 
 const initialState = {
   selectValue: "",
   inputValue: "",
   width: 120,
-  isOpen: false
+  isOpen: false,
 }
 
 function selectReducer(state, action) {
@@ -61,9 +61,11 @@ function Select({ children, id, onSelect }) {
     state,
     dispatch,
     onSelect,
-    id
+    id,
   }
-  return <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
+  return (
+    <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
+  )
 }
 
 const labelTransform = css`
@@ -130,6 +132,7 @@ function Input(
   {
     className,
     onFocus = noop,
+    onBlur = noop,
     onChange = noop,
     label,
     search = true,
@@ -141,13 +144,16 @@ function Input(
   const {
     state: { inputValue, selectValue, isOpen },
     inputRef,
-    dispatch
+    dispatch,
   } = useContext(SelectContext)
   function handleFocus() {
     dispatch({ type: types.OPEN_LIST })
   }
   function handleChange({ target }) {
     if (search) dispatch({ type: types.UPDATE_INPUT, payload: target.value })
+  }
+  function handleBlur() {
+    dispatch({ type: types.CLOSE_LIST })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
@@ -165,6 +171,7 @@ function Input(
         value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
+        onBlur={wrapEvent(onBlur, handleBlur)}
       />
       <span className="select__label">{label}</span>
       {error && <span className="select__error">{error}</span>}
@@ -192,15 +199,16 @@ function List({ children, style, ...props }, ref) {
     dispatch,
     listRef,
     inputRef,
-    id
+    id,
   } = useContext(SelectContext)
   const inputBounds = useWindowResize(inputRef)
   function position({ popover: popoverRect, target: targetRect }) {
-    if (!popoverRect || !targetRect) return { top: 0, left: 0, visibility: "hidden" }
+    if (!popoverRect || !targetRect)
+      return { top: 0, left: 0, visibility: "hidden" }
     return {
       top: `${targetRect.top + targetRect.height + window.pageYOffset + 12}px`,
       left: `${targetRect.left + window.pageXOffset}px`,
-      visibility: "visible"
+      visibility: "visible",
     }
   }
   function handleBlur({ target }) {
@@ -219,17 +227,23 @@ function List({ children, style, ...props }, ref) {
       // This is not supported by IE or Edge, so they're just going to have to scroll themselves.
       window.scrollBy({
         top: height,
-        behavior: "smooth"
+        behavior: "smooth",
       })
       document.addEventListener("click", handleBlur)
     }
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
   useEffect(() => {
-    if (isOpen) dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
+    if (isOpen)
+      dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
   }, [inputBounds, isOpen])
   return isOpen ? (
-    <Popover id={id} targetRef={inputRef} position={position} style={{ zIndex: "9999" }}>
+    <Popover
+      id={id}
+      targetRef={inputRef}
+      position={position}
+      style={{ zIndex: "9999" }}
+    >
       <StyledList {...props} as="ul" ref={listRef} style={{ ...style, width }}>
         {children}
       </StyledList>
@@ -258,7 +272,7 @@ function Item(
   const {
     state: { currentValue, inputValue },
     onSelect,
-    dispatch
+    dispatch,
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
   function handleClick({ target }) {
@@ -293,4 +307,4 @@ const SelectInput = memo(forwardRef(Input))
 const SelectList = memo(forwardRef(List))
 const SelectItem = memo(forwardRef(Item))
 
-export { Select as default, SelectInput, SelectList, SelectItem }
+export { Select, SelectInput, SelectList, SelectItem }

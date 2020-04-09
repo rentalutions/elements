@@ -21,7 +21,6 @@ export function WithIcon() {
     <Avatar
       name="Janet Wood"
       photoUrl="https://source.unsplash.com/collection/802865/48x48"
-      icon={ExternalLink}
     />
   )
 }

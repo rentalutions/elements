@@ -1,7 +1,9 @@
 {
   "name": "@rent_avail/hooks",
-  "version": "1.6.9",
+  "version": "1.0.0-beta.0",
   "description": "A suite of elements for the consistent and responsive UI",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "scripts": {
     "test": "echo 'run tests from the root directory'",
     "clean": "rimraf dist",
@@ -15,6 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@rent_avail/elements": "^2.0.0-beta.0",
     "calendar-dates": "^2.6.1",
     "intersection-observer": "^0.7.0",
     "react": "^16.12.0",

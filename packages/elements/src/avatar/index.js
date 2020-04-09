@@ -21,11 +21,13 @@ const propTypes = {
   },
   initials: (props, name, componentName) => {
     if (props.small && typeof props[name] === "undefined") {
-      return new Error(`Please provide intials if ${componentName} has small prop`)
+      return new Error(
+        `Please provide intials if ${componentName} has small prop`
+      )
     }
   },
   email: PropTypes.string,
-  icon: PropTypes.node
+  icon: PropTypes.node,
 }
 
 const defaultProps = {
@@ -34,7 +36,7 @@ const defaultProps = {
   initials: null,
   email: null,
   icon: null,
-  photoUrl: null
+  photoUrl: null,
 }
 
 const StyledAvatar = styled.div`
@@ -89,7 +91,11 @@ export default function Avatar({
   }
   return (
     <StyledAvatar {...props}>
-      <img src={photoUrl} alt={`${name}'s profile shot`} className="profile-photo" />
+      <img
+        src={photoUrl}
+        alt={`${name}'s profile shot`}
+        className="profile-photo"
+      />
       <span className="name">{name || email}</span>
       {Icon && <Icon className="icon" />}
     </StyledAvatar>

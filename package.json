@@ -5,7 +5,8 @@
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
     "build": "lerna run build --stream",
-    "start": "start-storybook -p 8080"
+    "start": "start-storybook -p 8080",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -16,14 +17,20 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "lerna": "^3.20.2",
-    "prettier": "^2.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "prettier": "^2.0.2"
   },
   "workspaces": [
     "packages/**/*"
   ],
   "prettier": {
     "semi": false
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.4",
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   }
 }

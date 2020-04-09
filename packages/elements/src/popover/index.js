@@ -4,10 +4,10 @@ import React, {
   useImperativeHandle,
   useState,
   useEffect,
-  memo
+  memo,
 } from "react"
 import { createPortal } from "react-dom"
-import { usePortal, useWindowResize } from "src/hooks"
+import { usePortal, useWindowResize } from "@rent_avail/hooks"
 
 export function getPosition({ popover, target }) {
   if (!popover || !target) return null
@@ -15,7 +15,7 @@ export function getPosition({ popover, target }) {
     top: target.top - popover.height < 0,
     right: window.innerWidth < target.left + popover.width,
     bottom: window.innerHeight < target.bottom + popover.height,
-    left: target.left - popover.width < 0
+    left: target.left - popover.width < 0,
   }
   const rightCollision = collisions.right && !collisions.left
   const topCollision = collisions.bottom && !collisions.top
@@ -29,11 +29,14 @@ export function getPosition({ popover, target }) {
   return {
     visibility: "visible",
     top,
-    left
+    left,
   }
 }
 
-function PopOver({ targetRef, position = getPosition, style, children, ...rest }, ref) {
+function PopOver(
+  { targetRef, position = getPosition, style, children, ...rest },
+  ref
+) {
   const portal = usePortal()
   const popoverRef = useRef(null)
   const popoverRect = useWindowResize(popoverRef)
@@ -41,13 +44,13 @@ function PopOver({ targetRef, position = getPosition, style, children, ...rest }
   const [currentPosition, setPosition] = useState({
     top: 0,
     left: 0,
-    visibility: "hidden"
+    visibility: "hidden",
   })
   useImperativeHandle(ref, () => ({ ...popoverRef.current }))
   useEffect(() => {
     const newPos = position({
       popover: popoverRect,
-      target: targetRect
+      target: targetRect,
     })
     setPosition(newPos)
   }, [targetRect])
