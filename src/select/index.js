@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
   useImperativeHandle,
-  useMemo,
+  useMemo
 } from "react"
 import styled, { css } from "styled-components"
 import Popover from "src/popover"
@@ -26,14 +26,14 @@ const types = {
   UPDATE_WIDTH: "@rent_avail/elements/select/update_width",
   UPDATE_INPUT: "@rent_avail/elements/select/update_input",
   SET_VALUE: "@rent_avail/elements/select/set_value",
-  SET_ERROR: "@rent_avail/elements/select/set_value",
+  SET_ERROR: "@rent_avail/elements/select/set_value"
 }
 
 const initialState = {
   selectValue: "",
   inputValue: "",
   width: 120,
-  isOpen: false,
+  isOpen: false
 }
 
 function selectReducer(state, action) {
@@ -58,7 +58,7 @@ function Select({ children, id, onSelect = noop, disabled = false, defaultValue 
   const listRef = useRef()
   const [state, dispatch] = useReducer(selectReducer, {
     ...initialState,
-    selectValue: defaultValue,
+    selectValue: defaultValue
   })
   const context = useMemo(
     () => ({
@@ -68,7 +68,7 @@ function Select({ children, id, onSelect = noop, disabled = false, defaultValue 
       dispatch,
       onSelect,
       id,
-      disabled,
+      disabled
     }),
     [state, dispatch, id, disabled]
   )
@@ -158,7 +158,6 @@ function Input(
   {
     className,
     onFocus = noop,
-    onBlur = noop,
     onChange = noop,
     onKeyDown = noop,
     label,
@@ -174,19 +173,17 @@ function Input(
     state: { inputValue, selectValue, isOpen },
     listRef,
     inputRef,
-    dispatch,
+    dispatch
   } = useContext(SelectContext)
   function handleFocus() {
     dispatch({ type: types.OPEN_LIST })
-  }
-  function handleBlur() {
-    dispatch({ type: types.CLOSE_LIST })
   }
   function handleChange({ target }) {
     if (search) dispatch({ type: types.UPDATE_INPUT, payload: target.value })
   }
   function handleKeyDown({ key }) {
     if (key === "ArrowDown") listRef.current.firstChild.focus()
+    if (key === "Tab") dispatch({ type: types.CLOSE_LIST })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
@@ -205,7 +202,6 @@ function Input(
         value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
-        onBlur={wrapEvent(onBlur, handleBlur)}
         onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
       />
       <div className="select__label-row">
@@ -237,7 +233,7 @@ function List({ children, style, ...props }, ref) {
     dispatch,
     listRef,
     inputRef,
-    id,
+    id
   } = useContext(SelectContext)
   const inputBounds = useWindowResize(inputRef)
   function position({ popover: popoverRect, target: targetRect }) {
@@ -246,7 +242,7 @@ function List({ children, style, ...props }, ref) {
     return {
       top: `${top}px`,
       left: `${targetRect.left + window.pageXOffset}px`,
-      visibility: "visible",
+      visibility: "visible"
     }
   }
   function handleBlur({ target }) {
@@ -267,7 +263,7 @@ function List({ children, style, ...props }, ref) {
       const fromBottom = window.innerHeight - height
       window.scrollBy({
         top: Math.max(top - fromBottom + 120, 0),
-        behavior: "smooth",
+        behavior: "smooth"
       })
       document.addEventListener("click", handleBlur)
     }
@@ -318,7 +314,7 @@ function Item(
   const {
     state: { currentValue, inputValue },
     onSelect,
-    dispatch,
+    dispatch
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
   const itemRef = useRef()
@@ -331,6 +327,7 @@ function Item(
     if (key === "ArrowDown" && itemEl.nextSibling) itemEl.nextSibling.focus()
     if (key === "ArrowUp" && itemEl.previousSibling) itemEl.previousSibling.focus()
     if (key === "Enter") selectValue({ target })
+    if (key === "Escape") dispatch({ type: types.CLOSE_LIST })
   }
   useImperativeHandle(ref, () => ({ ...itemRef }))
   useEffect(() => {
