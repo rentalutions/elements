@@ -22,6 +22,7 @@ const StyledInput = styled.label`
     height: 6.5rem;
     outline: none;
     width: 100%;
+    transition: border-color 100ms;
     &:focus {
       border-color: ${colors.blue_500};
       ~ .input__label-row {
@@ -37,7 +38,7 @@ const StyledInput = styled.label`
     align-items: center;
     left: 2rem;
     top: 2.25rem;
-    transition: 80ms;
+    transition: 100ms;
     color: ${colors.ui_700};
     width: calc(100% - 4rem);
     .input__label {
@@ -88,6 +89,22 @@ const StyledInput = styled.label`
       color: ${colors.blue_500};
     }
   }
+  &.date {
+    input {
+      border-color: ${colors.ui_500};
+    }
+    .input__label-row {
+      font-size: 1.334rem;
+      transform: translate3d(0, -1rem, 0);
+      color: ${colors.ui_700};
+    }
+  }
+  &.date input:focus,
+  &.date.raised input,
+  &.date.raised .input__label-row {
+    color: ${colors.blue_500};
+    border-color: ${colors.blue_500};
+  }
   &.error {
     input {
       border-color: ${colors.red_500};
@@ -114,14 +131,15 @@ function TextInput(
   },
   ref
 ) {
-  const [raised, setRaised] = useState(!!value || type === "date")
+  const isDate = type === "date"
+  const [raised, setRaised] = useState(Boolean(value))
   const handleChange = ({ target: { value: inputValue } }) => {
-    if (inputValue.length || type === "date") setRaised(true)
+    if (inputValue.length) setRaised(true)
     else setRaised(false)
   }
   return (
     <StyledInput
-      className={clsx(className, { raised, error, required, icon: !!Icon })}
+      className={clsx(className, { raised, error, required, icon: !!Icon, date: isDate })}
       style={style}
     >
       <input
