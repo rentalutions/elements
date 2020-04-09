@@ -70,7 +70,7 @@ function Select({ children, id, onSelect = noop, disabled = false, defaultValue 
       id,
       disabled
     }),
-    [state, dispatch, id, disabled]
+    [state, dispatch, id, disabled, inputRef, listRef, onSelect]
   )
   return <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
 }
