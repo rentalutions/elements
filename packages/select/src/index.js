@@ -8,12 +8,14 @@ import React, {
   useEffect,
   useState,
   useImperativeHandle,
+  useMemo,
 } from "react"
 import styled, { css } from "styled-components"
 import Popover, { getPosition } from "@rent_avail/popover"
 import { Card } from "@rent_avail/layout"
 import { wrapEvent, noop, useWindowResize } from "@rent_avail/utils"
 import { ChevronDown } from "react-feather"
+import clsx from "clsx"
 
 const SelectContext = createContext()
 
@@ -44,24 +46,42 @@ function selectReducer(state, action) {
     case types.UPDATE_INPUT:
       return { ...state, inputValue: action.payload, selectValue: "" }
     case types.SET_VALUE:
-      return { ...state, isOpen: false, selectValue: action.payload }
+      return {
+        ...state,
+        isOpen: false,
+        selectValue: action.payload,
+        inputValue: "",
+      }
     default:
       throw Error(`Unknown action type ${action.type}.`)
   }
 }
 
-function Select({ children, id, onSelect }) {
+function Select({
+  children,
+  id,
+  onSelect = noop,
+  disabled = false,
+  defaultValue = "",
+}) {
   const inputRef = useRef()
   const listRef = useRef()
-  const [state, dispatch] = useReducer(selectReducer, initialState)
-  const context = {
-    inputRef,
-    listRef,
-    state,
-    dispatch,
-    onSelect,
-    id,
-  }
+  const [state, dispatch] = useReducer(selectReducer, {
+    ...initialState,
+    selectValue: defaultValue,
+  })
+  const context = useMemo(
+    () => ({
+      inputRef,
+      listRef,
+      state,
+      dispatch,
+      onSelect,
+      id,
+      disabled,
+    }),
+    [state, dispatch, id, disabled, inputRef, listRef, onSelect]
+  )
   return (
     <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
   )
@@ -85,30 +105,48 @@ const StyledSelectInput = styled.label`
     padding: 3rem 2rem 1rem 2rem;
     border-width: 2px;
     border-style: solid;
-    border-color: ${({ hasError, hasValue, isOpen }) => {
-      if (hasError) return ({ theme }) => theme.colors.red_500
-      if (hasValue || isOpen) return ({ theme }) => theme.colors.blue_500
-      return ({ theme }) => theme.colors.ui_500
+    border-color: ${({ hasError, hasValue, isOpen, theme }) => {
+      if (hasError) return theme.colors.red_500
+      if (hasValue || isOpen) return theme.colors.blue_500
+      return theme.colors.ui_500
     }};
     border-radius: 0.25rem;
     width: 100%;
     transition: 100ms;
+    height: 6.5rem;
   }
   .select__value,
-  .select__label,
+  .select__label-row,
   .select__icon {
     position: absolute;
   }
-  .select__label {
-    top: 2rem;
+  .select__label-row {
+    display: flex;
+    align-items: center;
     left: 2rem;
-    transition: 100ms;
+    top: 2.25rem;
+    transition: 80ms;
     color: ${({ theme }) => theme.colors.ui_700};
-    ${({ hasValue, isOpen }) => (hasValue || isOpen) && labelTransform}
+    width: calc(100% - 4rem);
+    ${({ hasValue, isOpen }) => (hasValue || isOpen) && labelTransform};
+    .select__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .select__required {
+      color: ${({ theme }) => theme.colors.red_500};
+      width: 0.5rem;
+      height: 0.5rem;
+      background: ${({ theme }) => theme.colors.red_500};
+      border-radius: 50%;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
   }
   .select__icon {
     right: 2rem;
-    top: calc(2rem);
+    top: calc(2.25rem);
     transition: 100ms;
     ${({ isOpen }) => isOpen && iconTransform}
   }
@@ -119,11 +157,12 @@ const StyledSelectInput = styled.label`
   .select__error {
     display: block;
     position: absolute;
-    bottom: -2rem;
-    right: 0;
+    top: 100%;
+    left: 0;
+    width: 100%;
     color: ${({ theme }) => theme.colors.red_500};
-    line-height: 1.5;
     font-size: 1.334rem;
+    line-height: 1.5;
   }
 `
 
@@ -131,17 +170,20 @@ function Input(
   {
     className,
     onFocus = noop,
-    onBlur = noop,
     onChange = noop,
+    onKeyDown = noop,
     label,
+    required,
     search = true,
     error = null,
+    style,
     ...props
   },
   ref
 ) {
   const {
     state: { inputValue, selectValue, isOpen },
+    listRef,
     inputRef,
     dispatch,
   } = useContext(SelectContext)
@@ -151,28 +193,33 @@ function Input(
   function handleChange({ target }) {
     if (search) dispatch({ type: types.UPDATE_INPUT, payload: target.value })
   }
-  function handleBlur() {
-    dispatch({ type: types.CLOSE_LIST })
+  function handleKeyDown({ key }) {
+    if (key === "ArrowDown") listRef.current.firstChild.focus()
+    if (key === "Tab") dispatch({ type: types.CLOSE_LIST })
   }
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
     <StyledSelectInput
-      {...props}
-      ref={inputRef}
-      hasError={!!error}
+      className={className}
+      style={style}
+      hasError={Boolean(error)}
       isOpen={isOpen}
       hasValue={inputValue.length || selectValue.length}
       searchable
     >
       <input
-        ref={ref}
+        {...props}
+        ref={inputRef}
         className="select__input"
         value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
-        onBlur={wrapEvent(onBlur, handleBlur)}
+        onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
       />
-      <span className="select__label">{label}</span>
+      <div className="select__label-row">
+        <span className="select__label">{label}</span>
+        {required && <span className="select__required" />}
+      </div>
       {error && <span className="select__error">{error}</span>}
       {selectValue && <span className="select__value">{selectValue}</span>}
       <ChevronDown className={`select__icon ${isOpen && "icon--is-open"}`} />
@@ -204,8 +251,9 @@ function List({ children, style, ...props }, ref) {
   function position({ popover: popoverRect, target: targetRect }) {
     if (!popoverRect || !targetRect)
       return { top: 0, left: 0, visibility: "hidden" }
+    const top = targetRect.top + targetRect.height + window.pageYOffset + 12
     return {
-      top: `${targetRect.top + targetRect.height + window.pageYOffset + 12}px`,
+      top: `${top}px`,
       left: `${targetRect.left + window.pageXOffset}px`,
       visibility: "visible",
     }
@@ -221,11 +269,13 @@ function List({ children, style, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
     if (isOpen) {
-      const { height } = listRef.current.getBoundingClientRect()
-      // Note, scrollBy behavior needs to be smooth to prevent the list appearing in the wrong spot.
-      // This is not supported by IE or Edge, so they're just going to have to scroll themselves.
+      const { current: input } = inputRef
+      const { current: list } = listRef
+      const { top } = input.getBoundingClientRect()
+      const { height } = list.getBoundingClientRect()
+      const fromBottom = window.innerHeight - height
       window.scrollBy({
-        top: height,
+        top: Math.max(top - fromBottom + 120, 0),
         behavior: "smooth",
       })
       document.addEventListener("click", handleBlur)
@@ -235,7 +285,7 @@ function List({ children, style, ...props }, ref) {
   useEffect(() => {
     if (isOpen)
       dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
-  }, [inputBounds, isOpen])
+  }, [isOpen, inputBounds])
   return isOpen ? (
     <Popover
       id={id}
@@ -253,6 +303,7 @@ function List({ children, style, ...props }, ref) {
 const StyledItem = styled.li`
   padding: 2rem;
   cursor: pointer;
+  outline: none;
   &:hover {
     background: ${({ theme }) => theme.colors.ui_300};
   }
@@ -262,10 +313,21 @@ const StyledItem = styled.li`
   &:not(:last-of-type) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui_500};
   }
+  &:focus {
+    background: ${({ theme }) => theme.colors.blue_100};
+  }
 `
 
 function Item(
-  { className, children, value = "", label = "", onClick = noop, ...props },
+  {
+    className,
+    children,
+    value = "",
+    label = "",
+    onClick = noop,
+    onKeyDown = noop,
+    ...props
+  },
   ref
 ) {
   const {
@@ -274,11 +336,20 @@ function Item(
     dispatch,
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
-  function handleClick({ target }) {
+  const itemRef = useRef()
+  function selectValue({ target }) {
     dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
-    if (onSelect) onSelect(target.dataset.value)
+    onSelect(target.dataset.value)
   }
-  const classes = currentValue === value ? `selected ${className}` : className
+  function handleKeyDown({ key, target }) {
+    const itemEl = itemRef.current
+    if (key === "ArrowDown" && itemEl.nextSibling) itemEl.nextSibling.focus()
+    if (key === "ArrowUp" && itemEl.previousSibling)
+      itemEl.previousSibling.focus()
+    if (key === "Enter") selectValue({ target })
+    if (key === "Escape") dispatch({ type: types.CLOSE_LIST })
+  }
+  useImperativeHandle(ref, () => ({ ...itemRef }))
   useEffect(() => {
     function isFiltered() {
       const matcher = new RegExp(inputValue, "i")
@@ -292,10 +363,12 @@ function Item(
   return visibility ? (
     <StyledItem
       {...props}
-      ref={ref}
+      ref={itemRef}
+      className={clsx(className, { selected: currentValue === value })}
       data-value={value}
-      onClick={wrapEvent(onClick, handleClick)}
-      className={classes}
+      tabIndex="0"
+      onClick={wrapEvent(onClick, selectValue)}
+      onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
     >
       {children}
     </StyledItem>
