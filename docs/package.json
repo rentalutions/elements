@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.8",
+    "@rent_avail/base": "file:../packages/base",
     "next": "^9.3.4",
     "next-mdx-enhanced": "^2.4.0",
     "react": "^16.13.1",

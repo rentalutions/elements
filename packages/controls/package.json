@@ -1,0 +1,26 @@
+{
+  "name": "@rent_avail/controls",
+  "version": "0.0.0",
+  "description": "Selection control components.",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo 'run tests from the root directory'",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "Patrick Krawczykowski <patrick@dreadful.design>"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
+  }
+}
