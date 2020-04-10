@@ -10,10 +10,9 @@ import React, {
   useImperativeHandle,
 } from "react"
 import styled, { css } from "styled-components"
-import Popover, { getPosition } from "../popover"
-import Card from "../card"
-import { useWindowResize } from "@rent_avail/hooks"
-import { colors, wrapEvent, noop } from "../constants"
+import Popover, { getPosition } from "@rent_avail/popover"
+import { Card } from "@rent_avail/layout"
+import { wrapEvent, noop, useWindowResize } from "@rent_avail/utils"
 import { ChevronDown } from "react-feather"
 
 const SelectContext = createContext()
@@ -87,9 +86,9 @@ const StyledSelectInput = styled.label`
     border-width: 2px;
     border-style: solid;
     border-color: ${({ hasError, hasValue, isOpen }) => {
-      if (hasError) return colors.red_500
-      if (hasValue || isOpen) return colors.blue_500
-      return colors.ui_500
+      if (hasError) return ({ theme }) => theme.colors.red_500
+      if (hasValue || isOpen) return ({ theme }) => theme.colors.blue_500
+      return ({ theme }) => theme.colors.ui_500
     }};
     border-radius: 0.25rem;
     width: 100%;
@@ -104,7 +103,7 @@ const StyledSelectInput = styled.label`
     top: 2rem;
     left: 2rem;
     transition: 100ms;
-    color: ${colors.ui_700};
+    color: ${({ theme }) => theme.colors.ui_700};
     ${({ hasValue, isOpen }) => (hasValue || isOpen) && labelTransform}
   }
   .select__icon {
@@ -122,7 +121,7 @@ const StyledSelectInput = styled.label`
     position: absolute;
     bottom: -2rem;
     right: 0;
-    color: ${colors.red_500};
+    color: ${({ theme }) => theme.colors.red_500};
     line-height: 1.5;
     font-size: 1.334rem;
   }
@@ -185,8 +184,8 @@ const StyledList = styled(Card)`
   display: block;
   padding: 0;
   margin-bottom: 2rem;
-  background: ${colors.ui_100};
-  border: 1px solid ${colors.ui_500};
+  background: ${({ theme }) => theme.colors.ui_100};
+  border: 1px solid ${({ theme }) => theme.colors.ui_500};
   border-radius: 0.25rem;
   list-style: none;
   max-height: calc(100vh - 10rem);
@@ -255,13 +254,13 @@ const StyledItem = styled.li`
   padding: 2rem;
   cursor: pointer;
   &:hover {
-    background: ${colors.ui_300};
+    background: ${({ theme }) => theme.colors.ui_300};
   }
   &.selected {
-    background: ${colors.blue_100};
+    background: ${({ theme }) => theme.colors.blue_100};
   }
   &:not(:last-of-type) {
-    border-bottom: 1px solid ${colors.ui_500};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.ui_500};
   }
 `
 

@@ -7,7 +7,7 @@ import React, {
   memo,
 } from "react"
 import { createPortal } from "react-dom"
-import { usePortal, useWindowResize } from "@rent_avail/hooks"
+import { usePortal, useWindowResize } from "@rent_avail/utils"
 
 export function getPosition({ popover, target }) {
   if (!popover || !target) return null

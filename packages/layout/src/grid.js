@@ -1,6 +1,5 @@
 import React, { forwardRef, Children, cloneElement } from "react"
 import styled from "styled-components"
-import p from "prop-types"
 
 function getIndex(arr, index) {
   return arr[index] ? arr[index] : arr[arr.length - 1]
@@ -28,8 +27,8 @@ function GridContainer(
         sm: 60,
         md: 80,
         lg: 100,
-        xlg: 120
-      }
+        xlg: 120,
+      },
     },
     ...props
   },
@@ -38,7 +37,9 @@ function GridContainer(
   const childProps = { ...theme.breakPoints }
   return (
     <StyledGrid ref={ref} theme={theme} {...props}>
-      {Children.map(children, child => (child ? cloneElement(child, childProps) : null))}
+      {Children.map(children, (child) =>
+        child ? cloneElement(child, childProps) : null
+      )}
     </StyledGrid>
   )
 }
@@ -84,14 +85,7 @@ Col.defaultProps = {
   span: [12],
   spanRow: [1],
   offset: ["auto"],
-  offsetRow: ["auto"]
-}
-
-Col.propTypes = {
-  span: p.arrayOf(p.number),
-  spanRow: p.arrayOf(p.number),
-  offset: p.arrayOf(p.oneOfType([p.string, p.number])),
-  offsetRow: p.arrayOf(p.oneOfType([p.string, p.number]))
+  offsetRow: ["auto"],
 }
 
 const Grid = forwardRef(GridContainer)

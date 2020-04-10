@@ -6,7 +6,7 @@
   "scripts": {
     "build": "lerna run build --stream",
     "start": "start-storybook -p 8080",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "start:docs": "yarn workspace docs dev"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "semi": false
   },
   "dependencies": {
+    "clsx": "^1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.4",
