@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "module": "src/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
