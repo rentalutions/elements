@@ -1,15 +1,14 @@
 import React from "react"
-import Tooltip, { TooltipTarget, TooltipContent } from "src/tooltip"
-import Button from "src/button"
+import { Tooltip, TooltipTarget, TooltipContent } from "./src"
 import { render } from "@testing-library/react"
 
 describe("<Tooltip />", () => {
   it("Should render a tooltip without crashing", () => {
     const Wrapper = () => {
       return (
-        <Tooltip content="This is a tooltip.">
+        <Tooltip>
           <TooltipTarget>
-            <Button data-testid="tooltip-target">hello world</Button>
+            <button data-testid="tooltip-target">hello world</button>
           </TooltipTarget>
           <TooltipContent data-testid="tooltip-content">
             <p>Look, a tooltip.</p>

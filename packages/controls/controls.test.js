@@ -1,10 +1,12 @@
 import React from "react"
 import { render, fireEvent } from "@testing-library/react"
-import Checkbox from "src/checkbox"
+import { Checkbox } from "./src"
 
 describe("<Checkbox />", () => {
   it("Should be checked on click.", () => {
-    const { getByTestId, container } = render(<Checkbox data-testid="checkbox" />)
+    const { getByTestId, container } = render(
+      <Checkbox data-testid="checkbox" />
+    )
     const input = getByTestId("checkbox")
     const element = container.firstChild
     expect(input).not.toBeChecked()

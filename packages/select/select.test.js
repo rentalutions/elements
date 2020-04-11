@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import Select, { SelectInput, SelectList, SelectItem } from "src/select"
+import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
 describe("<Select />", () => {
   it("Should render without crashing", () => {

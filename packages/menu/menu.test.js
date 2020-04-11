@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import { Menu, MenuTarget, MenuList, MenuItem } from "src/menu"
+import { Menu, MenuTarget, MenuList, MenuItem } from "./src"
 
 describe("<Menu />", () => {
   it("Should render the menu without breaking.", () => {
