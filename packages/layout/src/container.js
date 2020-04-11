@@ -1,20 +1,18 @@
 import styled from "styled-components"
-import PropTypes from "prop-types"
+import { color, layout, space, flexbox } from "styled-system"
 
-const Container = styled.section`
-  max-width: ${({ maxWidth }) => maxWidth}rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-`
-
-Container.propTypes = {
-  maxWidth: PropTypes.number
-}
+const Container = styled.section(
+  { boxSizing: "border-box" },
+  color,
+  layout,
+  space,
+  flexbox
+)
 
 Container.defaultProps = {
-  maxWidth: 84
+  maxWidth: "84rem",
+  mx: "auto",
+  px: "2rem",
 }
 
 export default Container

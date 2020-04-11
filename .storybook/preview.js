@@ -9,14 +9,10 @@ const ExtendedBase = createGlobalStyle`
   }
 `
 
-function storyWrapper(story) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Base />
-      <ExtendedBase />
-      {story()}
-    </ThemeProvider>
-  )
-}
-
-addDecorator(storyWrapper)
+addDecorator((story) => (
+  <ThemeProvider theme={theme}>
+    <Base />
+    <ExtendedBase />
+    {story()}
+  </ThemeProvider>
+))

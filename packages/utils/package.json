@@ -29,8 +29,6 @@
   "peerDependencies": {
     "clsx": "^1.1.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0",
-    "styled-system": "^5.1.5"
+    "react-dom": "^16.13.1"
   }
 }

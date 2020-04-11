@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react"
 import styled, { css } from "styled-components"
-import { colors } from "../constants"
 
 const StyledToggle = styled.label`
   position: relative;
@@ -9,10 +8,10 @@ const StyledToggle = styled.label`
   input {
     display: none;
     &:checked + .slider {
-      background-color: ${colors.blue_500};
+      background-color: ${({ theme }) => theme.colors.blue_500};
       &:before {
-        background-color: ${colors.ui_100};
-        border: 0.25rem solid ${colors.blue_500};
+        background-color: ${({ theme }) => theme.colors.ui_100};
+        border: 0.25rem solid ${({ theme }) => theme.colors.blue_500};
         transform: translateX(2rem);
       }
     }
@@ -21,7 +20,7 @@ const StyledToggle = styled.label`
     position: relative;
     height: 2rem;
     width: 4rem;
-    background-color: ${colors.ui_500};
+    background-color: ${({ theme }) => theme.colors.ui_500};
     border-radius: 1rem;
     transition: 200ms;
     flex-shrink: 0;
@@ -33,8 +32,8 @@ const StyledToggle = styled.label`
       border-radius: 50%;
       height: 2rem;
       width: 2rem;
-      background-color: ${colors.ui_100};
-      border: 0.25rem solid ${colors.ui_500};
+      background-color: ${({ theme }) => theme.colors.ui_100};
+      border: 0.25rem solid ${({ theme }) => theme.colors.ui_500};
       transition: 200ms;
     }
   }

@@ -1,6 +1,5 @@
 import React, { forwardRef, useReducer } from "react"
 import styled from "styled-components"
-import { colors } from "../constants"
 
 const StyledRadio = styled.label`
   position: relative;
@@ -18,7 +17,7 @@ const StyledRadio = styled.label`
     height: 2rem;
     border-radius: 50%;
     flex-shrink: 0;
-    border: 2px solid ${colors.ui_500};
+    border: 2px solid ${({ theme }) => theme.colors.ui_500};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -33,17 +32,17 @@ const StyledRadio = styled.label`
     }
   }
   input:checked ~ .radio__target {
-    background: ${colors.blue_300};
-    border: 2px solid ${colors.blue_500};
+    background: ${({ theme }) => theme.colors.blue_300};
+    border: 2px solid ${({ theme }) => theme.colors.blue_500};
     &:after {
-      background: ${colors.blue_500};
+      background: ${({ theme }) => theme.colors.blue_500};
     }
   }
   input:disabled {
     pointer-events: none;
   }
   input:disabled ~ .radio__target {
-    border: 2px solid ${colors.ui_300};
+    border: 2px solid ${({ theme }) => theme.colors.ui_300};
   }
   .radio__label {
     margin-left: 1rem;
@@ -58,7 +57,10 @@ export const RadioGroup = styled.fieldset`
   }
 `
 
-function Radio({ children = null, className = "", disabled = false, ...props }, ref) {
+function Radio(
+  { children = null, className = "", disabled = false, ...props },
+  ref
+) {
   return (
     <StyledRadio className={className} disabled={disabled}>
       <input {...props} ref={ref} type="radio" disabled={disabled} />

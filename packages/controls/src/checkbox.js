@@ -1,6 +1,5 @@
 import React, { forwardRef, useState, useReducer } from "react"
 import styled from "styled-components"
-import { colors } from "src/constants"
 
 const StyledCheckbox = styled.label`
   position: relative;
@@ -15,7 +14,7 @@ const StyledCheckbox = styled.label`
   .input__target {
     width: 2rem;
     height: 2rem;
-    border: 2px solid ${colors.ui_500};
+    border: 2px solid ${({ theme }) => theme.colors.ui_500};
     border-radius: 4px;
     flex-shrink: 0;
     display: flex;
@@ -24,18 +23,18 @@ const StyledCheckbox = styled.label`
     stroke-dasharray: 24;
     stroke-dashoffset: 24;
     transition: 300ms;
-    color: ${colors.ui_100};
+    color: ${({ theme }) => theme.colors.ui_100};
     will-change: stroke-dashoffset;
   }
 
   input:checked ~ .input__target {
-    border: 2px solid ${colors.blue_500};
-    background: ${colors.blue_500};
+    border: 2px solid ${({ theme }) => theme.colors.blue_500};
+    background: ${({ theme }) => theme.colors.blue_500};
     stroke-dashoffset: 0;
   }
 
   input:disabled ~ .input__target {
-    border: 2px solid ${colors.ui_300};
+    border: 2px solid ${({ theme }) => theme.colors.ui_300};
   }
 
   .label {
@@ -55,7 +54,9 @@ function Checkbox(
   ref
 ) {
   const reducer = (state, action) => ({ ...state, ...action })
-  const [{ checked }, dispatch] = useReducer(reducer, { checked: defaultChecked })
+  const [{ checked }, dispatch] = useReducer(reducer, {
+    checked: defaultChecked,
+  })
   function handleChange(event) {
     if (onChange) onChange(event)
     dispatch({ checked: event.target.checked })
