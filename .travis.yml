@@ -1,15 +1,18 @@
 os: linux
 language: node_js
 node_js: node
-before_script: npm test
-script: npm run build:package
-before_deploy: cd ./dist
-deploy:
-  edge: true
-  provider: npm
-  email: patrick@dreadful.design
-  on:
-    tags: true
-    branch: master
-  api_key:
-    secure: qDtcWSPN3NW1gZOQPXs2r4Ix0qAKbgBfRCLZpubF8gMcllcQKrlDKhF2nOnm9RMJtRmxs5l6xqsCVXn1kggc4JgujiTEl3wVAyJAtC+sDaZvJPz2s1KZT2nMfvcqxof0Lytn5oVoWB0OfhwU12VOustxdP2dcPzvzY2cOmskrqVmxi/ciBfyISKb7P1jKZnQnDdhTRRNeoREJkiXT8gCUY8RDtOW3OIPImhUrnv5Cl2/G+oq1DVbgJ7gWzRBGTZDN+kINHoWsmy92zFXyihnvHaJX8ZldYuqqNKIesooteZKXYiGDd/sJrbDgUTlTIxvwd6WzQ7luOb1g+/7FOQGPTQ3MnNlGfthQt4dVgP48N8sHMUFkAUvZO1c6vDfxIToKp7OfYdTitIb9RQY0CrhuLhiyt2ZDK9OKSCTZ8Sb/YfxvqdM2w97hp9+UGbEGG50zneeZYyvpXDO6L6Fbt6zkgyRG+hiNW0K70Apc6SovzU06RYUTn1aX67sYKxC510XEqro46ofpZqpFDiVkvCFaGvQ7J/wDCNq0JeXZDlNUCB1XoZnxHkFnjBHfH1daeEhXgSd9JMObzssIZ4uCweGlYBRhRTDAdME98EpIsdc1wFW6s8li9yWyIYatsRJU+pmYonMCqZwwsM/L80RCJDUHeQRmAZG/GH7mH8OsXyW3xI=
+jobs:
+  include:
+    - stage: Test
+      script: npm test
+    - stage: Release
+      if: tag =~ ^v[0-9]
+      before_script: npm run build:package
+      script: echo "Publishing $TRAVIS_TAG to npm..."
+      before_deploy: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > "$HOME/.npmrc"
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: lerna publish from-git --yes
+        on:
+          tags: true

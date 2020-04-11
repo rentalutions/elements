@@ -4,10 +4,12 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
+    "build:changed": "lerna run build --since origin/master",
     "build": "lerna run build --stream",
-    "start": "start-storybook -p 8080",
-    "prepublishOnly": "yarn build",
-    "start:docs": "yarn workspace docs dev"
+    "changes": "dotenv lerna-changelog",
+    "start": "start-storybook -p 8080 -c .storybook",
+    "start:docs": "yarn workspace docs dev",
+    "ver": "lerna version --no-push"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -21,21 +23,31 @@
     "lerna": "^3.20.2",
     "prettier": "^2.0.2"
   },
-  "workspaces": [
-    "packages/**/*"
-  ],
-  "prettier": {
-    "semi": false
-  },
   "dependencies": {
-    "@styled-system/css": "^5.1.5",
     "clsx": "^1.1.0",
     "framer-motion": "^1.10.3",
+    "lerna-changelog": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.4",
     "react-spring": "^8.0.27",
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5"
+  },
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "prettier": {
+    "semi": false
+  },
+  "changelog": {
+    "labels": {
+      "breaking-change": "🔨 Breaking Changes",
+      "bug": "🐛 Bugfixes",
+      "docs": "📝 Documentation",
+      "feature": "🚀 Features",
+      "enhancement": "✨ Enhancements",
+      "housekeeping": "🏡 Housekeeping"
+    }
   }
 }
