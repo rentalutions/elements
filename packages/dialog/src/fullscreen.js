@@ -1,68 +1,66 @@
-import React, { useEffect } from "react"
+import React, { memo, forwardRef, useContext } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-import { useTransition, animated, config } from "react-spring"
-import PropTypes from "prop-types"
+import { color, background } from "styled-system"
+import { usePortal, noop } from "@rent_avail/utils"
+import { motion, AnimatePresence } from "framer-motion"
 import { X } from "react-feather"
-import { colors } from "src/constants"
-import { usePortal } from "src/hooks"
-import Container from "src/container"
+import { Container } from "@rent_avail/layout"
+import { Heading } from "@rent_avail/typography"
+import { DialogContext } from "./index"
 
-const StyledFullPageModal = styled(animated.section)`
+const FullscreenWrapper = styled(motion.section)`
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.96);
-  z-index: 1000;
-  padding: 4rem 2rem;
-  overflow-y: auto;
-  .close {
-    position: absolute;
-    top: 4rem;
-    right: 4rem;
+  padding: 4rem 0;
+  background: ${({ theme }) => theme.colors.ui_100};
+  ${color};
+  ${background};
+  .fullscreen__header {
+    display: flex;
+    margin-bottom: 2rem;
+    svg {
+      margin-left: auto;
+    }
+  }
+  .fullscreen__close {
     cursor: pointer;
-    transition: 200ms;
+    transition: 100ms;
     &:hover {
-      color: ${colors.ui_700};
+      opacity: 0.75;
     }
   }
 `
 
-const FullPageModal = ({ children, open, toggle, ...passedProps }) => {
+function Fullscreen({ children, title = "", ...props }, ref) {
   const target = usePortal()
-  const animation = useTransition(open, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.stiff
-  })
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = "initial"
-    return () => {
-      document.body.style.overflow = "initial"
-    }
-  }, [open])
-  return target
-    ? createPortal(
-        animation.map(({ item, key, props }) => {
-          return item ? (
-            <StyledFullPageModal {...passedProps} key={key} style={props}>
-              <X className="close" onClick={e => toggle(e)} />
-              <Container>{children}</Container>
-            </StyledFullPageModal>
-          ) : null
-        }),
-        target
-      )
-    : null
+  const { open, toggle, id } = useContext(DialogContext)
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <FullscreenWrapper
+          {...props}
+          key={`${id}-dialog`}
+          ref={ref}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+        >
+          <Container>
+            <header className="fullscreen__header">
+              {title && <Heading as="h5">{title}</Heading>}
+              <X className="fullscreen__close" onClick={toggle} />
+            </header>
+            {children}
+          </Container>
+        </FullscreenWrapper>
+      )}
+    </AnimatePresence>,
+    target
+  )
 }
 
-FullPageModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
-}
-
-export default FullPageModal
+export default memo(forwardRef(Fullscreen))

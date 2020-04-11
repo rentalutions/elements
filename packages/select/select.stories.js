@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react"
 import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
-export default { title: "Select Input" }
+export default { title: "Select" }
 
 function SelectExample() {
   const options = [

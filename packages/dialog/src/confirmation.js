@@ -1,87 +1,79 @@
-import React, { useEffect } from "react"
+import React, { useContext, forwardRef, Fragment } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
+import { motion, AnimatePresence } from "framer-motion"
+import { usePortal } from "@rent_avail/utils"
+import { DialogContext } from "./index"
 import { X } from "react-feather"
-import PropTypes from "prop-types"
-import { useTransition, animated, config } from "react-spring"
-import { colors } from "../constants"
-import { usePortal } from "../hooks"
 
-const StyledModal = styled.section`
+const ConfirmationWrapper = styled(motion.section)`
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 4rem;
+  left: 50%;
+  padding: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  background: ${({ theme }) => theme.colors.ui_100};
+  border-radius: 0.25rem;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  overflow-y: auto;
-  .modal__body {
-    position: relative;
-    background: ${colors.ui_100};
-    border-radius: 4px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 54rem;
-    margin: 4rem auto;
+  max-width: 60rem;
+  z-index: 2;
+  transform: translate3d(-50%, 0, 0);
+  .confirmation__header {
+    display: flex;
+    margin-bottom: 2rem;
   }
-  .modal__close {
-    position: absolute;
-    right: 2rem;
-    top: 2rem;
+  .confirmation__close {
     cursor: pointer;
-    transition: 200ms;
+    margin-left: auto;
     &:hover {
-      color: ${colors.ui_700};
+      opacity: 0.75;
     }
   }
 `
 
-const Modal = ({ children, open, toggle, ...props }) => {
+const Scrim = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.24);
+`
+
+function Confirmation({ children, title = "", ...props }, ref) {
   const target = usePortal()
-  const handleToggle = e => {
-    if (e.target !== e.currentTarget) return
-    toggle(e)
-  }
-  useEffect(() => {
-    if (typeof window === "undefined") return // Bail early if server side.
-    if (open) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = "initial"
-    return () => {
-      document.body.style.overflow = "initial"
-    }
-  }, [open])
-  const animation = useTransition(open, null, {
-    from: { opacity: 0, transform: "scale(1.1)" },
-    enter: { opacity: 1, transform: "scale(1)" },
-    leave: { opacity: 0, transform: "scale(1.1)" },
-    config: config.stiff
-  })
-  return target
-    ? createPortal(
-        animation.map(({ item, key, props: style }) => {
-          return item ? (
-            <StyledModal
-              {...props}
-              key={key}
-              onClick={handleToggle}
-              style={{ opacity: style.opacity }}
-            >
-              <animated.div role="dialog" key={key} className="modal__body" style={style}>
-                <X className="modal__close" onClick={e => toggle(e)} />
-                {children}
-              </animated.div>
-            </StyledModal>
-          ) : null
-        }),
-        target
-      )
-    : null
+  const { open, toggle, id } = useContext(DialogContext)
+  console.log(open, toggle)
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <Fragment>
+          <Scrim
+            key={`${id}-skrim`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+          <ConfirmationWrapper
+            {...props}
+            key={`${id}-dialog`}
+            ref={ref}
+            initial={{ opacity: 0, scale: 1.05, x: "-50%" }}
+            animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
+            exit={{ opacity: 0, scale: 1.05 }}
+          >
+            <header className="confirmation__header">
+              {title && <Header as="h5">{title}</Header>}
+              <X className="confirmation__close" onClick={toggle} />
+            </header>
+            {children}
+          </ConfirmationWrapper>
+        </Fragment>
+      )}
+    </AnimatePresence>,
+    target
+  )
 }
 
-Modal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
-}
-
-export default Modal
+export default forwardRef(Confirmation)

@@ -1,6 +1,6 @@
 import React, { memo, forwardRef, useState, useEffect } from "react"
 import styled from "styled-components"
-import { colors, wrapEvent, noop } from "src/constants"
+import { wrapEvent, noop } from "@rent_avail/utils"
 
 const StyledInput = styled.label`
   position: relative;
@@ -13,7 +13,7 @@ const StyledInput = styled.label`
       position: absolute;
       top: 3rem;
       right: 2rem;
-      background: ${colors.red_500};
+      background: ${({ theme }) => theme.colors.red_500};
       border-radius: 50%;
       height: 0.5rem;
       width: 0.5rem;
@@ -34,21 +34,27 @@ const StyledInput = styled.label`
     padding: 3rem 2rem 1rem 2rem;
     border: 2px solid
       ${({ hasValue, hasError }) => {
-        if (hasError) return colors.red_500
-        if (hasValue) return colors.blue_500
-        return colors.ui_500
+        if (hasError) return ({ theme }) => theme.colors.red_500
+        if (hasValue) return ({ theme }) => theme.colors.blue_500
+        return ({ theme }) => theme.colors.ui_500
       }};
     border-radius: 4px;
     height: 6.5rem;
     ${({ hasIcon }) => hasIcon && `padding-left: 5rem;`}
     &:focus {
-      border-color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
+      border-color: ${({ hasError }) =>
+        hasError
+          ? ({ theme }) => theme.colors.red_500
+          : ({ theme }) => theme.colors.blue_500};
       & ~ .input__label {
         font-size: 1.333rem;
         transform: translate3d(0, -1.333rem, 0);
       }
       & ~ .input__icon {
-        color: ${({ hasError }) => (hasError ? colors.red_500 : colors.blue_500)};
+        color: ${({ hasError }) =>
+          hasError
+            ? ({ theme }) => theme.colors.red_500
+            : ({ theme }) => theme.colors.blue_500};
       }
     }
   }
@@ -59,7 +65,7 @@ const StyledInput = styled.label`
     right: calc(2rem - 2px);
     font-size: 1.5rem;
     line-height: 2rem;
-    color: ${colors.ui_700};
+    color: ${({ theme }) => theme.colors.ui_700};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -77,9 +83,9 @@ const StyledInput = styled.label`
     left: calc(2rem + 2px);
     top: calc(2rem + 2px);
     color: ${({ hasValue, hasError }) => {
-      if (hasError) return colors.red_500
-      if (hasValue) return colors.blue_500
-      return colors.ui_700
+      if (hasError) return ({ theme }) => theme.colors.red_500
+      if (hasValue) return ({ theme }) => theme.colors.blue_500
+      return ({ theme }) => theme.colors.ui_700
     }};
   }
   .input__error {
@@ -87,7 +93,7 @@ const StyledInput = styled.label`
     position: absolute;
     top: 100%;
     left: 0;
-    color: ${colors.red_500};
+    color: ${({ theme }) => theme.colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
     text-align: left;
@@ -111,7 +117,7 @@ function TextInput(
   ref
 ) {
   const [hasValue, setHasValue] = useState(initialValue)
-  const handleChange = e => {
+  const handleChange = (e) => {
     if (e.target.value.length || type === "date") setHasValue(true)
     else setHasValue(false)
   }

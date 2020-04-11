@@ -74,9 +74,11 @@ export function useIntersection({
 
 export function usePortal() {
   if (typeof window === "undefined") return null // bail on server render.
-  const rootElement = useRef(null)
+  const modalContainer = document.getElementById("modal-root")
+  const rootElement = useRef(modalContainer)
   if (!rootElement.current) {
     rootElement.current = document.createElement("aside")
+    rootElement.current.setAttribute("id", "modal-root")
   }
   useEffect(() => {
     document.body.appendChild(rootElement.current)

@@ -1,7 +1,7 @@
 {
-  "name": "@rent_avail/utils",
+  "name": "@rent_avail/typography",
   "version": "0.0.0",
-  "description": "Utility functions.",
+  "description": "Type components.",
   "main": "dist/index.js",
   "module": "src/index.js",
   "files": [
@@ -19,17 +19,16 @@
     "Patrick Krawczykowski <patrick@dreadful.design>"
   ],
   "license": "MIT",
-  "dependencies": {
-    "calendar-dates": "^2.6.1",
-    "intersection-observer": "^0.7.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "resize-observer-polyfill": "^1.5.1"
-  },
   "peerDependencies": {
     "clsx": "^1.1.0",
     "framer-motion": "^1.10.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.4",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
+  },
+  "dependencies": {
+    "@rent_avail/utils": "^0.0.0"
   }
 }
