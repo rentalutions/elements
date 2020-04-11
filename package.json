@@ -9,7 +9,8 @@
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace docs dev",
-    "ver": "lerna version --no-push"
+    "ver": "lerna version --no-push",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
