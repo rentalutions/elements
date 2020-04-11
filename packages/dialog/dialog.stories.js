@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react"
 import { Dialog, DialogTarget, Confirmation, Fullscreen } from "./src"
-import { Heading } from "@rent_avail/typography"
+import { Text, Heading } from "@rent_avail/typography"
 import Input from "@rent_avail/input"
 import { Button } from "@rent_avail/controls"
 
@@ -17,7 +17,9 @@ export function ConfirmationUsage() {
         <DialogTarget>
           <Button onClick={handleClick}>Open Modal</Button>
         </DialogTarget>
-        <Confirmation>Hello World</Confirmation>
+        <Confirmation title="Are you sure?">
+          <Text>This action will delete 43 files. Are you sure you want to continue?</Text>
+        </Confirmation>
       </Dialog>
     </Fragment>
   )

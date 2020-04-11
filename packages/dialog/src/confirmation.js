@@ -1,10 +1,11 @@
 import React, { useContext, forwardRef, Fragment } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-import { motion, AnimatePresence } from "framer-motion"
 import { usePortal } from "@rent_avail/utils"
-import { DialogContext } from "./index"
+import { Heading } from "@rent_avail/typography"
+import { motion, AnimatePresence } from "framer-motion"
 import { X } from "react-feather"
+import { DialogContext } from "./index"
 
 const ConfirmationWrapper = styled(motion.section)`
   position: fixed;
@@ -16,7 +17,7 @@ const ConfirmationWrapper = styled(motion.section)`
   background: ${({ theme }) => theme.colors.ui_100};
   border-radius: 0.25rem;
   width: 100%;
-  max-width: 60rem;
+  max-width: 50rem;
   z-index: 2;
   transform: translate3d(-50%, 0, 0);
   .confirmation__header {
@@ -64,7 +65,7 @@ function Confirmation({ children, title = "", ...props }, ref) {
             exit={{ opacity: 0, scale: 1.05 }}
           >
             <header className="confirmation__header">
-              {title && <Header as="h5">{title}</Header>}
+              {title && <Heading as="h5">{title}</Heading>}
               <X className="confirmation__close" onClick={toggle} />
             </header>
             {children}
