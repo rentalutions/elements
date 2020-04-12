@@ -1,150 +1,186 @@
-import React, { memo, forwardRef, useState, useEffect } from "react"
+import React, {
+  memo,
+  forwardRef,
+  useState,
+  useEffect,
+  createElement,
+} from "react"
 import styled from "styled-components"
+import { space, layout } from "styled-system"
 import { wrapEvent, noop } from "@rent_avail/utils"
+import clsx from "clsx"
 
-const StyledInput = styled.label`
+const InputWrapper = styled.label`
   position: relative;
-  cursor: text;
   display: block;
   width: 100%;
-  &.required {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 3rem;
-      right: 2rem;
-      background: ${({ theme }) => theme.colors.red_500};
-      border-radius: 50%;
-      height: 0.5rem;
-      width: 0.5rem;
-    }
-    input {
-      padding-right: 4rem;
-    }
-    .input__label {
-      right: calc(4rem - 2px);
-    }
-  }
+  ${space};
+  ${layout};
   input {
     position: relative;
     all: unset;
     display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 3rem 2rem 1rem 2rem;
-    border: 2px solid
-      ${({ hasValue, hasError }) => {
-        if (hasError) return ({ theme }) => theme.colors.red_500
-        if (hasValue) return ({ theme }) => theme.colors.blue_500
-        return ({ theme }) => theme.colors.ui_500
-      }};
+    padding: 3rem 2rem 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.colors.ui_500};
     border-radius: 4px;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: inherit;
     height: 6.5rem;
-    ${({ hasIcon }) => hasIcon && `padding-left: 5rem;`}
+    outline: none;
+    width: 100%;
+    transition: border-color 100ms;
     &:focus {
-      border-color: ${({ hasError }) =>
-        hasError
-          ? ({ theme }) => theme.colors.red_500
-          : ({ theme }) => theme.colors.blue_500};
-      & ~ .input__label {
-        font-size: 1.333rem;
-        transform: translate3d(0, -1.333rem, 0);
-      }
-      & ~ .input__icon {
-        color: ${({ hasError }) =>
-          hasError
-            ? ({ theme }) => theme.colors.red_500
-            : ({ theme }) => theme.colors.blue_500};
+      border-color: ${({ theme }) => theme.colors.blue_500};
+      ~ .input__row {
+        font-size: 1.334rem;
+        transform: translate3d(0, -1rem, 0);
+        color: ${({ theme }) => theme.colors.blue_500};
+        .input__label {
+          line-height: ${({ theme }) => theme.lineHeights.small};
+        }
       }
     }
   }
-  .input__label {
+  .input__row {
     position: absolute;
-    left: calc(${({ hasIcon }) => (hasIcon ? "5rem" : "2rem")} + 2px);
-    top: calc(2rem + 2px);
-    right: calc(2rem - 2px);
-    font-size: 1.5rem;
-    line-height: 2rem;
-    color: ${({ theme }) => theme.colors.ui_700};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    left: 2rem;
+    top: 2.25rem;
     transition: 100ms;
-    will-change: font-size, transform;
-    ${({ hasValue }) =>
-      hasValue &&
-      `
-      font-size: 1.333rem;
-      transform: translate3d(0, -1.333rem, 0);
-    `}
+    color: ${({ theme }) => theme.colors.ui_700};
+    width: calc(100% - 4rem);
+    .input__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .input__required {
+      color: ${({ theme }) => theme.colors.red_500};
+      width: 0.5rem;
+      height: 0.5rem;
+      background: ${({ theme }) => theme.colors.red_500};
+      border-radius: 50%;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
   }
   .input__icon {
     position: absolute;
-    left: calc(2rem + 2px);
-    top: calc(2rem + 2px);
-    color: ${({ hasValue, hasError }) => {
-      if (hasError) return ({ theme }) => theme.colors.red_500
-      if (hasValue) return ({ theme }) => theme.colors.blue_500
-      return ({ theme }) => theme.colors.ui_700
-    }};
+    left: 2rem;
+    top: 2.25rem;
   }
   .input__error {
-    display: block;
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     color: ${({ theme }) => theme.colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
-    text-align: left;
-    width: 100%;
+  }
+  &.icon {
+    input {
+      padding-left: 5rem;
+    }
+    .input__row {
+      left: 5rem;
+      width: calc(100% - 7rem);
+    }
+  }
+  &.raised {
+    input {
+      border-color: ${({ theme }) => theme.colors.blue_500};
+    }
+    .input__row {
+      font-size: 1.334rem;
+      transform: translate3d(0, -1rem, 0);
+      color: ${({ theme }) => theme.colors.blue_500};
+    }
+    .input__label {
+      line-height: ${({ theme }) => theme.lineHeights.small};
+    }
+  }
+  &.date {
+    input {
+      border-color: ${({ theme }) => theme.colors.ui_500};
+    }
+    .input__row {
+      font-size: 1.334rem;
+      transform: translate3d(0, -1rem, 0);
+      color: ${({ theme }) => theme.colors.ui_700};
+    }
+  }
+  &.date input:focus,
+  &.date.raised input,
+  &.date.raised .input__row {
+    color: ${({ theme }) => theme.colors.blue_500};
+    border-color: ${({ theme }) => theme.colors.blue_500};
+  }
+  &.error {
+    input {
+      border-color: ${({ theme }) => theme.colors.red_500};
+    }
+    .input__icon {
+      color: ${({ theme }) => theme.colors.red_500};
+    }
   }
 `
 
-function TextInput(
+function Input(
   {
-    type = "text",
     className,
-    icon: Icon,
+    type = "text",
+    value = "",
     label,
+    required = false,
+    error = "",
     onChange = noop,
-    initialValue,
-    value,
-    error,
-    required,
+    style,
+    icon = null,
     ...props
   },
   ref
 ) {
-  const [hasValue, setHasValue] = useState(initialValue)
-  const handleChange = (e) => {
-    if (e.target.value.length || type === "date") setHasValue(true)
-    else setHasValue(false)
+  const isDate = type === "date"
+  const [isRaised, setRaised] = useState(value.length || isDate)
+  function handleChange({ target }) {
+    setRaised(target.value.length)
   }
-  useEffect(() => {
-    if (type === "date") setHasValue(true)
-    if (value && value.length) setHasValue(true)
-  }, [value])
   return (
-    <StyledInput
-      className={`${className} ${required && "required"}`}
-      hasError={!!error?.length}
-      hasIcon={!!Icon}
-      hasValue={hasValue}
+    <InputWrapper
+      {...props}
+      className={clsx(className, {
+        required,
+        raised: isRaised,
+        date: isDate,
+        icon,
+        error,
+      })}
+      style={style}
     >
       <input
         {...props}
         type={type}
         ref={ref}
-        value={value}
-        required={required}
         onChange={wrapEvent(onChange, handleChange)}
       />
-      {Icon && <Icon className="input__icon" width={24} height={24} />}
-      <span className="input__label">{label}</span>
+      {icon &&
+        createElement(icon, {
+          className: "input__icon",
+          width: 24,
+          height: 24,
+        })}
+      <div className="input__row">
+        <span className="input__label">{label}</span>
+        {required && <span className="input__required" />}
+      </div>
       {error && <span className="input__error">{error}</span>}
-    </StyledInput>
+    </InputWrapper>
   )
 }
 
-export default memo(forwardRef(TextInput))
+export default memo(forwardRef(Input))

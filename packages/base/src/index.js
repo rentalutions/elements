@@ -45,12 +45,19 @@ export const theme = {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
   },
+  fontSizes: {
+    small: "1.334rem",
+    body: "1.5rem",
+    subtitle: "2rem",
+    title: "3rem",
+    headline: "4rem",
+    hero: "5rem",
+  },
   fontWeights: ["200", "400", "600", "800"],
   lineHeights: {
-    hero: "1.2",
-    small: "1.25",
-    normal: "1.334",
-    large: "1.5",
+    small: "1.5",
+    body: "1.334",
+    heading: "1.25",
   },
   space: [0, 12, 24, 36, 48, 60, 72, 84, 96],
   shadows: [

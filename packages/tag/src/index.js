@@ -4,11 +4,13 @@ import { Check } from "react-feather"
 import { noop, wrapEvent } from "@rent_avail/utils"
 import { color, layout, space, flexbox } from "styled-system"
 
-const ChipWrapper = styled.span`
+const TagWrapper = styled.span`
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1rem;
   border-radius: 2rem;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  line-height: ${({ theme }) => theme.lineHeights.small};
   ${color};
   ${layout};
   ${space};
@@ -18,20 +20,20 @@ const ChipWrapper = styled.span`
   }
 `
 
-ChipWrapper.defaultProps = {
+TagWrapper.defaultProps = {
   bg: "ui_300",
 }
 
-function Chip({ children, icon = null, ...props }, ref) {
+function Tag({ children, icon = null, ...props }, ref) {
   return (
-    <ChipWrapper {...props} ref={ref}>
+    <TagWrapper {...props} ref={ref}>
       {icon && createElement(icon, { className: "chip__icon" })}
       {children}
-    </ChipWrapper>
+    </TagWrapper>
   )
 }
 
-export default memo(forwardRef(Chip))
+export default memo(forwardRef(Tag))
 
 // const filterStyles = css`
 //   background: ${colors.ui_300};

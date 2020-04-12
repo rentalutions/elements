@@ -1,5 +1,5 @@
 {
-  "name": "@rent_avail/chip",
+  "name": "@rent_avail/tag",
   "version": "0.0.0",
   "description": "Chip component.",
   "main": "dist/index.js",
