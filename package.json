@@ -9,7 +9,7 @@
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace docs dev",
-    "ver": "lerna version --no-push",
+    "version": "lerna version --no-push",
     "test": "jest"
   },
   "devDependencies": {
@@ -31,6 +31,7 @@
     "framer-motion": "^1.10.3",
     "jest": "^25.3.0",
     "lerna-changelog": "^1.0.1",
+    "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.4",
@@ -39,7 +40,8 @@
     "styled-system": "^5.1.5"
   },
   "workspaces": [
-    "packages/**/*"
+    "packages/**/*",
+    "docs"
   ],
   "prettier": {
     "semi": false

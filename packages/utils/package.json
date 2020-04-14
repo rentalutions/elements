@@ -30,6 +30,7 @@
   "peerDependencies": {
     "clsx": "^1.1.0",
     "framer-motion": "^1.10.3",
+    "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

@@ -7,6 +7,7 @@ import {
   border,
   buttonStyle,
 } from "styled-system"
+import { lighten } from "polished"
 
 const Button = styled.button`
   appearance: none;
@@ -18,14 +19,15 @@ const Button = styled.button`
   text-transform: uppercase;
   transition: 100ms;
   white-space: nowrap;
-  border-color: ${({ theme, color }) => theme.colors[color]};
+  border-color: ${({ theme, color }) => theme.colors[color] || color};
   outline: none;
+  &:focus {
+    background: ${({ color, theme }) =>
+      lighten(0.66, theme.colors[color] || color)};
+  }
   &:hover {
     color: ${({ theme }) => theme.colors.ui_100};
-    background: ${({ color, theme }) => theme.colors[color]};
-  }
-  &:focus {
-    opacity: 0.75;
+    background: ${({ color, theme }) => theme.colors[color] || color};
   }
   &:disabled {
     color: ${({ theme }) => theme.colors.ui_300};
