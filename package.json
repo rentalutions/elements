@@ -28,6 +28,7 @@
     "@testing-library/react": "^10.0.2",
     "@testing-library/react-hooks": "^3.2.1",
     "clsx": "^1.1.0",
+    "dotenv-cli": "^3.1.0",
     "framer-motion": "^1.10.3",
     "jest": "^25.3.0",
     "lerna-changelog": "^1.0.1",
@@ -40,8 +41,7 @@
     "styled-system": "^5.1.5"
   },
   "workspaces": [
-    "packages/**/*",
-    "docs"
+    "packages/**/*"
   ],
   "prettier": {
     "semi": false
