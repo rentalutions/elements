@@ -10,6 +10,12 @@ import {
 import { lighten } from "polished"
 
 const Button = styled.button`
+  ${color};
+  ${space};
+  ${layout};
+  ${flexbox};
+  ${border};
+  ${buttonStyle};
   appearance: none;
   border-width: 2px;
   cursor: pointer;
@@ -35,12 +41,6 @@ const Button = styled.button`
     border-color: transparent;
     cursor: not-allowed;
   }
-  ${color};
-  ${space};
-  ${layout};
-  ${flexbox};
-  ${border};
-  ${buttonStyle};
 `
 
 Button.defaultProps = {

@@ -1,6 +1,6 @@
 import React from "react"
-import { render, fireEvent } from "@testing-library/react"
-import { Checkbox } from "./src"
+import { render, fireEvent } from "tester"
+import { Checkbox } from "../src"
 
 describe("<Checkbox />", () => {
   it("Should be checked on click.", () => {

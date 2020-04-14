@@ -1,4 +1,10 @@
 module.exports = {
-  presets: ["@babel/preset-env", "@babel/preset-react"],
-  plugins: ["styled-components"],
+  presets: [
+    ["@babel/preset-env", { targets: { node: "current" } }],
+    "@babel/preset-react",
+  ],
+  plugins: [
+    "styled-components",
+    ["module-resolver", { alias: { tester: "./test-utils.js" } }],
+  ],
 }
