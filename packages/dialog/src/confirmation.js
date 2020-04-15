@@ -45,7 +45,6 @@ const Scrim = styled(motion.div)`
 function Confirmation({ children, title = "", ...props }, ref) {
   const target = usePortal()
   const { open, toggle, id } = useContext(DialogContext)
-  console.log(open, toggle)
   return createPortal(
     <AnimatePresence>
       {open && (

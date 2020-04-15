@@ -1,6 +1,6 @@
 import React from "react"
-import { render, fireEvent } from "@testing-library/react"
-import { Radio } from "./src"
+import { render, fireEvent } from "tester"
+import { Radio } from "../src"
 
 describe("<Radio />", () => {
   it("Is checked when toggled.", () => {
