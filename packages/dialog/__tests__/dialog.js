@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { render, fireEvent } from "tester"
+import { render, screen } from "tester"
 import { Dialog, DialogTarget, Fullscreen, Confirmation } from "../src"
 
 describe("<Fullscreen />", () => {
@@ -15,18 +15,19 @@ describe("<Fullscreen />", () => {
       </Dialog>
     )
   }
-  const { queryByTestId } = render(<TestUi />)
   it("renders without crashing", () => {
-    const target = queryByTestId("target-id")
+    render(<TestUi />)
+    const target = screen.getByTestId("target-id")
     expect(target).toBeInTheDocument()
   })
-  it("does not render modal without a click", () => {
-    const modal = queryByTestId("modal-id")
+  it("does not render modal without open being true", () => {
+    render(<TestUi />)
+    const modal = screen.queryByTestId("modal-id")
     expect(modal).not.toBeInTheDocument()
   })
   it("renders modal when open is true", () => {
-    const { queryByText } = render(<TestUi open id="dialog-id" />)
-    const modalBody = queryByText(/Hello World/)
+    render(<TestUi open id="dialog-id" />)
+    const modalBody = screen.getByText(/Hello World/)
     expect(modalBody).toBeInTheDocument()
   })
 })
