@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { Grid, Col, Box, Container, Stack, Card } from "./src"
-import { Text } from "@rent_avail/typography"
+import { Heading, Text } from "@rent_avail/typography"
 
 export default { title: "Layout" }
 
@@ -100,5 +100,21 @@ export function ContainerUsage() {
         voluptates!{" "}
       </p>
     </Container>
+  )
+}
+
+export function CardUsage() {
+  return (
+    <Card>
+      <Heading as="h3" mb="2rem">
+        A Card Header
+      </Heading>
+      <Text>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, harum
+        eaque. Illo, voluptas necessitatibus ab aperiam vitae ducimus eligendi,
+        sequi dolore consequuntur distinctio numquam voluptate error suscipit
+        minus natus praesentium?
+      </Text>
+    </Card>
   )
 }

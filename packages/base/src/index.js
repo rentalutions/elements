@@ -74,6 +74,9 @@ export const theme = {
         background: colors.blue_700,
         color: colors.blue_300,
       },
+      "&:focus": {
+        background: colors.blue_700,
+      },
     },
     danger: {
       color: colors.red_500,
