@@ -1,18 +1,23 @@
 import React, { Fragment } from "react"
 import { Grid, Col, Box, Container, Stack, Card } from "./src"
+import { Text } from "@rent_avail/typography"
 
 export default { title: "Layout" }
 
 export function BoxUsage() {
   return (
     <Fragment>
-      <Box width={[1, 1 / 2]} p={4} mb={3} bg="tomato">
-        This is a tomato box, with responsive width, some padding, and margin
-        bottom
-      </Box>
-      <Box width={[1, 1 / 2]} p={4} mb={3} bg="tomato">
-        This is a tomato box, with responsive width, some padding, and margin
-        bottom
+      <Box
+        width={[1, 1 / 2]}
+        p="2rem"
+        mb="3rem"
+        bg="blue_100"
+        borderRadius="0.25rem"
+      >
+        <Text>
+          This is a tomato box, with responsive width, some padding, and margin
+          bottom
+        </Text>
       </Box>
     </Fragment>
   )

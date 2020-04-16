@@ -5,14 +5,14 @@ import { Stack, Box } from "../src"
 describe("<Stack/>", () => {
   it("renders each child with a gap in between", () => {
     render(
-      <Stack data-testid="stack-id">
+      <Stack mb="2rem" data-testid="stack-id">
         <Box height="10rem" />
         <Box height="10rem" />
         <Box height="10rem" />
       </Stack>
     )
+    const stack = screen.getByTestId(/stack-id/)
+    screen.debug(stack)
+    expect(stack).toBeInTheDocument()
   })
-  expect(screen.getByTestId(/stack-id/)).toHaveStyle(`
-    grid-gap: 2rem;
-  `)
 })
