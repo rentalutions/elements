@@ -1,9 +1,28 @@
 import React from "react"
-import { render, fireEvent } from "tester"
+import { render, screen, fireEvent } from "testing-utils"
+import userEvent from "@testing-library/user-event"
 import Input from "../src"
 
 describe("<Input />", () => {
   it("renders without crashing", () => {
-    return Promise.resolve()
+    render(<Input label="Phone Number" />)
+    expect(screen.getByText(/Phone Number/)).toBeInTheDocument()
+  })
+  it("stores the value internally", async () => {
+    render(<Input aria-label="name-input" label="Name" />)
+    const input = screen.getByLabelText(/name-input/)
+    fireEvent.change(input, { target: { value: "Chuck" } })
+    expect(input).toHaveValue("Chuck")
+    fireEvent.change(input, { target: { value: "Bruce" } })
+    expect(input).toHaveValue("Bruce")
+  })
+  it("is raised on mount when type is date", () => {
+    const { container } = render(
+      <Input type="date" aria-label="birth-input" label="Birth Date" />
+    )
+    const input = screen.getByLabelText(/birth-input/)
+    const label = container.querySelector("label")
+    expect(input).toHaveAttribute("type", "date")
+    expect(label).toHaveClass("raised")
   })
 })
