@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { render, screen } from "tester"
+import { render, screen } from "testing-utils"
 import { Dialog, DialogTarget, Fullscreen, Confirmation } from "../src"
 
 describe("<Fullscreen />", () => {
