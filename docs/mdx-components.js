@@ -23,7 +23,9 @@ export default {
       borderRadius="0.25rem"
     />
   ),
-  table: ({ ...props }) => <Box {...props} as="table" width="100%" />,
+  table: ({ ...props }) => (
+    <Box {...props} as="table" color="ui_100" width="100%" />
+  ),
   th: ({ ...props }) => <Th {...props} as="th" />,
   td: ({ ...props }) => (
     <Box
@@ -35,4 +37,5 @@ export default {
       py="1rem"
     />
   ),
+  img: ({ ...props }) => <Box {...props} as="img" maxWidth="100%" />,
 }
