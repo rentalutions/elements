@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { render } from "tester"
+import { render } from "testing-utils"
 import { Button } from "../src"
 
 describe("<Button />", () => {

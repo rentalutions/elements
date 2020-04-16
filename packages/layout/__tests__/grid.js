@@ -1,6 +1,6 @@
 import React from "react"
-import { render } from "@testing-library/react"
-import { Grid, Col } from "./src"
+import { render } from "testing-utils"
+import { Grid, Col } from "../src"
 
 describe("<Grid />", () => {
   it("Renders as a full width column with no span prop.", () => {
@@ -13,7 +13,7 @@ describe("<Grid />", () => {
     )
     const element = getByTestId("column")
     expect(element).toHaveStyle(`
-      grid-column: auto / span 12;
+      grid-column: 1 / -1;
     `)
   })
 })

@@ -5,6 +5,6 @@ module.exports = {
   ],
   plugins: [
     "styled-components",
-    ["module-resolver", { alias: { tester: "./test-utils.js" } }],
+    ["module-resolver", { alias: { "testing-utils": "./testing-utils.js" } }],
   ],
 }

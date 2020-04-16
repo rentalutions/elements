@@ -21,6 +21,7 @@ const Stack = styled.section(
 
 Stack.defaultProps = {
   gridGap: "2rem",
+  variant: "vertical",
 }
 
 export default Stack

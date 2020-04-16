@@ -25,7 +25,7 @@ const Col = styled.div`
 `
 
 Col.defaultProps = {
-  gridColumn: "span -1",
+  gridColumn: "1 / -1",
 }
 
 export { Grid, Col }

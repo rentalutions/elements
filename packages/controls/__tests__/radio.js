@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent } from "tester"
+import { render, fireEvent } from "testing-utils"
 import { Radio } from "../src"
 
 describe("<Radio />", () => {
