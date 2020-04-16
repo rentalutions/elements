@@ -15,11 +15,3 @@ export default styled.section`
     }
   }
 `
-
-export function CardActions({ children, ...props }) {
-  return (
-    <nav className="card__actions" {...props}>
-      {children}
-    </nav>
-  )
-}

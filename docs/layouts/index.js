@@ -1,15 +1,8 @@
-import Base, { theme } from "@rent_avail/base"
-import { ThemeProvider } from "styled-components"
 import { frontMatter as pages } from "../pages/**/*.mdx"
+import { Container } from "@rent_avail/layout"
 
 export default (frontMatter) => {
-  console.log(pages)
   return ({ children: content }) => {
-    return (
-      <ThemeProvider theme={theme}>
-        <Base />
-        {content}
-      </ThemeProvider>
-    )
+    return <Container my="4rem">{content}</Container>
   }
 }

@@ -4,11 +4,11 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
+    "build": "lerna run build --stream --ignore documentation",
     "build:changed": "lerna run build --since origin/master",
-    "build": "lerna run build --stream",
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
-    "start:docs": "yarn workspace docs dev",
+    "start:docs": "yarn workspace documentation dev",
     "version": "lerna version --no-push",
     "test": "jest"
   },
@@ -47,7 +47,8 @@
     "styled-system": "^5.1.5"
   },
   "workspaces": [
-    "packages/**/*"
+    "packages/**/*",
+    "docs"
   ],
   "prettier": {
     "semi": false

@@ -44,6 +44,7 @@ export const theme = {
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
+    monospace: "'IBM Plex Mono'",
   },
   fontSizes: {
     small: "1.334rem",
@@ -142,5 +143,9 @@ export default createGlobalStyle`
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.334;
+  }
+
+  pre, code {
+    font-family: "IBM Plex Mono";
   }
 `
