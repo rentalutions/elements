@@ -7,6 +7,7 @@ import React, {
 } from "react"
 import styled from "styled-components"
 import { space, layout } from "styled-system"
+import { pick, omit } from "@styled-system/props"
 import { wrapEvent, noop } from "@rent_avail/utils"
 import clsx from "clsx"
 
@@ -134,7 +135,7 @@ function Input(
   {
     className,
     type = "text",
-    value = "",
+    value,
     label,
     required = false,
     error = "",
@@ -145,27 +146,31 @@ function Input(
   },
   ref
 ) {
-  const isDate = type === "date"
-  const [isRaised, setRaised] = useState(value.length || isDate)
-  function handleChange({ target }) {
-    setRaised(target.value.length)
+  const date = type === "date"
+  const [raised, setRaised] = useState(Boolean(value) || date)
+  const styledProps = pick(props)
+  const inputProps = omit(props)
+  function handleChange({ target: { value: inputValue } }) {
+    setRaised(inputValue.length || date)
   }
   return (
     <InputWrapper
-      {...props}
+      {...styledProps}
       className={clsx(className, {
         required,
-        raised: isRaised,
-        date: isDate,
+        raised,
+        date,
         icon,
         error,
       })}
       style={style}
     >
       <input
-        {...props}
+        {...inputProps}
         type={type}
         ref={ref}
+        value={value}
+        required={required}
         onChange={wrapEvent(onChange, handleChange)}
       />
       {icon &&
