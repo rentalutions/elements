@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo 'run tests from the root directory' && exit 1",
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js"
+    "build": "yarn clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js",
+    "prepublishOnly": "yarn build"
   },
   "publishConfig": {
     "access": "public"
