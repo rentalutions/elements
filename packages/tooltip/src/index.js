@@ -6,11 +6,11 @@ import React, {
   useReducer,
   useRef,
   useContext,
-  Children
+  Children,
 } from "react"
 import styled from "styled-components"
-import { colors, wrapEvent } from "src/constants"
-import Popover from "src/popover"
+import { wrapEvent } from "@rent_avail/utils"
+import Popover from "@rent_avail/popover"
 
 const TooltipContext = createContext()
 
@@ -18,7 +18,7 @@ const OPEN_TOOLTIP = "@rent_avail/tooltip/open_tooltip"
 const CLOSE_TOOLTIP = "@rent_avail/tooltip/close_tooltip"
 
 const initialState = {
-  isOpen: false
+  isOpen: false,
 }
 
 function tooltipReducer(state, action) {
@@ -38,7 +38,11 @@ function Tooltip({ children, id }) {
   const tooltipRef = useRef()
   const popoverRef = useRef()
   const context = { state, dispatch, id, targetRef, tooltipRef, popoverRef }
-  return <TooltipContext.Provider value={context}>{children}</TooltipContext.Provider>
+  return (
+    <TooltipContext.Provider value={context}>
+      {children}
+    </TooltipContext.Provider>
+  )
 }
 
 function Target({ children, ...props }, ref) {
@@ -46,7 +50,7 @@ function Target({ children, ...props }, ref) {
     id,
     targetRef,
     state: { isOpen },
-    dispatch
+    dispatch,
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...targetRef }))
   const child = Children.only(children)
@@ -69,7 +73,7 @@ function Target({ children, ...props }, ref) {
     onFocus: wrapEvent(onFocus, handleOpen),
     onBlur: wrapEvent(onBlur, handleClose),
     onMouseEnter: wrapEvent(onMouseEnter, handleOpen),
-    onMouseLeave: wrapEvent(onMouseLeave, handleClose)
+    onMouseLeave: wrapEvent(onMouseLeave, handleClose),
   })
 }
 
@@ -78,8 +82,8 @@ const TooltipTarget = forwardRef(Target)
 const StyledTooltip = styled.aside`
   display: block;
   max-width: 20rem;
-  background: ${colors.blue_700};
-  color: ${colors.ui_100};
+  background: ${({ theme }) => theme.colors.blue_700};
+  color: ${({ theme }) => theme.colors.ui_100};
   padding: 1rem;
   border-radius: 4px;
 `
@@ -90,7 +94,7 @@ function Content({ children, position, ...props }, ref) {
     state: { isOpen },
     tooltipRef,
     popoverRef,
-    targetRef
+    targetRef,
   } = useContext(TooltipContext)
   useImperativeHandle(ref, () => ({ ...tooltipRef }))
   return isOpen ? (
@@ -115,4 +119,4 @@ function Content({ children, position, ...props }, ref) {
 
 const TooltipContent = forwardRef(Content)
 
-export { Tooltip as default, TooltipTarget, TooltipContent }
+export { Tooltip, TooltipTarget, TooltipContent }

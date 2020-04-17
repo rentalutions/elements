@@ -1,6 +1,6 @@
 import React from "react"
-import { Tooltip, TooltipTarget, TooltipContent } from "./src"
-import { render } from "@testing-library/react"
+import { render, screen } from "testing-utils"
+import { Tooltip, TooltipTarget, TooltipContent } from "../src"
 
 describe("<Tooltip />", () => {
   it("Should render a tooltip without crashing", () => {
@@ -16,8 +16,10 @@ describe("<Tooltip />", () => {
         </Tooltip>
       )
     }
-    const { getByTestId, queryByTestId } = render(<Wrapper />)
-    expect(getByTestId("tooltip-target")).toBeInTheDocument()
-    expect(queryByTestId("tooltip-content")).toBeNull()
+    render(<Wrapper />)
+    const target = screen.queryByTestId(/tooltip-target/)
+    const content = screen.queryByTestId(/tooltip-content/)
+    expect(target).toBeInTheDocument()
+    expect(content).toBeNull()
   })
 })
