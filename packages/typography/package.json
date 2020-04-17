@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/typography",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Type components.",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -31,6 +31,6 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/utils": "^0.0.0"
+    "@rent_avail/utils": "^0.0.1"
   }
 }
