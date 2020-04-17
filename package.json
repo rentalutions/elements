@@ -6,6 +6,7 @@
   "scripts": {
     "build": "lerna run build --stream --ignore documentation",
     "build:changed": "lerna run build --since origin/master",
+    "build:site": "yarn workspace documentation build",
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace documentation dev",
