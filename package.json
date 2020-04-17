@@ -48,8 +48,7 @@
     "styled-system": "^5.1.5"
   },
   "workspaces": [
-    "packages/**/*",
-    "docs"
+    "packages/*"
   ],
   "prettier": {
     "semi": false
