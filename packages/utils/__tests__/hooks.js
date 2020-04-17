@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks"
-import { useIntersection, useResize, usePortal } from "./src"
+import { useIntersection, useResize, usePortal } from "../src"
 
 describe("useIntersection", () => {
   const {
