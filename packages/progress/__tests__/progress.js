@@ -1,6 +1,6 @@
 import React from "react"
-import { render } from "@testing-library/react"
-import { FluidProgress, FixedProgress } from "./src"
+import { render } from "testing-utils"
+import { FluidProgress, FixedProgress } from "../src"
 
 describe("<FluidProgress />", () => {
   it("Renders a FluidProgress without crashing", () => {

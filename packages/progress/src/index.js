@@ -1,16 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { colors } from "../constants"
 
-/**
- *
- * @param {object} steps - An object of with a key of the step title and a boolean complete.
- */
 export function FixedProgress({ steps, ...props }) {
   return (
     <StyledFixed {...props}>
-      {Object.keys(steps).map(step => (
+      {Object.keys(steps).map((step) => (
         <div key={step} className={`step ${steps[step] && "complete"}`}>
           <p className="small label">{step}</p>
         </div>
@@ -20,7 +15,7 @@ export function FixedProgress({ steps, ...props }) {
 }
 
 FixedProgress.propTypes = {
-  steps: PropTypes.objectOf(PropTypes.bool).isRequired
+  steps: PropTypes.objectOf(PropTypes.bool).isRequired,
 }
 
 const StyledFixed = styled.div`
@@ -33,7 +28,7 @@ const StyledFixed = styled.div`
     display: block;
     height: 2rem;
     width: 100%;
-    background: ${colors.ui_500};
+    background: ${({ theme }) => theme.colors.ui_500};
     margin-bottom: 1rem;
     clip-path: polygon(
       calc(100% - 1rem) 0%,
@@ -59,7 +54,7 @@ const StyledFixed = styled.div`
     clip-path: polygon(100% 0, 100% 100%, 0% 100%, 1rem 50%, 0% 0%);
   }
   .step.complete::before {
-    background: ${colors.blue_500};
+    background: ${({ theme }) => theme.colors.blue_500};
   }
 `
 /**
@@ -78,7 +73,10 @@ export function FluidProgress({ label, current, total, ...props }) {
   return (
     <StyledFluid {...props}>
       <div className="track">
-        <div className="progress" style={{ width: `${(current / total) * 100}%` }} />
+        <div
+          className="progress"
+          style={{ width: `${(current / total) * 100}%` }}
+        />
         <p className="steps">{`${current} / ${total}`}</p>
       </div>
       <p className="small label">{label}</p>
@@ -89,14 +87,14 @@ export function FluidProgress({ label, current, total, ...props }) {
 FluidProgress.propTypes = {
   label: PropTypes.string.isRequired,
   current: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
 }
 
 const StyledFluid = styled.section`
   .track {
     position: relative;
     height: 2rem;
-    background: ${colors.ui_500};
+    background: ${({ theme }) => theme.colors.ui_500};
     border-radius: 1rem;
   }
   .steps {
@@ -107,7 +105,7 @@ const StyledFluid = styled.section`
   }
   .progress {
     height: 100%;
-    background: ${colors.green_500};
+    background: ${({ theme }) => theme.colors.green_500};
     border-radius: 1rem;
     transition: 200ms;
   }
