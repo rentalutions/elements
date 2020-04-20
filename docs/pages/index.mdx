@@ -33,6 +33,8 @@ You'll notice that what was once a single package is now split up into a number 
 
 ## Styled Props
 
+Avail Elements lets you quickly build custom UI components with constraint based style props. Below you'll see a basic implementation of the `Card` component. Each component in this design system has a specific set of styled props the props allowed on each will eventually be described in their documentation, for now you can get familiar with the possible values in this [reference table](https://styled-system.com/table). Styled props pick up values from a base theme. This base theme follows the specification from the [styled system theme object](https://styled-system.com/theme-specification)
+
 ```jsx
 function YourComponent() {
   return (
@@ -44,75 +46,29 @@ function YourComponent() {
 }
 ```
 
-Avail Elements lets you quickly build custom UI components with constraint based style props. Below you'll see a basic implementation of the `Card` and `Text` component. Styled props pick up values from a base theme. This base theme follows the specification from the [styled system theme object](https://styled-system.com/theme-specification)
-
-## Building the Base
-
-First we need to install `@rent_avail/base` and `styled-components` then in the root of our app we'll set up the theme provider and base styles.
-
-```jsx
-import { ThemeProvider } from "styled-components"
-import Base, { theme } from "@rent_avail/base"
-import Main from "../main" // This is whatever, it's your app.
-
-export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Base />
-      <Route path="/" component={Main} />
-    </ThemeProvider>
-  )
-}
-```
-
 ## Using Layout Components
 
 There are a number of new components designed specifically to help you build layouts fast and use modern styling approaches without having to worry about specific syntax. `<Box/>` is the most basic element of the design system. It's exactly what it sounds like and comes with no prebuilt styling up front.
 
 #### Note: The `as` prop is super integral when using layout components especially.
 
-```jsx
-import styled from "styled-components"
-import { Container, Box, Card, Stack, Grid, Col } from "@rent_avail/layout"
-
-// These are just placeholders, they would likely be larger
-// components in their own files.
-
-const Todos = styled(Col)``
-const Community = styled(Col)``
-const Payments = styled(Col)``
-
-const BuildingCard = styled(Card)``
-
-function Main() {
-  return (
-    <Container as="main" my="4rem">
-      <Grid>
-        <Todos gridColumn={["span 12", "span 8"]} />
-        <Community
-          gridColumn={["span 12", "span 4"]}
-          gridRow={["auto", "span 2"]}
-        />
-        <Payments gridColumn={["span 12", "span 8"]} />
-      </Grid>
-      <Stack>
-        <Box as="header" display="flex">
-          <Heading>Properties</Heading>
-          <Stack ml="auto" variant="horizontal">
-            <Action icon={Search}>Search</Action>
-            <Action icon={Filter}>Filter</Action>
-            <Action icon={PlusCircle}>Add Property</Action>
-          </Stack>
-        </Box>
-        {buildings.map((building) => (
-          <BuildingCard />
-        ))}
-      </Stack>
-    </Container>
-  )
-}
-```
-
-## Developer Enviroment
-
-The developer environment is split from this website entirely. Storybook is a much easier way to build and test components without having to worry about the overhead of documentation or other elements on the page. You get a sandbox iframe that your component cannot bleed outside of and nice error boundaries are setup. Unused currently but easy to implement are addons that will help test performance and accessability.
+<iframe
+  src="https://codesandbox.io/embed/holy-darkness-c258g?fontsize=16&hidenavigation=1&module=%2Fsrc%2FMain.js&theme=dark&view=editor"
+  style={{
+    marginTop: "4rem",
+    width: "100%",
+    height: "500px",
+    border: 0,
+    borderRadius: "4px",
+    overflow: "hidden",
+  }}
+  title="avail-design-layout-components"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>
+## Developer Enviroment The developer environment is split from this website entirely.
+Storybook is a much easier way to build and test components without having to worry
+about the overhead of documentation or other elements on the page. You get a sandbox
+iframe that your component cannot bleed outside of and nice error boundaries are
+setup. Unused currently but easy to implement are addons that will help test performance
+and accessability.
