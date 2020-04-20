@@ -317,7 +317,7 @@ const StyledItem = styled.li`
     background: ${({ theme }) => theme.colors.blue_100};
   }
   &:focus {
-    background: ${colors.blue_100};
+    background: ${({ theme }) => theme.colors.blue_100};
   }
 `
 
