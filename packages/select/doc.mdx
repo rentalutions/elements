@@ -42,6 +42,10 @@ Select inputs display the currently selected option above a menu that lets the u
   Fires when the user selects an item from the dropdown list.
 </Prop>
 
+<Prop name="defaultValue" type="string">
+  Will populate the select component with your value on first render.
+</Prop>
+
 #### Select Input
 
 <Prop name="label" type="string">
@@ -83,11 +87,16 @@ Select inputs display the currently selected option above a menu that lets the u
       { label: "Colorado", value: "CO" },
       { label: "Connecticut", value: "CT" }
     ]
-    const [state, setState] = useState("")
+    // This is funny cause it's truly state state.
+    const [state, setState] = useState(options[0].value)
     return (
       <Fragment>
         <p>Selected State: {state}</p>
-        <Select id="select-id" onSelect={value => setState(value)}>
+        <Select
+          id="select-id"
+          onSelect={value => setState(value)}
+          defaultValue={options[0].value}
+        >
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
