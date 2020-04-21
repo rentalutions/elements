@@ -12,7 +12,6 @@ describe("<Stack/>", () => {
       </Stack>
     )
     const stack = screen.getByTestId(/stack-id/)
-    screen.debug(stack)
     expect(stack).toBeInTheDocument()
   })
 })
