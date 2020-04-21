@@ -4,13 +4,13 @@ on:
     branches: [master]
 
 jobs:
-  build_and_test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: 12
-    - run: yarn install
-    - run: yarn test
+    - run: yarn install --frozen-lockfile
     - run: yarn build
+    - run: yarn test
