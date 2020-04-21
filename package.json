@@ -10,7 +10,7 @@
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace documentation dev",
-    "version": "lerna version --no-push",
+    "update": "lerna version --no-push",
     "test": "jest"
   },
   "devDependencies": {
