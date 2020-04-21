@@ -17,3 +17,4 @@ jobs:
         script: lerna publish from-git --yes
         on:
           tags: true
+          branch: master
