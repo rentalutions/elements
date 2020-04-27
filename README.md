@@ -1,4 +1,4 @@
-![Avail Design Kit](./public/designkit_cover.png)
+![Avail Design Kit](./docs/public/designkit_cover.png)
 
 # Avail Design Kit
 
