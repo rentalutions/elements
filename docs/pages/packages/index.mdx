@@ -1,0 +1,62 @@
+---
+title: Getting Started
+layout: packages
+---
+
+# Component Libraries
+
+![GitHub issues](https://img.shields.io/github/issues/rentalutions/elements.svg?color=3ba68e&style=for-the-badge)
+![npm](https://img.shields.io/npm/dm/@rent_avail/elements.svg?color=%2350e3c2&style=for-the-badge)
+
+This is mostly thanks to [styled-system](https://styled-system.com/).
+
+## Component Design
+
+You'll notice that what was once a single package is now split up into a number of smaller packages that work together to create a system. This was done for a couple reasons. One, the components that make up this system are in use and being broken and updated everyday. It's very annoying to have to upgrade your whole library (and leads to other unexpected breaking changes) when a single input needs an update to it's label property. Two, as we grow and develop more products, all of the sites that use the packages under `@rent_avail` will have different needs and shouldn't need to require pieces that the don't use.
+
+### List of packages
+
+| Package Name           | Description                            |
+| ---------------------- | -------------------------------------- |
+| @rent_avail/base       | Base, Theme Object                     |
+| @rent_avail/typography | Heading, Text                          |
+| @rent_avail/layout     | Box, Container, Grid, Col, Card, Stack |
+| @rent_avail/controls   | Button, Checkbox, Radio, Switch        |
+| @rent_avail/input      | Input, Textarea                        |
+| @rent_avail/dialog     | Fullscreen, Confirmation, Success      |
+| @rent_avail/menu       | Menu                                   |
+| @rent_avail/tooltip    | Tooltip                                |
+| @rent_avail/tag        | Tag                                    |
+| @rent_avail/popover    | Popover                                |
+| @rent_avail/progress   | Fluid Progress, Fixed Progress         |
+| @rent_avail/avatar     | Avatar, Avatar Group                   |
+| @rent_avail/select     | Select Input                           |
+
+## Styled Props
+
+Avail Elements lets you quickly build custom UI components with constraint based style props. Below you'll see a basic implementation of the `Card` component. Each component in this design system has a specific set of styled props the props allowed on each will eventually be described in their documentation, for now you can get familiar with the possible values in this [reference table](https://styled-system.com/table). Styled props pick up values from a base theme. This base theme follows the specification from the [styled system theme object](https://styled-system.com/theme-specification)
+
+```jsx
+function YourComponent() {
+  return (
+    <Card my="4rem" bg="blue_100" borderRadius="0.25rem" p="4rem">
+      I'm a card with a margin top and bottom of 4rem, a padding of 4rem, and a
+      background of our brand color blue_100.
+    </Card>
+  )
+}
+```
+
+## Using Layout Components
+
+There are a number of new components designed specifically to help you build layouts fast and use modern styling approaches without having to worry about specific syntax. `<Box/>` is the most basic element of the design system. It's exactly what it sounds like and comes with no prebuilt styling up front.
+
+#### Note: The `as` prop is super integral when using layout components especially.
+
+## Developer Enviroment The developer environment is split from this website entirely.
+
+Storybook is a much easier way to build and test components without having to worry
+about the overhead of documentation or other elements on the page. You get a sandbox
+iframe that your component cannot bleed outside of and nice error boundaries are
+setup. Unused currently but easy to implement are addons that will help test performance
+and accessability.

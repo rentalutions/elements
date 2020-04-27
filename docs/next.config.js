@@ -4,5 +4,5 @@ const mdxPrism = require("mdx-prism")
 module.exports = withMdxEnhanced({
   defaultLayout: true,
   fileExtensions: ["mdx"],
-  rehypePlugins: [mdxPrism]
-})()
+  rehypePlugins: [mdxPrism],
+})({ pageExtensions: ["mdx", "js"] })
