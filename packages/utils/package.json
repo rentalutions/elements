@@ -1,0 +1,37 @@
+{
+  "name": "@rent_avail/utils",
+  "version": "0.0.1",
+  "description": "Utility functions.",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "test": "echo 'run tests from the root directory'",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "Patrick Krawczykowski <patrick@dreadful.design>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "calendar-dates": "^2.6.1",
+    "intersection-observer": "^0.7.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "peerDependencies": {
+    "clsx": "^1.1.0",
+    "framer-motion": "^1.10.3",
+    "polished": "^3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

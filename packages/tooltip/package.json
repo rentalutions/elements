@@ -1,0 +1,38 @@
+{
+  "name": "@rent_avail/tooltip",
+  "version": "0.0.1",
+  "description": "Tooltip component.",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "test": "echo 'run tests from the root directory'",
+    "clean": "rimraf dist",
+    "build": "yarn clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js",
+    "prepublishOnly": "yarn build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "Patrick Krawczykowski <patrick@dreadful.design>"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "clsx": "^1.1.0",
+    "framer-motion": "^1.10.3",
+    "polished": "^3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.4",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
+  },
+  "dependencies": {
+    "@rent_avail/popover": "^0.0.1",
+    "@rent_avail/utils": "^0.0.1"
+  }
+}

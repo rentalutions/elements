@@ -1,84 +1,67 @@
 {
-  "name": "@rent_avail/elements",
-  "version": "1.6.15",
-  "description": "A suite of elements for the consistent and responsive UI",
-  "keywords": [
-    "ui",
-    "ui library",
-    "design system",
-    "react",
-    "styled components",
-    "a11y"
-  ],
+  "name": "elements",
+  "private": true,
+  "repository": "https://github.com/rentalutions/elements.git",
+  "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "clean": "rimraf dist",
-    "copy": "cp package.json dist",
-    "build:package": "npm run clean && babel src -d dist --ignore /**/*.test.js && npm run copy",
-    "publish:package": "npm run build:package && cd dist && npm publish --access=public",
-    "start:docs": "docz dev",
-    "build:docs": "docz build",
-    "now-build": "npm run build:docs"
+    "build": "lerna run build --stream --ignore documentation",
+    "build:changed": "lerna run build --since origin/master",
+    "build:site": "yarn workspace documentation build",
+    "changes": "dotenv lerna-changelog",
+    "start": "start-storybook -p 8080 -c .storybook",
+    "start:docs": "yarn workspace documentation dev",
+    "update": "lerna version --no-push",
+    "test": "jest"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rentalutions/elements.git"
-  },
-  "contributors": [
-    "Patrick Krawczykowski <patrick@dreadful.design>"
-  ],
-  "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/polyfill": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/runtime-corejs2": "^7.8.3",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@storybook/source-loader": "^5.3.18",
+    "@testing-library/dom": "^7.2.1",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.2",
     "@testing-library/react-hooks": "^3.2.1",
-    "babel-eslint": "^10.0.3",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "clipboard-copy": "^3.1.0",
-    "docz": "^1.3.2",
-    "docz-theme-default": "^1.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-feather": "^2.0.3",
-    "react-spring": "^8.0.27",
-    "react-test-renderer": "^16.12.0",
-    "rimraf": "^2.7.1",
-    "styled-components": "^4.4.1"
-  },
-  "peerDependencies": {
-    "prop-types": "^15.X.X",
-    "react": "^16.X.X",
-    "react-dom": "^16.X.X",
-    "react-feather": "^2.X.X",
-    "react-spring": "^8.X.X",
-    "styled-components": "^4.X.X"
+    "@testing-library/user-event": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "lerna": "^3.20.2",
+    "prettier": "^2.0.2",
+    "react-test-renderer": "^16.13.1"
   },
   "dependencies": {
-    "calendar-dates": "^2.6.1",
     "clsx": "^1.1.0",
-    "intersection-observer": "^0.7.0",
-    "polished": "^3.4.2",
-    "resize-observer-polyfill": "^1.5.1"
+    "dotenv-cli": "^3.1.0",
+    "framer-motion": "^1.10.3",
+    "jest": "^25.3.0",
+    "lerna-changelog": "^1.0.1",
+    "polished": "^3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.4",
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
+  },
+  "workspaces": [
+    "docs",
+    "packages/*"
+  ],
+  "prettier": {
+    "semi": false
+  },
+  "changelog": {
+    "labels": {
+      "breaking-change": "🔨 Breaking Changes",
+      "bug": "🐛 Bugfixes",
+      "docs": "📝 Documentation",
+      "feature": "🚀 Features",
+      "enhancement": "✨ Enhancements",
+      "housekeeping": "🏡 Housekeeping"
+    }
   }
 }

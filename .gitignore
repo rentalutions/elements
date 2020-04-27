@@ -1,3 +1,6 @@
+# Env
+.env
+
 # System files
 .DS_Store
 
@@ -6,9 +9,9 @@ node_modules
 *.log
 
 # Documentation
-coverage
-.docz
+.next
+.mdx-data
 
 # Build files
 dist
-lib
+.now
