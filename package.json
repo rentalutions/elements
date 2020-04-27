@@ -29,13 +29,13 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7",
+    "dotenv-cli": "^3.1.0",
     "lerna": "^3.20.2",
     "prettier": "^2.0.2",
     "react-test-renderer": "^16.13.1"
   },
   "dependencies": {
     "clsx": "^1.1.0",
-    "dotenv-cli": "^3.1.0",
     "framer-motion": "^1.10.3",
     "jest": "^25.3.0",
     "lerna-changelog": "^1.0.1",
