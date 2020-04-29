@@ -44,7 +44,7 @@ export const theme = {
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
-    monospace: "'IBM Plex Mono'",
+    monospace: "'IBM Plex Mono', monospace",
   },
   fontSizes: {
     small: "1.334rem",
@@ -54,7 +54,12 @@ export const theme = {
     headline: "4rem",
     hero: "5rem",
   },
-  fontWeights: ["200", "400", "600", "800"],
+  fontWeights: {
+    light: 200,
+    regular: 400,
+    bold: 600,
+    black: 800,
+  },
   lineHeights: {
     small: "1.5",
     body: "1.334",
@@ -92,7 +97,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    font-size: 12px;
+    font-size: ${({ theme }) => theme.space[1]}px;
   }
 
   html, body, div, span, object, iframe,
@@ -113,39 +118,39 @@ export default createGlobalStyle`
 
   body {
     font-family: ${({ theme }) => theme.fonts.body};
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.334;
+    font-size: ${({ theme }) => theme.fontSizes.body};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+    line-height: ${({ theme }) => theme.lineHeights.body};
     color: ${({ theme }) => theme.colors.ui_900};
   }
 
   h1 {
-    font-size: 5rem;
-    font-weight: 200;
-    line-height: 1.2;
+    font-size:${({ theme }) => theme.fontSizes.hero};
+    font-weight: ${({ theme }) => theme.fontWeights.light};
+    line-height: ${({ theme }) => theme.lineHeights.heading};
   }
   h2 {
-    font-size: 4rem;
-    font-weight: 400;
-    line-height: 1.25;
+    font-size:${({ theme }) => theme.fontSizes.headline};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+    line-height: ${({ theme }) => theme.lineHeights.heading};
   }
   h3 {
-    font-size: 3rem;
-    font-weight: 400;
-    line-height: 1.334;
+    font-size:${({ theme }) => theme.fontSizes.title};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+    line-height: ${({ theme }) => theme.lineHeights.heading};
   }
   h4 {
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 1.5;
+    font-size:${({ theme }) => theme.fontSizes.subtitle};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+    line-height: ${({ theme }) => theme.lineHeights.heading};
   }
   h5 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    line-height: 1.334;
+    font-size:${({ theme }) => theme.fontSizes.body};
+    font-weight: ${({ theme }) => theme.fontWeights.black};
+    line-height: ${({ theme }) => theme.lineHeights.heading};
   }
 
   pre, code {
-    font-family: "IBM Plex Mono";
+    font-family: ${({ theme }) => theme.fonts.monospace};
   }
 `

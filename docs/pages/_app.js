@@ -7,8 +7,10 @@ import MDXComponents from "../mdx-components.js"
 const ExtendedBase = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.green_500};
+    text-decoration: none;
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
     &:visited {
-      color: ${({ theme }) => theme.colors.green_900};
+      color: ${({ theme }) => theme.colors.green_300};
     }
   }
 `
