@@ -54,7 +54,7 @@ export default function Avatar({
 }) {
   if (small) {
     return (
-      <StyledAvatar small {...props}>
+      <StyledAvatar {...props}>
         <p className="initials">{initials.substring(0, 2)}</p>
       </StyledAvatar>
     )

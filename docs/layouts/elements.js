@@ -1,10 +1,11 @@
+import { Fragment } from "react"
 import styled from "styled-components"
 import Link from "next/link"
-import { Container, Box } from "@rent_avail/layout"
+import { Container, Box, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 import { frontMatter as packages } from "../pages/packages/**/*.mdx"
 
-const formatPath = (path) =>
+const formatPath = path =>
   path.replace(/(index|\.mdx$|\/$)/gi, "").replace(/\/$/, "")
 
 const PageWrapper = styled.div`
@@ -37,14 +38,53 @@ const Sidebar = styled.aside`
   }
 `
 
-export default (pageMatter) => {
-  const order = packages.sort((curr, next) => {
+const PackageInfoWrapper = styled(Box)`
+  .grid {
+    border-top: 1px solid ${({ theme }) => theme.colors.ui_500};
+  }
+`
+
+function PackageInfo({ info: { package_name, title } }) {
+  const packageInfo = [
+    {
+      name: "Install",
+      value: <code>yarn add @rentAvail/{package_name}</code>
+    },
+    {
+      name: "Source",
+      value: (
+        <a
+          href={`https://github.com/rentalutions/elements/packages/${package_name}`}
+        >
+          Github
+        </a>
+      )
+    }
+  ]
+  return (
+    <PackageInfoWrapper bg="ui_300" borderRadius="0.25rem">
+      <Heading as="h1" p="2rem">
+        {title}
+      </Heading>
+      <Grid p="2rem" className="grid">
+        {packageInfo.map(item => (
+          <Fragment key={item.name}>
+            <Col gridColumn={["span 4"]}>{item.name}</Col>
+            <Col gridColumn={["span 8"]}>{item.value}</Col>
+          </Fragment>
+        ))}
+      </Grid>
+    </PackageInfoWrapper>
+  )
+}
+
+export default pageMatter => {
+  const order = packages.sort(curr => {
     const path = formatPath(curr.__resourcePath)
-    console.log(path)
     return path === "packages" ? -1 : 0
   })
   return ({ children: content }) => {
-    const packageInfo = pageMatter.package
+    const packageInfo = pageMatter.package_name
     return (
       <PageWrapper>
         <Sidebar>
@@ -59,10 +99,10 @@ export default (pageMatter) => {
             Packages
           </Heading>
           <ul>
-            {order.map((item) => (
+            {order.map(item => (
               <li key={item.__resourcePath}>
                 <Link href={`/${formatPath(item.__resourcePath)}`}>
-                  {item.title}
+                  <a>{item.title}</a>
                 </Link>
               </li>
             ))}

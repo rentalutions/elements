@@ -1,44 +1,28 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useContext } from "react"
 import { renderToString } from "react-dom/server"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
-import { mdx } from "@mdx-js/react"
+import CodeBlock from "components/CodeBlock"
+import styled, { ThemeContext } from "styled-components"
 
-const transformCode = code => {
-  if (code.startsWith("()") || code.startsWith("class")) return code
-  return `<React.Fragment>${code}</React.Fragment>`
-}
+const Preview = styled.section`
+  border: 1rem solid ${({ theme }) => theme.colors.ui_300};
+  padding: 1rem;
+`
 
-export default function CodeSandbox({ children, className, live }) {
-  const lang = className?.replace(/language-/, "")
-  const code = renderToString(children)
-  if (live)
-    return (
-      <div style={{ marginTop: "40px", backgroundColor: "black" }}>
-        <LiveProvider
-          code={code.trim()}
-          transformCode={transformCode}
-          scope={{ mdx }}
-        >
-          <LivePreview />
-          <LiveEditor />
-          <LiveError />
-        </LiveProvider>
-      </div>
-    )
+export default function CodeSandbox({ children, ...props }) {
+  const string = renderToString(children)
+  const theme = useContext(ThemeContext)
   return (
-    <Highlight {...defaultProps} code={code.trim()} language={lang}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: "20px" }}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )}
-    </Highlight>
+    <Fragment>
+      <Preview>{children}</Preview>
+      <CodeBlock
+        language="jsx"
+        code={string}
+        style={{
+          marginTop: 0,
+          background: theme.colors.ui_300,
+          borderRadius: 0
+        }}
+      />
+    </Fragment>
   )
 }

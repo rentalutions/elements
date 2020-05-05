@@ -1,0 +1,32 @@
+---
+title: Avatar
+layout: elements
+package_name: "avatar"
+---
+
+import CodeSandbox from "components/CodeSandbox"
+import Avatar from "@rent_avail/avatar"
+
+## Description
+
+An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
+
+## Anatomy
+
+1. User Photo
+2. User Name
+3. Icon
+4. Avatar Group
+
+## Props
+
+| Name      | Type      | Description                                                                           |
+| --------- | --------- | ------------------------------------------------------------------------------------- |
+| small     | `boolean` | Dictates the layout of an avatar component. When true it will hide the name or email. |
+| intitials | `string`  | Initials of the user.                                                                 |
+| name      | `string`  | Name of the user.                                                                     |
+| photoUrl  | `string`  | Thumbnail of the users profile photo.                                                 |
+
+## Usage
+
+<Avatar small initials="PK" />

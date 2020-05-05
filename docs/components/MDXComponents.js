@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { Heading, Text } from "@rent_avail/typography"
 import { Box } from "@rent_avail/layout"
-import CodeSandbox from "components/CodeSandbox"
+// import CodeSandbox from "components/CodeSandbox"
+import CodeBlock from "components/CodeBlock"
 
 const Th = styled(Box)`
   text-align: left;
@@ -36,5 +37,13 @@ export default {
       py="1rem"
     />
   ),
-  img: props => <Box {...props} as="img" maxWidth="100%" />
+  img: props => <Box {...props} as="img" maxWidth="100%" />,
+  code: props => <Box {...props} as="code" />,
+  pre: ({ children, ...props }) => {
+    const language = children?.props?.className.replace(/language-/, "")
+    const code = children?.props?.children.trim()
+    return <CodeBlock {...props} language={language} code={code} />
+  },
+  ol: props => <Box {...props} as="ol" ml="2rem" />,
+  li: props => <Box {...props} as="li" mt="1rem" />
 }
