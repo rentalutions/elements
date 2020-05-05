@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "description": "Dialog components.",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
     "dist",
     "src"
