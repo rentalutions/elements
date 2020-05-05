@@ -2,9 +2,10 @@ import React, { Fragment, useContext } from "react"
 import { renderToString } from "react-dom/server"
 import CodeBlock from "components/CodeBlock"
 import styled, { ThemeContext } from "styled-components"
+// import toString from "jsx-to-string"
 
 const Preview = styled.section`
-  border: 1rem solid ${({ theme }) => theme.colors.ui_300};
+  border: 0.5rem solid ${({ theme }) => theme.colors.ui_300};
   padding: 1rem;
 `
 
