@@ -1,4 +1,90 @@
 ---
 title: Controls
 layout: elements
+package_name: "controls"
+install: "yarn add @rent_avail/controls"
+source: "https://github.com/rentalutions/elements/packages/controls"
 ---
+
+## Description
+
+This package contains a set of elements that allow a user to control state on a page.
+
+## Button
+
+```js
+import { Button } from "@availkit/controls"
+```
+
+### Style Props
+
+`color, space, layout, flexbox, border, buttonStyle`
+
+### Component Props
+
+| Name     | Type      | Description                                                                           |
+| -------- | --------- | ------------------------------------------------------------------------------------- |
+| children | `boolean` | Dictates the layout of an avatar component. When true it will hide the name or email. |
+| icon     | `string`  | Initials of the user.                                                                 |
+
+### Usage
+
+```jsx live
+<Button>click me</Button>
+```
+
+```jsx live
+<Button variant="danger">danger</Button>
+```
+
+<hr />
+
+## Checkbox
+
+```js
+import { Checkbox } from "@availkit/controls"
+```
+
+### Style Props
+
+`color, space, layout, flexbox, border, buttonStyle`
+
+### Props
+
+| Name    | Type      | Description                                                                           |
+| ------- | --------- | ------------------------------------------------------------------------------------- |
+| checked | `boolean` | Dictates the layout of an avatar component. When true it will hide the name or email. |
+
+### Usage
+
+```jsx live
+<Checkbox />
+```
+
+<hr />
+
+## Radio
+
+```js
+import { Radio } from "@availkit/controls"
+```
+
+### Usage
+
+```jsx live
+<Radio />
+```
+
+<hr />
+
+## Switch
+
+```js
+import { Switch } from "@availkit/controls"
+```
+
+### Usage
+
+```jsx live
+<Switch />
+```

@@ -2,10 +2,9 @@
 title: Avatar
 layout: elements
 package_name: "avatar"
+install: "yarn add @rent_avail/avatar"
+source: "https://github.com/rentalutions/elements/packages/avatar"
 ---
-
-import CodeSandbox from "components/CodeSandbox"
-import { Box } from "@rent_avail/layout"
 
 ## Description
 
@@ -29,6 +28,13 @@ An avatar component is used to display user information to another user. It can 
 
 ## Usage
 
-<CodeSandbox>
-  <Box p="2rem" bg="pink" />
-</CodeSandbox>
+```jsx live
+<Avatar small initials="PK" />
+```
+
+```jsx live
+<Avatar
+  name="Janet Wood"
+  photoUrl="https://source.unsplash.com/collection/802865/48x48"
+/>
+```

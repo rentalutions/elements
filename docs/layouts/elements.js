@@ -44,35 +44,28 @@ const PackageInfoWrapper = styled(Box)`
   }
 `
 
-function PackageInfo({ info: { package_name, title } }) {
-  const packageInfo = [
-    {
-      name: "Install",
-      value: <code>yarn add @rentAvail/{package_name}</code>
-    },
-    {
-      name: "Source",
-      value: (
-        <a
-          href={`https://github.com/rentalutions/elements/packages/${package_name}`}
-        >
-          Github
-        </a>
-      )
-    }
-  ]
+function PackageInfo({ info: { source, title, install } }) {
   return (
-    <PackageInfoWrapper bg="ui_300" borderRadius="0.25rem">
+    <PackageInfoWrapper bg="blue_100" borderRadius="0.25rem">
       <Heading as="h1" p="2rem">
         {title}
       </Heading>
+      <Box
+        as="img"
+        px="2rem"
+        pb="2rem"
+        alt="npm (scoped)"
+        src="https://img.shields.io/npm/v/@rent_avail/avatar?color=%237c95b0&label=version&style=for-the-badge"
+      />
       <Grid p="2rem" className="grid">
-        {packageInfo.map(item => (
-          <Fragment key={item.name}>
-            <Col gridColumn={["span 4"]}>{item.name}</Col>
-            <Col gridColumn={["span 8"]}>{item.value}</Col>
-          </Fragment>
-        ))}
+        <Col gridColumn={["span 2"]}>Install</Col>
+        <Col gridColumn={["span 10"]} as="code">
+          {install}
+        </Col>
+        <Col gridColumn={["span 2"]}>Source</Col>
+        <Col gridColumn={["span 10"]}>
+          <a href={source}>Github</a>
+        </Col>
       </Grid>
     </PackageInfoWrapper>
   )
@@ -84,7 +77,7 @@ export default pageMatter => {
     return path === "packages" ? -1 : 0
   })
   return ({ children: content }) => {
-    const packageInfo = pageMatter.package_name
+    const packageInfo = pageMatter.source
     return (
       <PageWrapper>
         <Sidebar>

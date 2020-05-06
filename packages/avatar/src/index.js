@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import clsx from "clsx"
 
 const smallStyles = css`
   width: 4rem;
@@ -54,7 +55,7 @@ export default function Avatar({
 }) {
   if (small) {
     return (
-      <StyledAvatar {...props}>
+      <StyledAvatar small {...props}>
         <p className="initials">{initials.substring(0, 2)}</p>
       </StyledAvatar>
     )
