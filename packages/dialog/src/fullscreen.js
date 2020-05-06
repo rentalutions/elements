@@ -38,6 +38,7 @@ const FullscreenWrapper = styled(motion.section)`
 function Fullscreen({ children, title = "", ...props }, ref) {
   const target = usePortal()
   const { open, toggle, id } = useContext(DialogContext)
+  if (!target) return null
   return createPortal(
     <AnimatePresence>
       {open && (
