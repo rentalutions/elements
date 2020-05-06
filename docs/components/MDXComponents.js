@@ -1,9 +1,17 @@
+import * as React from "react"
 import styled from "styled-components"
 import { Heading, Text } from "@rent_avail/typography"
-import { Box } from "@rent_avail/layout"
+import { Box, Card, Container, Stack, Grid, Col } from "@rent_avail/layout"
 import CodeBlock from "components/CodeBlock"
 import Avatar from "@rent_avail/avatar"
 import { Button, Checkbox, Radio, Switch } from "@rent_avail/controls"
+import {
+  Dialog,
+  DialogTarget,
+  Confirmation,
+  Fullscreen
+} from "@rent_avail/dialog"
+import Input from "@rent_avail/input"
 
 const Th = styled(Box)`
   text-align: left;
@@ -24,6 +32,7 @@ export default {
       bg="blue_100"
       color="blue_700"
       borderRadius="0.25rem"
+      style={{ fontSize: "1.334rem" }}
     />
   ),
   table: props => <Box {...props} as="table" width="100%" />,
@@ -42,7 +51,30 @@ export default {
   img: props => <Box {...props} as="img" maxWidth="100%" />,
   code: props => <Box {...props} as="code" />,
   pre: props => (
-    <CodeBlock {...props} scope={{ Avatar, Button, Checkbox, Radio, Switch }} />
+    <CodeBlock
+      {...props}
+      scope={{
+        ...React,
+        Heading,
+        Text,
+        Avatar,
+        Button,
+        Checkbox,
+        Radio,
+        Switch,
+        Box,
+        Card,
+        Container,
+        Stack,
+        Grid,
+        Col,
+        Dialog,
+        DialogTarget,
+        Confirmation,
+        Fullscreen,
+        Input
+      }}
+    />
   ),
   ol: props => <Box {...props} as="ol" ml="2rem" />,
   li: props => <Box {...props} as="li" mt="1rem" />,
