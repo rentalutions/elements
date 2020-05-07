@@ -1,12 +1,16 @@
 import { Fragment } from "react"
 import { Container } from "@rent_avail/layout"
-import Header from "components/Header"
+import Link from "next/link"
 
 export default frontMatter => {
   return ({ children: content }) => {
     return (
       <Fragment>
-        <Header />
+        <Container as="header" my="2rem">
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </Container>
         <Container my="4rem">{content}</Container>
       </Fragment>
     )

@@ -12,6 +12,7 @@ import {
   Fullscreen
 } from "@rent_avail/dialog"
 import Input from "@rent_avail/input"
+import * as Icon from "react-feather"
 
 const Th = styled(Box)`
   text-align: left;
@@ -55,19 +56,20 @@ export default {
       {...props}
       scope={{
         ...React,
-        Heading,
+        Icon,
         Text,
-        Avatar,
-        Button,
-        Checkbox,
-        Radio,
-        Switch,
+        Heading,
         Box,
         Card,
         Container,
         Stack,
         Grid,
         Col,
+        Button,
+        Checkbox,
+        Radio,
+        Switch,
+        Avatar,
         Dialog,
         DialogTarget,
         Confirmation,

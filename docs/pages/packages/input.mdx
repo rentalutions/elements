@@ -6,6 +6,10 @@ install: "yarn add @rent_avail/input"
 source: "https://github.com/rentalutions/elements/packages/input"
 ---
 
+```js
+import { Input } from "@rent_avail/input"
+```
+
 ### Description
 
 Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
@@ -14,7 +18,7 @@ Text inputs let users enter and edit text information. They are made up of a lab
 
 `space, layout, flexbox, grid, color, border`
 
-### Props
+#### Component Props
 
 | name     | type      | description                                                                      |
 | -------- | --------- | -------------------------------------------------------------------------------- |
@@ -24,8 +28,35 @@ Text inputs let users enter and edit text information. They are made up of a lab
 | error    | `string`  | Value for the error to display associated with the input.                        |
 | disabled | `boolean` | Indicates if the input can be focused on by the user.                            |
 
-### Usage
+#### Usage
 
 ```jsx live
 <Input label="Full Name" />
+```
+
+```jsx live
+<Input icon={Icon.Search} label="Full Name" />
+```
+
+```jsx live
+function ErrorState() {
+  const [value, setValue] = useState("")
+  const [hasError, setError] = useState(false)
+  const error = hasError ? "Must contain first and last name." : null
+  function handleBlur() {
+    if (value.split(" ").length < 2) {
+      setError(true)
+    } else {
+      setError(false)
+    }
+  }
+  return (
+    <Input
+      label="Full Name"
+      error={error}
+      onChange={({ target }) => setValue(target.value)}
+      onBlur={handleBlur}
+    />
+  )
+}
 ```

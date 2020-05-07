@@ -6,16 +6,116 @@ install: "yarn add @rent_avail/layout"
 source: "https://github.com/rentalutions/elements/packages/layout"
 ---
 
-## Description
+```js
+import { Box, Card, Container, Stack, Grid, Col } from "@rent_avail/layout"
+```
+
+The layout package combines a number or useful primitive components to quickly build layouts and complex UI.
 
 ## Box
 
+A box is the most basic component in this system. It's a drop in replacement for a `div` and can be used as the backbone of any element with the `as` prop.
+
+#### Style Props
+
+`space, layout, color, flexbox, background, border`
+
+#### Props
+
+No component props
+
+#### Usage
+
+```jsx live
+<Box bg="blue_100" p="1rem">
+  I'm a light blue box with 1rem of padding.
+</Box>
+```
+
+---
+
 ## Card
+
+A card is a special flavor of box. Cards contain information and actions about a single subject. Cards should be scannable for relevant information. Elements like text and images should be placed on them in a way that clearly indicates hierarchy.
+
+#### Style Props
+
+`space, layout, color, flexbox, background, border`
+
+#### Component Props
+
+No component props
+
+#### Usage
+
+```jsx live
+<Card>
+  <Heading as="h3">Rent Collection</Heading>
+  <Text>This is an overview of your rent collection across units.</Text>
+</Card>
+```
+
+---
 
 ## Container
 
+Containers are used to prevent the layout from becoming unusable on large scale screens. They have a max-width and automatically center to their parent. They should be used sparingly as a deeply nested part of a layout.
+
+#### Style Props
+
+`space, layout, grid, flexbox`
+
+#### Component Props
+
+No component props
+
+#### Usage
+
+```jsx live
+<Container>
+  <Box bg="blue_300" p="2rem">
+    I won't get wider than 80rem
+  </Box>
+</Container>
+```
+
+---
+
 ## Stack
 
+Stacks are used to easily layout a list of items, it takes care of a standard spacing in between each item using css `gap`. There are two variants of stacks, vertical and horizontal.
+
+#### Style Props
+
+`space, layout, grid, flexbox`
+
+#### Variants
+
+| Variant    | Description                                                               |
+| ---------- | ------------------------------------------------------------------------- |
+| Horizontal | Items will stretch horizontally until they need to break onto a new line. |
+| Vertical   | Items will stretch vertically. **This is the default variant**            |
+
+#### Component Props
+
+No component props.
+
+#### Usage
+
+```jsx live
+<Stack>
+  {[0, 1, 2, 3, 4, 5, 6].map(num => (
+    <Box bg="blue_500" color="blue_100" p="2rem">
+      {num}
+    </Box>
+  ))}
+</Stack>
+```
+
+---
+
 ## Grid
+
+---
 
 ## Col

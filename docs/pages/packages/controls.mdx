@@ -6,15 +6,13 @@ install: "yarn add @rent_avail/controls"
 source: "https://github.com/rentalutions/elements/packages/controls"
 ---
 
-## Description
+```js
+import { Button, Checkbox, Radio, Switch } from "@availkit/controls"
+```
 
 This package contains a set of elements that allow a user to control state on a page.
 
 ## Button
-
-```js
-import { Button } from "@availkit/controls"
-```
 
 Buttons at Avail have uppercase text labels. Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting. If you have a set of buttons together use the primary button to distinguish the most desirable action.
 
@@ -22,7 +20,7 @@ Buttons at Avail have uppercase text labels. Buttons come with two variants bake
 
 `color, space, layout, flexbox, border, buttonStyle`
 
-### Usage
+#### Usage
 
 ```jsx live
 <Stack variant={["vertical", "vertical", "horizontal"]}>
@@ -39,21 +37,17 @@ Buttons at Avail have uppercase text labels. Buttons come with two variants bake
 
 Checkboxes are user selection tools when multiple options can be chosen at the same time. A user should be able to select one or more options from a set.
 
-```js
-import { Checkbox } from "@availkit/controls"
-```
-
 #### Style Props
 
 `space, layout, flexbox`
 
-### Props
+#### Props
 
 | Name    | Type      | Description                         |
 | ------- | --------- | ----------------------------------- |
 | checked | `boolean` | Controls the state of the checkbox. |
 
-### Usage
+#### Usage
 
 ```jsx live
 <Checkbox />
@@ -63,23 +57,19 @@ import { Checkbox } from "@availkit/controls"
 
 ## Radio
 
-```js
-import { Radio } from "@availkit/controls"
-```
-
 Radio buttons are used to select one option from a set. Use radio buttons when it's helpful for the user to see all the available choices when selecting.
 
 #### Style Props
 
 `space, layout, flexbox`
 
-### Props
+#### Props
 
 | Name    | Type      | Description                            |
 | ------- | --------- | -------------------------------------- |
 | checked | `boolean` | Controls the state of the radio button |
 
-### Usage
+#### Usage
 
 ```jsx live
 <Radio />
@@ -89,23 +79,19 @@ Radio buttons are used to select one option from a set. Use radio buttons when i
 
 ## Switch
 
-```js
-import { Switch } from "@availkit/controls"
-```
-
 Toggles are selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
 
 #### Style Props
 
 `space, layout, flexbox`
 
-### Props
+#### Props
 
 | Name    | Type      | Description                       |
 | ------- | --------- | --------------------------------- |
 | checked | `boolean` | Controls the state of the switch. |
 
-### Usage
+#### Usage
 
 ```jsx live
 <Switch />

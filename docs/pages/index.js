@@ -38,7 +38,7 @@ export default function Home() {
             Avail.
           </Text>
           <Stack variant="horizontal" mt="2rem">
-            <Link href="/about">
+            <Link href="/principles">
               <a>Principles</a>
             </Link>
             <a href="https://github.com/rentalutions/elements">Source</a>

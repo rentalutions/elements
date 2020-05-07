@@ -7,37 +7,43 @@ source: "https://github.com/rentalutions/elements/packages/dialog"
 ---
 
 ```js
-import { Dialog, DialogTarget } from "@rent_avail/dialog"
+import {
+  Dialog,
+  DialogTarget,
+  Fullscreen,
+  Confirmation
+} from "@rent_avail/dialog"
 ```
-
-## Description
 
 This package contains the different types of dialogs used at Avail. All variants need to be wrapped in the `<Dialog />` for accessability and performance. Components that open and close the dialog need to be wrapped by the `<DialogTarget />` element.
 
-## Dialog Props
+## Dialog
 
-| name   | type       | description                                                                 |
-| ------ | ---------- | --------------------------------------------------------------------------- |
-| open   | `boolean`  | Controls whether the dialog is visible.                                     |
-| toggle | `function` | handler that is called when the user clicks the close button on the dialog. |
+#### Dialog Props
+
+| name   | type       | description                                                                                        |
+| ------ | ---------- | -------------------------------------------------------------------------------------------------- |
+| open   | `boolean`  | Controls whether the dialog is visible.                                                            |
+| toggle | `function` | Handler that is called when the user clicks the close button on the dialog.                        |
+| id     | `string`   | Identifier for the target node. This will set the proper aria controls and handle keyboard events. |
+
+---
 
 ## Fullscreen
 
-```js
-import { Fullscreen } from "@rent_avail/dialog"
-```
+Fullscreen dialogs should be used for complex forms, and whenever we ask the user to create an object that we'll save for them. Common use cases would be requesting an application, adding an addendum to a lease, and editing a rent payment.
 
 #### Style Props
 
 `space, color`
 
-### Props
+#### Props
 
 | name  | type   | description                                                                    |
 | ----- | ------ | ------------------------------------------------------------------------------ |
 | title | string | If present, adds a title to the fullscreen dialog inline with the close button |
 
-### Usage
+#### Usage
 
 ```jsx live
 function OpenDialog() {
@@ -61,21 +67,23 @@ function OpenDialog() {
 }
 ```
 
+---
+
 ## Confirmation
 
-```js
-import { Confirmation } from "@rent_avail/dialog"
-```
+Confirmation dialogs should be used to confirm the action that the user or the system has just taken.
 
 #### Style Props
 
 `space, color`
 
-### Props
+#### Props
 
 | name  | type   | description                                                                      |
 | ----- | ------ | -------------------------------------------------------------------------------- |
 | title | string | If present, adds a title to the confirmation dialog inline with the close button |
+
+### Usage
 
 ```jsx live
 function OpenDialog() {
