@@ -113,6 +113,19 @@ const StyledInput = styled.label`
       color: ${colors.red_500};
     }
   }
+  &.disabled {
+    cursor: not-allowed;
+    .input__icon,
+    .input__label {
+      color: ${colors.ui_500};
+    }
+  }
+  input:disabled {
+    pointer-events: none;
+    border-color: ${colors.ui_500};
+    color: ${colors.ui_700};
+    background: ${colors.ui_300};
+  }
 `
 
 function TextInput(
@@ -126,6 +139,7 @@ function TextInput(
     value,
     error,
     required,
+    disabled,
     style,
     ...props
   },
@@ -139,7 +153,14 @@ function TextInput(
   }
   return (
     <StyledInput
-      className={clsx(className, { raised, error, required, icon: !!Icon, date: isDate })}
+      className={clsx(className, {
+        raised,
+        error,
+        required,
+        icon: !!Icon,
+        date: isDate,
+        disabled
+      })}
       style={style}
     >
       <input
@@ -148,6 +169,7 @@ function TextInput(
         ref={ref}
         value={value}
         required={required}
+        disabled={disabled}
         onChange={wrapEvent(onChange, handleChange)}
       />
       {Icon && <Icon className="input__icon" width={24} height={24} />}
