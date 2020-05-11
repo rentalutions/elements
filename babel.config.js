@@ -4,7 +4,8 @@ module.exports = {
     "@babel/preset-react",
   ],
   plugins: [
-    "styled-components",
+    "@babel/plugin-proposal-optional-chaining",
+    ["styled-components", { ssr: true }],
     ["module-resolver", { alias: { "testing-utils": "./testing-utils.js" } }],
   ],
 }
