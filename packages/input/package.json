@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "description": "Input components",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
     "dist",
     "src"
@@ -33,6 +32,7 @@
   },
   "dependencies": {
     "@rent_avail/utils": "^0.0.2",
-    "@styled-system/props": "^5.1.5"
+    "@styled-system/props": "^5.1.5",
+    "react-is": "^16.13.1"
   }
 }

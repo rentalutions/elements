@@ -25,6 +25,7 @@
     "intersection-observer": "^0.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-is": "^16.13.1",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {

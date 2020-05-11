@@ -14,6 +14,7 @@ const Stack = styled.section(
       },
       horizontal: {
         gridAutoFlow: "column",
+        justifyContent: "start",
       },
     },
   })

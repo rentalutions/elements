@@ -9,8 +9,7 @@ export default class Document extends NextDoc {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
         })
 
       const initialProps = await NextDoc.getInitialProps(ctx)
@@ -21,7 +20,7 @@ export default class Document extends NextDoc {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        ),
+        )
       }
     } finally {
       sheet.seal()
@@ -31,7 +30,6 @@ export default class Document extends NextDoc {
     return (
       <Html>
         <Head>
-          <link rel="stylesheet" href="/styles/material-ocean.css" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Nunito:wght@200;400;600;800&display=swap"

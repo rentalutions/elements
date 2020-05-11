@@ -1,22 +1,17 @@
 ---
 title: Getting Started
-layout: packages
+layout: elements
 ---
 
-# Component Libraries
+# Avail Elements
 
-![GitHub issues](https://img.shields.io/github/issues/rentalutions/elements.svg?color=3ba68e&style=for-the-badge)
-![npm](https://img.shields.io/npm/dm/@rent_avail/elements.svg?color=%2350e3c2&style=for-the-badge)
+`@rent_avail`
 
-This is mostly thanks to [styled-system](https://styled-system.com/).
+The avail design system is made up of small UI packages that can be mostly imported into projects as needed. This allows updating a package to happen without worrying about breaking changes that might be in development on another components.
 
-## Component Design
+<br />
 
-You'll notice that what was once a single package is now split up into a number of smaller packages that work together to create a system. This was done for a couple reasons. One, the components that make up this system are in use and being broken and updated everyday. It's very annoying to have to upgrade your whole library (and leads to other unexpected breaking changes) when a single input needs an update to it's label property. Two, as we grow and develop more products, all of the sites that use the packages under `@rent_avail` will have different needs and shouldn't need to require pieces that the don't use.
-
-### List of packages
-
-| Package Name           | Description                            |
+| Packages               | Description                            |
 | ---------------------- | -------------------------------------- |
 | @rent_avail/base       | Base, Theme Object                     |
 | @rent_avail/typography | Heading, Text                          |
@@ -31,15 +26,16 @@ You'll notice that what was once a single package is now split up into a number 
 | @rent_avail/progress   | Fluid Progress, Fixed Progress         |
 | @rent_avail/avatar     | Avatar, Avatar Group                   |
 | @rent_avail/select     | Select Input                           |
+| @rent_avail/toast      | Toast                                  |
 
 ## Styled Props
 
-Avail Elements lets you quickly build custom UI components with constraint based style props. Below you'll see a basic implementation of the `Card` component. Each component in this design system has a specific set of styled props the props allowed on each will eventually be described in their documentation, for now you can get familiar with the possible values in this [reference table](https://styled-system.com/table). Styled props pick up values from a base theme. This base theme follows the specification from the [styled system theme object](https://styled-system.com/theme-specification)
+Avail UI elements use [`styled-system`](https://styled-system.com) to help you quickly build custom components with constraint based style props. You can think of style props as utility classes with super powers. Style props inherit from a globally declared theme or use accepted css values. Below is a simple example of using styled props to quickly build a custom [`Card`](/packages/layout#card) component. For more information and to get familiar with all of the possible values, take a look at this [`reference table`](https://styled-system.com/table), to understand how the theme object is built you can review the [`base theme object`](/packages/base)
 
 ```jsx
 function YourComponent() {
   return (
-    <Card my="4rem" bg="blue_100" borderRadius="0.25rem" p="4rem">
+    <Card my="4rem" bg="blue_100" p="4rem">
       I'm a card with a margin top and bottom of 4rem, a padding of 4rem, and a
       background of our brand color blue_100.
     </Card>
@@ -47,16 +43,163 @@ function YourComponent() {
 }
 ```
 
-## Using Layout Components
+## Quick Start
 
-There are a number of new components designed specifically to help you build layouts fast and use modern styling approaches without having to worry about specific syntax. `<Box/>` is the most basic element of the design system. It's exactly what it sounds like and comes with no prebuilt styling up front.
+First, install the design system and peer dependencies
 
-#### Note: The `as` prop is super integral when using layout components especially.
+```bash
+yarn add react react-dom styled-components styled-system framer-motion @rent_avail/base @rent_avail/layout
+```
 
-## Developer Enviroment The developer environment is split from this website entirely.
+Bootstrap your react app and in the root component import the `ThemeProvider` from styled-components and our theme & global styles.
 
-Storybook is a much easier way to build and test components without having to worry
-about the overhead of documentation or other elements on the page. You get a sandbox
-iframe that your component cannot bleed outside of and nice error boundaries are
-setup. Unused currently but easy to implement are addons that will help test performance
-and accessability.
+```jsx
+import { ThemeProvider } from "styled-components"
+import Base, { theme } from "@rent_avail/base"
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Base />
+      <Routes />
+    </ThemeProvider>
+  )
+}
+```
+
+Now you're ready to start using layout components to quickly build complex UIs.
+
+```jsx
+import { Container, Box, Stack, Card } from "@rent_avail/layout"
+import { Text, Heading } from "@rent_avail/typography"
+
+function DashboardPage() {
+  return (
+    <Box as="main" my="4rem">
+      <Container as={Stack}>
+        <Card bg="blue_100">Item 1</Card>
+        <Card bg="blue_300">Item 2</Card>
+        <Card bg="blue_500">Item 3</Card>
+        <Card bg="blue_700">Item 4</Card>
+        <Card bg="blue_900">Item 5</Card>
+      </Container>
+    </Box>
+  )
+}
+```
+
+## Responsive Styles
+
+Styled system allows us to responsively style our ui components with array props. All styled props accept an array that will map to the breakpoints in the theme spec.
+
+```jsx
+<Box width={[1, 1 / 2, 1 / 3]}>
+  I'll be 100% on the smallest screens, then 50%, then 33.33%.
+</Box>
+```
+
+## Theme
+
+You can use the theme properties in any styled component below the `ThemeProvider` component.
+
+```jsx
+const Wrapper = styled.div`
+  box-shadow: ${({ theme }) => theme.shadows[0]};
+  font-size: ${({ theme }) => theme.fontSizes.body};
+`
+```
+
+#### Theme object exported by `@rent_avail/base`
+
+```js
+const colors = {
+  ui_100: "#ffffff",
+  ui_300: "#f3f3f3",
+  ui_500: "#c7c7c7",
+  ui_700: "#6f6f6f",
+  ui_900: "#2d2d2d",
+
+  blue_100: "#e9edf1",
+  blue_300: "#7c95b0",
+  blue_500: "#0f3e6f",
+  blue_700: "#0b2e51",
+  blue_900: "#0a2847",
+
+  gold_100: "#fdf9e9",
+  gold_300: "#fbeab3",
+  gold_500: "#f9de89",
+  gold_700: "#b6a264",
+  gold_900: "#443d26",
+
+  green_100: "#dff9f3",
+  green_300: "#9fefdd",
+  green_500: "#50e3c2",
+  green_700: "#3ba68e",
+  green_900: "#163e35",
+
+  straw_100: "#fefef5",
+  straw_300: "#fefce3",
+  straw_500: "#fefacc",
+  straw_700: "#e7e4ba",
+  straw_900: "#a2a082",
+
+  red_300: "#F6A5B4",
+  red_500: "#EC4261",
+
+  purple_300: "#B7B5EE",
+  purple_500: "#6965D5"
+}
+
+const theme = {
+  breakpoints: ["40rem", "60rem", "80rem", "100rem", "120rem"],
+  colors,
+  fonts: {
+    body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
+    legal: "'Noto Serif', serif",
+    monospace: "'IBM Plex Mono', monospace"
+  },
+  fontSizes: {
+    small: "1.334rem",
+    body: "1.5rem",
+    subtitle: "2rem",
+    title: "3rem",
+    headline: "4rem",
+    hero: "5rem"
+  },
+  fontWeights: {
+    light: 200,
+    regular: 400,
+    bold: 600,
+    black: 800
+  },
+  lineHeights: {
+    small: "1.5",
+    body: "1.334",
+    heading: "1.25"
+  },
+  space: [0, 12, 24, 36, 48, 60, 72, 84, 96],
+  shadows: [
+    "0 1px 3px rgba(0,0,0.12)",
+    "0 3px 6px rgba(0,0,0,0.24)",
+    "0 12px 24px -12px rgba(0,0,0,0.36)"
+  ],
+  buttons: {
+    primary: {
+      color: colors.ui_100,
+      background: colors.blue_500,
+      borderColor: colors.blue_500,
+      "&:hover": {
+        background: colors.blue_700,
+        color: colors.blue_300
+      },
+      "&:focus": {
+        background: colors.blue_700
+      }
+    },
+    danger: {
+      color: colors.red_500,
+      borderColor: colors.red_500
+    }
+  }
+}
+```

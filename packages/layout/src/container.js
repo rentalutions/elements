@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import { color, layout, space, flexbox } from "styled-system"
 
-const Container = styled.section(
-  { boxSizing: "border-box" },
-  color,
-  layout,
-  space,
-  flexbox
-)
+const Container = styled.section`
+  box-sizing: border-box;
+  width: 100%;
+  ${color};
+  ${layout};
+  ${space};
+  ${flexbox};
+`
 
 Container.defaultProps = {
   maxWidth: "84rem",

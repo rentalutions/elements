@@ -29,11 +29,9 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case types.OPEN_MENU: {
-      console.log("opening")
       return { ...state, isOpen: true }
     }
     case types.CLOSE_MENU: {
-      console.log("closing")
       return { ...state, isOpen: false }
     }
     default:
@@ -48,19 +46,21 @@ function Menu({ children, id }) {
   const popoverRef = useRef()
   const openMenu = () => dispatch({ type: types.OPEN_MENU })
   const closeMenu = () => dispatch({ type: types.CLOSE_MENU })
-  const context = useMemo(
-    () => ({
-      isOpen,
-      openMenu,
-      closeMenu,
-      targetRef,
-      menuRef,
-      popoverRef,
-      id,
-    }),
-    [isOpen, targetRef, menuRef, popoverRef, id]
+  return (
+    <MenuContext.Provider
+      value={{
+        isOpen,
+        openMenu,
+        closeMenu,
+        targetRef,
+        menuRef,
+        popoverRef,
+        id,
+      }}
+    >
+      {children}
+    </MenuContext.Provider>
   )
-  return <MenuContext.Provider value={context}>{children}</MenuContext.Provider>
 }
 
 function Target({ children, ...rest }, ref) {

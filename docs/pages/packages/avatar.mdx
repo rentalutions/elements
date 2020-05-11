@@ -1,0 +1,39 @@
+---
+title: Avatars
+layout: elements
+package_name: "avatar"
+install: "yarn add @rent_avail/avatar"
+source: "https://github.com/rentalutions/elements/packages/avatar"
+---
+
+```js
+import Avatar, { AvatarGroup } from "@rent_avail/avatar"
+```
+
+An avatar component is used to display user information to another user. It can be used in a variety of sizes and spaces and is often clickable and opens more in-depth information about the user such as account or payment status.
+
+#### Style Props
+
+`layout, space, color, flexbox`
+
+## Props
+
+| Name      | Type      | Description                                                                           |
+| --------- | --------- | ------------------------------------------------------------------------------------- |
+| small     | `boolean` | Dictates the layout of an avatar component. When true it will hide the name or email. |
+| intitials | `string`  | Initials of the user.                                                                 |
+| name      | `string`  | Name of the user.                                                                     |
+| photoUrl  | `string`  | Thumbnail of the users profile photo.                                                 |
+
+## Usage
+
+```jsx live
+<Avatar small initials="PK" />
+```
+
+```jsx live
+<Avatar
+  name="Janet Wood"
+  photoUrl="https://source.unsplash.com/collection/802865/48x48"
+/>
+```

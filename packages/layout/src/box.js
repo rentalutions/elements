@@ -1,4 +1,3 @@
-import React from "react"
 import styled from "styled-components"
 import {
   space,
@@ -9,17 +8,14 @@ import {
   border,
 } from "styled-system"
 
-const Box = styled.div(
-  {
-    boxSizing: "border-box",
-    minWidth: 0,
-  },
-  space,
-  layout,
-  color,
-  flexbox,
-  background,
-  border
-)
+const Box = styled.div`
+  min-width: 0;
+  ${space};
+  ${layout};
+  ${color};
+  ${flexbox};
+  ${background};
+  ${border};
+`
 
 export default Box

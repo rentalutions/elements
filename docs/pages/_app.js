@@ -2,13 +2,15 @@ import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import Base, { theme } from "@rent_avail/base"
 import { MDXProvider } from "@mdx-js/react"
-import MDXComponents from "../mdx-components.js"
+import MDXComponents from "components/MDXComponents"
 
 const ExtendedBase = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.green_500};
+    text-decoration: none;
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
     &:visited {
-      color: ${({ theme }) => theme.colors.green_900};
+      color: ${({ theme }) => theme.colors.green_300};
     }
   }
 `
