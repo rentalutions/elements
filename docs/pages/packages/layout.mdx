@@ -73,7 +73,7 @@ No component props
 
 ```jsx live
 <Container>
-  <Box bg="blue_300" p="2rem">
+  <Box bg="blue_300" p="2rem" color="gold_100">
     I won't get wider than 80rem
   </Box>
 </Container>
@@ -104,8 +104,8 @@ No component props.
 
 ```jsx live
 <Stack>
-  {[0, 1, 2, 3, 4, 5, 6].map(num => (
-    <Box bg="blue_500" color="blue_100" p="2rem">
+  {[0, 1, 2, 3].map((num) => (
+    <Box key={num} bg="blue_500" color="blue_100" p="2rem">
       {num}
     </Box>
   ))}
@@ -114,8 +114,39 @@ No component props.
 
 ---
 
-## Grid
+## Grids
 
----
+Grids are built as an easy starting point for more custom layout patterns. The `<Grid />` component should always contain `<Col />` components as immediate children. Grids are divided into 12 columns of equal length with a 2rem gutter in between each. The number of columns each `<Col />` takes up can be changed with the `span` (or `gridRow`) props.
 
-## Col
+#### Style Props (shared by both elements)
+
+`color, grid, flexbox, space, layout`
+
+#### Grid Component Props
+
+| name    | type     | description                     |
+| ------- | -------- | ------------------------------- |
+| columns | `number` | Shorthand way to define columns |
+
+#### Style Component Props
+
+| name    | type           | description                |
+| ------- | -------------- | -------------------------- |
+| span    | `array\string` | Shorthand for `gridColumn` |
+| spanRow | `array\string` | Shorthand for `gridRow`    |
+
+#### Usage
+
+```jsx live
+<Grid>
+  <Col span="3" bg="blue_500" height="4rem"></Col>
+  <Col span="3" bg="blue_500" height="4rem"></Col>
+  <Col span="3" bg="blue_500" height="4rem"></Col>
+  <Col span="3" bg="blue_500" height="4rem"></Col>
+  <Col span={[12, 4]} bg="blue_500" height="4rem"></Col>
+  <Col span={[12, 4]} bg="blue_500" height="4rem"></Col>
+  <Col span={[12, 4]} bg="blue_500" height="4rem"></Col>
+  <Col span="6" bg="blue_500" height="4rem"></Col>
+  <Col span="6" bg="blue_500" height="4rem"></Col>
+</Grid>
+```

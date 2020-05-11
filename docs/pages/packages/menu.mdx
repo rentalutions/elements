@@ -1,4 +1,56 @@
 ---
-title: Menu
+title: Menus
 layout: elements
+package_name: menu
+install: "yarn add @rent_avail/menu"
+source: "https://github.com/rentalutions/elements/packages/menu"
 ---
+
+```js
+import { Menu, MenuTarget, MenuList, MenuItem } from "@rent_avail/menu"
+```
+
+Menus display a list of actions or choices on a temporary card. They offer a condensed way to present multiple actions and actions that a user won't always need to see.
+
+#### MenuList & MenuItem Style Props
+
+`space`
+
+#### Menu Props
+
+| name | type     | description                       |
+| ---- | -------- | --------------------------------- |
+| id   | `string` | Identifier used for accessability |
+
+#### Usage
+
+```jsx live
+<Menu id="dropdown-menu-1">
+  <MenuTarget>
+    <Button>Hello World</Button>
+  </MenuTarget>
+  <MenuList>
+    <MenuItem>
+      <Text>Item 1</Text>
+    </MenuItem>
+    <MenuItem>
+      <Text>Item 2</Text>
+    </MenuItem>
+    <MenuItem nested>
+      <Menu>
+        <MenuTarget>
+          <Text>Nested Item</Text>
+        </MenuTarget>
+        <MenuList>
+          <MenuItem>
+            <Text>Item 1</Text>
+          </MenuItem>
+          <MenuItem>
+            <Text>Item 1</Text>
+          </MenuItem>
+        </MenuList>
+      </Menu>
+    </MenuItem>
+  </MenuList>
+</Menu>
+```
