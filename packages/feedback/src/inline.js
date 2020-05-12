@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { motion, useAnimation, AnimatePresence } from "framer-motion"
 import { Check, Hexagon } from "react-feather"
+import { noop } from "@rent_avail/utils"
 
 const InlineWrapper = styled(motion.section)`
   display: grid;
@@ -14,7 +15,13 @@ const InlineWrapper = styled(motion.section)`
   border-radius: 2rem;
   height: 4rem;
   overflow: hidden;
-  .inline__loading-icon {
+  .inline__step,
+  .inline__loading,
+  .inline__loaded {
+    position: relative;
+    z-index: 1;
+  }
+  .inline__loading {
     animation: spin 2000ms infinite;
   }
   @keyframes spin {
@@ -49,7 +56,11 @@ const spring = {
   when: "beforeChildren",
 }
 
-function InlineFeedback({ duration = 4000, steps = [] }) {
+function InlineFeedback({
+  duration = 1000,
+  steps = [],
+  onAnimationEnd = noop,
+}) {
   const backgroundControls = useAnimation()
   const barControls = useAnimation()
   const [current, setCurrent] = useState(0)
@@ -64,12 +75,15 @@ function InlineFeedback({ duration = 4000, steps = [] }) {
       }
       if (current === steps.length) {
         await backgroundControls.start({ width: "4rem" })
+        onAnimationEnd()
         return clearTimeout(updateCurrent)
       }
-      await barControls.start({ width: `${(current / steps.length) * 100}%` })
+      await barControls.start({
+        width: `${((current + 1) / steps.length) * 100}%`,
+      })
       setCurrent((c) => c + 1)
     }
-    setTimeout(updateCurrent, duration - duration / steps.length)
+    setTimeout(updateCurrent, duration)
     return () => clearTimeout(updateCurrent)
   }, [current])
   return (
@@ -88,7 +102,7 @@ function InlineFeedback({ duration = 4000, steps = [] }) {
             animate="animated"
             exit="exit"
           >
-            <Check />
+            <Check className="inline__loaded" />
           </motion.span>
         ) : (
           <motion.span
@@ -98,12 +112,13 @@ function InlineFeedback({ duration = 4000, steps = [] }) {
             animate="animated"
             exit="exit"
           >
-            <Hexagon className="inline__loading-icon" />
+            <Hexagon className="inline__loading" />
           </motion.span>
         )}
       </AnimatePresence>
       <AnimatePresence exitBeforeEnter>
         <motion.div
+          className="inline__step"
           key={steps[current]}
           initial={{ opacity: 0, y: "1rem" }}
           animate={{ opacity: 1, y: 0 }}
