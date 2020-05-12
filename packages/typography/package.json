@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Type components.",
   "main": "dist/index.js",
+  "module": "src/index.js",
   "files": [
     "dist",
     "src"
