@@ -11,14 +11,14 @@ export function FullpageUsage() {
   return (
     <FullpageFeedback
       open={true}
-      timeout={6000}
-      onAnimationEnd={() => console.log("over")}
+      duration={2000}
       steps={[
         "Getting your info",
         "Printing your check",
         "Licking the envelope",
       ]}
       successMessage="Payment Scheduled"
+      onAnimationEnd={() => console.log("thing")}
     />
   )
 }
