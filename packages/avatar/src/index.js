@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import clsx from "clsx"
+import { space, layout, flexbox } from "styled-system"
 
 const smallStyles = css`
   width: 4rem;
@@ -18,6 +19,9 @@ const StyledAvatar = styled.div`
   align-items: center;
   height: 4rem;
   padding-right: 2rem;
+  ${space};
+  ${layout};
+  ${flexbox};
   img {
     display: block;
     width: 3rem;

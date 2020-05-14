@@ -19,6 +19,7 @@ const IllustrationWrapper = styled(motion.svg)`
   }
   .background {
     stroke-width: 2;
+    stroke: ${({ theme }) => theme.colors.blue_300};
   }
 `
 
@@ -29,7 +30,7 @@ const group = {
   },
   show: {
     opacity: 1,
-    scale: 0.95,
+    scale: 1,
     transition: {
       delayChildren: 0.25,
       staggerChildren: 0.3,
@@ -39,10 +40,12 @@ const group = {
 
 const path = {
   hidden: {
-    strokeDashoffset: 180,
+    pathLength: 1,
+    pathOffset: 1,
   },
   show: {
-    strokeDashoffset: 0,
+    pathLength: 1,
+    pathOffset: 0,
     transition: { type: "spring", damping: 30, stiffness: 50 },
   },
 }
