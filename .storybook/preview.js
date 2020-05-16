@@ -5,7 +5,7 @@ import Base, { theme } from "@rent_avail/base"
 
 const ExtendedBase = createGlobalStyle`
   body {
-    padding: 2rem;
+    background: ${({ theme }) => theme.colors.ui_300};
   }
 `
 
