@@ -1,8 +1,16 @@
-import Box from "./box"
 import styled from "styled-components"
+import { position, layout, flexbox, grid, space } from "styled-system"
 
-const Flex = styled(Box)`
-  display: flex;
+const Flex = styled.section`
+  ${position};
+  ${layout};
+  ${flexbox};
+  ${grid};
+  ${space};
 `
+
+Flex.defaultProps = {
+  display: "flex",
+}
 
 export default Flex
