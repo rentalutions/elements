@@ -51,13 +51,12 @@ const iconVariants = {
 
 const spring = {
   type: "spring",
-  damping: 30,
-  stiffness: 250,
-  when: "beforeChildren",
+  damping: 40,
+  stiffness: 500,
 }
 
 function InlineFeedback({
-  duration = 1000,
+  duration = 2000,
   steps = [],
   onAnimationEnd = noop,
 }) {
@@ -65,9 +64,6 @@ function InlineFeedback({
   const barControls = useAnimation()
   const [current, setCurrent] = useState(0)
   const [loaded, setLoaded] = useState(false)
-  useEffect(() => {
-    backgroundControls.start({ width: "100%" })
-  }, [])
   useEffect(() => {
     async function updateCurrent() {
       if (current == steps.length - 1) {
@@ -89,7 +85,7 @@ function InlineFeedback({
   return (
     <InlineWrapper
       transition={spring}
-      initial={{ width: "4rem" }}
+      initial={{ width: "100%" }}
       animate={backgroundControls}
     >
       <LoadingBar initial={{ width: 0 }} animate={barControls} />
