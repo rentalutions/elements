@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { FullpageFeedback, InlineFeedback } from "./src"
+import React, { useState, Fragment } from "react"
+import { FullscreenFeedback, InlineFeedback } from "./src"
 import Avatar from "@rent_avail/avatar"
 import {
   Box,
@@ -13,6 +13,7 @@ import {
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 import Input from "@rent_avail/input"
+import { Dialog, DialogTarget, Confirmation } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
 import { Plus } from "react-feather"
 
@@ -22,7 +23,7 @@ export function FullpagePayments() {
   const [open, setOpen] = useState(false)
   const [amount, setAmount] = useState("")
   return (
-    <Container>
+    <Container mt="4rem">
       <Stack>
         <Heading as="h4">Schedule a payment</Heading>
         <Grid>
@@ -79,22 +80,22 @@ export function FullpagePayments() {
           Payment Details
         </Heading>
         <Grid>
-          <Col span={6} as={Text}>
+          <Col span={[6]} as={Text}>
             Payment
           </Col>
-          <Col span={6} as={Text} textAlign="right">
+          <Col span={[6]} as={Text} textAlign="right">
             ${amount || 0}
           </Col>
-          <Col span={6} as={Text}>
+          <Col span={[6]} as={Text}>
             CreditBoost
           </Col>
-          <Col span={6} as={Text} textAlign="right">
+          <Col span={[6]} as={Text} textAlign="right">
             $3.99
           </Col>
-          <Col span={6} as={Text}>
+          <Col span={[6]} as={Text}>
             Total
           </Col>
-          <Col span={6} as={Text} textAlign="right">
+          <Col span={[6]} as={Text} textAlign="right">
             ${Number(amount) + 3.99}
           </Col>
         </Grid>
@@ -103,7 +104,7 @@ export function FullpagePayments() {
             schedule payment
           </Button>
         </Flex>
-        <FullpageFeedback
+        <FullscreenFeedback
           open={open}
           steps={[
             "Getting your info",
@@ -111,7 +112,7 @@ export function FullpagePayments() {
             "Licking the envelope",
           ]}
           successMessage="Payment Scheduled"
-          onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
+          // onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
         />
       </Stack>
     </Container>
@@ -121,7 +122,7 @@ export function FullpagePayments() {
 export function FullpageSendLease() {
   const [open, setOpen] = useState(false)
   return (
-    <Container>
+    <Container mt="4rem">
       <Stack>
         <Card>
           <Heading mb="2rem">Send for signing</Heading>
@@ -215,7 +216,7 @@ export function FullpageSendLease() {
           </Stack>
         </Box>
       </Stack>
-      <FullpageFeedback
+      <FullscreenFeedback
         open={open}
         steps={[
           "Checking clauses against local laws",
@@ -232,43 +233,46 @@ export function FullpageSendLease() {
 export function InlineVerification() {
   const [loaded, setLoaded] = useState(false)
   return (
-    <Container>
-      <InlineFeedback
-        steps={[
-          "Verifying Phone",
-          "Generating Device Data",
-          "Securing Account",
-        ]}
-        onAnimationEnd={() => setLoaded(true)}
-      />
-      {loaded && (
-        <Box
-          as={motion.section}
-          mt="2rem"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-        >
-          <Heading as="h3" mb="2rem">
-            Great, your account is secured.
-          </Heading>
-          <Text>
-            The next time you log in from a new device, you'll recive an
-            authentication code for this number to keep your account secure.
-          </Text>
-          <Box my="2rem" p="2rem" bg="blue_100" borderRadius="0.25rem">
-            <Text fontWeight="bold">Recovery Code</Text>
-            <Heading my="2rem">1230-0129391-019291-AC</Heading>
-            <Text>
-              This is a one-time code that you can use to recover your account
-              if you get locked out. Keep this code in a safe, secure place. Do
-              not store it publicly.
-            </Text>
+    <Container
+      as={Grid}
+      minHeight="calc(100vh - 8rem)"
+      mt="4rem"
+      display="grid"
+      alignItems="center"
+    >
+      <Col minHeight="32rem" span={[12, 10]} offset={["auto", 2]}>
+        <InlineFeedback
+          steps={[
+            "Verifying Phone",
+            "Generating Device Data",
+            "Securing Account",
+          ]}
+          onAnimationEnd={() => setLoaded(true)}
+        />
+        {loaded && (
+          <Box
+            as={motion.section}
+            mt="2rem"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <Heading as="h3" mb="2rem">
+              Great, your account is secured.
+            </Heading>
+            <Text>You're all set to start using your Avail account.</Text>
+            <Box my="2rem" p="2rem" bg="blue_100" borderRadius="0.25rem">
+              <Text fontWeight="bold">Account Security</Text>
+              <Text>
+                The next time you log in from a new device, you'll recive an
+                authentication code for this number to keep your account secure.
+              </Text>
+            </Box>
+            <Box display="flex" justifyContent="flex-end" mt="2rem">
+              <Button variant="primary">Continue</Button>
+            </Box>
           </Box>
-          <Box display="flex" justifyContent="flex-end" mt="2rem">
-            <Button variant="primary">Continue</Button>
-          </Box>
-        </Box>
-      )}
+        )}
+      </Col>
     </Container>
   )
 }
@@ -293,7 +297,7 @@ export function InlineTransunion() {
     p: "2rem",
   }
   return (
-    <Container>
+    <Container mt="4rem">
       <Card>
         <Box
           as="header"
@@ -343,5 +347,60 @@ export function InlineTransunion() {
         )}
       </Card>
     </Container>
+  )
+}
+
+export function InlinePublishListing() {
+  const [open, setOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  function handleToggle() {
+    setOpen(false)
+    setLoaded(false)
+  }
+  return (
+    <Box
+      display="grid"
+      gridTemplateColumns="25rem auto"
+      gridTemplateRows="15rem auto"
+      minHeight="calc(100vh - 4rem)"
+    >
+      <Box gridRow="span 2" bg="blue_100" />
+      <Box bg="blue_500" />
+      <Box bg="ui_300">
+        <Container mt="4rem">
+          <Flex justifyContent="flex-end">
+            <Dialog open={open} toggle={handleToggle} id="success-listing">
+              <DialogTarget>
+                <Button onClick={(e) => setOpen(true)}>Publish Listing</Button>
+              </DialogTarget>
+              <Confirmation>
+                <InlineFeedback
+                  steps={[
+                    "Optimizing Photos",
+                    "Connecting to Syndicates",
+                    "Updating Feed",
+                  ]}
+                  onAnimationEnd={() => setLoaded(true)}
+                />
+                {loaded && (
+                  <Box
+                    as={motion.div}
+                    initial={{ opacity: 0, y: "1rem" }}
+                    animate={{ opacity: 1, y: 0 }}
+                    mt="2rem"
+                  >
+                    <Heading as="h3">Listing Published</Heading>
+                    <Text mt="2rem">
+                      Successfully published to 12 sites, it can take up to 4
+                      hours for your listing to appear on our partner sites.
+                    </Text>
+                  </Box>
+                )}
+              </Confirmation>
+            </Dialog>
+          </Flex>
+        </Container>
+      </Box>
+    </Box>
   )
 }
