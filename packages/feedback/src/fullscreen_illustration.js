@@ -3,7 +3,8 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 const IllustrationWrapper = styled(motion.svg)`
-  height: 100%;
+  max-width: 30rem;
+  width: 100%;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;

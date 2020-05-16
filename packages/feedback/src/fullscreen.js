@@ -3,11 +3,11 @@ import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { usePortal, noop } from "@rent_avail/utils"
 import { Heading, Text } from "@rent_avail/typography"
-import { Box } from "@rent_avail/layout"
+import { Box, Flex } from "@rent_avail/layout"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
-import Illustration from "./fullpage_illustration"
+import Illustration from "./fullscreen_illustration"
 
-const FullpageWrapper = styled(motion.section)`
+const FullscreenWrapper = styled(motion.section)`
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@ const initialState = {
   loaded: false,
 }
 
-function fullpageReducer(state, action) {
+function fullscreenReducer(state, action) {
   const { type, payload } = action
   switch (type) {
     case "INCREMENT":
@@ -68,7 +68,7 @@ function fullpageReducer(state, action) {
   }
 }
 
-export default function FullpageFeedback({
+export default function FullscreenFeedback({
   open = false,
   duration = 2000,
   steps = [],
@@ -76,7 +76,7 @@ export default function FullpageFeedback({
   onAnimationEnd = noop,
 }) {
   const [{ current, loaded }, dispatch] = useReducer(
-    fullpageReducer,
+    fullscreenReducer,
     initialState
   )
   const barControls = useAnimation()
@@ -100,45 +100,56 @@ export default function FullpageFeedback({
   }, [open])
   if (!portalTarget) return null
   return createPortal(
-    open ? (
-      <FullpageWrapper>
-        <Box height="20rem">
-          {loaded && <Illustration onAnimationEnd={onAnimationEnd} />}
-        </Box>
-        <Box minHeight="5rem" mt="2rem">
-          <AnimatePresence exitBeforeEnter>
-            <Text
-              as={motion.p}
-              className="fullpage__step"
-              key={steps[current]}
-              variants={stepVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              {steps[current]}
-            </Text>
-          </AnimatePresence>
-          {loaded && (
-            <Heading
-              variants={successMessageVariants}
-              as={motion.h3}
-              initial="hidden"
-              animate="visible"
-            >
-              {successMessage}
-            </Heading>
-          )}
-        </Box>
-        <Box mt="2rem" mb="10rem" className="fullpage__loading-background">
-          <motion.div
-            className="fullpage__loading-bar"
-            initial={{ width: 0 }}
-            animate={barControls}
-          />
-        </Box>
-      </FullpageWrapper>
-    ) : null,
+    <AnimatePresence>
+      {open ? (
+        <FullscreenWrapper
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+        >
+          <Flex
+            height="20rem"
+            alignItems="flex-end"
+            justifySelf="stretch"
+            justifyContent="center"
+          >
+            {loaded && <Illustration onAnimationEnd={onAnimationEnd} />}
+          </Flex>
+          <Box minHeight="5rem" mt="2rem">
+            <AnimatePresence exitBeforeEnter>
+              <Text
+                as={motion.p}
+                className="fullpage__step"
+                key={steps[current]}
+                variants={stepVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {steps[current]}
+              </Text>
+            </AnimatePresence>
+            {loaded && (
+              <Heading
+                variants={successMessageVariants}
+                as={motion.h3}
+                initial="hidden"
+                animate="visible"
+              >
+                {successMessage}
+              </Heading>
+            )}
+          </Box>
+          <Box mt="2rem" mb="10rem" className="fullpage__loading-background">
+            <motion.div
+              className="fullpage__loading-bar"
+              initial={{ width: 0 }}
+              animate={barControls}
+            />
+          </Box>
+        </FullscreenWrapper>
+      ) : null}
+    </AnimatePresence>,
     portalTarget
   )
 }
