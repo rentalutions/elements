@@ -10312,6 +10312,11 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+next-compose-plugins@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
+  integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
+
 next-mdx-enhanced@^2.4.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/next-mdx-enhanced/-/next-mdx-enhanced-2.5.0.tgz#9d13ca0892d1adbf746cd922f68f1326ed7ca914"
@@ -10330,6 +10335,14 @@ next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+next-transpile-modules@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-3.3.0.tgz#90f197d1ceda2a2ce7a4f423b262320354456abf"
+  integrity sha512-QIaBunwtC9oNaluQvfJw5hv1uXSAlTzDCc7/FUxZw5Rnm0yo1HJjW6YodFvA+7Xm9k/2fZV2itF99vMBwTOUjQ==
+  dependencies:
+    micromatch "^4.0.2"
+    slash "^3.0.0"
 
 next@^9.3.4:
   version "9.3.6"

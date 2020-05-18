@@ -16,7 +16,7 @@ const ConfirmationWrapper = styled(motion.section)`
   margin-right: auto;
   background: ${({ theme }) => theme.colors.ui_100};
   border-radius: 0.25rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 50rem;
   z-index: 2;
   transform: translate3d(-50%, 0, 0);

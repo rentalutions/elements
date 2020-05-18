@@ -69,14 +69,12 @@ function Target({ children, ...rest }, ref) {
   )
   const { onClick, onFocus, onKeyDown } = children.props
   function handleKeyDown({ key }) {
-    console.log(key === "Enter")
     switch (key) {
       case "Enter": {
         return openMenu()
       }
       case "ArrowDown": {
-        console.log(menuRef.current.firstChild)
-        menuRef.current.firstChild.focus()
+        menuRef.current?.firstChild?.focus()
         break
       }
       default:

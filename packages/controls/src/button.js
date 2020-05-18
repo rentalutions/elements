@@ -9,6 +9,8 @@ import {
 } from "styled-system"
 import { lighten } from "polished"
 
+// TODO: Update active state for button.
+
 const Button = styled.button`
   appearance: none;
   border-width: 2px;
@@ -17,7 +19,7 @@ const Button = styled.button`
   font-size: 1.5rem;
   font-family: inherit;
   text-transform: uppercase;
-  transition: 100ms;
+  transition: 250ms;
   white-space: nowrap;
   border-color: ${({ theme, color }) => theme.colors[color] || color};
   outline: none;

@@ -3,9 +3,9 @@
   "version": "0.0.3",
   "description": "Base styling and theme for Avail Design.",
   "main": "dist/index.js",
+  "module": "src/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",

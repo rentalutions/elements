@@ -6,6 +6,7 @@ import {
   flexbox,
   background,
   border,
+  grid,
 } from "styled-system"
 
 const Box = styled.div`
@@ -16,6 +17,7 @@ const Box = styled.div`
   ${flexbox};
   ${background};
   ${border};
+  ${grid};
 `
 
 export default Box

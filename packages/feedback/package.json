@@ -1,7 +1,7 @@
 {
-  "name": "@rent_avail/popover",
-  "version": "0.0.3",
-  "description": "Popover component.",
+  "name": "@rent_avail/feedback",
+  "version": "0.0.1",
+  "description": "Feedback components.",
   "main": "dist/index.js",
   "module": "src/index.js",
   "files": [
@@ -9,7 +9,7 @@
     "src"
   ],
   "scripts": {
-    "test": "echo 'run tests from the root directory'",
+    "test": "echo 'run tests from the root directory' && exit 1",
     "clean": "rimraf dist",
     "build": "yarn clean && babel src -d dist --root-mode upward --ignore **/*.test.js,**/*.stories.js",
     "prepublishOnly": "yarn build"

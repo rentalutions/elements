@@ -1,17 +1,34 @@
-import React from "react"
 import styled from "styled-components"
+import {
+  space,
+  color,
+  layout,
+  flexbox,
+  grid,
+  border,
+  position,
+  shadow,
+} from "styled-system"
 
-export default styled.section`
-  padding: 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.ui_500};
-  border-radius: 4px;
-  background: ${({ theme }) => theme.colors.ui_100};
-  box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.12);
-  .card__actions {
-    display: flex;
-    flex-direction: row-reverse;
-    & > *:not(:first-child) {
-      margin-right: 2rem;
-    }
-  }
+const Card = styled.section`
+  min-width: 0;
+  ${position};
+  ${layout};
+  ${flexbox};
+  ${grid};
+  ${space};
+  ${color};
+  ${border};
+  ${shadow};
 `
+
+Card.defaultProps = {
+  p: "2rem",
+  bg: "ui_100",
+  border: "1px solid",
+  borderColor: "ui_500",
+  borderRadius: "0.25rem",
+  boxShadow: 2,
+}
+
+export default Card
