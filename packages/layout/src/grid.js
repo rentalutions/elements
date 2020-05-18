@@ -42,7 +42,6 @@ const Col = styled.div.attrs(
     const columns = span.length ? columnArray : gridColumn
 
     const rows = spanRow.length ? rowArray : gridRow
-    console.log("columns: ", columns)
     return {
       gridColumn: columns,
       gridRow: rows,
@@ -58,9 +57,7 @@ const Col = styled.div.attrs(
 `
 
 Col.defaultProps = {
-  gridColumnStart: "1",
-  gridColumnEnd: "-1",
-  gridRowStart: "auto",
+  gridColumn: "1 / -1",
 }
 
 export { Grid, Col }
