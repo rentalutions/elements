@@ -2,7 +2,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { Heading, Text } from "@rent_avail/typography"
 import { Box, Card, Container, Stack, Grid, Col } from "@rent_avail/layout"
-import CodeBlock from "components/CodeBlock"
+import * as Icon from "react-feather"
 import Avatar from "@rent_avail/avatar"
 import { Button, Checkbox, Radio, Switch } from "@rent_avail/controls"
 import {
@@ -13,7 +13,9 @@ import {
 } from "@rent_avail/dialog"
 import Input from "@rent_avail/input"
 import { Menu, MenuTarget, MenuList, MenuItem } from "@rent_avail/menu"
-import * as Icon from "react-feather"
+import { FixedProgress, FluidProgress } from "@rent_avail/progress"
+import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
+import CodeBlock from "components/CodeBlock"
 
 const Th = styled(Box)`
   text-align: left;
@@ -80,6 +82,12 @@ export default {
         MenuTarget,
         MenuList,
         MenuItem,
+        FixedProgress,
+        FluidProgress,
+        Select,
+        SelectInput,
+        SelectList,
+        SelectItem,
       }}
     />
   ),
