@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/tag",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Chip component.",
   "main": "dist/index.js",
   "module": "src/index.js",

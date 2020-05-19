@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/select",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Select input component.",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -32,8 +32,8 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/layout": "^0.0.3",
-    "@rent_avail/popover": "^0.0.3",
+    "@rent_avail/layout": "^0.0.4",
+    "@rent_avail/popover": "^0.0.4",
     "@rent_avail/utils": "^0.0.3",
     "react-is": "^16.13.1"
   }

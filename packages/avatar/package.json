@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/avatar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Base styling and theme for Avail Design.",
   "main": "dist/index.js",
   "module": "src/index.js",
