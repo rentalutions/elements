@@ -31,22 +31,32 @@ export default function Home() {
         color="blue_100"
         _hover={{ background: "pink" }}
       >
-        <HeroContainer>
-          <Heading as="h1">Avail Design System</Heading>
-          <Text mt="2rem">
-            Resources, tools, and component patterns for product design at
-            Avail.
-          </Text>
-          <Stack variant="horizontal" mt="2rem">
-            <Link href="/principles">
-              <a>Principles</a>
-            </Link>
-            <a href="https://github.com/rentalutions/elements">Source</a>
-            <Link href="/blog">
-              <a>Blog</a>
-            </Link>
-          </Stack>
-        </HeroContainer>
+        <Container
+          as={Grid}
+          minHeight="calc(100vh - 10rem)"
+          alignContent="center"
+          alignItems="center"
+        >
+          <Col span={[12, 6]}>
+            <Heading as="h1">Avail Design System</Heading>
+            <Text mt="2rem">
+              Resources, tools, and component patterns for product design at
+              Avail.
+            </Text>
+            <Stack row mt="2rem" wrapChildren>
+              <Link href="/principles">
+                <a>Principles</a>
+              </Link>
+              <a href="https://github.com/rentalutions/elements">Source</a>
+              <Link href="/blog">
+                <a>Blog</a>
+              </Link>
+            </Stack>
+          </Col>
+          <Col span={[12, 6]} gridRow={[1, "auto"]}>
+            <Box as="img" src="/images/building.svg" width="100%" />
+          </Col>
+        </Container>
       </Box>
       <Container as={Grid} mt="4rem">
         <SystemSection gridColumn={["1 / -1", "span 6"]}>
@@ -69,15 +79,17 @@ export default function Home() {
             </Text>
           </SystemSection>
         </Link>
-        <SystemSection gridColumn={["1 / -1", "span 6"]}>
-          <Heading as="h4" mb="1rem">
-            Illustrations & Icons
-          </Heading>
-          <Text>
-            Illustrations, icons and guidelines for creating expressive and
-            cohesive images.
-          </Text>
-        </SystemSection>
+        <Link href="/icons">
+          <SystemSection gridColumn={["1 / -1", "span 6"]}>
+            <Heading as="h4" mb="1rem">
+              Illustrations & Icons
+            </Heading>
+            <Text>
+              Illustrations, icons and guidelines for creating expressive and
+              cohesive images.
+            </Text>
+          </SystemSection>
+        </Link>
         <SystemSection gridColumn={["1 / -1", "span 6"]}>
           <Heading as="h4" mb="1rem">
             Presentation Resources
