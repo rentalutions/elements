@@ -66,21 +66,24 @@ function Select({
 }) {
   const inputRef = useRef()
   const listRef = useRef()
-  const [state, dispatch] = useReducer(selectReducer, {
-    ...initialState,
-    selectValue: defaultValue,
-  })
+  const [{ selectValue, inputValue, width, isOpen }, dispatch] = useReducer(
+    selectReducer,
+    {
+      ...initialState,
+      selectValue: defaultValue,
+    }
+  )
   const context = useMemo(
     () => ({
       inputRef,
       listRef,
-      state,
+      state: { selectValue, inputValue, width, isOpen },
       dispatch,
       onSelect,
       id,
       disabled,
     }),
-    [state, dispatch, id, disabled, inputRef, listRef, onSelect]
+    [isOpen, id, disabled, width, onSelect, inputValue]
   )
   return (
     <SelectContext.Provider value={context}>{children}</SelectContext.Provider>

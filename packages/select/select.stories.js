@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react"
+import React, { useState } from "react"
+import { Container } from "@rent_avail/layout"
 import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
 export default { title: "Select" }
@@ -15,8 +16,7 @@ function SelectExample() {
   ]
   const [state, setState] = useState("")
   return (
-    <Fragment>
-      <p>Selected State: {state}</p>
+    <Container mt="4rem">
       <Select id="select-id" onSelect={(value) => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
@@ -27,7 +27,7 @@ function SelectExample() {
           ))}
         </SelectList>
       </Select>
-    </Fragment>
+    </Container>
   )
 }
 
