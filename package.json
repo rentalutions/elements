@@ -9,7 +9,7 @@
     "build:site": "yarn workspace documentation build",
     "changes": "dotenv lerna-changelog",
     "start": "start-storybook -p 8080 -c .storybook",
-    "start:docs": "yarn workspace documentation dev",
+    "start:docs": "yarn workspace @rent_avail/docs dev",
     "update": "lerna version --no-push --no-git-tag-version",
     "test": "jest"
   },

@@ -29,8 +29,8 @@ const types = {
 }
 
 const initialState = {
-  selectValue: "",
-  inputValue: "",
+  value: "",
+  typeAheadQuery: "",
   width: 120,
   isOpen: false,
 }
@@ -40,17 +40,17 @@ function selectReducer(state, action) {
     case types.OPEN_LIST:
       return { ...state, isOpen: true }
     case types.CLOSE_LIST:
-      return { ...state, isOpen: false, inputValue: "" }
+      return { ...state, isOpen: false, typeAheadQuery: "" }
     case types.UPDATE_WIDTH:
       return { ...state, width: action.payload }
     case types.UPDATE_INPUT:
-      return { ...state, inputValue: action.payload, selectValue: "" }
+      return { ...state, typeAheadQuery: action.payload, value: "" }
     case types.SET_VALUE:
       return {
         ...state,
         isOpen: false,
-        selectValue: action.payload,
-        inputValue: "",
+        value: action.payload,
+        typeAheadQuery: "",
       }
     default:
       throw Error(`Unknown action type ${action.type}.`)
@@ -66,24 +66,24 @@ function Select({
 }) {
   const inputRef = useRef()
   const listRef = useRef()
-  const [{ selectValue, inputValue, width, isOpen }, dispatch] = useReducer(
+  const [{ value, typeAheadQuery, width, isOpen }, dispatch] = useReducer(
     selectReducer,
     {
       ...initialState,
-      selectValue: defaultValue,
+      value: defaultValue,
     }
   )
   const context = useMemo(
     () => ({
       inputRef,
       listRef,
-      state: { selectValue, inputValue, width, isOpen },
+      state: { value, typeAheadQuery, width, isOpen },
       dispatch,
       onSelect,
       id,
       disabled,
     }),
-    [isOpen, id, disabled, width, onSelect, inputValue]
+    [isOpen, id, disabled, width, onSelect, typeAheadQuery]
   )
   return (
     <SelectContext.Provider value={context}>{children}</SelectContext.Provider>
@@ -185,7 +185,7 @@ function Input(
   ref
 ) {
   const {
-    state: { inputValue, selectValue, isOpen },
+    state: { typeAheadQuery, value, isOpen, id },
     listRef,
     inputRef,
     dispatch,
@@ -207,14 +207,18 @@ function Input(
       style={style}
       hasError={Boolean(error)}
       isOpen={isOpen}
-      hasValue={inputValue.length || selectValue.length}
+      hasValue={typeAheadQuery.length || value.length}
       searchable
     >
       <input
         {...props}
+        id={id}
         ref={inputRef}
+        aria-expanded={isOpen ? true : undefined}
+        aria-haspopup
+        aria-controls={id}
+        value={typeAheadQuery}
         className="select__input"
-        value={inputValue}
         onChange={wrapEvent(onChange, handleChange)}
         onFocus={wrapEvent(onFocus, handleFocus)}
         onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
@@ -224,7 +228,7 @@ function Input(
         {required && <span className="select__required" />}
       </div>
       {error && <span className="select__error">{error}</span>}
-      {selectValue && <span className="select__value">{selectValue}</span>}
+      {value && <span className="select__value">{value}</span>}
       <ChevronDown className={`select__icon ${isOpen && "icon--is-open"}`} />
     </StyledSelectInput>
   )
@@ -328,7 +332,7 @@ function Item(
   {
     className,
     children,
-    value = "",
+    value: itemValue = "",
     label = "",
     onClick = noop,
     onKeyDown = noop,
@@ -337,7 +341,7 @@ function Item(
   ref
 ) {
   const {
-    state: { currentValue, inputValue },
+    state: { value, typeAheadQuery },
     onSelect,
     dispatch,
   } = useContext(SelectContext)
@@ -358,21 +362,22 @@ function Item(
   useImperativeHandle(ref, () => ({ ...itemRef }))
   useEffect(() => {
     function isFiltered() {
-      const matcher = new RegExp(inputValue, "i")
+      const matcher = new RegExp(typeAheadQuery, "i")
       const search = label || value
-      if (!inputValue.length) return true
+      if (!typeAheadQuery.length) return true
       if (search.match(matcher)) return true
       return false
     }
     setVisibility(isFiltered())
-  }, [inputValue])
+  }, [typeAheadQuery])
   return visibility ? (
     <StyledItem
       {...props}
       ref={itemRef}
-      className={clsx(className, { selected: currentValue === value })}
+      className={clsx(className, { selected: value === itemValue })}
       data-value={value}
       tabIndex="0"
+      role="menuitem"
       onClick={wrapEvent(onClick, selectValue)}
       onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
     >

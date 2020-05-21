@@ -1,7 +1,7 @@
 {
-  "name": "@rent_avail/select",
+  "name": "@rent_avail/skeleton",
   "version": "0.0.4",
-  "description": "Select input component.",
+  "description": "Skeleton component for Avail Design",
   "main": "dist/index.js",
   "module": "src/index.js",
   "files": [
@@ -23,6 +23,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@rent_avail/base": "^0.0.4",
+    "@rent_avail/layout": "^0.0.4",
     "clsx": "^1.1.0",
     "framer-motion": "^1.10.3",
     "polished": "^3.5.1",
@@ -33,8 +34,6 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/layout": "^0.0.4",
-    "@rent_avail/popover": "^0.0.4",
     "@rent_avail/utils": "^0.0.3",
     "react-is": "^16.13.1"
   }

@@ -1,6 +1,6 @@
 {
   "version": "0.0.3",
-  "name": "documentation",
+  "name": "@rent_avail/docs",
   "description": "Documentation site for Avail Design",
   "main": "index.js",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
@@ -52,5 +52,8 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7"
   },
-  "browserslist": "> 0.25%, not dead"
+  "browserslist": "> 0.25%, not dead",
+  "peerDependencies": {
+    "@rent_avail/base": "^0.0.4"
+  }
 }

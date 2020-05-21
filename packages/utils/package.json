@@ -29,6 +29,7 @@
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
+    "@rent_avail/base": "^0.0.4",
     "clsx": "^1.1.0",
     "framer-motion": "^1.10.3",
     "polished": "^3.5.1",
