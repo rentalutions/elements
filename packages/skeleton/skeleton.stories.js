@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Skeleton from "./src"
-import { Container, Card } from "@rent_avail/layout"
+import { Container, Card, Stack } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 
 export default { title: "Skeleton" }
@@ -9,7 +9,7 @@ export function BasicUsage() {
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     const handleLoaded = () => setLoaded(true)
-    setTimeout(handleLoaded, 2000)
+    setTimeout(handleLoaded, 4000)
     return () => clearTimeout(handleLoaded)
   })
   return (
@@ -44,6 +44,17 @@ export function BasicUsage() {
           </Text>
         </Card>
       </Skeleton>
+    </Container>
+  )
+}
+
+export function StandAloneUsage() {
+  return (
+    <Container mt="4rem" as={Stack}>
+      <Skeleton height="4rem" />
+      <Skeleton height="4rem" />
+      <Skeleton height="4rem" />
+      <Skeleton height="4rem" />
     </Container>
   )
 }

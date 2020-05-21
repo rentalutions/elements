@@ -3,12 +3,12 @@ import styled, { keyframes } from "styled-components"
 import { Box } from "@rent_avail/layout"
 import clsx from "clsx"
 
-const bounce = (start, end) => keyframes`
+const bounce = (startColor, endColor) => keyframes`
   from {
-    background: ${start};
+    background: ${startColor};
   }
   to {
-    background: ${end};
+    background: ${endColor};
   }
 `
 
@@ -27,8 +27,8 @@ const SkeletonWrapper = styled(Box)`
     border-radius: 2px;
     pointer-events: none;
     user-select: none;
-    opacity: 0.7;
-    animation: 800ms ease infinite alternate
+    opacity: 0.75;
+    animation: ${({ speed }) => speed}ms ease infinite alternate
       ${({ theme: { colors } }) => bounce(colors.ui_500, colors.ui_300)};
     &::before,
     &::after,
@@ -37,13 +37,16 @@ const SkeletonWrapper = styled(Box)`
     }
   }
   &.fade-in {
-    animation: ${fadeIn} 360ms ease;
+    animation: ${fadeIn} 480ms ease;
   }
 `
 
 function Skeleton({ className, loaded, ...props }, ref) {
   const classes = clsx(className, { "fade-in": loaded })
-  return <SkeletonWrapper {...props} ref={ref} className={classes} />
+  const speed = Math.floor(Math.random() * (1200 - 800 + 1)) + 800
+  return (
+    <SkeletonWrapper {...props} ref={ref} className={classes} speed={speed} />
+  )
 }
 
 export default forwardRef(Skeleton)
