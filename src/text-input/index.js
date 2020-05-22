@@ -8,6 +8,7 @@ const StyledInput = styled.label`
   display: block;
   width: 100%;
   input {
+    -webkit-appearance: none;
     position: relative;
     all: unset;
     display: block;
@@ -31,6 +32,11 @@ const StyledInput = styled.label`
         color: ${colors.blue_500};
       }
     }
+  }
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    -webkit-appearance: none;
   }
   .input__label-row {
     position: absolute;
@@ -159,7 +165,7 @@ function TextInput(
         "field--is-required": required,
         "field--has-icon": !!Icon,
         "field--is-date": isDate,
-        disabled,
+        disabled
       })}
       style={style}
     >
