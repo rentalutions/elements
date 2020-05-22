@@ -160,4 +160,15 @@ export default createGlobalStyle`
   pre, code {
     font-family: ${({ theme }) => theme.fonts.monospace};
   }
+  .no-sizing {
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+  }
 `
