@@ -1,11 +1,9 @@
 import React, { forwardRef, Children, cloneElement } from "react"
 import styled from "styled-components"
-import { color, grid, flexbox, space, layout } from "styled-system"
+import { color, grid, flexbox, space, layout, border } from "styled-system"
 
 const Grid = styled.section.attrs(({ columns, gridTemplateColumns }) => ({
-  gridTemplateColumns: columns
-    ? `repeat(${columns}, 1fr)`
-    : gridTemplateColumns,
+  gridTemplateColumns: columns ? `repeat(${columns}, 1fr)` : gridTemplateColumns
 }))`
   display: grid;
   ${grid};
@@ -13,11 +11,12 @@ const Grid = styled.section.attrs(({ columns, gridTemplateColumns }) => ({
   ${space};
   ${layout};
   ${color};
+  ${border};
 `
 
 Grid.defaultProps = {
   gridTemplateColumns: "repeat(12, 1fr)",
-  gridGap: "2rem",
+  gridGap: "2rem"
 }
 
 const Col = styled.div.attrs(
@@ -27,7 +26,7 @@ const Col = styled.div.attrs(
     gridColumn,
     gridRow,
     offset = [],
-    offsetRow = [],
+    offsetRow = []
   }) => {
     const columnArray = [...span].map(
       (span, idx) =>
@@ -35,16 +34,16 @@ const Col = styled.div.attrs(
     )
     const rowArray = [...spanRow].map(
       (spanRow, idx) =>
-        `${
-          offsetRow[idx] || offsetRow[offsetRow.length - 1] || "auto"
-        } / span ${spanRow}`
+        `${offsetRow[idx] ||
+          offsetRow[offsetRow.length - 1] ||
+          "auto"} / span ${spanRow}`
     )
     const columns = span.length ? columnArray : gridColumn
 
     const rows = spanRow.length ? rowArray : gridRow
     return {
       gridColumn: columns,
-      gridRow: rows,
+      gridRow: rows
     }
   }
 )`
@@ -57,7 +56,7 @@ const Col = styled.div.attrs(
 `
 
 Col.defaultProps = {
-  gridColumn: "1 / -1",
+  gridColumn: "1 / -1"
 }
 
 export { Grid, Col }
