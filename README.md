@@ -22,10 +22,7 @@ Current release process, it's kind of involved, but github actions does most of 
 # First run a build and make sure everything compiles, and run tests to make sure all are passing
 yarn build && yarn test
 
-# Generate a changelog for the release.
-yarn changes
-
-# Create a new version of the package(s) that you worked on and git tag locally.
+# Create a new version of the packages worked on, git tag, and create a CHANGELOG for those package.
 yarn update
 
 # If everything looks kosher, push to Github.
