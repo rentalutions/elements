@@ -34,7 +34,7 @@
     "framer-motion": "^1.10.3",
     "next": "^9.3.4",
     "next-compose-plugins": "^2.2.0",
-    "next-mdx-enhanced": "^2.4.0",
+    "next-mdx-enhanced": "^3.0.0",
     "next-transpile-modules": "^3.3.0",
     "polished": "^3.5.2",
     "prism-react-renderer": "^1.0.2",
