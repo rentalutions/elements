@@ -1,10 +1,22 @@
-import React, { forwardRef, Children, cloneElement } from "react"
 import styled from "styled-components"
-import { color, grid, flexbox, space, layout, border } from "styled-system"
+import {
+  color,
+  grid,
+  flexbox,
+  space,
+  layout,
+  border,
+  background,
+} from "styled-system"
 
-const Grid = styled.section.attrs(({ columns, gridTemplateColumns }) => ({
-  gridTemplateColumns: columns ? `repeat(${columns}, 1fr)` : gridTemplateColumns
-}))`
+const Grid = styled.section.attrs(
+  ({ columns, gridTemplateColumns, gap, gridGap }) => ({
+    gridGap: gap ? gap : gridGap,
+    gridTemplateColumns: columns
+      ? `repeat(${columns}, 1fr)`
+      : gridTemplateColumns,
+  })
+)`
   display: grid;
   ${grid};
   ${flexbox};
@@ -16,34 +28,32 @@ const Grid = styled.section.attrs(({ columns, gridTemplateColumns }) => ({
 
 Grid.defaultProps = {
   gridTemplateColumns: "repeat(12, 1fr)",
-  gridGap: "2rem"
+  gridGap: "2rem",
+}
+
+function getSpan(span, offset) {
+  const spanArr = Array.isArray(span) ? span : [span]
+  const offsetArr = Array.isArray(offset) ? offset : [offset]
+  return spanArr.map((span, idx) => {
+    const start = offsetArr[idx] || offsetArr[offsetArr.length - 1] || "auto"
+    return `${start} / span ${span}`
+  })
 }
 
 const Col = styled.div.attrs(
   ({
-    span = [],
-    spanRow = [],
+    span = null,
+    spanRow = null,
     gridColumn,
     gridRow,
-    offset = [],
-    offsetRow = []
+    offset = null,
+    offsetRow = null,
   }) => {
-    const columnArray = [...span].map(
-      (span, idx) =>
-        `${offset[idx] || offset[offset.length - 1] || "auto"} / span ${span}`
-    )
-    const rowArray = [...spanRow].map(
-      (spanRow, idx) =>
-        `${offsetRow[idx] ||
-          offsetRow[offsetRow.length - 1] ||
-          "auto"} / span ${spanRow}`
-    )
-    const columns = span.length ? columnArray : gridColumn
-
-    const rows = spanRow.length ? rowArray : gridRow
+    const columns = span ? getSpan(span, offset) : gridColumn
+    const rows = spanRow ? getSpan(spanRow, offsetRow) : gridRow
     return {
       gridColumn: columns,
-      gridRow: rows
+      gridRow: rows,
     }
   }
 )`
@@ -53,10 +63,12 @@ const Col = styled.div.attrs(
   ${space};
   ${layout};
   ${color};
+  ${background};
+  ${border};
 `
 
 Col.defaultProps = {
-  gridColumn: "1 / -1"
+  gridColumn: "1 / -1",
 }
 
 export { Grid, Col }
