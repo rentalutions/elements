@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Utility functions.",
   "main": "dist/index.js",
   "module": "src/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/input",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Input components",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -33,7 +33,7 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/utils": "^0.0.3",
+    "@rent_avail/utils": "^0.0.4",
     "@styled-system/props": "^5.1.5",
     "react-is": "^16.13.1"
   }
