@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Heading } from "@rent_avail/typography"
 import { Container } from "@rent_avail/layout"
 import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
@@ -12,12 +13,13 @@ function SelectExample() {
     { label: "Arkansas", value: "AR" },
     { label: "California", value: "CA" },
     { label: "Colorado", value: "CO" },
-    { label: "Connecticut", value: "CT" },
+    { label: "Connecticut", value: "CT" }
   ]
   const [state, setState] = useState("")
   return (
     <Container mt="4rem">
-      <Select id="select-id" onSelect={(value) => setState(value)}>
+      <Heading mb="2rem">{state || "Select a value"}</Heading>
+      <Select id="select-id" onSelect={value => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
