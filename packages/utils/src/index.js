@@ -72,6 +72,23 @@ export function useIntersection({
   return [target, result]
 }
 
+export function usePortalTarget() {
+  if (typeof window === "undefined") return null // bail on server render.
+  const modalContainer = document.getElementById("modal-root")
+  const rootElement = useRef(modalContainer)
+  if (!rootElement.current) {
+    rootElement.current = document.createElement("aside")
+    rootElement.current.setAttribute("id", "modal-root")
+  }
+  useEffect(() => {
+    document.body.appendChild(rootElement.current)
+    return () => {
+      document.body.removeChild(rootElement.current)
+    }
+  }, [rootElement.current])
+  return rootElement.current
+}
+
 export function usePortal() {
   if (typeof window === "undefined") return null // bail on server render.
   const modalContainer = document.getElementById("modal-root")
@@ -167,10 +184,10 @@ export function useDates(startDate = new Date()) {
   }
 
   useEffect(() => {
-    let canceled = false
-    if (!canceled) getDates(state.year, state.month)
+    let mounted = true
+    if (mounted) getDates(state.year, state.month)
     return () => {
-      canceled = true
+      mounted = false
     }
   }, [])
   return {
