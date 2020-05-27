@@ -1,8 +1,8 @@
 name: Publish Package
 
 on:
-  release:
-    types: [published]
+  push:
+    branch: [master]
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: 12
+          node-version: 13
           registry-url: https://registry.npmjs.org/
       - run: yarn install --frozen-lockfile
       - run: yarn lerna publish from-package --yes
