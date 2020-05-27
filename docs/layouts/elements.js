@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Link from "next/link"
 import { Container, Box, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-import { frontMatter as packages } from "../pages/packages/**/*.mdx"
+import { frontMatter as packages } from "../pages/packages/*.mdx"
 
 const formatPath = path =>
   path.replace(/(index|\.mdx$|\/$)/gi, "").replace(/\/$/, "")
