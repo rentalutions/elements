@@ -3,6 +3,9 @@ module.exports = {
   plugins: [
     "import-glob-array",
     ["styled-components", { ssr: true }],
-    ["module-resolver", { alias: { components: "./components" } }],
+    [
+      "module-resolver",
+      { alias: { components: "./components", utils: "./utils.js" } },
+    ],
   ],
 }

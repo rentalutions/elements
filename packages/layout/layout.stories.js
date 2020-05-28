@@ -75,11 +75,21 @@ export function GridUsage() {
     [12, 4],
     [12, 4],
   ]
+  const styles = {
+    bg: "ui_500",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }
   return (
-    <Grid height="calc(100vh - 4rem)">
-      <Col bg="ui_500" span={[12, 6]} spanRow={["auto", 2]} />
-      {columns.map((span) => (
-        <Col bg="ui_500" span={span} />
+    <Grid height="100vh">
+      <Col {...styles} span={[12, 6]} spanRow={["auto", 2]}>
+        1
+      </Col>
+      {columns.map((span, idx) => (
+        <Col {...styles} span={span}>
+          {idx + 2}
+        </Col>
       ))}
     </Grid>
   )
