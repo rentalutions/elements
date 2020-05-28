@@ -7,6 +7,17 @@ import { formatPath } from "utils"
 import { PageWrapper, Main, Sidebar } from "components/Layout"
 
 export default function BrandLayout(pageMatter) {
+  const order = [
+    "Foundations",
+    "Design ethos",
+    "Voice and tone",
+    "Color usage",
+    "Typography",
+    "Logo usage",
+  ]
+  const sortedPages = brandPages.sort((a, b) => {
+    return order.indexOf(a.title) - order.indexOf(b.title)
+  })
   return ({ children: content }) => {
     return (
       <PageWrapper>
@@ -17,7 +28,7 @@ export default function BrandLayout(pageMatter) {
                 <a>Home</a>
               </Link>
             </Box>
-            {brandPages.map((page) => (
+            {sortedPages.map((page) => (
               <Box key={page.__resourcePath} as="li">
                 <Link href={`/${formatPath(page.__resourcePath)}`}>
                   <a>{page.title}</a>
