@@ -91,6 +91,7 @@ export default {
       }}
     />
   ),
+  ul: (props) => <Box {...props} as="ul" ml="2rem" />,
   ol: (props) => <Box {...props} as="ol" ml="2rem" />,
   li: (props) => <Box {...props} as="li" mt="1rem" />,
   hr: (props) => (
