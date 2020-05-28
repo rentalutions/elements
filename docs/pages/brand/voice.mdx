@@ -9,13 +9,13 @@ import { Grid, Col } from "@rent_avail/layout"
 export function LangExample({ accept, reject }) {
   return (
     <Grid mt="2rem">
-      <Col span={6} color="green_700">
+      <Col span={[6]} color="green_700">
         <Heading as="h5" mb="1rem">
           Do
         </Heading>
         {accept}
       </Col>
-      <Col span={6} color="red_500">
+      <Col span={[6]} color="red_500">
         <Heading as="h5" mb="1rem">
           Don't
         </Heading>
