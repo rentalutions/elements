@@ -1,42 +1,11 @@
-import { Fragment } from "react"
+import React from "react"
 import styled from "styled-components"
 import Link from "next/link"
-import { Container, Box, Grid, Col } from "@rent_avail/layout"
+import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 import { frontMatter as packages } from "../pages/packages/**/*.mdx"
-
-const formatPath = path =>
-  path.replace(/(index|\.mdx$|\/$)/gi, "").replace(/\/$/, "")
-
-const PageWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 25rem auto;
-  min-height: 100vh;
-`
-
-const Main = styled.main`
-  height: 100vh;
-  overflow-y: auto;
-`
-
-const Sidebar = styled.aside`
-  background: ${({ theme }) => theme.colors.ui_300};
-  height: 100vh;
-  overflow-y: auto;
-  padding: 2rem;
-  ul {
-    list-style: none;
-  }
-  ul li {
-    margin-bottom: 1rem;
-  }
-  ul li a {
-    color: ${({ theme }) => theme.colors.blue_500};
-    &:hover {
-      color: ${({ theme }) => theme.colors.blue_300};
-    }
-  }
-`
+import { formatPath } from "utils"
+import { PageWrapper, Main, Sidebar } from "components/Layout"
 
 const PackageInfoWrapper = styled(Box)`
   .grid {
@@ -71,8 +40,8 @@ function PackageInfo({ info: { source, title, install } }) {
   )
 }
 
-export default pageMatter => {
-  const order = packages.sort(curr => {
+export default (pageMatter) => {
+  const orderedPackages = packages.sort((curr) => {
     const path = formatPath(curr.__resourcePath)
     return path === "packages" ? -1 : 0
   })
@@ -91,15 +60,15 @@ export default pageMatter => {
           <Heading as="h4" mb="2rem" color="ui_700">
             Packages
           </Heading>
-          <ul>
-            {order.map(item => (
-              <li key={item.__resourcePath}>
+          <Stack as="ul" spacing="1rem">
+            {orderedPackages.map((item) => (
+              <Box as="li" key={item.__resourcePath}>
                 <Link href={`/${formatPath(item.__resourcePath)}`}>
                   <a>{item.title}</a>
                 </Link>
-              </li>
+              </Box>
             ))}
-          </ul>
+          </Stack>
         </Sidebar>
         <Main>
           <Container my="4rem">

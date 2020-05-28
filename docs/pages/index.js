@@ -44,7 +44,7 @@ export default function Home() {
               Avail.
             </Text>
             <Stack row mt="2rem" wrapChildren>
-              <Link href="/principles">
+              <Link href="/brand/principles">
                 <a>Principles</a>
               </Link>
               <a href="https://github.com/rentalutions/elements">Source</a>
@@ -59,15 +59,17 @@ export default function Home() {
         </Container>
       </Box>
       <Container as={Grid} mt="4rem">
-        <SystemSection gridColumn={["1 / -1", "span 6"]}>
-          <Heading as="h4" mb="1rem">
-            Brand Guidelines
-          </Heading>
-          <Text>
-            Foundations, writing style, color, type, and personality of our
-            brand.
-          </Text>
-        </SystemSection>
+        <Link href="/brand">
+          <SystemSection gridColumn={["1 / -1", "span 6"]}>
+            <Heading as="h4" mb="1rem">
+              Brand Guidelines
+            </Heading>
+            <Text>
+              Foundations, writing style, color, type, and personality of our
+              brand.
+            </Text>
+          </SystemSection>
+        </Link>
         <Link href="/packages">
           <SystemSection gridColumn={["1 / -1", "span 6"]}>
             <Heading as="h4" mb="1rem">
