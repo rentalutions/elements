@@ -21,22 +21,7 @@ export default function BrandLayout(pageMatter) {
   return ({ children: content }) => {
     return (
       <PageWrapper>
-        <Sidebar>
-          <Stack as="ul">
-            <Box as="li">
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </Box>
-            {sortedPages.map((page) => (
-              <Box key={page.__resourcePath} as="li">
-                <Link href={`/${formatPath(page.__resourcePath)}`}>
-                  <a>{page.title}</a>
-                </Link>
-              </Box>
-            ))}
-          </Stack>
-        </Sidebar>
+        <Sidebar pages={sortedPages} />
         <Main>
           <Container my="4rem">{content}</Container>
         </Main>

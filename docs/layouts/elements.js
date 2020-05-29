@@ -49,27 +49,7 @@ export default (pageMatter) => {
     const packageInfo = pageMatter.source
     return (
       <PageWrapper>
-        <Sidebar>
-          <Box mb="2rem">
-            <Link href="/">
-              <Text color="blue_500" as="a">
-                Home
-              </Text>
-            </Link>
-          </Box>
-          <Heading as="h4" mb="2rem" color="ui_700">
-            Packages
-          </Heading>
-          <Stack as="ul" spacing="1rem">
-            {orderedPackages.map((item) => (
-              <Box as="li" key={item.__resourcePath}>
-                <Link href={`/${formatPath(item.__resourcePath)}`}>
-                  <a>{item.title}</a>
-                </Link>
-              </Box>
-            ))}
-          </Stack>
-        </Sidebar>
+        <Sidebar pages={orderedPackages} />
         <Main>
           <Container my="4rem">
             {packageInfo && <PackageInfo info={pageMatter} />}
