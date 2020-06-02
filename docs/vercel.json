@@ -1,6 +1,7 @@
 {
   "version": 2,
   "public": false,
+  "scope": "rent-avail",
   "github": {
     "enabled": false
   }
