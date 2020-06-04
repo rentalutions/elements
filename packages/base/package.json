@@ -3,7 +3,6 @@
   "version": "0.0.5",
   "description": "Base styling and theme for Avail Design.",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
     "dist"
   ],

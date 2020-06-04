@@ -3,10 +3,8 @@
   "version": "0.0.3",
   "description": "Feedback components.",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory' && exit 1",
