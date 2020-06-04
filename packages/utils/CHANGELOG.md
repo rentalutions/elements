@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.0.3...@rent_avail/utils@0.1.0) (2020-06-04)
+
+
+### Features
+
+* **utils:** rename usePortal ([c8085ac](https://github.com/rentalutions/elements/commit/c8085ac7a43d71a37da98210b95a85711ebe4138))
+* add convential commits changelog ([1216381](https://github.com/rentalutions/elements/commit/1216381d4e1bb8eb8dea4a2293a8bb84662195a9))
+
+
+
+
+
 ## [0.0.4](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.0.3...@rent_avail/utils@0.0.4) (2020-05-27)
 
 **Note:** Version bump only for package @rent_avail/utils
