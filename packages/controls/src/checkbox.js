@@ -86,7 +86,7 @@ function Checkbox(
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <polyline points="20 6 9 17 4 12" />
+        <path d="M4 12L9 17L20 6" />
       </svg>
       {children && <span className="label">{children}</span>}
     </StyledCheckbox>
