@@ -11,7 +11,7 @@ import {
 
 const Grid = styled.section.attrs(
   ({ columns, gridTemplateColumns, gap, gridGap }) => ({
-    gridGap: gap ? gap : gridGap,
+    gridGap: gap || gridGap,
     gridTemplateColumns: columns
       ? `repeat(${columns}, 1fr)`
       : gridTemplateColumns,

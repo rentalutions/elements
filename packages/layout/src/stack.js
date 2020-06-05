@@ -8,13 +8,19 @@ import Box from "./box"
 import Flex from "./flex"
 
 function Stack(
-  { children, row = false, spacing = "2rem", wrapChildren = false, ...props },
+  {
+    children,
+    direction = ["column"],
+    spacing = "2rem",
+    wrapChildren = false,
+    ...props
+  },
   ref
 ) {
   const validChildren = Children.toArray(children).filter(isValidElement)
   const spaceProps = row ? { mr: spacing } : { mb: spacing }
   return (
-    <Flex {...props} flexDirection={row ? "row" : "column"} ref={ref}>
+    <Flex {...props} flexDirection={direction} ref={ref}>
       {validChildren.map((child, idx) => {
         if (wrapChildren)
           return (
