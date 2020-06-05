@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/controls",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Selection control components.",
   "main": "dist/index.js",
   "files": [
