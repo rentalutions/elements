@@ -18,7 +18,10 @@ function Stack(
   ref
 ) {
   const validChildren = Children.toArray(children).filter(isValidElement)
-  const spaceProps = row ? { mr: spacing } : { mb: spacing }
+  const marginRight = direction.map((dir) => (dir === "column" ? "0" : spacing))
+  const marginBottom = direction.map((dir) =>
+    dir === "column" ? spacing : "0"
+  )
   return (
     <Flex {...props} flexDirection={direction} ref={ref}>
       {validChildren.map((child, idx) => {
@@ -27,12 +30,17 @@ function Stack(
             <Box
               display="inline-block"
               key={`stack-item-${idx}`}
-              {...spaceProps}
+              mr={marginRight}
+              mb={marginBottom}
             >
               {child}
             </Box>
           )
-        return cloneElement(child, { key: `stack-item-${idx}`, ...spaceProps })
+        return cloneElement(child, {
+          key: `stack-item-${idx}`,
+          mr: marginRight,
+          mb: marginBottom,
+        })
       })}
     </Flex>
   )
