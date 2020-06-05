@@ -14,6 +14,32 @@ To suggest a component be added to the library open an issue and spec out the co
 
 To finish, create a pull request that solves the issue. At least one commit in the PR should be `resolves #[ISSUE_NUMER]`, this will auto-close the issue when the PR is merged into master.
 
+### Conventional Commits
+
+This system uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to tag and track updates. This method automatically creates and updates changelogs for each package based on the name of a commit. The basis of this is that the commit message should contain the following structure.
+
+```bash
+<type>([optional scope]): <description>
+
+[optional body]
+
+[optional footers]
+```
+
+**Available types for commits**
+
+- build
+- ci
+- chore
+- docs
+- feat
+- fix
+- perf
+- refactor
+- revert
+- style
+- test
+
 ## Releases
 
 Current release process, it's kind of involved, but github actions does most of the heavy lifting and it creates a nice release cadence. These scripts assume you're already on the `master` branch. If you're on a feature branch, create a pull request to merge your code.
@@ -23,10 +49,8 @@ Current release process, it's kind of involved, but github actions does most of 
 yarn build && yarn test
 
 # Create a new version of the packages worked on, git tag, and create a CHANGELOG for those package.
-yarn update
+yarn update [patch|minor|major]
 
 # If everything looks kosher, push to Github.
 git push origin master --follow-tags
 ```
-
-Paste the changelog into the release created by the tag and publish it. A github action should run to build the tag and publish to npm.
