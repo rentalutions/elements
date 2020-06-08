@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": { "node": "current" } }],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    ["styled-components", { "ssr": true }],
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-proposal-optional-chaining"
+  ]
+}

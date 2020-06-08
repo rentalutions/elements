@@ -26,7 +26,7 @@ export function BoxUsage() {
 export function StackUsage() {
   return (
     <Fragment>
-      <Stack row variant="horizontal" style={{ background: "blue" }}>
+      <Stack direction={["column", "row"]} style={{ background: "blue" }}>
         <Box p="2rem" bg="blue_100">
           content
         </Box>

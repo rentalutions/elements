@@ -1,12 +1,10 @@
 {
   "name": "@rent_avail/dialog",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Dialog components.",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
@@ -33,7 +31,7 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/utils": "^0.0.4",
+    "@rent_avail/utils": "^0.1.0",
     "react-is": "^16.13.1"
   }
 }

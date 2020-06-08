@@ -8,25 +8,39 @@ import Box from "./box"
 import Flex from "./flex"
 
 function Stack(
-  { children, row = false, spacing = "2rem", wrapChildren = false, ...props },
+  {
+    children,
+    direction = ["column"],
+    spacing = "2rem",
+    wrapChildren = false,
+    ...props
+  },
   ref
 ) {
   const validChildren = Children.toArray(children).filter(isValidElement)
-  const spaceProps = row ? { mr: spacing } : { mb: spacing }
+  const marginRight = direction.map((dir) => (dir === "column" ? "0" : spacing))
+  const marginBottom = direction.map((dir) =>
+    dir === "column" ? spacing : "0"
+  )
   return (
-    <Flex {...props} flexDirection={row ? "row" : "column"} ref={ref}>
+    <Flex {...props} flexDirection={direction} ref={ref}>
       {validChildren.map((child, idx) => {
         if (wrapChildren)
           return (
             <Box
               display="inline-block"
               key={`stack-item-${idx}`}
-              {...spaceProps}
+              mr={marginRight}
+              mb={marginBottom}
             >
               {child}
             </Box>
           )
-        return cloneElement(child, { key: `stack-item-${idx}`, ...spaceProps })
+        return cloneElement(child, {
+          key: `stack-item-${idx}`,
+          mr: marginRight,
+          mb: marginBottom,
+        })
       })}
     </Flex>
   )
