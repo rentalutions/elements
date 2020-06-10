@@ -15,6 +15,7 @@ import Input from "@rent_avail/input"
 import { Menu, MenuTarget, MenuList, MenuItem } from "@rent_avail/menu"
 import { FixedProgress, FluidProgress } from "@rent_avail/progress"
 import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
+import { FullscreenFeedback, InlineFeedback } from "@rent_avail/feedback"
 import CodeBlock from "components/CodeBlock"
 
 const Th = styled(Box)`
@@ -88,6 +89,8 @@ export default {
         SelectInput,
         SelectList,
         SelectItem,
+        FullscreenFeedback,
+        InlineFeedback,
       }}
     />
   ),

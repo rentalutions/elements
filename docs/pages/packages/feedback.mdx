@@ -1,0 +1,75 @@
+---
+title: Feedback
+layout: elements
+package_name: feedback
+install: "yarn add @rent_avail/feedback"
+source: "https://github.com/rentalutions/elements/tree/master/packages/feedback"
+---
+
+```js
+import { FullscreenFeedback, InlineFeedback } from "@rent_avail/feedback"
+```
+
+This package contains elements to provide users with feedback to showcase value that the product is delivering.
+
+## InlineFeedback
+
+#### Style Props
+
+`space, flexbox, layout, grid`
+
+#### Props
+
+| name  | type  | description                                                                                                                       |
+| ----- | ----- | --------------------------------------------------------------------------------------------------------------------------------- |
+| steps | array | An array of steps to animate, each step should be a string that tells the user a little about what's happening behind the scenes. |
+
+#### Usage
+
+```jsx live
+function FeedbackElement() {
+  return (
+    <InlineFeedback
+      steps={["Verifying Phone", "Generating Device Data", "Securing Account"]}
+    />
+  )
+}
+```
+
+## FullscreenFeedback
+
+#### Style Props
+
+`n/a`
+
+#### Props
+
+| name           | type     | description                                                                   |
+| -------------- | -------- | ----------------------------------------------------------------------------- |
+| open           | boolean  | Determines whether the feedback is shown to the user.                         |
+| steps          | array    | Array of strings that tell the user about what is going on behind the scenes. |
+| open           | boolean  | Final message displayed to the user when the animation finishes.              |
+| onAnimationEnd | function | Callback function that fires when the animation is finished.                  |
+
+#### Usage
+
+```jsx live
+function FeedbackElement() {
+  const [open, setOpen] = useState(false)
+  return (
+    <Fragment>
+      <Button onClick={e => setOpen(true)}>get feedback</Button>
+      <FullscreenFeedback
+        open={open}
+        steps={[
+          "Checking clauses against local laws",
+          "Verifying contact info",
+          "Sending document"
+        ]}
+        successMessage="Lease Sent for Signing"
+        onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
+      />
+    </Fragment>
+  )
+}
+```

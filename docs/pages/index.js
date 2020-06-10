@@ -43,7 +43,7 @@ export default function Home() {
               Resources, tools, and component patterns for product design at
               Avail.
             </Text>
-            <Stack row mt="2rem" wrapChildren>
+            <Stack direction={["row"]} mt="2rem" wrapChildren>
               <Link href="/brand/principles">
                 <a>Principles</a>
               </Link>
