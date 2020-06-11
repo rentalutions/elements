@@ -25,6 +25,6 @@ const transpile = withTranspile([
   "@rent_avail/utils",
 ])
 
-module.exports = compose([mdx, transpile], {
+module.exports = compose([mdx], {
   pageExtensions: ["mdx", "js"],
 })
