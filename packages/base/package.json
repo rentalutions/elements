@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Base styling and theme for Avail Design.",
   "main": "dist/index.js",
   "files": [
@@ -30,7 +30,7 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/utils": "^0.1.0",
+    "@rent_avail/utils": "^0.1.1",
     "react-is": "^16.13.1"
   }
 }
