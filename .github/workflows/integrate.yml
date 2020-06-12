@@ -7,10 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
       with:
-        node-version: 12
+        node-version: 13
     - run: yarn install --frozen-lockfile
-    - run: yarn lerna run build --ignore documentation
+    - run: yarn lerna run build --ignore @rent_avail/docs
     - run: yarn test
