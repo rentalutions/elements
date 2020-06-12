@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/rentalutions/elements/compare/@rent_avail/layout@0.1.2...@rent_avail/layout@0.1.3) (2020-06-12)
+
+
+### Bug Fixes
+
+* restore the module entry ([2812e2f](https://github.com/rentalutions/elements/commit/2812e2f5d71068ce37a8511d9b8c527b5d63efae))
+
+
+
+
+
 ## [0.1.2](https://github.com/rentalutions/elements/compare/@rent_avail/layout@0.1.1...@rent_avail/layout@0.1.2) (2020-06-11)
 
 **Note:** Version bump only for package @rent_avail/layout
