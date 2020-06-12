@@ -5,7 +5,7 @@ module.exports = {
     ["styled-components", { ssr: true }],
     [
       "module-resolver",
-      { alias: { components: "./components", utils: "./utils.js" } },
-    ],
-  ],
+      { alias: { components: "./components", utils: "./utils.js" } }
+    ]
+  ]
 }

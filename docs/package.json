@@ -48,6 +48,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.1",
     "babel-plugin-import-glob-array": "^0.2.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7"
