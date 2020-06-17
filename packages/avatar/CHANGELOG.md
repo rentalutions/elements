@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.1.2...@rent_avail/avatar@0.1.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* remove untranspiled module field ([24056f4](https://github.com/rentalutions/elements/commit/24056f4dcc4ab05fc8d0c604a0630d7b3a8aca3c))
+
+
+
+
+
 ## [0.1.2](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.1.1...@rent_avail/avatar@0.1.2) (2020-06-12)
 
 
