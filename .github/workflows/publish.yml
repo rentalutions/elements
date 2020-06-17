@@ -19,6 +19,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    steps:
       - run: yarn lerna publish from-package --yes
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
