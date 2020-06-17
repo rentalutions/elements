@@ -3,10 +3,8 @@
   "version": "0.1.2",
   "description": "Utility functions.",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
@@ -23,17 +21,14 @@
   "dependencies": {
     "calendar-dates": "^2.6.1",
     "intersection-observer": "^0.7.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-is": "^16.13.1",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
-    "@rent_avail/base": "^0.0.4",
-    "clsx": "^1.1.0",
-    "framer-motion": "^1.10.3",
-    "polished": "^3.5.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@rent_avail/base": "0.X",
+    "clsx": "1.X",
+    "framer-motion": "1.X",
+    "polished": "3.X",
+    "react": "16.X",
+    "react-dom": "16.X"
   }
 }
