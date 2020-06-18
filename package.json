@@ -6,7 +6,7 @@
   "scripts": {
     "build": "lerna run build --stream --ignore @rent_avail/docs",
     "build:changed": "lerna run build --since origin/master",
-    "build:site": "yarn workspace @rent_avail/docs build",
+    "build:docs": "yarn workspace @rent_avail/docs build",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace @rent_avail/docs dev",
     "update": "lerna version --no-push --no-private",
