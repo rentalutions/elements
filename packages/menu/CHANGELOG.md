@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.1.2...@rent_avail/menu@0.1.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* remove untranspiled module field ([24056f4](https://github.com/rentalutions/elements/commit/24056f4dcc4ab05fc8d0c604a0630d7b3a8aca3c))
+
+
+
+
+
+## [0.1.2](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.1.1...@rent_avail/menu@0.1.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* restore the module entry ([2812e2f](https://github.com/rentalutions/elements/commit/2812e2f5d71068ce37a8511d9b8c527b5d63efae))
+
+
+
+
+
+## [0.1.1](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.1.0...@rent_avail/menu@0.1.1) (2020-06-11)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
 # [0.1.0](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.0.4...@rent_avail/menu@0.1.0) (2020-06-04)
 
 
