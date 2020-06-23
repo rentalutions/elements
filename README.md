@@ -16,7 +16,7 @@ To finish, create a pull request that solves the issue. At least one commit in t
 
 ### Conventional Commits
 
-This system uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to tag and track updates. This method automatically creates and updates changelogs for each package based on the name of a commit. The basis of this is that the commit message should contain the following structure.
+This system uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to tag and track updates. This method automatically creates and updates change logs for each package based on the name of a commit. The basis of this is that the commit message should contain the following structure.
 
 ```bash
 <type>([optional scope]): <description>
@@ -26,19 +26,9 @@ This system uses [conventional commits](https://www.conventionalcommits.org/en/v
 [optional footers]
 ```
 
-**Available types for commits**
+**Commit Types**
 
-- build
-- ci
-- chore
-- docs
-- feat
-- fix
-- perf
-- refactor
-- revert
-- style
-- test
+`build`, `ci`, `chore`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`
 
 ## Releases
 
@@ -49,7 +39,7 @@ Current release process, it's kind of involved, but github actions does most of 
 yarn build && yarn test
 
 # Create a new version of the packages worked on, git tag, and create a CHANGELOG for those package.
-yarn update [patch|minor|major]
+yarn update
 
 # If everything looks kosher, push to Github.
 git push origin release --follow-tags
