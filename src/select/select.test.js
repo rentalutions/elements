@@ -6,7 +6,7 @@ describe("<Select />", () => {
   it("Should render without crashing", () => {
     const { container, getByTestId } = render(
       <Select id="select-id">
-        <SelectInput data-testid="select-input" />
+        <SelectInput data-testid="select-input" search />
         <SelectList>
           <SelectItem>Hello Item</SelectItem>
         </SelectList>
@@ -20,6 +20,5 @@ describe("<Select />", () => {
     // fireEvent.focus(input)
 
     // expect(input).toHaveFocus()
-
   })
 })
