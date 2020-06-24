@@ -87,21 +87,25 @@ const iconTransform = css`
 const StyledSelectInput = styled.label`
   position: relative;
   display: block;
+  padding: 3rem 2rem 1rem 2rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${({ hasError, hasValue, isOpen }) => {
+    if (hasError) return colors.red_500
+    if (hasValue || isOpen) return colors.blue_500
+    return colors.ui_500
+  }};
+  border-radius: 0.25rem;
+  width: 100%;
+  transition: 100ms;
+  height: 6.5rem;
   .select__input {
     all: unset;
+    position: absolute;
+    left: 2rem;
+    top: 3rem;
+    display: block;
     box-sizing: border-box;
-    padding: 3rem 2rem 1rem 2rem;
-    border-width: 2px;
-    border-style: solid;
-    border-color: ${({ hasError, hasValue, isOpen }) => {
-      if (hasError) return colors.red_500
-      if (hasValue || isOpen) return colors.blue_500
-      return colors.ui_500
-    }};
-    border-radius: 0.25rem;
-    width: 100%;
-    transition: 100ms;
-    height: 6.5rem;
   }
   .select__value,
   .select__label-row,
@@ -162,7 +166,7 @@ function Input(
     onKeyDown = noop,
     label,
     required,
-    search = true,
+    search = false,
     error = null,
     style,
     ...props
@@ -188,22 +192,27 @@ function Input(
   useImperativeHandle(ref, () => ({ ...inputRef }))
   return (
     <StyledSelectInput
+      ref={inputRef}
+      tabIndex="0"
       className={className}
       style={style}
       hasError={Boolean(error)}
       isOpen={isOpen}
       hasValue={inputValue.length || selectValue.length}
       searchable
+      onFocus={wrapEvent(onFocus, handleFocus)}
+      onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
     >
-      <input
-        {...props}
-        ref={inputRef}
-        className="select__input"
-        value={inputValue}
-        onChange={wrapEvent(onChange, handleChange)}
-        onFocus={wrapEvent(onFocus, handleFocus)}
-        onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
-      />
+      {search && (
+        <input
+          {...props}
+          className="select__input"
+          value={inputValue}
+          onChange={wrapEvent(onChange, handleChange)}
+          // onFocus={wrapEvent(onFocus, handleFocus)}
+          // onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
+        />
+      )}
       <div className="select__label-row">
         <span className="select__label">{label}</span>
         {required && <span className="select__required" />}
