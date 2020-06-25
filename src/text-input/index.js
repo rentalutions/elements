@@ -75,6 +75,9 @@ const StyledInput = styled.label`
     color: ${colors.red_500};
     font-size: 1.334rem;
     line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &.field--has-icon {
     input {
@@ -183,7 +186,7 @@ function TextInput(
         <span className="input__label">{label}</span>
         {required && <span className="input__required" />}
       </div>
-      {error && <span className="input__error">{error}</span>}
+      {error && <span className="input__error" title={error}>{error}</span>}
     </StyledInput>
   )
 }
