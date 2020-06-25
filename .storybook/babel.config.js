@@ -1,16 +1,13 @@
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      "@babel/env",
       {
         targets: { node: "current" },
         include: ["@babel/plugin-proposal-optional-chaining"],
       },
     ],
-    "@babel/preset-react",
+    "@babel/react",
   ],
-  plugins: [
-    ["styled-components", { ssr: true }],
-    "@babel/plugin-transform-modules-commonjs",
-  ],
+  plugins: [["styled-components", { ssr: true }]],
 }
