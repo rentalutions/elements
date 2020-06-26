@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/tooltip",
-  "version": "0.1.3",
+  "version": "0.1.4-alpha.0",
   "description": "Tooltip component.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -33,8 +33,8 @@
     "styled-system": "^5.1.5"
   },
   "dependencies": {
-    "@rent_avail/popover": "^0.1.3",
-    "@rent_avail/utils": "^0.1.3",
+    "@rent_avail/popover": "^0.1.4-alpha.0",
+    "@rent_avail/utils": "^0.1.4-alpha.0",
     "react-is": "^16.13.1"
   }
 }
