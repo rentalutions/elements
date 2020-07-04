@@ -1,7 +1,7 @@
 import React, { memo, useState, forwardRef, createElement } from "react"
 import styled from "styled-components"
-import { Check } from "react-feather"
-import { noop, wrapEvent } from "@rent_avail/utils"
+// import { Check } from "react-feather"
+// import { noop, wrapEvent } from "@rent_avail/utils"
 import { color, layout, space, flexbox } from "styled-system"
 
 const TagWrapper = styled.span`

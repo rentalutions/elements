@@ -1,6 +1,5 @@
 import React from "react"
 import styled, { css } from "styled-components"
-// import clsx from "clsx"
 import { space, layout, flexbox } from "styled-system"
 
 const smallStyles = css`

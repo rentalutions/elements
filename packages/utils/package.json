@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "clean": "rimraf dist",
-    "build": "yarn clean && microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --no-compress --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
@@ -25,13 +24,5 @@
     "calendar-dates": "^2.6.1",
     "intersection-observer": "^0.7.0",
     "resize-observer-polyfill": "^1.5.1"
-  },
-  "peerDependencies": {
-    "@rent_avail/base": "0.X",
-    "clsx": "1.X",
-    "framer-motion": "1.X",
-    "polished": "3.X",
-    "react": "16.X",
-    "react-dom": "16.X"
   }
 }

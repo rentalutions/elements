@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "clean": "rimraf dist",
-    "build": "yarn clean && microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --no-compress --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
@@ -22,19 +21,17 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@rent_avail/base": "^0.0.4",
-    "clsx": "^1.1.0",
-    "framer-motion": "^1.10.3",
-    "polished": "^3.5.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-feather": "^2.0.4",
-    "styled-components": "^5.1.0",
-    "styled-system": "^5.1.5"
+    "react": "16.X",
+    "react-dom": "16.X",
+    "styled-components": "5.X"
   },
   "dependencies": {
+    "@rent_avail/base": "^0.1.4-alpha.0",
     "@rent_avail/utils": "^0.1.4-alpha.0",
     "@styled-system/props": "^5.1.5",
-    "react-is": "^16.13.1"
+    "clsx": "^1.1.0",
+    "react-feather": "^2.0.4",
+    "react-is": "^16.13.1",
+    "styled-system": "^5.1.5"
   }
 }

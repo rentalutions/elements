@@ -2,7 +2,6 @@ import React, {
   memo,
   forwardRef,
   useState,
-  useEffect,
   createElement,
 } from "react"
 import styled from "styled-components"

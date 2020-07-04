@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
 
 export function FixedProgress({ steps, ...props }) {
@@ -12,10 +11,6 @@ export function FixedProgress({ steps, ...props }) {
       ))}
     </StyledFixed>
   )
-}
-
-FixedProgress.propTypes = {
-  steps: PropTypes.objectOf(PropTypes.bool).isRequired,
 }
 
 const StyledFixed = styled.div`
@@ -57,18 +52,6 @@ const StyledFixed = styled.div`
     background: ${({ theme }) => theme.colors.blue_500};
   }
 `
-/**
- * FluidProgress Props
- * @typedef {object} FluidProgressProps
- * @prop {string} label - Label for the current step.
- * @prop {number} current - Number of the current step.
- * @prop {number} total - Length of total number of steps.
- */
-
-/**
- * Fluid Progress Bar
- * @param {FluidProgressProps} props
- */
 export function FluidProgress({ label, current, total, ...props }) {
   return (
     <StyledFluid {...props}>
@@ -82,12 +65,6 @@ export function FluidProgress({ label, current, total, ...props }) {
       <p className="small label">{label}</p>
     </StyledFluid>
   )
-}
-
-FluidProgress.propTypes = {
-  label: PropTypes.string.isRequired,
-  current: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
 }
 
 const StyledFluid = styled.section`
