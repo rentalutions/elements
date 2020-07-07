@@ -20,6 +20,10 @@
     "Patrick Krawczykowski <patrick@dreadful.design>"
   ],
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "calendar-dates": "^2.6.1",
     "intersection-observer": "^0.7.0",

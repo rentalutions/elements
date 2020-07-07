@@ -10,7 +10,9 @@ const smallStyles = css`
   }
 `
 
-const StyledAvatar = styled.div`
+const StyledAvatar = styled.div.attrs({
+  role: "user-chip",
+})`
   position: relative;
   border-radius: 2rem;
   background: ${({ theme }) => theme.colors.ui_300};

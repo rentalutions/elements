@@ -1,11 +1,12 @@
 import React from "react"
-import { render } from "testing-utils"
+import { render, screen } from "testing-utils"
 import Avatar from "../src"
 
 describe("<Avatar />", () => {
   it("renders the component without crashing", () => {
-    const { container } = render(<Avatar />)
-    expect(container).not.toBeNull()
+    render(<Avatar />)
+    const element = screen.getByRole(/user-chip/)
+    expect(element).toBeInTheDocument()
   })
   it("renders the component with initials when set", () => {
     const initials = "PK"

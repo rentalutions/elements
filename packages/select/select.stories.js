@@ -13,13 +13,13 @@ function SelectExample() {
     { label: "Arkansas", value: "AR" },
     { label: "California", value: "CA" },
     { label: "Colorado", value: "CO" },
-    { label: "Connecticut", value: "CT" }
+    { label: "Connecticut", value: "CT" },
   ]
   const [state, setState] = useState("")
   return (
     <Container mt="4rem">
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Select id="select-id" onSelect={value => setState(value)}>
+      <Select id="select-id" onSelect={(value) => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
@@ -34,5 +34,9 @@ function SelectExample() {
 }
 
 export function Basic() {
-  return <SelectExample />
+  return (
+    <div>
+      <SelectExample />
+    </div>
+  )
 }

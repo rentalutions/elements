@@ -1,6 +1,5 @@
 import React from "react"
 import { render, screen, fireEvent } from "testing-utils"
-import userEvent from "@testing-library/user-event"
 import Input from "../src"
 
 describe("<Input />", () => {
