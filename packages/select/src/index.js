@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
   useImperativeHandle,
-  useMemo
+  useMemo,
 } from "react"
 import styled, { css } from "styled-components"
 import Popover, { getPosition } from "@rent_avail/popover"
@@ -25,14 +25,14 @@ const types = {
   UPDATE_WIDTH: "@rent_avail/elements/select/update_width",
   UPDATE_INPUT: "@rent_avail/elements/select/update_input",
   SET_VALUE: "@rent_avail/elements/select/set_value",
-  SET_ERROR: "@rent_avail/elements/select/set_value"
+  SET_ERROR: "@rent_avail/elements/select/set_value",
 }
 
 const initialState = {
   value: "",
   typeAheadQuery: "",
   width: 120,
-  isOpen: false
+  isOpen: false,
 }
 
 function selectReducer(state, action) {
@@ -50,7 +50,7 @@ function selectReducer(state, action) {
         ...state,
         isOpen: false,
         value: action.payload,
-        typeAheadQuery: ""
+        typeAheadQuery: "",
       }
     default:
       throw Error(`Unknown action type ${action.type}.`)
@@ -62,7 +62,7 @@ function Select({
   id,
   onSelect = noop,
   disabled = false,
-  defaultValue = ""
+  defaultValue = "",
 }) {
   const inputRef = useRef()
   const listRef = useRef()
@@ -70,7 +70,7 @@ function Select({
     selectReducer,
     {
       ...initialState,
-      value: defaultValue
+      value: defaultValue,
     }
   )
   const context = useMemo(
@@ -81,7 +81,7 @@ function Select({
       dispatch,
       onSelect,
       id,
-      disabled
+      disabled,
     }),
     [isOpen, id, disabled, width, onSelect, typeAheadQuery]
   )
@@ -188,7 +188,7 @@ function Input(
     state: { typeAheadQuery, value, isOpen, id },
     listRef,
     inputRef,
-    dispatch
+    dispatch,
   } = useContext(SelectContext)
   function handleFocus() {
     dispatch({ type: types.OPEN_LIST })
@@ -252,7 +252,7 @@ function List({ children, style, ...props }, ref) {
     dispatch,
     listRef,
     inputRef,
-    id
+    id,
   } = useContext(SelectContext)
   const inputBounds = useWindowResize(inputRef)
   function position({ popover: popoverRect, target: targetRect }) {
@@ -262,7 +262,7 @@ function List({ children, style, ...props }, ref) {
     return {
       top: `${top}px`,
       left: `${targetRect.left + window.pageXOffset}px`,
-      visibility: "visible"
+      visibility: "visible",
     }
   }
   function handleBlur({ target }) {
@@ -281,10 +281,10 @@ function List({ children, style, ...props }, ref) {
       const { top } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
       const fromBottom = window.innerHeight - height
-      window.scrollBy({
-        top: Math.max(top - fromBottom + 120, 0),
-        behavior: "smooth"
-      })
+      setTimeout(
+        () => window.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
+        20
+      )
       document.addEventListener("click", handleBlur)
     }
     return () => document.removeEventListener("click", handleBlur)
@@ -343,7 +343,7 @@ function Item(
   const {
     state: { value, typeAheadQuery },
     onSelect,
-    dispatch
+    dispatch,
   } = useContext(SelectContext)
   const [visibility, setVisibility] = useState(true)
   const itemRef = useRef()
