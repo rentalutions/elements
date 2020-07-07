@@ -7,8 +7,6 @@ import React, {
   useMemo,
 } from "react"
 import { noop } from "@rent_avail/utils"
-import Fullscreen from "./fullscreen"
-import Confirmation from "./confirmation"
 
 export const DialogContext = createContext()
 
@@ -29,4 +27,6 @@ function Target({ children, ...props }, ref) {
 
 const DialogTarget = forwardRef(Target)
 
-export { Dialog, DialogTarget, Fullscreen, Confirmation }
+export { Dialog, DialogTarget }
+export { default as Fullscreen } from "./fullscreen"
+export { default as Confirmation } from "./confirmation"
