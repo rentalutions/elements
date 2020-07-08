@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/dialog",
-  "version": "0.1.4-alpha.0",
+  "version": "0.1.4",
   "description": "Dialog components.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -28,9 +28,9 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.1.4-alpha.0",
-    "@rent_avail/utils": "^0.1.4-alpha.0",
-    "@rent_avail/typography": "^0.1.4-alpha.0",
+    "@rent_avail/base": "^0.1.4",
+    "@rent_avail/typography": "^0.1.4",
+    "@rent_avail/utils": "^0.1.4",
     "framer-motion": "^1.11.1",
     "polished": "^3.6.5",
     "react-feather": "^2.0.8",
