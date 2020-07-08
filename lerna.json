@@ -1,12 +1,12 @@
 {
   "version": "independent",
   "npmClient": "yarn",
+  "registry": "https://registry.npmjs.org/",
   "useWorkspaces": true,
   "packages": ["packages/*"],
   "publishConfig": {
     "access": "public"
   },
-  "registry": "https://registry.npmjs.org/",
   "command": {
     "publish": {
       "conventionalCommits": true,

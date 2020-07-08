@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useReducer } from "react"
+import React, { forwardRef, useReducer } from "react"
 import styled from "styled-components"
 
 const StyledCheckbox = styled.label`

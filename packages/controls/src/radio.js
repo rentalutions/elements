@@ -1,4 +1,4 @@
-import React, { forwardRef, useReducer } from "react"
+import React, { forwardRef } from "react"
 import styled from "styled-components"
 
 const StyledRadio = styled.label`

@@ -1,16 +1,24 @@
 module.exports = {
-  presets: [
-    [
-      "@babel/preset-env",
-      {
-        targets: { node: "current" },
-        include: ["@babel/plugin-proposal-optional-chaining"],
-      },
-    ],
-    "@babel/preset-react",
-  ],
-  plugins: [
-    ["styled-components", { ssr: true }],
-    ["module-resolver", { alias: { "testing-utils": "./testing-utils.js" } }],
-  ],
+  plugins: [["styled-components", { ssr: true }]],
+  env: {
+    test: {
+      presets: [
+        [
+          "@babel/env",
+          {
+            targets: { node: "current" },
+            include: ["@babel/plugin-proposal-optional-chaining"],
+          },
+        ],
+        "@babel/react",
+      ],
+      plugins: [
+        [
+          "module-resolver",
+          { alias: { "testing-utils": "./testing-utils.js" } },
+        ],
+        ["styled-components", { ssr: true }],
+      ],
+    },
+  },
 }
