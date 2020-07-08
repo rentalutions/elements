@@ -5,7 +5,7 @@
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
     "build": "lerna run build --stream --ignore @rent_avail/docs",
-    "build:changed": "lerna run build --since origin/master",
+    "build:changed": "lerna run build --since origin/release",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace @rent_avail/docs dev",
