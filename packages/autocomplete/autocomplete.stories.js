@@ -6,9 +6,12 @@ export default { title: "Autocomplete" }
 
 export function Component() {
   return (
-    <AutocompleteProvider apiKey="AIzaSyA6OmrJBbB3z4KAExf6pdsyhLKgj1Pns50">
+    <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
       <Container mt="4rem">
-        <Autocomplete label="Street Address" />
+        <Autocomplete
+          label="Street Address"
+          onSelect={(place) => console.log(place)}
+        />
         <Box mt="2rem">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatum
           nulla cupiditate, deserunt est placeat iure similique rem dolor
