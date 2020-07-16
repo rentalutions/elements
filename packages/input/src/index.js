@@ -3,6 +3,7 @@ import React, {
   forwardRef,
   useState,
   createElement,
+  useEffect,
 } from "react"
 import styled from "styled-components"
 import { space, layout } from "styled-system"
@@ -152,6 +153,9 @@ function Input(
   function handleChange({ target: { value: inputValue } }) {
     setRaised(inputValue.length || date)
   }
+  useEffect(() => {
+    setRaised(value?.length)
+  }, [value])
   return (
     <InputWrapper
       {...styledProps}
