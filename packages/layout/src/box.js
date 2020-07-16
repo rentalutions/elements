@@ -8,6 +8,7 @@ import {
   border,
   grid,
   typography,
+  position,
 } from "styled-system"
 
 const Box = styled.div`
@@ -20,6 +21,7 @@ const Box = styled.div`
   ${border};
   ${grid};
   ${typography};
+  ${position};
 `
 
 export default Box
