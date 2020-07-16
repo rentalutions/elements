@@ -130,6 +130,49 @@ const dateReducer = (state, action) => {
   }
 }
 
+const scriptCache = []
+
+export function useScript(src) {
+  const [state, setState] = useState({
+    loaded: false,
+    error: false,
+  })
+  useEffect(() => {
+    function scriptLoaded() {
+      setState({
+        loaded: true,
+        error: false,
+      })
+    }
+    function scriptErrored({ target }) {
+      const index = scriptCache.indexOf(target.src)
+      if (index >= 0) scriptCache.splice(index, 1)
+      target.remove()
+      setState({
+        loaded: true,
+        error: true,
+      })
+    }
+    if (scriptCache.includes(src)) {
+      console.log("prevent load")
+      scriptLoaded()
+    } else {
+      scriptCache.push(src)
+      const script = document.createElement("script")
+      script.src = src
+      script.async = true
+      script.addEventListener("load", scriptLoaded)
+      script.addEventListener("error", scriptErrored)
+      document.body.appendChild(script)
+      return () => {
+        script.removeEventListener("load", scriptLoaded)
+        script.removeEventListener("error", scriptErrored)
+      }
+    }
+  }, [src])
+  return state
+}
+
 export function useDates(startDate = new Date()) {
   const calendarDates = useRef(new CalendarDates())
   const [state, dispatch] = useReducer(dateReducer, {
