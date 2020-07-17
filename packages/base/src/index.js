@@ -98,7 +98,7 @@ export const theme = {
   },
 }
 
-export default createGlobalStyle`
+export const Base = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -160,15 +160,14 @@ export default createGlobalStyle`
   pre, code {
     font-family: ${({ theme }) => theme.fonts.monospace};
   }
-  .no-sizing {
-    h1 {
+
+  .no-sizing h1 {
       font-size: 4rem;
-    }
-    h2 {
-      font-size: 3rem;
-    }
-    h3 {
-      font-size: 2rem;
-    }
+  }
+  .no-sizing h2 {
+    font-size: 3rem;
+  }
+  .no-sizing  h3 {
+    font-size: 2rem;
   }
 `
