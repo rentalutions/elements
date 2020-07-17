@@ -28,7 +28,8 @@
     "lerna": "^3.22.0",
     "microbundle": "^0.12.2",
     "prettier": "^2.0.2",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "regenerator-runtime": "^0.13.5"
   },
   "dependencies": {
     "clsx": "^1.1.0",
