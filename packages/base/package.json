@@ -27,7 +27,6 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/utils": "^0.1.4",
     "styled-system": "^5.1.5"
   }
 }

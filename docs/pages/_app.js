@@ -1,6 +1,6 @@
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import Base, { theme } from "@rent_avail/base"
+import { Base, theme } from "@rent_avail/base"
 import { MDXProvider } from "@mdx-js/react"
 import MDXComponents from "components/MDXComponents"
 
