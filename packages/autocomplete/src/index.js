@@ -36,6 +36,7 @@ const initialState = {
   suggestions: [],
   sessionToken: null,
   error: false,
+  notFound: false,
 }
 
 function autocompleteReducer(state, action) {
@@ -43,12 +44,14 @@ function autocompleteReducer(state, action) {
     case "ADD_TOKEN":
       return { ...state, sessionToken: action.payload }
     case "UPDATE_SUGGESTIONS":
-      return { ...state, suggestions: action.payload }
+      return { ...state, suggestions: action.payload, notFound: false }
     case "SELECT_PLACE":
       const { selection, sessionToken } = action.payload
       return { ...state, selection, suggestions: [], sessionToken }
+    case "ZERO_RESULTS":
+      return { ...state, notFound: true, suggestions: [] }
     case "CLEAR_SELECTION":
-      return { ...state, selection: null, suggestions: [] }
+      return { ...state, selection: null, suggestions: [], notFound: false }
     case "ERROR":
       return { ...state, selection: null, suggestions: [], error: true }
     default:
@@ -107,6 +110,7 @@ export function useAutocomplete(input = "") {
   }, [loaded])
 
   useEffect(() => {
+    // Get autocomplete suggestions based on input. Limit calls to inputs over 3 characters so we're not trying to guess too early.
     if (input.length > 3) {
       const request = {
         input,
@@ -115,9 +119,17 @@ export function useAutocomplete(input = "") {
       }
 
       function updateSuggestions(suggestions, status) {
-        if (status === "OK") {
-          dispatch({ type: "UPDATE_SUGGESTIONS", payload: suggestions })
-        } else dispatch({ type: "ERROR", payload: status })
+        switch (status) {
+          case "OK":
+            return dispatch({
+              type: "UPDATE_SUGGESTIONS",
+              payload: suggestions,
+            })
+          case "ZERO_RESULTS":
+            return dispatch({ type: "ZERO_RESULTS" })
+          default:
+            dispatch({ type: "ERROR", payload: status })
+        }
       }
 
       autocompleteRef.current.getPlacePredictions(request, updateSuggestions)
@@ -162,11 +174,16 @@ function GoogleLogo() {
   )
 }
 
+const ManualLink = styled.a`
+  font-weight: ${({ theme }) => theme.fontWeights.black};
+`
+
 export function Autocomplete({ onSelect = noop, ...props }) {
   const targetRef = useRef()
   const [input, setInput] = useState("")
   const {
     suggestions,
+    notFound,
     error,
     getDetails,
     selection,
@@ -180,8 +197,10 @@ export function Autocomplete({ onSelect = noop, ...props }) {
     getDetails(place.place_id, onSelect)
   }
   function handleFocus() {
-    setInput("")
-    clearSelection()
+    if (selection) {
+      setInput("")
+      clearSelection()
+    }
   }
   return (
     <Box position="relative">
@@ -228,6 +247,17 @@ export function Autocomplete({ onSelect = noop, ...props }) {
               </PlaceItem>
             )
           })}
+        </Box>
+      )}
+      {notFound && (
+        <Box
+          position="absolute"
+          top="calc(100% + 1rem)"
+          bg="ui_100"
+          width="100%"
+          p="2rem"
+        >
+          No results found. <ManualLink>Enter an address manually</ManualLink>
         </Box>
       )}
     </Box>
