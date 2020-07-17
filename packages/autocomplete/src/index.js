@@ -27,9 +27,7 @@ export function AutocompleteProvider({ apiKey, children }) {
 function useAutocompleteKey() {
   const state = useContext(AutocompleteContext)
   if (state === "undefined")
-    throw Error(
-      "Must use autocomplete component within an Autocomplete Provider"
-    )
+    throw Error("Must use autocomplete within an Autocomplete Provider")
   return state
 }
 
@@ -61,49 +59,73 @@ function autocompleteReducer(state, action) {
 export function useAutocomplete(input = "") {
   const { loaded, error } = useAutocompleteKey()
   const autocompleteRef = useRef(null)
+  const placesRef = useRef(null)
   const [state, dispatch] = useReducer(autocompleteReducer, initialState)
-  function selectPlace(place) {
-    // Get place details, replace token, and send the place details to the instance.
+
+  async function getDetails(id, onSelect) {
+    const request = {
+      placeId: id,
+      fields: ["address_components", "formatted_address"],
+      sessionToken: state.sessionToken,
+    }
     const newToken = new google.maps.places.AutocompleteSessionToken()
-    dispatch({
-      type: "SELECT_PLACE",
-      payload: { selection: place, sessionToken: newToken },
-    })
+
+    function setSelection(place, status) {
+      if (status === "OK") {
+        dispatch({
+          type: "SELECT_PLACE",
+          payload: {
+            selection: place.formatted_address,
+            sessionToken: newToken,
+          },
+        })
+        onSelect(place)
+      }
+    }
+
+    placesRef.current.getDetails(request, setSelection)
   }
+
   function clearSelection() {
     dispatch({
       type: "CLEAR_SELECTION",
     })
   }
+
   useEffect(() => {
+    // Load services into references for later and create a session token.
     if (loaded && !error) {
       autocompleteRef.current = new google.maps.places.AutocompleteService()
+      placesRef.current = new google.maps.places.PlacesService(
+        document.createElement("div")
+      )
       dispatch({
         type: "ADD_TOKEN",
         payload: new google.maps.places.AutocompleteSessionToken(),
       })
     }
   }, [loaded])
+
   useEffect(() => {
     if (input.length > 3) {
-      const params = {
+      const request = {
         input,
         types: ["address"],
         sessionToken: state.sessionToken,
       }
-      autocompleteRef.current.getPlacePredictions(
-        params,
-        (suggestions, status) => {
-          if (status === "OK")
-            dispatch({ type: "UPDATE_SUGGESTIONS", payload: suggestions })
-          else dispatch({ type: "ERROR", payload: status })
-        }
-      )
+
+      function updateSuggestions(suggestions, status) {
+        if (status === "OK") {
+          dispatch({ type: "UPDATE_SUGGESTIONS", payload: suggestions })
+        } else dispatch({ type: "ERROR", payload: status })
+      }
+
+      autocompleteRef.current.getPlacePredictions(request, updateSuggestions)
     } else {
       dispatch({ type: "UPDATE_SUGGESTIONS", payload: [] })
     }
   }, [input])
-  return { ...state, selectPlace, clearSelection }
+  return { ...state, getDetails, clearSelection }
 }
 
 const PlaceItem = styled(Box)`
@@ -146,7 +168,7 @@ export function Autocomplete({ onSelect = noop, ...props }) {
   const {
     suggestions,
     error,
-    selectPlace,
+    getDetails,
     selection,
     clearSelection,
   } = useAutocomplete(input)
@@ -154,9 +176,8 @@ export function Autocomplete({ onSelect = noop, ...props }) {
     setInput(target.value)
   }
   function handleSelect(place) {
-    onSelect(place)
     setInput(" ")
-    selectPlace(place)
+    getDetails(place.place_id, onSelect)
   }
   function handleFocus() {
     setInput("")
@@ -182,7 +203,7 @@ export function Autocomplete({ onSelect = noop, ...props }) {
           bg="blue_100"
           borderRadius="4px"
         >
-          {selection.description}
+          {selection}
         </Selection>
       )}
       {suggestions.length > 0 && (
@@ -197,7 +218,6 @@ export function Autocomplete({ onSelect = noop, ...props }) {
         >
           <GoogleLogo />
           {suggestions.map((place) => {
-            // terms [street_number, street_name, city, state, country]
             return (
               <PlaceItem
                 key={place.place_id}
