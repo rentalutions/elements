@@ -154,7 +154,6 @@ export function useScript(src) {
       })
     }
     if (scriptCache.includes(src)) {
-      console.log("prevent load")
       scriptLoaded()
     } else {
       scriptCache.push(src)
