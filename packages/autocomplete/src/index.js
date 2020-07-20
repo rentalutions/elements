@@ -89,7 +89,8 @@ export function useAutocomplete(input = "") {
     placesRef.current.getDetails(request, setSelection)
   }
 
-  function clearSelection() {
+  function clearSelection(onClear) {
+    onClear()
     dispatch({
       type: "CLEAR_SELECTION",
     })
@@ -178,7 +179,7 @@ const ManualLink = styled.a`
   font-weight: ${({ theme }) => theme.fontWeights.black};
 `
 
-export function Autocomplete({ onSelect = noop, ...props }) {
+export function Autocomplete({ onSelect = noop, onClear = noop, ...props }) {
   const targetRef = useRef()
   const [input, setInput] = useState("")
   const {
@@ -199,7 +200,7 @@ export function Autocomplete({ onSelect = noop, ...props }) {
   function handleFocus() {
     if (selection) {
       setInput("")
-      clearSelection()
+      clearSelection(onClear)
     }
   }
   return (
