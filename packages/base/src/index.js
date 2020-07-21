@@ -161,12 +161,26 @@ export const Base = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.monospace};
   }
 
+  a {
+    text-decoration:none;
+    box-shadow: inset 0 -6px 0 ${({ theme }) => theme.colors.green_500};
+    color: inherit;
+    font-weight: ${({ theme }) => theme.fontWeights.black};
+    transition: box-shadow 250ms;
+  }
+
+  a:hover {
+    box-shadow: inset 0 -12px 0 ${({ theme }) => theme.colors.green_500};
+  }
+
   .no-sizing h1 {
       font-size: 4rem;
   }
+
   .no-sizing h2 {
     font-size: 3rem;
   }
+  
   .no-sizing  h3 {
     font-size: 2rem;
   }
