@@ -18,10 +18,10 @@ const HeaderWrapper = styled(Box)`
   }
 `
 
-function Header({ title = null, ...props }) {
+function Header({ title = null, ...props }, ref) {
   const { toggle } = useContext(DialogContext)
   return (
-    <HeaderWrapper {...props} as="header">
+    <HeaderWrapper {...props} ref={ref} as="header">
       {title && <Heading as="h5">{title}</Heading>}
       <X className="dialog__close" onClick={toggle} />
     </HeaderWrapper>
