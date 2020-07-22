@@ -12,5 +12,13 @@
       "conventionalCommits": true,
       "message": "chore(release): publish"
     }
-  }
+  },
+  "ignoreChanges": [
+    "**/CHANGELOG.md",
+    "**/node_modules/**",
+    "**/package.json",
+    "**/*.md",
+    "**/__tests__/**",
+    "**/perf/**"
+  ]
 }
