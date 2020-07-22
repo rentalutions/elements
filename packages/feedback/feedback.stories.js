@@ -13,7 +13,7 @@ import {
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 import Input from "@rent_avail/input"
-import { Dialog, DialogTarget, Confirmation } from "@rent_avail/dialog"
+import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
 import { Plus } from "react-feather"
 
@@ -133,16 +133,19 @@ export function FullpageSendLease() {
           <Heading as="h5" mt="2rem">
             Lessees
           </Heading>
-          <Stack row mt="1rem">
+          <Stack direction={["row"]} flexWrap="wrap">
             <Avatar
+              mt="2rem"
               name="Janet Wood"
               photoUrl="https://source.unsplash.com/collection/802865/48x48"
             />
             <Avatar
+              mt="2rem"
               name="Chrissy Snow"
               photoUrl="https://source.unsplash.com/collection/802865/48x48"
             />
             <Avatar
+              mt="2rem"
               name="Patrick Krawczykowski"
               photoUrl="https://source.unsplash.com/collection/802865/48x48"
             />
@@ -154,6 +157,7 @@ export function FullpageSendLease() {
               display="flex"
               alignItems="center"
               justifyContent="center"
+              mt="2rem"
             >
               <Plus />
             </Box>
@@ -165,11 +169,9 @@ export function FullpageSendLease() {
           </Flex>
         </Card>
         <Box
-          p="4rem"
+          py={["6rem", "12rem", null]}
+          px={["2rem", "4rem", "8rem"]}
           bg="ui_100"
-          border="1px solid"
-          borderColor="blue_100"
-          borderRadius="0.25rem"
         >
           <Heading fontFamily="legal">Chicago Residential Lease</Heading>
           <Text fontFamily="legal">Created on Aug 7th 2019</Text>
@@ -373,7 +375,7 @@ export function InlinePublishListing() {
               <DialogTarget>
                 <Button onClick={(e) => setOpen(true)}>Publish Listing</Button>
               </DialogTarget>
-              <Confirmation>
+              <ConfirmationDialog>
                 <InlineFeedback
                   steps={[
                     "Optimizing Photos",
@@ -396,7 +398,7 @@ export function InlinePublishListing() {
                     </Text>
                   </Box>
                 )}
-              </Confirmation>
+              </ConfirmationDialog>
             </Dialog>
           </Flex>
         </Container>

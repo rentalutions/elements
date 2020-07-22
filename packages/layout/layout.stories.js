@@ -111,16 +111,19 @@ export function ContainerUsage() {
 
 export function CardUsage() {
   return (
-    <Card>
-      <Heading as="h3" mb="2rem">
-        A Card Header
-      </Heading>
-      <Text>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, harum
-        eaque. Illo, voluptas necessitatibus ab aperiam vitae ducimus eligendi,
-        sequi dolore consequuntur distinctio numquam voluptate error suscipit
-        minus natus praesentium?
-      </Text>
-    </Card>
+    <Container mt="2rem">
+      <Card>
+        <Heading as="h3" mb="2rem">
+          A Card Header
+        </Heading>
+        <Text>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta,
+          harum eaque. Illo, voluptas necessitatibus ab aperiam vitae ducimus
+          eligendi, sequi dolore consequuntur distinctio numquam voluptate error
+          suscipit minus natus praesentium?{" "}
+          <a href="https://google.com">A nice link to google.</a>
+        </Text>
+      </Card>
+    </Container>
   )
 }

@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "clean": "rimraf dist",
-    "build": "microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
