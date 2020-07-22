@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "build": "microbundle --jsx React.createElement",
+    "build": "microbundle --no-compress --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
