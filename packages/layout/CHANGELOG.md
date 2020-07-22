@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/layout@0.1.5...@rent_avail/layout@0.2.0) (2020-07-22)
+
+
+### Features
+
+* **layout:** add positioning control ([f025f0c](https://github.com/rentalutions/elements/commit/f025f0c77726b1f58f1918e04913b7615cf15554))
+
+
+
+
+
 ## [0.1.5](https://github.com/rentalutions/elements/compare/@rent_avail/layout@0.1.5-alpha.0...@rent_avail/layout@0.1.5) (2020-07-08)
 
 **Note:** Version bump only for package @rent_avail/layout

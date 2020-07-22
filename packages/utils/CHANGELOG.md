@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.1.4...@rent_avail/utils@0.2.0) (2020-07-22)
+
+
+### Bug Fixes
+
+* **utis:** remove console log ([72d01c3](https://github.com/rentalutions/elements/commit/72d01c3a53717accd01f2dec933a0218b63ea03f))
+
+
+### Features
+
+* **utils:** add useScript hook ([ec0c7b7](https://github.com/rentalutions/elements/commit/ec0c7b7dec7343bcef2a7fc8a80419a652341236))
+
+
+
+
+
 ## [0.1.4](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.1.4-alpha.0...@rent_avail/utils@0.1.4) (2020-07-08)
 
 **Note:** Version bump only for package @rent_avail/utils
