@@ -2,12 +2,9 @@ import React, { memo, forwardRef, useContext } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { color, background } from "styled-system"
-import { usePortal, noop } from "@rent_avail/utils"
+import { usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
-import { X } from "react-feather"
-import { Container } from "@rent_avail/layout"
-import { Heading } from "@rent_avail/typography"
-import { DialogContext } from "./index"
+import { DialogContext } from "./dialogContext"
 
 const FullscreenWrapper = styled(motion.section)`
   position: fixed;
@@ -19,25 +16,11 @@ const FullscreenWrapper = styled(motion.section)`
   background: ${({ theme }) => theme.colors.ui_100};
   ${color};
   ${background};
-  .fullscreen__header {
-    display: flex;
-    margin-bottom: 2rem;
-    svg {
-      margin-left: auto;
-    }
-  }
-  .fullscreen__close {
-    cursor: pointer;
-    transition: 100ms;
-    &:hover {
-      opacity: 0.75;
-    }
-  }
 `
 
 function Fullscreen({ children, title = "", ...props }, ref) {
   const target = usePortal()
-  const { open, toggle, id } = useContext(DialogContext)
+  const { open, id } = useContext(DialogContext)
   if (!target) return null
   return createPortal(
     <AnimatePresence>
@@ -50,13 +33,7 @@ function Fullscreen({ children, title = "", ...props }, ref) {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
         >
-          <Container>
-            <header className="fullscreen__header">
-              {title && <Heading as="h5">{title}</Heading>}
-              <X className="fullscreen__close" onClick={toggle} />
-            </header>
-            {children}
-          </Container>
+          {children}
         </FullscreenWrapper>
       )}
     </AnimatePresence>,
@@ -64,4 +41,4 @@ function Fullscreen({ children, title = "", ...props }, ref) {
   )
 }
 
-export default memo(forwardRef(Fullscreen))
+export const FullscreenDialog = memo(forwardRef(Fullscreen))

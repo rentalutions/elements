@@ -3,6 +3,7 @@ import { render } from "@testing-library/react"
 import { ThemeProvider } from "styled-components"
 import { Base, theme } from "@rent_avail/base"
 import "@testing-library/jest-dom/extend-expect"
+import "regenerator-runtime"
 
 // Create custom wrapper to add theme and base to tests.
 function Wrapper({ children }) {

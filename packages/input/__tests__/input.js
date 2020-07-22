@@ -22,6 +22,6 @@ describe("<Input />", () => {
     const input = screen.getByLabelText(/birth-input/)
     const label = container.querySelector("label")
     expect(input).toHaveAttribute("type", "date")
-    expect(label).toHaveClass("raised")
+    expect(label).toHaveClass("date")
   })
 })

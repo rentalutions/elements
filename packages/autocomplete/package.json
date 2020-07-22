@@ -1,7 +1,7 @@
 {
-  "name": "@rent_avail/dialog",
-  "version": "0.1.4",
-  "description": "Dialog components.",
+  "name": "@rent_avail/autocomplete",
+  "version": "0.0.1",
+  "description": "Component and hooks for using Google Places autocomplete.",
   "source": "src/index.js",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",    
@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "build": "microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
@@ -30,12 +30,10 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.1.4",
+    "@rent_avail/input": "^0.1.4",
     "@rent_avail/layout": "^0.1.5",
-    "@rent_avail/typography": "^0.1.4",
+    "@rent_avail/popover": "^0.1.4",
     "@rent_avail/utils": "^0.1.4",
-    "framer-motion": "^1.11.1",
-    "polished": "^3.6.5",
-    "react-feather": "^2.0.8",
     "styled-system": "^5.1.5"
   }
 }

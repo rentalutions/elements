@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   stories: ["../packages/**/*.stories.js"],
   addons: ["@storybook/addon-storysource"],

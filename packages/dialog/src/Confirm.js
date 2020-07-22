@@ -1,11 +1,9 @@
-import React, { useContext, forwardRef, Fragment } from "react"
+import React, { useContext, forwardRef, Fragment, memo } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { usePortal } from "@rent_avail/utils"
-import { Heading } from "@rent_avail/typography"
 import { motion, AnimatePresence } from "framer-motion"
-import { X } from "react-feather"
-import { DialogContext } from "./index"
+import { DialogContext } from "./dialogContext"
 
 const ConfirmationWrapper = styled(motion.section)`
   position: fixed;
@@ -42,9 +40,9 @@ const Scrim = styled(motion.div)`
   background: rgba(0, 0, 0, 0.24);
 `
 
-function Confirmation({ children, title = "", ...props }, ref) {
+function Confirmation({ children, title = null, ...props }, ref) {
   const target = usePortal()
-  const { open, toggle, id } = useContext(DialogContext)
+  const { open, id } = useContext(DialogContext)
   if (!target) return null
   return createPortal(
     <AnimatePresence>
@@ -64,10 +62,6 @@ function Confirmation({ children, title = "", ...props }, ref) {
             animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
             exit={{ opacity: 0, scale: 1.05 }}
           >
-            <header className="confirmation__header">
-              {title && <Heading as="h5">{title}</Heading>}
-              <X className="confirmation__close" onClick={toggle} />
-            </header>
             {children}
           </ConfirmationWrapper>
         </Fragment>
@@ -77,4 +71,4 @@ function Confirmation({ children, title = "", ...props }, ref) {
   )
 }
 
-export default forwardRef(Confirmation)
+export const ConfirmationDialog = memo(forwardRef(Confirmation))

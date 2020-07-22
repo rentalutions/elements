@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { render, screen } from "testing-utils"
-import { Dialog, DialogTarget, Fullscreen, Confirmation } from "../src"
+import { Dialog, DialogTarget, FullscreenDialog } from "../src"
 
 describe("<Fullscreen />", () => {
   const TestUi = ({ ...props }) => {
@@ -9,9 +9,9 @@ describe("<Fullscreen />", () => {
         <DialogTarget data-testid="target-id">
           <button>open dialog</button>
         </DialogTarget>
-        <Fullscreen data-testid="modal-id">
+        <FullscreenDialog data-testid="modal-id">
           <p>Hello World</p>
-        </Fullscreen>
+        </FullscreenDialog>
       </Dialog>
     )
   }
