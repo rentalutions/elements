@@ -21,6 +21,7 @@ const Button = styled.button`
   text-transform: uppercase;
   transition: 250ms;
   white-space: nowrap;
+  border-style: solid;
   border-color: ${({ theme, color }) => theme.colors[color] || color};
   outline: none;
   &:focus {
