@@ -4,7 +4,7 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
-    "build": "lerna run build --stream --ignore @rent_avail/docs",
+    "build": "lerna run build --ignore @rent_avail/docs",
     "build:changed": "lerna run build --since origin/release",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "start": "start-storybook -p 8080 -c .storybook",
@@ -18,7 +18,7 @@
     "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.4",
-    "@testing-library/react-hooks": "^3.3.0",
+    "@testing-library/react-hooks": "^3.4.1",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "clsx": "^1.1.0",
-    "framer-motion": "^2.1.0",
+    "framer-motion": "^2.1.4",
     "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
