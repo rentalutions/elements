@@ -55,7 +55,7 @@ const spring = {
   stiffness: 500,
 }
 
-function InlineFeedback({
+export function InlineFeedback({
   duration = 2000,
   steps = [],
   onAnimationEnd = noop,
@@ -126,5 +126,3 @@ function InlineFeedback({
     </InlineWrapper>
   )
 }
-
-export default InlineFeedback

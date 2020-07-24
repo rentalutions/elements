@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useReducer } from "react"
+import React, { useEffect, useReducer, createElement } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { usePortal, noop } from "@rent_avail/utils"
 import { Heading, Text } from "@rent_avail/typography"
 import { Box, Flex } from "@rent_avail/layout"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
-import Illustration from "./fullscreen_illustration"
+import { Illustration } from "./fullscreen_illustration"
 
 const FullscreenWrapper = styled(motion.section)`
   position: fixed;
@@ -38,15 +38,11 @@ const FullscreenWrapper = styled(motion.section)`
   }
 `
 
-const stepVariants = {
+const variants = {
   hidden: { opacity: 0, y: "1rem" },
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, height: "auto" },
   exit: { opacity: 0, y: "-1rem" },
-}
-
-const successMessageVariants = {
-  hidden: { opacity: 0, y: "1rem" },
-  visible: { opacity: 1, y: 0 },
+  exitLast: { opacity: 0, height: 0 },
 }
 
 const initialState = {
@@ -59,7 +55,7 @@ function fullscreenReducer(state, action) {
   switch (type) {
     case "INCREMENT":
       return { ...state, current: state.current + 1 }
-    case "LOAD":
+    case "LOADED":
       return { ...state, loaded: true }
     case "RESET":
       return { ...state, loaded: false, current: 0 }
@@ -68,11 +64,11 @@ function fullscreenReducer(state, action) {
   }
 }
 
-export default function FullscreenFeedback({
+export function FullscreenFeedback({
   open = false,
   duration = 2000,
   steps = [],
-  successMessage = "",
+  success = "",
   onAnimationEnd = noop,
 }) {
   const [{ current, loaded }, dispatch] = useReducer(
@@ -84,7 +80,7 @@ export default function FullscreenFeedback({
   useEffect(() => {
     async function updateCurrent() {
       if (current === steps.length) {
-        dispatch({ type: "LOAD" })
+        dispatch({ type: "LOADED" })
         return clearTimeout(updateCurrent)
       }
       await barControls.start({
@@ -107,45 +103,55 @@ export default function FullscreenFeedback({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
         >
-          <Flex
-            height="20rem"
-            alignItems="flex-end"
-            justifySelf="stretch"
-            justifyContent="center"
-          >
+          <Box height="15rem">
             {loaded && <Illustration onAnimationEnd={onAnimationEnd} />}
-          </Flex>
+          </Box>
           <Box minHeight="5rem" mt="2rem">
             <AnimatePresence exitBeforeEnter>
-              <Text
-                as={motion.p}
-                className="fullpage__step"
-                key={steps[current]}
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                {steps[current]}
-              </Text>
+              {steps[current] && (
+                <Text
+                  as={motion.p}
+                  className="fullpage__step"
+                  key={steps[current]}
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit={current - 1 === steps.length ? "exitLast" : "exit"}
+                >
+                  {steps[current]}
+                </Text>
+              )}
             </AnimatePresence>
-            {loaded && (
-              <Heading
-                variants={successMessageVariants}
-                as={motion.h3}
-                initial="hidden"
-                animate="visible"
-              >
-                {successMessage}
-              </Heading>
-            )}
-          </Box>
-          <Box mt="2rem" mb="10rem" className="fullpage__loading-background">
-            <motion.div
-              className="fullpage__loading-bar"
-              initial={{ width: 0 }}
-              animate={barControls}
-            />
+            <AnimatePresence exitBeforeEnter>
+              {loaded ? (
+                <Box
+                  key="success-section"
+                  variants={variants}
+                  as={motion.section}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {typeof success === "function"
+                    ? createElement(success)
+                    : success}
+                </Box>
+              ) : (
+                <Box
+                  mt="2rem"
+                  key="loading-bar"
+                  as={motion.div}
+                  className="fullpage__loading-background"
+                  exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                >
+                  <motion.div
+                    layout
+                    className="fullpage__loading-bar"
+                    initial={{ width: 0 }}
+                    animate={barControls}
+                  />
+                </Box>
+              )}
+            </AnimatePresence>
           </Box>
         </FullscreenWrapper>
       ) : null}

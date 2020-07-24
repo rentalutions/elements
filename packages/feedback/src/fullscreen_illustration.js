@@ -72,7 +72,7 @@ const backgroundPath = {
   }),
 }
 
-export default function Illustration({ onAnimationEnd }) {
+export function Illustration({ onAnimationEnd }) {
   const backgroundPaths = [
     "M44 61L38.5 66.5L36 64",
     "M131 82L121.375 91.625L117 87.25",

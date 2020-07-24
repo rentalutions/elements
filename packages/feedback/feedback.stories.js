@@ -225,8 +225,16 @@ export function FullpageSendLease() {
           "Verifying contact info",
           "Sending document",
         ]}
-        successMessage="Lease Sent for Signing"
-        onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
+        success={
+          <Flex flexDirection="column" alignItems="center">
+            <Heading textAlign="center" as="h3">
+              Lease Sent for Signing
+            </Heading>
+            <Button mt="2rem" variant="primary" onClick={(e) => setOpen(false)}>
+              Got It
+            </Button>
+          </Flex>
+        }
       />
     </Container>
   )

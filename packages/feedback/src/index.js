@@ -1,2 +1,2 @@
-export { default as FullscreenFeedback } from "./fullscreen"
-export { default as InlineFeedback } from "./inline"
+export { FullscreenFeedback } from "./fullscreen"
+export { InlineFeedback } from "./inline"
