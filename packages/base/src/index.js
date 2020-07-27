@@ -163,16 +163,13 @@ export const Base = createGlobalStyle`
 
   a {
     text-decoration:none;
-    color: inherit;
-  }
-
-  .link {
     box-shadow: inset 0 -6px 0 ${({ theme }) => theme.colors.green_500};
+    color: inherit;
     font-weight: ${({ theme }) => theme.fontWeights.black};
     transition: box-shadow 250ms;
   }
 
-  .link:hover {
+  a:hover {
     box-shadow: inset 0 -12px 0 ${({ theme }) => theme.colors.green_500};
   }
 
