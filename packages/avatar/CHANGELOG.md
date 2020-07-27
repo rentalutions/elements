@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.1.6...@rent_avail/avatar@0.2.0) (2020-07-27)
+
+
+### Bug Fixes
+
+* **avatar:** remove default export with named ([a43220c](https://github.com/rentalutions/elements/commit/a43220c6c0dd992318240458c542f653c84447a5))
+
+
+
+
+
 ## [0.1.6](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.1.5...@rent_avail/avatar@0.1.6) (2020-07-27)
 
 **Note:** Version bump only for package @rent_avail/avatar
