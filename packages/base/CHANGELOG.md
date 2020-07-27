@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/rentalutions/elements/compare/@rent_avail/base@0.2.0...@rent_avail/base@0.2.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* **base:** make link styling additive ([c7aa2bc](https://github.com/rentalutions/elements/commit/c7aa2bca5b7d66a296367bb15089236c5e26809a))
+
+
+
+
+
 # [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/base@0.1.4...@rent_avail/base@0.2.0) (2020-07-22)
 
 

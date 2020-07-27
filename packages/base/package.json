@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/base",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Base styling and theme for Avail Design.",
   "source": "src/index.js",
   "main": "dist/index.js",
