@@ -7450,9 +7450,9 @@ fragment-cache@^0.2.1:
     map-cache "^0.2.2"
 
 framer-motion@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-2.1.4.tgz#cc31c4c5906d8e535db8b1edf96a2cb09c317f9f"
-  integrity sha512-9HKuNO4YH09OxHevjmJwpzbbh6BKJnw/28JcpGNEyPWAu5QdOLo2Btjkxo1w3XzjeDZ4DVduvcycgkZZSYG8dw==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-2.2.0.tgz#4c8d5fb90f6040168f8259d07b7fd157af8ffec6"
+  integrity sha512-9Y5e3dXrUC8+rpgQ0gQulK7ru6Ri5jpjINc6RAwabWoYuwbPfI+WwOuVCQcK4IOM1+KWT/zFtt4qHaZKj4wGIg==
   dependencies:
     "@popmotion/easing" "^1.0.2"
     "@popmotion/popcorn" "^0.4.2"
@@ -12938,10 +12938,15 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
-regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3, regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.5:
+regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3, regenerator-runtime@^0.13.4:
   version "0.13.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
   integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+
+regenerator-runtime@^0.13.5:
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regenerator-transform@^0.14.2:
   version "0.14.5"
@@ -14362,15 +14367,7 @@ style-to-object@0.3.0, style-to-object@^0.3.0:
   dependencies:
     inline-style-parser "0.1.1"
 
-style-value-types@^3.1.6, style-value-types@^3.1.7:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.1.7.tgz#3d7d3cf9cb9f9ee86c00e19ba65d6a181a0db33a"
-  integrity sha512-jPaG5HcAPs3vetSwOJozrBXxuHo9tjZVnbRyBjxqb00c2saIoeuBJc1/2MtvB8eRZy41u/BBDH0CpfzWixftKg==
-  dependencies:
-    hey-listen "^1.0.8"
-    tslib "^1.10.0"
-
-style-value-types@^3.1.9:
+style-value-types@^3.1.6, style-value-types@^3.1.7, style-value-types@^3.1.9:
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.1.9.tgz#faf7da660d3f284ed695cff61ea197d85b9122cc"
   integrity sha512-050uqgB7WdvtgacoQKm+4EgKzJExVq0sieKBQQtJiU3Muh6MYcCp4T3M8+dfl6VOF2LR0NNwXBP1QYEed8DfIw==

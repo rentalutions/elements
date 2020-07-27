@@ -48,7 +48,7 @@ function FeedbackElement() {
 | -------------- | -------- | ----------------------------------------------------------------------------- |
 | open           | boolean  | Determines whether the feedback is shown to the user.                         |
 | steps          | array    | Array of strings that tell the user about what is going on behind the scenes. |
-| open           | boolean  | Final message displayed to the user when the animation finishes.              |
+| success        | jsx      | Final message displayed to the user when the animation finishes.              |
 | onAnimationEnd | function | Callback function that fires when the animation is finished.                  |
 
 #### Usage
@@ -58,15 +58,15 @@ function FeedbackElement() {
   const [open, setOpen] = useState(false)
   return (
     <Fragment>
-      <Button onClick={e => setOpen(true)}>get feedback</Button>
+      <Button onClick={(e) => setOpen(true)}>get feedback</Button>
       <FullscreenFeedback
         open={open}
         steps={[
           "Checking clauses against local laws",
           "Verifying contact info",
-          "Sending document"
+          "Sending document",
         ]}
-        successMessage="Lease Sent for Signing"
+        success={<Heading as="h3">Lease Sent for Signing</Heading>}
         onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
       />
     </Fragment>
