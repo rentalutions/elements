@@ -1,6 +1,6 @@
 import React from "react"
 import { render, screen } from "testing-utils"
-import Avatar from "../src"
+import { Avatar } from "../src"
 
 describe("<Avatar />", () => {
   it("renders the component without crashing", () => {

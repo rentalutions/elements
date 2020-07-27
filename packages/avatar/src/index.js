@@ -11,7 +11,7 @@ const smallStyles = css`
 `
 
 const StyledAvatar = styled.div.attrs({
-  role: "user-chip",
+  role: "user-chip"
 })`
   position: relative;
   border-radius: 2rem;
@@ -49,7 +49,7 @@ const StyledAvatar = styled.div.attrs({
   ${({ small }) => small && smallStyles}
 `
 
-export default function Avatar({
+export function Avatar({
   small,
   name,
   email,

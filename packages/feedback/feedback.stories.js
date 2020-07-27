@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react"
 import { FullscreenFeedback, InlineFeedback } from "./src"
-import Avatar from "@rent_avail/avatar"
+import { Avatar } from "@rent_avail/avatar"
 import {
   Box,
   Container,
@@ -8,7 +8,7 @@ import {
   Stack,
   Grid,
   Col,
-  Flex,
+  Flex
 } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
@@ -100,7 +100,7 @@ export function FullpagePayments() {
           </Col>
         </Grid>
         <Flex justifyContent="flex-end">
-          <Button variant="primary" onClick={(e) => setOpen(true)}>
+          <Button variant="primary" onClick={e => setOpen(true)}>
             schedule payment
           </Button>
         </Flex>
@@ -109,7 +109,7 @@ export function FullpagePayments() {
           steps={[
             "Getting your info",
             "Printing your check",
-            "Licking the envelope",
+            "Licking the envelope"
           ]}
           successMessage="Payment Scheduled"
           // onAnimationEnd={() => setTimeout(() => setOpen(false), 1000)}
@@ -163,7 +163,7 @@ export function FullpageSendLease() {
             </Box>
           </Stack>
           <Flex justifyContent="flex-end">
-            <Button mt="2rem" onClick={(e) => setOpen(true)}>
+            <Button mt="2rem" onClick={e => setOpen(true)}>
               Send for signing
             </Button>
           </Flex>
@@ -223,14 +223,14 @@ export function FullpageSendLease() {
         steps={[
           "Checking clauses against local laws",
           "Verifying contact info",
-          "Sending document",
+          "Sending document"
         ]}
         success={
           <Flex flexDirection="column" alignItems="center">
             <Heading textAlign="center" as="h3">
               Lease Sent for Signing
             </Heading>
-            <Button mt="2rem" variant="primary" onClick={(e) => setOpen(false)}>
+            <Button mt="2rem" variant="primary" onClick={e => setOpen(false)}>
               Got It
             </Button>
           </Flex>
@@ -255,7 +255,7 @@ export function InlineVerification() {
           steps={[
             "Verifying Phone",
             "Generating Device Data",
-            "Securing Account",
+            "Securing Account"
           ]}
           onAnimationEnd={() => setLoaded(true)}
         />
@@ -294,17 +294,17 @@ export function InlineTransunion() {
     borderRadius: "0.25rem",
     display: "flex",
     alignItems: "center",
-    p: "0.25rem",
+    p: "0.25rem"
   }
   const reportHeadingProps = {
     as: "h3",
     flexBasis: "50%",
     bg: "ui_100",
-    p: "2rem",
+    p: "2rem"
   }
   const reportLabelProps = {
     as: "h5",
-    p: "2rem",
+    p: "2rem"
   }
   return (
     <Container mt="4rem">
@@ -323,7 +323,7 @@ export function InlineTransunion() {
             "Checking Data",
             "Compiling Reports",
             "Verifying Identity",
-            "Fetching Score",
+            "Fetching Score"
           ]}
           onAnimationEnd={() => setLoaded(true)}
         />
@@ -381,14 +381,14 @@ export function InlinePublishListing() {
           <Flex justifyContent="flex-end">
             <Dialog open={open} toggle={handleToggle} id="success-listing">
               <DialogTarget>
-                <Button onClick={(e) => setOpen(true)}>Publish Listing</Button>
+                <Button onClick={e => setOpen(true)}>Publish Listing</Button>
               </DialogTarget>
               <ConfirmationDialog>
                 <InlineFeedback
                   steps={[
                     "Optimizing Photos",
                     "Connecting to Syndicates",
-                    "Updating Feed",
+                    "Updating Feed"
                   ]}
                   onAnimationEnd={() => setLoaded(true)}
                 />
