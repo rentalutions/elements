@@ -7,7 +7,15 @@ source: "https://github.com/rentalutions/elements/packages/layout"
 ---
 
 ```js
-import { Box, Card, Container, Stack, Grid, Col } from "@rent_avail/layout"
+import {
+  Box,
+  Card,
+  Container,
+  Flex,
+  Grid,
+  Col,
+  Stack,
+} from "@rent_avail/layout"
 ```
 
 The layout package combines a number or useful primitive components to quickly build layouts and complex UI.
@@ -18,7 +26,7 @@ A box is the most basic component in this system. It's a drop in replacement for
 
 #### Style Props
 
-`space, layout, color, flexbox, background, border`
+`space, layout, color, flexbox, background, border, grid, typography, position`
 
 #### Props
 
@@ -40,7 +48,7 @@ A card is a special flavor of box. Cards contain information and actions about a
 
 #### Style Props
 
-`space, layout, color, flexbox, background, border`
+`space, color, layout, flexbox, grid, border, position, shadow`
 
 #### Component Props
 
@@ -63,7 +71,7 @@ Containers are used to prevent the layout from becoming unusable on large scale 
 
 #### Style Props
 
-`space, layout, grid, flexbox`
+`color, layout, space, flexbox`
 
 #### Component Props
 
@@ -81,6 +89,37 @@ No component props
 
 ---
 
+## Flex
+
+Flex composes box with a flex display to align items in a single direction.
+
+#### Style Props
+
+`space, layout, color, flexbox, background, border, grid, typography, position`
+
+#### Component Props
+
+No component props
+
+#### Usage
+
+```jsx live
+<Flex alignItems="center">
+  <Box mr="auto">Logo</Box>
+  <Box p="1rem" bg="ui_300">
+    Item 1
+  </Box>
+  <Box p="1rem" bg="ui_300">
+    Item 2
+  </Box>
+  <Box p="1rem" bg="ui_300">
+    Item 3
+  </Box>
+</Flex>
+```
+
+---
+
 ## Stack
 
 Stacks are used to easily layout a list of items, it takes care of a standard spacing in between each item using css `gap`. There are two variants of stacks, vertical and horizontal.
@@ -89,21 +128,18 @@ Stacks are used to easily layout a list of items, it takes care of a standard sp
 
 `space, layout, grid, flexbox`
 
-#### Variants
-
-| Variant    | Description                                                               |
-| ---------- | ------------------------------------------------------------------------- |
-| Horizontal | Items will stretch horizontally until they need to break onto a new line. |
-| Vertical   | Items will stretch vertically. **This is the default variant**            |
-
 #### Component Props
 
-No component props.
+| Name         | Type      | Description                                                                   |
+| ------------ | --------- | ----------------------------------------------------------------------------- |
+| direction    | `array`   | A responsive shorthand for flex-direction                                     |
+| spacing      | `string`  | A responsive shorthand for either margin-right or margin-bottom               |
+| wrapChildren | `boolean` | Option to wrap children in a a styled-system component to accept margin props |
 
 #### Usage
 
 ```jsx live
-<Stack>
+<Stack direction={["column", "row"]} spacing="4rem">
   {[0, 1, 2, 3].map((num) => (
     <Box key={num} bg="blue_500" color="blue_100" p="2rem">
       {num}
