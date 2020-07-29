@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Container, Stack } from "@rent_avail/layout"
 import { Checkbox, Radio, Switch, Button } from "./src"
 
 export default { title: "Controls" }
@@ -8,16 +9,25 @@ export function CheckboxUsage() {
 }
 
 export function ButtonUsage() {
-  const [disabled, set] = useState(false)
+  const [loading, set] = useState(false)
+  function fakeFetch() {
+    set(true)
+    setTimeout(() => {
+      set(false)
+    }, (Math.random() + 0.5) * 5000)
+  }
   return (
-    <div>
-      <Button disabled={disabled} onClick={(e) => set(true)}>
-        {disabled ? "Disabled text" : "Hello World"}
-      </Button>
-      <Button variant="primary">Hello World</Button>
-      <Button disabled>Hello World</Button>
-      <Button color="red_500">Hello World</Button>
-    </div>
+    <Container my="4rem">
+      <Stack alignItems="start">
+        <Button variant="primary" loading={loading} onClick={fakeFetch}>
+          submit
+        </Button>
+        <Button disabled onClick={(e) => console.log("uh oh")}>
+          not allowed
+        </Button>
+        <Button color="red_500">Don't do this</Button>
+      </Stack>
+    </Container>
   )
 }
 

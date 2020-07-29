@@ -76,6 +76,7 @@ export const theme = {
       color: colors.ui_100,
       background: colors.blue_500,
       borderColor: colors.blue_500,
+      fontFamily: "body",
       "&:hover": {
         background: colors.blue_700,
         color: colors.blue_300,
