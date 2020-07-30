@@ -1,16 +1,18 @@
 {
   "name": "@rent_avail/controls",
   "version": "0.1.8",
-  "description": "Selection control components.",
+  "description": "User control components.",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "esmodule": "dist/index.modern.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "build": "microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
   "publishConfig": {
@@ -29,6 +31,7 @@
   "dependencies": {
     "@rent_avail/base": "^0.2.1",
     "@rent_avail/utils": "^0.2.0",
+    "framer-motion": "^2.3.0",
     "polished": "^3.5.1",
     "styled-system": "^5.1.5"
   }
