@@ -9,10 +9,7 @@ import {
   typography,
   buttonStyle,
 } from "styled-system"
-import { lighten } from "polished"
 import { motion, AnimatePresence } from "framer-motion"
-
-// TODO: Update active state for button.
 
 const spin = keyframes`
   0% {
@@ -76,18 +73,26 @@ const ButtonWrapper = styled.button`
   }
 `
 
+const variants = {
+  initial: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+}
+
 function Button({ children, loading, disabled, ...props }, ref) {
+  const isLoading = loading && !disabled
   return (
     <ButtonWrapper {...{ ...props, disabled, loading, ref }}>
       <AnimatePresence>
-        {loading && !disabled && (
+        {isLoading && (
           <motion.svg
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            variants={variants}
+            initial="initial"
+            animate="enter"
+            exit="exit"
             viewBox="0 0 24 24"
             fill="none"
-            class="spinner"
+            className="spinner"
           >
             <circle
               cx="12"
@@ -96,68 +101,27 @@ function Button({ children, loading, disabled, ...props }, ref) {
               stroke="currentColor"
               strokeWidth="4"
               strokeLinecap="round"
-              class="spinner__path"
+              className="spinner__path"
               pathLength="1"
             />
           </motion.svg>
         )}
       </AnimatePresence>
-      <motion.span animate={{ opacity: loading && !disabled ? 0 : 1 }}>
+      <motion.span
+        variants={variants}
+        animate={isLoading ? "initial" : "enter"}
+      >
         {children}
       </motion.span>
     </ButtonWrapper>
   )
 }
 
-export default forwardRef(Button)
-
-// const loadingStyles = css`
-//   opacity: 0;
-//   &:after {
-//     content: "hello world";
-//   }
-// `
-
-// const Button = styled.button`
-//   appearance: none;
-//   border-width: 2px;
-//   cursor: pointer;
-//   font-weight: 800;
-//   font-size: 1.5rem;
-//   font-family: inherit;
-//   text-transform: uppercase;
-//   transition: 250ms;
-//   white-space: nowrap;
-//   border-style: solid;
-//   border-color: ${({ theme, color }) => theme.colors[color] || color};
-//   outline: none;
-//   &:focus {
-//     background: ${({ color, theme }) =>
-//       lighten(0.66, theme.colors[color] || color)};
-//   }
-//   &:hover {
-//     color: ${({ theme }) => theme.colors.ui_100};
-//     background: ${({ color, theme }) => theme.colors[color] || color};
-//   }
-//   &:disabled {
-//     color: ${({ theme }) => theme.colors.ui_300};
-//     background: ${({ theme }) => theme.colors.ui_500};
-//     border-color: transparent;
-//     cursor: not-allowed;
-//   }
-//   ${({ loading }) => loading && loadingStyles};
-//   ${color};
-//   ${space};
-//   ${layout};
-//   ${flexbox};
-//   ${border};
-//   ${buttonStyle};
-// `
-
 ButtonWrapper.defaultProps = {
   py: "1rem",
   px: "2rem",
   borderRadius: "0.25rem",
+  borderWidth: "2px",
   bg: "transparent",
   color: "blue_500",
   fontSize: "body",
@@ -165,4 +129,4 @@ ButtonWrapper.defaultProps = {
   fontWeight: "black",
 }
 
-// export default Button
+export default forwardRef(Button)
