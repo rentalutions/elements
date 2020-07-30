@@ -8,6 +8,7 @@ import {
   border,
   typography,
   buttonStyle,
+  variant,
 } from "styled-system"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -30,11 +31,49 @@ const ButtonWrapper = styled.button`
   position: relative;
   appearance: none;
   border-style: solid;
+  border-width: 2px;
   white-space: nowrap;
   border-color: ${({ theme, color }) => theme.colors[color] || color};
   text-transform: uppercase;
   outline: none;
   transition: 200ms;
+  ${variant({
+    variants: {
+      default: {
+        bg: "transparent",
+        color: "blue_500",
+        borderColor: "blue_500",
+        "&:hover": {
+          bg: "blue_500",
+          color: "ui_100",
+        },
+      },
+      primary: {
+        color: "ui_100",
+        bg: "blue_500",
+        borderColor: "blue_500",
+        fontFamily: "body",
+        "&:hover": {
+          bg: "blue_700",
+          color: "blue_300",
+        },
+        "&:focus": {
+          bg: "blue_700",
+        },
+      },
+      danger: {
+        color: "red_500",
+        borderColor: "red_500",
+        "&:hover": {
+          bg: "red_500",
+          color: "ui_100",
+        },
+        "&:focus": {
+          bg: "red_300",
+        },
+      },
+    },
+  })}
   ${color};
   ${space};
   ${layout};
@@ -48,8 +87,8 @@ const ButtonWrapper = styled.button`
       pointer-events: none;
     `}
   &:hover {
-    color: ${({ theme }) => theme.colors.ui_100};
-    background: ${({ color, theme }) => theme.colors[color] || color};
+    background: ${({ theme, color }) => theme.colors[color] || color};
+    color: ${({ theme, textColor }) => textColor || theme.colors.ui_100};
   }
   &:disabled {
     color: ${({ theme }) => theme.colors.ui_300};
@@ -72,6 +111,16 @@ const ButtonWrapper = styled.button`
     transform-origin: 50% 50%;
   }
 `
+
+ButtonWrapper.defaultProps = {
+  py: "1rem",
+  px: "2rem",
+  borderRadius: "0.25rem",
+  fontSize: "body",
+  fontFamily: "body",
+  fontWeight: "black",
+  variant: "default",
+}
 
 const variants = {
   initial: { opacity: 0 },
@@ -115,18 +164,6 @@ function Button({ children, loading, disabled, ...props }, ref) {
       </motion.span>
     </ButtonWrapper>
   )
-}
-
-ButtonWrapper.defaultProps = {
-  py: "1rem",
-  px: "2rem",
-  borderRadius: "0.25rem",
-  borderWidth: "2px",
-  bg: "transparent",
-  color: "blue_500",
-  fontSize: "body",
-  fontFamily: "body",
-  fontWeight: "black",
 }
 
 export default forwardRef(Button)

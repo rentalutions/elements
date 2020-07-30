@@ -22,10 +22,16 @@ export function ButtonUsage() {
         <Button variant="primary" loading={loading} onClick={fakeFetch}>
           submit
         </Button>
+        <Button>go back</Button>
         <Button disabled onClick={(e) => console.log("uh oh")}>
           not allowed
         </Button>
-        <Button color="red_500">Don't do this</Button>
+        <Button variant="danger" borderColor="red_500">
+          Don't do this
+        </Button>
+        <Button color="purple_500" borderColor="purple_500">
+          premium content
+        </Button>
       </Stack>
     </Container>
   )
