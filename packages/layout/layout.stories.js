@@ -6,20 +6,29 @@ export default { title: "Layout" }
 
 export function BoxUsage() {
   return (
-    <Fragment>
+    <Container>
       <Box
-        width={[1, 1 / 2]}
+        width="100%"
         p="2rem"
-        mb="3rem"
         bg="blue_100"
         borderRadius="0.25rem"
+        mt="4rem"
+        mb="4rem"
+        sx={{
+          cursor: "pointer",
+          transition: "200ms",
+          "&:hover": {
+            bg: "blue_700",
+            color: "blue_100"
+          }
+        }}
       >
         <Text>
           This is a tomato box, with responsive width, some padding, and margin
           bottom
         </Text>
       </Box>
-    </Fragment>
+    </Container>
   )
 }
 
@@ -73,13 +82,13 @@ export function GridUsage() {
     [12, 3],
     [12, 4],
     [12, 4],
-    [12, 4],
+    [12, 4]
   ]
   const styles = {
     bg: "ui_500",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   }
   return (
     <Grid height="100vh">

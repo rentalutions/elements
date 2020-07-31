@@ -7,8 +7,9 @@ import {
   grid,
   border,
   position,
-  shadow,
+  shadow
 } from "styled-system"
+import { sx } from "@rent_avail/base"
 
 const Card = styled.section`
   min-width: 0;
@@ -20,6 +21,7 @@ const Card = styled.section`
   ${color};
   ${border};
   ${shadow};
+  ${sx};
 `
 
 Card.defaultProps = {
@@ -28,7 +30,7 @@ Card.defaultProps = {
   border: "1px solid",
   borderColor: "ui_500",
   borderRadius: "0.25rem",
-  boxShadow: 2,
+  boxShadow: 2
 }
 
 export default Card

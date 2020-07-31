@@ -6,15 +6,16 @@ import {
   space,
   layout,
   border,
-  background,
+  background
 } from "styled-system"
+import { sx } from "@rent_avail/base"
 
 const Grid = styled.section.attrs(
   ({ columns, gridTemplateColumns, gap, gridGap }) => ({
     gridGap: gap || gridGap,
     gridTemplateColumns: columns
       ? `repeat(${columns}, 1fr)`
-      : gridTemplateColumns,
+      : gridTemplateColumns
   })
 )`
   display: grid;
@@ -24,11 +25,12 @@ const Grid = styled.section.attrs(
   ${layout};
   ${color};
   ${border};
+  ${sx};
 `
 
 Grid.defaultProps = {
   gridTemplateColumns: "repeat(12, 1fr)",
-  gridGap: "2rem",
+  gridGap: "2rem"
 }
 
 function getSpan(span, offset) {
@@ -47,13 +49,13 @@ const Col = styled.div.attrs(
     gridColumn,
     gridRow,
     offset = null,
-    offsetRow = null,
+    offsetRow = null
   }) => {
     const columns = span ? getSpan(span, offset) : gridColumn
     const rows = spanRow ? getSpan(spanRow, offsetRow) : gridRow
     return {
       gridColumn: columns,
-      gridRow: rows,
+      gridRow: rows
     }
   }
 )`
@@ -68,7 +70,7 @@ const Col = styled.div.attrs(
 `
 
 Col.defaultProps = {
-  gridColumn: "1 / -1",
+  gridColumn: "1 / -1"
 }
 
 export { Grid, Col }

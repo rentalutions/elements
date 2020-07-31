@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import css from "@styled-system/css"
 
 const colors = {
   ui_100: "#ffffff",
@@ -35,7 +36,7 @@ const colors = {
   red_500: "#EC4261",
 
   purple_300: "#B7B5EE",
-  purple_500: "#6965D5",
+  purple_500: "#6965D5"
 }
 
 export const theme = {
@@ -44,7 +45,7 @@ export const theme = {
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
-    monospace: "'IBM Plex Mono', monospace",
+    monospace: "'IBM Plex Mono', monospace"
   },
   fontSizes: {
     small: "1.334rem",
@@ -52,25 +53,25 @@ export const theme = {
     subtitle: "2rem",
     title: "3rem",
     headline: "4rem",
-    hero: "5rem",
+    hero: "5rem"
   },
   fontWeights: {
     light: 200,
     regular: 400,
     bold: 600,
-    black: 800,
+    black: 800
   },
   lineHeights: {
     small: "1.5",
     body: "1.334",
-    heading: "1.25",
+    heading: "1.25"
   },
   space: [0, 12, 24, 36, 48, 60, 72, 84, 96],
   shadows: [
     "0 0.084rem 0.25rem rgba(0,0,0.12)",
     "0 0.25rem 0.5rem rgba(0,0,0,0.12)",
-    "0 1rem 1rem -1rem rgba(0,0,0,0.12)",
-  ],
+    "0 1rem 1rem -1rem rgba(0,0,0,0.12)"
+  ]
 }
 
 export const Base = createGlobalStyle`
@@ -162,3 +163,5 @@ export const Base = createGlobalStyle`
     font-size: 2rem;
   }
 `
+
+export const sx = props => css(props.sx)

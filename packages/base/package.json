@@ -27,6 +27,7 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
+    "@styled-system/css": "^5.1.5",
     "styled-system": "^5.1.5"
   }
 }
