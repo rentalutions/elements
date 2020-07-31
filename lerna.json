@@ -21,6 +21,7 @@
     "**/*.mdx",
     "**/__tests__/**",
     "**/perf/**",
-    "**/*.stories.js"
+    "**/*.stories.js",
+    "**/dist/**"
   ]
 }
