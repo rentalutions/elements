@@ -71,31 +71,6 @@ export const theme = {
     "0 0.25rem 0.5rem rgba(0,0,0,0.12)",
     "0 1rem 1rem -1rem rgba(0,0,0,0.12)",
   ],
-  buttons: {
-    primary: {
-      color: colors.ui_100,
-      background: colors.blue_500,
-      borderColor: colors.blue_500,
-      "&:hover": {
-        background: colors.blue_700,
-        color: colors.blue_300,
-      },
-      "&:focus": {
-        background: colors.blue_700,
-      },
-    },
-    danger: {
-      color: colors.red_500,
-      borderColor: colors.red_500,
-      "&:hover": {
-        background: colors.red_500,
-        color: colors.ui_100,
-      },
-      "&:focus": {
-        background: colors.red_300,
-      },
-    },
-  },
 }
 
 export const Base = createGlobalStyle`

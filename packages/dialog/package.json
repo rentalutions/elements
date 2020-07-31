@@ -33,7 +33,7 @@
     "@rent_avail/layout": "^0.2.1",
     "@rent_avail/typography": "^0.1.6",
     "@rent_avail/utils": "^0.2.0",
-    "framer-motion": "^2.1.4",
+    "framer-motion": "^2.3.0",
     "polished": "^3.6.5",
     "react-feather": "^2.0.8",
     "styled-system": "^5.1.5"
