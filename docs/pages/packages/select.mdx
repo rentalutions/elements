@@ -3,34 +3,12 @@ title: Select
 layout: elements
 package_name: select
 install: "yarn add @rent_avail/select"
-source: https://github.com/rentalutions/elements/tree/master/packages/select
+source: https://github.com/rentalutions/elements/tree/release/packages/select
 ---
 
 ```js
 import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
 ```
-
-Select inputs display the currently selected option above a menu that lets the user choose from a list of pre-defined values.
-
-#### Style Props
-
-`space`
-
-#### Select Props
-
-| Name         | Type       | Description                                                             |
-| ------------ | ---------- | ----------------------------------------------------------------------- |
-| id           | `string`   | Unique identifier for the select group.                                 |
-| defaultValue | `string`   | Component value will be this on mount if present.                       |
-| onSelect     | `function` | Callback function that fires when a user selects an item from the list. |
-
-#### Select Input Props
-
-#### Select List Props
-
-#### Select Item Props
-
-#### Usage
 
 ```jsx live
 function SelectExample() {
@@ -66,3 +44,19 @@ function SelectExample() {
   )
 }
 ```
+
+### Description
+
+Select inputs display the currently selected option above a menu that lets the user choose from a list of pre-defined values.
+
+#### Style Props
+
+`space`
+
+#### Select Props
+
+| Name         | Type       | Description                                                             |
+| ------------ | ---------- | ----------------------------------------------------------------------- |
+| id           | `string`   | Unique identifier for the select group.                                 |
+| defaultValue | `string`   | Component value will be this on mount if present.                       |
+| onSelect     | `function` | Callback function that fires when a user selects an item from the list. |

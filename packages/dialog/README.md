@@ -1,10 +1,3 @@
----
-title: Dialogs
-layout: elements
-package_name: dialog
-install: "yarn add @rent_avail/dialog"
-source: "https://github.com/rentalutions/elements/tree/release/packages/dialog"
----
 
 ```js
 import {
@@ -40,9 +33,15 @@ This element can be placed in all dialogs to give a consistent header text and c
 | ----- | ------ | ------------------------------------------------------------------------------ |
 | title | string | If present, adds a title to the fullscreen dialog inline with the close button |
 
----
-
 ## FullscreenDialog
+
+Fullscreen dialogs should be used for complex forms, and whenever we ask the user to create an object that we'll save for them. Common use cases would be requesting an application, adding an addendum to a lease, and editing a rent payment.
+
+#### Style Props
+
+`space, color`
+
+#### Usage
 
 ```jsx live
 function OpenDialog() {
@@ -69,15 +68,17 @@ function OpenDialog() {
 }
 ```
 
-Fullscreen dialogs should be used for complex forms, and whenever we ask the user to create an object that we'll save for them. Common use cases would be requesting an application, adding an addendum to a lease, and editing a rent payment.
+---
+
+## ConfirmationDialog
+
+Confirmation dialogs should be used to confirm the action that the user or the system has just taken.
 
 #### Style Props
 
 `space, color`
 
----
-
-## ConfirmationDialog
+### Usage
 
 ```jsx live
 function OpenDialog() {
@@ -100,11 +101,3 @@ function OpenDialog() {
   )
 }
 ```
-
-### Description
-
-Confirmation dialogs should be used to confirm the action that the user or the system has just taken.
-
-#### Style Props
-
-`space, color`

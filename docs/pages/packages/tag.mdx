@@ -1,4 +1,39 @@
 ---
 title: Tag
 layout: elements
+package_name: tag
+install: "yarn add @rent_avail/tag"
+source: https://github.com/rentalutions/elements/tree/release/packages/tag
 ---
+
+```jsx
+import Tag, { FilterTag } from "@rent_avail/tooltip"
+```
+
+```jsx live
+<Flex>
+  <Tag mr="1rem" bg="green_500">
+    New Payment
+  </Tag>
+  <Tag mr="1rem" bg="red_500" color="ui_100">
+    Overdue
+  </Tag>
+  <Tag mr="1rem" bg="gold_500">
+    Current Plan
+  </Tag>
+  <Tag mr="1rem" bg="green_900" color="green_300">
+    FastPay Eligible
+  </Tag>
+  <Tag mr="1rem" bg="purple_500" color="ui_100">
+    Premium Feature
+  </Tag>
+</Flex>
+```
+
+### Description
+
+The Tag component is used to add contextual metadata to a design. Visually it styles text, adds padding, and rounded corners.
+
+#### Style Props
+
+`space, typography, color, flexbox`

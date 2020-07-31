@@ -9,24 +9,25 @@ layout: elements
 
 The avail design system is made up of small UI packages that can be mostly imported into projects as needed. This allows updating a package to happen without worrying about breaking changes that might be in development on another components.
 
-<br />
+---
 
-| Packages               | Description                            |
-| ---------------------- | -------------------------------------- |
-| @rent_avail/base       | Base, Theme Object                     |
-| @rent_avail/typography | Heading, Text                          |
-| @rent_avail/layout     | Box, Container, Grid, Col, Card, Stack |
-| @rent_avail/controls   | Button, Checkbox, Radio, Switch        |
-| @rent_avail/input      | Input, Textarea                        |
-| @rent_avail/dialog     | Fullscreen, Confirmation, Success      |
-| @rent_avail/menu       | Menu                                   |
-| @rent_avail/tooltip    | Tooltip                                |
-| @rent_avail/tag        | Tag                                    |
-| @rent_avail/popover    | Popover                                |
-| @rent_avail/progress   | Fluid Progress, Fixed Progress         |
-| @rent_avail/avatar     | Avatar, Avatar Group                   |
-| @rent_avail/select     | Select Input                           |
-| @rent_avail/toast      | Toast                                  |
+| Packages               | Description                                            |
+| ---------------------- | ------------------------------------------------------ |
+| @rent_avail/base       | Base, Theme Object                                     |
+| @rent_avail/typography | Heading, Text                                          |
+| @rent_avail/layout     | Box, Container, Grid, Col, Card, Stack, Flex           |
+| @rent_avail/controls   | Button, Checkbox, Radio, Switch                        |
+| @rent_avail/input      | Input, Textarea                                        |
+| @rent_avail/dialog     | Fullscreen Dialog, Confirmation Dialog, Success Dialog |
+| @rent_avail/menu       | Menu                                                   |
+| @rent_avail/tooltip    | Tooltip                                                |
+| @rent_avail/tag        | Tag                                                    |
+| @rent_avail/popover    | Popover                                                |
+| @rent_avail/progress   | Fluid Progress, Fixed Progress                         |
+| @rent_avail/avatar     | Avatar, Avatar Group                                   |
+| @rent_avail/select     | Select Input                                           |
+| @rent_avail/toast      | Toast                                                  |
+| @rent_avail/skeleton   | Skeleton Loader                                        |
 
 ## Styled Props
 
@@ -48,14 +49,14 @@ function YourComponent() {
 First, install the design system and peer dependencies
 
 ```bash
-yarn add react react-dom styled-components styled-system framer-motion @rent_avail/base @rent_avail/layout
+yarn add react react-dom styled-components @rent_avail/base @rent_avail/layout
 ```
 
 Bootstrap your react app and in the root component import the `ThemeProvider` from styled-components and our theme & global styles.
 
 ```jsx
 import { ThemeProvider } from "styled-components"
-import Base, { theme } from "@rent_avail/base"
+import { Base, theme } from "@rent_avail/base"
 
 function App() {
   return (
@@ -147,7 +148,7 @@ const colors = {
   red_500: "#EC4261",
 
   purple_300: "#B7B5EE",
-  purple_500: "#6965D5"
+  purple_500: "#6965D5",
 }
 
 const theme = {
@@ -156,7 +157,7 @@ const theme = {
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
-    monospace: "'IBM Plex Mono', monospace"
+    monospace: "'IBM Plex Mono', monospace",
   },
   fontSizes: {
     small: "1.334rem",
@@ -164,42 +165,24 @@ const theme = {
     subtitle: "2rem",
     title: "3rem",
     headline: "4rem",
-    hero: "5rem"
+    hero: "5rem",
   },
   fontWeights: {
     light: 200,
     regular: 400,
     bold: 600,
-    black: 800
+    black: 800,
   },
   lineHeights: {
     small: "1.5",
     body: "1.334",
-    heading: "1.25"
+    heading: "1.25",
   },
   space: [0, 12, 24, 36, 48, 60, 72, 84, 96],
   shadows: [
     "0 1px 3px rgba(0,0,0.12)",
     "0 3px 6px rgba(0,0,0,0.24)",
-    "0 12px 24px -12px rgba(0,0,0,0.36)"
+    "0 12px 24px -12px rgba(0,0,0,0.36)",
   ],
-  buttons: {
-    primary: {
-      color: colors.ui_100,
-      background: colors.blue_500,
-      borderColor: colors.blue_500,
-      "&:hover": {
-        background: colors.blue_700,
-        color: colors.blue_300
-      },
-      "&:focus": {
-        background: colors.blue_700
-      }
-    },
-    danger: {
-      color: colors.red_500,
-      borderColor: colors.red_500
-    }
-  }
 }
 ```

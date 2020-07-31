@@ -33,14 +33,16 @@ function PackageInfo({ info: { source, title, install } }) {
         </Col>
         <Col gridColumn={["span 2"]}>Source</Col>
         <Col gridColumn={["span 10"]}>
-          <a href={source}>Github</a>
+          <Text as="a" color="ui_900" className="link" href={source}>
+            Github
+          </Text>
         </Col>
       </Grid>
     </PackageInfoWrapper>
   )
 }
 
-export default (pageMatter) => {
+export default function ElementsLayout(pageMatter) {
   const orderedPackages = packages.sort((curr) => {
     const path = formatPath(curr.__resourcePath)
     return path === "packages" ? -1 : 0

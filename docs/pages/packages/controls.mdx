@@ -14,26 +14,44 @@ This package contains a set of elements that allow a user to control state on a 
 
 ## Button
 
+```jsx live
+<Stack direction={["row"]} flexWrap="wrap" mt="-2rem">
+  <Button mt="2rem">default</Button>
+  <Button mt="2rem" variant="primary">
+    primary
+  </Button>
+  <Button mt="2rem" variant="danger">
+    danger
+  </Button>
+  <Button mt="2rem" color="gold_700" borderColor="gold_700">
+    custom
+  </Button>
+  <Button mt="2rem" disabled>
+    disabled
+  </Button>
+  <Button mt="2rem" loading>
+    loading
+  </Button>
+</Stack>
+```
+
+### Description
+
 Buttons at Avail have uppercase text labels. Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting. If you have a set of buttons together use the primary button to distinguish the most desirable action.
 
 #### Style Props
 
 `color, space, layout, flexbox, border, buttonStyle`
 
-#### Usage
-
-```jsx live
-<Stack direction={["vertical", "vertical", "horizontal"]}>
-  <Button>click me</Button>
-  <Button variant="primary">primary</Button>
-  <Button variant="danger">danger</Button>
-  <Button color="gold_700">custom</Button>
-</Stack>
-```
-
-<hr />
+---
 
 ## Checkbox
+
+```jsx live
+<Checkbox />
+```
+
+### Description
 
 Checkboxes are user selection tools when multiple options can be chosen at the same time. A user should be able to select one or more options from a set.
 
@@ -47,15 +65,15 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
 | ------- | --------- | ----------------------------------- |
 | checked | `boolean` | Controls the state of the checkbox. |
 
-#### Usage
-
-```jsx live
-<Checkbox />
-```
-
-<hr />
+---
 
 ## Radio
+
+```jsx live
+<Radio />
+```
+
+### Description
 
 Radio buttons are used to select one option from a set. Use radio buttons when it's helpful for the user to see all the available choices when selecting.
 
@@ -69,15 +87,15 @@ Radio buttons are used to select one option from a set. Use radio buttons when i
 | ------- | --------- | -------------------------------------- |
 | checked | `boolean` | Controls the state of the radio button |
 
-#### Usage
-
-```jsx live
-<Radio />
-```
-
-<hr />
+---
 
 ## Switch
+
+```jsx live
+<Switch />
+```
+
+### Description
 
 Toggles are selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
 
@@ -90,9 +108,3 @@ Toggles are selection controls that change data immediately. They need to be und
 | Name    | Type      | Description                       |
 | ------- | --------- | --------------------------------- |
 | checked | `boolean` | Controls the state of the switch. |
-
-#### Usage
-
-```jsx live
-<Switch />
-```

@@ -14,20 +14,6 @@ A progress bar indicates the status of a user inside a process. It help a user u
 
 ## FixedProgress
 
-Fixed progress bars should be used to indicate a short workflow, less than 4 steps, or to denote the status of a workflow that will take an extended amount of time.
-
-#### Style Props
-
-`space`
-
-#### Menu Props
-
-| Name  | Type     | Description                                                                                   |
-| ----- | -------- | --------------------------------------------------------------------------------------------- |
-| steps | `object` | An object with where the key is the step label and the value is whether the step is complete. |
-
-#### Usage
-
 ```jsx live
 <FixedProgress
   steps={{
@@ -38,9 +24,29 @@ Fixed progress bars should be used to indicate a short workflow, less than 4 ste
 />
 ```
 
+### Description
+
+Fixed progress bars should be used to indicate a short workflow, less than 4 steps, or to denote the status of a workflow that will take an extended amount of time.
+
+#### Style Props
+
+`space`
+
+#### Props
+
+| Name  | Type     | Description                                                                                   |
+| ----- | -------- | --------------------------------------------------------------------------------------------- |
+| steps | `object` | An object with where the key is the step label and the value is whether the step is complete. |
+
 ---
 
 ## FluidProgress
+
+```jsx live
+<FluidProgress label="Contact info" current={2} total={6} />
+```
+
+### Description
 
 Fluid progress bar should be used in a user journey that has more than 4 steps. Each step in the workflow should be on it's own screen, functioning as a wizard.
 
@@ -48,16 +54,10 @@ Fluid progress bar should be used in a user journey that has more than 4 steps. 
 
 `space`
 
-#### Menu Props
+#### Props
 
 | Name    | Type     | Description                                                                         |
 | ------- | -------- | ----------------------------------------------------------------------------------- |
 | label   | `object` | The label currently displayed on the progressBar, should be updated on each render. |
 | current | `number` | The index of the current step.                                                      |
 | total   | `number` | The length of the total steps.                                                      |
-
-#### Usage
-
-```jsx live
-<FluidProgress label="Contact info" current={2} total={6} />
-```
