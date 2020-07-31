@@ -62,6 +62,7 @@ const ButtonWrapper = styled.button`
         },
       },
       danger: {
+        bg: "transparent",
         color: "red_500",
         borderColor: "red_500",
         "&:hover": {
