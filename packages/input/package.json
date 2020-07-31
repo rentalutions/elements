@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/input",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Input components",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -27,7 +27,7 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.2.1",
+    "@rent_avail/base": "^0.3.0",
     "@rent_avail/utils": "^0.2.0",
     "@styled-system/props": "^5.1.5",
     "clsx": "^1.1.0",

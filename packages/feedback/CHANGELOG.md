@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/rentalutions/elements/compare/@rent_avail/feedback@0.2.1...@rent_avail/feedback@0.2.2) (2020-07-31)
+
+
+### Bug Fixes
+
+* **avatar:** remove default export with named ([a43220c](https://github.com/rentalutions/elements/commit/a43220c6c0dd992318240458c542f653c84447a5))
+
+
+
+
+
 ## [0.2.1](https://github.com/rentalutions/elements/compare/@rent_avail/feedback@0.2.0...@rent_avail/feedback@0.2.1) (2020-07-27)
 
 **Note:** Version bump only for package @rent_avail/feedback
