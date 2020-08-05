@@ -26,9 +26,7 @@ export function ConfirmationUsage() {
         </DialogTarget>
         <ConfirmationDialog>
           <DialogHeader title="Are you sure?" />
-          <Text>
-            This action will delete 43 files. Are you sure you want to continue?
-          </Text>
+          <Text>This action will delete 46 files.</Text>
         </ConfirmationDialog>
       </Dialog>
     </Fragment>
@@ -52,6 +50,66 @@ export function FullscreenUsage() {
             Updating these settings will not effect in progress applications.
           </Heading>
           <Input label="Hello World" />
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
+          <Text mt="2rem">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Text>
         </Container>
       </FullscreenDialog>
     </Dialog>

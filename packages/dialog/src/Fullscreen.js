@@ -14,6 +14,7 @@ const FullscreenWrapper = styled(motion.section)`
   left: 0;
   padding: 4rem 0;
   background: ${({ theme }) => theme.colors.ui_100};
+  overflow: auto;
   ${color};
   ${background};
 `
