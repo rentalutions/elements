@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.7...@rent_avail/dialog@0.1.8) (2020-08-05)
+
+
+### Bug Fixes
+
+* **dialog:** update scroll behavior ([aac3a49](https://github.com/rentalutions/elements/commit/aac3a4930244705e66d0b8370dfef761a797f193))
+
+
+
+
+
 ## [0.1.7](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.6...@rent_avail/dialog@0.1.7) (2020-07-31)
 
 **Note:** Version bump only for package @rent_avail/dialog
