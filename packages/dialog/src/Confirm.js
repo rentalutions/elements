@@ -6,10 +6,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { DialogContext } from "./dialogContext"
 
 const ConfirmationWrapper = styled(motion.section)`
-  position: fixed;
+  position: absolute;
   top: 4rem;
   left: 50%;
   padding: 2rem;
+  margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
   background: ${({ theme }) => theme.colors.ui_100};
@@ -18,6 +19,7 @@ const ConfirmationWrapper = styled(motion.section)`
   max-width: 50rem;
   z-index: 2;
   transform: translate3d(-50%, 0, 0);
+  overflow: auto;
   .confirmation__header {
     display: flex;
     margin-bottom: 2rem;
@@ -38,6 +40,7 @@ const Scrim = styled(motion.div)`
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.24);
+  overflow: auto;
 `
 
 function Confirmation({ children, title = null, ...props }, ref) {
@@ -53,17 +56,18 @@ function Confirmation({ children, title = null, ...props }, ref) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-          />
-          <ConfirmationWrapper
-            {...props}
-            key={`${id}-dialog`}
-            ref={ref}
-            initial={{ opacity: 0, scale: 1.05, x: "-50%" }}
-            animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
-            exit={{ opacity: 0, scale: 1.05 }}
           >
-            {children}
-          </ConfirmationWrapper>
+            <ConfirmationWrapper
+              {...props}
+              key={`${id}-dialog`}
+              ref={ref}
+              initial={{ opacity: 0, scale: 1.05, x: "-50%" }}
+              animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
+              exit={{ opacity: 0, scale: 1.05 }}
+            >
+              {children}
+            </ConfirmationWrapper>
+          </Scrim>
         </Fragment>
       )}
     </AnimatePresence>,
