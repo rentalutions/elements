@@ -82,8 +82,9 @@ export function usePortal(type = "avail-portal") {
   useEffect(() => {
     document.body.appendChild(rootElement.current)
     return () => {
-      if (rootElement.current) {
-        document.body.removeChild(rootElement.current)
+      const owner = rootElement.current?.ownerDocument
+      if (owner) {
+        owner.body.removeChild(rootElement.current)
       }
     }
   }, [rootElement.current])
