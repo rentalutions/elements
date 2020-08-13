@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.1.7...@rent_avail/popover@0.1.8) (2020-08-13)
+
+
+### Bug Fixes
+
+* **utils:** create root element for each portal ([87fa1ac](https://github.com/rentalutions/elements/commit/87fa1acb6feccfd13753071bfb4446c6ddad7398))
+
+
+
+
+
 ## [0.1.7](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.1.6...@rent_avail/popover@0.1.7) (2020-07-31)
 
 **Note:** Version bump only for package @rent_avail/popover

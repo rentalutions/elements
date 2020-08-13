@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.2.1...@rent_avail/avatar@0.2.2) (2020-08-13)
+
+**Note:** Version bump only for package @rent_avail/avatar
+
+
+
+
+
 ## [0.2.1](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.2.0...@rent_avail/avatar@0.2.1) (2020-07-31)
 
 **Note:** Version bump only for package @rent_avail/avatar

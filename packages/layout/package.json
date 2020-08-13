@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/layout",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Layout components.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.3.0",
-    "@rent_avail/utils": "^0.2.0",
+    "@rent_avail/utils": "^0.2.1",
     "styled-system": "^5.1.5"
   }
 }

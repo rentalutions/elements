@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.0...@rent_avail/utils@0.2.1) (2020-08-13)
+
+
+### Bug Fixes
+
+* **utils:** create root element for each portal ([87fa1ac](https://github.com/rentalutions/elements/commit/87fa1acb6feccfd13753071bfb4446c6ddad7398))
+
+
+
+
+
 # [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.1.4...@rent_avail/utils@0.2.0) (2020-07-22)
 
 
