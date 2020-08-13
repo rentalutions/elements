@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState, useReducer } from "react"
+import React, { useRef, useEffect, useState, useReducer } from "react"
+import { createPortal } from "react-dom"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
@@ -72,39 +73,46 @@ export function useIntersection({
   return [target, result]
 }
 
-export function usePortalTarget() {
+export function usePortal(type = "avail-portal") {
   if (typeof window === "undefined") return null // bail on server render.
-  const modalContainer = document.getElementById("modal-root")
-  const rootElement = useRef(modalContainer)
+  const rootElement = useRef()
   if (!rootElement.current) {
-    rootElement.current = document.createElement("aside")
-    rootElement.current.setAttribute("id", "modal-root")
+    rootElement.current = document.createElement(type)
   }
   useEffect(() => {
     document.body.appendChild(rootElement.current)
     return () => {
-      document.body.removeChild(rootElement.current)
+      const owner = rootElement.current?.ownerDocument
+      if (owner) {
+        owner.body.removeChild(rootElement.current)
+      }
     }
   }, [rootElement.current])
   return rootElement.current
 }
 
-export function usePortal() {
-  if (typeof window === "undefined") return null // bail on server render.
-  const modalContainer = document.getElementById("modal-root")
-  const rootElement = useRef(modalContainer)
-  if (!rootElement.current) {
-    rootElement.current = document.createElement("aside")
-    rootElement.current.setAttribute("id", "modal-root")
-  }
-  useEffect(() => {
-    document.body.appendChild(rootElement.current)
-    return () => {
-      document.body.removeChild(rootElement.current)
-    }
-  }, [rootElement.current])
-  return rootElement.current
-}
+// export function usePortalNew(type = "avail-portal") {
+//   if (typeof window === "undefined") return null // bail on server render.
+//   const rootElement = useRef()
+//   const mountNode = useRef()
+//   if (!rootElement.current) {
+//     rootElement.current = document.createElement(type)
+//   }
+//   useEffect(() => {
+//     document.body.appendChild(rootElement.current)
+//     return () => {
+//       document.body.removeChild(rootElement.current)
+//     }
+//   }, [rootElement.current])
+//   function create(element) {
+//     return mountNode.current ? (
+//       createPortal(element, rootElement.current)
+//     ) : (
+//       <span ref={mountNode} />
+//     )
+//   }
+//   return create
+// }
 
 const GET_DATES = "avail/actions/GET_DATES"
 const UPDATE_DATES = "avail/actions/UPDATE_DATES"
