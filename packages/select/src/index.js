@@ -248,7 +248,7 @@ const StyledList = styled(Card)`
 
 function List({ children, style, ...props }, ref) {
   const {
-    state: { isOpen, width },
+    state: { isOpen },
     dispatch,
     listRef,
     inputRef,
@@ -289,10 +289,10 @@ function List({ children, style, ...props }, ref) {
     }
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
-  useEffect(() => {
-    if (isOpen)
-      dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
-  }, [isOpen, inputBounds])
+  // useEffect(() => {
+  //   if (isOpen)
+  //     dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
+  // }, [isOpen, inputBounds])
   return isOpen ? (
     <Popover
       id={id}
@@ -300,7 +300,12 @@ function List({ children, style, ...props }, ref) {
       position={position}
       style={{ zIndex: "9999" }}
     >
-      <StyledList {...props} as="ul" ref={listRef} style={{ ...style, width }}>
+      <StyledList
+        {...props}
+        as="ul"
+        ref={listRef}
+        style={{ ...style, width: inputBounds.width }}
+      >
         {children}
       </StyledList>
     </Popover>

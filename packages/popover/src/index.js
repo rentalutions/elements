@@ -7,7 +7,7 @@ import React, {
   memo,
 } from "react"
 import { createPortal } from "react-dom"
-import { usePortal, useWindowResize } from "@rent_avail/utils"
+import { usePortal, useWindowResize as useBounds } from "@rent_avail/utils"
 
 export function getPosition({ popover, target }) {
   if (!popover || !target) return null
@@ -33,27 +33,27 @@ export function getPosition({ popover, target }) {
   }
 }
 
-function PopOver(
+const Popover = forwardRef(function Popover(
   { targetRef, position = getPosition, style, children, ...rest },
-  ref
+  forwardedRef
 ) {
   const portal = usePortal()
   const popoverRef = useRef(null)
-  const popoverRect = useWindowResize(popoverRef)
-  const targetRect = useWindowResize(targetRef)
+  const popoverBounds = useBounds(popoverRef)
+  const targetBounds = useBounds(targetRef)
   const [currentPosition, setPosition] = useState({
     top: 0,
     left: 0,
     visibility: "hidden",
   })
-  useImperativeHandle(ref, () => ({ ...popoverRef.current }))
+  useImperativeHandle(forwardedRef, () => ({ ...popoverRef.current }))
   useEffect(() => {
     const newPos = position({
-      popover: popoverRect,
-      target: targetRect,
+      popover: popoverBounds,
+      target: targetBounds,
     })
     setPosition(newPos)
-  }, [targetRect])
+  }, [targetBounds])
   return createPortal(
     <aside
       {...rest}
@@ -64,6 +64,6 @@ function PopOver(
     </aside>,
     portal
   )
-}
+})
 
-export default memo(forwardRef(PopOver))
+export default Popover
