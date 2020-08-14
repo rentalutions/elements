@@ -8,7 +8,7 @@ import {
   border,
   grid,
   typography,
-  position
+  position,
 } from "styled-system"
 import { sx } from "@rent_avail/base"
 

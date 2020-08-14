@@ -15,7 +15,7 @@ const Container = styled.section`
 Container.defaultProps = {
   maxWidth: "84rem",
   mx: "auto",
-  px: "2rem"
+  px: "2rem",
 }
 
 export default Container

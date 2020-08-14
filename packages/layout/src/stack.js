@@ -2,7 +2,7 @@ import React, {
   Children,
   forwardRef,
   isValidElement,
-  cloneElement
+  cloneElement,
 } from "react"
 import Box from "./box"
 import Flex from "./flex"
@@ -19,8 +19,10 @@ function Stack(
   ref
 ) {
   const validChildren = Children.toArray(children).filter(isValidElement)
-  const marginRight = direction.map(dir => (dir === "column" ? "0" : spacing))
-  const marginBottom = direction.map(dir => (dir === "column" ? spacing : "0"))
+  const marginRight = direction.map((dir) => (dir === "column" ? "0" : spacing))
+  const marginBottom = direction.map((dir) =>
+    dir === "column" ? spacing : "0"
+  )
   return (
     <Flex {...props} flexDirection={direction} ref={ref}>
       {validChildren.map((child, idx) => {
@@ -38,7 +40,7 @@ function Stack(
         return cloneElement(child, {
           key: `stack-item-${idx}`,
           mr: marginRight,
-          mb: marginBottom
+          mb: marginBottom,
         })
       })}
     </Flex>

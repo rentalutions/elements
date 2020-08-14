@@ -19,8 +19,8 @@ export function BoxUsage() {
           transition: "200ms",
           "&:hover": {
             bg: "blue_700",
-            color: "blue_100"
-          }
+            color: "blue_100",
+          },
         }}
       >
         <Text>
@@ -82,13 +82,13 @@ export function GridUsage() {
     [12, 3],
     [12, 4],
     [12, 4],
-    [12, 4]
+    [12, 4],
   ]
   const styles = {
     bg: "ui_500",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   }
   return (
     <Grid height="100vh">
