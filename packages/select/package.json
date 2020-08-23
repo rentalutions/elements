@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/select",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Select input component.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -27,9 +27,9 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.3.0",
-    "@rent_avail/layout": "^0.2.3",
-    "@rent_avail/popover": "^0.1.8",
+    "@rent_avail/base": "^0.4.0",
+    "@rent_avail/layout": "^0.3.0",
+    "@rent_avail/popover": "^0.1.9",
     "@rent_avail/utils": "^0.2.1",
     "clsx": "^1.1.0",
     "react-feather": "^2.0.4",
