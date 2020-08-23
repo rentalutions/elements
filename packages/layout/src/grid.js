@@ -8,6 +8,7 @@ import {
   border,
   background,
 } from "styled-system"
+import { sx } from "@rent_avail/base"
 
 const Grid = styled.section.attrs(
   ({ columns, gridTemplateColumns, gap, gridGap }) => ({
@@ -24,6 +25,7 @@ const Grid = styled.section.attrs(
   ${layout};
   ${color};
   ${border};
+  ${sx};
 `
 
 Grid.defaultProps = {

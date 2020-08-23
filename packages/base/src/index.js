@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import css from "@styled-system/css"
 
 const colors = {
   ui_100: "#ffffff",
@@ -162,3 +163,5 @@ export const Base = createGlobalStyle`
     font-size: 2rem;
   }
 `
+
+export const sx = (props) => css(props.sx)

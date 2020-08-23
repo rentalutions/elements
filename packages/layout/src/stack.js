@@ -13,6 +13,7 @@ function Stack(
     direction = ["column"],
     spacing = "2rem",
     wrapChildren = false,
+    sx = {},
     ...props
   },
   ref

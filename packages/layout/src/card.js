@@ -9,6 +9,7 @@ import {
   position,
   shadow,
 } from "styled-system"
+import { sx } from "@rent_avail/base"
 
 const Card = styled.section`
   min-width: 0;
@@ -20,6 +21,7 @@ const Card = styled.section`
   ${color};
   ${border};
   ${shadow};
+  ${sx};
 `
 
 Card.defaultProps = {
