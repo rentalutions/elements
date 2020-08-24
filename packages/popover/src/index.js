@@ -9,30 +9,40 @@ import React, {
 import { createPortal } from "react-dom"
 import { usePortal, useWindowResize as useBounds } from "@rent_avail/utils"
 
-export function getPosition({ popover, target, parent }) {
-  if (!popover || !target) return null
+export function getPosition({ popover, target, parent, position: { x, y } }) {
+  const defaultValue = { top: 0, left: 0, visibility: "hidden" }
+  if (!popover || !target) return defaultValue
+  const yOffset = !parent ? window.pageYOffset : 0
+  const parentElement = parent ? parent : window
   const collisions = {
     top: target.top - popover.height < 0,
-    right:
-      (parent ? parent.innerWidth : window.innerWidth) <
-      target.left + popover.width,
-    bottom:
-      (parent ? parent.innerHeight : window.innerHeight) <
-      target.bottom + popover.height,
+    right: parentElement.innerWidth < target.left + popover.width,
+    bottom: parentElement.innerHeight < target.bottom + popover.height,
     left: target.left - popover.width < 0,
   }
   const rightCollision = collisions.right && !collisions.left
   const topCollision = collisions.bottom && !collisions.top
-  const alignTop =
-    target.top - 12 - popover.height + (!parent ? window.pageYOffset : 0)
-  const alignBottom =
-    target.top + 12 + target.height + (!parent ? window.pageYOffset : 0)
-  const alignRight =
-    target.right - popover.width + (!parent ? window.pageXOffset : 0)
-  const alignLeft = target.left + (!parent ? window.pageXOffset : 0)
-  const top = topCollision ? alignTop : alignBottom
-  const left = rightCollision ? alignRight : alignLeft
-  if (Number.isNaN(top + left)) return { top: 0, left: 0, visibility: "hidden" }
+  const alignTop = target.top - 12 - popover.height + yOffset
+  const alignBottom = target.top + 12 + target.height + yOffset
+  const alignRight = target.right - popover.width + yOffset
+  const alignLeft = target.left + yOffset
+  const top =
+    y === "top"
+      ? alignTop
+      : y === "bottom"
+      ? alignBottom
+      : topCollision
+      ? alignTop
+      : alignBottom
+  const left =
+    x === "left"
+      ? alignLeft
+      : x === "right"
+      ? alignRight
+      : rightCollision
+      ? alignRight
+      : alignLeft
+  if (Number.isNaN(top + left)) return defaultValue
   return {
     visibility: "visible",
     top,
@@ -41,7 +51,14 @@ export function getPosition({ popover, target, parent }) {
 }
 
 const Popover = forwardRef(function Popover(
-  { parentRef, targetRef, position = getPosition, style, children, ...rest },
+  {
+    parentRef,
+    targetRef,
+    position = { x: "default", y: "default" },
+    style,
+    children,
+    ...rest
+  },
   forwardedRef
 ) {
   const portal = usePortal(undefined, parentRef)
@@ -55,10 +72,11 @@ const Popover = forwardRef(function Popover(
   })
   useImperativeHandle(forwardedRef, () => ({ ...popoverRef.current }))
   useEffect(() => {
-    const newPos = position({
+    const newPos = getPosition({
       popover: popoverBounds,
       target: targetBounds,
       parent: parentRef?.current,
+      position,
     })
     setPosition(newPos)
   }, [targetBounds])

@@ -258,20 +258,6 @@ function List({ children, style, ...props }, ref) {
     id,
   } = useContext(SelectContext)
   const inputBounds = useWindowResize(inputRef, parentRef)
-  function position({ popover: popoverRect, target: targetRect, parent }) {
-    if (!popoverRect || !targetRect)
-      return { top: 0, left: 0, visibility: "hidden" }
-    const top =
-      targetRect.top +
-      targetRect.height +
-      (!parent ? window.pageYOffset : 0) +
-      12
-    return {
-      top: `${top}px`,
-      left: `${targetRect.left + (!parent ? window.pageXOffset : 0)}px`,
-      visibility: "visible",
-    }
-  }
   function handleBlur({ target }) {
     if (!isOpen) return null
     const listEl = listRef.current
@@ -296,15 +282,11 @@ function List({ children, style, ...props }, ref) {
     }
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
-  // useEffect(() => {
-  //   if (isOpen)
-  //     dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
-  // }, [isOpen, inputBounds])
   return isOpen ? (
     <Popover
       id={id}
       targetRef={inputRef}
-      position={position}
+      position={{ x: "left", y: "bottom" }}
       style={{ zIndex: "9999" }}
       parentRef={parentRef}
     >
