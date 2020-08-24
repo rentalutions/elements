@@ -19,7 +19,6 @@ const ConfirmationWrapper = styled(motion.section)`
   max-width: 50rem;
   z-index: 2;
   transform: translate3d(-50%, 0, 0);
-  overflow: auto;
   .confirmation__header {
     display: flex;
     margin-bottom: 2rem;
@@ -64,6 +63,7 @@ function Confirmation({ children, title = null, ...props }, ref) {
               initial={{ opacity: 0, scale: 1.05, x: "-50%" }}
               animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
               exit={{ opacity: 0, scale: 1.05 }}
+              onAnimationComplete={(e) => console.log("complete")}
             >
               {children}
             </ConfirmationWrapper>
