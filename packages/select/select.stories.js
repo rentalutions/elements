@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react"
+import React, { useState, Fragment, useRef } from "react"
 import { Heading } from "@rent_avail/typography"
 import { Container } from "@rent_avail/layout"
 import {
@@ -13,7 +13,7 @@ import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
 export default { title: "Select" }
 
-function SelectExample() {
+function SelectExample({ parentRef }) {
   const options = [
     { label: "Alabama", value: "AL" },
     { label: "Alaska", value: "AK" },
@@ -27,7 +27,11 @@ function SelectExample() {
   return (
     <Fragment>
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Select id="select-id" onSelect={(value) => setState(value)}>
+      <Select
+        parentRef={parentRef}
+        id="select-id"
+        onSelect={(value) => setState(value)}
+      >
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
@@ -50,7 +54,8 @@ export function BasicUsage() {
 }
 
 export function InAPortal() {
-  const [open, set] = useState(false)
+  const [open, set] = useState(true)
+  const dialogRef = useRef()
   function handleClick() {
     set((o) => !o)
   }
@@ -60,9 +65,9 @@ export function InAPortal() {
         <DialogTarget>
           <Button onClick={(e) => set(true)}>open dialog</Button>
         </DialogTarget>
-        <ConfirmationDialog>
+        <ConfirmationDialog ref={dialogRef}>
           <DialogHeader title="Select an option" />
-          <SelectExample />
+          <SelectExample parentRef={dialogRef} />
         </ConfirmationDialog>
       </Dialog>
     </Container>

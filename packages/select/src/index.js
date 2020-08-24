@@ -63,6 +63,7 @@ function Select({
   onSelect = noop,
   disabled = false,
   defaultValue = "",
+  parentRef,
 }) {
   const inputRef = useRef()
   const listRef = useRef()
@@ -75,6 +76,7 @@ function Select({
   )
   const context = useMemo(
     () => ({
+      parentRef,
       inputRef,
       listRef,
       state: { value, typeAheadQuery, width, isOpen },
@@ -250,18 +252,23 @@ function List({ children, style, ...props }, ref) {
   const {
     state: { isOpen },
     dispatch,
+    parentRef,
     listRef,
     inputRef,
     id,
   } = useContext(SelectContext)
-  const inputBounds = useWindowResize(inputRef)
-  function position({ popover: popoverRect, target: targetRect }) {
+  const inputBounds = useWindowResize(inputRef, parentRef)
+  function position({ popover: popoverRect, target: targetRect, parent }) {
     if (!popoverRect || !targetRect)
       return { top: 0, left: 0, visibility: "hidden" }
-    const top = targetRect.top + targetRect.height + window.pageYOffset + 12
+    const top =
+      targetRect.top +
+      targetRect.height +
+      (!parent ? window.pageYOffset : 0) +
+      12
     return {
       top: `${top}px`,
-      left: `${targetRect.left + window.pageXOffset}px`,
+      left: `${targetRect.left + (!parent ? window.pageXOffset : 0)}px`,
       visibility: "visible",
     }
   }
@@ -299,6 +306,7 @@ function List({ children, style, ...props }, ref) {
       targetRef={inputRef}
       position={position}
       style={{ zIndex: "9999" }}
+      parentRef={parentRef}
     >
       <StyledList
         {...props}
@@ -353,7 +361,6 @@ function Item(
   const [visibility, setVisibility] = useState(true)
   const itemRef = useRef()
   function selectValue({ target }) {
-    console.log(target.dataset.value)
     dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
     onSelect(target.dataset.value)
   }

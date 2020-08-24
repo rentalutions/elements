@@ -32,12 +32,12 @@ function tooltipReducer(state, action) {
   }
 }
 
-function Tooltip({ children, id }) {
+function Tooltip({ children, parentRef, id }) {
   const [state, dispatch] = useReducer(tooltipReducer, initialState)
   const targetRef = useRef()
   const tooltipRef = useRef()
   const popoverRef = useRef()
-  const context = { state, dispatch, id, targetRef, tooltipRef, popoverRef }
+  const context = { state, dispatch, id, parentRef, targetRef, tooltipRef, popoverRef }
   return (
     <TooltipContext.Provider value={context}>
       {children}
@@ -92,6 +92,7 @@ function Content({ children, position, ...props }, ref) {
   const {
     id,
     state: { isOpen },
+    parentRef,
     tooltipRef,
     popoverRef,
     targetRef,
@@ -102,6 +103,7 @@ function Content({ children, position, ...props }, ref) {
       style={{ zIndex: "9999" }}
       targetRef={targetRef}
       ref={popoverRef}
+      parentRef={parentRef}
       position={position}
     >
       <StyledTooltip

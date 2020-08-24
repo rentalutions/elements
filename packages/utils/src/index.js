@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState, useReducer } from "react"
-import { createPortal } from "react-dom"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
@@ -14,17 +13,46 @@ export function useRect(ref) {
   return rect
 }
 
-export function useWindowResize(ref) {
+export function useWindowResize(ref, parentRef) {
   const [size, setSize] = useState({})
   useEffect(() => {
     function handleResize() {
       if (!ref.current) return false
-      setSize(ref.current.getBoundingClientRect())
+      const childRect = ref.current.getBoundingClientRect()
+      const parentRect = parentRef?.current?.getBoundingClientRect() || {
+        x: 0,
+        y: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }
+      setSize({
+        x: childRect.x - parentRect.x,
+        y: childRect.y - parentRect.y,
+        top: childRect.top - parentRect.top,
+        left: childRect.left - parentRect.left,
+        right: childRect.x - parentRect.x + childRect.width,
+        bottom: childRect.y - parentRect.y + childRect.height,
+        width: childRect.width,
+        height: childRect.height,
+      })
     }
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    if (typeof ResizeObserver === "function") {
+      let resizeObserver = new ResizeObserver(() => handleResize())
+      resizeObserver.observe(ref.current)
+      return () => {
+        if (!resizeObserver) {
+          return
+        }
+        resizeObserver.disconnect()
+        resizeObserver = null
+      }
+    } else {
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }
+  }, [ref.current])
   return size
 }
 
@@ -73,21 +101,21 @@ export function useIntersection({
   return [target, result]
 }
 
-export function usePortal(type = "avail-portal") {
+export function usePortal(type = "avail-portal", parentRef) {
   if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef()
   if (!rootElement.current) {
     rootElement.current = document.createElement(type)
   }
   useEffect(() => {
-    document.body.appendChild(rootElement.current)
+    const mountRoot = parentRef?.current || document.body
+    mountRoot.appendChild(rootElement.current)
     return () => {
-      const owner = rootElement.current?.ownerDocument
-      if (owner) {
-        owner.body.removeChild(rootElement.current)
+      if (mountRoot.contains(rootElement.current)) {
+        mountRoot.removeChild(rootElement.current)
       }
     }
-  }, [rootElement.current])
+  }, [rootElement.current, parentRef])
   return rootElement.current
 }
 
