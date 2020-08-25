@@ -38,41 +38,32 @@ export function useWindowResize(ref, parentRef) {
         height: childRect.height,
       })
     }
-    if (typeof ResizeObserver === "function") {
-      let resizeObserver = new ResizeObserver(() => handleResize())
-      resizeObserver.observe(ref.current)
-      return () => {
-        if (!resizeObserver) {
-          return
-        }
-        resizeObserver.disconnect()
-        resizeObserver = null
+    let resizeObserver = new ResizeObserver(() => handleResize())
+    resizeObserver.observe(ref.current)
+    window.addEventListener("resize", () => handleResize())
+    return () => {
+      window.removeEventListener("resize", () => handleResize())
+      if (!resizeObserver) {
+        return
       }
-    } else {
-      window.addEventListener("resize", handleResize)
-      return () => window.removeEventListener("resize", handleResize)
+      resizeObserver.disconnect()
+      resizeObserver = null
     }
   }, [ref.current])
   return size
 }
 
-export function useResize() {
+export function useResize(optionalRef) {
   const ref = useRef(null)
-  const [bounds, set] = useState({
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-  })
+  const [size, set] = useState(null)
   // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
-  const [ro] = useState(
-    () => new ResizeObserver(([entry]) => set(entry.contentRect))
-  )
+  const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry)))
   useEffect(() => {
+    if (optionalRef?.current) ref.current = optionalRef.current
     if (ref.current) ro.observe(ref.current)
     return () => ro.disconnect()
-  }, [])
-  return [ref, bounds]
+  }, [optionalRef?.current])
+  return [ref, size]
 }
 
 export function useIntersection({

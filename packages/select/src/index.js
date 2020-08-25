@@ -13,7 +13,7 @@ import React, {
 import styled, { css } from "styled-components"
 import Popover, { getPosition } from "@rent_avail/popover"
 import { Card } from "@rent_avail/layout"
-import { wrapEvent, noop, useWindowResize } from "@rent_avail/utils"
+import { wrapEvent, noop, useResize } from "@rent_avail/utils"
 import { ChevronDown } from "react-feather"
 import clsx from "clsx"
 
@@ -257,7 +257,7 @@ function List({ children, style, ...props }, ref) {
     inputRef,
     id,
   } = useContext(SelectContext)
-  const inputBounds = useWindowResize(inputRef, parentRef)
+  const [, inputSize] = useResize(inputRef)
   function handleBlur({ target }) {
     if (!isOpen) return null
     const listEl = listRef.current
@@ -294,7 +294,7 @@ function List({ children, style, ...props }, ref) {
         {...props}
         as="ul"
         ref={listRef}
-        style={{ ...style, width: inputBounds.width }}
+        style={{ ...style, width: inputSize?.borderBoxSize[0].inlineSize || "auto" }}
       >
         {children}
       </StyledList>
