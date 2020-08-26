@@ -9,6 +9,8 @@
     "build:docs": "yarn workspace @rent_avail/docs build",
     "start": "start-storybook -p 8080 -c .storybook",
     "start:docs": "yarn workspace @rent_avail/docs dev",
+    "start:dev": "concurrently \"yarn start\" \"yarn watch\"",
+    "watch": "lerna run watch --parallel",
     "update": "lerna version --no-push --no-private",
     "test": "jest"
   },
@@ -24,6 +26,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "babel-polyfill": "^6.26.0",
     "clsx": "^1.1.0",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "framer-motion": "^2.6.0",
     "jest": "^26.4.2",
