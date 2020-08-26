@@ -33,7 +33,7 @@ function PackageInfo({ info: { source, title, install } }) {
         </Col>
         <Col gridColumn={["span 2"]}>Source</Col>
         <Col gridColumn={["span 10"]}>
-          <Text as="a" color="ui_900" className="link" href={source}>
+          <Text as="a" color="ui_900" className="link" href={source} target="_blank">
             Github
           </Text>
         </Col>
