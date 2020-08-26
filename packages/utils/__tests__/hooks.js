@@ -16,12 +16,12 @@ describe("useResize", () => {
   const {
     result: { current },
   } = renderHook(() => useResize())
-  const [target, size] = current
+  const [target, rect] = current
   test("It returns null if no window.", () => {
     expect(target.current).toBeNull()
   })
-  test("It returns null if no target", () => {
-    expect(size).toBeNull()
+  test("It returns width of 0 if no target", () => {
+    expect(rect.width).toEqual(0)
   })
 })
 

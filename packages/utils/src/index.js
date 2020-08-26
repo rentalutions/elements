@@ -55,15 +55,26 @@ export function useWindowResize(ref, parentRef) {
 
 export function useResize(optionalRef) {
   const ref = useRef(null)
-  const [size, set] = useState(null)
+  const [rect, set] = useState({
+    x: 0,
+    y: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    height: 0,
+    width: 0,
+  })
   // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
-  const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry)))
+  const [ro] = useState(
+    () => new ResizeObserver(([entry]) => set(entry.contentRect))
+  )
   useEffect(() => {
     if (optionalRef?.current) ref.current = optionalRef.current
     if (ref.current) ro.observe(ref.current)
     return () => ro.disconnect()
   }, [optionalRef?.current])
-  return [ref, size]
+  return [ref, rect]
 }
 
 export function useIntersection({

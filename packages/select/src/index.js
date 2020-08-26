@@ -257,7 +257,7 @@ function List({ children, style, ...props }, ref) {
     inputRef,
     id,
   } = useContext(SelectContext)
-  const [, inputSize] = useResize(inputRef)
+  const [listWidth, setListWidth] = useState(null)
   function handleBlur({ target }) {
     if (!isOpen) return null
     const listEl = listRef.current
@@ -271,7 +271,7 @@ function List({ children, style, ...props }, ref) {
     if (isOpen) {
       const { current: input } = inputRef
       const { current: list } = listRef
-      const { top } = input.getBoundingClientRect()
+      const { top, width } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
       const fromBottom = window.innerHeight - height
       setTimeout(
@@ -279,6 +279,7 @@ function List({ children, style, ...props }, ref) {
         20
       )
       document.addEventListener("click", handleBlur)
+      setListWidth(width)
     }
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
@@ -294,7 +295,7 @@ function List({ children, style, ...props }, ref) {
         {...props}
         as="ul"
         ref={listRef}
-        style={{ ...style, width: inputSize?.borderBoxSize[0].inlineSize || "auto" }}
+        style={{ ...style, width: listWidth || "auto" }}
       >
         {children}
       </StyledList>
