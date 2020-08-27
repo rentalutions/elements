@@ -11,9 +11,9 @@ import React, {
   useMemo,
 } from "react"
 import styled, { css } from "styled-components"
-import Popover, { getPosition } from "@rent_avail/popover"
+import Popover from "@rent_avail/popover"
 import { Card } from "@rent_avail/layout"
-import { wrapEvent, noop, useResize } from "@rent_avail/utils"
+import { wrapEvent, noop } from "@rent_avail/utils"
 import { ChevronDown } from "react-feather"
 import clsx from "clsx"
 
@@ -269,13 +269,15 @@ function List({ children, style, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
     if (isOpen) {
+      const scrollElement = parentRef?.current || window
       const { current: input } = inputRef
       const { current: list } = listRef
       const { top, width } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
-      const fromBottom = window.innerHeight - height
+      const fromBottom =
+        (scrollElement.innerHeight || scrollElement.offsetHeight) - height
       setTimeout(
-        () => window.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
+        () => scrollElement.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
         20
       )
       document.addEventListener("click", handleBlur)
