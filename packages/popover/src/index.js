@@ -17,8 +17,12 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
   const parentElement = parent || window
   const collisions = {
     top: target.top - popover.height < 0,
-    right: parentElement.innerWidth < target.left + popover.width,
-    bottom: parentElement.innerHeight < target.bottom + popover.height,
+    right:
+      (parentElement.innerWidth || parentElement.offsetWidth) <
+      target.left + popover.width,
+    bottom:
+      (parentElement.innerHeight || parentElement.offsetHeight) <
+      target.bottom + popover.height,
     left: target.left - popover.width < 0,
   }
   const rightCollision = collisions.right && !collisions.left

@@ -13,13 +13,13 @@ export default { title: "Menu" }
 
 export function BasicUsage() {
   return (
-    <Container>
+    <>
       <Flex justifyContent="space-between">
         <Menu>
           <MenuTarget>
-            <Button>open `bottom left`</Button>
+            <Button>open `b l`</Button>
           </MenuTarget>
-          <MenuList position={{ y: "bottom", x: "left" }}>
+          <MenuList>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
@@ -28,9 +28,9 @@ export function BasicUsage() {
         </Menu>
         <Menu>
           <MenuTarget>
-            <Button>open `bottom right`</Button>
+            <Button>open `b r`</Button>
           </MenuTarget>
-          <MenuList position={{ y: "bottom", x: "right" }}>
+          <MenuList>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
@@ -42,9 +42,9 @@ export function BasicUsage() {
       <Flex justifyContent="space-between">
         <Menu>
           <MenuTarget>
-            <Button>open `top left`</Button>
+            <Button>open `t l`</Button>
           </MenuTarget>
-          <MenuList position={{ y: "top", x: "left" }}>
+          <MenuList>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
@@ -53,9 +53,9 @@ export function BasicUsage() {
         </Menu>
         <Menu>
           <MenuTarget>
-            <Button>open `top right`</Button>
+            <Button>open `t l`</Button>
           </MenuTarget>
-          <MenuList position={{ y: "top", x: "right" }}>
+          <MenuList>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
@@ -63,7 +63,7 @@ export function BasicUsage() {
           </MenuList>
         </Menu>
       </Flex>
-    </Container>
+    </>
   )
 }
 
@@ -88,9 +88,9 @@ export function PortalUsage() {
             <Flex justifyContent="space-between">
               <Menu parentRef={dialogRef}>
                 <MenuTarget>
-                  <Button>open `bottom left`</Button>
+                  <Button>open `b l`</Button>
                 </MenuTarget>
-                <MenuList position={{ y: "bottom", x: "left" }}>
+                <MenuList>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
@@ -99,9 +99,9 @@ export function PortalUsage() {
               </Menu>
               <Menu parentRef={dialogRef}>
                 <MenuTarget>
-                  <Button>open `bottom right`</Button>
+                  <Button>open `b r`</Button>
                 </MenuTarget>
-                <MenuList position={{ y: "bottom", x: "right" }}>
+                <MenuList>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
@@ -113,9 +113,9 @@ export function PortalUsage() {
             <Flex justifyContent="space-between">
               <Menu parentRef={dialogRef}>
                 <MenuTarget>
-                  <Button>open `top left`</Button>
+                  <Button>open `t l`</Button>
                 </MenuTarget>
-                <MenuList position={{ y: "top", x: "left" }}>
+                <MenuList>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
@@ -124,9 +124,9 @@ export function PortalUsage() {
               </Menu>
               <Menu parentRef={dialogRef}>
                 <MenuTarget>
-                  <Button>open `top right`</Button>
+                  <Button>open `t r`</Button>
                 </MenuTarget>
-                <MenuList position={{ y: "top", x: "right" }}>
+                <MenuList>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
                   <MenuItem>thing</MenuItem>
@@ -135,7 +135,7 @@ export function PortalUsage() {
               </Menu>
             </Flex>
           </Container>
-          <Box height="30rem" />
+          <Box height="0rem" />
         </ConfirmationDialog>
       </Dialog>
     </Container>
