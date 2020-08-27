@@ -1,10 +1,10 @@
+/* eslint-disable no-nested-ternary */
 import React, {
   useRef,
   forwardRef,
   useImperativeHandle,
   useState,
   useEffect,
-  memo,
 } from "react"
 import { createPortal } from "react-dom"
 import { usePortal, useWindowResize as useBounds } from "@rent_avail/utils"
@@ -14,7 +14,7 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
   if (!popover || !target) return defaultValue
   const yOffset = !parent ? window.pageYOffset : 0
   const xOffset = !parent ? window.pageXOffset : 0
-  const parentElement = parent ? parent : window
+  const parentElement = parent || window
   const collisions = {
     top: target.top - popover.height < 0,
     right: parentElement.innerWidth < target.left + popover.width,

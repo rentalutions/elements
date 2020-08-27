@@ -41,6 +41,7 @@ export function useWindowResize(ref, parentRef) {
     let resizeObserver = new ResizeObserver(() => handleResize())
     resizeObserver.observe(ref.current)
     window.addEventListener("resize", () => handleResize())
+    handleResize() // has to be called synchronously once to avoid weird timing issues in Popover
     return () => {
       window.removeEventListener("resize", () => handleResize())
       if (!resizeObserver) {
