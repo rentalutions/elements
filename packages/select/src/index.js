@@ -63,7 +63,6 @@ function Select({
   onSelect = noop,
   disabled = false,
   defaultValue = "",
-  parentRef,
 }) {
   const inputRef = useRef()
   const listRef = useRef()
@@ -76,7 +75,6 @@ function Select({
   )
   const context = useMemo(
     () => ({
-      parentRef,
       inputRef,
       listRef,
       state: { value, typeAheadQuery, width, isOpen },
@@ -252,7 +250,6 @@ function List({ children, style, ...props }, ref) {
   const {
     state: { isOpen },
     dispatch,
-    parentRef,
     listRef,
     inputRef,
     id,
@@ -269,15 +266,13 @@ function List({ children, style, ...props }, ref) {
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
     if (isOpen) {
-      const scrollElement = parentRef?.current || window
       const { current: input } = inputRef
       const { current: list } = listRef
       const { top, width } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
-      const fromBottom =
-        (scrollElement.innerHeight || scrollElement.offsetHeight) - height
+      const fromBottom = window.innerHeight - height
       setTimeout(
-        () => scrollElement.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
+        () => window.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
         20
       )
       document.addEventListener("click", handleBlur)
@@ -291,7 +286,6 @@ function List({ children, style, ...props }, ref) {
       targetRef={inputRef}
       position={{ x: "left", y: "bottom" }}
       style={{ zIndex: "9999" }}
-      parentRef={parentRef}
     >
       <StyledList
         {...props}

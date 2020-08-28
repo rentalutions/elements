@@ -13,13 +13,13 @@ export function useRect(ref) {
   return rect
 }
 
-export function useWindowResize(ref, parentRef) {
+export function useWindowResize(ref, parent) {
   const [size, setSize] = useState({})
   useEffect(() => {
     function handleResize() {
       if (!ref.current) return false
       const childRect = ref.current.getBoundingClientRect()
-      const parentRect = parentRef?.current?.getBoundingClientRect() || {
+      const parentRect = parent?.getBoundingClientRect() || {
         x: 0,
         y: 0,
         top: 0,
@@ -104,21 +104,21 @@ export function useIntersection({
   return [target, result]
 }
 
-export function usePortal(type = "avail-portal", parentRef) {
+export function usePortal(type = "avail-portal", parent) {
   if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef()
   if (!rootElement.current) {
     rootElement.current = document.createElement(type)
   }
   useEffect(() => {
-    const mountRoot = parentRef?.current || document.body
+    const mountRoot = parent || document.body
     mountRoot.appendChild(rootElement.current)
     return () => {
       if (mountRoot.contains(rootElement.current)) {
         mountRoot.removeChild(rootElement.current)
       }
     }
-  }, [rootElement.current, parentRef])
+  }, [rootElement.current, parent])
   return rootElement.current
 }
 
@@ -300,6 +300,23 @@ export function wrapEvent(original, additional) {
     if (original) original(event)
     if (!event.defaultPrevented) return additional(event)
   }
+}
+
+export function isScrollable(node) {
+  const regex = /(auto|scroll)/
+  const style = getComputedStyle(node, null)
+  return regex.test(
+    style.getPropertyValue("overflow") + style.getPropertyValue("overflow-y")
+  )
+}
+
+export function closestScrollable(node) {
+  // eslint-disable-next-line no-nested-ternary
+  return !node || node === document.body
+    ? document.body
+    : isScrollable(node)
+    ? node
+    : closestScrollable(node.parentNode)
 }
 
 export function noop() {}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@rent_avail/controls"
 import { Container, Flex, Box } from "@rent_avail/layout"
 import {
@@ -69,7 +69,6 @@ export function BasicUsage() {
 
 export function PortalUsage() {
   const [open, setOpen] = useState(true)
-  const dialogRef = useRef()
   function handleClick() {
     setOpen((o) => !o)
   }
@@ -81,12 +80,11 @@ export function PortalUsage() {
         </DialogTarget>
         <ConfirmationDialog
           style={{ overflowY: "auto", maxWidth: "75rem", width: "75rem" }}
-          ref={dialogRef}
         >
           <Container>
             <DialogHeader title="Open and scroll" />
             <Flex justifyContent="space-between">
-              <Menu parentRef={dialogRef}>
+              <Menu>
                 <MenuTarget>
                   <Button>open `b l`</Button>
                 </MenuTarget>
@@ -97,7 +95,7 @@ export function PortalUsage() {
                   <MenuItem>thing</MenuItem>
                 </MenuList>
               </Menu>
-              <Menu parentRef={dialogRef}>
+              <Menu>
                 <MenuTarget>
                   <Button>open `b r`</Button>
                 </MenuTarget>
@@ -111,7 +109,7 @@ export function PortalUsage() {
             </Flex>
             <Box height="30rem" />
             <Flex justifyContent="space-between">
-              <Menu parentRef={dialogRef}>
+              <Menu>
                 <MenuTarget>
                   <Button>open `t l`</Button>
                 </MenuTarget>
@@ -122,7 +120,7 @@ export function PortalUsage() {
                   <MenuItem>thing</MenuItem>
                 </MenuList>
               </Menu>
-              <Menu parentRef={dialogRef}>
+              <Menu>
                 <MenuTarget>
                   <Button>open `t r`</Button>
                 </MenuTarget>

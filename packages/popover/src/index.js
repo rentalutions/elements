@@ -5,9 +5,14 @@ import React, {
   useImperativeHandle,
   useState,
   useEffect,
+  useMemo,
 } from "react"
 import { createPortal } from "react-dom"
-import { usePortal, useWindowResize as useBounds } from "@rent_avail/utils"
+import {
+  usePortal,
+  closestScrollable,
+  useWindowResize as useBounds,
+} from "@rent_avail/utils"
 
 export function getPosition({ popover, target, parent, position: { x, y } }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
@@ -57,7 +62,6 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
 
 const Popover = forwardRef(function Popover(
   {
-    parentRef,
     targetRef,
     position = { x: "default", y: "default" },
     style,
@@ -66,10 +70,13 @@ const Popover = forwardRef(function Popover(
   },
   forwardedRef
 ) {
-  const portal = usePortal(undefined, parentRef)
+  const parent = useMemo(() => closestScrollable(targetRef.current), [
+    targetRef.current,
+  ])
+  const portal = usePortal(undefined, parent)
   const popoverRef = useRef(null)
-  const popoverBounds = useBounds(popoverRef, parentRef)
-  const targetBounds = useBounds(targetRef, parentRef)
+  const popoverBounds = useBounds(popoverRef, parent)
+  const targetBounds = useBounds(targetRef, parent)
   const [currentPosition, setPosition] = useState({
     top: 0,
     left: 0,
@@ -80,7 +87,7 @@ const Popover = forwardRef(function Popover(
     const newPos = getPosition({
       popover: popoverBounds,
       target: targetBounds,
-      parent: parentRef?.current,
+      parent,
       position,
     })
     setPosition(newPos)

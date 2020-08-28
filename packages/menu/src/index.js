@@ -38,7 +38,7 @@ function reducer(state, action) {
   }
 }
 
-function Menu({ children, parentRef, id }) {
+function Menu({ children, id }) {
   const [{ isOpen }, dispatch] = useReducer(reducer, initialState)
   const targetRef = useRef()
   const menuRef = useRef()
@@ -51,7 +51,6 @@ function Menu({ children, parentRef, id }) {
         isOpen,
         openMenu,
         closeMenu,
-        parentRef,
         targetRef,
         menuRef,
         popoverRef,
@@ -106,14 +105,9 @@ const StyledList = styled(Card)`
 `
 
 function List({ children, position, ...rest }, ref) {
-  const {
-    parentRef,
-    targetRef,
-    menuRef,
-    popoverRef,
-    closeMenu,
-    isOpen,
-  } = useContext(MenuContext)
+  const { targetRef, menuRef, popoverRef, closeMenu, isOpen } = useContext(
+    MenuContext
+  )
   useImperativeHandle(ref, () => ({ ...menuRef }))
   function handleBlur({ target }) {
     if (!isOpen) return null
@@ -130,9 +124,9 @@ function List({ children, position, ...rest }, ref) {
   return isOpen ? (
     <Popover
       targetRef={targetRef}
-      parentRef={parentRef}
       ref={popoverRef}
       position={position}
+      style={{ zIndex: "9999" }}
     >
       <StyledList as="ul" {...rest} ref={menuRef} role="menu">
         {children}

@@ -13,7 +13,7 @@ import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
 export default { title: "Select" }
 
-function SelectExample({ parentRef }) {
+function SelectExample() {
   const options = [
     { label: "Alabama", value: "AL" },
     { label: "Alaska", value: "AK" },
@@ -27,11 +27,7 @@ function SelectExample({ parentRef }) {
   return (
     <>
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Select
-        parentRef={parentRef}
-        id="select-id"
-        onSelect={(value) => setState(value)}
-      >
+      <Select id="select-id" onSelect={(value) => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ label, value }) => (
@@ -76,7 +72,6 @@ export function SimplePortalUsage() {
 
 export function FullscreenPortalUsage() {
   const [open, set] = useState(true)
-  const dialogRef = useRef()
   function handleClick() {
     set((o) => !o)
   }
@@ -86,10 +81,10 @@ export function FullscreenPortalUsage() {
         <DialogTarget>
           <Button onClick={() => set(true)}>open dialog</Button>
         </DialogTarget>
-        <FullscreenDialog ref={dialogRef}>
+        <FullscreenDialog>
           <Container>
             <DialogHeader title="Select an option" />
-            <SelectExample parentRef={dialogRef} />
+            <SelectExample />
           </Container>
         </FullscreenDialog>
       </Dialog>

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react"
-import { Tooltip, TooltipContent, TooltipTarget } from "./src"
 import { Container } from "@rent_avail/layout"
 import { Heading } from "@rent_avail/typography"
 import {
@@ -9,6 +8,7 @@ import {
   FullscreenDialog,
 } from "@rent_avail/dialog"
 import { Button } from "@rent_avail/controls"
+import { Tooltip, TooltipContent, TooltipTarget } from "./src"
 
 export default { title: "Tooltip" }
 
@@ -38,7 +38,6 @@ export function BasicUsage() {
 
 export function PortalUsage() {
   const [open, setOpen] = useState(true)
-  const dialogRef = useRef()
   function handleClick() {
     setOpen((o) => !o)
   }
@@ -48,10 +47,10 @@ export function PortalUsage() {
         <DialogTarget>
           <Button onClick={handleClick}>open dialog</Button>
         </DialogTarget>
-        <FullscreenDialog style={{ overflowY: "auto" }} ref={dialogRef}>
+        <FullscreenDialog style={{ overflowY: "auto" }}>
           <Container>
             <DialogHeader title="Hover the title" />
-            <Tooltip parentRef={dialogRef}>
+            <Tooltip>
               <TooltipTarget>
                 <Heading
                   as="h5"
