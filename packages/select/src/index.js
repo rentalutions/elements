@@ -214,7 +214,6 @@ function Input(
         {...props}
         id={id}
         ref={inputRef}
-        aria-expanded={isOpen ? true : undefined}
         aria-haspopup
         aria-controls={id}
         value={typeAheadQuery}

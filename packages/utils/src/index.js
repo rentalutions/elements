@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useReducer } from "react"
+import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
@@ -305,18 +305,16 @@ export function wrapEvent(original, additional) {
 export function isScrollable(node) {
   const regex = /(auto|scroll)/
   const style = getComputedStyle(node, null)
-  return regex.test(
-    style.getPropertyValue("overflow") + style.getPropertyValue("overflow-y")
-  )
+  return regex.test(style.overflow + style.overflowY)
 }
 
-export function closestScrollable(node) {
-  // eslint-disable-next-line no-nested-ternary
-  return !node || node === document.body
-    ? document.body
-    : isScrollable(node)
-    ? node
-    : closestScrollable(node.parentNode)
+export function closestScrollable(element) {
+  let parent = element
+  while (parent.parentElement) {
+    parent = parent.parentElement
+    if (isScrollable(parent)) return parent
+  }
+  return document.body
 }
 
 export function noop() {}
