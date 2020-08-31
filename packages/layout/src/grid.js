@@ -67,6 +67,7 @@ const Col = styled.div.attrs(
   ${color};
   ${background};
   ${border};
+  ${sx};
 `
 
 Col.defaultProps = {
