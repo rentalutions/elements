@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": ["prettier"],
   "parser": "babel-eslint",
   "env": {
@@ -11,6 +11,7 @@
     "no-console": "off",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": [1, { "args": "after-used", "ignoreRestSiblings": true }],
     "prettier/prettier": ["error"],
     "quotes": [1, "double", { "allowTemplateLiterals": true }],
     "semi": [1, "never"],
@@ -18,7 +19,7 @@
     "react/jsx-curly-brace-presence": [1, "ignore"],
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/jsx-props-no-spreading": "off",
-    "comma-dangle": [1],
+    "comma-dangle": [1, "only-multiline"],
     "consistent-return": [0]
   }
 }

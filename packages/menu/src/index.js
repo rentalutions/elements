@@ -122,7 +122,12 @@ function List({ children, position, ...rest }, ref) {
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen])
   return isOpen ? (
-    <Popover targetRef={targetRef} ref={popoverRef} position={position}>
+    <Popover
+      targetRef={targetRef}
+      ref={popoverRef}
+      position={position}
+      style={{ zIndex: "9999" }}
+    >
       <StyledList as="ul" {...rest} ref={menuRef} role="menu">
         {children}
       </StyledList>
@@ -164,7 +169,7 @@ function Item({ ...props }, ref) {
         break
     }
   }
-  useImperativeHandle(ref, { ...itemRef })
+  useImperativeHandle(ref, () => ({ ...itemRef }))
   return (
     <ItemWrapper
       {...props}

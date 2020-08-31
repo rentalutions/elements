@@ -11,9 +11,9 @@ import React, {
   useMemo,
 } from "react"
 import styled, { css } from "styled-components"
-import Popover, { getPosition } from "@rent_avail/popover"
+import Popover from "@rent_avail/popover"
 import { Card } from "@rent_avail/layout"
-import { wrapEvent, noop, useWindowResize } from "@rent_avail/utils"
+import { wrapEvent, noop } from "@rent_avail/utils"
 import { ChevronDown } from "react-feather"
 import clsx from "clsx"
 
@@ -214,7 +214,6 @@ function Input(
         {...props}
         id={id}
         ref={inputRef}
-        aria-expanded={isOpen ? true : undefined}
         aria-haspopup
         aria-controls={id}
         value={typeAheadQuery}
@@ -254,17 +253,7 @@ function List({ children, style, ...props }, ref) {
     inputRef,
     id,
   } = useContext(SelectContext)
-  const inputBounds = useWindowResize(inputRef)
-  function position({ popover: popoverRect, target: targetRect }) {
-    if (!popoverRect || !targetRect)
-      return { top: 0, left: 0, visibility: "hidden" }
-    const top = targetRect.top + targetRect.height + window.pageYOffset + 12
-    return {
-      top: `${top}px`,
-      left: `${targetRect.left + window.pageXOffset}px`,
-      visibility: "visible",
-    }
-  }
+  const [listWidth, setListWidth] = useState(null)
   function handleBlur({ target }) {
     if (!isOpen) return null
     const listEl = listRef.current
@@ -278,7 +267,7 @@ function List({ children, style, ...props }, ref) {
     if (isOpen) {
       const { current: input } = inputRef
       const { current: list } = listRef
-      const { top } = input.getBoundingClientRect()
+      const { top, width } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
       const fromBottom = window.innerHeight - height
       setTimeout(
@@ -286,25 +275,22 @@ function List({ children, style, ...props }, ref) {
         20
       )
       document.addEventListener("click", handleBlur)
+      setListWidth(width)
     }
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen, handleBlur])
-  // useEffect(() => {
-  //   if (isOpen)
-  //     dispatch({ type: types.UPDATE_WIDTH, payload: inputBounds.width })
-  // }, [isOpen, inputBounds])
   return isOpen ? (
     <Popover
       id={id}
       targetRef={inputRef}
-      position={position}
+      position={{ x: "left", y: "bottom" }}
       style={{ zIndex: "9999" }}
     >
       <StyledList
         {...props}
         as="ul"
         ref={listRef}
-        style={{ ...style, width: inputBounds.width }}
+        style={{ ...style, width: listWidth || "auto" }}
       >
         {children}
       </StyledList>
@@ -353,7 +339,6 @@ function Item(
   const [visibility, setVisibility] = useState(true)
   const itemRef = useRef()
   function selectValue({ target }) {
-    console.log(target.dataset.value)
     dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
     onSelect(target.dataset.value)
   }

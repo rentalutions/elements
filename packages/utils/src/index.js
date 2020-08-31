@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState, useReducer } from "react"
-import { createPortal } from "react-dom"
+import { useRef, useEffect, useState, useReducer } from "react"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
@@ -14,37 +13,69 @@ export function useRect(ref) {
   return rect
 }
 
-export function useWindowResize(ref) {
+export function useWindowResize(ref, parent) {
   const [size, setSize] = useState({})
   useEffect(() => {
     function handleResize() {
       if (!ref.current) return false
-      setSize(ref.current.getBoundingClientRect())
+      const childRect = ref.current.getBoundingClientRect()
+      const parentRect = parent?.getBoundingClientRect() || {
+        x: 0,
+        y: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }
+      setSize({
+        x: childRect.x - parentRect.x,
+        y: childRect.y - parentRect.y,
+        top: childRect.top - parentRect.top,
+        left: childRect.left - parentRect.left,
+        right: childRect.x - parentRect.x + childRect.width,
+        bottom: childRect.y - parentRect.y + childRect.height,
+        width: childRect.width,
+        height: childRect.height,
+      })
     }
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    let resizeObserver = new ResizeObserver(() => handleResize())
+    resizeObserver.observe(ref.current)
+    window.addEventListener("resize", () => handleResize())
+    handleResize() // has to be called synchronously once to avoid weird timing issues in Popover
+    return () => {
+      window.removeEventListener("resize", () => handleResize())
+      if (!resizeObserver) {
+        return
+      }
+      resizeObserver.disconnect()
+      resizeObserver = null
+    }
+  }, [ref.current])
   return size
 }
 
-export function useResize() {
+export function useResize(optionalRef) {
   const ref = useRef(null)
-  const [bounds, set] = useState({
-    left: 0,
+  const [rect, set] = useState({
+    x: 0,
+    y: 0,
     top: 0,
-    width: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     height: 0,
+    width: 0,
   })
   // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
   const [ro] = useState(
     () => new ResizeObserver(([entry]) => set(entry.contentRect))
   )
   useEffect(() => {
+    if (optionalRef?.current) ref.current = optionalRef.current
     if (ref.current) ro.observe(ref.current)
     return () => ro.disconnect()
-  }, [])
-  return [ref, bounds]
+  }, [optionalRef?.current])
+  return [ref, rect]
 }
 
 export function useIntersection({
@@ -73,21 +104,21 @@ export function useIntersection({
   return [target, result]
 }
 
-export function usePortal(type = "avail-portal") {
+export function usePortal(type = "avail-portal", parent) {
   if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef()
   if (!rootElement.current) {
     rootElement.current = document.createElement(type)
   }
   useEffect(() => {
-    document.body.appendChild(rootElement.current)
+    const mountRoot = parent || document.body
+    mountRoot.appendChild(rootElement.current)
     return () => {
-      const owner = rootElement.current?.ownerDocument
-      if (owner) {
-        owner.body.removeChild(rootElement.current)
+      if (mountRoot.contains(rootElement.current)) {
+        mountRoot.removeChild(rootElement.current)
       }
     }
-  }, [rootElement.current])
+  }, [rootElement.current, parent])
   return rootElement.current
 }
 
@@ -269,6 +300,21 @@ export function wrapEvent(original, additional) {
     if (original) original(event)
     if (!event.defaultPrevented) return additional(event)
   }
+}
+
+export function isScrollable(node) {
+  const regex = /(auto|scroll)/
+  const style = getComputedStyle(node, null)
+  return regex.test(style.overflow + style.overflowY)
+}
+
+export function closestScrollable(element) {
+  let parent = element
+  while (parent.parentElement) {
+    parent = parent.parentElement
+    if (isScrollable(parent)) return parent
+  }
+  return document.body
 }
 
 export function noop() {}

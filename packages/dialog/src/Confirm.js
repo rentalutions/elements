@@ -19,7 +19,6 @@ const ConfirmationWrapper = styled(motion.section)`
   max-width: 50rem;
   z-index: 2;
   transform: translate3d(-50%, 0, 0);
-  overflow: auto;
   .confirmation__header {
     display: flex;
     margin-bottom: 2rem;
