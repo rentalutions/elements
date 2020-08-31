@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/dialog",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Dialog components.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.4.0",
-    "@rent_avail/layout": "^0.3.1",
+    "@rent_avail/layout": "^0.3.2",
     "@rent_avail/typography": "^0.1.10",
     "@rent_avail/utils": "^0.2.2",
     "framer-motion": "^2.6.0",
