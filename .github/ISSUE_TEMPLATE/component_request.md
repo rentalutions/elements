@@ -1,6 +1,10 @@
 ---
 name: Component request
 about: Suggest an new component for the design kit
+title: ''
+labels: feature
+assignees: ''
+
 ---
 
 <!--
