@@ -67,7 +67,24 @@ export function PortalUsage() {
                 iusto ipsa quidem mollitia?
               </TooltipContent>
             </Tooltip>
-            <div style={{ height: "60rem" }} />
+            <div style={{ height: "30rem" }} />
+            <Tooltip>
+              <TooltipTarget>
+                <Heading
+                  as="h5"
+                  style={{ textDecoration: "underline" }}
+                  color="blue_500"
+                >
+                  Hello World
+                </Heading>
+              </TooltipTarget>
+              <TooltipContent>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                voluptatum nulla cupiditate, deserunt est placeat iure similique
+                rem dolor adipisci molestiae quasi ipsum quisquam? Sed veritatis
+                iusto ipsa quidem mollitia?
+              </TooltipContent>
+            </Tooltip>
           </Container>
         </FullscreenDialog>
       </Dialog>

@@ -17,8 +17,8 @@ import {
 export function getPosition({ popover, target, parent, position: { x, y } }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
   if (!popover || !target) return defaultValue
-  const yOffset = !parent ? window.pageYOffset : 0
-  const xOffset = !parent ? window.pageXOffset : 0
+  const yOffset = !parent ? window.pageYOffset : parent.scrollTop
+  const xOffset = !parent ? window.pageXOffset : parent.scrollLeft
   const parentElement = parent || window
   const collisions = {
     top: target.top - popover.height < 0,
