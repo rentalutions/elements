@@ -47,23 +47,21 @@ function PackageInfo({ info: { source, title, install } }) {
   )
 }
 
-export default function ElementsLayout(pageMatter) {
+export default function ElementsLayout({ children: content, frontMatter }) {
   const orderedPackages = packages.sort((curr) => {
     const path = formatPath(curr.__resourcePath)
     return path === "packages" ? -1 : 0
   })
-  return ({ children: content }) => {
-    const packageInfo = pageMatter.source
-    return (
-      <PageWrapper>
-        <Sidebar pages={orderedPackages} />
-        <Main>
-          <Container my="4rem">
-            {packageInfo && <PackageInfo info={pageMatter} />}
-            {content}
-          </Container>
-        </Main>
-      </PageWrapper>
-    )
-  }
+  const packageInfo = frontMatter.source
+  return (
+    <PageWrapper>
+      <Sidebar pages={orderedPackages} />
+      <Main>
+        <Container my="4rem">
+          {packageInfo && <PackageInfo info={frontMatter} />}
+          {content}
+        </Container>
+      </Main>
+    </PageWrapper>
+  )
 }

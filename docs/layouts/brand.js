@@ -1,12 +1,9 @@
 import React from "react"
-import styled from "styled-components"
-import { Box, Container, Stack } from "@rent_avail/layout"
-import Link from "next/link"
-import { frontMatter as brandPages } from "../pages/brand/**/*.mdx"
-import { formatPath } from "utils"
+import { Container } from "@rent_avail/layout"
 import { PageWrapper, Main, Sidebar } from "components/Layout"
+import { frontMatter as brandPages } from "../pages/brand/**/*.mdx"
 
-export default function BrandLayout(pageMatter) {
+export default function BrandLayout({ children: content }) {
   const order = [
     "Foundations",
     "Design ethos",
@@ -18,14 +15,12 @@ export default function BrandLayout(pageMatter) {
   const sortedPages = brandPages.sort((a, b) => {
     return order.indexOf(a.title) - order.indexOf(b.title)
   })
-  return ({ children: content }) => {
-    return (
-      <PageWrapper>
-        <Sidebar pages={sortedPages} />
-        <Main>
-          <Container my="4rem">{content}</Container>
-        </Main>
-      </PageWrapper>
-    )
-  }
+  return (
+    <PageWrapper>
+      <Sidebar pages={sortedPages} />
+      <Main>
+        <Container my="4rem">{content}</Container>
+      </Main>
+    </PageWrapper>
+  )
 }
