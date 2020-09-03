@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import Link from "next/link"
-import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
+import { Container, Box, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-import { frontMatter as packages } from "../pages/packages/**/*.mdx"
 import { formatPath } from "utils"
 import { PageWrapper, Main, Sidebar } from "components/Layout"
+import { frontMatter as packages } from "../pages/packages/**/*.mdx"
 
 const PackageInfoWrapper = styled(Box)`
   .grid {
@@ -33,7 +32,13 @@ function PackageInfo({ info: { source, title, install } }) {
         </Col>
         <Col gridColumn={["span 2"]}>Source</Col>
         <Col gridColumn={["span 10"]}>
-          <Text as="a" color="ui_900" className="link" href={source} target="_blank">
+          <Text
+            as="a"
+            color="ui_900"
+            className="link"
+            href={source}
+            target="_blank"
+          >
             Github
           </Text>
         </Col>
