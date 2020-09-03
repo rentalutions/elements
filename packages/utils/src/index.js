@@ -122,29 +122,6 @@ export function usePortal(type = "avail-portal", parent) {
   return rootElement.current
 }
 
-// export function usePortalNew(type = "avail-portal") {
-//   if (typeof window === "undefined") return null // bail on server render.
-//   const rootElement = useRef()
-//   const mountNode = useRef()
-//   if (!rootElement.current) {
-//     rootElement.current = document.createElement(type)
-//   }
-//   useEffect(() => {
-//     document.body.appendChild(rootElement.current)
-//     return () => {
-//       document.body.removeChild(rootElement.current)
-//     }
-//   }, [rootElement.current])
-//   function create(element) {
-//     return mountNode.current ? (
-//       createPortal(element, rootElement.current)
-//     ) : (
-//       <span ref={mountNode} />
-//     )
-//   }
-//   return create
-// }
-
 const GET_DATES = "avail/actions/GET_DATES"
 const UPDATE_DATES = "avail/actions/UPDATE_DATES"
 
