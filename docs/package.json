@@ -33,7 +33,7 @@
     "@rent_avail/typography": "^0.1.7",
     "@rent_avail/utils": "^0.2.0",
     "clsx": "^1.1.1",
-    "framer-motion": "^2.6.0",
+    "framer-motion": "2.4.3",
     "next": "^9.5.2",
     "next-compose-plugins": "^2.2.0",
     "next-mdx-enhanced": "^3.1.0",
