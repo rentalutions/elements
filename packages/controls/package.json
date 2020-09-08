@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/controls",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "User control components.",
   "source": "src/index.js",
   "main": "dist/index.js",

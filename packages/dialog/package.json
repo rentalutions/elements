@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/dialog",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Dialog components.",
   "source": "src/index.js",
   "main": "dist/index.js",
