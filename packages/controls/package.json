@@ -32,7 +32,7 @@
   "dependencies": {
     "@rent_avail/base": "^0.4.0",
     "@rent_avail/utils": "^0.2.2",
-    "framer-motion": "^2.6.0",
+    "framer-motion": "2.4.3",
     "polished": "^3.5.1",
     "styled-system": "^5.1.5"
   }
