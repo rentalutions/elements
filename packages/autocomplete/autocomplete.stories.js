@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Autocomplete, AutocompleteProvider } from "./src"
 import { Container, Box } from "@rent_avail/layout"
+import { Autocomplete, AutocompleteProvider } from "./src"
 
 export default { title: "Autocomplete" }
 

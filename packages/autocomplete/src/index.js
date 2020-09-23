@@ -99,38 +99,42 @@ export function useAutocomplete(input = "") {
   useEffect(() => {
     // Load services into references for later and create a session token.
     if (loaded && !error) {
+      // eslint-disable-next-line no-undef
       autocompleteRef.current = new google.maps.places.AutocompleteService()
+      // eslint-disable-next-line no-undef
       placesRef.current = new google.maps.places.PlacesService(
         document.createElement("div")
       )
       dispatch({
         type: "ADD_TOKEN",
+        // eslint-disable-next-line no-undef
         payload: new google.maps.places.AutocompleteSessionToken(),
       })
     }
   }, [loaded])
 
+  function updateSuggestions(suggestions, status) {
+    switch (status) {
+      case "OK":
+        return dispatch({
+          type: "UPDATE_SUGGESTIONS",
+          payload: suggestions,
+        })
+      case "ZERO_RESULTS":
+        return dispatch({ type: "ZERO_RESULTS" })
+      default:
+        dispatch({ type: "ERROR", payload: status })
+    }
+  }
+
   useEffect(() => {
-    // Get autocomplete suggestions based on input. Limit calls to inputs over 3 characters so we're not trying to guess too early.
+    // Get autocomplete suggestions based on input. Limit calls to inputs over 3
+    // characters so we're not trying to guess too early.
     if (input.length > 3) {
       const request = {
         input,
         types: ["address"],
         sessionToken: state.sessionToken,
-      }
-
-      function updateSuggestions(suggestions, status) {
-        switch (status) {
-          case "OK":
-            return dispatch({
-              type: "UPDATE_SUGGESTIONS",
-              payload: suggestions,
-            })
-          case "ZERO_RESULTS":
-            return dispatch({ type: "ZERO_RESULTS" })
-          default:
-            dispatch({ type: "ERROR", payload: status })
-        }
       }
 
       autocompleteRef.current.getPlacePredictions(request, updateSuggestions)
@@ -185,7 +189,6 @@ export function Autocomplete({ onSelect = noop, onClear = noop, ...props }) {
   const {
     suggestions,
     notFound,
-    error,
     getDetails,
     selection,
     clearSelection,

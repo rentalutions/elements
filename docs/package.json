@@ -33,8 +33,6 @@
     "@rent_avail/tooltip": "latest",
     "@rent_avail/typography": "latest",
     "@rent_avail/utils": "latest",
-    "@storybook/addon-storysource": "^6.0.21",
-    "@storybook/react": "^6.0.21",
     "@testing-library/react": "^11.0.1",
     "clsx": "^1.1.1",
     "eslint": "^7.8.1",

@@ -8,4 +8,5 @@ const mdx = withMdxEnhanced({
 
 module.exports = compose([mdx], {
   pageExtensions: ["mdx", "js"],
+  env: { placesKey: process.env.PLACES_KEY },
 })

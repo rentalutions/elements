@@ -26,6 +26,11 @@ import { FixedProgress, FluidProgress } from "@rent_avail/progress"
 import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
 import { FullscreenFeedback, InlineFeedback } from "@rent_avail/feedback"
 import { Tooltip, TooltipContent, TooltipTarget } from "@rent_avail/tooltip"
+import {
+  Autocomplete,
+  useAutocomplete,
+  AutocompleteProvider,
+} from "@rent_avail/autocomplete"
 import Tag from "@rent_avail/tag"
 import CodeBlock from "components/CodeBlock"
 
@@ -108,6 +113,9 @@ export default {
         TooltipContent,
         TooltipTarget,
         Tag,
+        Autocomplete,
+        useAutocomplete,
+        AutocompleteProvider,
       }}
     />
   ),
