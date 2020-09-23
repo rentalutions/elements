@@ -12,7 +12,7 @@ const PackageInfoWrapper = styled(Box)`
   }
 `
 
-function PackageInfo({ info: { source, title, install } }) {
+function PackageInfo({ info: { source, title, install, package_name } }) {
   return (
     <PackageInfoWrapper bg="blue_100" borderRadius="0.25rem">
       <Heading as="h1" p="2rem">
@@ -23,7 +23,7 @@ function PackageInfo({ info: { source, title, install } }) {
         px="2rem"
         pb="2rem"
         alt="npm (scoped)"
-        src="https://img.shields.io/npm/v/@rent_avail/avatar?color=%237c95b0&label=version&style=for-the-badge"
+        src={`https://img.shields.io/npm/v/@rent_avail/${package_name}?color=%237c95b0&label=version&style=for-the-badge`}
       />
       <Grid p="2rem" className="grid">
         <Col gridColumn={["span 2"]}>Install</Col>
