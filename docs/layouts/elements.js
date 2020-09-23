@@ -48,6 +48,7 @@ function PackageInfo({ info: { source, title, install } }) {
 }
 
 export default function ElementsLayout({ children: content, frontMatter }) {
+  // console.log(packages)
   const orderedPackages = packages.sort((curr) => {
     const path = formatPath(curr.__resourcePath)
     return path === "packages" ? -1 : 0
