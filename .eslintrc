@@ -8,18 +8,20 @@
     "jest": true
   },
   "rules": {
-    "no-console": "off",
-    "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "off",
-    "no-unused-vars": [1, { "args": "after-used", "ignoreRestSiblings": true }],
     "prettier/prettier": ["error"],
+    "no-console": "off",
+    "no-unused-vars": [1, { "args": "after-used", "ignoreRestSiblings": true }],
     "quotes": [1, "double", { "allowTemplateLiterals": true }],
     "semi": [1, "never"],
+    "comma-dangle": [1, "only-multiline"],
+    "consistent-return": [0],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-curly-brace-presence": [1, "ignore"],
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/jsx-props-no-spreading": "off",
-    "comma-dangle": [1, "only-multiline"],
-    "consistent-return": [0]
+    "react/jsx-fragments": [1, "element"],
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

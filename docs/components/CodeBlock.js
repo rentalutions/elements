@@ -1,7 +1,7 @@
-import React, { useContext, Fragment } from "react"
+import React, { useContext } from "react"
 import styled, { ThemeContext } from "styled-components"
 import Highlight, { Prism } from "prism-react-renderer"
-import theme from "prism-react-renderer/themes/github"
+import codeTheme from "prism-react-renderer/themes/github"
 import { LiveProvider, LiveError, LivePreview } from "react-live"
 import { mdx } from "@mdx-js/react"
 
@@ -29,11 +29,14 @@ export default function CodeBlock({
   const live = children?.props?.live
   const availTheme = useContext(ThemeContext)
   const colorTheme = {
-    ...theme,
-    plain: { ...theme.plain, backgroundColor: availTheme.colors.ui_300 }
+    ...codeTheme,
+    plain: { ...codeTheme.plain, backgroundColor: availTheme.colors.ui_300 },
   }
   return (
-    <LiveProvider code={code} scope={{ ...scope, mdx }}>
+    <LiveProvider
+      code={code}
+      scope={{ ...scope, mdx, placesKey: process.env.placesKey }}
+    >
       {live && (
         <Preview>
           <LiveError />
@@ -52,7 +55,7 @@ export default function CodeBlock({
           style: highlightStyle,
           tokens,
           getLineProps,
-          getTokenProps
+          getTokenProps,
         }) => (
           <Pre
             className={className}
@@ -60,7 +63,7 @@ export default function CodeBlock({
               ...highlightStyle,
               ...style,
               padding: "2rem",
-              marginTop: live ? 0 : "2rem"
+              marginTop: live ? 0 : "2rem",
             }}
           >
             {tokens.map((line, key) => (

@@ -3,9 +3,10 @@ const compose = require("next-compose-plugins")
 
 const mdx = withMdxEnhanced({
   defaultLayout: true,
-  fileExtensions: ["mdx"]
+  fileExtensions: ["mdx"],
 })
 
 module.exports = compose([mdx], {
-  pageExtensions: ["mdx", "js"]
+  pageExtensions: ["mdx", "js"],
+  env: { placesKey: process.env.PLACES_KEY },
 })

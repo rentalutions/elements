@@ -1,4 +1,5 @@
-import { Box, Container, Grid, Col } from "@rent_avail/layout"
+import React from "react"
+import { Box, Container } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 
 export default function MarketingIcons() {
@@ -12,10 +13,9 @@ export default function MarketingIcons() {
         <Heading>Marketing Icons</Heading>
         <Text>
           Icons for use in our web, email, and other digital marketing
-          collateral. Choose from GitHub's brand blue color, or a monochrome
-          white on dark.
+          collateral. Choose from GitHub&apos;s brand blue color, or a
+          monochrome white on dark.
         </Text>
-        <Grid></Grid>
       </Box>
     </Container>
   )
