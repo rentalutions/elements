@@ -1,7 +1,14 @@
-import { useRef, useReducer, useEffect } from "react"
+import { useRef, useReducer, useEffect, useContext } from "react"
+import { AutocompleteContext } from "./AutocompleteProvider"
+
+function useAutocompleteKey() {
+  const state = useContext(AutocompleteContext)
+  if (state === "undefined")
+    throw Error("Must use autocomplete within an Autocomplete Provider")
+  return state
+}
 
 const initialState = {
-  input: "",
   selection: null,
   suggestions: [],
   sessionToken: null,
@@ -9,58 +16,38 @@ const initialState = {
   notFound: false,
 }
 
-const actionTypes = {
-  UPDATE_INPUT: "avail/autocomplete/update_input",
-  UPDATE_SUGGESTIONS: "avail/autocomplete/update_suggestions",
-  UPDATE_SELECTION: "avail/autocomplete/update_selection",
-  UPDATE_TOKEN: "avail/autocomplete/update_token",
-  CLEAR_STATE: "avail/autocomplete/clear",
-  ERROR: "avail/autocomplete/error",
-  SET_MANUAL: "avail/autocomplete/set_manual",
-}
-
 function autocompleteReducer(state, action) {
+  const {
+    payload: { selection = null, sessionToken = null, suggestions = [] } = {},
+  } = action
   switch (action.type) {
-    case actionTypes.UPDATE_TOKEN:
-      return { ...state, sessionToken: action.payload }
-    case actionTypes.UPDATE_SUGGESTIONS:
-      return { ...state, suggestions: action.payload, notFound: false }
-    case actionTypes.UPDATE_SELECTION:
-      const { selection, sessionToken } = action.payload
+    case "ADD_TOKEN":
+      return { ...state, sessionToken }
+    case "UPDATE_SUGGESTIONS":
+      return { ...state, suggestions, notFound: false }
+    case "SELECT_PLACE":
       return { ...state, selection, suggestions: [], sessionToken }
-    case actionTypes.SET_MANUAL:
+    case "ZERO_RESULTS":
       return { ...state, notFound: true, suggestions: [] }
-    case actionTypes.CLEAR_STATE:
+    case "CLEAR_SELECTION":
       return { ...state, selection: null, suggestions: [], notFound: false }
-    case actionTypes.ERROR:
+    case "ERROR":
       return { ...state, selection: null, suggestions: [], error: true }
     default:
       throw new Error("Must dispatch a known action.")
   }
 }
 
-const defaultParams = {
-  types: ["address"],
-  fields: ["address_components", "formatted_address"],
-}
-
-export function useAutocomplete({
-  types = defaultParams.types,
-  fields = defaultParams.fields,
-} = defaultParams) {
+export default function useAutocomplete(input = "") {
   const { loaded, error } = useAutocompleteKey()
   const autocompleteRef = useRef(null)
   const placesRef = useRef(null)
   const [state, dispatch] = useReducer(autocompleteReducer, initialState)
 
-  function setInput(input) {
-    dispatch({ type: actionTypes.UPDATE_INPUT, payload: input })
-  }
-
-  function getDetails(id, onSelect) {
+  async function getDetails(id, onSelect) {
     const request = {
       placeId: id,
-      fields,
+      fields: ["address_components", "formatted_address"],
       sessionToken: state.sessionToken,
     }
     const newToken = new google.maps.places.AutocompleteSessionToken()
@@ -68,7 +55,7 @@ export function useAutocomplete({
     function setSelection(place, status) {
       if (status === "OK") {
         dispatch({
-          type: actionTypes.UPDATE_SELECTION,
+          type: "SELECT_PLACE",
           payload: {
             selection: place.formatted_address,
             sessionToken: newToken,
@@ -84,48 +71,56 @@ export function useAutocomplete({
   function clearSelection(onClear) {
     onClear()
     dispatch({
-      type: actionTypes.CLEAR_STATE,
+      type: "CLEAR_SELECTION",
     })
   }
 
   useEffect(() => {
-    if (loaded) {
-      const element = document.createElement("aside")
-      const token = new google.maps.places.AutocompleteSessionToken()
+    // Instantiate services for later and create a session token.
+    if (loaded && !error) {
+      // eslint-disable-next-line no-undef
       autocompleteRef.current = new google.maps.places.AutocompleteService()
-      placesRef.current = new google.maps.places.PlacesService(element)
+      // eslint-disable-next-line no-undef
+      placesRef.current = new google.maps.places.PlacesService(
+        document.createElement("div")
+      )
       dispatch({
-        type: actionTypes.UPDATE_TOKEN,
-        payload: token,
+        type: "ADD_TOKEN",
+        // eslint-disable-next-line no-undef
+        payload: {
+          sessionToken: new google.maps.places.AutocompleteSessionToken(),
+        },
       })
     }
   }, [loaded])
 
+  function updateSuggestions(suggestions, status) {
+    switch (status) {
+      case "OK":
+        return dispatch({
+          type: "UPDATE_SUGGESTIONS",
+          payload: { suggestions },
+        })
+      case "ZERO_RESULTS":
+        return dispatch({ type: "ZERO_RESULTS" })
+      default:
+        dispatch({ type: "ERROR", payload: { status } })
+    }
+  }
+
   useEffect(() => {
+    // Get autocomplete suggestions based on input. Limit calls to inputs over 3
+    // characters so we're not trying to guess too early.
     if (input.length > 3) {
       const request = {
         input,
-        types,
+        types: ["address"],
         sessionToken: state.sessionToken,
-      }
-
-      function updateSuggestions(suggestions, status) {
-        switch (status) {
-          case "OK":
-            return dispatch({
-              type: actionTypes.UPDATE_SUGGESTIONS,
-              payload: suggestions,
-            })
-          case "ZERO_RESULTS":
-            return dispatch({ type: actionTypes.SET_MANUAL })
-          default:
-            dispatch({ type: actionTypes.ERROR, payload: status })
-        }
       }
 
       autocompleteRef.current.getPlacePredictions(request, updateSuggestions)
     } else {
-      dispatch({ type: actionTypes.UPDATE_SUGGESTIONS, payload: [] })
+      dispatch({ type: "UPDATE_SUGGESTIONS", payload: [] })
     }
   }, [input])
   return { ...state, getDetails, clearSelection }
