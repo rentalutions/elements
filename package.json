@@ -7,9 +7,9 @@
     "build": "lerna run build --ignore @rent_avail/docs",
     "build:changed": "lerna run build --since origin/release",
     "build:docs": "yarn workspace @rent_avail/docs build",
-    "start": "start-storybook --quiet -p 8080 -c .storybook",
+    "storybook": "start-storybook --quiet -p 8080 -c .storybook",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
-    "start:dev": "concurrently -n storybook,lerna \"yarn start\" \"yarn watch\"",
+    "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "watch": "lerna run watch --parallel",
     "update": "lerna version --no-push --no-private",
     "test": "jest"
