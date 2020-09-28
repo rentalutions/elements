@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
+    "@styled-system/theme-get": "^5.1.2",
     "styled-system": "^5.1.5"
   }
 }
