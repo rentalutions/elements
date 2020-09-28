@@ -1,4 +1,8 @@
 import React, { Fragment, useState } from "react"
+import { Container } from "@rent_avail/layout"
+import { Text, Heading } from "@rent_avail/typography"
+import Input from "@rent_avail/input"
+import { Button } from "@rent_avail/controls"
 import {
   Dialog,
   DialogTarget,
@@ -6,10 +10,6 @@ import {
   ConfirmationDialog,
   FullscreenDialog,
 } from "./src"
-import { Container } from "@rent_avail/layout"
-import { Text, Heading } from "@rent_avail/typography"
-import Input from "@rent_avail/input"
-import { Button } from "@rent_avail/controls"
 
 export default { title: "Dialog" }
 

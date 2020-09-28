@@ -1,12 +1,13 @@
-import React, { Fragment, useState } from "react"
-import Input from "./src"
+import React, { useState } from "react"
 import { Container } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
+import Input from "./src"
 
 export default { title: "Input" }
 
 export function InputUsage() {
   const [name, setName] = useState("")
+  const [color, setColor] = useState("")
   return (
     <Container>
       <Input
@@ -17,7 +18,12 @@ export function InputUsage() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Input label="Optional Field" mb="3rem" value={name} />
+      <Input
+        label="Optional Field"
+        mb="3rem"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
       <Input
         icon={Calendar}
         label="Birth Date"
