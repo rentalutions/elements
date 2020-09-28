@@ -13,26 +13,40 @@ const initialState = {
   suggestions: [],
   sessionToken: null,
   error: false,
+  called: false,
   notFound: false,
 }
 
 function autocompleteReducer(state, action) {
   const {
-    payload: { selection = null, sessionToken = null, suggestions = [] } = {},
+    payload: {
+      selection = null,
+      sessionToken = null,
+      suggestions = [],
+      called,
+    } = {},
   } = action
   switch (action.type) {
     case "ADD_TOKEN":
       return { ...state, sessionToken }
     case "UPDATE_SUGGESTIONS":
-      return { ...state, suggestions, notFound: false }
+      return { ...state, suggestions, called }
     case "SELECT_PLACE":
       return { ...state, selection, suggestions: [], sessionToken }
+    case "MANUAL_SELECT_PLACE":
+      return { ...state, selection, suggestions: [] }
     case "ZERO_RESULTS":
-      return { ...state, notFound: true, suggestions: [] }
+      return { ...state, called: true, suggestions: [] }
     case "CLEAR_SELECTION":
-      return { ...state, selection: null, suggestions: [], notFound: false }
+      return { ...state, selection: null, suggestions: [], called: false }
     case "ERROR":
-      return { ...state, selection: null, suggestions: [], error: true }
+      return {
+        ...state,
+        selection: null,
+        suggestions: [],
+        error: true,
+        called: true,
+      }
     default:
       throw new Error("Must dispatch a known action.")
   }
@@ -44,28 +58,40 @@ export default function useAutocomplete(input = "") {
   const placesRef = useRef(null)
   const [state, dispatch] = useReducer(autocompleteReducer, initialState)
 
-  async function getDetails(id, onSelect) {
-    const request = {
-      placeId: id,
-      fields: ["address_components", "formatted_address"],
-      sessionToken: state.sessionToken,
-    }
-    const newToken = new google.maps.places.AutocompleteSessionToken()
-
-    function setSelection(place, status) {
-      if (status === "OK") {
-        dispatch({
-          type: "SELECT_PLACE",
-          payload: {
-            selection: place.formatted_address,
-            sessionToken: newToken,
-          },
-        })
-        onSelect(place)
+  async function getDetails({ id, onSelect, manualSelection }) {
+    if (manualSelection) {
+      dispatch({
+        type: "MANUAL_SELECT_PLACE",
+        payload: {
+          selection: manualSelection.formatted_address,
+        },
+      })
+      onSelect(manualSelection)
+    } else {
+      const request = {
+        placeId: id,
+        fields: ["address_components", "formatted_address"],
+        sessionToken: state.sessionToken,
       }
+      // eslint-disable-next-line no-undef
+      const newToken = new google.maps.places.AutocompleteSessionToken()
+      placesRef.current.getDetails(request, (place, status) => {
+        if (status === "OK") {
+          dispatch({
+            type: "SELECT_PLACE",
+            payload: {
+              selection: place.formatted_address,
+              sessionToken: newToken,
+            },
+          })
+          onSelect(place)
+        } else {
+          dispatch({
+            type: "ERROR",
+          })
+        }
+      })
     }
-
-    placesRef.current.getDetails(request, setSelection)
   }
 
   function clearSelection(onClear) {
@@ -86,8 +112,8 @@ export default function useAutocomplete(input = "") {
       )
       dispatch({
         type: "ADD_TOKEN",
-        // eslint-disable-next-line no-undef
         payload: {
+          // eslint-disable-next-line no-undef
           sessionToken: new google.maps.places.AutocompleteSessionToken(),
         },
       })
@@ -99,10 +125,13 @@ export default function useAutocomplete(input = "") {
       case "OK":
         return dispatch({
           type: "UPDATE_SUGGESTIONS",
-          payload: { suggestions },
+          payload: { suggestions, called: true },
         })
       case "ZERO_RESULTS":
-        return dispatch({ type: "ZERO_RESULTS" })
+        return dispatch({
+          type: "UPDATE_SUGGESTIONS",
+          payload: { suggestions: [], called: true },
+        })
       default:
         dispatch({ type: "ERROR", payload: { status } })
     }
@@ -120,8 +149,12 @@ export default function useAutocomplete(input = "") {
 
       autocompleteRef.current.getPlacePredictions(request, updateSuggestions)
     } else {
-      dispatch({ type: "UPDATE_SUGGESTIONS", payload: [] })
+      dispatch({
+        type: "UPDATE_SUGGESTIONS",
+        payload: { suggestions: [], called: false },
+      })
     }
   }, [input])
+
   return { ...state, getDetails, clearSelection }
 }

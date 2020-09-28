@@ -154,7 +154,7 @@ function Input(
     setRaised(inputValue.length || date)
   }
   useEffect(() => {
-    setRaised(value?.length)
+    setRaised(value?.length || props.defaultValue)
   }, [value])
   return (
     <InputWrapper

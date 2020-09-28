@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react"
-import styled from "styled-components"
 import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import { noop } from "@rent_avail/utils"
@@ -12,11 +11,11 @@ function GoogleLogo() {
       as="svg"
       viewBox="0 0 24 24"
       sx={{
-        width: "2rem",
-        height: "2rem",
+        width: "1.5rem",
+        height: "1.5rem",
         position: "absolute",
-        top: "2rem",
-        right: "2rem",
+        top: "2.25rem",
+        right: "2.25rem",
       }}
     >
       <path
@@ -27,30 +26,28 @@ function GoogleLogo() {
   )
 }
 
-const ManualLink = styled.a`
-  font-weight: ${({ theme }) => theme.fontWeights.black};
-`
-
 export default function Autocomplete({
   onSelect = noop,
   onClear = noop,
+  onManualSelection = noop,
   ...props
 }) {
   const targetRef = useRef()
   const [input, setInput] = useState("")
+  const [manualOpen, setManualOpen] = useState(false)
   const {
     suggestions,
-    notFound,
     getDetails,
     selection,
     clearSelection,
+    called,
   } = useAutocomplete(input)
   function handleChange({ target }) {
     setInput(target.value)
   }
   function handleSelect(place) {
-    setInput(" ")
-    getDetails(place.place_id, onSelect)
+    setInput("")
+    getDetails({ id: place.place_id, onSelect })
   }
   function handleFocus() {
     if (selection) {
@@ -58,14 +55,20 @@ export default function Autocomplete({
       clearSelection(onClear)
     }
   }
+  async function handleManualSelect(value) {
+    await getDetails({ onSelect, manualSelection: value })
+    setManualOpen(false)
+  }
   return (
     <Box position="relative">
       <Input
         {...props}
         ref={targetRef}
         onChange={handleChange}
-        onFocus={handleFocus}
+        onKeyDown={handleFocus}
+        // onFocus={handleFocus}
         value={input}
+        className={selection && "raised"}
       />
       {selection && (
         <Box
@@ -87,7 +90,7 @@ export default function Autocomplete({
           {selection}
         </Box>
       )}
-      {suggestions.length > 0 && (
+      {called && !selection && (
         <Popover targetRef={targetRef} position={{ x: "left", y: "bottom" }}>
           <Box
             as="ul"
@@ -119,22 +122,25 @@ export default function Autocomplete({
                 </Box>
               )
             })}
+            {suggestions < 5 && (
+              <Box className="manual-add" sx={{ p: "2rem" }}>
+                No results found.&nbsp;
+                <Box
+                  as="span"
+                  role="button"
+                  className="link"
+                  sx={{ fontWeight: "black", cursor: "pointer" }}
+                  onClick={() => setManualOpen(true)}
+                >
+                  Enter an address manually.
+                </Box>
+              </Box>
+            )}
           </Box>
         </Popover>
       )}
-      {notFound && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: "calc(100% + 1rem)",
-            bg: "ui_100",
-            width: "100%",
-            p: "2rem",
-          }}
-        >
-          No results found. <ManualLink>Enter an address manually</ManualLink>
-        </Box>
-      )}
+      {manualOpen &&
+        onManualSelection(handleManualSelect, [manualOpen, setManualOpen])}
     </Box>
   )
 }
