@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import { noop } from "@rent_avail/utils"
@@ -30,6 +30,7 @@ export default function Autocomplete({
   onSelect = noop,
   onClear = noop,
   onManualSelection = noop,
+  defaultValue = null,
   ...props
 }) {
   const targetRef = useRef()
@@ -59,6 +60,11 @@ export default function Autocomplete({
     await getDetails({ onSelect, manualSelection: value })
     setManualOpen(false)
   }
+  useEffect(() => {
+    if (defaultValue) {
+      getDetails({ manualSelection: { formatted_address: defaultValue } })
+    }
+  }, [defaultValue])
   return (
     <Box position="relative">
       <Input
@@ -66,7 +72,7 @@ export default function Autocomplete({
         ref={targetRef}
         onChange={handleChange}
         onKeyDown={handleFocus}
-        // onFocus={handleFocus}
+        defaultValue={defaultValue}
         value={input}
         className={selection && "raised"}
       />

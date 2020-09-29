@@ -1,4 +1,5 @@
 import { useRef, useReducer, useEffect, useContext } from "react"
+import { noop } from "@rent_avail/utils"
 import { AutocompleteContext } from "./AutocompleteProvider"
 
 function useAutocompleteKey() {
@@ -58,7 +59,7 @@ export default function useAutocomplete(input = "") {
   const placesRef = useRef(null)
   const [state, dispatch] = useReducer(autocompleteReducer, initialState)
 
-  async function getDetails({ id, onSelect, manualSelection }) {
+  async function getDetails({ id, onSelect = noop, manualSelection }) {
     if (manualSelection) {
       dispatch({
         type: "MANUAL_SELECT_PLACE",

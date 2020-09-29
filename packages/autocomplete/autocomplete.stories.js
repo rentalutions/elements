@@ -7,7 +7,7 @@ import { Autocomplete, AutocompleteProvider } from "./src"
 
 export default { title: "Autocomplete" }
 
-export function Component() {
+export function BasicUsage() {
   const [response, setResponse] = useState(null)
   return (
     <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
@@ -61,6 +61,19 @@ export function Component() {
         <Box as="pre" my="2rem" fontSize="1.25rem">
           <Box as="code">{JSON.stringify(response, null, 2)}</Box>
         </Box>
+      </Container>
+    </AutocompleteProvider>
+  )
+}
+
+export function DefaultValue() {
+  return (
+    <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
+      <Container>
+        <Autocomplete
+          label="Mailing Address"
+          defaultValue="1003 North Sandburg Terrace, Chicago, IL, United States"
+        />
       </Container>
     </AutocompleteProvider>
   )
