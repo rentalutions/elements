@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.1.7...@rent_avail/autocomplete@0.2.0) (2020-09-29)
+
+
+### Features
+
+* **autocomplete:** add support for default value ([24604b7](https://github.com/rentalutions/elements/commit/24604b7c876629b7aba80e2c18ecd0e4c2562345))
+* **autocomplete:** handle manual add ([7b5c7ed](https://github.com/rentalutions/elements/commit/7b5c7ed6af856a21321c06eb992aef6511335c82))
+
+
+
+
+
 ## [0.1.7](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.1.6...@rent_avail/autocomplete@0.1.7) (2020-09-02)
 
 **Note:** Version bump only for package @rent_avail/autocomplete

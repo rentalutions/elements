@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/rentalutions/elements/compare/@rent_avail/base@0.4.0...@rent_avail/base@0.4.1) (2020-09-29)
+
+
+### Bug Fixes
+
+* **base:** update theme getter ([17c40b8](https://github.com/rentalutions/elements/commit/17c40b8a2ae1f75168c8bc13d2283d7701552119))
+
+
+
+
+
 # [0.4.0](https://github.com/rentalutions/elements/compare/@rent_avail/base@0.3.0...@rent_avail/base@0.4.0) (2020-08-23)
 
 
