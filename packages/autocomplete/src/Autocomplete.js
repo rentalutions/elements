@@ -34,6 +34,7 @@ export default function Autocomplete({
   ...props
 }) {
   const targetRef = useRef()
+  const listRef = useRef()
   const [input, setInput] = useState("")
   const [manualOpen, setManualOpen] = useState(false)
   const {
@@ -50,10 +51,19 @@ export default function Autocomplete({
     setInput("")
     getDetails({ id: place.place_id, onSelect })
   }
-  function handleFocus() {
+  function handleKeyDown({ keyCode }) {
     if (selection) {
       setInput("")
-      clearSelection(onClear)
+      return clearSelection(onClear)
+    }
+    switch (keyCode) {
+      // Tab Key
+      case 9:
+        console.log(listRef.current?.firstChild)
+        listRef.current?.firstElementChild.focus()
+        break
+      default:
+        break
     }
   }
   async function handleManualSelect(value) {
@@ -71,7 +81,7 @@ export default function Autocomplete({
         {...props}
         ref={targetRef}
         onChange={handleChange}
-        onKeyDown={handleFocus}
+        onKeyDown={handleKeyDown}
         value={input}
         className={selection && "raised"}
       />
@@ -98,27 +108,31 @@ export default function Autocomplete({
       {called && !selection && (
         <Popover targetRef={targetRef} position={{ x: "left", y: "bottom" }}>
           <Box
+            ref={listRef}
             as="ul"
             sx={{
-              bg: "ui_100",
               mb: "2rem",
+              bg: "ui_100",
               borderRadius: "0.25rem",
-              width: targetRef.current.offsetWidth,
               borderWidth: "2px",
               borderStyle: "solid",
               borderColor: "ui_500",
+              listStyle: "none",
+              width: targetRef.current.offsetWidth,
             }}
           >
-            <GoogleLogo />
             {suggestions.map((place) => {
               return (
                 <Box
+                  as="li"
                   className="suggestion"
                   key={place.place_id}
+                  tabIndex="0"
                   sx={{
                     p: "2rem",
                     cursor: "pointer",
-                    "&:hover": { bg: "blue_100" },
+                    outline: "none",
+                    "&:hover, &:focus": { bg: "blue_100" },
                   }}
                   p="2rem"
                   onClick={() => handleSelect(place)}
@@ -131,6 +145,7 @@ export default function Autocomplete({
               <Box className="manual-add" sx={{ p: "2rem" }}>
                 No results found.&nbsp;
                 <Box
+                  tabIndex="0"
                   as="span"
                   role="button"
                   className="link"
@@ -141,6 +156,7 @@ export default function Autocomplete({
                 </Box>
               </Box>
             )}
+            <GoogleLogo />
           </Box>
         </Popover>
       )}
