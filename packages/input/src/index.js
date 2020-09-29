@@ -93,9 +93,6 @@ const InputWrapper = styled.label`
     }
   }
   &.raised {
-    input {
-      border-color: ${({ theme }) => theme.colors.blue_500};
-    }
     .input__row {
       font-size: 1.334rem;
       transform: translate3d(0, -1rem, 0);
