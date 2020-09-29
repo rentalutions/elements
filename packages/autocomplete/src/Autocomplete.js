@@ -72,7 +72,6 @@ export default function Autocomplete({
         ref={targetRef}
         onChange={handleChange}
         onKeyDown={handleFocus}
-        defaultValue={defaultValue}
         value={input}
         className={selection && "raised"}
       />
