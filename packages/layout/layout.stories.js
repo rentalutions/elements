@@ -89,6 +89,7 @@ export function GridUsage() {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    sx: { color: "green_500" },
   }
   return (
     <Grid height="100vh">

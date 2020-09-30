@@ -7,6 +7,7 @@ import {
   layout,
   border,
   background,
+  compose,
 } from "styled-system"
 import { sx } from "@rent_avail/base"
 
@@ -17,16 +18,13 @@ const Grid = styled.section.attrs(
       ? `repeat(${columns}, 1fr)`
       : gridTemplateColumns,
   })
-)`
-  display: grid;
-  ${grid};
-  ${flexbox};
-  ${space};
-  ${layout};
-  ${color};
-  ${border};
-  ${sx};
-`
+)(
+  {
+    display: "grid",
+  },
+  compose(color, grid, flexbox, space, layout, border),
+  sx
+)
 
 Grid.defaultProps = {
   gridTemplateColumns: "repeat(12, 1fr)",
@@ -36,9 +34,9 @@ Grid.defaultProps = {
 function getSpan(span, offset) {
   const spanArr = Array.isArray(span) ? span : [span]
   const offsetArr = Array.isArray(offset) ? offset : [offset]
-  return spanArr.map((span, idx) => {
+  return spanArr.map((spanItem, idx) => {
     const start = offsetArr[idx] || offsetArr[offsetArr.length - 1] || "auto"
-    return `${start} / span ${span}`
+    return `${start} / span ${spanItem}`
   })
 }
 
@@ -58,17 +56,11 @@ const Col = styled.div.attrs(
       gridRow: rows,
     }
   }
-)`
-  min-width: 0;
-  ${grid};
-  ${flexbox};
-  ${space};
-  ${layout};
-  ${color};
-  ${background};
-  ${border};
-  ${sx};
-`
+)(
+  { minWidth: 0 },
+  compose(color, grid, flexbox, space, layout, border, background),
+  sx
+)
 
 Col.defaultProps = {
   gridColumn: "1 / -1",
