@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/base",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Base styling and theme for Avail Design.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
+    "@styled-system/theme-get": "^5.1.2",
     "styled-system": "^5.1.5"
   }
 }

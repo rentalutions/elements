@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import css from "@styled-system/css"
+import { themeGet } from "@styled-system/theme-get"
 
 const colors = {
   ui_100: "#ffffff",
@@ -100,41 +101,41 @@ export const Base = createGlobalStyle`
   }
 
   body {
-    font-family: ${({ theme }) => theme.fonts.body};
-    font-size: ${({ theme }) => theme.fontSizes.body};
-    font-weight: ${({ theme }) => theme.fontWeights.regular};
-    line-height: ${({ theme }) => theme.lineHeights.body};
-    color: ${({ theme }) => theme.colors.ui_900};
+    font-family: ${themeGet("fonts.body")};
+    font-size:  ${themeGet("fontSizes.body")};
+    font-weight: ${themeGet("fontWeights.regular")};
+    line-height: ${themeGet("lineHeights.body")};
+    color: ${themeGet("colors.ui_900")};
   }
 
   h1 {
-    font-size:${({ theme }) => theme.fontSizes.hero};
-    font-weight: ${({ theme }) => theme.fontWeights.light};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
+    font-size:${themeGet("fontSizes.hero")};
+    font-weight: ${themeGet("fontWeights.light")};
+    line-height: ${themeGet("lineHeights.heading")};
   }
   h2 {
-    font-size:${({ theme }) => theme.fontSizes.headline};
-    font-weight: ${({ theme }) => theme.fontWeights.regular};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
+    font-size:${themeGet("fontSizes.headline")};
+    font-weight: ${themeGet("fontWeights.regular")};
+    line-height: ${themeGet("lineHeights.heading")};
   }
   h3 {
-    font-size:${({ theme }) => theme.fontSizes.title};
-    font-weight: ${({ theme }) => theme.fontWeights.regular};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
+    font-size:${themeGet("fontSizes.title")};
+    font-weight: ${themeGet("fontWeights.regular")};
+    line-height: ${themeGet("lineHeights.heading")};
   }
   h4 {
-    font-size:${({ theme }) => theme.fontSizes.subtitle};
-    font-weight: ${({ theme }) => theme.fontWeights.regular};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
+    font-size:${themeGet("fontSizes.subtitle")};
+    font-weight: ${themeGet("fontWeights.regular")};
+    line-height: ${themeGet("lineHeights.heading")};
   }
   h5 {
-    font-size:${({ theme }) => theme.fontSizes.body};
-    font-weight: ${({ theme }) => theme.fontWeights.black};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
+    font-size:${themeGet("fontSizes.body")};
+    font-weight: ${themeGet("fontWeights.black")};
+    line-height: ${themeGet("lineHeights.heading")};
   }
 
   pre, code {
-    font-family: ${({ theme }) => theme.fonts.monospace};
+    font-family: ${themeGet("fonts.monospace")};
   }
 
   a {
@@ -143,16 +144,16 @@ export const Base = createGlobalStyle`
   }
 
   .link {
-    box-shadow: inset 0 -6px 0 ${({ theme }) => theme.colors.green_500};
-    font-weight: ${({ theme }) => theme.fontWeights.black};
+    box-shadow: inset 0 -6px 0 ${themeGet("colors.green_500")};
+    font-weight: ${themeGet("fontWeights.black")};
     transition: box-shadow 250ms;
-    &::hover {
-      box-shadow: inset 0 -12px 0 ${({ theme }) => theme.colors.green_500};
+    &:hover {
+      box-shadow: inset 0 -12px 0 ${themeGet("colors.green_500")};
     }
   }
 
   .no-sizing h1 {
-      font-size: 4rem;
+    font-size: 4rem;
   }
 
   .no-sizing h2 {

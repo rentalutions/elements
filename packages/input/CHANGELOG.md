@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.1.10...@rent_avail/input@0.2.0) (2020-09-29)
+
+
+### Features
+
+* **autocomplete:** handle manual add ([7b5c7ed](https://github.com/rentalutions/elements/commit/7b5c7ed6af856a21321c06eb992aef6511335c82))
+* **input:** update focus state ([3d0370c](https://github.com/rentalutions/elements/commit/3d0370c1fdcc5e97bd81489c331fe7b649804f62))
+
+
+
+
+
 ## [0.1.10](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.1.9...@rent_avail/input@0.1.10) (2020-08-31)
 
 **Note:** Version bump only for package @rent_avail/input

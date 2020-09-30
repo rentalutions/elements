@@ -7,8 +7,8 @@ import {
   flexbox,
   border,
   typography,
-  buttonStyle,
   variant,
+  compose,
 } from "styled-system"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -27,17 +27,8 @@ const spin = keyframes`
   }
 `
 
-const ButtonWrapper = styled.button`
-  position: relative;
-  appearance: none;
-  border-style: solid;
-  border-width: 2px;
-  white-space: nowrap;
-  border-color: ${({ theme, color }) => theme.colors[color] || color};
-  text-transform: uppercase;
-  outline: none;
-  transition: 200ms;
-  ${variant({
+const ButtonWrapper = styled("button")(
+  variant({
     variants: {
       default: {
         bg: "transparent",
@@ -74,44 +65,45 @@ const ButtonWrapper = styled.button`
         },
       },
     },
-  })}
-  ${color};
-  ${space};
-  ${layout};
-  ${flexbox};
-  ${border};
-  ${buttonStyle};
-  ${typography};
-  ${({ loading }) =>
-    loading &&
-    css`
-      pointer-events: none;
-    `}
-  &:hover {
-    background: ${({ theme, color }) => theme.colors[color] || color};
-    color: ${({ theme, textColor }) => textColor || theme.colors.ui_100};
-  }
-  &:disabled {
-    color: ${({ theme }) => theme.colors.ui_300};
-    background: ${({ theme }) => theme.colors.ui_500};
-    border-color: transparent;
-    cursor: not-allowed;
-  }
-  .spinner {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .spinner__path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0;
-    animation: ${spin} 3s ease infinite;
-    animation-fill-mode: forwards;
-    transform-origin: 50% 50%;
-  }
-`
+  }),
+  ({ theme, textColor, color: bgColor }) => css`
+    position: relative;
+    appearance: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: ${theme.colors[bgColor] || bgColor};
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 200ms;
+    outline: none;
+    white-space: nowrap;
+    &:hover {
+      background-color: ${theme.colors[bgColor] || bgColor};
+      color: ${textColor || theme.colors.ui_100};
+    }
+    &:disabled {
+      color: ${theme.colors.ui_300};
+      background: ${theme.colors.ui_500};
+      border-color: transparent;
+      cursor: not-allowed;
+    }
+    .spinner {
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .spinner__path {
+      animation: ${spin} 3s ease infinite;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+  `,
+  compose(color, space, layout, flexbox, border, typography)
+)
 
 ButtonWrapper.defaultProps = {
   py: "1rem",
@@ -132,7 +124,7 @@ const variants = {
 function Button({ children, loading, disabled, ...props }, ref) {
   const isLoading = loading && !disabled
   return (
-    <ButtonWrapper {...{ ...props, disabled, loading, ref }}>
+    <ButtonWrapper {...{ ...props, disabled, ref }}>
       <AnimatePresence>
         {isLoading && (
           <motion.svg
