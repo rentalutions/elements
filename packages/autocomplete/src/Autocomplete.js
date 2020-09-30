@@ -59,7 +59,6 @@ export default function Autocomplete({
     switch (keyCode) {
       // Tab Key
       case 9:
-        console.log(listRef.current?.firstChild)
         listRef.current?.firstElementChild.focus()
         break
       default:
@@ -85,7 +84,7 @@ export default function Autocomplete({
         value={input}
         className={selection && "raised"}
       />
-      {selection && (
+      {!!selection && (
         <Box
           sx={{
             position: "absolute",
@@ -141,7 +140,7 @@ export default function Autocomplete({
                 </Box>
               )
             })}
-            {suggestions < 5 && (
+            {suggestions.length < 5 && (
               <Box className="manual-add" sx={{ p: "2rem" }}>
                 No results found.&nbsp;
                 <Box
