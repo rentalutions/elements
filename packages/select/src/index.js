@@ -264,20 +264,23 @@ function List({ children, style, ...props }, ref) {
   }
   useImperativeHandle(ref, () => ({ ...listRef }))
   useEffect(() => {
+    let canceled = false
+    function scrollWindow(top, fromBottom) {
+      if (!canceled) window.scrollBy(0, Math.max(top - fromBottom + 120, 0))
+    }
     if (isOpen) {
       const { current: input } = inputRef
       const { current: list } = listRef
-      const { top, width } = input.getBoundingClientRect()
+      const { top } = input.getBoundingClientRect()
       const { height } = list.getBoundingClientRect()
       const fromBottom = window.innerHeight - height
-      setTimeout(
-        () => window.scrollBy(0, Math.max(top - fromBottom + 120, 0)),
-        20
-      )
+      setTimeout(() => scrollWindow(top, fromBottom), 20)
       document.addEventListener("click", handleBlur)
-      setListWidth(width)
     }
-    return () => document.removeEventListener("click", handleBlur)
+    return () => {
+      canceled = true
+      document.removeEventListener("click", handleBlur)
+    }
   }, [isOpen, handleBlur])
   return isOpen ? (
     <Popover
@@ -290,7 +293,7 @@ function List({ children, style, ...props }, ref) {
         {...props}
         as="ul"
         ref={listRef}
-        style={{ ...style, width: listWidth || "auto" }}
+        style={{ ...style, width: inputRef.current.offsetWidth || "auto" }}
       >
         {children}
       </StyledList>
