@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.2.0...@rent_avail/autocomplete@0.2.1) (2020-10-06)
+
+
+### Bug Fixes
+
+* **autocomplete:** remove defaultValue from input ([187fee3](https://github.com/rentalutions/elements/commit/187fee36dc7ffe2f61f63da5aef46def7cd191fd))
+* **autocomplete:** revisions from PR review ([f678a56](https://github.com/rentalutions/elements/commit/f678a561fa0a0d8cfb0064964d35d4d96ce64a8f))
+
+
+
+
+
 # [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.1.7...@rent_avail/autocomplete@0.2.0) (2020-09-29)
 
 

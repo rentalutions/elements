@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com/rentalutions/elements/compare/@rent_avail/tooltip@0.1.12...@rent_avail/tooltip@0.1.13) (2020-10-06)
+
+**Note:** Version bump only for package @rent_avail/tooltip
+
+
+
+
+
 ## [0.1.12](https://github.com/rentalutions/elements/compare/@rent_avail/tooltip@0.1.11...@rent_avail/tooltip@0.1.12) (2020-09-29)
 
 **Note:** Version bump only for package @rent_avail/tooltip

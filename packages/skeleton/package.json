@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/skeleton",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Skeleton component for Avail Design",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -29,9 +29,9 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.4.1",
-    "@rent_avail/layout": "^0.3.3",
-    "@rent_avail/utils": "^0.2.3",
+    "@rent_avail/base": "^0.4.2",
+    "@rent_avail/layout": "^0.3.4",
+    "@rent_avail/utils": "^0.2.4",
     "clsx": "^1.1.0",
     "styled-system": "^5.1.5"
   }

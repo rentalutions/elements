@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/menu",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Menu component.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -28,10 +28,10 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.4.1",
-    "@rent_avail/layout": "^0.3.3",
-    "@rent_avail/popover": "^0.1.12",
-    "@rent_avail/utils": "^0.2.3",
+    "@rent_avail/base": "^0.4.2",
+    "@rent_avail/layout": "^0.3.4",
+    "@rent_avail/popover": "^0.1.13",
+    "@rent_avail/utils": "^0.2.4",
     "styled-system": "^5.1.5"
   }
 }
