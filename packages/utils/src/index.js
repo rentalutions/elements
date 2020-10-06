@@ -255,6 +255,45 @@ export function useDates(startDate = new Date()) {
   }
 }
 
+export function useBodyScrollLock() {
+  const scrollLocked = useRef(false)
+  const originalScrollTop = useRef(0)
+  const originalStyles = useRef("")
+
+  const lock = () => {
+    if (scrollLocked.current) return
+    const scrollBarAdjustment =
+      window.innerWidth -
+      (document.scrollingElement || document.documentElement).clientWidth +
+      (parseInt(
+        window
+          .getComputedStyle(document.body)
+          .getPropertyValue("padding-right"),
+        10
+      ) || 0)
+    originalScrollTop.current = window.scrollY
+    originalStyles.current = document.body.style.cssText
+    document.body.style.cssText = `
+      ${originalStyles.current}
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: -${originalScrollTop.current}px;
+      padding-right: ${scrollBarAdjustment}px;
+    `
+    scrollLocked.current = true
+  }
+
+  const unlock = () => {
+    if (!scrollLocked.current) return
+    document.body.style.cssText = originalStyles.current
+    if (originalScrollTop.current) window.scrollTo(0, originalScrollTop.current)
+    scrollLocked.current = false
+  }
+
+  return [lock, unlock]
+}
+
 export function throttle(fn, ms) {
   let timeout
   function exec() {

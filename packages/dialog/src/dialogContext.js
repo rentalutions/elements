@@ -3,19 +3,21 @@ import React, {
   cloneElement,
   forwardRef,
   useContext,
-  useEffect,
   useMemo,
+  useLayoutEffect,
 } from "react"
 import { noop } from "@rent_avail/utils"
+import { useBodyScrollLock } from "@rent_avail/utils/src"
 
 export const DialogContext = createContext()
 
 export function Dialog({ open = false, toggle = noop, id, ...props }) {
   const context = useMemo(() => ({ open, toggle, id }), [open, toggle, id])
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = "initial"
-    return () => (document.body.style.overflow = "initial")
+  const [lockBodyScroll, unlockBodyScroll] = useBodyScrollLock()
+  useLayoutEffect(() => {
+    if (open) lockBodyScroll()
+    else unlockBodyScroll()
+    return () => unlockBodyScroll()
   }, [open])
   return <DialogContext.Provider {...props} value={context} />
 }
