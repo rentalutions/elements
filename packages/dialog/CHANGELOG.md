@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.14...@rent_avail/dialog@0.1.15) (2020-10-06)
+
+
+### Bug Fixes
+
+* **dialog:** body scroll lock mechanism ([4825f9c](https://github.com/rentalutions/elements/commit/4825f9c03249b0986ca3c7d64ecda6253c6d8e46))
+
+
+
+
+
 ## [0.1.14](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.13...@rent_avail/dialog@0.1.14) (2020-09-29)
 
 **Note:** Version bump only for package @rent_avail/dialog
