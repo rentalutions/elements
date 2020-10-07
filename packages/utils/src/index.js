@@ -256,6 +256,7 @@ export function useDates(startDate = new Date()) {
 }
 
 export function useBodyScrollLock() {
+  const scrollElement = document.scrollingElement || document.documentElement
   const scrollLocked = useRef(false)
   const originalScrollTop = useRef(0)
   const originalStyles = useRef("")
@@ -264,7 +265,7 @@ export function useBodyScrollLock() {
     if (scrollLocked.current) return
     const scrollBarAdjustment =
       window.innerWidth -
-      (document.scrollingElement || document.documentElement).clientWidth +
+      scrollElement.clientWidth +
       (parseInt(
         window
           .getComputedStyle(document.body)
@@ -277,10 +278,10 @@ export function useBodyScrollLock() {
       ${originalStyles.current}
       position: fixed;
       width: 100%;
-      height: 100%;
       top: -${originalScrollTop.current}px;
       padding-right: ${scrollBarAdjustment}px;
     `
+    scrollElement.style.scrollBehavior = "auto"
     scrollLocked.current = true
   }
 
@@ -288,6 +289,7 @@ export function useBodyScrollLock() {
     if (!scrollLocked.current) return
     document.body.style.cssText = originalStyles.current
     if (originalScrollTop.current) window.scrollTo(0, originalScrollTop.current)
+    scrollElement.style.scrollBehavior = ""
     scrollLocked.current = false
   }
 

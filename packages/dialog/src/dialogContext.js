@@ -6,8 +6,7 @@ import React, {
   useMemo,
   useLayoutEffect,
 } from "react"
-import { noop } from "@rent_avail/utils"
-import { useBodyScrollLock } from "@rent_avail/utils/src"
+import { noop, useBodyScrollLock } from "@rent_avail/utils"
 
 export const DialogContext = createContext()
 
