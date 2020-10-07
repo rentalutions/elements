@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.4...@rent_avail/utils@0.2.5) (2020-10-07)
+
+
+### Bug Fixes
+
+* **utils:** disables "smooth" scrolling in body scroll locking mechanism ([f951e0b](https://github.com/rentalutions/elements/commit/f951e0badbef3600141fb3c128e4e8c2c2ed84bc))
+
+
+
+
+
 ## [0.2.4](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.3...@rent_avail/utils@0.2.4) (2020-10-06)
 
 
