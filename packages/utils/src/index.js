@@ -88,18 +88,15 @@ export function useIntersection({
   const observer = useRef(null)
   useEffect(() => {
     if (observer.current) observer.current.disconnect()
-    if (typeof window !== "undefined") {
-      observer.current = new IntersectionObserver(
-        ([entry]) => setResult(entry),
-        {
-          root,
-          rootMargin,
-          threshold,
-        }
-      )
-    }
+    observer.current = new IntersectionObserver(([entry]) => setResult(entry), {
+      root,
+      rootMargin,
+      threshold,
+    })
     if (target.current) observer.current.observe(target.current)
-    return () => observer.current.disconnect()
+    return () => {
+      if (observer.current) observer.current.disconnect()
+    }
   }, [target])
   return [target, result]
 }
@@ -256,6 +253,7 @@ export function useDates(startDate = new Date()) {
 }
 
 export function useBodyScrollLock() {
+  if (typeof window === "undefined") return [] // bail on server render.
   const scrollElement = document.scrollingElement || document.documentElement
   const scrollLocked = useRef(false)
   const originalScrollTop = useRef(0)
@@ -332,7 +330,7 @@ export function closestScrollable(element) {
     parent = parent.parentElement
     if (isScrollable(parent)) return parent
   }
-  return document.body
+  return typeof document === "undefined" ? null : document.body
 }
 
 export function noop() {}
