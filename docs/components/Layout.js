@@ -13,6 +13,7 @@ const PageWrapper = styled.div`
 const Main = styled.main`
   height: 100vh;
   overflow-y: auto;
+  position: relative;
 `
 
 const SidebarWrapper = styled.aside`
