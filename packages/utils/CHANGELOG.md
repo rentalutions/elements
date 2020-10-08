@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.5...@rent_avail/utils@0.2.6) (2020-10-08)
+
+
+### Bug Fixes
+
+* **utils:** fixed violations of SSR safety ([c64d5a1](https://github.com/rentalutions/elements/commit/c64d5a1ccd3833aafff7661aeee2e58aad02f807))
+
+
+
+
+
 ## [0.2.5](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.4...@rent_avail/utils@0.2.5) (2020-10-07)
 
 
