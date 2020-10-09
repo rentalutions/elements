@@ -39,6 +39,7 @@
     "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",
     "next-mdx-enhanced": "^4.0.0",
+    "next-seo": "^4.11.0",
     "next-transpile-modules": "^4.1.0",
     "polished": "^3.6.6",
     "prettier": "^2.1.1",
@@ -48,6 +49,7 @@
     "react-feather": "^2.0.4",
     "react-is": "^16.13.1",
     "react-live": "^2.2.2",
+    "reading-time": "^1.2.0",
     "rehype": "^11.0.0",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"

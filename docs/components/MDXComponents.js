@@ -69,7 +69,9 @@ export default {
       pr="1rem"
     />
   ),
-  img: (props) => <Box {...props} as="img" maxWidth="100%" />,
+  img: (props) => (
+    <Box {...props} as="img" sx={{ maxWidth: "100%", my: "4rem" }} />
+  ),
   code: (props) => <Box {...props} as="code" />,
   pre: (props) => (
     <CodeBlock
