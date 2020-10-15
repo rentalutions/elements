@@ -11,7 +11,7 @@
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "watch": "lerna run watch --parallel",
-    "update": "lerna version --no-push --no-private",
+    "update": "lerna version --no-push --no-private --include-merged-tags",
     "test": "jest"
   },
   "devDependencies": {
