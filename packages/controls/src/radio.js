@@ -45,7 +45,7 @@ const StyledRadio = styled.label`
     border: 2px solid ${({ theme }) => theme.colors.ui_300};
   }
   .radio__label {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `
 
@@ -64,7 +64,7 @@ function Radio(
   return (
     <StyledRadio className={className} disabled={disabled}>
       <input {...props} ref={ref} type="radio" disabled={disabled} />
-      <div role="button" className="radio__target" />
+      <div role="button" className="radio__target" aria-label="radio button" />
       {children && <span className="radio__label">{children}</span>}
     </StyledRadio>
   )
