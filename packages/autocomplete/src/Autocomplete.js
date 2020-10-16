@@ -3,6 +3,8 @@ import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import { noop } from "@rent_avail/utils"
 import Popover from "@rent_avail/popover"
+import styled from "styled-components"
+import { X } from "react-feather"
 import useAutocomplete from "./useAutocomplete"
 
 function GoogleLogo() {
@@ -25,6 +27,28 @@ function GoogleLogo() {
     </Box>
   )
 }
+
+const DeleteIcon = styled(X)`
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  height: 30px;
+  width: 30px;
+  background-color: #e9edf1;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  cursor: pointer;
+  color: #8596b0;
+`
+
+const Selection = styled.div`
+  display: flex;
+  position: absolute;
+  max-width: calc(100% - 4rem);
+  top: 3.25rem;
+  left: 2rem;
+`
 
 export default function Autocomplete({
   onSelect = noop,
@@ -51,18 +75,19 @@ export default function Autocomplete({
     setInput("")
     getDetails({ id: place.place_id, onSelect })
   }
-  function handleKeyDown({ keyCode }) {
+  function handleKeyDown({ key, target }, place) {
     if (selection) {
       setInput("")
       return clearSelection(onClear)
     }
-    switch (keyCode) {
-      // Tab Key
-      case 9:
-        listRef.current?.firstElementChild.focus()
-        break
-      default:
-        break
+    if (target.nodeName === "INPUT") {
+      if (key === "ArrowDown") listRef.current?.firstElementChild.focus()
+    } else {
+      const active = document.activeElement
+      if (key === "ArrowDown" && active.nextSibling) active.nextSibling.focus()
+      if (key === "ArrowUp" && active.previousSibling)
+        active.previousSibling.focus()
+      if (key === "Enter") getDetails({ id: place.place_id, onSelect })
     }
   }
   async function handleManualSelect(value) {
@@ -85,24 +110,29 @@ export default function Autocomplete({
         className={selection && "raised"}
       />
       {!!selection && (
-        <Box
-          sx={{
-            position: "absolute",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-            pointerEvents: "none",
-            maxWidth: "calc(100% - 4rem)",
-            top: "3.25rem",
-            left: "2rem",
-            px: "0.5rem",
-            py: "0.25rem",
-            bg: "blue_100",
-            borderRadius: "0.25rem",
-          }}
-        >
-          {selection}
-        </Box>
+        <Selection>
+          <Box
+            sx={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              pointerEvents: "none",
+              px: "0.5rem",
+              py: "0.25rem",
+              bg: "blue_100",
+              borderBottomLeftRadius: "0.25rem",
+              borderTopLeftRadius: "0.25rem",
+            }}
+          >
+            {selection}
+          </Box>
+          <DeleteIcon
+            onClick={() => {
+              setInput("")
+              clearSelection(onClear)
+            }}
+          />
+        </Selection>
       )}
       {called && !selection && (
         <Popover targetRef={targetRef} position={{ x: "left", y: "bottom" }}>
@@ -123,6 +153,7 @@ export default function Autocomplete({
             {suggestions.map((place) => {
               return (
                 <Box
+                  onKeyDown={(e) => handleKeyDown(e, place)}
                   as="li"
                   className="suggestion"
                   key={place.place_id}
