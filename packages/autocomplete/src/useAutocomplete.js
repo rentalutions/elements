@@ -139,9 +139,8 @@ export default function useAutocomplete(input = "") {
   }
 
   useEffect(() => {
-    // Get autocomplete suggestions based on input. Limit calls to inputs over 3
-    // characters so we're not trying to guess too early.
-    if (input.length > 3) {
+    // Get autocomplete suggestions based on input
+    if (input.length > 0) {
       const request = {
         input,
         types: ["address"],
