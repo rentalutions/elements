@@ -16,11 +16,13 @@ const initialState = {
   error: false,
   called: false,
   notFound: false,
+  query: "",
 }
 
 function autocompleteReducer(state, action) {
   const {
     payload: {
+      query = "",
       selection = null,
       sessionToken = null,
       suggestions = [],
@@ -30,16 +32,24 @@ function autocompleteReducer(state, action) {
   switch (action.type) {
     case "ADD_TOKEN":
       return { ...state, sessionToken }
+    case "SET_QUERY":
+      return { ...state, query }
     case "UPDATE_SUGGESTIONS":
       return { ...state, suggestions, called }
     case "SELECT_PLACE":
-      return { ...state, selection, suggestions: [], sessionToken }
+      return { ...state, selection, suggestions: [], sessionToken, query: "" }
     case "MANUAL_SELECT_PLACE":
-      return { ...state, selection, suggestions: [] }
+      return { ...state, selection, suggestions: [], query: "" }
     case "ZERO_RESULTS":
       return { ...state, called: true, suggestions: [] }
     case "CLEAR_SELECTION":
-      return { ...state, selection: null, suggestions: [], called: false }
+      return {
+        ...state,
+        selection: null,
+        suggestions: [],
+        called: false,
+        query: "",
+      }
     case "ERROR":
       return {
         ...state,
@@ -95,6 +105,10 @@ export default function useAutocomplete(input = "") {
     }
   }
 
+  function setQuery(q) {
+    dispatch({ type: "SET_QUERY", payload: { query: q } })
+  }
+
   function clearSelection(onClear) {
     onClear()
     dispatch({
@@ -140,9 +154,9 @@ export default function useAutocomplete(input = "") {
 
   useEffect(() => {
     // Get autocomplete suggestions based on input
-    if (input.length > 0) {
+    if (state.query.length > 0) {
       const request = {
-        input,
+        input: state.query,
         types: ["address"],
         sessionToken: state.sessionToken,
       }
@@ -154,7 +168,7 @@ export default function useAutocomplete(input = "") {
         payload: { suggestions: [], called: false },
       })
     }
-  }, [input])
+  }, [state.query])
 
-  return { ...state, getDetails, clearSelection }
+  return { ...state, setQuery, getDetails, clearSelection }
 }
