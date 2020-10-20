@@ -27,6 +27,28 @@ function GoogleLogo() {
   )
 }
 
+const DeleteIcon = styled(X)`
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  height: 30px;
+  width: 30px;
+  background-color: #e9edf1;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  cursor: pointer;
+  color: #8596b0;
+`
+
+const Selection = styled.div`
+  display: flex;
+  position: absolute;
+  max-width: calc(100% - 4rem);
+  top: 3.25rem;
+  left: 2rem;
+`
+
 export default function Autocomplete({
   onSelect = noop,
   onClear = noop,
