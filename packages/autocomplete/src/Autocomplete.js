@@ -93,6 +93,7 @@ export default function Autocomplete({
             borderRadius: "0.25rem",
             maxWidth: "calc(100% - 4rem)",
             pointerEvents: "none",
+            color: "blue_700",
           }}
         >
           <Box
@@ -108,11 +109,12 @@ export default function Autocomplete({
           <Box
             as={X}
             sx={{
+              color: "blue_300",
               ml: "0.5rem",
               cursor: "pointer",
               transition: "200ms",
               pointerEvents: "all",
-              "&:hover": { color: "ui_700" },
+              "&:hover": { color: "blue_500" },
             }}
             onClick={() => clearSelection(onClear)}
           />
