@@ -3,6 +3,7 @@ import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import { noop } from "@rent_avail/utils"
 import Popover from "@rent_avail/popover"
+import { X } from "react-feather"
 import useAutocomplete from "./useAutocomplete"
 
 function GoogleLogo() {
@@ -35,34 +36,29 @@ export default function Autocomplete({
 }) {
   const targetRef = useRef()
   const listRef = useRef()
-  const [input, setInput] = useState("")
   const [manualOpen, setManualOpen] = useState(false)
   const {
+    query,
+    setQuery,
     suggestions,
     getDetails,
     selection,
     clearSelection,
     called,
-  } = useAutocomplete(input)
-  function handleChange({ target }) {
-    setInput(target.value)
-  }
+  } = useAutocomplete()
   function handleSelect(place) {
-    setInput("")
     getDetails({ id: place.place_id, onSelect })
   }
-  function handleKeyDown({ keyCode }) {
-    if (selection) {
-      setInput("")
-      return clearSelection(onClear)
-    }
-    switch (keyCode) {
-      // Tab Key
-      case 9:
-        listRef.current?.firstElementChild.focus()
-        break
-      default:
-        break
+  function handleKeyDown({ key, target }, place) {
+    if (selection) clearSelection(onClear)
+    if (target.nodeName === "INPUT") {
+      if (key === "ArrowDown") listRef.current?.firstElementChild.focus()
+    } else {
+      const active = document.activeElement
+      if (key === "ArrowDown" && active.nextSibling) active.nextSibling.focus()
+      if (key === "ArrowUp" && active.previousSibling)
+        active.previousSibling.focus()
+      if (key === "Enter") getDetails({ id: place.place_id, onSelect })
     }
   }
   async function handleManualSelect(value) {
@@ -79,29 +75,49 @@ export default function Autocomplete({
       <Input
         {...props}
         ref={targetRef}
-        onChange={handleChange}
+        onChange={({ target }) => setQuery(target.value)}
         onKeyDown={handleKeyDown}
-        value={input}
+        value={query}
         className={selection && "raised"}
       />
       {!!selection && (
         <Box
           sx={{
             position: "absolute",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-            pointerEvents: "none",
-            maxWidth: "calc(100% - 4rem)",
             top: "3.25rem",
             left: "2rem",
+            display: "flex",
             px: "0.5rem",
             py: "0.25rem",
             bg: "blue_100",
             borderRadius: "0.25rem",
+            maxWidth: "calc(100% - 4rem)",
+            pointerEvents: "none",
+            color: "blue_700",
           }}
         >
-          {selection}
+          <Box
+            as="span"
+            sx={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {selection}
+          </Box>
+          <Box
+            as={X}
+            sx={{
+              color: "blue_300",
+              ml: "0.5rem",
+              cursor: "pointer",
+              transition: "200ms",
+              pointerEvents: "all",
+              "&:hover": { color: "blue_500" },
+            }}
+            onClick={() => clearSelection(onClear)}
+          />
         </Box>
       )}
       {called && !selection && (
@@ -123,6 +139,7 @@ export default function Autocomplete({
             {suggestions.map((place) => {
               return (
                 <Box
+                  onKeyDown={(e) => handleKeyDown(e, place)}
                   as="li"
                   className="suggestion"
                   key={place.place_id}

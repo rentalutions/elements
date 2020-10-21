@@ -15,6 +15,7 @@ const InputWrapper = styled.label`
   position: relative;
   display: block;
   width: 100%;
+  cursor: text;
   ${space};
   ${layout};
   input {
