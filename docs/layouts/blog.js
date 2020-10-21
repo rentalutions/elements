@@ -54,11 +54,12 @@ export default function BlogLayout({ children: content, frontMatter }) {
         sx={{
           my: "4rem",
           display: "flex",
+          justifyContent: "flex-end",
           flexWrap: "wrap",
-          "& > svg": { mr: "2rem" },
+          "& > svg:not(:first-of-type)": { ml: "2rem" },
         }}
       >
-        <Box as="h5" sx={{ width: "100%", mb: "2rem" }}>
+        <Box as="h5" sx={{ width: "100%", mb: "2rem", textAlign: "right" }}>
           Share on social media
         </Box>
         <Link
