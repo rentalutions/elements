@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.2.3...@rent_avail/autocomplete@0.3.0) (2020-10-21)
+
+
+### Bug Fixes
+
+* **autocomplete:** remove styled components ([7c46823](https://github.com/rentalutions/elements/commit/7c468230c1891c695cc524de48459b3f136bb552))
+* **autocomplete:** update close icon colors ([bcb8f99](https://github.com/rentalutions/elements/commit/bcb8f99207217585a6e8dcfd6c02c99a664ef588))
+
+
+### Features
+
+* **autocomplete:** add query to return state ([94924c2](https://github.com/rentalutions/elements/commit/94924c2108d04fc1156efa3b37859d414f9f5bff))
+
+
+### BREAKING CHANGES
+
+* **autocomplete:** Add query setters and getters
+to the return state of the useAutocomplete hook.
+
+
+
+
+
 ## [0.2.3](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.2.2...@rent_avail/autocomplete@0.2.3) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/autocomplete
