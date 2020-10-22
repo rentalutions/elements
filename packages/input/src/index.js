@@ -112,7 +112,7 @@ const InputWrapper = styled.label`
       color: ${({ theme }) => theme.colors.ui_700};
     }
   }
-  &.date input:focus,
+  &.date:not(.error) input:focus,
   &.date.raised input,
   &.date.raised .input__row {
     color: ${({ theme }) => theme.colors.blue_500};
