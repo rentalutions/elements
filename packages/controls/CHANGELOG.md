@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.9...@rent_avail/controls@0.2.10) (2020-10-21)
+
+**Note:** Version bump only for package @rent_avail/controls
+
+
+
+
+
+## [0.2.9](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.8...@rent_avail/controls@0.2.9) (2020-10-15)
+
+
+### Bug Fixes
+
+* **controls:** add radio group element to export list ([d9554f6](https://github.com/rentalutions/elements/commit/d9554f668833f5e4f33eb116a807b07a13b610b2))
+
+
+
+
+
 ## [0.2.8](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.7...@rent_avail/controls@0.2.8) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/controls
