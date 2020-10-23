@@ -14,30 +14,40 @@ import Input from "./src"
 export default { title: "Input" }
 
 export function BasicUsage() {
-  const [name, setName] = useState("")
-  const [color, setColor] = useState("")
+  const [required, setReq] = useState("")
+  const [optional, setOpt] = useState("")
   return (
     <Container>
       <Input
-        label="Full Name"
+        label="Required Field"
         required
-        error="Must Have A Name"
         mb="3rem"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={required}
+        onChange={(e) => setReq(e.target.value)}
       />
       <Input
         label="Optional Field"
         mb="3rem"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
+        value={optional}
+        onChange={(e) => setOpt(e.target.value)}
       />
+      <Input label="Error State" error="Error message" />
+    </Container>
+  )
+}
+
+export function DateUsage() {
+  const [error, setError] = useState(true)
+  return (
+    <Container sx={{ mt: "4rem" }}>
       <Input
-        icon={Calendar}
-        label="Birth Date"
         type="date"
-        mb="3rem"
-        required
+        label="Move In Date"
+        error={error && "Must include a move in date."}
+        onChange={(e) => {
+          if (e.target.value) setError(false)
+          else setError(true)
+        }}
       />
     </Container>
   )
