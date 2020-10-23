@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react"
 import styled from "styled-components"
-import { space, layout } from "styled-system"
+import { space, layout, compose } from "styled-system"
 import { pick, omit } from "@styled-system/props"
 import { wrapEvent, noop } from "@rent_avail/utils"
 import clsx from "clsx"
@@ -15,9 +15,13 @@ const InputWrapper = styled.label`
   position: relative;
   display: block;
   width: 100%;
-  cursor: text;
-  ${space};
-  ${layout};
+  --small-font: 1.334rem;
+  --inactive-color: ${({ theme }) => theme.colors.ui_500};
+  --active-color: ${({ theme }) => theme.colors.blue_500};
+  --filled-color: ${({ theme }) => theme.colors.ui_700};
+  --error-color: ${({ theme }) => theme.colors.red_500};
+  --line-height: ${({ theme }) => theme.lineHeights.small};
+  ${compose(space, layout)};
   input {
     position: relative;
     all: unset;
@@ -25,7 +29,7 @@ const InputWrapper = styled.label`
     padding: 3rem 2rem 1rem;
     border-width: 2px;
     border-style: solid;
-    border-color: ${({ theme }) => theme.colors.ui_500};
+    border-color: var(--inactive-color);
     border-radius: 4px;
     box-sizing: border-box;
     color: inherit;
@@ -35,14 +39,11 @@ const InputWrapper = styled.label`
     width: 100%;
     transition: border-color 100ms;
     &:focus {
-      border-color: ${({ theme }) => theme.colors.blue_500};
+      border-color: var(--active-color);
       ~ .input__row {
-        font-size: 1.334rem;
+        font-size: var(--small-font);
         transform: translate3d(0, -1rem, 0);
-        color: ${({ theme }) => theme.colors.blue_500};
-        .input__label {
-          line-height: ${({ theme }) => theme.lineHeights.small};
-        }
+        color: var(--active-color);
       }
     }
   }
@@ -53,18 +54,19 @@ const InputWrapper = styled.label`
     left: 2rem;
     top: 2.25rem;
     transition: 100ms;
-    color: ${({ theme }) => theme.colors.ui_700};
+    color: var(--filled-color-color);
     width: calc(100% - 4rem);
+    line-height: var(--line-height);
     .input__label {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .input__required {
-      color: ${({ theme }) => theme.colors.red_500};
+      color: var(--error-color);
       width: 0.5rem;
       height: 0.5rem;
-      background: ${({ theme }) => theme.colors.red_500};
+      background: var(--error-color);
       border-radius: 50%;
       margin-left: 1rem;
       flex-shrink: 0;
@@ -80,8 +82,8 @@ const InputWrapper = styled.label`
     top: 100%;
     left: 0;
     right: 0;
-    color: ${({ theme }) => theme.colors.red_500};
-    font-size: 1.334rem;
+    color: var(--error-color);
+    font-size: var(--small-font);
     line-height: 1.5;
   }
   &.icon {
@@ -93,38 +95,32 @@ const InputWrapper = styled.label`
       width: calc(100% - 7rem);
     }
   }
-  &.raised {
-    .input__row {
-      font-size: 1.334rem;
-      transform: translate3d(0, -1rem, 0);
-      color: ${({ theme }) => theme.colors.blue_500};
-    }
-    .input__label {
-      line-height: ${({ theme }) => theme.lineHeights.small};
-    }
+  &.raised .input__row {
+    font-size: 1.334rem;
+    transform: translate3d(0, -1rem, 0);
+    color: var(--active-color);
   }
   &.date {
     input {
-      border-color: ${({ theme }) => theme.colors.ui_500};
+      border-color: var(--inactive-color);
     }
     .input__row {
       font-size: 1.334rem;
       transform: translate3d(0, -1rem, 0);
-      color: ${({ theme }) => theme.colors.ui_700};
+      color: var(--filled-color);
     }
   }
-  &.date input:focus,
-  &.date.raised input,
+  &.date.raised:not(.error) input,
   &.date.raised .input__row {
-    color: ${({ theme }) => theme.colors.blue_500};
-    border-color: ${({ theme }) => theme.colors.blue_500};
+    color: var(--active-color);
+    border-color: var(--active-color);
   }
   &.error {
     input {
-      border-color: ${({ theme }) => theme.colors.red_500};
+      border-color: var(--error-color);
     }
     .input__icon {
-      color: ${({ theme }) => theme.colors.red_500};
+      color: var(--error-color);
     }
   }
 `
