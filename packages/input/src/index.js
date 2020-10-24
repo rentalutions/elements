@@ -5,20 +5,20 @@ import clsx from "clsx"
 
 function Input(
   {
-    value,
+    as = "input",
+    className,
     defaultValue,
-    required,
     disabled,
+    error,
+    id,
+    icon,
     label,
     labelId,
-    id,
-    error,
-    type = "text",
-    as = "input",
-    sx = {},
-    className,
+    required,
     onChange = noop,
-    icon,
+    sx = {},
+    type = "text",
+    value,
     ...props
   },
   ref
@@ -27,7 +27,7 @@ function Input(
   const isTextarea = as === "textarea"
   const ariaId = labelId || label.replace(/ /g, "_").toLowerCase()
   const [filled, setFilled] = useState(
-    Boolean(value) || isDate || Boolean(defaultValue)
+    isDate || Boolean(value) || Boolean(defaultValue)
   )
   function handleChange({ target: { value: innerValue } }) {
     setFilled(innerValue.length || isDate)
