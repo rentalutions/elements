@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Calendar } from "react-feather"
-import { Box, Container, Grid, Col } from "@rent_avail/layout"
+import { Calendar, Search } from "react-feather"
+import { Container, Grid, Col } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import {
   Dialog,
@@ -14,24 +14,19 @@ import Input from "./src"
 export default { title: "Input" }
 
 export function BasicUsage() {
-  const [required, setReq] = useState("")
-  const [optional, setOpt] = useState("")
   return (
-    <Container>
-      <Input
-        label="Required Field"
-        required
-        mb="3rem"
-        value={required}
-        onChange={(e) => setReq(e.target.value)}
-      />
-      <Input
-        label="Optional Field"
-        mb="3rem"
-        value={optional}
-        onChange={(e) => setOpt(e.target.value)}
-      />
-      <Input label="Error State" error="Error message" />
+    <Container
+      sx={{ display: "flex", flexDirection: "column", gap: "2rem", my: "4rem" }}
+    >
+      <Input label="Required Field" required />
+      <Input label="Optional Field" />
+      <Input label="Disabled Field" disabled />
+      <Input label="Disabled Field" disabled value="I'm disabled" />
+      <Input label="Default Field" defaultValue="Default Value" />
+      <Input label="Icon Field" icon={Search} />
+      <Input label="Error Field" error="Some Error" sx={{ mb: "2rem" }} />
+      <Input label="Date Field" type="date" />
+      <Input label="Textarea Field" as="textarea" />
     </Container>
   )
 }
