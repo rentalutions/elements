@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Calendar, Search } from "react-feather"
-import { Container, Grid, Col } from "@rent_avail/layout"
+import { Container, Grid, Col, Stack } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import {
   Dialog,
@@ -15,18 +15,18 @@ export default { title: "Input" }
 
 export function BasicUsage() {
   return (
-    <Container
-      sx={{ display: "flex", flexDirection: "column", gap: "2rem", my: "4rem" }}
-    >
-      <Input label="Required Field" required />
-      <Input label="Optional Field" />
-      <Input label="Disabled Field" disabled />
-      <Input label="Disabled Field" disabled value="I'm disabled" />
-      <Input label="Default Field" defaultValue="Default Value" />
-      <Input label="Icon Field" icon={Search} />
-      <Input label="Error Field" error="Some Error" sx={{ mb: "2rem" }} />
-      <Input label="Date Field" type="date" />
-      <Input label="Textarea Field" as="textarea" />
+    <Container sx={{ my: "4rem" }}>
+      <Stack wrapChildren>
+        <Input label="Required Field" required />
+        <Input label="Optional Field" />
+        <Input label="Disabled Field" disabled />
+        <Input label="Disabled Field" disabled value="I'm disabled" />
+        <Input label="Default Field" defaultValue="Default Value" />
+        <Input label="Icon Field" icon={Search} />
+        <Input label="Error Field" error="Some Error" sx={{ mb: "2rem" }} />
+        <Input label="Date Field" type="date" />
+        <Input label="Textarea Field" as="textarea" />
+      </Stack>
     </Container>
   )
 }

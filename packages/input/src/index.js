@@ -80,6 +80,7 @@ function Input(
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={wrapEvent(onChange, handleChange)}
+        placeholder={isDate ? "mm/dd/yyyy" : false}
         sx={{
           all: "unset",
           appearance: "none",
@@ -118,7 +119,6 @@ function Input(
           position: "absolute",
           display: "flex",
           alignItems: "center",
-          gap: "1rem",
           top: "2.25rem",
           left: icon ? "5rem" : "2rem",
           transformOrigin: "top left",
@@ -137,6 +137,7 @@ function Input(
               height: 6,
               bg: "red_500",
               borderRadius: "50%",
+              ml: "1rem",
             }}
           />
         )}
