@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from "react"
 import { wrapEvent, noop } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
+import { Calendar } from "react-feather"
 import clsx from "clsx"
 
 function Input(
@@ -89,8 +90,28 @@ function Input(
           height: isTextarea ? "auto" : "6.5rem",
           width: "100%",
           clipPath: isTextarea ? "inset(3rem 0 0 0)" : "none",
+          "&::-webkit-calendar-picker-indicator": {
+            background: "transparent",
+            opacity: 1,
+            cursor: "pointer",
+          },
+          "&::-webkit-calendar-picker-indicator:hover + svg": {
+            color: "ui_300",
+          },
         }}
       />
+      {isDate && (
+        <Box
+          as={Calendar}
+          className="calendar-icon"
+          sx={{
+            pointerEvents: "none",
+            position: "absolute",
+            right: "2rem",
+            top: "3rem",
+          }}
+        />
+      )}
       <Box
         className="input__label-row"
         sx={{
