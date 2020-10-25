@@ -16,12 +16,8 @@ describe("<Input />", () => {
     expect(input).toHaveValue("Bruce")
   })
   it("is raised on mount when type is date", () => {
-    const { container } = render(
-      <Input type="date" aria-label="birth-input" label="Birth Date" />
-    )
+    render(<Input type="date" aria-label="birth-input" label="Birth Date" />)
     const input = screen.getByLabelText(/birth-input/)
-    const label = container.querySelector("label")
     expect(input).toHaveAttribute("type", "date")
-    expect(label).toHaveClass("date")
   })
 })
