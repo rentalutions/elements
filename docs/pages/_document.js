@@ -1,3 +1,4 @@
+import React, { Fragment } from "react"
 import { default as NextDoc, Html, Head, Main, NextScript } from "next/document"
 import { ServerStyleSheet } from "styled-components"
 
@@ -9,23 +10,25 @@ export default class Document extends NextDoc {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         })
 
       const initialProps = await NextDoc.getInitialProps(ctx)
       return {
         ...initialProps,
         styles: (
-          <>
+          <Fragment>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        )
+          </Fragment>
+        ),
       }
     } finally {
       sheet.seal()
     }
   }
+
   render() {
     return (
       <Html>

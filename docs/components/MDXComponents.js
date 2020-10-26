@@ -69,6 +69,9 @@ export default {
       pr="1rem"
     />
   ),
+  a: (props) => (
+    <Box {...props} as="a" className="link" sx={{ color: "inherit" }} />
+  ),
   img: (props) => (
     <Box {...props} as="img" sx={{ maxWidth: "100%", my: "4rem" }} />
   ),

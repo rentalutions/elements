@@ -10,6 +10,7 @@ const ExtendedBase = createGlobalStyle`
     color: ${({ theme }) => theme.colors.green_500};
     text-decoration: none;
     font-weight: ${({ theme }) => theme.fontWeights.bold};
+    cursor: pointer;
     &:visited {
       color: ${({ theme }) => theme.colors.ui_700};
     }
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider theme={availTheme}>
       <MDXProvider components={MDXComponents}>
         <DefaultSeo
+          title="Avail Design"
           openGraph={{
             type: "website",
             locale: "en_US",
