@@ -52,15 +52,16 @@ export function BlogHeader() {
   )
 }
 
-export function BlogFooter() {
+export function BlogFooter({ sx = {} }) {
   return (
-    <Box as="footer" sx={{ bg: "blue_100", pt: "8rem", pb: "2rem" }}>
+    <Box as="footer" sx={{ bg: "blue_100", pt: "8rem", pb: "2rem", ...sx }}>
       <Container as={Grid}>
         <Col span={5}>
           <Box as="h5">Avail Design</Box>
           <Box as="p" mt="1rem">
-            This blog is an effort led by a group of designers, writers, and
-            engineers working at Avail.
+            This site is an effort led by a group of designers, writers, and
+            engineers working at Avail. We work across teams to publish content,
+            create consistency, and foster design thinking.
           </Box>
         </Col>
         <Col
@@ -73,24 +74,27 @@ export function BlogFooter() {
             "& > a": { justifySelf: "end" },
           }}
         >
-          <Link href="/careers">
-            <Box as="a" className="link" color="inherit">
-              Careers
-            </Box>
-          </Link>
-          <Link href="/careers">
+          <Box
+            as="a"
+            className="link"
+            color="inherit"
+            href="https://avail.co/jobs"
+          >
+            Careers
+          </Box>
+          <Link href="/brand/principles">
             <Box as="a" className="link" color="inherit">
               Foundations
             </Box>
           </Link>
-          <Link href="/careers">
+          <Link href="/packages">
             <Box as="a" className="link" color="inherit">
               Components
             </Box>
           </Link>
-          <Link href="/careers">
+          <Link href="/blog">
             <Box as="a" className="link" color="inherit">
-              Patterns
+              Blog
             </Box>
           </Link>
         </Col>

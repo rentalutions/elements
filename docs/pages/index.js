@@ -3,12 +3,7 @@ import styled from "styled-components"
 import Link from "next/link"
 import { Container, Box, Stack, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-
-const HeroContainer = styled(Container)`
-  display: grid;
-  align-content: center;
-  min-height: calc(100vh - 5rem);
-`
+import { BlogFooter } from "components/Blog"
 
 const SystemSection = styled(Col)`
   padding: 4rem;
@@ -25,17 +20,14 @@ const SystemSection = styled(Col)`
 export default function Home() {
   return (
     <Fragment>
-      <Box
-        as="section"
-        bg="blue_900"
-        color="blue_100"
-        _hover={{ background: "pink" }}
-      >
+      <Box as="section" sx={{ bg: "blue_900", color: "blue_100" }}>
         <Container
           as={Grid}
-          minHeight="calc(100vh - 10rem)"
-          alignContent="center"
-          alignItems="center"
+          sx={{
+            minHeight: "calc(100vh - 10rem)",
+            alignContent: "center",
+            alignItems: "center",
+          }}
         >
           <Col span={[12, 6]}>
             <Heading as="h1">Avail Design System</Heading>
@@ -43,13 +35,22 @@ export default function Home() {
               Resources, tools, and component patterns for product design at
               Avail.
             </Text>
-            <Stack direction={["row"]} mt="2rem" wrapChildren>
+            <Stack
+              direction={["row"]}
+              sx={{ mt: "2rem", "& a:visited": { color: "blue_300" } }}
+              wrapChildren
+            >
               <Link href="/brand/principles">
-                <a>Principles</a>
+                <a className="link">Principles</a>
               </Link>
-              <a href="https://github.com/rentalutions/elements">Source</a>
+              <a
+                href="https://github.com/rentalutions/elements"
+                className="link"
+              >
+                Source
+              </a>
               <Link href="/blog">
-                <a>Blog</a>
+                <a className="link">Blog</a>
               </Link>
             </Stack>
           </Col>
@@ -101,16 +102,7 @@ export default function Home() {
           </Text>
         </SystemSection>
       </Container>
-      <Box as="footer" mt="4rem" py="4rem" bg="blue_100">
-        <Container>
-          <Text>
-            Created and maintained by the{" "}
-            <Link href="/about">
-              <a>design team</a>
-            </Link>
-          </Text>
-        </Container>
-      </Box>
+      <BlogFooter sx={{ mt: "4rem" }} />
     </Fragment>
   )
 }
