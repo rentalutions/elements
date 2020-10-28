@@ -35,7 +35,8 @@ export default function Home() {
               Resources, tools, and component patterns for product design at
               Avail.
             </Text>
-            <Stack
+            <Box
+              as={Stack}
               direction={["row"]}
               sx={{ mt: "2rem", "& a:visited": { color: "blue_300" } }}
               wrapChildren
@@ -52,7 +53,7 @@ export default function Home() {
               <Link href="/blog">
                 <a className="link">Blog</a>
               </Link>
-            </Stack>
+            </Box>
           </Col>
           <Col span={[12, 6]} gridRow={[1, "auto"]}>
             <Box as="img" src="/images/building.svg" width="100%" />
