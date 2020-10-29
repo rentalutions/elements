@@ -4,8 +4,7 @@
   "description": "Component and hooks for using Google Places autocomplete.",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.m.js",
+  "module": "dist/index.esm.js",
   "esmodule": "dist/index.modern.js",
   "files": [
     "dist"
