@@ -21,7 +21,7 @@ export function BasicUsage() {
         <Input label="Optional Field" />
         <Input label="Disabled Field" disabled />
         <Input label="Disabled Field" disabled value="I'm disabled" />
-        <Input label="Default Field" defaultValue="Default Value" />
+        <Input label="Default Field" value="Default Value" />
         <Input label="Icon Field" icon={Search} />
         <Input label="Error Field" error="Some Error" sx={{ mb: "2rem" }} />
         <Input label="Date Field" type="date" />

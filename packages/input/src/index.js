@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react"
+import React, { forwardRef, useState, useEffect } from "react"
 import { wrapEvent, noop } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
@@ -31,8 +31,11 @@ function Input(
     isDate || Boolean(value) || Boolean(defaultValue)
   )
   function handleChange({ target: { value: innerValue } }) {
-    setFilled(innerValue.length || isDate)
+    setFilled(innerValue?.length || isDate)
   }
+  useEffect(() => {
+    setFilled(value?.length || isDate)
+  }, [value])
   return (
     <Box
       as="label"
@@ -80,7 +83,7 @@ function Input(
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={wrapEvent(onChange, handleChange)}
-        placeholder={isDate ? "mm/dd/yyyy" : false}
+        placeholder={isDate ? "mm/dd/yyyy" : undefined}
         sx={{
           all: "unset",
           appearance: "none",
