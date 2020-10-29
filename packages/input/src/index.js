@@ -1,5 +1,5 @@
 import React, { forwardRef, useState, useEffect } from "react"
-import { wrapEvent, noop } from "@rent_avail/utils"
+import { wrapEvent, noop, useId } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
 import clsx from "clsx"
@@ -26,7 +26,7 @@ function Input(
 ) {
   const isDate = type === "date"
   const isTextarea = as === "textarea"
-  const ariaId = labelId || label.replace(/ /g, "_").toLowerCase()
+  const ariaId = useId(labelId || label)
   const [filled, setFilled] = useState(
     isDate || Boolean(value) || Boolean(defaultValue)
   )
