@@ -76,7 +76,9 @@ export default function BlogLayout({ children: content, frontMatter }) {
             }}
           />
         </Link>
-        <Link href="">
+        <Link
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=https://design.avail.co/${pagePath}`}
+        >
           <Box
             as={Linkedin}
             sx={{
@@ -86,7 +88,9 @@ export default function BlogLayout({ children: content, frontMatter }) {
             }}
           />
         </Link>
-        <Link href="">
+        <Link
+          href={`https://www.facebook.com/dialog/share?app_id=145634995501895&href=https://design.avail.co/${pagePath}`}
+        >
           <Box
             as={Facebook}
             sx={{
