@@ -6,10 +6,13 @@ import React, {
 } from "react"
 import Popover from "@rent_avail/popover"
 import { Box } from "@rent_avail/layout"
+import { useSize } from "@rent_avail/utils"
 import { SelectContext, types } from "./SelectProvider"
 
 function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
+  const inputBounds = useSize(inputRef)
+  const listBounds = useSize(listRef)
   useImperativeHandle(ref, () => ({ ...listRef?.current }))
   useEffect(() => {
     let cancelled = false
@@ -26,12 +29,8 @@ function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
     }
     document.addEventListener("click", handleDocumentClick)
     if (state.isOpen) {
-      const { current: input } = inputRef
-      const { current: list } = listRef
-      const { top } = input.getBoundingClientRect()
-      const { height } = list.getBoundingClientRect()
-      const fromBottom = window.innerHeight - height
-      setTimeout(() => scrollWindow(top, fromBottom), 20)
+      const fromBottom = window.innerHeight - listBounds.height
+      setTimeout(() => scrollWindow(inputBounds.top, fromBottom), 20)
     }
     return () => {
       cancelled = true
@@ -59,9 +58,13 @@ function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
           borderColor: "ui_500",
           maxHeight: "calc(100vh - 10rem)",
           overflowY: "auto",
+          borderRadius: 4,
           ...sx,
         }}
-        style={{ ...style, width: inputRef.current.offsetWidth || "auto" }}
+        style={{
+          ...style,
+          width: inputBounds.width || inputRef.current.offsetWidth || "auto",
+        }}
       />
     </Popover>
   ) : null

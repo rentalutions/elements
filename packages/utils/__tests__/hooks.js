@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks"
-import { useIntersection, useResize, usePortal } from "../src"
+import { useIntersection, useSize, usePortal } from "../src"
 
 describe("useIntersection", () => {
   const {
@@ -12,10 +12,10 @@ describe("useIntersection", () => {
   })
 })
 
-describe("useResize", () => {
+describe("useSize", () => {
   const {
     result: { current },
-  } = renderHook(() => useResize())
+  } = renderHook(() => useSize())
   const [target, rect] = current
   test("It returns null if no window.", () => {
     expect(target.current).toBeNull()

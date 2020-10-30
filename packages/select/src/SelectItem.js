@@ -33,7 +33,6 @@ function SelectItem(
     function isFiltered() {
       const matcher = new RegExp(state.typeAheadQuery, "i")
       const search = name || state.value
-      console.log(name, state.value, state.typeAheadQuery)
       if (!state.typeAheadQuery.length) return true
       if (search.match(matcher)) return true
       return false

@@ -7,14 +7,15 @@ route: /hooks
 
 These hooks were written for general use. They abstract logic away from the render function and are generally pretty fun to use.
 
-## useResize
+## useSize
 
 Returns the bounds for a given element.
 
-```js
-const [ref, { top, left, width, height }] = useResize()
+```jsx
+const elementRef = useRef(null)
+const elementBounds = useSize(elementRef)
 return (
-  <section ref={ref}>
+  <section ref={elementRef}>
     <h1>Hello World</h1>
   </section>
 )
@@ -34,8 +35,8 @@ const [
     isIntersecting,
     rootBounds,
     target,
-    time
-  }
+    time,
+  },
 ] = useIntersect() // options can be added here.
 return (
   <section ref={ref}>
@@ -53,7 +54,7 @@ const target = usePortal()
 const [open, set] = useState()
 return open
   ? createPortal(
-      <section onClick={e => set(false) /* Close Portal */}>
+      <section onClick={(e) => set(false) /* Close Portal */}>
         <h1>hello world</h1>
       </section>,
       target
@@ -67,5 +68,5 @@ Returns an array of dates of the current or specified month as well as actions t
 
 ```js
 const [dates, next, prev] = useDates()
-return dates.map(weeks => weeks.map(day => <h2>{day.iso}</h2>))
+return dates.map((weeks) => weeks.map((day) => <h2>{day.iso}</h2>))
 ```

@@ -25,7 +25,7 @@ function SelectInput(
   }
   useImperativeHandle(ref, () => ({ ...inputRef?.current }))
   return (
-    <Box as="section" sx={{ position: "relative" }}>
+    <Box as="section" sx={{ position: "relative", ...sx }}>
       <Input
         {...props}
         ref={inputRef}
@@ -34,7 +34,9 @@ function SelectInput(
         onChange={wrapEvent(onChange, handleChange)}
         onKeyDown={wrapEvent(onKeyDown, handleKeyDown)}
         className={clsx(className, { filled: state.value })}
-        sx={{ ...sx }}
+        sx={{
+          "& input": { color: "transparent", textShadow: "0 0 0 #2d2d2d" },
+        }}
       />
       <Box
         as={ChevronDown}
@@ -50,7 +52,7 @@ function SelectInput(
         <Box
           sx={{
             position: "absolute",
-            top: "3.5rem",
+            top: "3.334rem",
             left: "2rem",
             bg: "blue_100",
             px: "0.5rem",

@@ -54,9 +54,8 @@ export function useWindowResize(ref, parent) {
   return size
 }
 
-export function useResize(optionalRef) {
-  const ref = useRef(null)
-  const [rect, set] = useState({
+export function useSize(ref) {
+  const [bounds, set] = useState({
     x: 0,
     y: 0,
     top: 0,
@@ -66,16 +65,14 @@ export function useResize(optionalRef) {
     height: 0,
     width: 0,
   })
-  // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
-  const [ro] = useState(
-    () => new ResizeObserver(([entry]) => set(entry.contentRect))
+  const [observer] = useState(
+    () => new ResizeObserver(([entry]) => set(entry.borderBoxSize))
   )
   useEffect(() => {
-    if (optionalRef?.current) ref.current = optionalRef.current
-    if (ref.current) ro.observe(ref.current)
-    return () => ro.disconnect()
-  }, [optionalRef?.current])
-  return [ref, rect]
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [ref?.current])
+  return bounds
 }
 
 export function useIntersection({
