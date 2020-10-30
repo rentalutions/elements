@@ -62,7 +62,7 @@ export function FluidProgress({ label, current, total, ...props }) {
         />
         <p className="steps">{`${current} / ${total}`}</p>
       </div>
-      <p className="small label">{label}</p>
+      {label && <p className="small label">{label}</p>}
     </StyledFluid>
   )
 }
