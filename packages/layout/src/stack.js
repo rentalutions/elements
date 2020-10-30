@@ -24,7 +24,7 @@ function Stack(
     dir === "column" ? spacing : "0"
   )
   return (
-    <Flex {...props} flexDirection={direction} ref={ref}>
+    <Flex {...props} sx={{ flexDirection: direction, ...sx }} ref={ref}>
       {validChildren.map((child, idx) => {
         if (wrapChildren)
           return (

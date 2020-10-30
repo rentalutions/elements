@@ -42,7 +42,12 @@ function Sidebar({ children, pages, ...props }) {
       <Stack as="ul">
         <Box as="li">
           <Link href="/">
-            <Box as="img" src="/icon-100.png" aria-label="home" height="3rem" />
+            <Box
+              as="img"
+              src="/icon-100.png"
+              aria-label="home button"
+              height="3rem"
+            />
           </Link>
         </Box>
         {pages.map((page) => (

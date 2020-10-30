@@ -34,6 +34,26 @@ import {
 import Tag from "@rent_avail/tag"
 import CodeBlock from "components/CodeBlock"
 
+function Figure({ src, children }) {
+  return (
+    <Box as="figure" sx={{ my: "4rem" }}>
+      <Box as="img" src={src} sx={{ maxWidth: "100%", display: "block" }} />
+      <Box
+        as="figcaption"
+        sx={{
+          bg: "ui_300",
+          mt: 0,
+          p: "1rem",
+          fontSize: "small",
+          color: "ui_700",
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
+  )
+}
+
 const Th = styled(Box)`
   text-align: left;
 `
@@ -68,6 +88,9 @@ export default {
       py="1rem"
       pr="1rem"
     />
+  ),
+  a: (props) => (
+    <Box {...props} as="a" className="link" sx={{ color: "inherit" }} />
   ),
   img: (props) => (
     <Box {...props} as="img" sx={{ maxWidth: "100%", my: "4rem" }} />
@@ -133,4 +156,5 @@ export default {
       my="2rem"
     />
   ),
+  Figure,
 }
