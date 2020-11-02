@@ -6,13 +6,13 @@ import React, {
 } from "react"
 import Popover from "@rent_avail/popover"
 import { Box } from "@rent_avail/layout"
-import { useSize } from "@rent_avail/utils"
+import { useResize } from "@rent_avail/utils"
 import { SelectContext, types } from "./SelectProvider"
 
 function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
-  const inputBounds = useSize(inputRef)
-  const listBounds = useSize(listRef)
+  const inputBounds = useResize(inputRef)
+  const listBounds = useResize(listRef)
   useImperativeHandle(ref, () => ({ ...listRef?.current }))
   useEffect(() => {
     let cancelled = false

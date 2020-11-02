@@ -8,11 +8,8 @@ import React, {
   useMemo,
 } from "react"
 import { createPortal } from "react-dom"
-import {
-  usePortal,
-  closestScrollable,
-  useWindowResize as useBounds,
-} from "@rent_avail/utils"
+import { Box } from "@rent_avail/layout"
+import { usePortal, closestScrollable, useResize } from "@rent_avail/utils"
 
 export function getPosition({ popover, target, parent, position: { x, y } }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
@@ -60,29 +57,32 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
   }
 }
 
+// function setPosition({popover, target, position, parent}) {
+//   const default = {top: 0, left: 0, visibility: "hidden"}
+//   if (!popover || !target) return default
+//   return {
+//     visibility: "visible",
+
+//   }
+// }
+
 const Popover = forwardRef(function Popover(
-  {
-    targetRef,
-    position = { x: "default", y: "default" },
-    style,
-    children,
-    ...rest
-  },
-  forwardedRef
+  { targetRef, position = { x: "default", y: "default" }, style, ...rest },
+  ref
 ) {
+  const popoverRef = useRef(null)
   const parent = useMemo(() => closestScrollable(targetRef.current), [
     targetRef.current,
   ])
-  const portal = usePortal(undefined, parent)
-  const popoverRef = useRef(null)
-  const popoverBounds = useBounds(popoverRef, parent)
-  const targetBounds = useBounds(targetRef, parent)
+  const portalTarget = usePortal(undefined, parent)
+  const popoverBounds = useResize(popoverRef, parent)
+  const targetBounds = useResize(targetRef, parent)
   const [currentPosition, setPosition] = useState({
     top: 0,
     left: 0,
     visibility: "hidden",
   })
-  useImperativeHandle(forwardedRef, () => ({ ...popoverRef.current }))
+  useImperativeHandle(ref, () => ({ ...popoverRef }))
   useEffect(() => {
     const newPos = getPosition({
       popover: popoverBounds,
@@ -93,14 +93,13 @@ const Popover = forwardRef(function Popover(
     setPosition(newPos)
   }, [targetBounds])
   return createPortal(
-    <aside
+    <Box
       {...rest}
+      as="aside"
       ref={popoverRef}
       style={{ ...style, position: "absolute", ...currentPosition }}
-    >
-      {children}
-    </aside>,
-    portal
+    />,
+    portalTarget
   )
 })
 
