@@ -63,7 +63,7 @@ function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
         }}
         style={{
           ...style,
-          width: inputBounds.width || inputRef.current.offsetWidth || "auto",
+          width: inputBounds.width || "auto",
         }}
       />
     </Popover>
