@@ -31,6 +31,7 @@
   "dependencies": {
     "@rent_avail/base": "^0.4.4",
     "@rent_avail/layout": "^0.3.6",
-    "@rent_avail/utils": "^0.2.6"
+    "@rent_avail/utils": "^0.2.6",
+    "dequal": "^2.0.2"
   }
 }

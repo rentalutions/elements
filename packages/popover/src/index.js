@@ -10,6 +10,7 @@ import React, {
 import { createPortal } from "react-dom"
 import { Box } from "@rent_avail/layout"
 import { usePortal, closestScrollable, useResize } from "@rent_avail/utils"
+import { dequal } from "dequal"
 
 export function getPosition({ popover, target, parent, position: { x, y } }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
@@ -57,14 +58,13 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
   }
 }
 
-// function setPosition({popover, target, position, parent}) {
-//   const default = {top: 0, left: 0, visibility: "hidden"}
-//   if (!popover || !target) return default
-//   return {
-//     visibility: "visible",
-
-//   }
-// }
+function deepCompare(value) {
+  const ref = useRef()
+  if (!dequal(value, ref.current)) {
+    ref.current = value
+  }
+  return ref.current
+}
 
 const Popover = forwardRef(function Popover(
   { targetRef, position = { x: "default", y: "default" }, style, ...rest },
@@ -91,7 +91,7 @@ const Popover = forwardRef(function Popover(
       position,
     })
     setPosition(newPos)
-  }, [targetBounds])
+  }, deepCompare([targetBounds]))
   return createPortal(
     <Box
       {...rest}
