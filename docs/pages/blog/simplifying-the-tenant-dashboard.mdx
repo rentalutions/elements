@@ -1,35 +1,42 @@
 ---
 layout: blog
 title: Simplifying The Tenant Dashboard
-description: At Avail, we are constantly working to improve the tenant experience. The dashboard provides tenants with a glanceable view of their renter’s status. Whether the tenant is applying for a new rental or checking when their next rent payment is due, their dashboard should always provide this information.
+description: At Avail, we are constantly working to improve the tenant experience. For tenants, the dashboard provides a glanceable view of their status. Whether applying for a new rental or checking when their next rent payment is due, their dashboard should always provide this information.
 publishedAt: 10-09-2020
 coverPhoto: /images/simplifying-the-tenant-dashboard/cover-image.png
 author: Nellie Dankmyer
 ---
 
-At Avail, we are constantly working to improve the tenant experience. The dashboard provides tenants with a glanceable view of their renter’s status. Whether the tenant is applying for a new rental or checking when their next rent payment is due, their dashboard should always provide this information.
+At Avail, we are constantly working to improve the tenant experience. For tenants, the dashboard provides a glanceable view of their status. Whether applying for a new rental or checking when their next rent payment is due, their dashboard should always provide this information.
 
-The original tenant dashboard was cluttered with unnecessary information and outdated design components. In order to make improvements to the dashboard and use our current design system components, we needed to re-build the page using React. This React re-build would be essential to all future improvements and enhancements. Our design team took this as an opportunity to implement components from our design system, as well as streamline the application completion process.
+The original tenant dashboard was cluttered with unnecessary information and outdated components. In order to make improvements we wanted, we needed to pay down some technical debt. This re-build would be essential to all future improvements and enhancements. Our design team took this as an opportunity to implement components from our design system, as well as streamline the application completion process.
 
-### What changed?
+---
 
-#### Layout and Content
+### Simplifying The Layout
 
-The biggest change you’ll notice is overall layout and visual elements. We have moved to a single column view on desktop and mobile to provide a more streamlined view of your dashboard activity. You’ll also notice less clutter and a more minimal user of color and space to help you focus on what’s important, like paying your rent. We have also surfaced the Autopay status right on the dashboard for more payment transparency.
+Users have enough to worry about as they apply to apartments and set up rent payments, we've simplified the overall layout to reduce visual noise and provide a more streamlined view of your activity. A single column allows users to scan the page more easily and allows Avail to bring important actions to the top of the page. We also surfaced your autopay status right on the dashboard for more transparency.
 
-One of our biggest improvements in this project was reducing the number of actions to complete a single application. The original dashboard had five actions to complete a single application which often caused confusion for a tenant. We have reduced the action to complete a single application to one.
+One of our biggest improvements in this project was reducing the five actions to complete an application into one, saving real estate and improving the process at the same time.
 
-![](/images/simplifying-the-tenant-dashboard/application-update.png)
+<Figure src="/images/simplifying-the-tenant-dashboard/application-update.png">
+  Left: The old dashboard shows multiple actions to complete a single
+  application.
+  <br />
+  Right: The new dashboard showing one action to complete the application.
+</Figure>
 
-Left: The old dashboard shows multiple actions to complete a single application. Right: The new dashboard showing one action to complete the application.
+---
 
-#### Functionality
+### Building Consistency
 
-Another benefit of the re-build is faster load times and cleaner interactions, especially on mobile. Moving from ruby generated templates to React was an essential upgrade if we wanted to use the updated components in our design system. Being able to utilize the design system, we are able to build consistency across the tenant and landlord applications.
+At Avail we've been working towards a deeper integration of our [design system](/packages) and updating the tenant dashboard let us build on that goal. You'll notice more consistency across elements along with added accesability.
 
-We were also able to introduce some small enhancements like one-click calls to your landlord.
+Because tenants are often times accessing their account from their phones, we've added small enhancements to tie your account into your device, like one-click calling to your landlord.
 
 ![](/images/simplifying-the-tenant-dashboard/call-landlord.png)
+
+---
 
 ### What’s next?
 

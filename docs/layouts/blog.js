@@ -1,12 +1,13 @@
 import React, { Fragment } from "react"
-import { Box, Container, Grid, Col } from "@rent_avail/layout"
+import { Box, Container } from "@rent_avail/layout"
 import Link from "next/link"
-import { BlogHeader } from "components/Blog"
 import { Twitter, Linkedin, Facebook } from "react-feather"
 import { NextSeo } from "next-seo"
+import { BlogHeader, BlogFooter } from "components/Blog"
 import { formatPath } from "utils"
 
 export default function BlogLayout({ children: content, frontMatter }) {
+  // eslint-disable-next-line no-underscore-dangle
   const pagePath = formatPath(frontMatter.__resourcePath)
   const publishedAt = new Date(frontMatter.publishedAt).toLocaleDateString(
     "en-US",
@@ -40,17 +41,18 @@ export default function BlogLayout({ children: content, frontMatter }) {
       <Container as="header" my="4rem">
         <BlogHeader />
       </Container>
-      <Container my="4rem">
+      <Container my="4rem" as="main">
         <Box as="img" src={frontMatter.coverPhoto} sx={{ maxWidth: "100%" }} />
         <Box as="h1" sx={{ mt: "2rem", mb: "2rem" }}>
           {frontMatter.title}
         </Box>
         <Box as="p" mb="4rem" color="ui_700">
-          {frontMatter.author} | {publishedAt}
+          {frontMatter.author} | {publishedAt} | {frontMatter.readingTime.text}
         </Box>
         {content}
       </Container>
       <Container
+        as="aside"
         sx={{
           my: "4rem",
           display: "flex",
@@ -74,7 +76,9 @@ export default function BlogLayout({ children: content, frontMatter }) {
             }}
           />
         </Link>
-        <Link href="">
+        <Link
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=https://design.avail.co/${pagePath}`}
+        >
           <Box
             as={Linkedin}
             sx={{
@@ -84,7 +88,9 @@ export default function BlogLayout({ children: content, frontMatter }) {
             }}
           />
         </Link>
-        <Link href="">
+        <Link
+          href={`https://www.facebook.com/dialog/share?app_id=145634995501895&href=https://design.avail.co/${pagePath}`}
+        >
           <Box
             as={Facebook}
             sx={{
@@ -95,24 +101,7 @@ export default function BlogLayout({ children: content, frontMatter }) {
           />
         </Link>
       </Container>
-      <Box as="footer" sx={{ bg: "blue_100", py: "6rem" }}>
-        <Container as={Grid}>
-          <Col span={12}>
-            <Link href="https://typeform.com">
-              <Box
-                as="a"
-                sx={{ color: "blue_500", fontSize: "3rem", cursor: "pointer" }}
-              >
-                Give us feedback
-              </Box>
-            </Link>
-          </Col>
-          <Col span={12} sx={{ color: "ui_700" }}>
-            © Copyright 2020 Avail, Inc. All rights reserved. Various trademarks
-            held by their respective owners.
-          </Col>
-        </Container>
-      </Box>
+      <BlogFooter />
     </Fragment>
   )
 }
