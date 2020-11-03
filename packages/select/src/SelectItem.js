@@ -11,7 +11,16 @@ import { wrapEvent } from "@rent_avail/utils"
 import { SelectContext, types } from "./SelectProvider"
 
 function SelectItem(
-  { as = "li", sx = {}, onClick, onKeyDown, value: itemValue, name, ...props },
+  {
+    as = "li",
+    sx = {},
+    onClick,
+    onKeyDown,
+    value: itemValue,
+    name,
+    label,
+    ...props
+  },
   ref
 ) {
   const itemRef = useRef(null)
@@ -32,7 +41,7 @@ function SelectItem(
   useEffect(() => {
     function isFiltered() {
       const matcher = new RegExp(state.typeAheadQuery, "i")
-      const search = name || state.value
+      const search = name || label || state.value
       if (!state.typeAheadQuery.length) return true
       if (search.match(matcher)) return true
       return false
