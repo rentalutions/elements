@@ -1,188 +1,174 @@
-import React, {
-  memo,
-  forwardRef,
-  useState,
-  createElement,
-  useEffect,
-} from "react"
-import styled from "styled-components"
-import { space, layout, compose } from "styled-system"
-import { pick, omit } from "@styled-system/props"
-import { wrapEvent, noop } from "@rent_avail/utils"
+import React, { forwardRef, useState, useEffect } from "react"
+import { wrapEvent, noop, useId } from "@rent_avail/utils"
+import { Box } from "@rent_avail/layout"
+import { Calendar } from "react-feather"
 import clsx from "clsx"
-
-const InputWrapper = styled.label`
-  position: relative;
-  display: block;
-  width: 100%;
-  --small-font: 1.334rem;
-  --inactive-color: ${({ theme }) => theme.colors.ui_500};
-  --active-color: ${({ theme }) => theme.colors.blue_500};
-  --filled-color: ${({ theme }) => theme.colors.ui_700};
-  --error-color: ${({ theme }) => theme.colors.red_500};
-  --line-height: ${({ theme }) => theme.lineHeights.small};
-  ${compose(space, layout)};
-  input {
-    position: relative;
-    all: unset;
-    display: block;
-    padding: 3rem 2rem 1rem;
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--inactive-color);
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: inherit;
-    font-family: inherit;
-    height: 6.5rem;
-    outline: none;
-    width: 100%;
-    transition: border-color 100ms;
-    &:focus {
-      border-color: var(--active-color);
-      ~ .input__row {
-        font-size: var(--small-font);
-        transform: translate3d(0, -1rem, 0);
-        color: var(--active-color);
-      }
-    }
-  }
-  .input__row {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    left: 2rem;
-    top: 2.25rem;
-    transition: 100ms;
-    color: var(--filled-color-color);
-    width: calc(100% - 4rem);
-    line-height: var(--line-height);
-    .input__label {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .input__required {
-      color: var(--error-color);
-      width: 0.5rem;
-      height: 0.5rem;
-      background: var(--error-color);
-      border-radius: 50%;
-      margin-left: 1rem;
-      flex-shrink: 0;
-    }
-  }
-  .input__icon {
-    position: absolute;
-    left: 2rem;
-    top: 2.25rem;
-  }
-  .input__error {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: var(--error-color);
-    font-size: var(--small-font);
-    line-height: 1.5;
-  }
-  &.icon {
-    input {
-      padding-left: 5rem;
-    }
-    .input__row {
-      left: 5rem;
-      width: calc(100% - 7rem);
-    }
-  }
-  &.raised .input__row {
-    font-size: 1.334rem;
-    transform: translate3d(0, -1rem, 0);
-    color: var(--active-color);
-  }
-  &.date {
-    input {
-      border-color: var(--inactive-color);
-    }
-    .input__row {
-      font-size: 1.334rem;
-      transform: translate3d(0, -1rem, 0);
-      color: var(--filled-color);
-    }
-  }
-  &.date.raised:not(.error) input,
-  &.date.raised .input__row {
-    color: var(--active-color);
-    border-color: var(--active-color);
-  }
-  &.error {
-    input {
-      border-color: var(--error-color);
-    }
-    .input__icon {
-      color: var(--error-color);
-    }
-  }
-`
 
 function Input(
   {
+    as = "input",
     className,
+    defaultValue,
+    disabled,
+    error,
+    id,
+    icon,
+    label,
+    labelId,
+    required,
+    onChange = noop,
+    sx = {},
     type = "text",
     value,
-    label,
-    required = false,
-    error = "",
-    onChange = noop,
-    style,
-    icon = null,
     ...props
   },
   ref
 ) {
-  const date = type === "date"
-  const [raised, setRaised] = useState(Boolean(value) || date)
-  const styledProps = pick(props)
-  const inputProps = omit(props)
-  function handleChange({ target: { value: inputValue } }) {
-    setRaised(inputValue.length || date)
+  const isDate = type === "date"
+  const isTextarea = as === "textarea"
+  const ariaId = useId(labelId || label)
+  const [filled, setFilled] = useState(
+    isDate || Boolean(value) || Boolean(defaultValue)
+  )
+  function handleChange({ target: { value: innerValue } }) {
+    setFilled(innerValue?.length || isDate)
   }
   useEffect(() => {
-    setRaised(value?.length || props.defaultValue)
+    setFilled(value?.length || isDate)
   }, [value])
   return (
-    <InputWrapper
-      {...styledProps}
-      className={clsx(className, {
-        required,
-        raised,
-        date,
-        icon,
-        error,
-      })}
-      style={style}
+    <Box
+      as="label"
+      className={clsx(className, { filled, error })}
+      sx={{
+        position: "relative",
+        display: "block",
+        borderWidth: 2,
+        borderStyle: "solid",
+        borderColor: "ui_500",
+        borderRadius: 4,
+        color: disabled ? "ui_700" : "ui_900",
+        cursor: disabled ? "not-allowed" : "text",
+        lineHeight: "small",
+        width: "100%",
+        "&:focus-within": {
+          borderColor: "blue_500",
+          color: "blue_500",
+        },
+        "&:focus-within .input__label-row, &.filled .input__label-row": {
+          transform: "translateY(-1rem) scale(0.889)",
+        },
+        "&.filled:not(:focus-within):not(.error) .input__label-row": {
+          color: disabled ? "ui_500" : "ui_700",
+        },
+        "&.error": {
+          borderColor: "red_500",
+        },
+        "&.error .input__label-row": {
+          color: "red_500",
+        },
+        "& > *": {
+          transition: "120ms",
+        },
+        ...sx,
+      }}
     >
-      <input
-        {...inputProps}
-        type={type}
+      <Box
+        {...props}
         ref={ref}
+        as={as}
+        type={type}
+        aria-labelledby={ariaId}
         value={value}
-        required={required}
+        defaultValue={defaultValue}
+        disabled={disabled}
         onChange={wrapEvent(onChange, handleChange)}
+        placeholder={isDate ? "mm/dd/yyyy" : undefined}
+        sx={{
+          all: "unset",
+          appearance: "none",
+          boxSizing: "border-box",
+          position: "relative",
+          p: icon ? "3rem 2rem 1rem 5rem" : "3rem 2rem 1rem",
+          fontFamily: "body",
+          height: isTextarea ? "auto" : "6.5rem",
+          width: "100%",
+          clipPath: isTextarea ? "inset(3rem 0 0 0)" : "none",
+          "&::-webkit-calendar-picker-indicator": {
+            background: "transparent",
+            opacity: 1,
+            cursor: "pointer",
+          },
+          "&::-webkit-calendar-picker-indicator:hover + svg": {
+            color: "ui_300",
+          },
+        }}
       />
-      {icon &&
-        createElement(icon, {
-          className: "input__icon",
-          width: 24,
-          height: 24,
-        })}
-      <div className="input__row">
-        <span className="input__label">{label}</span>
-        {required && <span className="input__required" />}
-      </div>
-      {error && <span className="input__error">{error}</span>}
-    </InputWrapper>
+      {isDate && (
+        <Box
+          as={Calendar}
+          className="calendar-icon"
+          sx={{
+            pointerEvents: "none",
+            position: "absolute",
+            right: "2rem",
+            top: "3rem",
+          }}
+        />
+      )}
+      <Box
+        className="input__label-row"
+        sx={{
+          position: "absolute",
+          display: "flex",
+          alignItems: "center",
+          top: "2.25rem",
+          left: icon ? "5rem" : "2rem",
+          transformOrigin: "top left",
+          pointerEvents: "none",
+          color: disabled ? "ui_500" : "inherit",
+        }}
+      >
+        <Box as="span" id={ariaId}>
+          {label}
+        </Box>
+        {required && (
+          <Box
+            as="span"
+            sx={{
+              width: 6,
+              height: 6,
+              bg: "red_500",
+              borderRadius: "50%",
+              ml: "1rem",
+            }}
+          />
+        )}
+      </Box>
+      {error && (
+        <Box
+          as="span"
+          sx={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            fontSize: "small",
+            color: "red_500",
+            width: "100%",
+          }}
+        >
+          {error}
+        </Box>
+      )}
+      {icon && (
+        <Box
+          as={icon}
+          aria-label="input icon"
+          sx={{ position: "absolute", left: "2rem", top: "2.25rem" }}
+        />
+      )}
+    </Box>
   )
 }
 
-export default memo(forwardRef(Input))
+export default forwardRef(Input)

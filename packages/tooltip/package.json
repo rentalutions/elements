@@ -1,16 +1,17 @@
 {
   "name": "@rent_avail/tooltip",
   "version": "0.1.15",
-  "description": "Tooltip component.",
+  "description": "Tooltip component",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "esmodule": "dist/index.modern.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "build": "microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement",
     "watch": "microbundle watch --no-compress --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },

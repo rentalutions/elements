@@ -1,10 +1,10 @@
 import React from "react"
-import { render } from "testing-utils"
+import { render, screen, fireEvent, waitFor } from "testing-utils"
 import { Select, SelectInput, SelectList, SelectItem } from "../src"
 
 describe("<Select />", () => {
   it("Should render without crashing", () => {
-    const { container, getByTestId } = render(
+    render(
       <Select id="select-id">
         <SelectInput data-testid="select-input" />
         <SelectList>
@@ -13,12 +13,21 @@ describe("<Select />", () => {
       </Select>
     )
 
-    const input = getByTestId("select-input")
+    const input = screen.getByTestId("select-input")
 
-    expect(container).not.toBeNull()
-
-    // fireEvent.focus(input)
-
-    // expect(input).toHaveFocus()
+    expect(input).toBeInTheDocument()
   })
+  // it("Should capture focus on click", async () => {
+  //   render(
+  //     <Select id="select-id">
+  //       <SelectInput data-testid="select-click" label="select label" />
+  //       <SelectList>
+  //         <SelectItem>Hello Item</SelectItem>
+  //       </SelectList>
+  //     </Select>
+  //   )
+  //   const input = screen.getByLabelText(/select label/)
+  //   screen.debug(input)
+  //   expect(input).toBeInTheDocument()
+  // })
 })

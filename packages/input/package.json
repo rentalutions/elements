@@ -5,12 +5,13 @@
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "esmodule": "dist/index.modern.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "build": "microbundle --no-compress --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement",
     "watch": "microbundle watch --no-compress --jsx React.createElement",
     "prepublishOnly": "yarn build"
   },
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.4.4",
+    "@rent_avail/layout": "^0.3.6",
     "@rent_avail/utils": "^0.2.6",
     "@styled-system/props": "^5.1.5",
     "clsx": "^1.1.0",

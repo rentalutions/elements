@@ -78,7 +78,7 @@ export default function Autocomplete({
         onChange={({ target }) => setQuery(target.value)}
         onKeyDown={handleKeyDown}
         value={query}
-        className={selection && "raised"}
+        className={selection && "filled"}
       />
       {!!selection && (
         <Box

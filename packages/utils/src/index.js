@@ -1,81 +1,43 @@
-import { useRef, useEffect, useState, useReducer } from "react"
+import { useRef, useEffect, useState, useReducer, useCallback } from "react"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
 
-export function useRect(ref) {
-  const [rect, setRect] = useState(null)
-  useEffect(() => {
-    if (ref.current) {
-      setRect(ref.current.getBoundingClientRect())
+export function useResize(target, parent) {
+  const [bounds, setBounds] = useState({})
+  const resize = useCallback(() => {
+    if (!target.current) return null
+    const targetBounds = target.current.getBoundingClientRect()
+    const parentBounds = parent?.getBoundingClientRect() || {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      x: 0,
+      y: 0,
     }
-  }, [ref])
-  return rect
-}
-
-export function useWindowResize(ref, parent) {
-  const [size, setSize] = useState({})
+    setBounds({
+      x: targetBounds.x - parentBounds.x,
+      y: targetBounds.y - parentBounds.y,
+      top: targetBounds.top - parentBounds.top,
+      left: targetBounds.left - parentBounds.left,
+      right: targetBounds.x - parentBounds.x + target.current.offsetWidth,
+      bottom: targetBounds.y - parentBounds.y + target.current.offsetHeight,
+      width: target.current.offsetWidth,
+      height: target.current.offsetHeight,
+    })
+  }, [target.current])
+  const [observer] = useState(() => new ResizeObserver(resize))
   useEffect(() => {
-    function handleResize() {
-      if (!ref.current) return false
-      const childRect = ref.current.getBoundingClientRect()
-      const parentRect = parent?.getBoundingClientRect() || {
-        x: 0,
-        y: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-      }
-      setSize({
-        x: childRect.x - parentRect.x,
-        y: childRect.y - parentRect.y,
-        top: childRect.top - parentRect.top,
-        left: childRect.left - parentRect.left,
-        right: childRect.x - parentRect.x + childRect.width,
-        bottom: childRect.y - parentRect.y + childRect.height,
-        width: childRect.width,
-        height: childRect.height,
-      })
+    observer.observe(document.body)
+    if (target.current) {
+      observer.observe(target.current)
     }
-    let resizeObserver = new ResizeObserver(() => handleResize())
-    resizeObserver.observe(ref.current)
-    window.addEventListener("resize", () => handleResize())
-    handleResize() // has to be called synchronously once to avoid weird timing issues in Popover
     return () => {
-      window.removeEventListener("resize", () => handleResize())
-      if (!resizeObserver) {
-        return
-      }
-      resizeObserver.disconnect()
-      resizeObserver = null
+      observer.disconnect()
     }
-  }, [ref.current])
-  return size
-}
-
-export function useResize(optionalRef) {
-  const ref = useRef(null)
-  const [rect, set] = useState({
-    x: 0,
-    y: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    height: 0,
-    width: 0,
-  })
-  // if (typeof window === "undefined") return [ref, bounds] // bail on server render.
-  const [ro] = useState(
-    () => new ResizeObserver(([entry]) => set(entry.contentRect))
-  )
-  useEffect(() => {
-    if (optionalRef?.current) ref.current = optionalRef.current
-    if (ref.current) ro.observe(ref.current)
-    return () => ro.disconnect()
-  }, [optionalRef?.current])
-  return [ref, rect]
+  }, [target.ref])
+  return bounds
 }
 
 export function useIntersection({
@@ -334,3 +296,15 @@ export function closestScrollable(element) {
 }
 
 export function noop() {}
+
+export function useId(id) {
+  const initialId = id ? id.replace(/ /g, "_").toLowerCase() : null
+  const idRef = useRef(
+    initialId || `_${Math.random().toString(36).substr(2, 9)}`
+  )
+  return idRef.current
+}
+
+export function getId() {
+  return `_${Math.random().toString(36).substr(2, 9)}`
+}

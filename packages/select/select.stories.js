@@ -15,13 +15,13 @@ export default { title: "Select" }
 
 function SelectExample() {
   const options = [
-    { label: "Alabama", value: "AL" },
-    { label: "Alaska", value: "AK" },
-    { label: "Arizona", value: "AZ" },
-    { label: "Arkansas", value: "AR" },
-    { label: "California", value: "CA" },
-    { label: "Colorado", value: "CO" },
-    { label: "Connecticut", value: "CT" },
+    { name: "Alabama", value: "AL" },
+    { name: "Alaska", value: "AK" },
+    { name: "Arizona", value: "AZ" },
+    { name: "Arkansas", value: "AR" },
+    { name: "California", value: "CA" },
+    { name: "Colorado", value: "CO" },
+    { name: "Connecticut", value: "CT" },
   ]
   const [state, setState] = useState("")
   return (
@@ -30,9 +30,9 @@ function SelectExample() {
       <Select id="select-id" onSelect={(value) => setState(value)}>
         <SelectInput label="Choose a state" />
         <SelectList>
-          {options.map(({ label, value }) => (
-            <SelectItem key={value} value={value} label={label}>
-              {label}
+          {options.map(({ name, value }) => (
+            <SelectItem key={value} value={value} name={name}>
+              {name}
             </SelectItem>
           ))}
         </SelectList>
