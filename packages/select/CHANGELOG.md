@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.1.17...@rent_avail/select@0.2.0) (2020-11-05)
+
+
+* fix(select)!: update major version ([d650df2](https://github.com/rentalutions/elements/commit/d650df2a1dc18435f4275017571415d210bb3e2d))
+
+
+### BREAKING CHANGES
+
+* update build to compose input component.
+
+
+
+
+
 ## [0.1.17](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.1.16...@rent_avail/select@0.1.17) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/select

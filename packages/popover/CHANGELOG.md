@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.1.15...@rent_avail/popover@0.2.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+
+
+### Features
+
+* use a deep comparison ([51243d9](https://github.com/rentalutions/elements/commit/51243d974832361f686a0213a0920fc38db0dc21))
+
+
+
+
+
 ## [0.1.15](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.1.14...@rent_avail/popover@0.1.15) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/popover

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.6...@rent_avail/utils@0.2.7) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+
+
+
+
+
 ## [0.2.6](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.2.5...@rent_avail/utils@0.2.6) (2020-10-08)
 
 

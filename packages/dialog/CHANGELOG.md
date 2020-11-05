@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.17...@rent_avail/dialog@0.1.18) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+
+
+
+
+
 ## [0.1.17](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.16...@rent_avail/dialog@0.1.17) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/dialog

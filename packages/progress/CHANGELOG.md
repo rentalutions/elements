@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15](https://github.com/rentalutions/elements/compare/@rent_avail/progress@0.1.14...@rent_avail/progress@0.1.15) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+* **progress:** update fluid progress label ([819e02b](https://github.com/rentalutions/elements/commit/819e02bd6f1e8364283f55898e5408d3518c2fb4)), closes [#41](https://github.com/rentalutions/elements/issues/41)
+
+
+
+
+
 ## [0.1.14](https://github.com/rentalutions/elements/compare/@rent_avail/progress@0.1.13...@rent_avail/progress@0.1.14) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/progress

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.2.5...@rent_avail/input@0.3.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+
+
+### Features
+
+* **input:** update input to compose layout box. ([0478e4c](https://github.com/rentalutions/elements/commit/0478e4cc32983b931251e81af060d952a233b0c3))
+
+
+
+
+
 ## [0.2.5](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.2.4...@rent_avail/input@0.2.5) (2020-10-23)
 
 **Note:** Version bump only for package @rent_avail/input

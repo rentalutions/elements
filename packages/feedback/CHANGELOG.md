@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/rentalutions/elements/compare/@rent_avail/feedback@0.2.10...@rent_avail/feedback@0.2.11) (2020-11-05)
+
+
+### Bug Fixes
+
+* update build command ([ce2bfc4](https://github.com/rentalutions/elements/commit/ce2bfc47d722b40d87bbad7806b727cc29e9712a))
+
+
+
+
+
 ## [0.2.10](https://github.com/rentalutions/elements/compare/@rent_avail/feedback@0.2.9...@rent_avail/feedback@0.2.10) (2020-10-08)
 
 **Note:** Version bump only for package @rent_avail/feedback
