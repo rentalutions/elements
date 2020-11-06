@@ -59,5 +59,8 @@
   ],
   "prettier": {
     "semi": false
+  },
+  "dependencies": {
+    "@storybook/addon-essentials": "^6.0.28"
   }
 }
