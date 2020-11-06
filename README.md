@@ -6,6 +6,12 @@ A set of components built to be `composable`, `extendable`, and `usable`
 
 ## [Documentation](https://design.avail.co)
 
+## Setup
+
+1. Clone the repo with `gh repo clone rentalutions/elements`.
+2. Install dependencies with `yarn install`.
+3. Start a storybook conatiner that builds all packages and watches for changes with `yarn start`.
+
 ## Contributing
 
 The best way to contribute to this library is to look at open issues or file an issue yourself if one doesn't already exist.
@@ -43,4 +49,12 @@ yarn update
 
 # If everything looks kosher, push to Github.
 git push origin release --follow-tags
+```
+
+## Adding Packages
+
+To add a package to the system, first clone and install all dependencies as in the setup instructions. Use the lerna command `create`.
+
+```bash
+yarn lerna create --dependencies @rent_avail/utils,@rent_avail/base @rent_avail/new-package
 ```
