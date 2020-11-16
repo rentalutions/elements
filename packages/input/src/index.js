@@ -37,7 +37,7 @@ function Input(
     setFilled(value?.length || isDate)
   }, [value])
   return (
-    <Box>
+    <>
       <Box
         as="label"
         className={clsx(className, { filled, error })}
@@ -166,7 +166,7 @@ function Input(
           {error}
         </Box>
       )}
-    </Box>
+    </>
   )
 }
 
