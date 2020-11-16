@@ -23,7 +23,7 @@ export function BasicUsage() {
         <Input label="Disabled Field" disabled value="I'm disabled" />
         <Input label="Default Field" value="Default Value" />
         <Input label="Icon Field" icon={Search} />
-        <Input label="Error Field" error="Some Error" sx={{ mb: "2rem" }} />
+        <Input label="Error Field" error="Some Error" />
         <Input label="Date Field" type="date" />
         <Input label="Textarea Field" as="textarea" />
       </Stack>
