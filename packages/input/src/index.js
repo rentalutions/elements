@@ -43,6 +43,7 @@ function Input(
       sx={{
         position: "relative",
         display: "block",
+        minHeight: "9rem",
         color: disabled ? "ui_700" : "ui_900",
         cursor: disabled ? "not-allowed" : "text",
         lineHeight: "small",
