@@ -16,7 +16,7 @@ export default { title: "Input" }
 export function BasicUsage() {
   return (
     <Container sx={{ my: "4rem" }}>
-      <Stack wrapChildren>
+      <Stack wrapChildren spacing="1rem">
         <Input label="Required Field" required />
         <Input label="Optional Field" />
         <Input label="Disabled Field" disabled />

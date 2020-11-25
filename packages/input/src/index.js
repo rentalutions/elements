@@ -3,6 +3,7 @@ import { wrapEvent, noop, useId } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
 import clsx from "clsx"
+import { omit, pick } from "@styled-system/props"
 
 function Input(
   {
@@ -35,11 +36,17 @@ function Input(
   useEffect(() => {
     setFilled(value?.length || isDate)
   }, [value])
+  const systemProps = pick(props)
+  const inputProps = omit(props)
   return (
-    <Box sx={{ minHeight: "9rem" }} className={className}>
+    <Box
+      className={className}
+      sx={{ minHeight: "9rem", ...sx }}
+      {...systemProps}
+    >
       <Box
         as="label"
-        className={clsx({ filled, error })}
+        className={clsx(className, { filled, error })}
         sx={{
           position: "relative",
           display: "block",
@@ -68,14 +75,16 @@ function Input(
           "&.error .input__label-row": {
             color: "red_500",
           },
+          "& .input__label-row": {
+            lineHeight: "body",
+          },
           "& > *": {
             transition: "120ms",
           },
-          ...sx,
         }}
       >
         <Box
-          {...props}
+          {...inputProps}
           ref={ref}
           as={as}
           type={type}
@@ -95,7 +104,7 @@ function Input(
             fontSize: "body",
             lineHeight: "body",
             width: "100%",
-            height: isTextarea ? "auto" : "6.5rem",
+            height: isTextarea ? "auto" : "calc(7rem - 4px)",
             outline: "none",
             clipPath: isTextarea ? "inset(3rem 0 0 0)" : "none",
             "&::-webkit-calendar-picker-indicator": {
@@ -126,7 +135,7 @@ function Input(
             position: "absolute",
             display: "flex",
             alignItems: "center",
-            top: "2.25rem",
+            top: "2.5rem",
             left: icon ? "5rem" : "2rem",
             transformOrigin: "top left",
             pointerEvents: "none",
