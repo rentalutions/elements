@@ -3310,7 +3310,7 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@rent_avail/input@*", "@rent_avail/input@^0.3.1":
+"@rent_avail/input@*":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@rent_avail/input/-/input-0.3.1.tgz#4cb138cc918ebe257a5fc3251ca623d5c21d061c"
   integrity sha512-I1A1z3LyXB6GXMgzWIik/ifyMsxp0TvzwLwWzjVKIGs/PaZJojM1uj8mWnYW5Uc/XVGqQYf/mZ9/9rnBhY6viA==
