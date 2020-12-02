@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/skeleton",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Skeleton component",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
-    "@rent_avail/layout": "^0.3.9",
-    "@rent_avail/utils": "^0.3.0",
+    "@rent_avail/layout": "^0.3.10",
+    "@rent_avail/utils": "^0.3.1",
     "clsx": "^1.1.0",
     "styled-system": "^5.1.5"
   }
