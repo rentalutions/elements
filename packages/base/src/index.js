@@ -194,7 +194,10 @@ export const Base = createGlobalStyle`
 export const sx = ({ sx = {} }) => {
   const { text, ...styleProps } = sx
   if (text) {
-    return css({ variant: [...text].map((t) => `text.${t}`), ...styleProps })
+    return css({
+      variant: [...text].map((txt) => `text.${txt}`),
+      ...styleProps,
+    })
   }
   return css(styleProps)
 }
