@@ -17,7 +17,9 @@ export function DefaultUsage() {
     <Container sx={{ mt: "6rem" }}>
       <Global />
       <Box ref={targetRef}>Hello Target</Box>
-      <Popover targetRef={targetRef}>Popover Target</Popover>
+      <Popover targetRef={targetRef}>
+        <Box>Popover Target</Box>
+      </Popover>
     </Container>
   )
 }
