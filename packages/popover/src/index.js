@@ -15,15 +15,16 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
   if (!popover || !target) return defaultValue
   const yOffset = !parent ? window.pageYOffset : parent.scrollTop
   const xOffset = !parent ? window.pageXOffset : parent.scrollLeft
-  const parentElement = parent || window
+  /**
+   * We need to check width and height differently here. The viewport should be
+   * the vertical bounding box and a parent (if exists) should be the horizontal
+   * bounding box.
+   */
   const collisions = {
     top: target.top - popover.height < 0,
     right:
-      (parentElement.innerWidth || parentElement.offsetWidth) <
-      target.left + popover.width,
-    bottom:
-      (parentElement.innerHeight || parentElement.offsetHeight) <
-      target.bottom + popover.height,
+      (parent?.clientWidth || window.innerWidth) < target.left + popover.width,
+    bottom: window.innerHeight < target.bottom + popover.height,
     left: target.left - popover.width < 0,
   }
   const rightCollision = collisions.right && !collisions.left
