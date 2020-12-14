@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/input",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Input components",
   "source": "src/index.js",
   "main": "dist/index.js",
