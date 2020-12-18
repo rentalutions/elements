@@ -34,7 +34,7 @@
     "@rent_avail/utils": "^0.3.1",
     "@styled-system/props": "^5.1.5",
     "clsx": "^1.1.0",
-    "react-feather": "^2.0.4",
+    "react-feather": "^2.0.9",
     "styled-system": "^5.1.5"
   }
 }

@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "calendar-dates": "^2.6.1",
-    "intersection-observer": "^0.11.0",
+    "intersection-observer": "^0.12.0",
     "resize-observer-polyfill": "^1.5.1"
   }
 }

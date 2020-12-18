@@ -35,7 +35,7 @@
     "@rent_avail/popover": "^0.3.3",
     "@rent_avail/utils": "^0.3.1",
     "clsx": "^1.1.0",
-    "react-feather": "^2.0.4",
+    "react-feather": "^2.0.9",
     "styled-system": "^5.1.5"
   }
 }

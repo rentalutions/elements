@@ -33,9 +33,8 @@
     "@rent_avail/layout": "^0.3.10",
     "@rent_avail/typography": "^0.1.18",
     "@rent_avail/utils": "^0.3.1",
-    "framer-motion": "2.4.3",
-    "polished": "^3.6.5",
-    "react-feather": "^2.0.8",
+    "framer-motion": "3.0.0",
+    "react-feather": "^2.0.9",
     "styled-system": "^5.1.5"
   }
 }
