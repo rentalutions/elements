@@ -31,8 +31,7 @@
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
     "@rent_avail/utils": "^0.3.1",
-    "framer-motion": "2.4.3",
-    "polished": "^3.5.1",
+    "framer-motion": "3.0.0",
     "styled-system": "^5.1.5"
   }
 }
