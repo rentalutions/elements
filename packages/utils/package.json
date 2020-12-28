@@ -23,8 +23,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.13.1 || ^17.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0"
   },
   "dependencies": {
     "calendar-dates": "^2.6.1",
