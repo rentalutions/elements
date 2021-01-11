@@ -1,26 +1,34 @@
 import React from "react"
-import { Avatar } from "./src"
+import { Avatar, AvatarGroup } from "./src"
 
 export default { title: "Avatar" }
 
-export function Basic() {
+export function Default() {
   return (
     <Avatar
-      name="Janet Wood"
-      photoUrl="https://source.unsplash.com/collection/802865/48x48"
+      name="Chicago Properties & Financials of Streeterville Coast"
+      email="janet.wooderhousen@email.com"
+      photo="https://i.pravatar.cc/72"
     />
   )
 }
 
-export function Small() {
-  return <Avatar small initials="JW" />
-}
-
-export function WithIcon() {
+export function NoEmail() {
   return (
     <Avatar
-      name="Janet Wood"
-      photoUrl="https://source.unsplash.com/collection/802865/48x48"
+      name="Chicago Properties & Financials of Streeterville Coast"
+      photo="https://i.pravatar.cc/72"
     />
+  )
+}
+
+export function SmallGroup() {
+  return (
+    <AvatarGroup>
+      <Avatar size="small" initials="PK" />
+      <Avatar size="small" initials="JW" />
+      <Avatar size="small" initials="CS" />
+      <Avatar size="small" initials="SR" />
+    </AvatarGroup>
   )
 }
