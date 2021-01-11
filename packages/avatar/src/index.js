@@ -67,9 +67,16 @@ const Avatar = forwardRef(function Avatar(
             borderRadius: "2rem",
             flex: "0 0 auto",
             objectFit: "cover",
+            bg: "ui_500",
           }}
         />
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <span className="avatar__name">{name}</span>
           {email && <span className="avatar__email">{email}</span>}
         </Box>

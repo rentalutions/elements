@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Avatar, AvatarGroup } from "./src"
 
 export default { title: "Avatar" }
@@ -17,17 +17,20 @@ export function Default() {
       // user photo, don't worry about it.
       photo="https://i.pravatar.cc/72"
       // This won't be rendered unless the size is "small".
-      intitials="PK"
+      initials="PK"
     />
   )
 }
 
 export function NoEmail() {
   return (
-    <Avatar
-      name="Chicago Properties & Financials of Streeterville Coast"
-      photo="https://i.pravatar.cc/72"
-    />
+    <Fragment>
+      <Avatar
+        name="Chicago Properties & Financials of Streeterville Coast"
+        photo="https://i.pravatar.cc/72"
+      />
+      <Avatar name="Patrick K" photo="https://i.pravatar.cc/72" />
+    </Fragment>
   )
 }
 
