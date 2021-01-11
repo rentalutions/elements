@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.0...@rent_avail/avatar@0.3.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **avatar:** update default photo ([da1b3a7](https://github.com/rentalutions/elements/commit/da1b3a77c17829dc1d4619d320561d87687d701f))
+
+
+
+
+
 # [0.3.0](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.2.12...@rent_avail/avatar@0.3.0) (2021-01-11)
 
 
