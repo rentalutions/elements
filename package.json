@@ -3,9 +3,6 @@
   "private": true,
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
-  "engines": {
-    "node": "14.9.0"
-  },
   "scripts": {
     "storybook": "start-storybook --quiet -p 8080 -c .storybook",
     "build": "lerna run build --ignore @rent_avail/docs",
