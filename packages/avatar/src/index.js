@@ -1,4 +1,4 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import { Box } from "@rent_avail/layout"
 
 function AvatarGroup({ sx = {}, ...props }) {
@@ -14,20 +14,25 @@ function AvatarGroup({ sx = {}, ...props }) {
   )
 }
 
-function Avatar({
-  photo = "https://avail.co/images/not-found-avatar.svg",
-  name,
-  email,
-  size = "large",
-  initials,
-  icon,
-  sx = {},
-  ...props
-}) {
+const Avatar = forwardRef(function Avatar(
+  {
+    photo = "https://avail.co/images/not-found-avatar.svg",
+    name,
+    email,
+    size = "large",
+    initials,
+    icon,
+    sx = {},
+    ...props
+  },
+  ref
+) {
   if (size === "large") {
     return (
       <Box
         {...props}
+        ref={ref}
+        role="figure"
         sx={{
           display: "inline-flex",
           gap: "1rem",
@@ -75,6 +80,8 @@ function Avatar({
   return (
     <Box
       {...props}
+      ref={ref}
+      role="figure"
       sx={{
         display: "flex",
         textAlign: "center",
@@ -88,6 +95,6 @@ function Avatar({
       {initials}
     </Box>
   )
-}
+})
 
 export { Avatar, AvatarGroup }
