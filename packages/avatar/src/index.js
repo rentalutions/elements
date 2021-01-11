@@ -16,7 +16,7 @@ function AvatarGroup({ sx = {}, ...props }) {
 
 const Avatar = forwardRef(function Avatar(
   {
-    photo = "https://avail.co/images/not-found-avatar.svg",
+    photo = "https://rentalutions-assets.s3.amazonaws.com/avatars/not-found.svg",
     name,
     email,
     size = "large",
