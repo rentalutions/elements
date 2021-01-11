@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.2.12...@rent_avail/avatar@0.3.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* change role and update tests ([402b07a](https://github.com/rentalutions/elements/commit/402b07a37f1d865825afc0a9127b52e4f3e77cb1))
+* update peer dependencies ([b9cf28e](https://github.com/rentalutions/elements/commit/b9cf28ea6daf7bcb028775cdcc12f1ac2a45280b))
+
+
+### Features
+
+* **avatar:** update for design requirements ([c5ae2ce](https://github.com/rentalutions/elements/commit/c5ae2ce1211c33af8d3117e809dd07c8c72df57c))
+
+
+
+
+
 ## [0.2.12](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.2.11...@rent_avail/avatar@0.2.12) (2020-12-02)
 
 **Note:** Version bump only for package @rent_avail/avatar
