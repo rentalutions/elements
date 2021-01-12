@@ -41,20 +41,6 @@ const Avatar = forwardRef(function Avatar(
           pr: "2rem",
           borderRadius: "4rem",
           maxWidth: "25rem",
-          "& .avatar__email, & .avatar__name": {
-            overflow: "hidden",
-          },
-          "& .avatar__email": {
-            color: "ui_700",
-            textOverflow: "ellipsis",
-          },
-          "& .avatar__name": {
-            overflowWrap: "anywhere",
-            wordBreak: email ? "break-all" : "normal",
-            display: "-webkit-box",
-            "-webkit-line-clamp": email ? "1" : "2",
-            "-webkit-box-orient": "vertical",
-          },
           ...sx,
         }}
       >
@@ -77,8 +63,35 @@ const Avatar = forwardRef(function Avatar(
             justifyContent: "center",
           }}
         >
-          <span className="avatar__name">{name}</span>
-          {email && <span className="avatar__email">{email}</span>}
+          <Box
+            as="span"
+            className="avatar__name"
+            sx={{
+              overflow: "hidden",
+              overflowWrap: "anywhere",
+              wordBreak: email ? "break-all" : "normal",
+              // This is kind of a hack but works in every major browser except IE
+              display: "-webkit-box",
+              "-webkit-line-clamp": email ? "1" : "2",
+              "-webkit-box-orient": "vertical",
+            }}
+          >
+            {name}
+          </Box>
+          {email && (
+            <Box
+              as="span"
+              className="avatar__email"
+              sx={{
+                overflow: "hidden",
+                color: "ui_700",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {email}
+            </Box>
+          )}
         </Box>
         {icon && <Box as={icon} />}
       </Box>
