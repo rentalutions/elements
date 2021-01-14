@@ -3,7 +3,7 @@ import { Box, Container } from "@rent_avail/layout"
 import Link from "next/link"
 import { Twitter, Linkedin, Facebook } from "react-feather"
 import { NextSeo } from "next-seo"
-import { BlogHeader, BlogFooter } from "components/Blog"
+import { BlogHeader, BlogFooter } from "components/blog"
 import { formatPath } from "utils"
 
 export default function BlogLayout({ children: content, frontMatter }) {

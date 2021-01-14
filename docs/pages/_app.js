@@ -1,14 +1,14 @@
 import React from "react"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { ThemeProvider } from "styled-components"
 import { Base as Reset, theme as availTheme } from "@rent_avail/base"
 import { MDXProvider } from "@mdx-js/react"
-import MDXComponents from "components/MDXComponents"
+import components from "components/mdx-components"
 import { DefaultSeo } from "next-seo"
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={availTheme}>
-      <MDXProvider components={MDXComponents}>
+      <MDXProvider components={components}>
         <DefaultSeo
           title="Avail Design"
           openGraph={{

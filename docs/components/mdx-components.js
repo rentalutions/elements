@@ -1,5 +1,4 @@
 import * as React from "react"
-import styled from "styled-components"
 import { Heading, Text } from "@rent_avail/typography"
 import {
   Box,
@@ -32,7 +31,7 @@ import {
   AutocompleteProvider,
 } from "@rent_avail/autocomplete"
 import Tag from "@rent_avail/tag"
-import CodeBlock from "components/CodeBlock"
+import CodeBlock from "components/code-block"
 
 function Figure({ src, children }) {
   return (
@@ -54,10 +53,6 @@ function Figure({ src, children }) {
   )
 }
 
-const Th = styled(Box)`
-  text-align: left;
-`
-
 export default {
   h1: (props) => <Heading {...props} as="h1" mt="4rem" mb="2rem" />,
   h2: (props) => <Heading {...props} as="h2" my="2rem" />,
@@ -77,7 +72,9 @@ export default {
     />
   ),
   table: (props) => <Box {...props} as="table" width="100%" />,
-  th: (props) => <Th {...props} as="th" pr="1rem" />,
+  th: (props) => (
+    <Box {...props} as="th" sx={{ pr: "1rem", textAlign: "left" }} />
+  ),
   td: (props) => (
     <Box
       {...props}
