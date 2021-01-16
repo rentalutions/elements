@@ -1,13 +1,13 @@
 import React from "react"
 import { ThemeProvider } from "styled-components"
-import { Base as Reset, theme as availTheme } from "@rent_avail/base"
+import { Base as Reset, theme } from "@rent_avail/base"
 import { MDXProvider } from "@mdx-js/react"
 import components from "components/mdx-components"
 import { DefaultSeo } from "next-seo"
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={availTheme}>
+    <ThemeProvider theme={theme}>
       <MDXProvider components={components}>
         <DefaultSeo
           title="Avail Design"

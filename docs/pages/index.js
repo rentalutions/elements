@@ -38,7 +38,7 @@ export default function Home() {
             <Box
               as={Stack}
               direction={["row"]}
-              sx={{ mt: "2rem", "& a:visited": { color: "blue_300" } }}
+              sx={{ mt: "2rem" }}
               wrapChildren
             >
               <Link href="/brand/principles">

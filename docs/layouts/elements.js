@@ -15,7 +15,7 @@ export default function ElementsLayout({ children: content, frontMatter }) {
   const packageInfo = frontMatter.source
   return (
     <PageWrapper>
-      <Sidebar pages={{ Elements: packages, "UI Patterns": patternFiles }} />
+      <Sidebar sections={{ Elements: packages, Patterns: patternFiles }} />
       <Main>
         <Container my="4rem">
           {packageInfo && <PackageInfo info={frontMatter} />}

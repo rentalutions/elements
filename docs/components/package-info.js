@@ -11,7 +11,7 @@ export default function PackageInfo({
       </Box>
       <Box
         as="img"
-        sx={{ px: "2rem", pb: "2rem" }}
+        sx={{ px: "2rem", pb: "2rem", minHeight: "4.5rem" }}
         alt="npm (scoped)"
         src={`https://img.shields.io/npm/v/@rent_avail/${package_name}?color=%237c95b0&label=version&style=for-the-badge`}
       />

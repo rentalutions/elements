@@ -141,16 +141,14 @@ export default {
       }}
     />
   ),
-  ul: (props) => <Box {...props} as="ul" ml="2rem" />,
-  ol: (props) => <Box {...props} as="ol" ml="2rem" />,
-  li: (props) => <Box {...props} as="li" mt="1rem" />,
+  ul: (props) => <Box {...props} as="ul" sx={{ ml: "1.75rem" }} />,
+  ol: (props) => <Box {...props} as="ol" sx={{ ml: "1.75rem" }} />,
+  li: (props) => <Box {...props} as="li" sx={{ mt: "1rem" }} />,
   hr: (props) => (
     <Box
       {...props}
       as="hr"
-      borderColor="ui_500"
-      borderStyle="solid"
-      my="2rem"
+      sx={{ borderColor: "ui_500", borderStyle: "solid", my: "2rem" }}
     />
   ),
   Figure,
