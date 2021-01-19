@@ -1,6 +1,24 @@
 import React, { forwardRef } from "react"
 import { Box } from "@rent_avail/layout"
 
+// .item {
+//   width: 3rem;
+//   height:3rem;
+//   border-radius: 50%;
+//   background: black;
+//   border: 4px solid transparent;
+// }
+
+// .group {
+//   display: inline-flex;
+//   .item {
+//     border-color: var(--bg-color);
+//   }
+//   .item:not(:last-of-type) {
+//      margin-right: -1rem;
+//   }
+// }
+
 function AvatarGroup({ sx = {}, ...props }) {
   return (
     <Box
@@ -8,6 +26,7 @@ function AvatarGroup({ sx = {}, ...props }) {
       sx={{
         ...sx,
         display: "flex",
+        "& > *": { borderColor: "" },
         "& > *:not(:first-of-type)": { ml: "-1rem" },
       }}
     />
