@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { Box, Container } from "@rent_avail/layout"
 import Link from "next/link"
 import { formatPath } from "utils"
-import { BlogHeader, BlogFooter } from "components/Blog"
+import { BlogHeader, BlogFooter } from "components/blog"
 import { frontMatter as blogPages } from "./**/*.mdx"
 
 export default function BlogIndex() {

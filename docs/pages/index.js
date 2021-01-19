@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Link from "next/link"
 import { Container, Box, Stack, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-import { BlogFooter } from "components/Blog"
+import { BlogFooter } from "components/blog"
 
 const SystemSection = styled(Col)`
   padding: 4rem;
