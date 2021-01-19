@@ -1,6 +1,6 @@
 import React from "react"
 import { Container } from "@rent_avail/layout"
-import { PageWrapper, Main, Sidebar } from "components/Layout"
+import { PageWrapper, Main, Sidebar } from "components/layout"
 import { frontMatter as brandPages } from "../pages/brand/**/*.mdx"
 
 export default function BrandLayout({ children: content }) {
@@ -17,7 +17,7 @@ export default function BrandLayout({ children: content }) {
   })
   return (
     <PageWrapper>
-      <Sidebar pages={sortedPages} />
+      <Sidebar sections={{ Brand: sortedPages }} />
       <Main>
         <Container my="4rem">{content}</Container>
       </Main>

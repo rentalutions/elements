@@ -36,7 +36,7 @@ const SidebarWrapper = styled.aside`
   }
 `
 
-function Sidebar({ children, pages, ...props }) {
+function Sidebar({ children, sections, ...props }) {
   return (
     <SidebarWrapper {...props}>
       <Stack as="ul">
@@ -50,11 +50,18 @@ function Sidebar({ children, pages, ...props }) {
             />
           </Link>
         </Box>
-        {pages.map((page) => (
-          <Box key={page.__resourcePath} as="li">
-            <Link href={`/${formatPath(page.__resourcePath)}`}>
-              <a>{page.title}</a>
-            </Link>
+        {Object.entries(sections).map(([section, pages]) => (
+          <Box as="ul" key={section}>
+            <Box as="li" sx={{ text: ["subtitle"], pb: "1rem" }}>
+              {section}
+            </Box>
+            {pages.map((page) => (
+              <Box key={page.__resourcePath} as="li" sx={{ pb: "1rem" }}>
+                <Link href={`/${formatPath(page.__resourcePath)}`}>
+                  <a>{page.title}</a>
+                </Link>
+              </Box>
+            ))}
           </Box>
         ))}
       </Stack>

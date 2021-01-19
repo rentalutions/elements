@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Link from "next/link"
 import { Container, Box, Stack, Grid, Col } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-import { BlogFooter } from "components/Blog"
+import { BlogFooter } from "components/blog"
 
 const SystemSection = styled(Col)`
   padding: 4rem;
@@ -38,7 +38,7 @@ export default function Home() {
             <Box
               as={Stack}
               direction={["row"]}
-              sx={{ mt: "2rem", "& a:visited": { color: "blue_300" } }}
+              sx={{ mt: "2rem" }}
               wrapChildren
             >
               <Link href="/brand/principles">
