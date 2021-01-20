@@ -11,7 +11,8 @@
     "build:docs": "yarn workspace @rent_avail/docs build",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
     "update": "lerna version --no-push --no-private --include-merged-tags",
-    "test": "jest"
+    "test": "jest",
+    "create-package": "node ./scripts/create-package.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
