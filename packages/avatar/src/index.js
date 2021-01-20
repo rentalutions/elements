@@ -102,7 +102,12 @@ const Avatar = forwardRef(function Avatar(
             </Box>
           )}
         </Box>
-        {icon && <Box as={icon} />}
+        {icon && (
+          <Box
+            as={icon}
+            sx={{ alignSelf: "center", flexShrink: 0, ml: "1rem" }}
+          />
+        )}
       </Box>
     )
   }
