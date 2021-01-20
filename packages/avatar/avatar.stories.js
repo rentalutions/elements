@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { ChevronRight } from "react-feather"
 import { Avatar, AvatarGroup } from "./src"
 
 export default { title: "Avatar" }
@@ -28,6 +29,7 @@ export function NoEmail() {
       <Avatar
         name="Chicago Properties & Financials of Streeterville Coast"
         photo="https://i.pravatar.cc/72"
+        icon={ChevronRight}
       />
       <Avatar name="Patrick K" photo="https://i.pravatar.cc/72" />
     </Fragment>
@@ -39,7 +41,7 @@ export function SmallGroup() {
     <AvatarGroup>
       <Avatar size="small" initials="PK" />
       <Avatar size="small" initials="JW" />
-      <Avatar size="small" initials="CS" />
+      <Avatar size="small" initials="CS" photo="https://i.pravatar.cc/60" />
       <Avatar size="small" initials="SR" />
     </AvatarGroup>
   )

@@ -10,7 +10,29 @@ A set of components built to be `composable`, `extendable`, and `usable`
 
 1. Clone the repo with `gh repo clone rentalutions/elements`.
 2. Install dependencies with `yarn install`.
-3. Start a storybook conatiner that builds all packages and watches for changes with `yarn start`.
+3. Start a storybook container that builds all the packages and watches for changes with `yarn start`.
+
+## Project Structure
+
+This project is structured as a monorepo managed by [lerna](https://github.com/lerna/lerna) and yarn workspaces.
+
+```
+.storybook
+docs
+└── pages
+|   └── packages
+|   |   └── [package-documentation].mdx
+└── next.config.js
+packages
+└── [package]
+│   └── dist
+│   └── src
+│   └── __tests__
+│   └── [package].stories.js
+│   └── package.json
+│   └── CHANGELOG.md
+testing-utils.js
+```
 
 ## Contributing
 
@@ -58,3 +80,65 @@ To add a package to the system, first clone and install all dependencies as in t
 ```bash
 yarn lerna create --dependencies @rent_avail/utils,@rent_avail/base @rent_avail/new-package
 ```
+
+## Code Preferences
+
+### Separate component logic from layout when possible.
+
+```jsx
+// Good
+function useComponent({ ref, ...props }) {
+  const innerRef = useRef()
+  const [bg, setBg] = useState("#000")
+  useEffect(() => {
+    if (window.innerWidth > 900) setBg("#FFF")
+  }, [])
+  return {
+    ...props,
+    bg,
+    ref: mergeRefs(innerRef, ref),
+  }
+}
+function Component(props, ref) {
+  const { bg, ...htmlProps } = useComponent({ ...props, ref })
+  return <Box {...htmlProps} sx={{ bg }} />
+}
+
+// Bad
+function Component(props, ref) {
+  const innerRef = useRef()
+  const [bg, setBg] = useState("#000")
+  useEffect(() => {
+    if (window.innerWidth > 900) setBg("#FFF")
+  }, [])
+  return <Box {...props} ref={mergeRefs(innerRef, ref)} sx={{ bg }} />
+}
+```
+
+Yes it's more lines for a trivial example like this but in my experience it makes the component so much more refactorable.
+
+### Prefer function declarations over assignments for component definition.
+
+```jsx
+// Good
+function MyComponent(props) {
+  return <div />
+}
+
+// Bad
+const MyComponent = (props) => <div />
+```
+
+### Prefer named exports only when exporting more than one member.
+
+```js
+// Good
+export function Section() {}
+export function SectionItem() {}
+
+// Bad
+export default function Section() {}
+export function SectionItem() {}
+```
+
+###

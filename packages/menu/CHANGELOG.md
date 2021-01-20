@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.3...@rent_avail/menu@0.2.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* update peer dependencies ([b9cf28e](https://github.com/rentalutions/elements/commit/b9cf28ea6daf7bcb028775cdcc12f1ac2a45280b))
+
+
+
+
+
 ## [0.2.3](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.2...@rent_avail/menu@0.2.3) (2020-12-14)
 
 **Note:** Version bump only for package @rent_avail/menu

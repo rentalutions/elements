@@ -1,37 +1,26 @@
 import React, { forwardRef } from "react"
 import { Box } from "@rent_avail/layout"
 
-// .item {
-//   width: 3rem;
-//   height:3rem;
-//   border-radius: 50%;
-//   background: black;
-//   border: 4px solid transparent;
-// }
-
-// .group {
-//   display: inline-flex;
-//   .item {
-//     border-color: var(--bg-color);
-//   }
-//   .item:not(:last-of-type) {
-//      margin-right: -1rem;
-//   }
-// }
-
-function AvatarGroup({ sx = {}, ...props }) {
+function AvatarGroup({ sx = {}, clipColor = "ui_100", ...props }) {
   return (
     <Box
       {...props}
       sx={{
         ...sx,
-        display: "flex",
-        "& > *": { borderColor: "" },
+        display: "inline-flex",
+        "& > *": {
+          borderColor: clipColor,
+          borderWidth: "0.25rem",
+          borderStyle: "solid",
+        },
         "& > *:not(:first-of-type)": { ml: "-1rem" },
       }}
     />
   )
 }
+
+const defaultPhoto =
+  "https://rentalutions-assets.s3.amazonaws.com/avatars/not-found.svg"
 
 const Avatar = forwardRef(function Avatar(
   {
@@ -46,6 +35,7 @@ const Avatar = forwardRef(function Avatar(
   },
   ref
 ) {
+  const isDefault = photo === defaultPhoto
   if (size === "large") {
     return (
       <Box
@@ -112,7 +102,12 @@ const Avatar = forwardRef(function Avatar(
             </Box>
           )}
         </Box>
-        {icon && <Box as={icon} />}
+        {icon && (
+          <Box
+            as={icon}
+            sx={{ alignSelf: "center", flexShrink: 0, ml: "1rem" }}
+          />
+        )}
       </Box>
     )
   }
@@ -122,16 +117,21 @@ const Avatar = forwardRef(function Avatar(
       ref={ref}
       role="figure"
       sx={{
-        display: "flex",
-        textAlign: "center",
-        width: "4rem",
+        display: "inline-flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "5rem",
+        height: "5rem",
         borderRadius: "4rem",
-        bg: "ui_300",
         p: "1rem",
+        text: ["small"],
+        overflow: "hidden",
+        bg: "ui_300",
+        backgroundImage: !isDefault ? `url(${photo})` : "",
         ...sx,
       }}
     >
-      {initials}
+      {isDefault && initials}
     </Box>
   )
 })
