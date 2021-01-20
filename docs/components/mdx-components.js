@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as react from "react"
 import { Heading, Text } from "@rent_avail/typography"
 import {
   Box,
@@ -32,6 +32,7 @@ import {
 } from "@rent_avail/autocomplete"
 import Tag from "@rent_avail/tag"
 import CodeBlock from "components/code-block"
+import * as motion from "framer-motion"
 
 function Figure({ src, children }) {
   return (
@@ -97,7 +98,8 @@ export default {
     <CodeBlock
       {...props}
       scope={{
-        ...React,
+        ...react,
+        ...motion,
         Icon,
         Text,
         Heading,

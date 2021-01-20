@@ -3,13 +3,6 @@ title: Error Handling
 layout: elements
 ---
 
-import { useState } from "react"
-import Input from "@rent_avail/input"
-import { Box, Grid, Col } from "@rent_avail/layout"
-import { Button } from "@rent_avail/controls"
-import { motion } from "framer-motion"
-import { X } from "react-feather"
-
 # Error Handling
 
 There are three types of errors that users will encounter while online. `Field Errors`, `Form Errors`, and `Application Errors`. Ideally the application is designed to minimize errors--the best error state is one never experienced--by building flexible user controls that use affordances to enhance user understanding.
@@ -24,7 +17,7 @@ There are three types of errors that users will encounter while online. `Field E
 
 ### Field Errors
 
-__The submit button should be enabled by default.__
+**The submit button should be enabled by default.**
 
 Help users fix errors as soon as they're detected. Disable the submission of a form if the error is present and if detected after the attempted submission, clearly illustrate **where** the error happened and **how** to fix it.
 
@@ -32,21 +25,21 @@ These types of errors are the most common and come in two variaties.
 
 #### Client Errors
 
-<br/>
+<br />
 
 ```jsx live
 function ClientError() {
   const re = /\S+@\S+\.\S+/
   const [value, setValue] = useState("Stanley's Email")
-  const [error,setError] = useState("Email address is invalid.")
-  async function handleChange({target}) {
+  const [error, setError] = useState("Email address is invalid.")
+  async function handleChange({ target }) {
     const valid = target.value.match(re)
     if (valid) {
       setError(null)
     }
     setValue(target.value)
   }
-  async function handleBlur({target}) {
+  async function handleBlur({ target }) {
     const valid = target.value.match(re)
     if (!valid) setError("Email address is invalid.")
     else setError(null)
@@ -69,7 +62,7 @@ Client errors check for valid syntax. These can happen before the user attempts 
 
 Server errors can be returned for a myriad of reasons, uniqueness and incompatible data being the two big ones. If performing inline validation, where the error occured should be abundantly clear.
 
-<br/>
+<br />
 
 ```jsx live
 function ServerError() {
@@ -92,7 +85,7 @@ function ServerError() {
         width="100%"
         type="number"
         name="age"
-        onChange={e => {
+        onChange={(e) => {
           setError(null)
         }}
         error={error}
@@ -115,7 +108,7 @@ For example, a form error might occur a tenant tries to make a payment for a cha
 
 For these situations, it's important to let a user know that something went wrong and if there's a chance to remidate the situation, how to take it.
 
-<br/>
+<br />
 
 ```jsx live
 function FormError() {
@@ -138,9 +131,7 @@ function FormError() {
         autoComplete="new-password"
       />
       <Col span={[12]}>
-        <Button onClick={(e) => setError(true)}>
-          Log in
-        </Button>
+        <Button onClick={(e) => setError(true)}>Log in</Button>
       </Col>
       {error && (
         <Box
@@ -164,14 +155,12 @@ function FormError() {
           <Box sx={{ display: "flex", mb: "1rem" }}>
             <Box>An Error Occured</Box>
             <Box
-              as={X}
+              as={Icon.X}
               sx={{ ml: "auto", cursor: "pointer" }}
               onClick={(e) => setError(false)}
             />
           </Box>
-          <Box>
-            That email / password combination is not correct
-          </Box>
+          <Box>That email / password combination is not correct</Box>
         </Box>
       )}
     </Grid>
