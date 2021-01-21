@@ -314,14 +314,12 @@ export function closestScrollable(element) {
 
 export function noop() {}
 
-export function useId(id) {
-  const initialId = id ? id.replace(/ /g, "_").toLowerCase() : null
-  const idRef = useRef(
-    initialId || `_${Math.random().toString(36).substr(2, 9)}`
-  )
-  return idRef.current
-}
-
 export function getId() {
   return `_${Math.random().toString(36).substr(2, 9)}`
+}
+
+export function useId(id) {
+  const initialId = id ? id.replace(/ /g, "_").toLowerCase() : null
+  const idRef = useRef(initialId || getId())
+  return idRef.current
 }
