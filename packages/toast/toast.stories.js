@@ -107,3 +107,26 @@ export function CustomJSX() {
     </Fragment>
   )
 }
+
+export function Promise() {
+  const toast = useToast()
+  function handleClick(evt) {
+    const fetchThing = fetch("https://api.github.com/users/timmywheels/repos")
+    const fetchWrong = fetch("https://api.github.com/users/wklaejfalkswjdf")
+    toast.promise(fetchThing, {
+      loading: "Loading",
+      success: "Success",
+      error: "Error",
+    })
+    toast.promise(fetchWrong, {
+      loading: "Loading",
+      success: "Success",
+      error: "Error",
+    })
+  }
+  return (
+    <Box as="button" sx={buttonStyle} onClick={handleClick}>
+      Loading Toast
+    </Box>
+  )
+}

@@ -10,13 +10,25 @@ import { createPortal } from "react-dom"
 import { Box } from "@rent_avail/layout"
 import { getId, usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
+// import { keyframes } from "styled-components"
 
 const ToastContext = createContext()
 
 function toastReducer(state, action) {
   switch (action.type) {
-    case "INSERT_TOAST":
+    case "INSERT_TOAST": {
+      const { payload: toast } = action
+      const update = state.toasts.find(({ id }) => id === toast.id)
+      if (update) {
+        return {
+          ...state,
+          toasts: state.toasts.map((t) =>
+            t.id === toast.id ? { ...t, ...toast } : t
+          ),
+        }
+      }
       return { ...state, toasts: [...state.toasts, action.payload] }
+    }
     case "REMOVE_TOAST":
       if (action.payload === undefined) {
         return { ...state, toasts: [] }
@@ -26,12 +38,11 @@ function toastReducer(state, action) {
         toasts: state.toasts.filter(({ id }) => id !== action.payload),
       }
     case "UPDATE_TOAST":
+      const { payload: toast } = action
       return {
         ...state,
-        toasts: state.toasts.map((toast) =>
-          toast.id === action.payload.id
-            ? { ...toast, ...action.payload }
-            : toast
+        toasts: state.toasts.map((t) =>
+          t.id === toast ? { ...t, ...toast } : t
         ),
       }
     default:
@@ -47,6 +58,30 @@ const durationDefaults = {
   blank: 4000,
   success: 2000,
   error: 4000,
+  loading: 6000,
+}
+
+const typeStyles = {
+  blank: {
+    bg: "ui_900",
+    color: "ui_100",
+    borderColor: "ui_900",
+  },
+  success: {
+    bg: "green_500",
+    color: "ui_900",
+    borderColor: "green_900",
+  },
+  error: {
+    bg: "red_300",
+    color: "ui_900",
+    borderColor: "red_500",
+  },
+  loading: {
+    bg: "ui_300",
+    borderColor: "ui_500",
+    color: "ui_700",
+  },
 }
 
 function getPositionStyles(position) {
@@ -73,21 +108,24 @@ function ToastProvider({ position = "bottom-left", ...props }) {
     (type = "blank") => (children, options = {}) => {
       const { id = getId(), duration = 4000, ...opts } = options
       const toast = {
-        id,
-        type,
-        children,
-        duration: durationDefaults[type],
-        visible: true,
-        pausedDuration: 0,
-        createdAt: Date.now(),
-        role: type === "error" ? "alert" : "status",
         "aria-live": "polite",
+        children,
+        createdAt: Date.now(),
+        duration: durationDefaults[type],
+        id,
+        pausedDuration: 0,
+        role: type === "error" ? "alert" : "status",
+        type,
+        visible: true,
         ...opts,
       }
-      dispatch({ type: "INSERT_TOAST", payload: toast })
       toast.dismiss = (id) => {
         dispatch({ type: "REMOVE_TOAST", payload: id })
       }
+      dispatch({
+        type: "INSERT_TOAST",
+        payload: toast,
+      })
       return toast.id
     },
     [dispatch]
@@ -125,53 +163,34 @@ function ToastProvider({ position = "bottom-left", ...props }) {
           }}
         >
           <AnimatePresence>
-            {toasts.map(({ sx = {}, children, type, ...props }) => {
-              const typeStyles = {
-                blank: {
-                  bg: "blue_700",
-                  color: "blue_100",
-                  borderColor: "blue_900",
-                },
-                success: {
-                  bg: "green_900",
-                  color: "green_300",
-                  borderColor: "green_900",
-                },
-                error: {
-                  bg: "red_300",
-                  color: "ui_900",
-                  borderColor: "red_500",
-                },
-              }
-              return (
-                <Box
-                  {...props}
-                  layout
-                  key={props.id}
-                  as={motion.div}
-                  variants={{
-                    shown: { opacity: 1, y: "0rem" },
-                    hidden: { opacity: 0, y: "1rem" },
-                  }}
-                  initial="hidden"
-                  animate="shown"
-                  exit="hidden"
-                  sx={{
-                    display: "inline-flex",
-                    flexGrow: 0,
-                    p: "2rem",
-                    borderRadius: "0.25rem",
-                    border: "1px solid transparent",
-                    maxWidth: "40rem",
-                    pointerEvents: "all",
-                    ...typeStyles[type],
-                    ...sx,
-                  }}
-                >
-                  {returnValue(children, props)}
-                </Box>
-              )
-            })}
+            {toasts.map(({ sx = {}, children, type, ...props }) => (
+              <Box
+                {...props}
+                layout
+                key={props.id}
+                as={motion.section}
+                variants={{
+                  shown: { opacity: 1, y: "0rem" },
+                  hidden: { opacity: 0, y: "1rem" },
+                }}
+                initial="hidden"
+                animate="shown"
+                exit="hidden"
+                sx={{
+                  display: "inline-flex",
+                  flexGrow: 0,
+                  p: "2rem",
+                  borderRadius: "0.25rem",
+                  border: "1px solid transparent",
+                  maxWidth: "40rem",
+                  pointerEvents: "all",
+                  ...typeStyles[type],
+                  ...sx,
+                }}
+              >
+                {returnValue(children, props)}
+              </Box>
+            ))}
           </AnimatePresence>
         </Box>,
         portalTarget
@@ -185,6 +204,34 @@ function useToast() {
   const toast = createToast("blank")
   toast.success = createToast("success")
   toast.error = createToast("error")
+  toast.loading = createToast("loading")
+  toast.promise = async (
+    promise,
+    { loading, success, error },
+    options = {}
+  ) => {
+    const id = toast.loading(loading, {
+      ...options,
+      ...options?.loading,
+    })
+    promise
+      .then((res) => {
+        toast.success(success, {
+          id,
+          ...options,
+          ...options?.success,
+        })
+        return res
+      })
+      .catch((promiseError) => {
+        toast.error(error, {
+          ...options,
+          ...options?.error,
+          error: promiseError,
+        })
+      })
+    return promise
+  }
   return toast
 }
 
