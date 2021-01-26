@@ -80,6 +80,43 @@ export function useIntersection({
   return [target, result]
 }
 
+export function useHadIntersected({
+  threshold = 0.75,
+} = {}) {
+
+const target = useRef()
+const [ observer, setObserver ] = useState()
+const [ hadIntersected, setHadIntersected ] = useState(false)
+
+useEffect(()=>{
+  observer?.disconnect()
+  if (!hadIntersected) {
+    const newObserver = new IntersectionObserver(([entry]) => {
+      const { isIntersecting } = entry
+      if (!hadIntersected && isIntersecting) {
+        setHadIntersected(true)
+        observer?.disconnect()
+      }
+    }, { threshold })
+  
+    setObserver(newObserver)
+    return () => newObserver.disconnect()
+  }
+}, [])
+
+useEffect(() => {
+  if (!hadIntersected) {
+    if (target.current && observer) {
+      observer.observe(target.current)
+    }
+  } else {
+    observer?.disconnect()
+  }
+}, [ target, observer ])
+
+return [ hadIntersected, target ]
+}
+
 export function usePortal(type = "avail-portal", parent) {
   if (typeof window === "undefined") return null // bail on server render.
   const rootElement = useRef()
@@ -324,4 +361,69 @@ export function useId(id) {
 
 export function getId() {
   return `_${Math.random().toString(36).substr(2, 9)}`
+}
+
+export function useAnimation({
+  delay = 0.5,
+  duration = 1.0,
+} = {}) {
+  const [ final, setFinal ] = useState(false)
+  function animate() {
+    setFinal(true)
+  }
+
+  const baseAnimationProps = {
+    initial: "initial",
+    animate: final ? "final" : "initial",
+    transition: {
+      delay,
+      duration,
+    },
+  }
+
+  const animationEffects = {
+    fadeIn: {
+      ...baseAnimationProps,
+      variants: {
+        initial: { opacity: 0, y: "1rem" },
+        final: { opacity: 1, y: "0rem" },
+      },
+    },
+    fadeOut: {
+      ...baseAnimationProps,
+      variants: {
+        initial: { opacity: 1, y: "0rem" },
+        final: { opacity: 0, y: "-1rem" },
+      },
+    },
+    scaleIn: {
+      ...baseAnimationProps,
+      variants: {
+        initial: { opacity: 0, scale: 0 },
+        final: { opacity: 1, scale: 1 },
+      },
+    },
+  }
+
+  return [ animationEffects, animate ]
+}
+
+export function useAnimateIntersection({
+    threshold,
+    delay,
+    duration,
+} = {}) {
+  const [ hadIntersected, target ] = useHadIntersected({ threshold })
+  const [ animationVariants, animate ] = useAnimation({
+    delay,
+    duration,
+  })
+
+  useEffect(() => {
+    if (hadIntersected) {
+      animate()
+    }
+  }, [ hadIntersected ])
+
+  return [ animationVariants, target ]
 }
