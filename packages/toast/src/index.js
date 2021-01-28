@@ -10,7 +10,6 @@ import { createPortal } from "react-dom"
 import { Box } from "@rent_avail/layout"
 import { getId, usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
-// import { keyframes } from "styled-components"
 
 const ToastContext = createContext()
 

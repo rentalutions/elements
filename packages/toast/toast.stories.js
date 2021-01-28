@@ -110,18 +110,28 @@ export function CustomJSX() {
 
 export function Promise() {
   const toast = useToast()
-  function handleClick(evt) {
-    const fetchThing = fetch("https://api.github.com/users/timmywheels/repos")
-    const fetchWrong = fetch("https://api.github.com/users/wklaejfalkswjdf")
-    toast.promise(fetchThing, {
-      loading: "Loading",
-      success: "Success",
-      error: "Error",
+  async function handleClick(evt) {
+    // const fetchThing = fetch("https://api.github.com/users/timmywheels/repos")
+    const randomPromise = new Promise((resolve, reject) => {
+      const failed = Math.random() > 0.5
+      setTimeout(() => {
+        if (failed) {
+          reject(new Error("Random error message for the user."))
+        } else {
+          resolve("Sucessful message for the user.")
+        }
+      }, 2000)
     })
-    toast.promise(fetchWrong, {
-      loading: "Loading",
-      success: "Success",
-      error: "Error",
+    // await toast.promise(fetchThing, {
+    //   loading: "Loading",
+    //   success: "Success",
+    //   error: "Error",
+    // })
+
+    await toast.promise(randomPromise, {
+      loading: "Loading State...",
+      success: "Success State",
+      error: "Error State",
     })
   }
   return (
