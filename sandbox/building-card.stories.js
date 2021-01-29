@@ -1,5 +1,15 @@
+import { useState } from "react"
 import { Grid, Col, Box, Card, Container } from "@rent_avail/layout"
 import { Avatar, AvatarGroup } from "@rent_avail/avatar"
+import {
+  Dialog,
+  DialogHeader,
+  DialogTarget,
+  ConfirmationDialog,
+} from "@rent_avail/dialog"
+import Input from "@rent_avail/input"
+import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
+import { Button } from "@rent_avail/controls"
 import {
   Edit,
   Key,
@@ -11,16 +21,21 @@ import {
 } from "react-feather"
 import redfinLogo from "./assets/redfin.svg"
 
-export default { title: "Sandbox/Building Card" }
+export default {
+  title: "Sandbox/Building Card",
+  parameters: { backgrounds: { default: "app" } },
+}
 
 const props = {
   building: {
+    id: "1290-381029u10",
     propertyType: "Multi-Family",
     streetAddress: "2024 N California Ave",
     locality: "Chicago",
     state: "IL",
     zip: "60647",
     priceEstimate: 125_100_00,
+    type: "Single Family Home",
   },
   units: [
     {
@@ -52,6 +67,10 @@ function parseMoney(cents) {
 
 export function BuildingCard() {
   const { building, units } = props
+  const [editOpen, setEditOpen] = useState(false)
+  function handleEditToggle(e) {
+    setEditOpen((open) => !open)
+  }
   return (
     <Box
       sx={{
@@ -61,47 +80,98 @@ export function BuildingCard() {
       }}
     >
       <Container my="4rem">
-        <Card sx={{ p: 0 }}>
-          <Grid as="header" sx={{ display: "grid", p: "2rem" }}>
-            <Col span={5} as="p" sx={{ text: ["small"], color: "blue_500" }}>
-              {building.propertyType}
-            </Col>
-            <Col span={7} sx={{ justifySelf: "right" }}>
-              <Action icon={Edit}>Edit</Action>
-            </Col>
-            <Col span={8}>
-              <Box as="h3">{building.streetAddress}</Box>
-              <Box as="p">
-                {building.locality}, {building.state} {building.zip}
-              </Box>
-            </Col>
-            <Col
-              span={4}
-              sx={{
-                textAlign: "right",
-                justifySelf: ["end"],
-                alignSelf: ["end"],
-              }}
-            >
-              <Box>{parseMoney(building.priceEstimate)}</Box>
-              <Box as="img" src={redfinLogo} sx={{ height: "2rem" }} />
-            </Col>
-          </Grid>
-          <Grid sx={{ gap: 0 }}>
-            {units.map((unit) => (
-              <BuildingUnit key={unit.id} unit={unit} />
-            ))}
-          </Grid>
-        </Card>
+        <Dialog
+          id={`building-edit-${building.id}`}
+          open={editOpen}
+          toggle={handleEditToggle}
+        >
+          <Card sx={{ p: 0 }}>
+            <Grid as="header" sx={{ display: "grid", p: "2rem" }}>
+              <Col span={5} as="p" sx={{ text: ["small"], color: "blue_500" }}>
+                {building.propertyType}
+              </Col>
+              <Col span={7} sx={{ justifySelf: "right" }}>
+                <DialogTarget>
+                  <Action onClick={handleEditToggle} icon={Edit}>
+                    Edit
+                  </Action>
+                </DialogTarget>
+              </Col>
+              <Col span={8}>
+                <Box as="h3">{building.streetAddress}</Box>
+                <Box as="p">
+                  {building.locality}, {building.state} {building.zip}
+                </Box>
+              </Col>
+              <Col
+                span={4}
+                sx={{
+                  textAlign: "right",
+                  justifySelf: ["end"],
+                  alignSelf: ["end"],
+                }}
+              >
+                <Box>{parseMoney(building.priceEstimate)}</Box>
+                <Box as="img" src={redfinLogo} sx={{ height: "2rem" }} />
+              </Col>
+            </Grid>
+            <Grid sx={{ gap: 0 }}>
+              {units.map((unit) => (
+                <BuildingUnit key={unit.id} unit={unit} />
+              ))}
+            </Grid>
+          </Card>
+          <EditBuilding building={building} />
+        </Dialog>
       </Container>
     </Box>
   )
 }
 
-function Action({ icon, children, sx = {} }) {
+function EditBuilding({ building }) {
+  const buildingTypes = [
+    { name: "Single Family Home", value: "sfh" },
+    { name: "Condo", value: "cnd" },
+    { name: "Townhome", value: "twh" },
+    { name: "Apartment Building", value: "apt" },
+    { name: "Duplex", value: "dpx" },
+  ]
+  const [type, setType] = useState(building.type)
+  return (
+    <ConfirmationDialog>
+      <DialogHeader title="Edit Building" />
+      <Grid sx={{ gridGap: "0.5rem 2rem" }}>
+        <Col as={Input} label="Building Address" />
+        <Col span={6}>
+          <Select
+            defaultValue={building.type}
+            id="edit-building-select"
+            onSelect={(type) => setType(type)}
+          >
+            <SelectInput label="Select your building type." />
+            <SelectList>
+              {buildingTypes.map(({ name, value }) => (
+                <SelectItem key={value} value={name} name={name}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectList>
+          </Select>
+        </Col>
+        <Col as={Input} span={6} label="Property Name" />
+        <Col sx={{ justifySelf: "end" }}>
+          <Button>Save Changes</Button>
+        </Col>
+      </Grid>
+    </ConfirmationDialog>
+  )
+}
+
+function Action({ icon, children, sx = {}, ...props }) {
   if (!icon) throw Error("Must pass an icon to an action component.")
   return (
     <Box
+      {...props}
       tabIndex="0"
       role="button"
       sx={{
@@ -155,7 +225,7 @@ function BuildingUnit({ unit: { title, lease, onMarket } }) {
       <Col as={AvatarGroup} span={[8]} sx={{ justifySelf: "end" }}>
         {lease?.tenants.length ? (
           lease.tenants.map(({ initials }) => (
-            <Avatar size="small" initials={initials} />
+            <Avatar key={initials} size="small" initials={initials} />
           ))
         ) : (
           <Avatar size="small" initials={<Plus />} />
