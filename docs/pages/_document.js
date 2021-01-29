@@ -15,14 +15,10 @@ export default class Document extends NextDoc {
         })
 
       const initialProps = await NextDoc.getInitialProps(ctx)
+      const styleSheet = sheet.getStyleElement()
       return {
         ...initialProps,
-        styles: (
-          <Fragment>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </Fragment>
-        ),
+        styles: [initialProps.styles, styleSheet],
       }
     } finally {
       sheet.seal()
