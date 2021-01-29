@@ -325,3 +325,28 @@ export function useId(id) {
 export function getId() {
   return `_${Math.random().toString(36).substr(2, 9)}`
 }
+
+export function useMediaQuery({ min = 0, max = null }) {
+  const [matches, setMatches] = useState(false)
+  function getMatch(min, max) {
+    const cssMin = typeof min === "number" ? `${min}px` : min
+    const cssMax = typeof max === "number" ? `${max}px` : max
+    const query = max
+      ? `(min-width: ${cssMin}) and (max-width: ${cssMax})`
+      : `(min-width: ${cssMin})`
+    return window.matchMedia(query).matches
+  }
+  useEffect(() => {
+    const matches = getMatch(min, max)
+    function handleResize(evt) {
+      const matches = getMatch(min, max)
+      setMatches(matches)
+    }
+    setMatches(matches)
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [min, max])
+  return matches
+}
