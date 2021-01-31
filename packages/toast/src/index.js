@@ -5,11 +5,13 @@ import {
   Fragment,
   useEffect,
   useCallback,
+  useMemo,
 } from "react"
 import { createPortal } from "react-dom"
 import { Box } from "@rent_avail/layout"
 import { getId, usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
+import { Loader } from "react-feather"
 
 const ToastContext = createContext()
 
@@ -103,8 +105,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
   })
   const portalTarget = usePortal()
   const positionStyles = getPositionStyles(position)
-  const createToast = useCallback(
-    (type = "blank") => (children, options = {}) => {
+  function createToast(type = "blank") {
+    return function (children, options = {}) {
       const { id = getId(), duration = 4000, ...opts } = options
       const toast = {
         "aria-live": "polite",
@@ -126,9 +128,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
         payload: toast,
       })
       return toast.id
-    },
-    [dispatch]
-  )
+    }
+  }
   useEffect(() => {
     if (paused) return
     const now = Date.now()
@@ -158,6 +159,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
             display: "flex",
             flexDirection: "column-reverse",
             gap: "1rem",
+            alignItems: "flex-start",
+            zIndex: 999,
             ...positionStyles,
           }}
         >
@@ -187,6 +190,21 @@ function ToastProvider({ position = "bottom-left", ...props }) {
                   ...sx,
                 }}
               >
+                {(type === "loading") & (typeof children !== "function") ? (
+                  <Box
+                    as={motion.span}
+                    sx={{
+                      mr: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyConent: "center",
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  >
+                    <Loader />
+                  </Box>
+                ) : null}
                 {returnValue(children, props)}
               </Box>
             ))}
@@ -200,37 +218,29 @@ function ToastProvider({ position = "bottom-left", ...props }) {
 
 function useToast() {
   const { createToast } = useContext(ToastContext)
-  const toast = createToast("blank")
-  toast.success = createToast("success")
-  toast.error = createToast("error")
-  toast.loading = createToast("loading")
-  toast.promise = async (
-    promise,
-    { loading, success, error },
-    options = {}
-  ) => {
-    const id = toast.loading(loading, {
-      ...options,
-      ...options?.loading,
-    })
-    promise
-      .then((res) => {
-        toast.success(success, {
-          id,
-          ...options,
-          ...options?.success,
-        })
-        return res
-      })
-      .catch((promiseError) => {
-        toast.error(error, {
-          ...options,
-          ...options?.error,
-          error: promiseError,
-        })
-      })
-    return promise
-  }
+  const toast = useMemo(
+    () => ({
+      blank: createToast("blank"),
+      success: createToast("success"),
+      error: createToast("error"),
+      loading: createToast("loading"),
+      promise: async (promise, { loading, success, error }, options) => {
+        const id = createToast("loading")(loading, options)
+        try {
+          const result = await promise
+          createToast("success")(returnValue(success, result), {
+            id,
+            ...options,
+          })
+        } catch (e) {
+          createToast("error")(returnValue(error, e), { id, ...options })
+        } finally {
+          return promise
+        }
+      },
+    }),
+    []
+  )
   return toast
 }
 

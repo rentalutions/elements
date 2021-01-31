@@ -1,9 +1,11 @@
 import { Fragment } from "react"
 import { Box } from "@rent_avail/layout"
+import { motion } from "framer-motion"
+import { Loader } from "react-feather"
 import { ToastProvider, useToast } from "./src"
 
 export default {
-  title: "Toast",
+  title: "Packages/Toast",
   decorators: [
     (Story) => (
       <ToastProvider>
@@ -26,11 +28,11 @@ const buttonStyle = {
   cursor: "pointer",
 }
 
-export function Default() {
+export function BasicExample() {
   const toast = useToast()
   return (
     <Box
-      onClick={(e) => toast("I'm a basic toast.")}
+      onClick={(e) => toast.blank("I'm a basic toast.")}
       as="button"
       sx={buttonStyle}
     >
@@ -39,7 +41,7 @@ export function Default() {
   )
 }
 
-export function Success() {
+export function SuccessExample() {
   const toast = useToast()
   return (
     <Box
@@ -52,7 +54,7 @@ export function Success() {
   )
 }
 
-export function Error() {
+export function ErrorExample() {
   const toast = useToast()
   return (
     <Box
@@ -65,7 +67,7 @@ export function Error() {
   )
 }
 
-export function CustomJSX() {
+export function CustomExample() {
   const toast = useToast()
   return (
     <Fragment>
@@ -73,7 +75,7 @@ export function CustomJSX() {
         as="button"
         sx={buttonStyle}
         onClick={(e) =>
-          toast((t) => {
+          toast.blank((t) => {
             return (
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <span>
@@ -97,9 +99,14 @@ export function CustomJSX() {
         as="button"
         sx={buttonStyle}
         onClick={(e) =>
-          toast(
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam pariatur quos voluptas doloremque tenetur molestias laudantium, nam, et praesentium, exercitationem dolorum id numquam optio sapiente consectetur architecto tempore dolore quo!"
-          )
+          toast.blank(() => (
+            <span>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              pariatur quos voluptas doloremque tenetur molestias laudantium,
+              nam, et praesentium, exercitationem dolorum id numquam optio
+              sapiente consectetur architecto tempore dolore quo!
+            </span>
+          ))
         }
       >
         Really Long Toast
@@ -108,30 +115,20 @@ export function CustomJSX() {
   )
 }
 
-export function Promise() {
+export function PromiseExample() {
   const toast = useToast()
   async function handleClick(evt) {
     // const fetchThing = fetch("https://api.github.com/users/timmywheels/repos")
-    const randomPromise = new Promise((resolve, reject) => {
-      const failed = Math.random() > 0.5
-      setTimeout(() => {
-        if (failed) {
-          reject(new Error("Random error message for the user."))
-        } else {
-          resolve("Sucessful message for the user.")
-        }
-      }, 2000)
+    const promise = new Promise((res, rej) => {
+      setTimeout(
+        Math.random() > 0.5 ? () => res("Success") : () => rej("Custom Error"),
+        3000
+      )
     })
-    // await toast.promise(fetchThing, {
-    //   loading: "Loading",
-    //   success: "Success",
-    //   error: "Error",
-    // })
-
-    await toast.promise(randomPromise, {
-      loading: "Loading State...",
-      success: "Success State",
-      error: "Error State",
+    await toast.promise(promise, {
+      loading: "Loading...",
+      success: (result) => result,
+      error: (message) => `Error: ${message}`,
     })
   }
   return (
