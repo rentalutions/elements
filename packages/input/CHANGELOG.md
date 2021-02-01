@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.4.3...@rent_avail/input@0.4.4) (2021-01-29)
+
+
+### Bug Fixes
+
+* update peer dependencies ([b9cf28e](https://github.com/rentalutions/elements/commit/b9cf28ea6daf7bcb028775cdcc12f1ac2a45280b))
+
+
+
+
+
 ## [0.4.3](https://github.com/rentalutions/elements/compare/@rent_avail/input@0.4.2...@rent_avail/input@0.4.3) (2020-12-14)
 
 

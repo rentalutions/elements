@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.5...@rent_avail/select@0.3.6) (2021-01-29)
+
+**Note:** Version bump only for package @rent_avail/select
+
+
+
+
+
 ## [0.3.5](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.4...@rent_avail/select@0.3.5) (2021-01-20)
 
 
