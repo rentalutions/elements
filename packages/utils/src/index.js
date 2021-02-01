@@ -324,10 +324,6 @@ export function useId(id) {
   return idRef.current
 }
 
-export function getId() {
-  return `_${Math.random().toString(36).substr(2, 9)}`
-}
-
 export function useMediaQuery({ min = 0, max = null }) {
   const [matches, setMatches] = useState(false)
   function getMatch(min, max) {
