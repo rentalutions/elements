@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ["@babel/env", "@babel/react"],
+  presets: ["@babel/preset-env", "@babel/react"],
   plugins: [["styled-components", { ssr: true }]],
   env: {
     test: {
