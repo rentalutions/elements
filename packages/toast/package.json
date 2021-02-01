@@ -29,8 +29,8 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/layout": "^0.3.10",
-    "@rent_avail/utils": "^0.3.1",
+    "@rent_avail/layout": "^0.3.11",
+    "@rent_avail/utils": "^0.4.0",
     "framer-motion": "^3.2.1"
   }
 }
