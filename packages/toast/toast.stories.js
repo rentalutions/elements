@@ -32,7 +32,7 @@ export function BasicExample() {
   const toast = useToast()
   return (
     <Box
-      onClick={(e) => toast.blank("I'm a basic toast.")}
+      onClick={() => toast.blank("I'm a basic toast.")}
       as="button"
       sx={buttonStyle}
     >
@@ -45,7 +45,7 @@ export function SuccessExample() {
   const toast = useToast()
   return (
     <Box
-      onClick={(e) => toast.success("I'm a success toast.")}
+      onClick={() => toast.success("I'm a success toast.")}
       as="button"
       sx={buttonStyle}
     >
@@ -58,7 +58,7 @@ export function ErrorExample() {
   const toast = useToast()
   return (
     <Box
-      onClick={(e) => toast.error("I'm an error toast.")}
+      onClick={() => toast.error("I'm an error toast.")}
       as="button"
       sx={buttonStyle}
     >
@@ -74,7 +74,7 @@ export function CustomExample() {
       <Box
         as="button"
         sx={buttonStyle}
-        onClick={(e) =>
+        onClick={() =>
           toast.blank((t) => {
             return (
               <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -98,7 +98,7 @@ export function CustomExample() {
       <Box
         as="button"
         sx={buttonStyle}
-        onClick={(e) =>
+        onClick={() =>
           toast.blank(() => (
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
