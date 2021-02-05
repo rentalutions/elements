@@ -141,7 +141,7 @@ export function FullscreenFeedback({
                   key="loading-bar"
                   as={motion.div}
                   className="fullpage__loading-background"
-                  exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                  exit={{ opacity: 0, height: 0, marginBottom: "0px" }}
                 >
                   <motion.div
                     layout
