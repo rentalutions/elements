@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.23](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.22...@rent_avail/dialog@0.1.23) (2021-02-05)
+
+**Note:** Version bump only for package @rent_avail/dialog
+
+
+
+
+
 ## [0.1.22](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.21...@rent_avail/dialog@0.1.22) (2021-01-29)
 
 
