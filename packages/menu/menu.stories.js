@@ -9,7 +9,7 @@ import {
 } from "@rent_avail/dialog/src"
 import { Menu, MenuTarget, MenuList, MenuItem } from "./src"
 
-export default { title: "Menu" }
+export default { title: "Packages/Menu" }
 
 export function BasicUsage() {
   return (

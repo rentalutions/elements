@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { Grid, Col, Box, Container, Stack, Card } from "./src"
 import { Heading, Text } from "@rent_avail/typography"
 
-export default { title: "Layout" }
+export default { title: "Packages/Layout" }
 
 export function BoxUsage() {
   return (

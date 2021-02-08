@@ -6,7 +6,7 @@ import { Switch } from "@rent_avail/controls"
 import Tag from "@rent_avail/tag"
 import { ChevronRight } from "react-feather"
 
-export default { title: "Skeleton" }
+export default { title: "Packages/Skeleton" }
 
 export function WrappingChildren() {
   const [loaded, setLoaded] = useState(false)
@@ -62,26 +62,26 @@ export function PaymentList() {
           dueDate: "Jan 01 20",
           description: "Payment for January ",
           amount: 100000,
-          status: "paid"
+          status: "paid",
         },
         {
           dueDate: "Feb 01 20",
           description: "Payment for February",
           amount: 100000,
-          status: "paid"
+          status: "paid",
         },
         {
           dueDate: "Mar 01 20",
           description: "Payment for March",
           amount: 100000,
-          status: "paid"
+          status: "paid",
         },
         {
           dueDate: "Apr 01 20",
           description: "Payment for April",
           amount: 100000,
-          status: "upcoming"
-        }
+          status: "upcoming",
+        },
       ])
     }
     setTimeout(fetchCharges, 4000)

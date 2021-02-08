@@ -11,7 +11,7 @@ import {
 import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
 import Input from "./src"
 
-export default { title: "Input" }
+export default { title: "Packages/Input" }
 
 export function BasicUsage() {
   return (

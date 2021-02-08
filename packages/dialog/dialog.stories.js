@@ -11,7 +11,7 @@ import {
   FullscreenDialog,
 } from "./src"
 
-export default { title: "Dialog" }
+export default { title: "Packages/Dialog" }
 
 export function ConfirmationUsage() {
   const [open, set] = useState(false)

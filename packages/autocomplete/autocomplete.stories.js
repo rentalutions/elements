@@ -8,7 +8,7 @@ import {
   AutocompleteProvider,
 } from "./src"
 
-export default { title: "Elements/Autocomplete" }
+export default { title: "Packages/Autocomplete" }
 
 export function ManualOption() {
   const [response, setResponse] = useState(null)
