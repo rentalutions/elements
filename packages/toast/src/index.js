@@ -1,10 +1,10 @@
-import {
+import React, {
   createContext,
   useReducer,
   useContext,
   Fragment,
   useEffect,
-  useCallback,
+  useMemo,
 } from "react"
 import { createPortal } from "react-dom"
 import { Box } from "@rent_avail/layout"
@@ -103,8 +103,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
   })
   const portalTarget = usePortal()
   const positionStyles = getPositionStyles(position)
-  const createToast = useCallback(
-    (type = "blank") => (children, options = {}) => {
+  function createToast(type = "blank") {
+    return function (children, options = {}) {
       const { id = getId(), duration = 4000, ...opts } = options
       const toast = {
         "aria-live": "polite",
@@ -126,9 +126,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
         payload: toast,
       })
       return toast.id
-    },
-    [dispatch]
-  )
+    }
+  }
   useEffect(() => {
     if (paused) return
     const now = Date.now()
@@ -158,6 +157,8 @@ function ToastProvider({ position = "bottom-left", ...props }) {
             display: "flex",
             flexDirection: "column-reverse",
             gap: "1rem",
+            alignItems: "flex-start",
+            zIndex: 999,
             ...positionStyles,
           }}
         >
@@ -187,6 +188,19 @@ function ToastProvider({ position = "bottom-left", ...props }) {
                   ...sx,
                 }}
               >
+                {(type === "loading") & (typeof children !== "function") ? (
+                  <Box
+                    as={motion.span}
+                    sx={{
+                      mr: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyConent: "center",
+                    }}
+                  >
+                    <LoadingIcon />
+                  </Box>
+                ) : null}
                 {returnValue(children, props)}
               </Box>
             ))}
@@ -200,38 +214,57 @@ function ToastProvider({ position = "bottom-left", ...props }) {
 
 function useToast() {
   const { createToast } = useContext(ToastContext)
-  const toast = createToast("blank")
-  toast.success = createToast("success")
-  toast.error = createToast("error")
-  toast.loading = createToast("loading")
-  toast.promise = async (
-    promise,
-    { loading, success, error },
-    options = {}
-  ) => {
-    const id = toast.loading(loading, {
-      ...options,
-      ...options?.loading,
-    })
-    promise
-      .then((res) => {
-        toast.success(success, {
-          id,
-          ...options,
-          ...options?.success,
-        })
-        return res
-      })
-      .catch((promiseError) => {
-        toast.error(error, {
-          ...options,
-          ...options?.error,
-          error: promiseError,
-        })
-      })
-    return promise
-  }
+  const toast = useMemo(
+    () => ({
+      blank: createToast("blank"),
+      success: createToast("success"),
+      error: createToast("error"),
+      loading: createToast("loading"),
+      promise: async (promise, { loading, success, error }, options) => {
+        const id = createToast("loading")(loading, options)
+        try {
+          const result = await promise
+          createToast("success")(returnValue(success, result), {
+            id,
+            ...options,
+          })
+        } catch (e) {
+          createToast("error")(returnValue(error, e), { id, ...options })
+        } finally {
+          return promise
+        }
+      },
+    }),
+    []
+  )
   return toast
+}
+
+function LoadingIcon() {
+  return (
+    <motion.svg
+      animate={{ rotate: 360 }}
+      transition={{ repeat: Infinity, duration: 2 }}
+      xmlns="http://www.w3.org/2000/motion.svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="12" y1="2" x2="12" y2="6" />
+      <line x1="12" y1="18" x2="12" y2="22" />
+      <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
+      <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
+      <line x1="2" y1="12" x2="6" y2="12" />
+      <line x1="18" y1="12" x2="22" y2="12" />
+      <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
+      <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+    </motion.svg>
+  )
 }
 
 export { ToastProvider, useToast }

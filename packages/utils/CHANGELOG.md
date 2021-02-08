@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.4.0...@rent_avail/utils@0.5.0) (2021-02-05)
+
+
+### Features
+
+* **toast:** create toast component ([dab9180](https://github.com/rentalutions/elements/commit/dab9180fef83b5f857f952610282a8afc1cb021f))
+
+
+
+
+
+# [0.4.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.3.1...@rent_avail/utils@0.4.0) (2021-01-29)
+
+
+### Bug Fixes
+
+* update peer dependencies ([b9cf28e](https://github.com/rentalutions/elements/commit/b9cf28ea6daf7bcb028775cdcc12f1ac2a45280b))
+
+
+### Features
+
+* add useMediaQuery hook ([67e335a](https://github.com/rentalutions/elements/commit/67e335abf392ea2cf00ed8a001a0a00522b847a2))
+
+
+
+
+
 ## [0.3.1](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.3.0...@rent_avail/utils@0.3.1) (2020-12-02)
 
 

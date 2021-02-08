@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.5...@rent_avail/menu@0.2.6) (2021-02-05)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
+## [0.2.5](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.4...@rent_avail/menu@0.2.5) (2021-01-29)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
 ## [0.2.4](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.3...@rent_avail/menu@0.2.4) (2021-01-20)
 
 
