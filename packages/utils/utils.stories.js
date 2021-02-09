@@ -2,7 +2,7 @@ import React from "react"
 import { usePortal, useMediaQuery } from "./src"
 import { createPortal } from "react-dom"
 
-export default { title: "Utilities" }
+export default { title: "Packages/Utilities" }
 
 export function UsePortal() {
   const target = usePortal()

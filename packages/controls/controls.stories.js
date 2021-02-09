@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Container, Stack } from "@rent_avail/layout"
 import { Checkbox, Radio, Switch, Button } from "./src"
 
-export default { title: "Controls" }
+export default { title: "Packages/Controls" }
 
 export function CheckboxUsage() {
   return <Checkbox />

@@ -3,7 +3,8 @@ import Popover from "./src"
 import { Container, Box } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
-export default { title: "Popover" }
+
+export default { title: "Packages/Popover" }
 
 const TagWithPopover = ({ title = "Hello Target" }) => {
   const targetRef = useRef(null)

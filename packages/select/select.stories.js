@@ -11,7 +11,7 @@ import {
 import { Button } from "@rent_avail/controls"
 import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
-export default { title: "Select" }
+export default { title: "Packages/Select" }
 
 function SelectExample() {
   const options = [

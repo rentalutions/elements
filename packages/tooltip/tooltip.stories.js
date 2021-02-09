@@ -10,7 +10,7 @@ import {
 import { Button } from "@rent_avail/controls"
 import { Tooltip, TooltipContent, TooltipTarget } from "./src"
 
-export default { title: "Tooltip" }
+export default { title: "Packages/Tooltip" }
 
 export function BasicUsage() {
   return (

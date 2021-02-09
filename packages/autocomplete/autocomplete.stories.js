@@ -3,16 +3,19 @@ import { Container, Box, Grid, Col } from "@rent_avail/layout"
 import { Dialog, DialogHeader, ConfirmationDialog } from "@rent_avail/dialog"
 import Input from "@rent_avail/input"
 import { Button } from "@rent_avail/controls"
-import { Autocomplete, AutocompleteProvider } from "./src"
+import {
+  Autocomplete as AutocompleteComponent,
+  AutocompleteProvider,
+} from "./src"
 
-export default { title: "Autocomplete" }
+export default { title: "Packages/Autocomplete" }
 
-export function BasicUsage() {
+export function ManualOption() {
   const [response, setResponse] = useState(null)
   return (
     <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
       <Container mt="4rem">
-        <Autocomplete
+        <AutocompleteComponent
           label="Street Address"
           onSelect={(place) => setResponse(place)}
           onClear={() => setResponse(null)}
@@ -70,7 +73,7 @@ export function DefaultValue() {
   return (
     <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
       <Container>
-        <Autocomplete
+        <AutocompleteComponent
           label="Mailing Address"
           defaultValue="1003 North Sandburg Terrace, Chicago, IL, United States"
         />

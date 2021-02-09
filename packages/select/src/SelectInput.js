@@ -51,7 +51,7 @@ function SelectInput(
         <Box
           sx={{
             position: "absolute",
-            top: "3.334rem",
+            top: "3.75rem",
             left: "2rem",
             bg: "blue_100",
             px: "0.5rem",

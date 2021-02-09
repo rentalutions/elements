@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { ChevronRight } from "react-feather"
 import { Avatar, AvatarGroup } from "./src"
 
-export default { title: "Avatar" }
+export default { title: "Packages/Avatar" }
 
 export function Default() {
   return (
