@@ -27,8 +27,9 @@ function SelectItem(
   const { state, dispatch, onSelect } = useContext(SelectContext)
   const [visible, setVisible] = useState(true)
   function handleSelect({ target }) {
-    dispatch({ type: types.SET_VALUE, payload: target.dataset.value })
-    onSelect(target.dataset.value)
+    const { label, value } = target.dataset
+    dispatch({ type: types.SET_VALUE, payload: label || value })
+    onSelect(value)
   }
   function handleKeyDown({ key, target }) {
     const itemEl = itemRef.current
@@ -53,6 +54,7 @@ function SelectItem(
       ref={mergeRefs(ref, itemRef)}
       as={as}
       data-value={itemValue}
+      data-label={label}
       tabIndex="0"
       role="menuitem"
       onClick={wrapEvent(onClick, handleSelect)}

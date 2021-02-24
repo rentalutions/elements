@@ -31,7 +31,7 @@ function SelectExample() {
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ name, value }) => (
-            <SelectItem key={value} value={value} name={name}>
+            <SelectItem key={value} value={value} label={`Your ${name}`}>
               {name}
             </SelectItem>
           ))}
