@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.7...@rent_avail/select@0.3.8) (2021-02-24)
+
+
+### Bug Fixes
+
+* **select:** use label for blue display if present on item ([4fa2542](https://github.com/rentalutions/elements/commit/4fa2542e77cd652ca6bd44885feecc851f8feaf7))
+
+
+
+
+
 ## [0.3.7](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.6...@rent_avail/select@0.3.7) (2021-02-05)
 
 **Note:** Version bump only for package @rent_avail/select
