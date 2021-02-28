@@ -41,7 +41,7 @@ function SelectInput(
         as={ChevronDown}
         sx={{
           position: "absolute",
-          top: "2.25rem",
+          top: "2.5rem",
           right: "2rem",
           transition: "200ms",
           transform: state.isOpen ? "rotate(180deg)" : "rotate(0)",
@@ -53,7 +53,7 @@ function SelectInput(
             position: "absolute",
             top: "3.75rem",
             left: "2rem",
-            right: "5rem",
+            maxWidth: "calc(100% - 7rem)",
             overflow: "hidden",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
