@@ -22,6 +22,7 @@ function SelectExample() {
     { name: "California", value: "CA" },
     { name: "Colorado", value: "CO" },
     { name: "Connecticut", value: "CT" },
+    { name: "A long name that may not fit on smaller screens", value: "ZZ" },
   ]
   const [state, setState] = useState("")
   return (
