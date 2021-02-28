@@ -7,7 +7,7 @@ import React, {
 import Popover from "@rent_avail/popover"
 import { Box } from "@rent_avail/layout"
 import { useResize, mergeRefs } from "@rent_avail/utils"
-import { SelectContext, types } from "./SelectProvider"
+import { SelectContext, types } from "./select-provider"
 
 function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)

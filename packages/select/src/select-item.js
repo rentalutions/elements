@@ -8,7 +8,7 @@ import React, {
 } from "react"
 import { Box } from "@rent_avail/layout"
 import { wrapEvent, mergeRefs } from "@rent_avail/utils"
-import { SelectContext, types } from "./SelectProvider"
+import { SelectContext, types } from "./select-provider"
 
 function SelectItem(
   {
