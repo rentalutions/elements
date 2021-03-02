@@ -40,13 +40,14 @@ function useSelectInput({
     valueBoxProps: {
       "aria-hidden": !state.value.length,
       hidden: !state.value.length,
-      children: state.value,
+      children: state.defaultLabel.length ? state.defaultLabel : state.value,
     },
   }
 }
 
 function SelectInput({ sx, ...props }, ref) {
   const { inputProps, valueBoxProps, state } = useSelectInput({ ...props, ref })
+  console.log({ valueBoxProps })
   return (
     <Box as="section" sx={{ position: "relative", ...sx }}>
       <Input
