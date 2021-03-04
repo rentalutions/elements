@@ -21,12 +21,13 @@ function selectReducer(state, action) {
     case types.UPDATE_WIDTH:
       return { ...state, width: action.payload }
     case types.UPDATE_INPUT:
-      return { ...state, typeAheadQuery: action.payload, value: "" }
+      return { ...state, typeAheadQuery: action.payload, value: "", defaultLabel: "" }
     case types.SET_VALUE:
       return {
         ...state,
         isOpen: false,
         value: action.payload,
+        defaultLabel: "",
         typeAheadQuery: "",
       }
     default:
@@ -40,12 +41,14 @@ export function SelectProvider({
   onSelect = noop,
   disabled = false,
   defaultValue = "",
+  defaultLabel = "",
   search = true,
 }) {
   const inputRef = useRef()
   const listRef = useRef()
   const [state, dispatch] = useReducer(selectReducer, {
     value: defaultValue,
+    defaultLabel,
     typeAheadQuery: "",
     width: 120,
     isOpen: false,
@@ -53,6 +56,7 @@ export function SelectProvider({
     disabled,
   })
   const contextValue = { state, dispatch, listRef, inputRef, onSelect, id }
+  console.log({ contextValue })
   return (
     <SelectContext.Provider value={contextValue}>
       {children}

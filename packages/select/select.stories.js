@@ -13,7 +13,7 @@ import { Select, SelectInput, SelectList, SelectItem } from "./src"
 
 export default { title: "Packages/Select" }
 
-function SelectExample() {
+function SelectExample({ defaultValue = "", defaultLabel = "" }) {
   const options = [
     { name: "Alabama", value: "AL" },
     { name: "Alaska", value: "AK" },
@@ -22,12 +22,18 @@ function SelectExample() {
     { name: "California", value: "CA" },
     { name: "Colorado", value: "CO" },
     { name: "Connecticut", value: "CT" },
+    { name: "A long name that may not fit on smaller screens", value: "ZZ" },
   ]
   const [state, setState] = useState("")
   return (
     <Fragment>
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Select id="select-id" onSelect={(value) => setState(value)}>
+      <Select
+        id="select-id"
+        onSelect={(value) => setState(value)} 
+        defaultValue={defaultValue}
+        defaultLabel={defaultLabel}
+      >
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ name, value }) => (
@@ -88,6 +94,17 @@ export function FullscreenPortalUsage() {
           </Container>
         </FullscreenDialog>
       </Dialog>
+    </Container>
+  )
+}
+
+export function DefaultLabelUsage() {
+  return (
+    <Container>
+      <SelectExample
+        defaultValue="ZZ"
+        defaultLabel="A long name that may not fit on smaller screens"
+      />
     </Container>
   )
 }
