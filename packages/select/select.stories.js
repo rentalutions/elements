@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react"
 import { Heading } from "@rent_avail/typography"
-import { Container } from "@rent_avail/layout"
+import { Container, Box } from "@rent_avail/layout"
 import {
   Dialog,
   DialogTarget,
@@ -27,19 +27,21 @@ const options = [
 function SelectExample() {
   const [state, setState] = useState("")
   return (
-    <Fragment>
+    <Container sx={{ mt: "4rem" }}>
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Select id="select-id" onSelect={(value) => setState(value)}>
-        <SelectInput label="Choose a state" />
-        <SelectList>
-          {options.map(({ name, value }) => (
-            <SelectOption key={value} value={value} label={`Your ${name}`}>
-              {name}
-            </SelectOption>
-          ))}
-        </SelectList>
-      </Select>
-    </Fragment>
+      <Box sx={{ mt: "4rem" }}>
+        <Select id="select-id" onSelect={(value) => setState(value)}>
+          <SelectInput label="Choose a state" />
+          <SelectList>
+            {options.map(({ name, value }) => (
+              <SelectOption key={value} value={value} label={`Your ${name}`}>
+                {name}
+              </SelectOption>
+            ))}
+          </SelectList>
+        </Select>
+      </Box>
+    </Container>
   )
 }
 

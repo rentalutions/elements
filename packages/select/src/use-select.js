@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useState,
+  useCallback,
 } from "react"
 import { noop, wrapEvent, mergeRefs, useResize } from "@rent_avail/utils"
 import clsx from "clsx"
@@ -116,16 +117,18 @@ export function useSelectList({ ref, as = "ul", style = {}, ...props }) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
   const inputBounds = useResize(inputRef)
   const listBounds = useResize(listRef)
-  useEffect(() => {
-    let cancelled = false
-    function handleDocumentClick({ target }) {
-      if (!state.open) return false
-      const listEl = listRef.current
-      const inputEl = inputRef.current
-      if (!listEl?.contains(target) && !inputEl?.contains(target)) {
+  const handleDocumentClick = useCallback(
+    ({ target }) => {
+      const list = listRef.current
+      const input = inputRef.current
+      if (state.open && !list.contains(target) && !input.contains(target)) {
         dispatch({ type: types.CLOSE_LIST })
       }
-    }
+    },
+    [state.open]
+  )
+  useEffect(() => {
+    let cancelled = false
     function scrollWindow(top, fromBottom) {
       if (!cancelled) window.scrollBy(0, Math.max(top - fromBottom + 120, 0))
     }
@@ -139,6 +142,7 @@ export function useSelectList({ ref, as = "ul", style = {}, ...props }) {
       document.removeEventListener("click", handleDocumentClick)
     }
   }, [state.open])
+  console.log(inputBounds, listBounds)
   return {
     open: state.open,
     id: state.id,
