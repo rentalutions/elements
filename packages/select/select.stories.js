@@ -29,19 +29,22 @@ function SelectExample() {
   return (
     <Container sx={{ mt: "4rem" }}>
       <Heading mb="2rem">{state || "Select a value"}</Heading>
-      <Box sx={{ mt: "4rem" }}>
-        <Select id="select-id" onSelect={(value) => setState(value)}>
-          <SelectInput label="Choose a state" />
-          <SelectList>
-            {options.map(({ name, value }) => (
-              <SelectOption key={value} value={value} label={`Your ${name}`}>
-                {name}
-              </SelectOption>
-            ))}
-          </SelectList>
-        </Select>
-      </Box>
-    </Container>
+      <Select
+        id="select-id"
+        onSelect={(value) => setState(value)}
+        defaultValue={defaultValue}
+        defaultLabel={defaultLabel}
+      >
+        <SelectInput label="Choose a state" />
+        <SelectList>
+          {options.map(({ name, value }) => (
+            <SelectItem key={value} value={value} label={`Your ${name}`}>
+              {name}
+            </SelectItem>
+          ))}
+        </SelectList>
+      </Select>
+    </Fragment>
   )
 }
 
