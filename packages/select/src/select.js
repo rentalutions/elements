@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from "react"
+import React, { forwardRef, useMemo } from "react"
 import { Box } from "@rent_avail/layout"
 import Input from "@rent_avail/input"
 import Popover from "@rent_avail/popover"
@@ -98,10 +98,10 @@ export const SelectOption = forwardRef(function SelectItem(
   { sx = {}, ...props },
   ref
 ) {
-  const { selected, ...htmlProps } = useSelectOption({ ...props, ref })
+  const { selected, ...optionHtmlProps } = useSelectOption({ ...props, ref })
   return (
     <Box
-      {...htmlProps}
+      {...optionHtmlProps}
       sx={{
         p: "2rem",
         outline: "none",

@@ -13,17 +13,18 @@ import { Select, SelectInput, SelectList, SelectOption } from "./src"
 
 export default { title: "Packages/Select" }
 
+const options = [
+  { name: "Alabama", value: "AL" },
+  { name: "Alaska", value: "AK" },
+  { name: "Arizona", value: "AZ" },
+  { name: "Arkansas", value: "AR" },
+  { name: "California", value: "CA" },
+  { name: "Colorado", value: "CO" },
+  { name: "Connecticut", value: "CT" },
+  { name: "A long name that may not fit on smaller screens", value: "ZZ" },
+]
+
 function SelectExample() {
-  const options = [
-    { name: "Alabama", value: "AL" },
-    { name: "Alaska", value: "AK" },
-    { name: "Arizona", value: "AZ" },
-    { name: "Arkansas", value: "AR" },
-    { name: "California", value: "CA" },
-    { name: "Colorado", value: "CO" },
-    { name: "Connecticut", value: "CT" },
-    { name: "A long name that may not fit on smaller screens", value: "ZZ" },
-  ]
   const [state, setState] = useState("")
   return (
     <Fragment>
@@ -89,6 +90,25 @@ export function FullscreenPortalUsage() {
           </Container>
         </FullscreenDialog>
       </Dialog>
+    </Container>
+  )
+}
+
+export function DefaultSelected() {
+  const [state, setState] = useState("")
+  return (
+    <Container sx={{ my: "12rem" }}>
+      <Heading mb="2rem">{state || "Select a value"}</Heading>
+      <Select id="select-id" onSelect={(value) => setState(value)}>
+        <SelectInput label="Choose a state" />
+        <SelectList>
+          {options.map(({ name, value }) => (
+            <SelectOption key={value} value={value} label={`Your ${name}`}>
+              {name}
+            </SelectOption>
+          ))}
+        </SelectList>
+      </Select>
     </Container>
   )
 }

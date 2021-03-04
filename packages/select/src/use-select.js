@@ -23,9 +23,9 @@ export const types = {
 function selectReducer(state, action) {
   switch (action.type) {
     case types.OPEN_LIST:
-      return { ...state, isOpen: true }
+      return { ...state, open: true }
     case types.CLOSE_LIST:
-      return { ...state, isOpen: false, typeAheadQuery: "" }
+      return { ...state, open: false, typeAheadQuery: "" }
     case types.UPDATE_WIDTH:
       return { ...state, width: action.payload }
     case types.UPDATE_INPUT:
@@ -33,7 +33,7 @@ function selectReducer(state, action) {
     case types.SET_VALUE:
       return {
         ...state,
-        isOpen: false,
+        open: false,
         valueBox: action.payload.label || action.payload.value,
         value: action.payload.value,
         typeAheadQuery: "",
@@ -56,7 +56,7 @@ export function useSelect({
     value: defaultValue,
     typeAheadQuery: "",
     width: 120,
-    isOpen: false,
+    open: false,
     search,
     disabled,
   })
@@ -119,7 +119,7 @@ export function useSelectList({ ref, as = "ul", style = {}, ...props }) {
   useEffect(() => {
     let cancelled = false
     function handleDocumentClick({ target }) {
-      if (!state.isOpen) return false
+      if (!state.open) return false
       const listEl = listRef.current
       const inputEl = inputRef.current
       if (!listEl?.contains(target) && !inputEl?.contains(target)) {
@@ -130,7 +130,7 @@ export function useSelectList({ ref, as = "ul", style = {}, ...props }) {
       if (!cancelled) window.scrollBy(0, Math.max(top - fromBottom + 120, 0))
     }
     document.addEventListener("click", handleDocumentClick)
-    if (state.isOpen) {
+    if (state.open) {
       const fromBottom = window.innerHeight - listBounds.height
       setTimeout(() => scrollWindow(inputBounds.top, fromBottom), 20)
     }
@@ -138,14 +138,15 @@ export function useSelectList({ ref, as = "ul", style = {}, ...props }) {
       cancelled = true
       document.removeEventListener("click", handleDocumentClick)
     }
-  }, [state.isOpen])
+  }, [state.open])
   return {
-    open: state.isOpen,
+    open: state.open,
     id: state.id,
     inputRef,
     listHtmlProps: {
       ...props,
       as,
+      "aria-expanded": state.open,
       ref: mergeRefs(ref, listRef),
       style: {
         ...style,
@@ -197,6 +198,7 @@ export function useSelectOption({
     ...props,
     as: "li",
     "aria-hidden": hidden,
+    "aria-selected": selected,
     "data-label": label,
     "data-value": optionValue,
     hidden,
