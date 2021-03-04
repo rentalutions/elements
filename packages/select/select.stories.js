@@ -9,7 +9,7 @@ import {
   FullscreenDialog,
 } from "@rent_avail/dialog"
 import { Button } from "@rent_avail/controls"
-import { Select, SelectInput, SelectList, SelectItem } from "./src"
+import { Select, SelectInput, SelectList, SelectOption } from "./src"
 
 export default { title: "Packages/Select" }
 
@@ -32,9 +32,9 @@ function SelectExample() {
         <SelectInput label="Choose a state" />
         <SelectList>
           {options.map(({ name, value }) => (
-            <SelectItem key={value} value={value} label={`Your ${name}`}>
+            <SelectOption key={value} value={value} label={`Your ${name}`}>
               {name}
-            </SelectItem>
+            </SelectOption>
           ))}
         </SelectList>
       </Select>
