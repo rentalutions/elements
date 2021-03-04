@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.10](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.9...@rent_avail/select@0.3.10) (2021-03-04)
+
+
+### Bug Fixes
+
+* **select:** remove console logs. ([e913651](https://github.com/rentalutions/elements/commit/e91365180dd615b5655bf30a2a57b97c72c12446))
+
+
+
+
+
 ## [0.3.9](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.8...@rent_avail/select@0.3.9) (2021-03-04)
 
 **Note:** Version bump only for package @rent_avail/select
