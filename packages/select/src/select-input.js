@@ -47,7 +47,6 @@ function useSelectInput({
 
 function SelectInput({ sx, ...props }, ref) {
   const { inputProps, valueBoxProps, state } = useSelectInput({ ...props, ref })
-  console.log({ valueBoxProps })
   return (
     <Box as="section" sx={{ position: "relative", ...sx }}>
       <Input

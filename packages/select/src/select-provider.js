@@ -21,7 +21,12 @@ function selectReducer(state, action) {
     case types.UPDATE_WIDTH:
       return { ...state, width: action.payload }
     case types.UPDATE_INPUT:
-      return { ...state, typeAheadQuery: action.payload, value: "", defaultLabel: "" }
+      return {
+        ...state,
+        typeAheadQuery: action.payload,
+        value: "",
+        defaultLabel: "",
+      }
     case types.SET_VALUE:
       return {
         ...state,
@@ -56,7 +61,6 @@ export function SelectProvider({
     disabled,
   })
   const contextValue = { state, dispatch, listRef, inputRef, onSelect, id }
-  console.log({ contextValue })
   return (
     <SelectContext.Provider value={contextValue}>
       {children}
