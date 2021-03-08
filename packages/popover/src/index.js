@@ -110,36 +110,3 @@ const Popover = forwardRef(function Popover(
 })
 
 export default Popover
-
-function usePopover({
-  target,
-  position = "auto",
-  style = {},
-  as = "aside",
-  ref,
-}) {
-  const popoverRef = useRef(null)
-  const targetBounds = useBounds(target)
-  const expandedPosition = useMemo(() => {
-    return {
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    }
-  }, [targetBounds, position, popoverRef])
-  return {
-    as,
-    ref: mergeRefs(ref, popoverRef),
-    style: {
-      position: "absolute",
-      ...style,
-      ...expandedPosition,
-    },
-  }
-}
-
-function Usage() {
-  const popoverProps = usePopover({ target, position, style })
-  return <Box {...popoverProps} />
-}
