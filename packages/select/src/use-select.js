@@ -58,8 +58,6 @@ export function useSelect({
     typeAheadQuery: "",
     width: 120,
     open: false,
-    search,
-    disabled,
   })
   return {
     id,
@@ -82,7 +80,9 @@ export function useSelectInput({
   ref,
   ...props
 }) {
-  const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
+  const { state, search, dispatch, listRef, inputRef } = useContext(
+    SelectContext
+  )
   function handleFocus() {
     dispatch({ type: types.OPEN_LIST })
   }
@@ -97,15 +97,20 @@ export function useSelectInput({
   }
   return {
     state,
-    inputProps: {
+    iconHtmlProps: {
+      role: "button",
+      tabIndex: "-1",
+    },
+    inputHtmlProps: {
       ...props,
       className: clsx(className, { filled: state.value.length }),
       onFocus: wrapEvent(onFocus, handleFocus),
       onChange: wrapEvent(onChange, handleChange),
       onKeyDown: wrapEvent(onKeyDown, handleKeyDown),
       ref: mergeRefs(ref, inputRef),
+      readOnly: search,
     },
-    valueBoxProps: {
+    valueBoxHtmlProps: {
       "aria-hidden": !state.value.length,
       hidden: !state.value.length,
       children: state.valueBox,

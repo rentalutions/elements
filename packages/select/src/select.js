@@ -23,27 +23,34 @@ export const SelectInput = forwardRef(function SelectInput(
   { sx, ...props },
   ref
 ) {
-  const { inputProps, valueBoxProps, state } = useSelectInput({ ...props, ref })
+  const {
+    inputHtmlProps,
+    valueBoxHtmlProps,
+    iconHtmlProps,
+    state,
+  } = useSelectInput({ ...props, ref })
   return (
     <Box as="section" sx={{ position: "relative", ...sx }}>
       <Input
-        {...inputProps}
+        {...inputHtmlProps}
         sx={{
           "& input": { color: "transparent", textShadow: "0 0 0 #2d2d2d" },
         }}
       />
       <Box
+        {...iconHtmlProps}
         as={ChevronDown}
         sx={{
           position: "absolute",
           top: "2.5rem",
           right: "2rem",
           transition: "200ms",
-          transform: state.isOpen ? "rotate(180deg)" : "rotate(0)",
+          transform: state.open ? "rotate(180deg)" : "rotate(0)",
+          pointerEvents: "none",
         }}
       />
       <Box
-        {...valueBoxProps}
+        {...valueBoxHtmlProps}
         sx={{
           position: "absolute",
           top: "3.75rem",
@@ -56,6 +63,7 @@ export const SelectInput = forwardRef(function SelectInput(
           px: "0.5rem",
           borderRadius: 4,
           color: "blue_700",
+          pointerEvents: "none",
         }}
       />
     </Box>
