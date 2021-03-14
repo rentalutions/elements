@@ -8,9 +8,6 @@
     "access": "public"
   },
   "command": {
-    "bootstrap": {
-      "hoist": true
-    },
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish"
