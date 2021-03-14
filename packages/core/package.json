@@ -1,0 +1,32 @@
+
+{
+  "license": "MIT",
+  "name": "@rent_avail/core",
+  "version": "0.0.1",
+  "description": "Avail design system core package",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "esmodule": "dist/index.modern.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo 'run tests from the root directory'",
+    "build": "microbundle --jsx React.createElement",
+    "watch": "microbundle watch --no-compress --jsx React.createElement",
+    "prepublishOnly": "yarn build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "Patrick Krawczykowski <patrick@dreadful.design>"
+  ],
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-is": "^17.0.0",
+    "styled-components": "^5.1.1"
+  }
+}
