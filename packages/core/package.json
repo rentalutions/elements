@@ -1,13 +1,11 @@
-
 {
   "license": "MIT",
   "name": "@rent_avail/core",
   "version": "0.0.1",
   "description": "Avail design system core package",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -28,5 +26,9 @@
     "react-dom": "^17.0.0",
     "react-is": "^17.0.0",
     "styled-components": "^5.1.1"
+  },
+  "dependencies": {
+    "@styled-system/css": "^5.1.5",
+    "styled-system": "^5.1.5"
   }
 }
