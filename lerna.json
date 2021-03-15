@@ -8,6 +8,9 @@
     "access": "public"
   },
   "command": {
+    "changed": {
+      "includeMergedTags": true
+    },
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish"
