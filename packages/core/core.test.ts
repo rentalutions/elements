@@ -3,3 +3,5 @@ describe("Core", () => {
     expect(true)
   })
 })
+
+export {}
