@@ -16,6 +16,8 @@
       "message": "chore(release): publish"
     },
     "version": {
+      "noPush": true,
+      "noPrivate": true,
       "conventialCommits": true,
       "includeMergedTags": true
     }

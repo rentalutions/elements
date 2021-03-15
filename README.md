@@ -66,11 +66,23 @@ Current release process, it's kind of involved, but github actions does most of 
 # First run a build and make sure everything compiles, and run tests to make sure all are passing
 yarn build && yarn test
 
-# Create a new version of the packages worked on, git tag, and create a CHANGELOG for those package.
-yarn update
+# Create new versions of the packages worked on, git tag, and create a CHANGELOG for those package.
+yarn lerna version
 
 # If everything looks kosher, push to Github.
 git push origin release --follow-tags
+```
+
+### Beta releases
+
+Sometimes you'll want to release a beta version of a package before upgrading to production level. This process is slightly more manual but made pretty easy with lerna and yarn workspaces.
+
+```bash
+# Update the packages to a prerelease
+yarn workspace [package-name] version [--preminor | --premajor | --prepatch]
+
+# Publish the package on the npm registry
+yarn workspace [package-name] publish --tag [alpha | beta]
 ```
 
 ## Adding Packages

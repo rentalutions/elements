@@ -18,7 +18,7 @@
     "test": "jest",
     "watch": "lerna run watch --parallel",
     "watch:ts": "yarn lerna run watch --scope @rent_avail/core --stream",
-    "update-versions": "lerna version --no-push --no-private --include-merged-tags"
+    "update-versions": "lerna version"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
