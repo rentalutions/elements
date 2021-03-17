@@ -1,4 +1,5 @@
 import { CSSObject } from "@styled-system/css"
+import { PropsWithChildren } from "react"
 import styled from "styled-components"
 import {
   space,
@@ -76,4 +77,24 @@ export const Col = styled.section<ColProps>(
 
 Col.defaultProps = {
   span: "1 / -1",
+}
+
+export function Card({
+  sx = {},
+  ...props
+}: PropsWithChildren<{ sx?: CSSObject }>) {
+  return (
+    <Box
+      {...props}
+      sx={{
+        p: "2rem",
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: "ui_500",
+        borderStyle: "solid",
+        boxShadow: 2,
+        ...sx,
+      }}
+    />
+  )
 }

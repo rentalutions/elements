@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Col } from "./src/layout"
+import { Box, Container, Grid, Col, Card } from "./src/layout"
 
 export default { title: "Components/Core" }
 
@@ -16,4 +16,8 @@ export function GridUsage() {
       </Grid>
     </Container>
   )
+}
+
+export function CardUsage() {
+  return <Card>Hello Card</Card>
 }
