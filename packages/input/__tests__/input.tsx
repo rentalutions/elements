@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, userEvent } from "testing-utils"
+import { render, screen, userEvent } from "#testing"
 import Input from "../src"
 
 describe("<Input />", () => {

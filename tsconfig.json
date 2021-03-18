@@ -10,7 +10,6 @@
     "allowJs": true,
     "jsx": "preserve",
     "noImplicitAny": true,
-    "baseUrl": "./",
     "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
@@ -20,9 +19,7 @@
     "downlevelIteration": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "testing-utils":["./testing-utils.js"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["node_modules"]
 }

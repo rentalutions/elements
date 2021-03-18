@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent, screen } from "testing-utils"
+import { render, fireEvent, screen } from "#testing"
 import Tag from "../src"
 
 describe("<Tag/>", () => {

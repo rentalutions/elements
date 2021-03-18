@@ -1,19 +1,13 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { ThemeProvider } from "styled-components"
-import { Base, theme } from "@rent_avail/base"
+import { ElementsProvider } from "@rent_avail/core"
 import "@testing-library/jest-dom/extend-expect"
 import "regenerator-runtime"
 
 // Create custom wrapper to add theme and base to tests.
 function Wrapper({ children }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Base />
-      {children}
-    </ThemeProvider>
-  )
+  return <ElementsProvider>{children}</ElementsProvider>
 }
 
 const customRender = (ui, options) =>

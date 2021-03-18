@@ -37,10 +37,7 @@ const colors = {
 }
 
 export const baseTheme = {
-  breakpoints: (theme: any) => {
-    console.log(theme)
-    return ["40rem", "60rem", "80rem", "100rem", "120rem"]
-  },
+  breakpoints: ["480px", "720px", "960px", "1200px", "1440px"],
   colors,
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
