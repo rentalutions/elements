@@ -1,58 +1,66 @@
-import { CSSObject } from "@styled-system/css"
-import { PropsWithChildren } from "react"
 import styled from "styled-components"
+import css, { SystemStyleObject } from "@styled-system/css"
 import {
   space,
   layout,
   grid,
   system,
-  GridProps,
-  LayoutProps,
-  SpaceProps,
+  GridGapProps,
+  DisplayProps,
 } from "styled-system"
-import { sx } from "./elements-provider"
+
+export type SXObject = SystemStyleObject & { text?: string | string[] }
+
+export const sx = ({ sx = {} }: { sx?: SXObject }) => {
+  const { text, ...styleProps } = sx
+  if (text) {
+    const textArray = Array.isArray(text) ? text : [text]
+    return css({
+      variant: textArray.map((txt: string) => `text.${txt}`),
+      ...styleProps,
+    })
+  }
+  return css(styleProps)
+}
 
 export const Box = styled.div(sx)
 
-interface ContainerProps extends LayoutProps, SpaceProps {
-  sx?: CSSObject
-}
-
-export const Container = styled.section<ContainerProps>(space, layout, sx)
+export const Container = styled.section(space, layout, sx)
 
 Container.defaultProps = {
   maxWidth: "80rem",
   mx: "auto",
 }
 
-interface GridContainerProps extends GridProps {
-  sx?: CSSObject
-  columns?: number | string | (number | string)[]
+interface GridProps extends GridGapProps {
+  columns?: number
+  sx?: SXObject
 }
 
-export const Grid = styled.section<GridContainerProps>(
-  { display: "grid" },
-  grid,
+export const Grid = styled.section<GridProps>(
   system({
     columns: {
       property: "gridTemplateColumns",
       transform: (value) => `repeat(${value}, 1fr)`,
     },
   }),
+  css({
+    display: "grid",
+    gap: "2rem",
+  }),
   sx
 )
 
 Grid.defaultProps = {
-  gridGap: "2rem",
   columns: 12,
 }
 
-interface ColProps extends GridProps {
-  sx?: CSSObject
-  span?: string | number | [string, string] | (string | number)[]
+interface ColProps {
+  span?: string | number | (string | number)[] | [string, string]
+  sx?: SXObject
 }
 
-export const Col = styled.section<ColProps>(
+export const Col = styled.div<ColProps>(
   system({
     span: {
       property: "gridColumn",
@@ -79,22 +87,24 @@ Col.defaultProps = {
   span: "1 / -1",
 }
 
-export function Card({
-  sx = {},
-  ...props
-}: PropsWithChildren<{ sx?: CSSObject }>) {
-  return (
-    <Box
-      {...props}
-      sx={{
-        p: "2rem",
-        borderRadius: 4,
-        borderWidth: 1,
-        borderColor: "ui_500",
-        borderStyle: "solid",
-        boxShadow: 2,
-        ...sx,
-      }}
-    />
-  )
+interface CardProps {
+  sx?: SXObject
 }
+
+export const Card = styled.div<CardProps>(
+  css({
+    p: "2rem",
+    borderRadius: 4,
+    border: "1px solid transparent",
+    borderColor: "ui_500",
+    boxShadow: 2,
+    bg: "ui_100",
+  }),
+  sx
+)
+
+interface FlexProps {
+  sx?: SXObject
+}
+
+export const Flex = styled.div<FlexProps>({ display: "flex" }, sx)
