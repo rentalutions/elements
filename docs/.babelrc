@@ -1,0 +1,13 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "import-glob-array",
+    "styled-components",
+    ["module-resolver", {
+      "alias": {
+        "components":"./components",
+        "utils": "./utils.js"
+      }
+    }]
+  ]
+}

@@ -2913,20 +2913,20 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@next/env@10.0.8":
-  version "10.0.8"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.8.tgz#3306c9de20ef187438affbafce0ef966c9e43c3b"
-  integrity sha512-vWdxAHD6gJn52tN5bxj1VoRgu5lNtRPc/HyYf7V014k2GZ9eKhqoFQGSSMNGHB7WgdUxLVw75+o9Ek9ClOOAjw==
+"@next/env@10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.9.tgz#455fd364c8a5ee012b2cd4406d5294164990706d"
+  integrity sha512-MERX3DY5u0Ed29eAsXeFBCZlFAGBtmjf7+Nht0hfgB25MPKKkIbC/0MRPcX/PQcAgLHsAHO6ay1u9xKzR4Vzjw==
 
-"@next/polyfill-module@10.0.8":
-  version "10.0.8"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.0.8.tgz#1d033f390389591f227499e286911e3db14c484b"
-  integrity sha512-JCUGB4/SKQ4LXniv7LKGrpW+W2DGH/CLkrgXgSo/Ze+EJdMDLxC/VFhiuW+TgAaAWLE4gryoswlZBNyHtkPGQA==
+"@next/polyfill-module@10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.0.9.tgz#0c21442dd73ec31ae30ac560bc5c5fdce068a98f"
+  integrity sha512-kPOP6ku/e8zdrK8hwxOrjUrPLcdDEj12huLHVz+DZU+20q6VlhMOtR8aKHW1460L4LoLE/DAa7YyIuxtArhDRg==
 
-"@next/react-dev-overlay@10.0.8":
-  version "10.0.8"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.0.8.tgz#a8e841647b74f9720cc60d3e3bd3da225ad12533"
-  integrity sha512-ygVsvkzYTYIuME+dUUSjCxbNjrJ+Up9Y+CrWEmSSk6HuxajUvrB9vN6RT+PeAzEOQ5er1sWxmVHVdPknQPVWyQ==
+"@next/react-dev-overlay@10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.0.9.tgz#5162d66c05b2a0ca0d155f7e6663e8134d9d4ac9"
+  integrity sha512-JsSh2Y004MEuPYqBD9eTl4PVZIjSzSy2GcD7MrW/gQcExYNpeMIJAbh8/OcyO1t+OnQeIHF5s/xTMsDHBGNcew==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -2940,10 +2940,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@10.0.8":
-  version "10.0.8"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.0.8.tgz#6129d633e2c0a9b5760de002e998932f08c8baae"
-  integrity sha512-ZMO77Xs2ioGV/nZB4GRDHgsNT2jhOp+cZIh6c7wf0xw9o/1KoTWN8nxWzwU/laAtkoSS+E6YdhuR4Mw3Ar3CSg==
+"@next/react-refresh-utils@10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.0.9.tgz#cdf9e41f8854c113397853daf78469b0c8140f14"
+  integrity sha512-LSoKnM+fI9MHHew+mBg1w2e4/gjwPQsI+mDTzmfwdBwje+j9U2Int6XOZftMqBPXSlL04vjC9SRBkp0+3h8cNA==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -3979,10 +3979,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@testing-library/user-event@^12.8.3":
-  version "12.8.3"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-12.8.3.tgz#1aa3ed4b9f79340a1e1836bc7f57c501e838704a"
-  integrity sha512-IR0iWbFkgd56Bu5ZI/ej8yQwrkCv8Qydx6RzwbKz9faXazR/+5tvYKsZQgyXJiwgpcva127YO6JcWy7YlCfofQ==
+"@testing-library/user-event@^13.0.3":
+  version "13.0.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.0.3.tgz#14f1d2a117f13529ea31ce6f7414b003c76f17e1"
+  integrity sha512-q9CAkTO+fV6dskQRttxsFVAzqMIhOVN0H0dSEssL5oz1H7QY7cMfQ/KPOt57lgXXPVRJ1pzGlKQotZ27E+PgvA==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -4175,10 +4175,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.14.tgz#f7fd5f3cc8521301119f63910f0fb965c7d761ae"
   integrity sha512-UHnOPWVWV1z+VV8k6L1HhG7UbGBgIdghqF3l9Ny9ApPghbjICXkUJSd/b9gOgQfjM1r+37cipdw/HJ3F6ICEnQ==
 
-"@types/node@^14.14.34":
-  version "14.14.34"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.34.tgz#07935194fc049069a1c56c0c274265abeddf88da"
-  integrity sha512-dBPaxocOK6UVyvhbnpFIj2W+S+1cBTkHQbFQfeeJhoKFbzYcVUGHvddeWPSucKATb3F0+pgDq0i6ghEaZjsugA==
+"@types/node@^14.14.35":
+  version "14.14.35"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
+  integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -4307,10 +4307,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
 
-"@types/styled-components@^5.1.8":
-  version "5.1.8"
-  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.8.tgz#41338fe060c543567ae94ab420036865a9b969d0"
-  integrity sha512-or4lQ12MhR4wTZ34rxRwI+Fw9vPqhd9WeEqFfF6yssDe1uS7L8p9YYMbmtDgHRbBKLR4aJIK8KHA0h9wSYifkg==
+"@types/styled-components@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.9.tgz#00d3d84b501420521c4db727e3c195459f87a6cf"
+  integrity sha512-kbEG6YlwK8rucITpKEr6pA4Ho9KSQHUUOzZ9lY3va1mtcjvS3D0wDciFyHEiNHKLL/npZCKDQJqm0x44sPO9oA==
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
@@ -4323,10 +4323,10 @@
   dependencies:
     csstype "^3.0.2"
 
-"@types/styled-system__css@^5.0.14":
-  version "5.0.14"
-  resolved "https://registry.yarnpkg.com/@types/styled-system__css/-/styled-system__css-5.0.14.tgz#97559d823216d475f716fb5b8dd1766f2d3eeafa"
-  integrity sha512-dvhSQ5upz6TqiQmWLNF0sqdoL5nTomza58vtTSklpE9lDS+5w/ew8PQ+HPSRaXMGrmPGUiL7F0vwryVdxHWfpA==
+"@types/styled-system__css@^5.0.15":
+  version "5.0.15"
+  resolved "https://registry.yarnpkg.com/@types/styled-system__css/-/styled-system__css-5.0.15.tgz#f6f896e33393f8b3763f275afaa84261dae77a54"
+  integrity sha512-bbFlY2ATFEaWEMOllEqMktSzq4yGPAiZSrjGUQ124LSStm9QPhKErOuTxXfJi8VuymaQ+g1uC8AbC2o3BpgQyA==
   dependencies:
     csstype "^3.0.2"
 
@@ -8584,16 +8584,16 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@3.10.3, framer-motion@^3.10.3:
-  version "3.10.3"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.10.3.tgz#a5478a449e0511bf397cf44f84ea771d79c531f9"
-  integrity sha512-tHh5MzqSplBZ+j3Z+lZ78e4olckA8E5zJrexSpjUcaxtIFLgpUD227R+qksZw+cP3nvoT22NrlkXG3OUEJOWWw==
+framer-motion@4.0.0, framer-motion@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-4.0.0.tgz#3eab6d79e9a662ed8dfcfd05e680ba3a6b841672"
+  integrity sha512-j7lPnXEZdpkAelLRU8FhaZC3UbqnZwSTT/W9rSRwb3cKX4eWrekakK86cVkUE79v1HRE9IPzdPVNP9/e8CPRag==
   dependencies:
     framesync "5.2.0"
     hey-listen "^1.0.8"
     popmotion "9.3.1"
     style-value-types "4.1.1"
-    tslib "^1.10.0"
+    tslib "^2.1.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
@@ -11894,22 +11894,22 @@ next-mdx-enhanced@^5.0.0:
     prebuild-webpack-plugin "1.1.1"
     stringify-object "^3.3.0"
 
-next-seo@^4.20.0:
-  version "4.20.0"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.20.0.tgz#54b629abf93c7c051919802db011882f67004249"
-  integrity sha512-N3NIISxOV+6XatPdZWRt8L/PkdxX4qpl6s2uQVMYTkteo8hgpHDgs6XZkDzuHaPi10neSZoqQiytsxohTCyEvw==
+next-seo@^4.22.0:
+  version "4.22.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.22.0.tgz#5487080bf6f84031bc4686f9e37ecaad78f8cc5d"
+  integrity sha512-W4WBkSGIHRPHqIjfUy72Xv8Zx4q38LJLIcxkXlJecLSruQhtPGx8z2H3ct00D9uLbk9Bj2HbYVS5fewqx8ki2g==
 
-next@^10.0.8:
-  version "10.0.8"
-  resolved "https://registry.yarnpkg.com/next/-/next-10.0.8.tgz#a2232c11ffad974d67f3d572b8db2acaa5ddedd7"
-  integrity sha512-iDY65ce4Prn/9EnQpJGFMb5QJvtGWzZPk6KQqT7vDNu4D+jkivkk9NaAs/k1hR73pXdJHmhHer1s0YxLSghAKQ==
+next@^10.0.9:
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/next/-/next-10.0.9.tgz#ad5d8e0368fee8363cdfd64d22dfbf71f683ae66"
+  integrity sha512-HyoVjYydcM6LaFAUOHSxVQCcKOsIimVO/IKXCuWUu1rr6DDgXbWNg/8ckH084qD46MOYlLzjViiZ3KCmNQL4Cw==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.1"
-    "@next/env" "10.0.8"
-    "@next/polyfill-module" "10.0.8"
-    "@next/react-dev-overlay" "10.0.8"
-    "@next/react-refresh-utils" "10.0.8"
+    "@next/env" "10.0.9"
+    "@next/polyfill-module" "10.0.9"
+    "@next/react-dev-overlay" "10.0.9"
+    "@next/react-refresh-utils" "10.0.9"
     "@opentelemetry/api" "0.14.0"
     ast-types "0.13.2"
     browserslist "4.16.1"
@@ -16007,6 +16007,11 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
+
+tslib@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
+  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
 
 tty-browserify@0.0.0:
   version "0.0.0"
