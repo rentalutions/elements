@@ -107,7 +107,6 @@ function List({ children, position, ...rest }, ref) {
   const { targetRef, menuRef, popoverRef, closeMenu, isOpen } = useContext(
     MenuContext
   )
-  useImperativeHandle(ref, () => ({ ...menuRef }))
   function handleBlur({ target }) {
     if (!isOpen) return null
     const menuEl = menuRef.current
@@ -127,7 +126,7 @@ function List({ children, position, ...rest }, ref) {
       position={position}
       style={{ zIndex: "9999" }}
     >
-      <StyledList as="ul" {...rest} ref={menuRef} role="menu">
+      <StyledList as="ul" {...rest} ref={mergeRefs(ref, menuRef)} role="menu">
         {children}
       </StyledList>
     </Popover>

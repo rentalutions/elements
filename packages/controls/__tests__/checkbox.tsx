@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent } from "testing-utils"
+import { render, fireEvent } from "#testing"
 import { Checkbox } from "../src"
 
 describe("<Checkbox />", () => {

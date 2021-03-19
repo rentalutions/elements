@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, fireEvent, waitFor } from "testing-utils"
+import { render, screen, fireEvent, waitFor } from "#testing"
 import { Select, SelectInput, SelectList, SelectItem } from "../src"
 
 describe("<Select />", () => {

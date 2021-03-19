@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "testing-utils"
+import { render } from "#testing"
 import { Menu, MenuTarget, MenuList, MenuItem } from "../src"
 
 describe("<Menu />", () => {

@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent } from "testing-utils"
+import { render, fireEvent } from "#testing"
 import { Switch } from "../src"
 
 describe("<Toggle />", () => {

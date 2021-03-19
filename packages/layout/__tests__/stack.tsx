@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen } from "testing-utils"
+import { render, screen } from "#testing"
 import { Stack, Box } from "../src"
 
 describe("<Stack/>", () => {
