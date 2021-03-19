@@ -1,13 +1,6 @@
 import styled from "styled-components"
 import css, { SystemStyleObject } from "@styled-system/css"
-import {
-  space,
-  layout,
-  grid,
-  system,
-  GridGapProps,
-  DisplayProps,
-} from "styled-system"
+import { space, layout, system, GridGapProps } from "styled-system"
 
 export type SXObject = SystemStyleObject & { text?: string | string[] }
 
@@ -108,3 +101,24 @@ interface FlexProps {
 }
 
 export const Flex = styled.div<FlexProps>({ display: "flex" }, sx)
+
+interface StackProps {
+  sx?: SXObject
+  direction?: string | string[]
+  gap?: string | string[]
+}
+
+export const Stack = styled.div<StackProps>(
+  css({ display: "flex" }),
+  system({
+    direction: {
+      property: "flexDirection",
+    },
+    gap: {
+      property: "gap",
+    },
+  }),
+  sx
+)
+
+Stack.defaultProps = { direction: "column", gap: "2rem" }

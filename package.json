@@ -4,21 +4,21 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
+    "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build --ignore @rent_avail/docs",
     "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
-    "bootstrap": "yarn && lerna bootstrap",
     "clean": "lerna clean --yes && rm -rf node_modules",
-    "create-package": "node ./scripts/create-package.js",
+    "create:package": "node ./scripts/create-package.js",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "start:ts": "concurrently -n lerna,storybook \"yarn watch:ts\" \"yarn storybook:ts\"",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
     "storybook": "start-storybook --quiet -p 8080 -c .storybook",
     "storybook:ts": "start-storybook --port 8080 --config-dir .storybook-ts --quiet --no-manager-cache",
     "test": "jest",
+    "update:packages": "lerna version",
     "watch": "lerna run watch --parallel",
-    "watch:ts": "yarn lerna run watch --scope @rent_avail/core --stream",
-    "update-versions": "lerna version"
+    "watch:ts": "lerna run watch:ts --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
