@@ -8,18 +8,12 @@
     "access": "public"
   },
   "command": {
-    "changed": {
-      "includeMergedTags": true
-    },
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish"
     },
     "version": {
-      "noPush": true,
-      "noPrivate": true,
-      "conventialCommits": true,
-      "includeMergedTags": true
+      "conventialCommits": true
     }
   },
   "ignoreChanges": [
