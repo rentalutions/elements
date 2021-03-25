@@ -1,7 +1,6 @@
 import React from "react"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import Link from "next/link"
-import { textAlign } from "styled-system"
 
 export function BlogHeader() {
   return (
