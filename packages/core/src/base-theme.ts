@@ -71,26 +71,32 @@ export const baseTheme = {
   ],
   text: {
     body: {
+      fontFamily: "body",
       lineHeight: "body",
       fontSize: "body",
     },
     small: {
+      fontFamily: "body",
       lineHeight: "small",
       fontSize: "small",
     },
     subtitle: {
+      fontFamily: "body",
       lineHeight: "heading",
       fontSize: "subtitle",
     },
     title: {
+      fontFamily: "body",
       lineHeight: "heading",
       fontSize: "title",
     },
     headline: {
+      fontFamily: "body",
       lineHeight: "heading",
       fontSize: "headline",
     },
     hero: {
+      fontFamily: "body",
       lineHeight: "heading",
       fontSize: "hero",
     },

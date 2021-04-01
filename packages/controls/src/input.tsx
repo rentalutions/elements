@@ -1,10 +1,10 @@
 import { InputHTMLAttributes } from "react"
 import clsx from "clsx"
-import { Box, SXObject } from "@dread/layout"
+import { Box, SXObject } from "@rent_avail/core"
 import { useInput } from "./use-controls"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+  label: string
   error?: string | boolean
   help?: string
   sx?: SXObject
@@ -31,11 +31,11 @@ export function Input({ sx = {}, className, ...props }: InputProps) {
         "&:is(:focus-within, .raised) .label": {
           transform: "scale(0.75) translateY(-50%)",
         },
-        "&:is(:focus-within, .raised) .input": {
-          borderColor: "text",
-        },
-        "&:is(.error) .input": {
-          borderColor: "error",
+        "&.raised .input": { borderColor: "ui_700" },
+        "&:focus-within .label": { color: "blue_500" },
+        "&:focus-within .input": { borderColor: "blue_500" },
+        "&.error .input": {
+          borderColor: "red_500",
         },
         ...sx,
       }}
@@ -50,7 +50,7 @@ export function Input({ sx = {}, className, ...props }: InputProps) {
           transition: "120ms",
           transformOrigin: "left top",
           text: "body",
-          color: "textSecondary",
+          color: "ui_700",
         }}
       >
         {label}
@@ -60,18 +60,18 @@ export function Input({ sx = {}, className, ...props }: InputProps) {
         as="input"
         className="input"
         sx={{
+          display: "block",
           border: "2px solid transparent",
-          borderColor: "textSecondary",
-          borderRadius: 2,
-          color: "text",
-          fontFamily: "body",
+          borderColor: "ui_500",
+          borderRadius: 4,
+          color: "ui_900",
           px: "2rem",
           pt: "3rem",
           pb: "1rem",
           text: "body",
           outline: "none",
-          width: "calc(100% - 4rem - 4px)",
           bg: "transparent",
+          width: "100%",
         }}
       />
       <Box
@@ -101,7 +101,7 @@ export function Input({ sx = {}, className, ...props }: InputProps) {
           as="span"
           className="help-text"
           sx={{
-            color: "textSecondary",
+            color: "ui_700",
             ml: "auto",
             maxWidth: "100%",
             textAlign: "right",

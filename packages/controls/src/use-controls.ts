@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from "react"
-import { wrapEvent } from "@rent_avail/utils"
+import { wrapEvent, noop } from "@rent_avail/utils"
 
 export function useInput({
   type = "text",
   label,
-  onChange,
+  onChange = noop,
   error = null,
   value,
   help,

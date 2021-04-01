@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import css, { SystemStyleObject } from "@styled-system/css"
-import { space, layout, system, GridGapProps } from "styled-system"
+import { system } from "styled-system"
 
 export type SXObject = SystemStyleObject & { text?: string | string[] }
 
@@ -18,28 +18,29 @@ export const sx = ({ sx = {} }: { sx?: SXObject }) => {
 
 export const Box = styled.div(sx)
 
-export const Container = styled.section(space, layout, sx)
-
-Container.defaultProps = {
-  maxWidth: "80rem",
-  mx: "auto",
+interface ContainerProps {
+  sx?: SXObject
 }
 
-interface GridProps extends GridGapProps {
+export const Container = styled.section<ContainerProps>(
+  css({ maxWidth: "80rem", mx: "auto", px: "2rem" }),
+  sx
+)
+
+interface GridContainerProps {
   columns?: number
   sx?: SXObject
 }
 
-export const Grid = styled.section<GridProps>(
+export const Grid = styled.section<GridContainerProps>(
+  css({ display: "grid", gap: 2 }),
   system({
     columns: {
       property: "gridTemplateColumns",
-      transform: (value) => `repeat(${value}, 1fr)`,
+      transform: (value) => {
+        return `repeat(${value}, 1fr)`
+      },
     },
-  }),
-  css({
-    display: "grid",
-    gap: "2rem",
   }),
   sx
 )
@@ -49,11 +50,11 @@ Grid.defaultProps = {
 }
 
 interface ColProps {
-  span?: string | number | (string | number)[] | [string, string]
+  span?: string | number | (string | number)[]
   sx?: SXObject
 }
 
-export const Col = styled.div<ColProps>(
+export const Col = styled.section<ColProps>(
   system({
     span: {
       property: "gridColumn",
