@@ -4,7 +4,7 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
-    "bootstrap": "yarn && lerna bootstrap",
+    "bootstrap": "yarn && lerna bootstrap --force-local",
     "build": "lerna run build --ignore @rent_avail/docs",
     "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",

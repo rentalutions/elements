@@ -3,6 +3,11 @@ title: Error Handling
 layout: elements
 ---
 
+import { useEffect, useState } from "react"
+import { Box } from "@rent_avail/layout"
+import { useToast } from "@rent_avail/toast"
+import { useIntersection } from "@rent_avail/utils"
+
 # Error Handling
 
 There are three types of errors that users will encounter while online. `Field Errors`, `Form Errors`, and `Application Errors`. Ideally the application is designed to minimize errors--the best error state is one never experienced--by building flexible user controls that use affordances to enhance user understanding.
@@ -177,3 +182,21 @@ Application errors are the most general error types that a user can experience a
 The goal with application errors is to notify the user and if possible let them continue on with their task. This means working offline for as long as possible and making sure that components are built in a way that means an error in one part of the page doesn't effect the rest of it.
 
 These should look and feel a lot like form errors but they don't have to be connected to a user event.
+
+export function ApplicationError() {
+  const toast = useToast()
+  const [ref, { isIntersecting }] = useIntersection()
+  const [hasIntersected, setIntersected] = useState(false)
+  useEffect(() => {
+    if (!hasIntersected) {
+      setIntersected(isIntersecting)
+      if (isIntersecting)
+        toast.error(
+          "You've lost internet connection. Just kidding, you've just scrolled to the end of the page."
+        )
+    }
+  }, [isIntersecting])
+  return <Box ref={ref} sx={{ minHeight: "4rem" }} />
+}
+
+<ApplicationError />

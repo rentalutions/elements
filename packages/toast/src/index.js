@@ -148,66 +148,67 @@ function ToastProvider({ position = "bottom-left", ...props }) {
         {...props}
         value={{ toasts, paused, createToast }}
       />
-      {createPortal(
-        <Box
-          className="toast-wrapper"
-          sx={{
-            position: "fixed",
-            p: "2rem",
-            display: "flex",
-            flexDirection: "column-reverse",
-            gap: "1rem",
-            alignItems: "flex-start",
-            zIndex: 999,
-            ...positionStyles,
-          }}
-        >
-          <AnimatePresence>
-            {toasts.map(({ sx = {}, children, type, ...props }) => (
-              <Box
-                {...props}
-                layout
-                key={props.id}
-                as={motion.section}
-                variants={{
-                  shown: { opacity: 1, y: "0rem" },
-                  hidden: { opacity: 0, y: "1rem" },
-                }}
-                initial="hidden"
-                animate="shown"
-                exit="hidden"
-                sx={{
-                  display: "inline-flex",
-                  flexGrow: 0,
-                  p: "2rem",
-                  borderRadius: "0.25rem",
-                  border: "1px solid transparent",
-                  maxWidth: "40rem",
-                  pointerEvents: "all",
-                  ...typeStyles[type],
-                  ...sx,
-                }}
-              >
-                {(type === "loading") & (typeof children !== "function") ? (
-                  <Box
-                    as={motion.span}
-                    sx={{
-                      mr: "1rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyConent: "center",
-                    }}
-                  >
-                    <LoadingIcon />
-                  </Box>
-                ) : null}
-                {returnValue(children, props)}
-              </Box>
-            ))}
-          </AnimatePresence>
-        </Box>,
-        portalTarget
-      )}
+      {portalTarget &&
+        createPortal(
+          <Box
+            className="toast-wrapper"
+            sx={{
+              position: "fixed",
+              p: "2rem",
+              display: "flex",
+              flexDirection: "column-reverse",
+              gap: "1rem",
+              alignItems: "flex-start",
+              zIndex: 999,
+              ...positionStyles,
+            }}
+          >
+            <AnimatePresence>
+              {toasts.map(({ sx = {}, children, type, ...props }) => (
+                <Box
+                  {...props}
+                  layout
+                  key={props.id}
+                  as={motion.section}
+                  variants={{
+                    shown: { opacity: 1, y: "0rem" },
+                    hidden: { opacity: 0, y: "1rem" },
+                  }}
+                  initial="hidden"
+                  animate="shown"
+                  exit="hidden"
+                  sx={{
+                    display: "inline-flex",
+                    flexGrow: 0,
+                    p: "2rem",
+                    borderRadius: "0.25rem",
+                    border: "1px solid transparent",
+                    maxWidth: "40rem",
+                    pointerEvents: "all",
+                    ...typeStyles[type],
+                    ...sx,
+                  }}
+                >
+                  {(type === "loading") & (typeof children !== "function") ? (
+                    <Box
+                      as={motion.span}
+                      sx={{
+                        mr: "1rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyConent: "center",
+                      }}
+                    >
+                      <LoadingIcon />
+                    </Box>
+                  ) : null}
+                  {returnValue(children, props)}
+                </Box>
+              ))}
+            </AnimatePresence>
+          </Box>,
+          portalTarget
+        )}
     </Fragment>
   )
 }

@@ -22,8 +22,6 @@
     "**/package.json",
     "**/*.md",
     "**/*.mdx",
-    "**/__tests__/**",
-    "**/perf/**",
     "**/*.stories.js",
     "**/dist/**"
   ]

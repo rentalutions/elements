@@ -1,31 +1,17 @@
 import React from "react"
-import { ThemeProvider } from "styled-components"
-import { Base as Reset, theme } from "@rent_avail/base"
+import { DefaultSeo } from "next-seo"
+import { ElementsProvider } from "@rent_avail/core"
 import { MDXProvider } from "@mdx-js/react"
 import components from "components/mdx-components"
-import { DefaultSeo } from "next-seo"
+import defaultSeo from "../seo.config"
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <ElementsProvider>
       <MDXProvider components={components}>
-        <DefaultSeo
-          title="Avail Design"
-          openGraph={{
-            type: "website",
-            locale: "en_US",
-            url: "https://design.avail.co/",
-            site_name: "Avail Design",
-          }}
-          twitter={{
-            handle: "@helloavail",
-            site: "@helloavail",
-            cardType: "summary_large_image",
-          }}
-        />
-        <Reset />
+        <DefaultSeo {...defaultSeo} />
         <Component {...pageProps} />
       </MDXProvider>
-    </ThemeProvider>
+    </ElementsProvider>
   )
 }

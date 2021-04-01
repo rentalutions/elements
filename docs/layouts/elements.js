@@ -1,5 +1,6 @@
 import React from "react"
 import { Container } from "@rent_avail/layout"
+import { ToastProvider } from "@rent_avail/toast"
 import { formatPath } from "utils"
 import { PageWrapper, Main, Sidebar } from "components/layout"
 import PackageInfo from "components/package-info"
@@ -14,14 +15,16 @@ export default function ElementsLayout({ children: content, frontMatter }) {
   })
   const packageInfo = frontMatter.source
   return (
-    <PageWrapper>
-      <Sidebar sections={{ Elements: packages, Patterns: patternFiles }} />
-      <Main>
-        <Container my="4rem">
-          {packageInfo && <PackageInfo info={frontMatter} />}
-          {content}
-        </Container>
-      </Main>
-    </PageWrapper>
+    <ToastProvider>
+      <PageWrapper>
+        <Sidebar sections={{ Elements: packages, Patterns: patternFiles }} />
+        <Main>
+          <Container my="4rem">
+            {packageInfo && <PackageInfo info={frontMatter} />}
+            {content}
+          </Container>
+        </Main>
+      </PageWrapper>
+    </ToastProvider>
   )
 }
