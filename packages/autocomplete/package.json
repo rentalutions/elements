@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
+    "@rent_avail/core": "^0.0.1",
     "@rent_avail/input": "^0.4.5",
     "@rent_avail/layout": "^0.3.12",
     "@rent_avail/popover": "^0.3.6",
