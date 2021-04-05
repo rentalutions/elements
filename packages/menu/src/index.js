@@ -103,7 +103,6 @@ const StyledList = styled(Card)`
 
 function List({ children, ...rest }, ref) {
   const { targetRef, menuRef, closeMenu, isOpen } = useContext(MenuContext)
-  useImperativeHandle(ref, () => ({ ...menuRef }))
   function handleBlur({ target }) {
     if (!isOpen) return null
     const menuEl = menuRef.current
