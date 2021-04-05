@@ -2,6 +2,7 @@ import React, {
   memo,
   useEffect,
   useReducer,
+  useMemo,
   forwardRef,
   useRef,
   createContext,
@@ -10,7 +11,6 @@ import React, {
   cloneElement,
 } from "react"
 import styled from "styled-components"
-import Popover from "@rent_avail/popover"
 import { Card } from "@rent_avail/layout"
 import { mergeRefs, wrapEvent } from "@rent_avail/utils"
 
@@ -42,7 +42,6 @@ function Menu({ children, id }) {
   const [{ isOpen }, dispatch] = useReducer(reducer, initialState)
   const targetRef = useRef()
   const menuRef = useRef()
-  const popoverRef = useRef()
   const openMenu = () => dispatch({ type: types.OPEN_MENU })
   const closeMenu = () => dispatch({ type: types.CLOSE_MENU })
   return (
@@ -53,7 +52,6 @@ function Menu({ children, id }) {
         closeMenu,
         targetRef,
         menuRef,
-        popoverRef,
         id,
       }}
     >
@@ -103,10 +101,9 @@ const StyledList = styled(Card)`
   min-width: 20rem;
 `
 
-function List({ children, position, ...rest }, ref) {
-  const { targetRef, menuRef, popoverRef, closeMenu, isOpen } = useContext(
-    MenuContext
-  )
+function List({ children, ...rest }, ref) {
+  const { targetRef, menuRef, closeMenu, isOpen } = useContext(MenuContext)
+  useImperativeHandle(ref, () => ({ ...menuRef }))
   function handleBlur({ target }) {
     if (!isOpen) return null
     const menuEl = menuRef.current
@@ -115,21 +112,35 @@ function List({ children, position, ...rest }, ref) {
       closeMenu()
     }
   }
+
+  const [menuBottom, menuRight] = useMemo(
+    () => [
+      targetRef.current?.getBoundingClientRect()?.bottom || 0,
+      targetRef.current?.getBoundingClientRect()?.right || 0,
+    ],
+    [targetRef.current]
+  )
+
   useEffect(() => {
     document.addEventListener("click", handleBlur)
     return () => document.removeEventListener("click", handleBlur)
   }, [isOpen])
+
   return isOpen ? (
-    <Popover
-      targetRef={targetRef}
-      ref={popoverRef}
-      position={position}
-      style={{ zIndex: "9999" }}
+    <StyledList
+      as="ul"
+      {...rest}
+      ref={mergeRefs(ref, menuRef)}
+      role="menu"
+      style={{
+        position: "absolute",
+        margin: 0,
+        top: menuBottom,
+        right: `calc(100% - ${menuRight}px)`,
+      }}
     >
-      <StyledList as="ul" {...rest} ref={mergeRefs(ref, menuRef)} role="menu">
-        {children}
-      </StyledList>
-    </Popover>
+      {children}
+    </StyledList>
   ) : null
 }
 
