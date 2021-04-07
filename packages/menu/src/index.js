@@ -156,7 +156,7 @@ const ItemWrapper = styled.li`
   }
 `
 
-function Item({ closeOnClick, ...props }, ref) {
+function Item({ onClick, closeOnClick, ...props }, ref) {
   const itemRef = useRef()
 
   const { closeMenu } = useContext(MenuContext)
@@ -189,7 +189,10 @@ function Item({ closeOnClick, ...props }, ref) {
       role="menuitem"
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      onClick={() => closeOnClick && closeMenu()}
+      onClick={(e) => {
+        if (closeOnClick) closeMenu()
+        if (typeof onClick === "function") onClick(e)
+      }}
     />
   )
 }
