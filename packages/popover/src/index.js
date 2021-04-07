@@ -68,6 +68,7 @@ function deepCompare(value) {
 const Popover = forwardRef(function Popover(
   {
     targetRef,
+    parentRef,
     position = { x: "default", y: "default" },
     style,
     sx = {},
@@ -77,9 +78,10 @@ const Popover = forwardRef(function Popover(
   ref
 ) {
   const popoverRef = useRef(null)
-  const parent = useMemo(() => closestScrollable(targetRef.current), [
-    targetRef.current,
-  ])
+  const parent = useMemo(
+    () => parentRef?.current || closestScrollable(targetRef.current),
+    [targetRef.current, parentRef?.current]
+  )
   const portalTarget = usePortal(undefined, parent)
   const popoverBounds = useResize(popoverRef, parent)
   const targetBounds = useResize(targetRef, parent)

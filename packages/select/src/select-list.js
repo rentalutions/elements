@@ -40,6 +40,7 @@ function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
     <Popover
       id={state.id}
       targetRef={inputRef}
+      parentRef={inputRef}
       position={{ x: "left", y: "bottom" }}
       style={{ zIndex: "9999" }}
     >

@@ -121,7 +121,11 @@ export default function Autocomplete({
         </Box>
       )}
       {called && !selection && (
-        <Popover targetRef={targetRef} position={{ x: "left", y: "bottom" }}>
+        <Popover
+          targetRef={targetRef}
+          parentRef={targetRef}
+          position={{ x: "left", y: "bottom" }}
+        >
           <Box
             ref={listRef}
             as="ul"

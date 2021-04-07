@@ -99,6 +99,7 @@ function Content({ children, position, ...props }, ref) {
     <Popover
       style={{ zIndex: "9999" }}
       targetRef={targetRef}
+      parentRef={tooltipRef}
       ref={popoverRef}
       position={position}
     >
