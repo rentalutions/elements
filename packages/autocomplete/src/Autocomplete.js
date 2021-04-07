@@ -32,6 +32,7 @@ export default function Autocomplete({
   onClear = noop,
   onManualSelection = noop,
   defaultValue = null,
+  parentRef,
   ...props
 }) {
   const targetRef = useRef()
@@ -123,7 +124,7 @@ export default function Autocomplete({
       {called && !selection && (
         <Popover
           targetRef={targetRef}
-          parentRef={targetRef}
+          parentRef={parentRef}
           position={{ x: "left", y: "bottom" }}
         >
           <Box
