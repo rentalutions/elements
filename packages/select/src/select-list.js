@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   useContext,
-  useImperativeHandle,
   useEffect,
 } from "react"
 import Popover from "@rent_avail/popover"
@@ -9,7 +8,7 @@ import { Box } from "@rent_avail/layout"
 import { useResize, mergeRefs } from "@rent_avail/utils"
 import { SelectContext, types } from "./select-provider"
 
-function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
+function SelectList({ as = "ul", sx = {}, style = {}, parentRef, ...props }, ref) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
   const inputBounds = useResize(inputRef)
   const listBounds = useResize(listRef)
@@ -40,6 +39,7 @@ function SelectList({ as = "ul", sx = {}, style = {}, ...props }, ref) {
     <Popover
       id={state.id}
       targetRef={inputRef}
+      parentRef={parentRef}
       position={{ x: "left", y: "bottom" }}
       style={{ zIndex: "9999" }}
     >

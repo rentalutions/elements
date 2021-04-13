@@ -38,7 +38,7 @@ function reducer(state, action) {
   }
 }
 
-function Menu({ children, id }) {
+function Menu({ parentRef, children, id }) {
   const [{ isOpen }, dispatch] = useReducer(reducer, initialState)
   const targetRef = useRef()
   const menuRef = useRef()
@@ -54,6 +54,7 @@ function Menu({ children, id }) {
         targetRef,
         menuRef,
         popoverRef,
+        parentRef,
         id,
       }}
     >
@@ -104,9 +105,14 @@ const StyledList = styled(Card)`
 `
 
 function List({ children, position, ...rest }, ref) {
-  const { targetRef, menuRef, popoverRef, closeMenu, isOpen } = useContext(
-    MenuContext
-  )
+  const {
+    targetRef,
+    menuRef,
+    popoverRef,
+    parentRef,
+    closeMenu,
+    isOpen,
+  } = useContext(MenuContext)
   function handleBlur({ target }) {
     if (!isOpen) return null
     const menuEl = menuRef.current
@@ -122,6 +128,7 @@ function List({ children, position, ...rest }, ref) {
   return isOpen ? (
     <Popover
       targetRef={targetRef}
+      parentRef={parentRef}
       ref={popoverRef}
       position={position}
       style={{ zIndex: "9999" }}
@@ -149,8 +156,11 @@ const ItemWrapper = styled.li`
   }
 `
 
-function Item({ ...props }, ref) {
+function Item({ onClick, closeOnClick, ...props }, ref) {
   const itemRef = useRef()
+
+  const { closeMenu } = useContext(MenuContext)
+
   function handleKeyDown({ key }) {
     const nextItem = itemRef?.current?.nextSibling
     const prevItem = itemRef?.current?.previousSibling
@@ -161,6 +171,10 @@ function Item({ ...props }, ref) {
       }
       case "ArrowUp": {
         if (prevItem) prevItem.focus()
+        break
+      }
+      case "Escape": {
+        closeMenu()
         break
       }
       default:
@@ -175,6 +189,10 @@ function Item({ ...props }, ref) {
       role="menuitem"
       tabIndex={0}
       onKeyDown={handleKeyDown}
+      onClick={(e) => {
+        if (closeOnClick) closeMenu()
+        if (typeof onClick === "function") onClick(e)
+      }}
     />
   )
 }
