@@ -3,7 +3,7 @@ import css from "@styled-system/css"
 import { variant } from "styled-system"
 import { Box, SXObject, sx } from "@rent_avail/core"
 import { AnimatePresence, motion } from "framer-motion"
-import { PropsWithoutRef, ReactNode } from "react"
+import { ButtonHTMLAttributes, ElementType, forwardRef, memo } from "react"
 
 interface ButtonWrapperProps {
   sx?: SXObject
@@ -27,7 +27,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>(
     transition: "120ms",
     whiteSpace: "nowrap",
     "&:focus": {
-      outline: (theme) => `2px solid ${theme.colors.blue_500}`,
+      outline: (theme) => `2px solid ${theme.colors.blue_300}`,
     },
   }),
   variant({
@@ -45,9 +45,15 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>(
         borderColor: "blue_500",
         bg: "blue_500",
         color: "ui_100",
+        "&:hover": {
+          bg: "blue_100",
+          borderColor: "blue_100",
+          color: "blue_500",
+        },
       },
       subtle: {
         color: "blue_500",
+        "&:hover": { bg: "blue_100" },
       },
       danger: {
         borderColor: "red_500",
@@ -58,42 +64,63 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>(
   sx
 )
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   sx?: SXObject
   variant?: "default" | "primary" | "subtle" | "danger"
   icon?: JSX.Element
   loading?: boolean
-  children: ReactNode
+  as?: ElementType | keyof JSX.IntrinsicElements
 }
 
-export function Button({
-  sx = {},
-  variant = "default",
-  icon,
-  loading = false,
-  children,
-  ...props
-}: ButtonProps) {
-  return (
-    <ButtonWrapper {...props} variant={variant}>
-      <AnimatePresence>
-        {loading && (
-          <ButtonLoader
-            initial={{ opacity: loading ? 1 : 0 }}
-            enter={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-        )}
-      </AnimatePresence>
-      <Box
-        as={motion.span}
-        initial={{ opacity: loading ? 0 : 1 }}
-        animate={{ opacity: loading ? 0 : 1 }}
-      >
-        {children}
-      </Box>
-    </ButtonWrapper>
-  )
+export const Button = memo(
+  forwardRef(function Button(
+    {
+      sx = {},
+      variant = "default",
+      icon,
+      loading = false,
+      children,
+      ...props
+    }: ButtonProps,
+    ref
+  ) {
+    return (
+      <ButtonWrapper {...props} ref={ref} variant={variant}>
+        <AnimatePresence>
+          {loading && (
+            <ButtonLoader
+              initial={{ opacity: loading ? 1 : 0 }}
+              enter={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+          )}
+        </AnimatePresence>
+        <Box
+          as={motion.span}
+          initial={{ opacity: loading ? 0 : 1 }}
+          animate={{ opacity: loading ? 0 : 1 }}
+        >
+          {children}
+        </Box>
+      </ButtonWrapper>
+    )
+  })
+)
+
+const transition = {
+  duration: 2,
+  repeat: Infinity,
+  repeatType: "reverse",
+}
+
+const container = {
+  initial: { rotate: 0 },
+  animate: { rotate: 360, transition },
+}
+
+const spinner = {
+  initial: { pathLength: 1, pathOffset: 0 },
+  animate: { pathLength: 0, pathOffset: 0.95 },
 }
 
 function ButtonLoader(props: any) {
@@ -101,23 +128,32 @@ function ButtonLoader(props: any) {
     <Box
       {...props}
       as={motion.svg}
+      style={{ x: "-50%" }}
       sx={{
         fill: "none",
+        strokeWidth: 4,
+        strokeLinecap: "round",
+        stroke: "currentcolor",
         position: "absolute",
         left: "50%",
-        transform: "translateX(-50%)",
         width: "2rem",
         height: "2rem",
       }}
+      variants={container}
+      initial="initial"
+      animate="animate"
     >
-      <motion.circle
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        pathLength="1"
+      <motion.path
+        strokeDasharray="0 1"
+        d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+        variants={spinner}
+        initial="initial"
+        animate="animate"
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
       />
     </Box>
   )
