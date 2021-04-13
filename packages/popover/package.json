@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/popover",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Popover component",
   "source": "src/index.js",
   "main": "dist/index.js",
