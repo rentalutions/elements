@@ -1,0 +1,34 @@
+{
+  "license": "MIT",
+  "name": "@rent_avail/icons",
+  "version": "0.0.1",
+  "description": "Icon library for Avail Design System",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "esmodule": "dist/index.modern.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo 'run tests from the root directory'",
+    "build": "microbundle --jsx React.createElement",
+    "compile": "rm -rf src/icons && node build-icon-components.js",
+    "watch": "microbundle watch --no-compress --jsx React.createElement",
+    "prepublishOnly": "yarn build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "Patrick Krawczykowski <patrick@dreadful.design>"
+  ],
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
+  "devDependencies": {
+    "feather-icons": "^4.28.0",
+    "prettier-eslint": "^12.0.0",
+    "uppercamelcase": "^3.0.0"
+  }
+}
