@@ -25,7 +25,7 @@ const packageJson = `
     "test": "echo 'run tests from the root directory'",
     "build": "microbundle --jsx React.createElement",
     "watch": "microbundle watch --no-compress --jsx React.createElement",
-    "prepublishOnly": "yarn build"
+    "prepare": "yarn build"
   },
   "publishConfig": {
     "access": "public"
