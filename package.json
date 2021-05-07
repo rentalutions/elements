@@ -11,7 +11,7 @@
     "check": "lerna changed --include-merged-tags",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "create-package": "node ./scripts/create-package.js",
-    "release": "lerna version --no-push --no-private --include-merged-tags",
+    "graduate": "lerna version --no-push --no-private --include-merged-tags",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "start:ts": "concurrently -n lerna,storybook \"yarn watch:ts\" \"yarn storybook:ts\"",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
