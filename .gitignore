@@ -16,7 +16,3 @@ node_modules
 dist
 .now
 storybook
-
-# Package Files
-
-packages/icons/src/icons
