@@ -141,7 +141,7 @@ function MyComponent(props) {
 const MyComponent = (props) => <div />
 ```
 
-### Prefer named exports only when exporting more than one member.
+### Prefer named exports.
 
 ```js
 // Good
@@ -153,4 +153,14 @@ export default function Section() {}
 export function SectionItem() {}
 ```
 
-###
+## Naming Conventions
+
+Name files in lowercase with hyphen seperation for spaces.
+
+```zsh
+# Good
+touch components/file-upload.js
+
+# Bad
+touch components/FileUpload.js
+```
