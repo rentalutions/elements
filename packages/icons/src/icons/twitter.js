@@ -8,10 +8,12 @@ export const Twitter = forwardRef(function Twitter(props, ref) {
     </svg>
   )
 })
+
 Twitter.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Twitter.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Twitter.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Twitter.displayName = "Twitter"

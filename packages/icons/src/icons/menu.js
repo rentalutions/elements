@@ -10,10 +10,12 @@ export const Menu = forwardRef(function Menu(props, ref) {
     </svg>
   )
 })
+
 Menu.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Menu.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Menu.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Menu.displayName = "Menu"

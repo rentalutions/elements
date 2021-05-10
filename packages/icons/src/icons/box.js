@@ -10,10 +10,12 @@ export const Box = forwardRef(function Box(props, ref) {
     </svg>
   )
 })
+
 Box.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Box.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Box.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Box.displayName = "Box"

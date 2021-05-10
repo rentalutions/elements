@@ -9,10 +9,12 @@ export const Bold = forwardRef(function Bold(props, ref) {
     </svg>
   )
 })
+
 Bold.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Bold.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Bold.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Bold.displayName = "Bold"

@@ -15,10 +15,12 @@ export const Cloud = forwardRef(function Cloud(props, ref) {
     </svg>
   )
 })
+
 Cloud.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Cloud.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Cloud.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Cloud.displayName = "Cloud"

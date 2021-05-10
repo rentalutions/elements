@@ -17,10 +17,12 @@ export const HelpCircle = forwardRef(function HelpCircle(props, ref) {
     </svg>
   )
 })
+
 HelpCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 HelpCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ HelpCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 HelpCircle.displayName = "HelpCircle"

@@ -10,10 +10,12 @@ export const PhoneOutgoing = forwardRef(function PhoneOutgoing(props, ref) {
     </svg>
   )
 })
+
 PhoneOutgoing.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PhoneOutgoing.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ PhoneOutgoing.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PhoneOutgoing.displayName = "PhoneOutgoing"

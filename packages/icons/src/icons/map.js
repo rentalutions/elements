@@ -10,10 +10,12 @@ export const Map = forwardRef(function Map(props, ref) {
     </svg>
   )
 })
+
 Map.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Map.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Map.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Map.displayName = "Map"

@@ -10,10 +10,12 @@ export const Rss = forwardRef(function Rss(props, ref) {
     </svg>
   )
 })
+
 Rss.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Rss.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Rss.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Rss.displayName = "Rss"

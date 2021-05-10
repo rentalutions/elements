@@ -8,10 +8,12 @@ export const Folder = forwardRef(function Folder(props, ref) {
     </svg>
   )
 })
+
 Folder.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Folder.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Folder.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Folder.displayName = "Folder"

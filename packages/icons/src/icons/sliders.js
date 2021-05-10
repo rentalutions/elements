@@ -16,10 +16,12 @@ export const Sliders = forwardRef(function Sliders(props, ref) {
     </svg>
   )
 })
+
 Sliders.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Sliders.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ Sliders.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Sliders.displayName = "Sliders"

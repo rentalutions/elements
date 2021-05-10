@@ -10,10 +10,12 @@ export const XSquare = forwardRef(function XSquare(props, ref) {
     </svg>
   )
 })
+
 XSquare.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 XSquare.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ XSquare.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 XSquare.displayName = "XSquare"

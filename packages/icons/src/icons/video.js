@@ -9,10 +9,12 @@ export const Video = forwardRef(function Video(props, ref) {
     </svg>
   )
 })
+
 Video.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Video.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Video.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Video.displayName = "Video"

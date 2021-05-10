@@ -10,10 +10,12 @@ export const PhoneMissed = forwardRef(function PhoneMissed(props, ref) {
     </svg>
   )
 })
+
 PhoneMissed.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PhoneMissed.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ PhoneMissed.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PhoneMissed.displayName = "PhoneMissed"

@@ -8,10 +8,12 @@ export const Activity = forwardRef(function Activity(props, ref) {
     </svg>
   )
 })
+
 Activity.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Activity.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Activity.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Activity.displayName = "Activity"

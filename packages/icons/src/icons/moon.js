@@ -8,10 +8,12 @@ export const Moon = forwardRef(function Moon(props, ref) {
     </svg>
   )
 })
+
 Moon.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Moon.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Moon.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Moon.displayName = "Moon"

@@ -8,10 +8,12 @@ export const Bookmark = forwardRef(function Bookmark(props, ref) {
     </svg>
   )
 })
+
 Bookmark.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Bookmark.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Bookmark.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Bookmark.displayName = "Bookmark"

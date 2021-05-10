@@ -16,10 +16,12 @@ export const CloudLightning = forwardRef(function CloudLightning(props, ref) {
     </svg>
   )
 })
+
 CloudLightning.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CloudLightning.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ CloudLightning.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CloudLightning.displayName = "CloudLightning"

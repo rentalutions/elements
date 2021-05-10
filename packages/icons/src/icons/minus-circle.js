@@ -9,10 +9,12 @@ export const MinusCircle = forwardRef(function MinusCircle(props, ref) {
     </svg>
   )
 })
+
 MinusCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MinusCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ MinusCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MinusCircle.displayName = "MinusCircle"

@@ -8,10 +8,12 @@ export const MessageCircle = forwardRef(function MessageCircle(props, ref) {
     </svg>
   )
 })
+
 MessageCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MessageCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ MessageCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MessageCircle.displayName = "MessageCircle"

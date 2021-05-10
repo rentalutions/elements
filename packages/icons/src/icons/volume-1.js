@@ -9,10 +9,12 @@ export const Volume1 = forwardRef(function Volume1(props, ref) {
     </svg>
   )
 })
+
 Volume1.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Volume1.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Volume1.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Volume1.displayName = "Volume1"

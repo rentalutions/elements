@@ -10,10 +10,12 @@ export const PauseCircle = forwardRef(function PauseCircle(props, ref) {
     </svg>
   )
 })
+
 PauseCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PauseCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ PauseCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PauseCircle.displayName = "PauseCircle"

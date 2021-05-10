@@ -10,10 +10,12 @@ export const BarChart2 = forwardRef(function BarChart2(props, ref) {
     </svg>
   )
 })
+
 BarChart2.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 BarChart2.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ BarChart2.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 BarChart2.displayName = "BarChart2"

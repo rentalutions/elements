@@ -9,10 +9,12 @@ export const Airplay = forwardRef(function Airplay(props, ref) {
     </svg>
   )
 })
+
 Airplay.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Airplay.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Airplay.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Airplay.displayName = "Airplay"

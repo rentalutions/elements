@@ -16,10 +16,12 @@ export const CloudOff = forwardRef(function CloudOff(props, ref) {
     </svg>
   )
 })
+
 CloudOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CloudOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ CloudOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CloudOff.displayName = "CloudOff"

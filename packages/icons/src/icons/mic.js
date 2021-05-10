@@ -11,10 +11,12 @@ export const Mic = forwardRef(function Mic(props, ref) {
     </svg>
   )
 })
+
 Mic.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Mic.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Mic.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Mic.displayName = "Mic"

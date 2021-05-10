@@ -10,10 +10,12 @@ export const ArrowDownCircle = forwardRef(function ArrowDownCircle(props, ref) {
     </svg>
   )
 })
+
 ArrowDownCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ArrowDownCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ ArrowDownCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ArrowDownCircle.displayName = "ArrowDownCircle"

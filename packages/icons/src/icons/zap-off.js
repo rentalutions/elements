@@ -11,10 +11,12 @@ export const ZapOff = forwardRef(function ZapOff(props, ref) {
     </svg>
   )
 })
+
 ZapOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ZapOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ ZapOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ZapOff.displayName = "ZapOff"

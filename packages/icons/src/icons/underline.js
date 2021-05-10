@@ -9,10 +9,12 @@ export const Underline = forwardRef(function Underline(props, ref) {
     </svg>
   )
 })
+
 Underline.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Underline.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Underline.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Underline.displayName = "Underline"

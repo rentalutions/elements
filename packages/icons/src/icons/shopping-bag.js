@@ -10,10 +10,12 @@ export const ShoppingBag = forwardRef(function ShoppingBag(props, ref) {
     </svg>
   )
 })
+
 ShoppingBag.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ShoppingBag.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ ShoppingBag.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ShoppingBag.displayName = "ShoppingBag"

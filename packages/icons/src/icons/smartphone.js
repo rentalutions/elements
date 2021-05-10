@@ -9,10 +9,12 @@ export const Smartphone = forwardRef(function Smartphone(props, ref) {
     </svg>
   )
 })
+
 Smartphone.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Smartphone.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Smartphone.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Smartphone.displayName = "Smartphone"

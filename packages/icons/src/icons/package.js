@@ -11,10 +11,12 @@ export const Package = forwardRef(function Package(props, ref) {
     </svg>
   )
 })
+
 Package.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Package.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Package.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Package.displayName = "Package"

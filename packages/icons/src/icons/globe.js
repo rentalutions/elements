@@ -10,10 +10,12 @@ export const Globe = forwardRef(function Globe(props, ref) {
     </svg>
   )
 })
+
 Globe.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Globe.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Globe.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Globe.displayName = "Globe"

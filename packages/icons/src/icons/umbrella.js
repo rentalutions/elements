@@ -8,10 +8,12 @@ export const Umbrella = forwardRef(function Umbrella(props, ref) {
     </svg>
   )
 })
+
 Umbrella.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Umbrella.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Umbrella.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Umbrella.displayName = "Umbrella"

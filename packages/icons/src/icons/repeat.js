@@ -11,10 +11,12 @@ export const Repeat = forwardRef(function Repeat(props, ref) {
     </svg>
   )
 })
+
 Repeat.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Repeat.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Repeat.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Repeat.displayName = "Repeat"

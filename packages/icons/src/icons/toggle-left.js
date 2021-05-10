@@ -9,10 +9,12 @@ export const ToggleLeft = forwardRef(function ToggleLeft(props, ref) {
     </svg>
   )
 })
+
 ToggleLeft.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ToggleLeft.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ ToggleLeft.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ToggleLeft.displayName = "ToggleLeft"

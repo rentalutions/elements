@@ -9,10 +9,12 @@ export const SkipBack = forwardRef(function SkipBack(props, ref) {
     </svg>
   )
 })
+
 SkipBack.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 SkipBack.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ SkipBack.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 SkipBack.displayName = "SkipBack"

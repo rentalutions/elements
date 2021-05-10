@@ -9,10 +9,12 @@ export const Terminal = forwardRef(function Terminal(props, ref) {
     </svg>
   )
 })
+
 Terminal.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Terminal.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Terminal.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Terminal.displayName = "Terminal"

@@ -9,10 +9,12 @@ export const BellOff = forwardRef(function BellOff(props, ref) {
     </svg>
   )
 })
+
 BellOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 BellOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ BellOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 BellOff.displayName = "BellOff"

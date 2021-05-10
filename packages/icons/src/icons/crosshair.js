@@ -12,10 +12,12 @@ export const Crosshair = forwardRef(function Crosshair(props, ref) {
     </svg>
   )
 })
+
 Crosshair.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Crosshair.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Crosshair.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Crosshair.displayName = "Crosshair"

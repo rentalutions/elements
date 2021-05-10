@@ -9,10 +9,12 @@ export const Slash = forwardRef(function Slash(props, ref) {
     </svg>
   )
 })
+
 Slash.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Slash.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Slash.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Slash.displayName = "Slash"

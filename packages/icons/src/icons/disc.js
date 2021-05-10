@@ -9,10 +9,12 @@ export const Disc = forwardRef(function Disc(props, ref) {
     </svg>
   )
 })
+
 Disc.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Disc.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Disc.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Disc.displayName = "Disc"

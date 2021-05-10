@@ -9,10 +9,12 @@ export const CheckSquare = forwardRef(function CheckSquare(props, ref) {
     </svg>
   )
 })
+
 CheckSquare.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CheckSquare.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ CheckSquare.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CheckSquare.displayName = "CheckSquare"

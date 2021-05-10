@@ -15,10 +15,12 @@ export const Tag = forwardRef(function Tag(props, ref) {
     </svg>
   )
 })
+
 Tag.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Tag.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Tag.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Tag.displayName = "Tag"

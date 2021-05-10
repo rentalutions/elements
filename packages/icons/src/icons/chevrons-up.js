@@ -9,10 +9,12 @@ export const ChevronsUp = forwardRef(function ChevronsUp(props, ref) {
     </svg>
   )
 })
+
 ChevronsUp.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ChevronsUp.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ ChevronsUp.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ChevronsUp.displayName = "ChevronsUp"

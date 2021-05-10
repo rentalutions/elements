@@ -9,10 +9,12 @@ export const RotateCw = forwardRef(function RotateCw(props, ref) {
     </svg>
   )
 })
+
 RotateCw.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 RotateCw.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ RotateCw.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 RotateCw.displayName = "RotateCw"

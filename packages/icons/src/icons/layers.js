@@ -10,10 +10,12 @@ export const Layers = forwardRef(function Layers(props, ref) {
     </svg>
   )
 })
+
 Layers.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Layers.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Layers.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Layers.displayName = "Layers"

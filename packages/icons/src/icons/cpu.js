@@ -17,10 +17,12 @@ export const Cpu = forwardRef(function Cpu(props, ref) {
     </svg>
   )
 })
+
 Cpu.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Cpu.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ Cpu.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Cpu.displayName = "Cpu"

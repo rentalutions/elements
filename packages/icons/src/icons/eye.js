@@ -9,10 +9,12 @@ export const Eye = forwardRef(function Eye(props, ref) {
     </svg>
   )
 })
+
 Eye.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Eye.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Eye.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Eye.displayName = "Eye"

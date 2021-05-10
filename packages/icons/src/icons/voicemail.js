@@ -10,10 +10,12 @@ export const Voicemail = forwardRef(function Voicemail(props, ref) {
     </svg>
   )
 })
+
 Voicemail.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Voicemail.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Voicemail.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Voicemail.displayName = "Voicemail"

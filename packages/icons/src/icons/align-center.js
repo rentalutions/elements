@@ -11,10 +11,12 @@ export const AlignCenter = forwardRef(function AlignCenter(props, ref) {
     </svg>
   )
 })
+
 AlignCenter.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlignCenter.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ AlignCenter.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlignCenter.displayName = "AlignCenter"

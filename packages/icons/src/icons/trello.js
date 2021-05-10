@@ -10,10 +10,12 @@ export const Trello = forwardRef(function Trello(props, ref) {
     </svg>
   )
 })
+
 Trello.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Trello.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Trello.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Trello.displayName = "Trello"

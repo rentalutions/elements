@@ -9,10 +9,12 @@ export const Compass = forwardRef(function Compass(props, ref) {
     </svg>
   )
 })
+
 Compass.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Compass.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Compass.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Compass.displayName = "Compass"

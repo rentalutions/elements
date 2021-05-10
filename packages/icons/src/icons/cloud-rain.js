@@ -18,10 +18,12 @@ export const CloudRain = forwardRef(function CloudRain(props, ref) {
     </svg>
   )
 })
+
 CloudRain.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CloudRain.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -29,4 +31,5 @@ CloudRain.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CloudRain.displayName = "CloudRain"

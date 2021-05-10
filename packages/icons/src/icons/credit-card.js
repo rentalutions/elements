@@ -9,10 +9,12 @@ export const CreditCard = forwardRef(function CreditCard(props, ref) {
     </svg>
   )
 })
+
 CreditCard.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CreditCard.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ CreditCard.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CreditCard.displayName = "CreditCard"

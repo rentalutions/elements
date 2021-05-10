@@ -17,10 +17,12 @@ export const AlertTriangle = forwardRef(function AlertTriangle(props, ref) {
     </svg>
   )
 })
+
 AlertTriangle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlertTriangle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ AlertTriangle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlertTriangle.displayName = "AlertTriangle"

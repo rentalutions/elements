@@ -9,10 +9,12 @@ export const PieChart = forwardRef(function PieChart(props, ref) {
     </svg>
   )
 })
+
 PieChart.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PieChart.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ PieChart.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PieChart.displayName = "PieChart"

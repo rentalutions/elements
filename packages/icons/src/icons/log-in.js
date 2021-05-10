@@ -10,10 +10,12 @@ export const LogIn = forwardRef(function LogIn(props, ref) {
     </svg>
   )
 })
+
 LogIn.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 LogIn.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ LogIn.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 LogIn.displayName = "LogIn"

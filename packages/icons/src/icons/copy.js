@@ -9,10 +9,12 @@ export const Copy = forwardRef(function Copy(props, ref) {
     </svg>
   )
 })
+
 Copy.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Copy.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Copy.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Copy.displayName = "Copy"

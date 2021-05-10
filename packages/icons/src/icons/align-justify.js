@@ -11,10 +11,12 @@ export const AlignJustify = forwardRef(function AlignJustify(props, ref) {
     </svg>
   )
 })
+
 AlignJustify.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlignJustify.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ AlignJustify.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlignJustify.displayName = "AlignJustify"

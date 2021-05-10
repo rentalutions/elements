@@ -9,10 +9,12 @@ export const CornerRightUp = forwardRef(function CornerRightUp(props, ref) {
     </svg>
   )
 })
+
 CornerRightUp.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CornerRightUp.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ CornerRightUp.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CornerRightUp.displayName = "CornerRightUp"

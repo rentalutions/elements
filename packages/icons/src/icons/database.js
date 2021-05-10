@@ -10,10 +10,12 @@ export const Database = forwardRef(function Database(props, ref) {
     </svg>
   )
 })
+
 Database.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Database.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Database.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Database.displayName = "Database"

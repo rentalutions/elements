@@ -12,10 +12,12 @@ export const Scissors = forwardRef(function Scissors(props, ref) {
     </svg>
   )
 })
+
 Scissors.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Scissors.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Scissors.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Scissors.displayName = "Scissors"

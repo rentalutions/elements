@@ -8,10 +8,12 @@ export const Maximize = forwardRef(function Maximize(props, ref) {
     </svg>
   )
 })
+
 Maximize.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Maximize.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Maximize.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Maximize.displayName = "Maximize"

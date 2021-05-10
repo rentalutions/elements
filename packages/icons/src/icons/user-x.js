@@ -11,10 +11,12 @@ export const UserX = forwardRef(function UserX(props, ref) {
     </svg>
   )
 })
+
 UserX.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 UserX.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ UserX.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 UserX.displayName = "UserX"

@@ -9,10 +9,12 @@ export const Rewind = forwardRef(function Rewind(props, ref) {
     </svg>
   )
 })
+
 Rewind.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Rewind.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Rewind.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Rewind.displayName = "Rewind"

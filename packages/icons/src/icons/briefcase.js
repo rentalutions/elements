@@ -9,10 +9,12 @@ export const Briefcase = forwardRef(function Briefcase(props, ref) {
     </svg>
   )
 })
+
 Briefcase.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Briefcase.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Briefcase.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Briefcase.displayName = "Briefcase"

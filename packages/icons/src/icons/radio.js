@@ -9,10 +9,12 @@ export const Radio = forwardRef(function Radio(props, ref) {
     </svg>
   )
 })
+
 Radio.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Radio.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Radio.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Radio.displayName = "Radio"

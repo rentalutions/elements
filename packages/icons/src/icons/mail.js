@@ -9,10 +9,12 @@ export const Mail = forwardRef(function Mail(props, ref) {
     </svg>
   )
 })
+
 Mail.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Mail.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Mail.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Mail.displayName = "Mail"

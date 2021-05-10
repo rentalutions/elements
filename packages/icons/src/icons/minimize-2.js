@@ -11,10 +11,12 @@ export const Minimize2 = forwardRef(function Minimize2(props, ref) {
     </svg>
   )
 })
+
 Minimize2.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Minimize2.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Minimize2.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Minimize2.displayName = "Minimize2"

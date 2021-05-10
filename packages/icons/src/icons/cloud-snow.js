@@ -15,10 +15,12 @@ export const CloudSnow = forwardRef(function CloudSnow(props, ref) {
     </svg>
   )
 })
+
 CloudSnow.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CloudSnow.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ CloudSnow.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CloudSnow.displayName = "CloudSnow"

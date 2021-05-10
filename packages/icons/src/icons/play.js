@@ -8,10 +8,12 @@ export const Play = forwardRef(function Play(props, ref) {
     </svg>
   )
 })
+
 Play.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Play.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Play.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Play.displayName = "Play"

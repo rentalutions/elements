@@ -9,10 +9,12 @@ export const Send = forwardRef(function Send(props, ref) {
     </svg>
   )
 })
+
 Send.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Send.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Send.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Send.displayName = "Send"

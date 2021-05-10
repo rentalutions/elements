@@ -10,10 +10,12 @@ export const PlusSquare = forwardRef(function PlusSquare(props, ref) {
     </svg>
   )
 })
+
 PlusSquare.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PlusSquare.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ PlusSquare.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PlusSquare.displayName = "PlusSquare"

@@ -10,10 +10,12 @@ export const GitCommit = forwardRef(function GitCommit(props, ref) {
     </svg>
   )
 })
+
 GitCommit.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 GitCommit.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ GitCommit.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 GitCommit.displayName = "GitCommit"

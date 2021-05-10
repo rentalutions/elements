@@ -9,10 +9,12 @@ export const Settings = forwardRef(function Settings(props, ref) {
     </svg>
   )
 })
+
 Settings.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Settings.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Settings.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Settings.displayName = "Settings"

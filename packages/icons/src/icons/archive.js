@@ -10,10 +10,12 @@ export const Archive = forwardRef(function Archive(props, ref) {
     </svg>
   )
 })
+
 Archive.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Archive.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Archive.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Archive.displayName = "Archive"

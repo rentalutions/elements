@@ -17,10 +17,12 @@ export const List = forwardRef(function List(props, ref) {
     </svg>
   )
 })
+
 List.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 List.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ List.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 List.displayName = "List"

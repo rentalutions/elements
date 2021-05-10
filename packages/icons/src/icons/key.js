@@ -8,10 +8,12 @@ export const Key = forwardRef(function Key(props, ref) {
     </svg>
   )
 })
+
 Key.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Key.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Key.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Key.displayName = "Key"

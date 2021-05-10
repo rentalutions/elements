@@ -10,10 +10,12 @@ export const Monitor = forwardRef(function Monitor(props, ref) {
     </svg>
   )
 })
+
 Monitor.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Monitor.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Monitor.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Monitor.displayName = "Monitor"

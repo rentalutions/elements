@@ -10,10 +10,12 @@ export const FileMinus = forwardRef(function FileMinus(props, ref) {
     </svg>
   )
 })
+
 FileMinus.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 FileMinus.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ FileMinus.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 FileMinus.displayName = "FileMinus"

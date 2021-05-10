@@ -11,10 +11,12 @@ export const Grid = forwardRef(function Grid(props, ref) {
     </svg>
   )
 })
+
 Grid.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Grid.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Grid.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Grid.displayName = "Grid"

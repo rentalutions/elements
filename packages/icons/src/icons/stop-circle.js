@@ -9,10 +9,12 @@ export const StopCircle = forwardRef(function StopCircle(props, ref) {
     </svg>
   )
 })
+
 StopCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 StopCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ StopCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 StopCircle.displayName = "StopCircle"

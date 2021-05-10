@@ -10,10 +10,12 @@ export const Percent = forwardRef(function Percent(props, ref) {
     </svg>
   )
 })
+
 Percent.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Percent.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Percent.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Percent.displayName = "Percent"

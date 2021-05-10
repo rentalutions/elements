@@ -9,10 +9,12 @@ export const Award = forwardRef(function Award(props, ref) {
     </svg>
   )
 })
+
 Award.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Award.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Award.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Award.displayName = "Award"

@@ -9,10 +9,12 @@ export const AtSign = forwardRef(function AtSign(props, ref) {
     </svg>
   )
 })
+
 AtSign.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AtSign.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ AtSign.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AtSign.displayName = "AtSign"

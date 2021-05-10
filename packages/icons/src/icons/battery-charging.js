@@ -10,10 +10,12 @@ export const BatteryCharging = forwardRef(function BatteryCharging(props, ref) {
     </svg>
   )
 })
+
 BatteryCharging.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 BatteryCharging.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ BatteryCharging.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 BatteryCharging.displayName = "BatteryCharging"

@@ -8,10 +8,12 @@ export const Command = forwardRef(function Command(props, ref) {
     </svg>
   )
 })
+
 Command.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Command.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Command.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Command.displayName = "Command"

@@ -11,10 +11,12 @@ export const Meh = forwardRef(function Meh(props, ref) {
     </svg>
   )
 })
+
 Meh.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Meh.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Meh.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Meh.displayName = "Meh"

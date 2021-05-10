@@ -9,10 +9,12 @@ export const CheckCircle = forwardRef(function CheckCircle(props, ref) {
     </svg>
   )
 })
+
 CheckCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CheckCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ CheckCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CheckCircle.displayName = "CheckCircle"

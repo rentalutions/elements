@@ -8,10 +8,12 @@ export const Tablet = forwardRef(function Tablet(props, ref) {
     </svg>
   )
 })
+
 Tablet.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Tablet.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Tablet.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Tablet.displayName = "Tablet"

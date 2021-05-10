@@ -8,10 +8,12 @@ export const Navigation = forwardRef(function Navigation(props, ref) {
     </svg>
   )
 })
+
 Navigation.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Navigation.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Navigation.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Navigation.displayName = "Navigation"

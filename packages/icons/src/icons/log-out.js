@@ -10,10 +10,12 @@ export const LogOut = forwardRef(function LogOut(props, ref) {
     </svg>
   )
 })
+
 LogOut.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 LogOut.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ LogOut.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 LogOut.displayName = "LogOut"

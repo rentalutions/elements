@@ -15,10 +15,12 @@ export const Gitlab = forwardRef(function Gitlab(props, ref) {
     </svg>
   )
 })
+
 Gitlab.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Gitlab.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Gitlab.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Gitlab.displayName = "Gitlab"

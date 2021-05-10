@@ -8,10 +8,12 @@ export const Check = forwardRef(function Check(props, ref) {
     </svg>
   )
 })
+
 Check.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Check.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Check.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Check.displayName = "Check"

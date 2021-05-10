@@ -10,10 +10,12 @@ export const Printer = forwardRef(function Printer(props, ref) {
     </svg>
   )
 })
+
 Printer.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Printer.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Printer.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Printer.displayName = "Printer"

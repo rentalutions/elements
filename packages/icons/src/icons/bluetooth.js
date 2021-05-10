@@ -8,10 +8,12 @@ export const Bluetooth = forwardRef(function Bluetooth(props, ref) {
     </svg>
   )
 })
+
 Bluetooth.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Bluetooth.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Bluetooth.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Bluetooth.displayName = "Bluetooth"

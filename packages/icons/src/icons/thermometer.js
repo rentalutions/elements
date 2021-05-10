@@ -15,10 +15,12 @@ export const Thermometer = forwardRef(function Thermometer(props, ref) {
     </svg>
   )
 })
+
 Thermometer.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Thermometer.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Thermometer.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Thermometer.displayName = "Thermometer"
