@@ -42,7 +42,7 @@ const Scrim = styled(motion.div)`
   overflow: auto;
 `
 
-function Confirmation({ children, title = null, ...props }, ref) {
+function Confirmation({ children, title = null, scrimSx, ...props }, ref) {
   const target = usePortal()
   const { open, id } = useContext(DialogContext)
   if (!target) return null
@@ -55,6 +55,7 @@ function Confirmation({ children, title = null, ...props }, ref) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            style={scrimSx}
           >
             <ConfirmationWrapper
               {...props}

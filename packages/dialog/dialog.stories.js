@@ -33,6 +33,26 @@ export function ConfirmationUsage() {
   )
 }
 
+export function DialogWithBackdropStyles() {
+  const [open, set] = useState(false)
+  function handleClick() {
+    set((o) => !o)
+  }
+  return (
+    <Fragment>
+      <Dialog open={open} toggle={handleClick} id="confirmation-id">
+        <DialogTarget>
+          <Button onClick={handleClick}>Open Modal</Button>
+        </DialogTarget>
+        <ConfirmationDialog scrimSx={{zIndex: 4}}>
+          <DialogHeader title="Are you sure?" />
+          <Text>This action will delete 46 files.</Text>
+        </ConfirmationDialog>
+      </Dialog>
+    </Fragment>
+  )
+}
+
 export function FullscreenUsage() {
   const [open, set] = useState(false)
   function handleClick() {
