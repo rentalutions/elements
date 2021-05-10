@@ -15,7 +15,7 @@
     "test": "echo 'run tests from the root directory'",
     "build": "rm -rf dist && babel --root-mode upward src --out-dir dist --copy-files",
     "build:src": "svgo -f ./icons --config svgo.config.js && rm -rf src/icons && node build.js",
-    "prepare": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "publishConfig": {
     "access": "public"
