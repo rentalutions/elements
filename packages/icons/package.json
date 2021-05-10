@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "@rent_avail/icons",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Icon library for Avail Design System",
   "source": "src/index.js",
   "main": "dist/index.js",
