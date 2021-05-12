@@ -9,10 +9,12 @@ export const DollarSign = forwardRef(function DollarSign(props, ref) {
     </svg>
   )
 })
+
 DollarSign.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 DollarSign.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ DollarSign.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 DollarSign.displayName = "DollarSign"

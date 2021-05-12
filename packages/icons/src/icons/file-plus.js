@@ -11,10 +11,12 @@ export const FilePlus = forwardRef(function FilePlus(props, ref) {
     </svg>
   )
 })
+
 FilePlus.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 FilePlus.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ FilePlus.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 FilePlus.displayName = "FilePlus"

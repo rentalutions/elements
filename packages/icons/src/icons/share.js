@@ -10,10 +10,12 @@ export const Share = forwardRef(function Share(props, ref) {
     </svg>
   )
 })
+
 Share.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Share.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Share.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Share.displayName = "Share"

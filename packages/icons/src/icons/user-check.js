@@ -10,10 +10,12 @@ export const UserCheck = forwardRef(function UserCheck(props, ref) {
     </svg>
   )
 })
+
 UserCheck.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 UserCheck.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ UserCheck.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 UserCheck.displayName = "UserCheck"

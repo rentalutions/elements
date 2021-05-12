@@ -11,10 +11,12 @@ export const Truck = forwardRef(function Truck(props, ref) {
     </svg>
   )
 })
+
 Truck.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Truck.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Truck.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Truck.displayName = "Truck"

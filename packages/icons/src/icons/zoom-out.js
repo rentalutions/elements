@@ -10,10 +10,12 @@ export const ZoomOut = forwardRef(function ZoomOut(props, ref) {
     </svg>
   )
 })
+
 ZoomOut.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ZoomOut.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ ZoomOut.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ZoomOut.displayName = "ZoomOut"

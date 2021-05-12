@@ -9,10 +9,12 @@ export const Unlock = forwardRef(function Unlock(props, ref) {
     </svg>
   )
 })
+
 Unlock.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Unlock.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Unlock.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Unlock.displayName = "Unlock"

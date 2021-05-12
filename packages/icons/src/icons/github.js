@@ -15,10 +15,12 @@ export const Github = forwardRef(function Github(props, ref) {
     </svg>
   )
 })
+
 Github.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Github.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Github.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Github.displayName = "Github"

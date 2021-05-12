@@ -8,10 +8,12 @@ export const ThumbsUp = forwardRef(function ThumbsUp(props, ref) {
     </svg>
   )
 })
+
 ThumbsUp.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ThumbsUp.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ ThumbsUp.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ThumbsUp.displayName = "ThumbsUp"

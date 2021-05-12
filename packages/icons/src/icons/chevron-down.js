@@ -8,10 +8,12 @@ export const ChevronDown = forwardRef(function ChevronDown(props, ref) {
     </svg>
   )
 })
+
 ChevronDown.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ChevronDown.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ ChevronDown.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ChevronDown.displayName = "ChevronDown"

@@ -8,10 +8,12 @@ export const Star = forwardRef(function Star(props, ref) {
     </svg>
   )
 })
+
 Star.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Star.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Star.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Star.displayName = "Star"

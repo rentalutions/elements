@@ -9,10 +9,12 @@ export const VideoOff = forwardRef(function VideoOff(props, ref) {
     </svg>
   )
 })
+
 VideoOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 VideoOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ VideoOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 VideoOff.displayName = "VideoOff"

@@ -9,10 +9,12 @@ export const Sidebar = forwardRef(function Sidebar(props, ref) {
     </svg>
   )
 })
+
 Sidebar.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Sidebar.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Sidebar.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Sidebar.displayName = "Sidebar"

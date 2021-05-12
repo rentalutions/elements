@@ -9,10 +9,12 @@ export const Crop = forwardRef(function Crop(props, ref) {
     </svg>
   )
 })
+
 Crop.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Crop.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Crop.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Crop.displayName = "Crop"

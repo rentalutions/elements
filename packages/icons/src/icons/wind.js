@@ -8,10 +8,12 @@ export const Wind = forwardRef(function Wind(props, ref) {
     </svg>
   )
 })
+
 Wind.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Wind.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Wind.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Wind.displayName = "Wind"

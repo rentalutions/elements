@@ -15,10 +15,12 @@ export const Film = forwardRef(function Film(props, ref) {
     </svg>
   )
 })
+
 Film.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Film.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Film.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Film.displayName = "Film"

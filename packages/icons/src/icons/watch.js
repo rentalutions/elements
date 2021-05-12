@@ -10,10 +10,12 @@ export const Watch = forwardRef(function Watch(props, ref) {
     </svg>
   )
 })
+
 Watch.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Watch.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Watch.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Watch.displayName = "Watch"

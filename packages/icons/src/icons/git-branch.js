@@ -11,10 +11,12 @@ export const GitBranch = forwardRef(function GitBranch(props, ref) {
     </svg>
   )
 })
+
 GitBranch.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 GitBranch.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ GitBranch.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 GitBranch.displayName = "GitBranch"

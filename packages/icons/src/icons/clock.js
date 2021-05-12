@@ -9,10 +9,12 @@ export const Clock = forwardRef(function Clock(props, ref) {
     </svg>
   )
 })
+
 Clock.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Clock.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Clock.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Clock.displayName = "Clock"

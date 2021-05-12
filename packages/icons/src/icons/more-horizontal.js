@@ -10,10 +10,12 @@ export const MoreHorizontal = forwardRef(function MoreHorizontal(props, ref) {
     </svg>
   )
 })
+
 MoreHorizontal.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MoreHorizontal.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ MoreHorizontal.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MoreHorizontal.displayName = "MoreHorizontal"

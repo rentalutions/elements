@@ -9,10 +9,12 @@ export const MousePointer = forwardRef(function MousePointer(props, ref) {
     </svg>
   )
 })
+
 MousePointer.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MousePointer.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ MousePointer.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MousePointer.displayName = "MousePointer"

@@ -12,10 +12,12 @@ export const Shuffle = forwardRef(function Shuffle(props, ref) {
     </svg>
   )
 })
+
 Shuffle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Shuffle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Shuffle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Shuffle.displayName = "Shuffle"

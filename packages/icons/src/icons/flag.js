@@ -9,10 +9,12 @@ export const Flag = forwardRef(function Flag(props, ref) {
     </svg>
   )
 })
+
 Flag.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Flag.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Flag.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Flag.displayName = "Flag"

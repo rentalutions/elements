@@ -10,10 +10,12 @@ export const Upload = forwardRef(function Upload(props, ref) {
     </svg>
   )
 })
+
 Upload.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Upload.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Upload.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Upload.displayName = "Upload"

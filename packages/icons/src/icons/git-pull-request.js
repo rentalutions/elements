@@ -11,10 +11,12 @@ export const GitPullRequest = forwardRef(function GitPullRequest(props, ref) {
     </svg>
   )
 })
+
 GitPullRequest.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 GitPullRequest.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ GitPullRequest.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 GitPullRequest.displayName = "GitPullRequest"

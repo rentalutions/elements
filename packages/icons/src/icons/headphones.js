@@ -9,10 +9,12 @@ export const Headphones = forwardRef(function Headphones(props, ref) {
     </svg>
   )
 })
+
 Headphones.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Headphones.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Headphones.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Headphones.displayName = "Headphones"

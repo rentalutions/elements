@@ -9,10 +9,12 @@ export const Edit = forwardRef(function Edit(props, ref) {
     </svg>
   )
 })
+
 Edit.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Edit.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Edit.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Edit.displayName = "Edit"

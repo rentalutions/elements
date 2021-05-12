@@ -8,10 +8,12 @@ export const Minus = forwardRef(function Minus(props, ref) {
     </svg>
   )
 })
+
 Minus.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Minus.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Minus.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Minus.displayName = "Minus"

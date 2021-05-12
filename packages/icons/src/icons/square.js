@@ -8,10 +8,12 @@ export const Square = forwardRef(function Square(props, ref) {
     </svg>
   )
 })
+
 Square.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Square.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Square.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Square.displayName = "Square"

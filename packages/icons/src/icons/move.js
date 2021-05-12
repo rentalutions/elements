@@ -13,10 +13,12 @@ export const Move = forwardRef(function Move(props, ref) {
     </svg>
   )
 })
+
 Move.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Move.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -24,4 +26,5 @@ Move.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Move.displayName = "Move"

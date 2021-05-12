@@ -11,10 +11,12 @@ export const PenTool = forwardRef(function PenTool(props, ref) {
     </svg>
   )
 })
+
 PenTool.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PenTool.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ PenTool.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PenTool.displayName = "PenTool"

@@ -17,10 +17,12 @@ export const AlertCircle = forwardRef(function AlertCircle(props, ref) {
     </svg>
   )
 })
+
 AlertCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlertCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ AlertCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlertCircle.displayName = "AlertCircle"

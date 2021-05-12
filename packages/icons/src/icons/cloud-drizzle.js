@@ -21,10 +21,12 @@ export const CloudDrizzle = forwardRef(function CloudDrizzle(props, ref) {
     </svg>
   )
 })
+
 CloudDrizzle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CloudDrizzle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -32,4 +34,5 @@ CloudDrizzle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CloudDrizzle.displayName = "CloudDrizzle"

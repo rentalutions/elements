@@ -18,10 +18,12 @@ export const Wifi = forwardRef(function Wifi(props, ref) {
     </svg>
   )
 })
+
 Wifi.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Wifi.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -29,4 +31,5 @@ Wifi.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Wifi.displayName = "Wifi"

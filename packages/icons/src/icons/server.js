@@ -16,10 +16,12 @@ export const Server = forwardRef(function Server(props, ref) {
     </svg>
   )
 })
+
 Server.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Server.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ Server.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Server.displayName = "Server"

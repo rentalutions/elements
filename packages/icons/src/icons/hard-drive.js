@@ -16,10 +16,12 @@ export const HardDrive = forwardRef(function HardDrive(props, ref) {
     </svg>
   )
 })
+
 HardDrive.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 HardDrive.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ HardDrive.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 HardDrive.displayName = "HardDrive"

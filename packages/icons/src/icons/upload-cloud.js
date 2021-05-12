@@ -18,10 +18,12 @@ export const UploadCloud = forwardRef(function UploadCloud(props, ref) {
     </svg>
   )
 })
+
 UploadCloud.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 UploadCloud.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -29,4 +31,5 @@ UploadCloud.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 UploadCloud.displayName = "UploadCloud"

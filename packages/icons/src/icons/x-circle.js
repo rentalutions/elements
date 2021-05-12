@@ -10,10 +10,12 @@ export const XCircle = forwardRef(function XCircle(props, ref) {
     </svg>
   )
 })
+
 XCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 XCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ XCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 XCircle.displayName = "XCircle"

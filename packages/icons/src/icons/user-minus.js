@@ -10,10 +10,12 @@ export const UserMinus = forwardRef(function UserMinus(props, ref) {
     </svg>
   )
 })
+
 UserMinus.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 UserMinus.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ UserMinus.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 UserMinus.displayName = "UserMinus"

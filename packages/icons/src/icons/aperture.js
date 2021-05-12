@@ -14,10 +14,12 @@ export const Aperture = forwardRef(function Aperture(props, ref) {
     </svg>
   )
 })
+
 Aperture.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Aperture.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -25,4 +27,5 @@ Aperture.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Aperture.displayName = "Aperture"

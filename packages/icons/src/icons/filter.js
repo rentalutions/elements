@@ -8,10 +8,12 @@ export const Filter = forwardRef(function Filter(props, ref) {
     </svg>
   )
 })
+
 Filter.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Filter.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Filter.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Filter.displayName = "Filter"

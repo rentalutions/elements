@@ -8,10 +8,12 @@ export const Heart = forwardRef(function Heart(props, ref) {
     </svg>
   )
 })
+
 Heart.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Heart.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Heart.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Heart.displayName = "Heart"

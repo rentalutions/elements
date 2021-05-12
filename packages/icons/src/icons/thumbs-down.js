@@ -8,10 +8,12 @@ export const ThumbsDown = forwardRef(function ThumbsDown(props, ref) {
     </svg>
   )
 })
+
 ThumbsDown.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ThumbsDown.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ ThumbsDown.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ThumbsDown.displayName = "ThumbsDown"

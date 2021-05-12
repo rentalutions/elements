@@ -9,10 +9,12 @@ export const CameraOff = forwardRef(function CameraOff(props, ref) {
     </svg>
   )
 })
+
 CameraOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 CameraOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ CameraOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 CameraOff.displayName = "CameraOff"

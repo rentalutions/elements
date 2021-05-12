@@ -9,10 +9,12 @@ export const MapPin = forwardRef(function MapPin(props, ref) {
     </svg>
   )
 })
+
 MapPin.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MapPin.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ MapPin.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MapPin.displayName = "MapPin"

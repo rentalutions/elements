@@ -9,10 +9,12 @@ export const Link2 = forwardRef(function Link2(props, ref) {
     </svg>
   )
 })
+
 Link2.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Link2.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Link2.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Link2.displayName = "Link2"

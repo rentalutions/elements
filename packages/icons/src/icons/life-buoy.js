@@ -14,10 +14,12 @@ export const LifeBuoy = forwardRef(function LifeBuoy(props, ref) {
     </svg>
   )
 })
+
 LifeBuoy.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 LifeBuoy.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -25,4 +27,5 @@ LifeBuoy.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 LifeBuoy.displayName = "LifeBuoy"

@@ -10,10 +10,12 @@ export const MoreVertical = forwardRef(function MoreVertical(props, ref) {
     </svg>
   )
 })
+
 MoreVertical.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MoreVertical.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ MoreVertical.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MoreVertical.displayName = "MoreVertical"

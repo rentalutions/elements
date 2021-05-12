@@ -13,10 +13,12 @@ export const ArrowRightCircle = forwardRef(function ArrowRightCircle(
     </svg>
   )
 })
+
 ArrowRightCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ArrowRightCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -24,4 +26,5 @@ ArrowRightCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ArrowRightCircle.displayName = "ArrowRightCircle"

@@ -15,10 +15,12 @@ export const Cast = forwardRef(function Cast(props, ref) {
     </svg>
   )
 })
+
 Cast.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Cast.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Cast.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Cast.displayName = "Cast"

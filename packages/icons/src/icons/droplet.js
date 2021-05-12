@@ -8,10 +8,12 @@ export const Droplet = forwardRef(function Droplet(props, ref) {
     </svg>
   )
 })
+
 Droplet.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Droplet.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Droplet.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Droplet.displayName = "Droplet"

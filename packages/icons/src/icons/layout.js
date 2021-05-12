@@ -10,10 +10,12 @@ export const Layout = forwardRef(function Layout(props, ref) {
     </svg>
   )
 })
+
 Layout.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Layout.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Layout.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Layout.displayName = "Layout"

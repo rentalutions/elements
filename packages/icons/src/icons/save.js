@@ -10,10 +10,12 @@ export const Save = forwardRef(function Save(props, ref) {
     </svg>
   )
 })
+
 Save.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Save.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Save.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Save.displayName = "Save"

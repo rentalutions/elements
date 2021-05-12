@@ -11,10 +11,12 @@ export const Maximize2 = forwardRef(function Maximize2(props, ref) {
     </svg>
   )
 })
+
 Maximize2.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Maximize2.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Maximize2.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Maximize2.displayName = "Maximize2"

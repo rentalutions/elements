@@ -9,10 +9,12 @@ export const SkipForward = forwardRef(function SkipForward(props, ref) {
     </svg>
   )
 })
+
 SkipForward.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 SkipForward.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ SkipForward.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 SkipForward.displayName = "SkipForward"

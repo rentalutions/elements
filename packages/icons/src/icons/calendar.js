@@ -11,10 +11,12 @@ export const Calendar = forwardRef(function Calendar(props, ref) {
     </svg>
   )
 })
+
 Calendar.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Calendar.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Calendar.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Calendar.displayName = "Calendar"

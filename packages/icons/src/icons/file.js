@@ -9,10 +9,12 @@ export const File = forwardRef(function File(props, ref) {
     </svg>
   )
 })
+
 File.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 File.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ File.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 File.displayName = "File"

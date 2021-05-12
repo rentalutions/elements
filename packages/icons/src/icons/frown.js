@@ -11,10 +11,12 @@ export const Frown = forwardRef(function Frown(props, ref) {
     </svg>
   )
 })
+
 Frown.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Frown.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Frown.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Frown.displayName = "Frown"

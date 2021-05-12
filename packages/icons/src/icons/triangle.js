@@ -8,10 +8,12 @@ export const Triangle = forwardRef(function Triangle(props, ref) {
     </svg>
   )
 })
+
 Triangle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Triangle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Triangle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Triangle.displayName = "Triangle"

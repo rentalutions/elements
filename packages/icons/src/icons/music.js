@@ -9,10 +9,12 @@ export const Music = forwardRef(function Music(props, ref) {
     </svg>
   )
 })
+
 Music.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Music.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Music.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Music.displayName = "Music"

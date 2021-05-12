@@ -56,6 +56,7 @@ keys.forEach((name) => {
         </svg>
       )
     })
+
     ${ComponentName}.propTypes = {
       color: p.string,
       size: p.oneOfType([
@@ -63,6 +64,7 @@ keys.forEach((name) => {
         p.number
       ]),
     }
+
     ${ComponentName}.defaultProps = {
       viewBox: "0 0 24 24",
       fill: "none",
@@ -70,6 +72,7 @@ keys.forEach((name) => {
       strokeLinecap: "round",
       strokeLinejoin: "round",
     }
+    
     ${ComponentName}.displayName = "${ComponentName}"
   `
 

@@ -9,10 +9,12 @@ export const PlayCircle = forwardRef(function PlayCircle(props, ref) {
     </svg>
   )
 })
+
 PlayCircle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 PlayCircle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ PlayCircle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 PlayCircle.displayName = "PlayCircle"

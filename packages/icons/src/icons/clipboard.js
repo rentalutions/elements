@@ -9,10 +9,12 @@ export const Clipboard = forwardRef(function Clipboard(props, ref) {
     </svg>
   )
 })
+
 Clipboard.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Clipboard.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Clipboard.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Clipboard.displayName = "Clipboard"

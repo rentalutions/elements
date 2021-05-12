@@ -10,10 +10,12 @@ export const RefreshCw = forwardRef(function RefreshCw(props, ref) {
     </svg>
   )
 })
+
 RefreshCw.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 RefreshCw.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ RefreshCw.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 RefreshCw.displayName = "RefreshCw"

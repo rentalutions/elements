@@ -8,10 +8,12 @@ export const Paperclip = forwardRef(function Paperclip(props, ref) {
     </svg>
   )
 })
+
 Paperclip.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Paperclip.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Paperclip.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Paperclip.displayName = "Paperclip"

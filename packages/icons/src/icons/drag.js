@@ -13,10 +13,12 @@ export const Drag = forwardRef(function Drag(props, ref) {
     </svg>
   )
 })
+
 Drag.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Drag.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -24,4 +26,5 @@ Drag.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Drag.displayName = "Drag"

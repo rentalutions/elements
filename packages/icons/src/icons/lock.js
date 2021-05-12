@@ -9,10 +9,12 @@ export const Lock = forwardRef(function Lock(props, ref) {
     </svg>
   )
 })
+
 Lock.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Lock.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Lock.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Lock.displayName = "Lock"

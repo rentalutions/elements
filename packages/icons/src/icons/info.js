@@ -17,10 +17,12 @@ export const Info = forwardRef(function Info(props, ref) {
     </svg>
   )
 })
+
 Info.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Info.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ Info.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Info.displayName = "Info"

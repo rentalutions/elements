@@ -9,10 +9,12 @@ export const ArrowDownRight = forwardRef(function ArrowDownRight(props, ref) {
     </svg>
   )
 })
+
 ArrowDownRight.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ArrowDownRight.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ ArrowDownRight.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ArrowDownRight.displayName = "ArrowDownRight"

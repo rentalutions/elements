@@ -9,10 +9,12 @@ export const EyeOff = forwardRef(function EyeOff(props, ref) {
     </svg>
   )
 })
+
 EyeOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 EyeOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ EyeOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 EyeOff.displayName = "EyeOff"

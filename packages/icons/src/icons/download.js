@@ -10,10 +10,12 @@ export const Download = forwardRef(function Download(props, ref) {
     </svg>
   )
 })
+
 Download.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Download.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Download.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Download.displayName = "Download"

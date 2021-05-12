@@ -8,10 +8,12 @@ export const Shield = forwardRef(function Shield(props, ref) {
     </svg>
   )
 })
+
 Shield.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Shield.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Shield.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Shield.displayName = "Shield"

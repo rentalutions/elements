@@ -16,10 +16,12 @@ export const Speaker = forwardRef(function Speaker(props, ref) {
     </svg>
   )
 })
+
 Speaker.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Speaker.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ Speaker.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Speaker.displayName = "Speaker"

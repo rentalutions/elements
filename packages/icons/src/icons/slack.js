@@ -15,10 +15,12 @@ export const Slack = forwardRef(function Slack(props, ref) {
     </svg>
   )
 })
+
 Slack.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Slack.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Slack.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Slack.displayName = "Slack"

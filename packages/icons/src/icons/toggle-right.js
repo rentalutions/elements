@@ -9,10 +9,12 @@ export const ToggleRight = forwardRef(function ToggleRight(props, ref) {
     </svg>
   )
 })
+
 ToggleRight.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ToggleRight.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ ToggleRight.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ToggleRight.displayName = "ToggleRight"

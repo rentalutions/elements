@@ -12,10 +12,12 @@ export const Coffee = forwardRef(function Coffee(props, ref) {
     </svg>
   )
 })
+
 Coffee.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Coffee.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Coffee.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Coffee.displayName = "Coffee"

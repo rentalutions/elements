@@ -10,10 +10,12 @@ export const FolderPlus = forwardRef(function FolderPlus(props, ref) {
     </svg>
   )
 })
+
 FolderPlus.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 FolderPlus.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ FolderPlus.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 FolderPlus.displayName = "FolderPlus"

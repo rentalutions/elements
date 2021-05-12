@@ -12,10 +12,12 @@ export const Loudspeaker = forwardRef(function Loudspeaker(props, ref) {
     </svg>
   )
 })
+
 Loudspeaker.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Loudspeaker.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Loudspeaker.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Loudspeaker.displayName = "Loudspeaker"

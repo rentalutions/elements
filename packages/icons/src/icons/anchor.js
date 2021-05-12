@@ -10,10 +10,12 @@ export const Anchor = forwardRef(function Anchor(props, ref) {
     </svg>
   )
 })
+
 Anchor.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Anchor.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Anchor.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Anchor.displayName = "Anchor"

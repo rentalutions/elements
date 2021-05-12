@@ -9,10 +9,12 @@ export const Search = forwardRef(function Search(props, ref) {
     </svg>
   )
 })
+
 Search.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Search.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Search.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Search.displayName = "Search"

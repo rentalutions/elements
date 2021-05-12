@@ -11,10 +11,12 @@ export const Smile = forwardRef(function Smile(props, ref) {
     </svg>
   )
 })
+
 Smile.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Smile.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Smile.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Smile.displayName = "Smile"

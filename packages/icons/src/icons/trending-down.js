@@ -9,10 +9,12 @@ export const TrendingDown = forwardRef(function TrendingDown(props, ref) {
     </svg>
   )
 })
+
 TrendingDown.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 TrendingDown.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ TrendingDown.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 TrendingDown.displayName = "TrendingDown"

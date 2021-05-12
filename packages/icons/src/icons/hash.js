@@ -11,10 +11,12 @@ export const Hash = forwardRef(function Hash(props, ref) {
     </svg>
   )
 })
+
 Hash.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Hash.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Hash.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Hash.displayName = "Hash"

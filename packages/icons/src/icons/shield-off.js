@@ -10,10 +10,12 @@ export const ShieldOff = forwardRef(function ShieldOff(props, ref) {
     </svg>
   )
 })
+
 ShieldOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ShieldOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ ShieldOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ShieldOff.displayName = "ShieldOff"

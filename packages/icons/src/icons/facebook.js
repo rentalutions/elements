@@ -8,10 +8,12 @@ export const Facebook = forwardRef(function Facebook(props, ref) {
     </svg>
   )
 })
+
 Facebook.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Facebook.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Facebook.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Facebook.displayName = "Facebook"

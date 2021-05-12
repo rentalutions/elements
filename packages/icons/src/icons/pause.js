@@ -9,10 +9,12 @@ export const Pause = forwardRef(function Pause(props, ref) {
     </svg>
   )
 })
+
 Pause.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Pause.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Pause.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Pause.displayName = "Pause"

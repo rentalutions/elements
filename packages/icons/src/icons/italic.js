@@ -10,10 +10,12 @@ export const Italic = forwardRef(function Italic(props, ref) {
     </svg>
   )
 })
+
 Italic.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Italic.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Italic.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Italic.displayName = "Italic"

@@ -16,10 +16,12 @@ export const Instagram = forwardRef(function Instagram(props, ref) {
     </svg>
   )
 })
+
 Instagram.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Instagram.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ Instagram.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Instagram.displayName = "Instagram"

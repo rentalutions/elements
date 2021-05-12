@@ -10,10 +10,12 @@ export const Image = forwardRef(function Image(props, ref) {
     </svg>
   )
 })
+
 Image.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Image.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Image.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Image.displayName = "Image"

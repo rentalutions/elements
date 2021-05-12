@@ -8,10 +8,12 @@ export const Tool = forwardRef(function Tool(props, ref) {
     </svg>
   )
 })
+
 Tool.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Tool.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Tool.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Tool.displayName = "Tool"

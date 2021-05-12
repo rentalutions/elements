@@ -8,10 +8,12 @@ export const Circle = forwardRef(function Circle(props, ref) {
     </svg>
   )
 })
+
 Circle.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Circle.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Circle.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Circle.displayName = "Circle"

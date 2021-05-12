@@ -19,10 +19,12 @@ export const MicOff = forwardRef(function MicOff(props, ref) {
     </svg>
   )
 })
+
 MicOff.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 MicOff.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -30,4 +32,5 @@ MicOff.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 MicOff.displayName = "MicOff"

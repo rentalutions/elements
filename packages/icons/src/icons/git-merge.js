@@ -10,10 +10,12 @@ export const GitMerge = forwardRef(function GitMerge(props, ref) {
     </svg>
   )
 })
+
 GitMerge.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 GitMerge.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ GitMerge.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 GitMerge.displayName = "GitMerge"

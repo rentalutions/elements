@@ -16,10 +16,12 @@ export const Sun = forwardRef(function Sun(props, ref) {
     </svg>
   )
 })
+
 Sun.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Sun.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -27,4 +29,5 @@ Sun.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Sun.displayName = "Sun"

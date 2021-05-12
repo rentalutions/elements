@@ -12,10 +12,12 @@ export const FileText = forwardRef(function FileText(props, ref) {
     </svg>
   )
 })
+
 FileText.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 FileText.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ FileText.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 FileText.displayName = "FileText"

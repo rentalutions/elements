@@ -11,10 +11,12 @@ export const Trash2 = forwardRef(function Trash2(props, ref) {
     </svg>
   )
 })
+
 Trash2.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Trash2.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ Trash2.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Trash2.displayName = "Trash2"

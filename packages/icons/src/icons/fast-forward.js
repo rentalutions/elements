@@ -9,10 +9,12 @@ export const FastForward = forwardRef(function FastForward(props, ref) {
     </svg>
   )
 })
+
 FastForward.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 FastForward.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ FastForward.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 FastForward.displayName = "FastForward"

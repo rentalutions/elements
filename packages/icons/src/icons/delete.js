@@ -10,10 +10,12 @@ export const Delete = forwardRef(function Delete(props, ref) {
     </svg>
   )
 })
+
 Delete.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Delete.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Delete.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Delete.displayName = "Delete"

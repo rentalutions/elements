@@ -12,10 +12,12 @@ export const Gift = forwardRef(function Gift(props, ref) {
     </svg>
   )
 })
+
 Gift.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Gift.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -23,4 +25,5 @@ Gift.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Gift.displayName = "Gift"

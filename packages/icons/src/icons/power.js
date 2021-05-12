@@ -9,10 +9,12 @@ export const Power = forwardRef(function Power(props, ref) {
     </svg>
   )
 })
+
 Power.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Power.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Power.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Power.displayName = "Power"

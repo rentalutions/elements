@@ -8,10 +8,12 @@ export const Bell = forwardRef(function Bell(props, ref) {
     </svg>
   )
 })
+
 Bell.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Bell.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Bell.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Bell.displayName = "Bell"

@@ -10,10 +10,12 @@ export const Linkedin = forwardRef(function Linkedin(props, ref) {
     </svg>
   )
 })
+
 Linkedin.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Linkedin.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ Linkedin.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Linkedin.displayName = "Linkedin"

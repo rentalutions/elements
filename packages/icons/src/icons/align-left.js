@@ -11,10 +11,12 @@ export const AlignLeft = forwardRef(function AlignLeft(props, ref) {
     </svg>
   )
 })
+
 AlignLeft.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlignLeft.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -22,4 +24,5 @@ AlignLeft.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlignLeft.displayName = "AlignLeft"

@@ -9,10 +9,12 @@ export const Tv = forwardRef(function Tv(props, ref) {
     </svg>
   )
 })
+
 Tv.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Tv.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Tv.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Tv.displayName = "Tv"

@@ -8,10 +8,12 @@ export const Zap = forwardRef(function Zap(props, ref) {
     </svg>
   )
 })
+
 Zap.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Zap.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -19,4 +21,5 @@ Zap.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Zap.displayName = "Zap"

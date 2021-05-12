@@ -15,10 +15,12 @@ export const Sunrise = forwardRef(function Sunrise(props, ref) {
     </svg>
   )
 })
+
 Sunrise.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Sunrise.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -26,4 +28,5 @@ Sunrise.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Sunrise.displayName = "Sunrise"

@@ -17,10 +17,12 @@ export const AlertOctagon = forwardRef(function AlertOctagon(props, ref) {
     </svg>
   )
 })
+
 AlertOctagon.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 AlertOctagon.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -28,4 +30,5 @@ AlertOctagon.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 AlertOctagon.displayName = "AlertOctagon"

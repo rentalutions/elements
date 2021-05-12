@@ -10,10 +10,12 @@ export const ShoppingCart = forwardRef(function ShoppingCart(props, ref) {
     </svg>
   )
 })
+
 ShoppingCart.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 ShoppingCart.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -21,4 +23,5 @@ ShoppingCart.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 ShoppingCart.displayName = "ShoppingCart"

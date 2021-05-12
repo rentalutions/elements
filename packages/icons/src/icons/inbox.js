@@ -9,10 +9,12 @@ export const Inbox = forwardRef(function Inbox(props, ref) {
     </svg>
   )
 })
+
 Inbox.propTypes = {
   color: p.string,
   size: p.oneOfType([p.string, p.number]),
 }
+
 Inbox.defaultProps = {
   viewBox: "0 0 24 24",
   fill: "none",
@@ -20,4 +22,5 @@ Inbox.defaultProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 }
+
 Inbox.displayName = "Inbox"
