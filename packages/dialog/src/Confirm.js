@@ -6,13 +6,23 @@ import { DialogContext } from "./dialogContext"
 import { Box } from "@rent_avail/layout"
 
 const backdropVariants = {
-  hidden: { opacity: 0 },
-  shown: { opacity: 1 },
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+    },
+  },
+  shown: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+    },
+  },
 }
 
 const dialogVariants = {
   hidden: { opacity: 0, scale: 1.05, x: "-50%" },
-  shown: { opacity: 1, scale: 1, transition: { delay: 0.3 } },
+  shown: { opacity: 1, scale: 1 },
 }
 
 function useConfirmationDialog({ ref, scrimSx, title, ...rest }) {
@@ -35,9 +45,6 @@ function useConfirmationDialog({ ref, scrimSx, title, ...rest }) {
       key: `${id}__confirmation`,
       as: motion.aside,
       variants: dialogVariants,
-      initial: "hidden",
-      animate: "shown",
-      exit: "hidden",
     },
   }
 }
