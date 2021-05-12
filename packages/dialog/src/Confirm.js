@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
 import { DialogContext } from "./dialogContext"
+import { Box } from "@rent_avail/layout"
 
 const ConfirmationWrapper = styled(motion.section)`
   position: absolute;
@@ -32,17 +33,7 @@ const ConfirmationWrapper = styled(motion.section)`
   }
 `
 
-const Scrim = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.24);
-  overflow: auto;
-`
-
-function Confirmation({ children, title = null, scrimSx, ...props }, ref) {
+function Confirmation({ children, title = null, scrimSx = {}, ...props }, ref) {
   const target = usePortal()
   const { open, id } = useContext(DialogContext)
   if (!target) return null
@@ -50,12 +41,18 @@ function Confirmation({ children, title = null, scrimSx, ...props }, ref) {
     <AnimatePresence>
       {open && (
         <Fragment>
-          <Scrim
-            key={`${id}-skrim`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={scrimSx}
+          <Box
+            className="scrim"
+            sx={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              background: "rgba(0, 0, 0, 0.24)",
+              overflow: "auto",
+              ...scrimSx
+            }}
           >
             <ConfirmationWrapper
               {...props}
@@ -67,7 +64,7 @@ function Confirmation({ children, title = null, scrimSx, ...props }, ref) {
             >
               {children}
             </ConfirmationWrapper>
-          </Scrim>
+          </Box>
         </Fragment>
       )}
     </AnimatePresence>,
