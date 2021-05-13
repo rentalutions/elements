@@ -44,9 +44,13 @@ function Sidebar({ children, sections, ...props }) {
           <Link href="/">
             <Box
               as="img"
-              src="/icon-100.png"
+              src="/images/avail_icon.svg"
               aria-label="home button"
-              height="3rem"
+              sx={{
+                height: "3rem",
+                transition: "transform 200ms",
+                "&:hover": { transform: "translateY(-0.25rem) scale(1.05)" },
+              }}
             />
           </Link>
         </Box>

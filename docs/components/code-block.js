@@ -1,16 +1,11 @@
 import React, { useContext, useState } from "react"
 import styled, { ThemeContext } from "styled-components"
 import Highlight, { Prism } from "prism-react-renderer"
-import codeTheme from "prism-react-renderer/themes/github"
+import codeTheme from "prism-react-renderer/themes/ultramin"
 import { LiveProvider, LiveError, LivePreview } from "react-live"
 import { Box } from "@rent_avail/layout"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "react-feather"
-
-const Preview = styled.section`
-  border: 0.5rem solid ${({ theme }) => theme.colors.ui_300};
-  padding: 2rem;
-`
 
 const Pre = styled.pre`
   margin: 2rem 0;
@@ -43,10 +38,16 @@ export default function CodeBlock({
     >
       {live && (
         <Box>
-          <Preview>
+          <Box
+            sx={{
+              border: `4px solid transparent`,
+              borderColor: "ui_300",
+              p: "2rem",
+            }}
+          >
             <LiveError />
             <LivePreview />
-          </Preview>
+          </Box>
           <Box
             sx={{ bg: "ui_300", py: "1rem", px: "2rem", textAlign: "right" }}
           >

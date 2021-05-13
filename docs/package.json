@@ -1,11 +1,10 @@
 {
+  "private": true,
   "version": "0.0.4",
   "name": "@rent_avail/docs",
   "description": "Documentation site for Avail Design",
-  "main": "index.js",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",

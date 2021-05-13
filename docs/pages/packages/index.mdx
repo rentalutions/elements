@@ -11,32 +11,35 @@ The avail design system is made up of small UI packages that can be mostly impor
 
 ---
 
-| Packages               | Description                                            |
-| ---------------------- | ------------------------------------------------------ |
-| @rent_avail/base       | Base, Theme Object                                     |
-| @rent_avail/typography | Heading, Text                                          |
-| @rent_avail/layout     | Box, Container, Grid, Col, Card, Stack, Flex           |
-| @rent_avail/controls   | Button, Checkbox, Radio, Switch                        |
-| @rent_avail/input      | Input, Textarea                                        |
-| @rent_avail/dialog     | Fullscreen Dialog, Confirmation Dialog, Success Dialog |
-| @rent_avail/menu       | Menu                                                   |
-| @rent_avail/tooltip    | Tooltip                                                |
-| @rent_avail/tag        | Tag                                                    |
-| @rent_avail/popover    | Popover                                                |
-| @rent_avail/progress   | Fluid Progress, Fixed Progress                         |
-| @rent_avail/avatar     | Avatar, Avatar Group                                   |
-| @rent_avail/select     | Select Input                                           |
-| @rent_avail/toast      | Toast                                                  |
-| @rent_avail/skeleton   | Skeleton Loader                                        |
+| Packages             | Description                                         |
+| -------------------- | --------------------------------------------------- |
+| @rent_avail/core     | Elements Provider                                   |
+| @rent_avail/controls | Button, Checkbox, Input, Radio, Radio Group, Switch |
+| @rent_avail/dialog   | Fullscreen Dialog, Confirmation Dialog              |
+| @rent_avail/menu     | Menu                                                |
+| @rent_avail/tooltip  | Tooltip                                             |
+| @rent_avail/tag      | Tag                                                 |
+| @rent_avail/popover  | Popover                                             |
+| @rent_avail/progress | Fluid Progress, Fixed Progress                      |
+| @rent_avail/avatar   | Avatar, Avatar Group                                |
+| @rent_avail/select   | Select Input                                        |
+| @rent_avail/toast    | Toast                                               |
+| @rent_avail/skeleton | Skeleton Loader                                     |
 
-## Styled Props
+## Style Objects
 
-Avail UI elements use [`styled-system`](https://styled-system.com) to help you quickly build custom components with constraint based style props. You can think of style props as utility classes with super powers. Style props inherit from a globally declared theme or use accepted css values. Below is a simple example of using styled props to quickly build a custom [`Card`](/packages/layout#card) component. For more information and to get familiar with all of the possible values, take a look at this [`reference table`](https://styled-system.com/table), to understand how the theme object is built you can review the [`base theme object`](/packages/base)
+Avail elements use [`styled-system`](https://styled-system.com) to help you quickly build custom components with constraint based styles. All components--unless otherwise noted--accept an `sx` prop that is a style object supercharged with theme powers. This method let's you leverage the consistency of our theme while allowing you to override when needed to.
 
 ```jsx
 function YourComponent() {
   return (
-    <Card my="4rem" bg="blue_100" p="4rem">
+    <Card
+      sx={{
+        my: "4rem",
+        p: "4rem",
+        bg: "blue_100",
+      }}
+    >
       I'm a card with a margin top and bottom of 4rem, a padding of 4rem, and a
       background of our brand color blue_100.
     </Card>
@@ -44,26 +47,54 @@ function YourComponent() {
 }
 ```
 
+### Nested & Psuedo Selectors
+
+You can nest selectors in the sx prop in much the same way as scss. This also works for pseudo selectors and elements.
+
+```jsx
+function Component() {
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        "&::before": {
+          content: '""',
+          width: "100%",
+        },
+        "& span": {
+          color: "ui_500",
+        },
+      }}
+    />
+  )
+}
+```
+
+**Note**
+For before and after psuedo elements, you'll need to wrap the content value in double quotes because of how styled object keys are parsed.
+
+`content: '""';`
+
 ## Quick Start
 
 First, install the design system and peer dependencies
 
 ```bash
-yarn add react react-dom styled-components @rent_avail/base @rent_avail/layout
+yarn add react react-dom styled-components @rent_avail/core
 ```
 
-Bootstrap your react app and in the root component import the `ThemeProvider` from styled-components and our theme & global styles.
+Bootstrap your react app and in the root component import the `ElementsProvider` from `@rent_avail/core`
 
 ```jsx
-import { ThemeProvider } from "styled-components"
-import { Base, theme } from "@rent_avail/base"
+import { ElementsProvider } from "@rent_avail/core"
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Base />
+    <ElementsProvider
+      theme={/* Optional theme object that will be merged into the base theme */}
+    >
       <Routes />
-    </ThemeProvider>
+    </ElementsProvider>
   )
 }
 ```
@@ -71,18 +102,23 @@ function App() {
 Now you're ready to start using layout components to quickly build complex UIs.
 
 ```jsx
-import { Container, Box, Stack, Card } from "@rent_avail/layout"
-import { Text, Heading } from "@rent_avail/typography"
+import { Card, Container } from "@rent_avail/core"
+
+const cardBackgrounds = [
+  "blue_100",
+  "blue_300",
+  "blue_500",
+  "blue_700",
+  "blue_900",
+]
 
 function DashboardPage() {
   return (
     <Box as="main" my="4rem">
       <Container as={Stack}>
-        <Card bg="blue_100">Item 1</Card>
-        <Card bg="blue_300">Item 2</Card>
-        <Card bg="blue_500">Item 3</Card>
-        <Card bg="blue_700">Item 4</Card>
-        <Card bg="blue_900">Item 5</Card>
+        {cardBackgrounds.map((bg) => (
+          <Card key={bg} sx={{ bg }} />
+        ))}
       </Container>
     </Box>
   )
@@ -94,14 +130,14 @@ function DashboardPage() {
 Styled system allows us to responsively style our ui components with array props. All styled props accept an array that will map to the breakpoints in the theme spec.
 
 ```jsx
-<Box width={[1, 1 / 2, 1 / 3]}>
+<Box sx={{ width: [1, 1 / 2, 1 / 3] }}>
   I'll be 100% on the smallest screens, then 50%, then 33.33%.
 </Box>
 ```
 
 ## Theme
 
-You can use the theme properties in any styled component below the `ThemeProvider` component.
+You can use the theme properties in any styled component below the `ElementsProvider` component.
 
 ```jsx
 const Wrapper = styled.div`
