@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.23...@rent_avail/dialog@0.2.0) (2021-05-13)
+
+
+### Features
+
+* update confirmation dialog to consume custom hook ([66b0763](https://github.com/rentalutions/elements/commit/66b0763d305de2e52df7e5b2619e3aa83a8cd1f9))
+
+
+
+
+
 ## [0.1.23](https://github.com/rentalutions/elements/compare/@rent_avail/dialog@0.1.22...@rent_avail/dialog@0.1.23) (2021-02-05)
 
 **Note:** Version bump only for package @rent_avail/dialog
