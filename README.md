@@ -87,10 +87,10 @@ yarn workspace [package-name] publish --tag [alpha | beta]
 
 ## Adding Packages
 
-To add a package to the system, first clone and install all dependencies as in the setup instructions. Use the lerna command `create`.
+Use the command `yarn create-package [package-name] [package description]`.
 
 ```bash
-yarn lerna create --dependencies @rent_avail/utils,@rent_avail/base @rent_avail/new-package
+yarn create-package footer "A footer package for the avail design system"
 ```
 
 ## Code Preferences
