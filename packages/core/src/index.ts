@@ -1,3 +1,3 @@
-export * from "./elements-provider"
+export * from "./provider"
 export * from "./layout"
 export * from "./base-theme"

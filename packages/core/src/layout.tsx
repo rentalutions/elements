@@ -21,8 +21,9 @@ export const Box = styled.div(sx)
 export const Container = styled.section(space, layout, sx)
 
 Container.defaultProps = {
-  maxWidth: "80rem",
+  maxWidth: "84rem",
   mx: "auto",
+  px: "2rem",
 }
 
 interface GridProps extends GridGapProps {
