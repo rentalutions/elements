@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.4...@rent_avail/icons@0.0.5) (2021-07-28)
+
+
+### Bug Fixes
+
+* add module and side effects ([970706c](https://github.com/rentalutions/elements/commit/970706cfb96164bc26b01a80faeb703238473b01))
+* update build script for icons ([955d685](https://github.com/rentalutions/elements/commit/955d6851a58b48c708be1b6e4b2c84c0592e28c0))
+
+
+
+
+
 ## [0.0.4](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.3...@rent_avail/icons@0.0.4) (2021-05-10)
 
 
