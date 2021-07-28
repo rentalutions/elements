@@ -3,11 +3,9 @@
   "name": "@rent_avail/icons",
   "version": "0.0.4",
   "description": "Icon library for Avail Design System",
-  "source": "src/index.js",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
