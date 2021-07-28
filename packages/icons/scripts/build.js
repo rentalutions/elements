@@ -5,11 +5,14 @@ const upperCamelCase = require("uppercamelcase")
 const cheerio = require("cheerio")
 const { minify } = require("html-minifier")
 
-const iconFiles = fs.readdirSync(path.join(__dirname, "icons"))
+const svgFolder = path.resolve(__dirname, "../svg")
+const iconsFoler = path.resolve(__dirname, "../src/icons")
 
-const icons = iconFiles.reduce((icons, file) => {
+const svgs = fs.readdirSync(svgFolder)
+
+const icons = svgs.reduce((icons, file) => {
   const name = path.basename(file, ".svg")
-  const svg = fs.readFileSync(path.join(__dirname, "icons", file), {
+  const svg = fs.readFileSync(path.resolve(svgFolder, file), {
     encoding: "utf8",
   })
   const contents = cheerio.load(svg)("svg").html()
@@ -18,8 +21,6 @@ const icons = iconFiles.reduce((icons, file) => {
 }, {})
 
 const keys = Object.keys(icons)
-
-const dir = path.join(__dirname, "src/icons")
 
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir)
@@ -43,7 +44,7 @@ fs.writeFileSync(
 )
 
 keys.forEach((name) => {
-  const location = path.join(__dirname, "src/icons", `${name}.js`)
+  const location = path.join(iconsFoler, `${name}.js`)
   const ComponentName = upperCamelCase(name)
   const element = `
     import React, { forwardRef } from "react"
