@@ -5,14 +5,12 @@ const upperCamelCase = require("uppercamelcase")
 const cheerio = require("cheerio")
 const { minify } = require("html-minifier")
 
-const svgFolder = path.resolve(__dirname, "../svg")
-const iconsFoler = path.resolve(__dirname, "../src/icons")
+const svgDirectory = path.resolve(__dirname, "../svg")
+const svgFiles = fs.readdirSync(svgDirectory)
 
-const svgs = fs.readdirSync(svgFolder)
-
-const icons = svgs.reduce((icons, file) => {
+const icons = svgFiles.reduce((icons, file) => {
   const name = path.basename(file, ".svg")
-  const svg = fs.readFileSync(path.resolve(svgFolder, file), {
+  const svg = fs.readFileSync(path.resolve(svgDirectory, file), {
     encoding: "utf8",
   })
   const contents = cheerio.load(svg)("svg").html()
@@ -20,10 +18,12 @@ const icons = svgs.reduce((icons, file) => {
   return icons
 }, {})
 
+const sourceDir = path.resolve(__dirname, "../src")
+const iconDirectory = path.resolve(sourceDir, "icons")
 const keys = Object.keys(icons)
 
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir)
+if (!fs.existsSync(iconDirectory)) {
+  fs.mkdirSync(iconDirectory)
 }
 
 const initialTypeDefinitions = `
@@ -36,15 +36,15 @@ export interface IconProps extends SVGAttributes<SVGElement> {
 export type Icon = FC<IconProps>;
 `
 
-fs.writeFileSync(path.join(__dirname, "src", "index.js"), "", "utf-8")
+fs.writeFileSync(path.resolve(sourceDir, "index.js"), "", "utf-8")
 fs.writeFileSync(
-  path.join(__dirname, "src", "index.d.ts"),
+  path.resolve(sourceDir, "index.d.ts"),
   initialTypeDefinitions,
   "utf-8"
 )
 
 keys.forEach((name) => {
-  const location = path.join(iconsFoler, `${name}.js`)
+  const location = path.resolve(iconDirectory, `${name}.js`)
   const ComponentName = upperCamelCase(name)
   const element = `
     import React, { forwardRef } from "react"
@@ -94,17 +94,11 @@ keys.forEach((name) => {
   console.log("Built", ComponentName)
 
   const exportString = `export * from "./icons/${name}"\r\n`
-
-  fs.appendFileSync(
-    path.join(__dirname, "src", "index.js"),
-    exportString,
-    "utf-8"
-  )
-
   const exportTypeString = `export const ${ComponentName}: Icon;\n`
 
+  fs.appendFileSync(path.join(sourceDir, "index.js"), exportString, "utf-8")
   fs.appendFileSync(
-    path.join(__dirname, "src", "index.d.ts"),
+    path.join(sourceDir, "index.d.ts"),
     exportTypeString,
     "utf-8"
   )
