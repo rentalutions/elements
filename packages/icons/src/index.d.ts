@@ -176,6 +176,7 @@ export const Navigation2: Icon;
 export const Navigation: Icon;
 export const Octagon: Icon;
 export const Package: Icon;
+export const PaperCheck: Icon;
 export const Paperclip: Icon;
 export const PauseCircle: Icon;
 export const Pause: Icon;
