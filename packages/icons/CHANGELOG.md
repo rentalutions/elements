@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.5...@rent_avail/icons@0.0.6) (2021-08-10)
+
+
+### Bug Fixes
+
+* add paper-check icon ([59dbd65](https://github.com/rentalutions/elements/commit/59dbd65c6323ef34d7a5f97b7919c8061a612bcf))
+* remove clip path from icons ([95d1b8a](https://github.com/rentalutions/elements/commit/95d1b8a2921de6b19ccd69c0a2be03bb5fd03b69))
+
+
+
+
+
 ## [0.0.5](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.4...@rent_avail/icons@0.0.5) (2021-07-28)
 
 
