@@ -1,5 +1,3 @@
-const { extendDefaultPlugins } = require("svgo")
-
 module.exports = {
   plugins: [
     { name: "removeTitle", active: true },
