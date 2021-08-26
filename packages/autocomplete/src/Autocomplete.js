@@ -34,6 +34,7 @@ export default function Autocomplete({
   defaultValue = null,
   parentRef,
   sx,
+  listSx = {},
   ...props
 }) {
   const targetRef = useRef()
@@ -140,6 +141,7 @@ export default function Autocomplete({
               borderColor: "ui_500",
               listStyle: "none",
               width: targetRef.current.offsetWidth,
+              ...listSx,
             }}
           >
             {suggestions.map((place) => {
