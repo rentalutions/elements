@@ -33,6 +33,7 @@ export default function Autocomplete({
   onManualSelection = noop,
   defaultValue = null,
   parentRef,
+  sx,
   ...props
 }) {
   const targetRef = useRef()
@@ -72,7 +73,7 @@ export default function Autocomplete({
     }
   }, [defaultValue])
   return (
-    <Box position="relative">
+    <Box position="relative" sx={sx}>
       <Input
         {...props}
         ref={targetRef}
