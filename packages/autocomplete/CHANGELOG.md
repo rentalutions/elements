@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.13](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.3.12...@rent_avail/autocomplete@0.3.13) (2021-08-26)
+
+
+### Bug Fixes
+
+* add listSx prop to autocomplete ([baad975](https://github.com/rentalutions/elements/commit/baad975e89acdb7e849cfe6025f6cfc80357f34b))
+
+
+
+
+
 ## [0.3.12](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.3.11...@rent_avail/autocomplete@0.3.12) (2021-08-26)
 
 
