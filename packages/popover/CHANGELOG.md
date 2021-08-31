@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.7...@rent_avail/popover@0.3.8) (2021-08-31)
+
+
+### Bug Fixes
+
+* remove clip path from icons ([95d1b8a](https://github.com/rentalutions/elements/commit/95d1b8a2921de6b19ccd69c0a2be03bb5fd03b69))
+
+
+
+
+
 ## [0.3.7](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.6...@rent_avail/popover@0.3.7) (2021-04-13)
 
 **Note:** Version bump only for package @rent_avail/popover
