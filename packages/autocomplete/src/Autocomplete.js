@@ -127,6 +127,7 @@ export default function Autocomplete({
         <Popover
           targetRef={targetRef}
           parentRef={parentRef}
+          sx={listSx}
           position={{ x: "left", y: "bottom" }}
         >
           <Box
@@ -141,7 +142,6 @@ export default function Autocomplete({
               borderColor: "ui_500",
               listStyle: "none",
               width: targetRef.current.offsetWidth,
-              ...listSx,
             }}
           >
             {suggestions.map((place) => {
