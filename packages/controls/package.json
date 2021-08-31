@@ -30,8 +30,10 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
+    "@rent_avail/core": "^0.0.2",
+    "@rent_avail/popover": "^0.3.7",
     "@rent_avail/utils": "^0.5.0",
-    "framer-motion": "^4.1.13",
+    "framer-motion": "^4.1.17",
     "styled-system": "^5.1.5"
   }
 }

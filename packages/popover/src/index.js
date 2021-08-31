@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useRef, forwardRef, useState, useEffect, useMemo } from "react"
 import { createPortal } from "react-dom"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import {
   usePortal,
   closestScrollable,
