@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.18-alpha.0](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.17...@rent_avail/controls@0.2.18-alpha.0) (2021-09-13)
+
+
+### Reverts
+
+* Revert "Fixed tests failing to transpile @rent_avail/icons" ([a653b46](https://github.com/rentalutions/elements/commit/a653b46bacc79d7c3e6afb49527bd1bddeb61bc9))
+
+
+
+
+
 ## [0.2.17](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.16...@rent_avail/controls@0.2.17) (2021-08-31)
 
 
