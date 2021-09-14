@@ -5,7 +5,7 @@
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
     "boot": "yarn add -W lerna && lerna bootstrap --force-local",
-    "build": "lerna run build --ignore @rent_avail/docs",
+    "build": "lerna run build --ignore @rent_avail/docs --stream",
     "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "check": "lerna changed --include-merged-tags",
