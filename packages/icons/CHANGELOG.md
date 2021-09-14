@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.6...@rent_avail/icons@0.0.7) (2021-09-14)
+
+
+### Bug Fixes
+
+* **icons:** add es cjs build ([5597cbe](https://github.com/rentalutions/elements/commit/5597cbe2d37cf42d6967e205636295f29e43b563))
+
+
+
+
+
 ## [0.0.6](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.5...@rent_avail/icons@0.0.6) (2021-08-10)
 
 
