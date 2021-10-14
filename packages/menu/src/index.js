@@ -64,9 +64,8 @@ function Menu({ parentRef, children, id }) {
 }
 
 function Target({ children, ...rest }, ref) {
-  const { id, targetRef, menuRef, openMenu, closeMenu, isOpen } = useContext(
-    MenuContext
-  )
+  const { id, targetRef, menuRef, openMenu, closeMenu, isOpen } =
+    useContext(MenuContext)
   const { onClick, onFocus, onKeyDown } = children.props
   function handleKeyDown({ key }) {
     switch (key) {
@@ -104,15 +103,9 @@ const StyledList = styled(Card)`
   min-width: 20rem;
 `
 
-function List({ children, position, ...rest }, ref) {
-  const {
-    targetRef,
-    menuRef,
-    popoverRef,
-    parentRef,
-    closeMenu,
-    isOpen,
-  } = useContext(MenuContext)
+function List({ children, position, sx = {}, ...rest }, ref) {
+  const { targetRef, menuRef, popoverRef, parentRef, closeMenu, isOpen } =
+    useContext(MenuContext)
   function handleBlur({ target }) {
     if (!isOpen) return null
     const menuEl = menuRef.current
@@ -131,7 +124,7 @@ function List({ children, position, ...rest }, ref) {
       parentRef={parentRef}
       ref={popoverRef}
       position={position}
-      style={{ zIndex: "9999" }}
+      sx={{ zIndex: 999, ...sx }}
     >
       <StyledList as="ul" {...rest} ref={mergeRefs(ref, menuRef)} role="menu">
         {children}

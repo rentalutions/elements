@@ -19,7 +19,7 @@ export function BasicUsage() {
           <MenuTarget>
             <Button>open `b l`</Button>
           </MenuTarget>
-          <MenuList>
+          <MenuList sx={{ zIndex: "0" }}>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
             <MenuItem>thing</MenuItem>
@@ -38,7 +38,7 @@ export function BasicUsage() {
           </MenuList>
         </Menu>
       </Flex>
-      <Box height="30rem" />
+      <Box sx={{ height: "calc(100vh - 10rem)" }} />
       <Flex justifyContent="space-between">
         <Menu>
           <MenuTarget>
