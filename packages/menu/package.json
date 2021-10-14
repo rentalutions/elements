@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/menu",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Menu component",
   "source": "src/index.js",
   "main": "dist/index.js",

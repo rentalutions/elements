@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.9...@rent_avail/menu@0.2.10) (2021-10-14)
+
+
+### Bug Fixes
+
+* allow sx to override menu zIndex ([6db1232](https://github.com/rentalutions/elements/commit/6db1232766c471743d681c32aa7acb4669b88eb4))
+
+
+
+
+
 ## [0.2.9](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.8...@rent_avail/menu@0.2.9) (2021-08-31)
 
 
