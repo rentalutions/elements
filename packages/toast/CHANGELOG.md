@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.2...@rent_avail/toast@0.1.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* remove clip path from icons ([95d1b8a](https://github.com/rentalutions/elements/commit/95d1b8a2921de6b19ccd69c0a2be03bb5fd03b69))
+
+
+
+
+
 ## [0.1.2](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.1...@rent_avail/toast@0.1.2) (2021-04-13)
 
 **Note:** Version bump only for package @rent_avail/toast

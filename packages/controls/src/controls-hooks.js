@@ -1,5 +1,5 @@
 import { useState, useRef, useContext, useEffect } from "react"
-import { wrapEvent, mergeRefs, useResize } from "@rent_avail/utils"
+import { wrapEvent, mergeRefs, useResize, escapeRegExp } from "@rent_avail/utils"
 import { SelectContext, SelectActions } from "./select/select-provider"
 // import { SelectItemProps } from "./select/select-item"
 
@@ -114,7 +114,7 @@ export function useSelectItem({
   useEffect(() => {
     setVisible((prevVisible) => {
       if (!state.searchValue.length) return defaultVisible
-      const matcher = new RegExp(state.searchValue, "i")
+      const matcher = new RegExp(escapeRegExp(state.searchValue), "i")
       for (let token of tokens) {
         const anyMatch = Object.values(token).some((value) =>
           value.toString().match(matcher)
