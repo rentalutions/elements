@@ -348,3 +348,7 @@ export function useMediaQuery({ min = 0, max = null }) {
   }, [min, max])
   return matches
 }
+
+export function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
