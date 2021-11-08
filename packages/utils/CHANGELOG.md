@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.5.0...@rent_avail/utils@0.5.1) (2021-11-08)
+
+
+### Bug Fixes
+
+* remove clip path from icons ([95d1b8a](https://github.com/rentalutions/elements/commit/95d1b8a2921de6b19ccd69c0a2be03bb5fd03b69))
+
+
+
+
+
 # [0.5.0](https://github.com/rentalutions/elements/compare/@rent_avail/utils@0.4.0...@rent_avail/utils@0.5.0) (2021-02-05)
 
 
