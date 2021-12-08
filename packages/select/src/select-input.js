@@ -15,7 +15,7 @@ function useSelectInput({
   ...props
 }) {
   const { state, dispatch, listRef, inputRef } = useContext(SelectContext)
-  function handleFocus() {
+  function openList() {
     dispatch({ type: types.OPEN_LIST })
   }
   function handleChange({ target }) {
@@ -32,7 +32,7 @@ function useSelectInput({
     inputProps: {
       ...props,
       className: clsx(className, { filled: state.value.length }),
-      onFocus: wrapEvent(onFocus, handleFocus),
+      onFocus: wrapEvent(onFocus, openList),
       onChange: wrapEvent(onChange, handleChange),
       onKeyDown: wrapEvent(onKeyDown, handleKeyDown),
       ref: mergeRefs(ref, inputRef),
@@ -42,11 +42,12 @@ function useSelectInput({
       hidden: !state.value.length,
       children: state.defaultLabel.length ? state.defaultLabel : state.value,
     },
+    openList,
   }
 }
 
 function SelectInput({ sx, ...props }, ref) {
-  const { inputProps, valueBoxProps, state } = useSelectInput({ ...props, ref })
+  const { inputProps, valueBoxProps, state, openList } = useSelectInput({ ...props, ref })
   return (
     <Box as="section" sx={{ position: "relative", ...sx }}>
       <Input
@@ -64,6 +65,7 @@ function SelectInput({ sx, ...props }, ref) {
           transition: "200ms",
           transform: state.isOpen ? "rotate(180deg)" : "rotate(0)",
         }}
+        onClick={openList}
       />
       <Box
         {...valueBoxProps}
