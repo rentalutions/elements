@@ -63,6 +63,7 @@ function SelectInput({ sx, ...props }, ref) {
           right: "2rem",
           transition: "200ms",
           transform: state.isOpen ? "rotate(180deg)" : "rotate(0)",
+          pointerEvents: "none",
         }}
       />
       <Box
