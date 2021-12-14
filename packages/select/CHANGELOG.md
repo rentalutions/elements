@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.14](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.13...@rent_avail/select@0.3.14) (2021-12-14)
+
+
+### Bug Fixes
+
+* remove pointer events on select chevron ([4d89de5](https://github.com/rentalutions/elements/commit/4d89de57cff806eed7efe867f9bd6ea780bd1d71))
+
+
+
+
+
 ## [0.3.13](https://github.com/rentalutions/elements/compare/@rent_avail/select@0.3.12...@rent_avail/select@0.3.13) (2021-11-08)
 
 **Note:** Version bump only for package @rent_avail/select

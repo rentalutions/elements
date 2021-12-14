@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/select",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Select input component.",
   "source": "src/index.js",
   "main": "dist/index.js",
