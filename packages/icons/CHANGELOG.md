@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.7...@rent_avail/icons@0.1.0) (2022-02-22)
+
+
+### Features
+
+* **icons:** add sycned icon ([784de67](https://github.com/rentalutions/elements/commit/784de6702a82a9fcb1cba44f71bdbbdebd6c714e))
+
+
+
+
+
 ## [0.0.7](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.0.6...@rent_avail/icons@0.0.7) (2021-09-14)
 
 
