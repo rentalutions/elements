@@ -105,7 +105,7 @@ function ToastProvider({ position = "bottom-left", ...props }) {
   const positionStyles = getPositionStyles(position)
   function createToast(type = "blank") {
     return function (children, options = {}) {
-      const { id = getId(), duration = 4000, ...opts } = options
+      const { id = getId(), ...opts } = options
       const toast = {
         "aria-live": "polite",
         children,
