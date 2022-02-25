@@ -132,6 +132,9 @@ function ToastProvider({ position = "bottom-left", ...props }) {
     if (paused) return
     const now = Date.now()
     const timeouts = toasts.map((toast) => {
+      if (toast.duration === Infinity) {
+        return null
+      }
       const timeLeft =
         (toast.duration || 0) + toast.pausedDuration - (now - toast.createdAt)
       if (timeLeft < 0) {
