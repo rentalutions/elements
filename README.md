@@ -67,7 +67,7 @@ Current release process, it's kind of involved, but github actions does most of 
 yarn build && yarn test
 
 # Create new versions of the packages worked on, git tag, and create a CHANGELOG for those package.
-yarn lerna version
+yarn graduate
 
 # If everything looks kosher, push to Github.
 git push origin release --follow-tags
