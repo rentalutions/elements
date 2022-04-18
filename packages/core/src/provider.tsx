@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react"
+import React, { Fragment, PropsWithChildren } from "react"
 import { ThemeProvider } from "styled-components"
 import { baseTheme } from "./base-theme"
 import { Reset } from "./reset"
@@ -9,8 +9,10 @@ export function ElementsProvider({
 }: PropsWithChildren<{ theme?: Partial<typeof baseTheme> }>) {
   return (
     <ThemeProvider theme={{ ...baseTheme, ...theme }}>
-      <Reset />
-      {children}
+      <Fragment>
+        <Reset />
+        {children}
+      </Fragment>
     </ThemeProvider>
   )
 }
