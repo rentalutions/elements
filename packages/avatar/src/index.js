@@ -127,11 +127,11 @@ const Avatar = forwardRef(function Avatar(
         text: ["small"],
         overflow: "hidden",
         bg: "ui_300",
-        backgroundImage: !isDefault ? `url(${photo})` : "",
+        backgroundImage: initials || isDefault ? "" : `url(${photo})`,
         ...sx,
       }}
     >
-      {isDefault && initials}
+      {initials && initials}
     </Box>
   )
 })
