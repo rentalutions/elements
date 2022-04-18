@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.7...@rent_avail/avatar@0.3.8) (2022-04-18)
+
+
+### Bug Fixes
+
+* **avatar:** updates avatar initials prop ([b424fad](https://github.com/rentalutions/elements/commit/b424fad64d08986665f6492223528a31e4d48c52)), closes [#186](https://github.com/rentalutions/elements/issues/186)
+
+
+
+
+
 ## [0.3.7](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.6...@rent_avail/avatar@0.3.7) (2021-11-08)
 
 
