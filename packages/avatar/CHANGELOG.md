@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.9](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.8...@rent_avail/avatar@0.3.9) (2022-04-26)
+
+
+### Bug Fixes
+
+* remove uneeded avatar margin ([5e8adcb](https://github.com/rentalutions/elements/commit/5e8adcbf28424f843bfa0dd713aa75b4667301e6))
+
+
+
+
+
 ## [0.3.8](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.7...@rent_avail/avatar@0.3.8) (2022-04-18)
 
 
