@@ -47,7 +47,6 @@ const Avatar = forwardRef(function Avatar(
           gap: "1rem",
           bg: "ui_300",
           p: "0.5rem",
-          pr: "2rem",
           borderRadius: "4rem",
           maxWidth: "25rem",
           ...sx,
@@ -67,26 +66,29 @@ const Avatar = forwardRef(function Avatar(
         />
         <Box
           sx={{
-            display: "flex",
+            display: name || email ? "flex" : "none",
             flexDirection: "column",
             justifyContent: "center",
+            mr: "1.5rem",
           }}
         >
-          <Box
-            as="span"
-            className="avatar__name"
-            sx={{
-              overflow: "hidden",
-              overflowWrap: "anywhere",
-              wordBreak: email ? "break-all" : "normal",
-              // This is kind of a hack but works in every major browser except IE
-              display: "-webkit-box",
-              "-webkit-line-clamp": email ? "1" : "2",
-              "-webkit-box-orient": "vertical",
-            }}
-          >
-            {name}
-          </Box>
+          {name && (
+            <Box
+              as="span"
+              className="avatar__name"
+              sx={{
+                overflow: "hidden",
+                overflowWrap: "anywhere",
+                wordBreak: email ? "break-all" : "normal",
+                // This is kind of a hack but works in every major browser except IE
+                display: "-webkit-box",
+                "-webkit-line-clamp": email ? "1" : "2",
+                "-webkit-box-orient": "vertical",
+              }}
+            >
+              {name}
+            </Box>
+          )}
           {email && (
             <Box
               as="span"

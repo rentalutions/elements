@@ -32,6 +32,7 @@ export function NoEmail() {
         icon={ChevronRight}
       />
       <Avatar name="Patrick K" photo="https://i.pravatar.cc/72" />
+      <Avatar photo="https://i.pravatar.cc/72" />
     </Fragment>
   )
 }
