@@ -22,3 +22,6 @@ node_modules
 dist
 .now
 storybook
+
+# System
+.DS_Store
