@@ -1,11 +1,17 @@
 # Env
 .env
 
-# System files
-.DS_Store
-
 # Package management
 node_modules
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Logs
 *.log
 
 # Documentation
