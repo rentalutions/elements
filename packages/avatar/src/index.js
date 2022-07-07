@@ -53,17 +53,30 @@ const Avatar = forwardRef(function Avatar(
         }}
       >
         <Box
-          as="img"
-          src={photo}
           sx={{
+            display: "inline-flex",
             width: "4rem",
             height: "4rem",
-            borderRadius: "2rem",
             flex: "0 0 auto",
-            objectFit: "cover",
-            bg: "ui_500",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        />
+        >
+          {initials ? (
+            <Box as="span">{initials}</Box>
+          ) : (
+            <Box
+              as="img"
+              src={photo}
+              sx={{
+                objectFit: "cover",
+                bg: "ui_500",
+                borderRadius: "2rem",
+                display: "block",
+              }}
+            />
+          )}
+        </Box>
         <Box
           sx={{
             display: name || email ? "flex" : "none",
@@ -107,7 +120,7 @@ const Avatar = forwardRef(function Avatar(
         {icon && (
           <Box
             as={icon}
-            sx={{ alignSelf: "center", flexShrink: 0, ml: "1rem" }}
+            sx={{ alignSelf: "center", flexShrink: 0, mr: "1rem" }}
           />
         )}
       </Box>
