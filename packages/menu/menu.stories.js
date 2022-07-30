@@ -20,10 +20,18 @@ export function BasicUsage() {
             <Button>open `b l`</Button>
           </MenuTarget>
           <MenuList sx={{ zIndex: "0" }}>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
           </MenuList>
         </Menu>
         <Menu>
@@ -31,10 +39,18 @@ export function BasicUsage() {
             <Button>open `b r`</Button>
           </MenuTarget>
           <MenuList>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
           </MenuList>
         </Menu>
       </Flex>
@@ -45,10 +61,18 @@ export function BasicUsage() {
             <Button>open `t l`</Button>
           </MenuTarget>
           <MenuList>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
           </MenuList>
         </Menu>
         <Menu>
@@ -56,10 +80,18 @@ export function BasicUsage() {
             <Button>open `t l`</Button>
           </MenuTarget>
           <MenuList>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
-            <MenuItem>thing</MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
+            <MenuItem>
+              <a href="#">thing</a>
+            </MenuItem>
           </MenuList>
         </Menu>
       </Flex>
