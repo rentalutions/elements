@@ -10,9 +10,9 @@ import React, {
   cloneElement,
 } from "react"
 import styled from "styled-components"
+import { Box, Card } from "@rent_avail/core"
 import Popover from "@rent_avail/popover"
-import { Box, Card } from "@rent_avail/layout"
-import { mergeRefs, wrapEvent, useBodyScrollLock } from "@rent_avail/utils"
+import { mergeRefs, wrapEvent } from "@rent_avail/utils"
 
 const MenuContext = createContext()
 
@@ -38,9 +38,14 @@ function reducer(state, action) {
   }
 }
 
-function MenuWrapper({ children }) {
-  const { targetRef, menuRef, closeMenu, isOpen } = useContext(MenuContext)
-  const [lockBodyScroll, unlockBodyScroll] = useBodyScrollLock()
+function Menu({ parentRef, children, id }) {
+  const [{ isOpen }, dispatch] = useReducer(reducer, initialState)
+  const targetRef = useRef()
+  const menuRef = useRef()
+  const popoverRef = useRef()
+  const openMenu = () => dispatch({ type: types.OPEN_MENU })
+  const closeMenu = () => dispatch({ type: types.CLOSE_MENU })
+
   function handleClick({ target }) {
     if (
       isOpen &&
@@ -51,6 +56,7 @@ function MenuWrapper({ children }) {
       closeMenu()
     }
   }
+
   function handleBlur() {
     requestAnimationFrame(() => {
       if (
@@ -63,28 +69,17 @@ function MenuWrapper({ children }) {
       }
     })
   }
+
   useEffect(() => {
     if (isOpen) {
-      lockBodyScroll()
       document.addEventListener("click", handleClick)
       document.addEventListener("focusout", handleBlur)
     } else {
-      unlockBodyScroll()
       document.removeEventListener("click", handleClick)
       document.removeEventListener("focusout", handleBlur)
     }
   }, [isOpen])
 
-  return <React.Fragment>{children}</React.Fragment>
-}
-
-function Menu({ parentRef, children, id }) {
-  const [{ isOpen }, dispatch] = useReducer(reducer, initialState)
-  const targetRef = useRef()
-  const menuRef = useRef()
-  const popoverRef = useRef()
-  const openMenu = () => dispatch({ type: types.OPEN_MENU })
-  const closeMenu = () => dispatch({ type: types.CLOSE_MENU })
   return (
     <MenuContext.Provider
       value={{
@@ -98,7 +93,7 @@ function Menu({ parentRef, children, id }) {
         id,
       }}
     >
-      <MenuWrapper>{children}</MenuWrapper>
+      {children}
     </MenuContext.Provider>
   )
 }
@@ -179,26 +174,25 @@ function List({ children, position, sx = {}, ...rest }, ref) {
 
 const MenuList = memo(forwardRef(List))
 
-const ItemWrapper = forwardRef(({ sx, children }, ref) => {
+const ItemWrapper = forwardRef(({ children, sx, ...props }, ref) => {
   return (
     <Box
       ref={ref}
-      as={styled.li`
-        &:hover,
-        &:first-child:focus {
-          background: ${({ theme }) => theme.colors.ui_300};
-        }
-        &:not(:last-of-type) {
-          border-bottom: 1px solid ${({ theme }) => theme.colors.ui_500};
-        }
-      `}
+      as="li"
       sx={{
         display: "block",
         padding: "2rem",
         cursor: "pointer",
         outline: "none",
+        "&:hover, &:first-child:focus": {
+          background: (theme) => theme.colors.ui_300,
+        },
+        "&:not(:last-of-type)": {
+          borderBottom: (theme) => `1px solid ${theme.colors.ui_500}`,
+        },
         ...sx,
       }}
+      {...props}
     >
       {children}
     </Box>
