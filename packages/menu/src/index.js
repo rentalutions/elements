@@ -185,10 +185,12 @@ const ItemWrapper = forwardRef(({ children, sx, ...props }, ref) => {
         cursor: "pointer",
         outline: "none",
         "&:hover, &:first-child:focus": {
-          background: (theme) => theme.colors.ui_300,
+          backgroundColor: "ui_300",
         },
         "&:not(:last-of-type)": {
-          borderBottom: (theme) => `1px solid ${theme.colors.ui_500}`,
+          borderBottomStyle: "solid",
+          borderBottomWidth: 1,
+          borderBottomColor: "ui_500",
         },
         ...sx,
       }}
