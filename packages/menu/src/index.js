@@ -70,13 +70,21 @@ function Menu({ parentRef, children, id }) {
     })
   }
 
+  function removeEventListeners() {
+    document.removeEventListener("click", handleClick)
+    document.removeEventListener("focusout", handleBlur)
+  }
+
+  useEffect(() => {
+    return removeEventListeners
+  }, [])
+
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("click", handleClick)
       document.addEventListener("focusout", handleBlur)
     } else {
-      document.removeEventListener("click", handleClick)
-      document.removeEventListener("focusout", handleBlur)
+      removeEventListeners()
     }
   }, [isOpen])
 
