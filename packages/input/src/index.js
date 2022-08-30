@@ -119,7 +119,7 @@ function Input(
               color: "ui_300",
             },
             '&[type="date"]': {
-              color: ref.current?.value ? "ui_900" : "ui_500",
+              color: ref && ref.current?.value ? "ui_900" : "ui_500",
             },
           }}
         />
