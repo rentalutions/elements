@@ -59,7 +59,7 @@ function Input(
           borderStyle: "solid",
           borderColor: "ui_500",
           borderRadius: 4,
-          "&:focus-within": {
+          '&:focus-within, & > [type="date"]:focus-within': {
             borderColor: "blue_500",
             color: "blue_500",
           },
@@ -67,7 +67,7 @@ function Input(
             transform: "translateY(-1rem) scale(0.889)",
           },
           "&.filled:not(:focus-within):not(.error) .input__label-row": {
-            color: disabled ? "ui_500" : "ui_700",
+            color: disabled ? "ui_500" : "ui_900",
           },
           "&.error": {
             borderColor: "red_500",
@@ -118,6 +118,9 @@ function Input(
             "&::-webkit-calendar-picker-indicator:hover + svg": {
               color: "ui_300",
             },
+            '&[type="date"]': {
+              color: ref.current?.value ? "ui_900" : "ui_500",
+            },
           }}
         />
         {isDate && (
@@ -142,7 +145,7 @@ function Input(
             left: icon ? "5rem" : "2rem",
             transformOrigin: "top left",
             pointerEvents: "none",
-            color: disabled ? "ui_500" : "inherit",
+            color: disabled ? "ui_500" : "ui_900",
           }}
         >
           <Box as="span" id={ariaId}>
