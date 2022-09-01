@@ -1,5 +1,5 @@
-import React, { forwardRef, useState, useEffect } from "react"
-import { wrapEvent, noop, useId } from "@rent_avail/utils"
+import React, { forwardRef, useState, useEffect, useRef } from "react"
+import { wrapEvent, noop, useId, mergeRefs } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
 import clsx from "clsx"
@@ -39,6 +39,7 @@ function Input(
   }, [value])
   const systemProps = pick(props)
   const inputProps = omit(props)
+  const inputRef = useRef(null)
   return (
     <Box
       className={className}
@@ -86,7 +87,7 @@ function Input(
       >
         <Box
           {...inputProps}
-          ref={ref}
+          ref={mergeRefs(ref, inputRef)}
           as={as}
           type={type}
           aria-labelledby={[labelledBy, ariaId].join(" ").trim()}
@@ -119,7 +120,7 @@ function Input(
               color: "ui_300",
             },
             '&[type="date"]': {
-              color: ref && ref.current?.value ? "ui_900" : "ui_500",
+              color: inputRef.current?.value ? "ui_900" : "ui_500",
             },
           }}
         />
