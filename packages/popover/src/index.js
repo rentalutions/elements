@@ -13,21 +13,28 @@ import { dequal } from "dequal"
 export function getPosition({ popover, target, parent, position: { x, y } }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
   if (!popover || !target) return defaultValue
-  const yOffset = !parent ? window.pageYOffset : parent.scrollTop
-  const xOffset = !parent ? window.pageXOffset : parent.scrollLeft
+  const yOffset = !parent ? window.pageYOffset : 0
+  const xOffset = !parent ? window.pageXOffset : 0
   /**
    * We need to check width and height differently here. The viewport should be
    * the vertical bounding box and a parent (if exists) should be the horizontal
    * bounding box.
    */
+  const parentOffset = parent && parent.getBoundingClientRect()
   const collisions = {
-    top: target.top - popover.height < 0,
-    right:
-      (parent?.clientWidth || window.innerWidth) < target.left + popover.width,
-    bottom: window.innerHeight < target.bottom + popover.height,
-    left: target.left - popover.width < 0,
+    top: parentOffset
+      ? parentOffset.top - popover.height <= 0
+      : target.top - popover.height <= 0,
+    right: parentOffset
+      ? window.innerWidth <= parentOffset.left + popover.width
+      : window.innerWidth <= target.left + popover.width,
+    bottom: parentOffset
+      ? window.innerHeight <= parentOffset.top + popover.height
+      : window.innerHeight <= target.bottom + popover.height,
+    left: parentOffset
+      ? parentOffset.left - popover.width <= 0
+      : target.left - popover.width <= 0,
   }
-  const rightCollision = collisions.right && !collisions.left
   const topCollision = collisions.bottom && !collisions.top
   const alignTop = target.top - 12 - popover.height + yOffset
   const alignBottom = target.top + 12 + target.height + yOffset
@@ -46,7 +53,7 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
       ? alignLeft
       : x === "right"
       ? alignRight
-      : rightCollision
+      : collisions.right
       ? alignRight
       : alignLeft
   if (Number.isNaN(top + left)) return defaultValue
@@ -94,7 +101,7 @@ const Popover = forwardRef(function Popover(
     const newPos = getPosition({
       popover: popoverBounds,
       target: targetBounds,
-      parent,
+      parent: parentRef?.current,
       position,
     })
     setPosition(newPos)
