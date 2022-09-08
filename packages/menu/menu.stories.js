@@ -115,7 +115,7 @@ export function PortalUsage() {
         >
           <Container>
             <DialogHeader title="Open and scroll" />
-            <Flex justifyContent="space-between">
+            <Flex sx={{ justifyContent: "space-between" }}>
               <Menu>
                 <MenuTarget>
                   <Button>open `b l`</Button>
@@ -139,8 +139,8 @@ export function PortalUsage() {
                 </MenuList>
               </Menu>
             </Flex>
-            <Box height="30rem" />
-            <Flex justifyContent="space-between">
+            <Box sx={{ height: "30rem" }} />
+            <Flex sx={{ justifyContent: "space-between" }}>
               <Menu>
                 <MenuTarget>
                   <Button>open `t l`</Button>
