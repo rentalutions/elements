@@ -27,14 +27,25 @@ export function getPosition({
 }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
   if (!popover || !target || !container) return defaultValue
+  const paddingX = 12
+  const paddingY = 12
   const yOffset = window.pageYOffset
   const xOffset = window.pageXOffset
-  const collisions = getCollisions({ target, popover, container })
-  const topCollision = collisions.bottom && !collisions.top
   const alignTop = target.top - 12 - popover.height + yOffset
   const alignBottom = target.top + 12 + target.height + yOffset
   const alignRight = target.right - popover.width + xOffset
   const alignLeft = target.left + xOffset
+  const collisions = getCollisions({
+    target: {
+      top: target.top - paddingY,
+      right: target.right + paddingX,
+      bottom: target.bottom + paddingY,
+      left: target.left - paddingX,
+    },
+    popover,
+    container,
+  })
+  const topCollision = collisions.bottom && !collisions.top
   const top =
     y === "top"
       ? alignTop
