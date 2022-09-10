@@ -10,7 +10,22 @@ import {
 } from "@rent_avail/utils"
 import { dequal } from "dequal"
 
-export function getPosition({ popover, target, parent, position: { x, y } }) {
+export function getCollisions({ target, popover, container }) {
+  return {
+    top: target.top - popover.height < container.top,
+    right: target.left + popover.width > container.width,
+    bottom: target.bottom + popover.height > container.bottom,
+    left: target.right - popover.width < 0,
+  }
+}
+
+export function getPosition({
+  popover,
+  target,
+  container,
+  parent,
+  position: { x, y },
+}) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
   if (!popover || !target) return defaultValue
   const yOffset = !parent ? window.pageYOffset : 0
@@ -20,21 +35,7 @@ export function getPosition({ popover, target, parent, position: { x, y } }) {
    * the vertical bounding box and a parent (if exists) should be the horizontal
    * bounding box.
    */
-  const parentOffset = parent && parent.getBoundingClientRect()
-  const collisions = {
-    top: parentOffset
-      ? parentOffset.top - popover.height <= 0
-      : target.top - popover.height <= 0,
-    right: parentOffset
-      ? window.innerWidth <= parentOffset.left + popover.width
-      : window.innerWidth <= target.left + popover.width,
-    bottom: parentOffset
-      ? window.innerHeight <= parentOffset.top + popover.height
-      : window.innerHeight <= target.bottom + popover.height,
-    left: parentOffset
-      ? parentOffset.left - popover.width <= 0
-      : target.left - popover.width <= 0,
-  }
+  const collisions = getCollisions({ target, popover, container })
   const topCollision = collisions.bottom && !collisions.top
   const alignTop = target.top - 12 - popover.height + yOffset
   const alignBottom = target.top + 12 + target.height + yOffset
@@ -85,13 +86,13 @@ const Popover = forwardRef(function Popover(
   ref
 ) {
   const popoverRef = useRef(null)
-  const parent = useMemo(
-    () => parentRef?.current || closestScrollable(targetRef.current),
-    [targetRef.current, parentRef?.current]
+  const container = useMemo(
+    () => closestScrollable(targetRef.current),
+    [targetRef.current]
   )
-  const portalTarget = usePortal(undefined, parent)
-  const popoverBounds = useResize(popoverRef, parent)
-  const targetBounds = useResize(targetRef, parent)
+  const portalTarget = usePortal(undefined, container)
+  const popoverBounds = useResize(popoverRef, container)
+  const targetBounds = useResize(targetRef, container)
   const [currentPosition, setPosition] = useState({
     top: 0,
     left: 0,
@@ -101,6 +102,7 @@ const Popover = forwardRef(function Popover(
     const newPos = getPosition({
       popover: popoverBounds,
       target: targetBounds,
+      container: container.getBoundingClientRect(),
       parent: parentRef?.current,
       position,
     })
