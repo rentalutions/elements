@@ -11,7 +11,7 @@ import React, {
 } from "react"
 import styled from "styled-components"
 import { Box, Card } from "@rent_avail/core"
-import Popover from "@rent_avail/popover"
+import Popover from "../../popover/src"
 import { mergeRefs, wrapEvent } from "@rent_avail/utils"
 
 const MenuContext = createContext()
