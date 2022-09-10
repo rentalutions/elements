@@ -12,9 +12,9 @@ import { dequal } from "dequal"
 
 export function getCollisions({ target, popover, container }) {
   return {
-    top: target.top - popover.height < container.top,
+    top: target.top - popover.height < 0,
     right: target.left + popover.width > container.width,
-    bottom: target.bottom + popover.height > container.bottom,
+    bottom: target.bottom + popover.height > container.height,
     left: target.right - popover.width < 0,
   }
 }
@@ -23,18 +23,12 @@ export function getPosition({
   popover,
   target,
   container,
-  parent,
   position: { x, y },
 }) {
   const defaultValue = { top: 0, left: 0, visibility: "hidden" }
-  if (!popover || !target) return defaultValue
-  const yOffset = !parent ? window.pageYOffset : 0
-  const xOffset = !parent ? window.pageXOffset : 0
-  /**
-   * We need to check width and height differently here. The viewport should be
-   * the vertical bounding box and a parent (if exists) should be the horizontal
-   * bounding box.
-   */
+  if (!popover || !target || !container) return defaultValue
+  const yOffset = window.pageYOffset
+  const xOffset = window.pageXOffset
   const collisions = getCollisions({ target, popover, container })
   const topCollision = collisions.bottom && !collisions.top
   const alignTop = target.top - 12 - popover.height + yOffset
@@ -90,7 +84,7 @@ const Popover = forwardRef(function Popover(
     () => closestScrollable(targetRef.current),
     [targetRef.current]
   )
-  const portalTarget = usePortal(undefined, container)
+  const portalTarget = usePortal(undefined, parentRef?.current || container)
   const popoverBounds = useResize(popoverRef, container)
   const targetBounds = useResize(targetRef, container)
   const [currentPosition, setPosition] = useState({
@@ -103,7 +97,6 @@ const Popover = forwardRef(function Popover(
       popover: popoverBounds,
       target: targetBounds,
       container: container.getBoundingClientRect(),
-      parent: parentRef?.current,
       position,
     })
     setPosition(newPos)
