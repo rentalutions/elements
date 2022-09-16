@@ -1,5 +1,5 @@
-import React, { forwardRef, useState, useEffect } from "react"
-import { wrapEvent, noop, useId } from "@rent_avail/utils"
+import React, { forwardRef, useState, useEffect, useRef } from "react"
+import { wrapEvent, noop, useId, mergeRefs } from "@rent_avail/utils"
 import { Box } from "@rent_avail/layout"
 import { Calendar } from "react-feather"
 import clsx from "clsx"
@@ -39,6 +39,7 @@ function Input(
   }, [value])
   const systemProps = pick(props)
   const inputProps = omit(props)
+  const inputRef = useRef(null)
   return (
     <Box
       className={className}
@@ -59,7 +60,7 @@ function Input(
           borderStyle: "solid",
           borderColor: "ui_500",
           borderRadius: 4,
-          "&:focus-within": {
+          '&:focus-within, & > [type="date"]:focus-within': {
             borderColor: "blue_500",
             color: "blue_500",
           },
@@ -67,7 +68,7 @@ function Input(
             transform: "translateY(-1rem) scale(0.889)",
           },
           "&.filled:not(:focus-within):not(.error) .input__label-row": {
-            color: disabled ? "ui_500" : "ui_700",
+            color: disabled ? "ui_500" : "ui_900",
           },
           "&.error": {
             borderColor: "red_500",
@@ -86,7 +87,7 @@ function Input(
       >
         <Box
           {...inputProps}
-          ref={ref}
+          ref={mergeRefs(ref, inputRef)}
           as={as}
           type={type}
           aria-labelledby={[labelledBy, ariaId].join(" ").trim()}
@@ -118,6 +119,9 @@ function Input(
             "&::-webkit-calendar-picker-indicator:hover + svg": {
               color: "ui_300",
             },
+            '&[type="date"]': {
+              color: inputRef.current?.value ? "ui_900" : "ui_500",
+            },
           }}
         />
         {isDate && (
@@ -142,7 +146,7 @@ function Input(
             left: icon ? "5rem" : "2rem",
             transformOrigin: "top left",
             pointerEvents: "none",
-            color: disabled ? "ui_500" : "inherit",
+            color: disabled ? "ui_500" : "ui_900",
           }}
         >
           <Box as="span" id={ariaId}>
