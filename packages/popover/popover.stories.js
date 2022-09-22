@@ -6,6 +6,22 @@ import { Button } from "@rent_avail/controls"
 
 export default { title: "Packages/Popover" }
 
+export function PopoverExample() {
+  const targetRef = useRef(null)
+  return (
+    <Container sx={{ my: 4 }}>
+      <Button ref={targetRef}>Button</Button>
+      <Popover targetRef={targetRef} position={{ x: "default", y: "default" }}>
+        <Box sx={{ p: 2, bg: "blue_100" }}>
+          <Heading as="h3" mb="1rem">
+            Popover
+          </Heading>
+        </Box>
+      </Popover>
+    </Container>
+  )
+}
+
 const TagWithPopover = ({ title = "Hello Target" }) => {
   const targetRef = useRef(null)
   const timeoutRef = useRef(null)
