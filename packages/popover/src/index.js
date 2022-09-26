@@ -8,74 +8,112 @@ import {
   useResize,
   mergeRefs,
 } from "@rent_avail/utils"
-import { dequal } from "dequal"
 
-export function getCollisions({ target, popover, container }) {
+function calcLeftPosition({
+  position,
+  collisions,
+  targetBounds,
+  popoverBounds,
+  container,
+}) {
+  const alignRight =
+    targetBounds.right - popoverBounds.width + container.scrollLeft
+  const alignLeft = targetBounds.left + container.scrollLeft
+  switch (position) {
+    case "left":
+      return alignLeft
+    case "right":
+      return alignRight
+    default:
+      return collisions.right && !collisions.left ? alignRight : alignLeft
+  }
+}
+
+function calcTopPosition({
+  position,
+  collisions,
+  targetBounds,
+  popoverBounds,
+  container,
+  paddingY,
+}) {
+  const alignTop =
+    targetBounds.top - paddingY - popoverBounds.height + container.scrollTop
+  const alignBottom =
+    targetBounds.top + paddingY + targetBounds.height + container.scrollTop
+  switch (position) {
+    case "top":
+      return alignTop
+    case "bottom":
+      return alignBottom
+    default:
+      return collisions.bottom && !collisions.top ? alignTop : alignBottom
+  }
+}
+
+function calcPosition({
+  targetBounds,
+  popoverBounds,
+  container,
+  collisions,
+  position: { x, y },
+  paddingY,
+}) {
   return {
-    top: target.top - popover.height < 0,
-    right: target.left + popover.width > container.width,
-    bottom: target.bottom + popover.height > container.height,
-    left: target.right - popover.width < 0,
+    top: calcTopPosition({
+      position: y,
+      collisions,
+      targetBounds,
+      popoverBounds,
+      container,
+      paddingY,
+    }),
+    left: calcLeftPosition({
+      position: x,
+      collisions,
+      targetBounds,
+      popoverBounds,
+      container,
+    }),
+  }
+}
+
+export function getCollisions({
+  targetBounds,
+  popoverBounds,
+  container,
+  paddingY = 0,
+}) {
+  return {
+    top: targetBounds.top - paddingY - popoverBounds.height < 0,
+    right: targetBounds.left + popoverBounds.width > container.clientWidth,
+    bottom:
+      targetBounds.bottom + paddingY + popoverBounds.height >
+      container.clientHeight,
+    left: targetBounds.right - popoverBounds.width < 0,
   }
 }
 
 export function getPosition({
-  popover,
-  target,
+  popoverBounds,
+  targetBounds,
   container,
+  collisions,
   position: { x, y },
+  paddingY,
 }) {
-  const defaultValue = { top: 0, left: 0, visibility: "hidden" }
-  if (!popover || !target || !container) return defaultValue
-  const paddingX = 12
-  const paddingY = 12
-  const yOffset = window.pageYOffset
-  const xOffset = window.pageXOffset
-  const alignTop = target.top - 12 - popover.height + yOffset
-  const alignBottom = target.top + 12 + target.height + yOffset
-  const alignRight = target.right - popover.width + xOffset
-  const alignLeft = target.left + xOffset
-  const collisions = getCollisions({
-    target: {
-      top: target.top - paddingY,
-      right: target.right + paddingX,
-      bottom: target.bottom + paddingY,
-      left: target.left - paddingX,
-    },
-    popover,
+  const { top, left } = calcPosition({
+    targetBounds,
+    popoverBounds,
     container,
+    collisions,
+    position: { x, y },
+    paddingY,
   })
-  const topCollision = collisions.bottom && !collisions.top
-  const top =
-    y === "top"
-      ? alignTop
-      : y === "bottom"
-      ? alignBottom
-      : topCollision
-      ? alignTop
-      : alignBottom
-  const left =
-    x === "left"
-      ? alignLeft
-      : x === "right"
-      ? alignRight
-      : collisions.right
-      ? alignRight
-      : alignLeft
-  if (Number.isNaN(top + left)) return defaultValue
-  return {
-    visibility: "visible",
-    top,
-    left,
+  if (Number.isNaN(top + left)) {
+    return false
   }
-}
-
-function deepCompare(value) {
-  const ref = useRef()
-  if (!dequal(value, ref.current)) {
-    ref.current = value
-  }
-  return ref.current
+  return { top, left, visibility: "visible" }
 }
 
 const Popover = forwardRef(function Popover(
@@ -86,32 +124,43 @@ const Popover = forwardRef(function Popover(
     style,
     sx = {},
     as = "aside",
+    paddingY = 12,
     ...rest
   },
   ref
 ) {
   const popoverRef = useRef(null)
   const container = useMemo(
+    // defaults to document.body
     () => closestScrollable(targetRef.current),
     [targetRef.current]
   )
+  const defaultPosition = { top: 0, left: 0, visibility: "hidden" }
   const portalTarget = usePortal(undefined, parentRef?.current || container)
   const popoverBounds = useResize(popoverRef, container)
-  const targetBounds = useResize(targetRef, container)
-  const [currentPosition, setPosition] = useState({
-    top: 0,
-    left: 0,
-    visibility: "hidden",
-  })
+  const targetBounds = useResize(targetRef, targetRef.parent)
+  const [currentPosition, setPosition] = useState(defaultPosition)
+
   useEffect(() => {
-    const newPos = getPosition({
-      popover: popoverBounds,
-      target: targetBounds,
-      container: container.getBoundingClientRect(),
-      position,
-    })
-    setPosition(newPos)
-  }, deepCompare([targetBounds]))
+    if (targetBounds && popoverBounds) {
+      const collisions = getCollisions({
+        targetBounds,
+        popoverBounds,
+        container,
+        paddingY,
+      })
+      const newPos =
+        getPosition({
+          targetBounds,
+          popoverBounds,
+          container,
+          collisions,
+          position,
+          paddingY,
+        }) || defaultPosition
+      setPosition(newPos)
+    }
+  }, [targetBounds, popoverBounds, container, position, paddingY])
   return createPortal(
     <Box
       {...rest}

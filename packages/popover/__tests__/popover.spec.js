@@ -2,15 +2,15 @@ import { getCollisions } from "../src"
 
 describe("<Popover />", () => {
   describe("getCollisions", () => {
-    const popover = {
+    const popoverBounds = {
       width: 20,
       height: 80,
     }
     const container = {
-      width: 1000,
-      height: 1000,
+      clientWidth: 1000,
+      clientHeight: 1000,
     }
-    const target = {
+    const targetBounds = {
       width: 15,
       height: 10,
     }
@@ -18,13 +18,13 @@ describe("<Popover />", () => {
     it("does not collide", () => {
       expect(
         getCollisions({
-          target: {
-            top: popover.height,
-            right: popover.width + target.width,
-            bottom: popover.height + target.height,
-            left: popover.width,
+          targetBounds: {
+            top: popoverBounds.height,
+            right: popoverBounds.width + targetBounds.width,
+            bottom: popoverBounds.height + targetBounds.height,
+            left: popoverBounds.width,
           },
-          popover,
+          popoverBounds,
           container,
         })
       ).toEqual({ bottom: false, left: false, right: false, top: false })
@@ -33,13 +33,13 @@ describe("<Popover />", () => {
     it("collides with top side", () => {
       expect(
         getCollisions({
-          target: {
-            top: popover.height - 1,
-            right: popover.width + target.width,
-            bottom: popover.height + target.height - 1,
-            left: popover.width,
+          targetBounds: {
+            top: popoverBounds.height - 1,
+            right: popoverBounds.width + targetBounds.width,
+            bottom: popoverBounds.height + targetBounds.height - 1,
+            left: popoverBounds.width,
           },
-          popover,
+          popoverBounds,
           container,
         })
       ).toEqual({ bottom: false, left: false, right: false, top: true })
@@ -48,13 +48,17 @@ describe("<Popover />", () => {
     it("collides with right side", () => {
       expect(
         getCollisions({
-          target: {
-            top: popover.height,
-            right: container.width - popover.width + target.width + 1,
-            bottom: popover.height + target.height,
-            left: container.width - popover.width + 1,
+          targetBounds: {
+            top: popoverBounds.height,
+            right:
+              container.clientWidth -
+              popoverBounds.width +
+              targetBounds.width +
+              1,
+            bottom: popoverBounds.height + targetBounds.height,
+            left: container.clientWidth - popoverBounds.width + 1,
           },
-          popover,
+          popoverBounds,
           container,
         })
       ).toEqual({ bottom: false, left: false, right: true, top: false })
@@ -63,13 +67,17 @@ describe("<Popover />", () => {
     it("collides with bottom side", () => {
       expect(
         getCollisions({
-          target: {
-            top: container.height - popover.height - target.height + 1,
-            right: popover.width + target.width,
-            bottom: container.height - popover.height + 1,
-            left: popover.width,
+          targetBounds: {
+            top:
+              container.clientHeight -
+              popoverBounds.height -
+              targetBounds.height +
+              1,
+            right: popoverBounds.width + targetBounds.width,
+            bottom: container.clientHeight - popoverBounds.height + 1,
+            left: popoverBounds.width,
           },
-          popover,
+          popoverBounds,
           container,
         })
       ).toEqual({ bottom: true, left: false, right: false, top: false })
@@ -78,13 +86,13 @@ describe("<Popover />", () => {
     it("collides with left side", () => {
       expect(
         getCollisions({
-          target: {
-            top: popover.height,
-            right: popover.width - 1,
-            bottom: popover.height + target.height,
-            left: popover.width - target.width - 1,
+          targetBounds: {
+            top: popoverBounds.height,
+            right: popoverBounds.width - 1,
+            bottom: popoverBounds.height + targetBounds.height,
+            left: popoverBounds.width - targetBounds.width - 1,
           },
-          popover,
+          popoverBounds,
           container,
         })
       ).toEqual({ bottom: false, left: true, right: false, top: false })
