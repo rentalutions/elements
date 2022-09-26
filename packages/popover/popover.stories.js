@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, Fragment } from "react"
 import Popover from "./src"
-import { Container, Box } from "@rent_avail/layout"
+import { Container, Box, Flex } from "@rent_avail/core"
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 
@@ -19,6 +19,47 @@ export function PopoverExample() {
         </Box>
       </Popover>
     </Container>
+  )
+}
+
+export function PopoverExample2() {
+  return (
+    <>
+      <Flex
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100%",
+          bg: "ui_300",
+          padding: "5rem",
+        }}
+      >
+        <Flex
+          sx={{
+            flexWrap: "wrap",
+            height: "100%",
+            width: "100%",
+            border: (theme) => `solid 5px ${theme.colors.ui_500}`,
+            bg: "white",
+            overflowY: "scroll",
+          }}
+        >
+          <Box as="div" sx={{ width: "50%" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ width: "50%", marginTop: "auto" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto", marginTop: "auto" }}>
+            <PopoverExample />
+          </Box>
+        </Flex>
+      </Flex>
+    </>
   )
 }
 
@@ -66,7 +107,7 @@ const TagWithPopover = ({ title = "Hello Target" }) => {
       {show && (
         <Popover
           targetRef={targetRef}
-          posititon={{ x: "default", y: "default" }}
+          position={{ x: "default", y: "default" }}
         >
           <Box
             sx={{
