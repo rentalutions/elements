@@ -138,7 +138,7 @@ const Popover = forwardRef(function Popover(
   const defaultPosition = { top: 0, left: 0, visibility: "hidden" }
   const portalTarget = usePortal(undefined, parentRef?.current || container)
   const popoverBounds = useResize(popoverRef, container)
-  const targetBounds = useResize(targetRef, targetRef.parent)
+  const targetBounds = useResize(targetRef, container)
   const [currentPosition, setPosition] = useState(defaultPosition)
 
   useEffect(() => {
@@ -160,7 +160,7 @@ const Popover = forwardRef(function Popover(
         }) || defaultPosition
       setPosition(newPos)
     }
-  }, [targetBounds, popoverBounds, container, position, paddingY])
+  }, [targetBounds, popoverBounds])
   return createPortal(
     <Box
       {...rest}
