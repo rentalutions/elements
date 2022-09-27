@@ -268,4 +268,12 @@ function Item({ onClick, closeOnClick, ...props }, ref) {
 
 const MenuItem = memo(forwardRef(Item))
 
+export function useMenuContext() {
+  const context = useContext(MenuContext)
+  if (context === undefined) {
+    throw new Error("MenuContext is undefined.")
+  }
+  return context
+}
+
 export { Menu, MenuTarget, MenuList, MenuItem }
