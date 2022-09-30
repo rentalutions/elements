@@ -108,7 +108,7 @@ function Menu({ parentRef, children, id }) {
 
 function Target({ children, ...rest }, ref) {
   const { id, targetRef, menuRef, openMenu, closeMenu, isOpen } =
-    useContext(MenuContext)
+    useMenuContext()
   const { onClick, onKeyDown } = children.props
   function handleKeyDown(event) {
     switch (event.key) {
@@ -161,7 +161,7 @@ const StyledList = styled(Card)`
 
 function List({ children, position, sx = {}, ...rest }, ref) {
   const { targetRef, menuRef, popoverRef, parentRef, isOpen } =
-    useContext(MenuContext)
+    useMenuContext()
   return isOpen ? (
     <Popover
       targetRef={targetRef}
@@ -211,7 +211,7 @@ const ItemWrapper = forwardRef(({ children, sx, ...props }, ref) => {
 
 function Item({ onClick, closeOnClick, ...props }, ref) {
   const itemRef = useRef()
-  const { closeMenu, targetRef } = useContext(MenuContext)
+  const { closeMenu, targetRef } = useMenuContext()
 
   function handleKeyDown(event) {
     if (itemRef.current?.firstChild === event.target) {
