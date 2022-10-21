@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useReducer, useCallback } from "react"
 import ResizeObserver from "resize-observer-polyfill"
 import "intersection-observer"
 import CalendarDates from "calendar-dates"
+import { theme } from "@rent_avail/base"
 
 function assignRef(ref, value) {
   if (ref === null) return
@@ -18,6 +19,10 @@ function assignRef(ref, value) {
 
 export function mergeRefs(...refs) {
   return (value) => refs.forEach((ref) => assignRef(ref, value))
+}
+
+export function remToPx(rem) {
+  return rem * theme.space[1]
 }
 
 export function useResize(target, parent) {
@@ -350,5 +355,5 @@ export function useMediaQuery({ min = 0, max = null }) {
 }
 
 export function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 }
