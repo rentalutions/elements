@@ -31,7 +31,13 @@ export function NoEmail() {
         photo="https://i.pravatar.cc/72"
         icon={ChevronRight}
       />
-      <Avatar name="Patrick K" photo="https://i.pravatar.cc/72" />
+      <Avatar name="Patrick K" photo="https://i.pravatar.cc/72" initials="JJ" />
+      <Avatar photo="https://i.pravatar.cc/72" initials="JS" />
+      <Avatar
+        photo="https://i.pravatar.cc/72"
+        initials="JS"
+        name="Patrick Krawczykowski"
+      />
     </Fragment>
   )
 }
@@ -41,7 +47,7 @@ export function SmallGroup() {
     <AvatarGroup>
       <Avatar size="small" initials="PK" />
       <Avatar size="small" initials="JW" />
-      <Avatar size="small" initials="CS" photo="https://i.pravatar.cc/60" />
+      <Avatar size="small" photo="https://i.pravatar.cc/60" initials="KK" />
       <Avatar size="small" initials="SR" />
     </AvatarGroup>
   )

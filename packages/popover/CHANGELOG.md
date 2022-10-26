@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.14](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.10...@rent_avail/popover@0.3.14) (2022-10-03)
+
+**Note:** Version bump only for package @rent_avail/popover
+
+
+
+
+
+## [0.3.13](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.12...@rent_avail/popover@0.3.13) (2022-09-27)
+
+**Note:** Version bump only for package @rent_avail/popover
+
+
+
+
+
+## [0.3.12](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.10...@rent_avail/popover@0.3.12) (2022-09-16)
+
+**Note:** Version bump only for package @rent_avail/popover
+
+
+
+
+
+## [0.3.11](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.10...@rent_avail/popover@0.3.11) (2022-08-31)
+
+**Note:** Version bump only for package @rent_avail/popover
+
+
+
+
+
+## [0.3.10](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.9...@rent_avail/popover@0.3.10) (2022-04-18)
+
+**Note:** Version bump only for package @rent_avail/popover
+
+
+
+
+
 ## [0.3.9](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.8...@rent_avail/popover@0.3.9) (2021-11-08)
 
 **Note:** Version bump only for package @rent_avail/popover

@@ -47,46 +47,61 @@ const Avatar = forwardRef(function Avatar(
           gap: "1rem",
           bg: "ui_300",
           p: "0.5rem",
-          pr: "2rem",
           borderRadius: "4rem",
           maxWidth: "25rem",
           ...sx,
         }}
       >
         <Box
-          as="img"
-          src={photo}
           sx={{
+            display: "inline-flex",
             width: "4rem",
             height: "4rem",
-            borderRadius: "2rem",
             flex: "0 0 auto",
-            objectFit: "cover",
-            bg: "ui_500",
-          }}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
+            alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Box
-            as="span"
-            className="avatar__name"
-            sx={{
-              overflow: "hidden",
-              overflowWrap: "anywhere",
-              wordBreak: email ? "break-all" : "normal",
-              // This is kind of a hack but works in every major browser except IE
-              display: "-webkit-box",
-              "-webkit-line-clamp": email ? "1" : "2",
-              "-webkit-box-orient": "vertical",
-            }}
-          >
-            {name}
-          </Box>
+          {initials ? (
+            <Box as="span">{initials}</Box>
+          ) : (
+            <Box
+              as="img"
+              src={photo}
+              sx={{
+                objectFit: "cover",
+                bg: "ui_500",
+                borderRadius: "2rem",
+                display: "block",
+              }}
+            />
+          )}
+        </Box>
+        <Box
+          sx={{
+            display: name || email ? "flex" : "none",
+            flexDirection: "column",
+            justifyContent: "center",
+            mr: "1.5rem",
+          }}
+        >
+          {name && (
+            <Box
+              as="span"
+              className="avatar__name"
+              sx={{
+                overflow: "hidden",
+                overflowWrap: "anywhere",
+                wordBreak: email ? "break-all" : "normal",
+                // This is kind of a hack but works in every major browser except IE
+                display: "-webkit-box",
+                "-webkit-line-clamp": email ? "1" : "2",
+                "-webkit-box-orient": "vertical",
+              }}
+            >
+              {name}
+            </Box>
+          )}
           {email && (
             <Box
               as="span"
@@ -105,7 +120,7 @@ const Avatar = forwardRef(function Avatar(
         {icon && (
           <Box
             as={icon}
-            sx={{ alignSelf: "center", flexShrink: 0, ml: "1rem" }}
+            sx={{ alignSelf: "center", flexShrink: 0, mr: "1rem" }}
           />
         )}
       </Box>
@@ -127,11 +142,11 @@ const Avatar = forwardRef(function Avatar(
         text: ["small"],
         overflow: "hidden",
         bg: "ui_300",
-        backgroundImage: !isDefault ? `url(${photo})` : "",
+        backgroundImage: initials || isDefault ? "" : `url(${photo})`,
         ...sx,
       }}
     >
-      {isDefault && initials}
+      {initials && initials}
     </Box>
   )
 })

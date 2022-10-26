@@ -1,10 +1,137 @@
 import React, { useState, useRef, useCallback, Fragment } from "react"
 import Popover from "./src"
-import { Container, Box } from "@rent_avail/layout"
+import { Container, Box, Flex } from "@rent_avail/core"
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 
 export default { title: "Packages/Popover" }
+
+export function PopoverExample({ position }) {
+  const targetRef = useRef(null)
+  return (
+    <Container sx={{ my: 4 }}>
+      <Button ref={targetRef}>Button</Button>
+      <Popover targetRef={targetRef} position={position}>
+        <Box sx={{ p: 2, bg: "blue_100" }}>
+          <Heading as="h3" mb="1rem">
+            Popover
+          </Heading>
+        </Box>
+      </Popover>
+    </Container>
+  )
+}
+
+export function PopoverExample2() {
+  return (
+    <>
+      <Flex
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100%",
+          bg: "ui_300",
+          padding: "5rem",
+        }}
+      >
+        <Flex
+          sx={{
+            flexWrap: "wrap",
+            height: "100%",
+            width: "100%",
+            border: (theme) => `solid 5px ${theme.colors.ui_500}`,
+            bg: "white",
+            overflowY: "scroll",
+          }}
+        >
+          <Box as="div" sx={{ width: "50%" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ width: "50%", marginTop: "auto" }}>
+            <PopoverExample />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto", marginTop: "auto" }}>
+            <PopoverExample />
+          </Box>
+        </Flex>
+      </Flex>
+    </>
+  )
+}
+
+export function PopoverExample3() {
+  return (
+    <>
+      <Flex
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100%",
+          bg: "ui_300",
+          padding: "10rem",
+        }}
+      >
+        <Flex
+          sx={{
+            flexWrap: "wrap",
+            height: "100%",
+            width: "100%",
+            border: (theme) => `solid 5px ${theme.colors.ui_500}`,
+            bg: "white",
+            overflowY: "scroll",
+          }}
+        >
+          <Box as="div" sx={{ width: "50%" }}>
+            <PopoverExample position={{ x: "right", y: "top" }} />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto" }}>
+            <PopoverExample position={{ x: "left", y: "top" }} />
+          </Box>
+          <Box as="div" sx={{ width: "50%", marginTop: "auto" }}>
+            <PopoverExample position={{ x: "right", y: "bottom" }} />
+          </Box>
+          <Box as="div" sx={{ marginLeft: "auto", marginTop: "auto" }}>
+            <PopoverExample position={{ x: "left", y: "bottom" }} />
+          </Box>
+        </Flex>
+      </Flex>
+    </>
+  )
+}
+
+export function PopoverExample4() {
+  const targetRef1 = useRef(null)
+  const targetRef2 = useRef(null)
+  return (
+    <Flex>
+      <Container sx={{ width: "50%" }}>
+        <Button ref={targetRef1}>Button</Button>
+        <Popover targetRef={targetRef1} paddingY={50}>
+          <Box sx={{ p: 2, bg: "blue_100" }}>
+            <Heading as="h3" mb="1rem">
+              Popover
+            </Heading>
+          </Box>
+        </Popover>
+      </Container>
+      <Container sx={{ marginTop: "155px", width: "50%" }}>
+        <Button ref={targetRef2}>Button</Button>
+        <Popover targetRef={targetRef2} paddingY={50} position={{ y: "top" }}>
+          <Box sx={{ p: 2, bg: "blue_100" }}>
+            <Heading as="h3" mb="1rem">
+              Popover
+            </Heading>
+          </Box>
+        </Popover>
+      </Container>
+    </Flex>
+  )
+}
 
 const TagWithPopover = ({ title = "Hello Target" }) => {
   const targetRef = useRef(null)
@@ -50,7 +177,7 @@ const TagWithPopover = ({ title = "Hello Target" }) => {
       {show && (
         <Popover
           targetRef={targetRef}
-          posititon={{ x: "default", y: "default" }}
+          position={{ x: "default", y: "default" }}
         >
           <Box
             sx={{

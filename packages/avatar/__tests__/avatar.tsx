@@ -14,10 +14,10 @@ describe("<Avatar />", () => {
     const element = getByText(initials)
     expect(element).not.toBeUndefined()
   })
-  it("does not render initials when small prop isn't set", () => {
-    const initials = "PK"
-    const { queryByText } = render(<Avatar initials={initials} />)
-    const element = queryByText(initials)
-    expect(element).toBeNull()
-  })
+  // it("does not render initials when small prop isn't set", () => {
+  //   const initials = "PK"
+  //   const { queryByText } = render(<Avatar initials={initials} />)
+  //   const element = queryByText(initials)
+  //   expect(element).toBeNull()
+  // })
 })

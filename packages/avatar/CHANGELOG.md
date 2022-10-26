@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.13](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.10...@rent_avail/avatar@0.3.13) (2022-10-03)
+
+**Note:** Version bump only for package @rent_avail/avatar
+
+
+
+
+
+## [0.3.12](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.10...@rent_avail/avatar@0.3.12) (2022-08-31)
+
+**Note:** Version bump only for package @rent_avail/avatar
+
+
+
+
+
+## [0.3.11](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.10...@rent_avail/avatar@0.3.11) (2022-08-15)
+
+**Note:** Version bump only for package @rent_avail/avatar
+
+
+
+
+
+## [0.3.10](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.9...@rent_avail/avatar@0.3.10) (2022-05-06)
+
+**Note:** Version bump only for package @rent_avail/avatar
+
+
+
+
+
+## [0.3.9](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.8...@rent_avail/avatar@0.3.9) (2022-04-26)
+
+
+### Bug Fixes
+
+* remove uneeded avatar margin ([5e8adcb](https://github.com/rentalutions/elements/commit/5e8adcbf28424f843bfa0dd713aa75b4667301e6))
+
+
+
+
+
+## [0.3.8](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.7...@rent_avail/avatar@0.3.8) (2022-04-18)
+
+
+### Bug Fixes
+
+* **avatar:** updates avatar initials prop ([b424fad](https://github.com/rentalutions/elements/commit/b424fad64d08986665f6492223528a31e4d48c52)), closes [#186](https://github.com/rentalutions/elements/issues/186)
+
+
+
+
+
 ## [0.3.7](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.6...@rent_avail/avatar@0.3.7) (2021-11-08)
 
 

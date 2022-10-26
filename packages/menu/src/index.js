@@ -10,8 +10,8 @@ import React, {
   cloneElement,
 } from "react"
 import styled from "styled-components"
+import { Box, Card } from "@rent_avail/core"
 import Popover from "@rent_avail/popover"
-import { Card } from "@rent_avail/layout"
 import { mergeRefs, wrapEvent } from "@rent_avail/utils"
 
 const MenuContext = createContext()
@@ -45,6 +45,49 @@ function Menu({ parentRef, children, id }) {
   const popoverRef = useRef()
   const openMenu = () => dispatch({ type: types.OPEN_MENU })
   const closeMenu = () => dispatch({ type: types.CLOSE_MENU })
+
+  function handleClick({ target }) {
+    if (
+      isOpen &&
+      menuRef.current &&
+      !menuRef.current.contains(target) &&
+      !targetRef.current.contains(target)
+    ) {
+      closeMenu()
+    }
+  }
+
+  function handleBlur() {
+    requestAnimationFrame(() => {
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(document.activeElement) &&
+        !targetRef.current.contains(document.activeElement)
+      ) {
+        closeMenu()
+      }
+    })
+  }
+
+  function removeEventListeners() {
+    document.removeEventListener("click", handleClick)
+    document.removeEventListener("focusout", handleBlur)
+  }
+
+  useEffect(() => {
+    return removeEventListeners
+  }, [])
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClick)
+      document.addEventListener("focusout", handleBlur)
+    } else {
+      removeEventListeners()
+    }
+  }, [isOpen])
+
   return (
     <MenuContext.Provider
       value={{
@@ -65,19 +108,32 @@ function Menu({ parentRef, children, id }) {
 
 function Target({ children, ...rest }, ref) {
   const { id, targetRef, menuRef, openMenu, closeMenu, isOpen } =
-    useContext(MenuContext)
-  const { onClick, onFocus, onKeyDown } = children.props
-  function handleKeyDown({ key }) {
-    switch (key) {
-      case "Enter": {
-        return openMenu()
+    useMenuContext()
+  const { onClick, onKeyDown } = children.props
+  function handleKeyDown(event) {
+    switch (event.key) {
+      case "Enter":
+      case " ": {
+        if (isOpen) {
+          closeMenu()
+        } else {
+          openMenu()
+        }
+        event.preventDefault()
+        break
+      }
+      case "Escape": {
+        closeMenu()
+        event.preventDefault()
+        break
       }
       case "ArrowDown": {
-        menuRef.current?.firstChild?.focus()
+        menuRef.current?.firstChild?.firstChild?.focus()
+        event.preventDefault()
         break
       }
       default:
-        return false
+        break
     }
   }
   const passedProps = {
@@ -104,29 +160,20 @@ const StyledList = styled(Card)`
 `
 
 function List({ children, position, sx = {}, ...rest }, ref) {
-  const { targetRef, menuRef, popoverRef, parentRef, closeMenu, isOpen } =
-    useContext(MenuContext)
-  function handleBlur({ target }) {
-    if (!isOpen) return null
-    const menuEl = menuRef.current
-    const targetEl = targetRef.current
-    if (!menuEl?.contains(target) && !targetEl?.contains(target)) {
-      closeMenu()
-    }
-  }
-  useEffect(() => {
-    document.addEventListener("click", handleBlur)
-    return () => document.removeEventListener("click", handleBlur)
-  }, [isOpen])
+  const { targetRef, menuRef, popoverRef, parentRef, isOpen } =
+    useMenuContext()
   return isOpen ? (
     <Popover
       targetRef={targetRef}
       parentRef={parentRef}
       ref={popoverRef}
       position={position}
-      sx={{ zIndex: 999, ...sx }}
+      sx={{
+        zIndex: 999,
+        ...sx,
+      }}
     >
-      <StyledList as="ul" {...rest} ref={mergeRefs(ref, menuRef)} role="menu">
+      <StyledList as="ul" {...rest} ref={mergeRefs(ref, menuRef)}>
         {children}
       </StyledList>
     </Popover>
@@ -135,61 +182,98 @@ function List({ children, position, sx = {}, ...rest }, ref) {
 
 const MenuList = memo(forwardRef(List))
 
-const ItemWrapper = styled.li`
-  display: block;
-  padding: 2rem;
-  cursor: pointer;
-  outline: none;
-  &:focus,
-  &:hover {
-    background: ${({ theme }) => theme.colors.ui_300};
-  }
-  &:not(:last-of-type) {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.ui_500};
-  }
-`
+const ItemWrapper = forwardRef(({ children, sx, ...props }, ref) => {
+  return (
+    <Box
+      ref={ref}
+      as="li"
+      sx={{
+        display: "block",
+        padding: "2rem",
+        cursor: "pointer",
+        outline: "none",
+        "&:hover, &:first-child:focus": {
+          backgroundColor: "ui_300",
+        },
+        "&:not(:last-of-type)": {
+          borderBottomStyle: "solid",
+          borderBottomWidth: 1,
+          borderBottomColor: "ui_500",
+        },
+        ...sx,
+      }}
+      {...props}
+    >
+      {children}
+    </Box>
+  )
+})
 
 function Item({ onClick, closeOnClick, ...props }, ref) {
   const itemRef = useRef()
+  const { closeMenu, targetRef } = useMenuContext()
 
-  const { closeMenu } = useContext(MenuContext)
-
-  function handleKeyDown({ key }) {
-    const nextItem = itemRef?.current?.nextSibling
-    const prevItem = itemRef?.current?.previousSibling
-    switch (key) {
-      case "ArrowDown": {
-        if (nextItem) nextItem.focus()
-        break
+  function handleKeyDown(event) {
+    if (itemRef.current?.firstChild === event.target) {
+      const nextItem = itemRef?.current?.nextSibling
+      const prevItem = itemRef?.current?.previousSibling
+      switch (event.key) {
+        case "ArrowUp":
+        case "ArrowLeft": {
+          if (prevItem) prevItem.firstChild?.focus()
+          event.preventDefault()
+          break
+        }
+        case "ArrowDown":
+        case "ArrowRight": {
+          if (nextItem) nextItem.firstChild?.focus()
+          event.preventDefault()
+          break
+        }
+        case " ":
+        case "Enter": {
+          event.target.click()
+          event.preventDefault()
+          break
+        }
+        case "Escape": {
+          closeMenu()
+          targetRef.current.focus()
+          event.preventDefault()
+          break
+        }
+        default:
+          break
       }
-      case "ArrowUp": {
-        if (prevItem) prevItem.focus()
-        break
-      }
-      case "Escape": {
-        closeMenu()
-        break
-      }
-      default:
-        break
     }
   }
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
   useImperativeHandle(ref, () => ({ ...itemRef }))
   return (
     <ItemWrapper
-      {...props}
       ref={itemRef}
-      role="menuitem"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
       onClick={(e) => {
         if (closeOnClick) closeMenu()
         if (typeof onClick === "function") onClick(e)
       }}
+      {...props}
     />
   )
 }
 
 const MenuItem = memo(forwardRef(Item))
+
+export function useMenuContext() {
+  const context = useContext(MenuContext)
+  if (context === undefined) {
+    throw new Error("MenuContext is undefined.")
+  }
+  return context
+}
 
 export { Menu, MenuTarget, MenuList, MenuItem }

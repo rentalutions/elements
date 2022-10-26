@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.17](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.17) (2022-10-03)
+
+
+### Reverts
+
+* Revert "updated package.json and changelog" ([1c5a0ec](https://github.com/rentalutions/elements/commit/1c5a0ec302294e925831d75b231f908ff3eb5a2a))
+
+
+
+
+
+## [0.2.16](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.15...@rent_avail/menu@0.2.16) (2022-09-27)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
+## [0.2.15](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.13...@rent_avail/menu@0.2.15) (2022-09-16)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
+## [0.2.14](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.14) (2022-08-31)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
+## [0.2.13](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.13) (2022-08-15)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
+## [0.2.12](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.11...@rent_avail/menu@0.2.12) (2022-04-18)
+
+**Note:** Version bump only for package @rent_avail/menu
+
+
+
+
+
 ## [0.2.11](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.10...@rent_avail/menu@0.2.11) (2021-11-08)
 
 **Note:** Version bump only for package @rent_avail/menu
