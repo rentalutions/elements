@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import { render } from "@testing-library/react"
 import { renderHook } from "@testing-library/react-hooks"
-import { theme } from "@rent_avail/base"
+import { baseTheme, ElementsProvider } from "@rent_avail/core"
 import { useIntersection, usePortal, useRemToPx } from "../src"
 
 describe("useIntersection", () => {
@@ -39,7 +39,7 @@ describe("useRemToPx", () => {
   describe("when parent theme provider returns correct value", () => {
     // @ts-ignore
     const ThemeProviderWrapper = ({children}) => (
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={baseTheme}>{children}</ThemeProvider>
     )
 
     it("for 1 rem", () => {
@@ -70,6 +70,18 @@ describe("useRemToPx", () => {
     it("returns NaN when passed a non-integer", () => {
       const { result: { current }} = renderHook(() => useRemToPx("a"), { wrapper: ThemeProviderWrapper })
       expect(current).toEqual(NaN)
+    })
+  })
+
+  describe("when parent theme provider is Elements Provider", () => {
+    // @ts-ignore
+    const ElementsProviderWrapper = ({children}) => (
+      <ElementsProvider theme={{ space: [0, 3, 6, 9, 12, 15, 18, 21] }}>{children}</ElementsProvider>
+    )
+
+    it("can override theme space value", () => {
+        const { result: { current }} = renderHook(() => useRemToPx(1), { wrapper: ElementsProviderWrapper })
+        expect(current).toEqual(3)
     })
   })
 })
