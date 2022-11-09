@@ -1,7 +1,15 @@
-import { useRef, useEffect, useState, useReducer, useCallback } from "react"
-import ResizeObserver from "resize-observer-polyfill"
-import "intersection-observer"
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react"
 import CalendarDates from "calendar-dates"
+import ResizeObserver from "resize-observer-polyfill"
+import { ThemeContext } from "styled-components"
+import "intersection-observer"
 
 function assignRef(ref, value) {
   if (ref === null) return
@@ -18,6 +26,15 @@ function assignRef(ref, value) {
 
 export function mergeRefs(...refs) {
   return (value) => refs.forEach((ref) => assignRef(ref, value))
+}
+
+export function useRemToPx(rem) {
+  const themeContext = useContext(ThemeContext)
+  if (themeContext === undefined) {
+    console.log({ themeContext })
+    throw new Error("Theme provider not defined.")
+  }
+  return themeContext.space[1] * rem
 }
 
 export function useResize(target, parent) {
@@ -350,5 +367,5 @@ export function useMediaQuery({ min = 0, max = null }) {
 }
 
 export function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 }

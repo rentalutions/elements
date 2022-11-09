@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/popover",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "Popover component",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@rent_avail/core": "^0.0.3",
-    "@rent_avail/utils": "^0.5.1",
+    "@rent_avail/utils": "^0.5.2",
     "dequal": "^2.0.2"
   }
 }
