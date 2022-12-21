@@ -11,8 +11,6 @@ export const decorators = [
   },
 ]
 
-]
-
 export const parameters = {
   layout: "fullscreen",
   backgrounds: {
@@ -22,7 +20,7 @@ export const parameters = {
       { name: "light", value: "#fff" },
       { name: "dark", value: "#2d2d2d" },
     ],
-  }
+  },
 }
 
 // export const parameters = {

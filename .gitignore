@@ -2,7 +2,6 @@
 .env
 
 # Package management
-node_modules
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,6 +9,7 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+node_modules
 
 # Logs
 *.log
@@ -20,8 +20,7 @@ node_modules
 
 # Build files
 dist
-.now
-storybook
+storybook-static
 
-# System
+# Mac OS
 .DS_Store

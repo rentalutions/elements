@@ -4,7 +4,6 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
-    "boot": "yarn add -W lerna && lerna bootstrap --force-local",
     "build": "lerna run build --stream",
     "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
@@ -15,7 +14,7 @@
     "release": "lerna publish from-package --yes",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
-    "storybook": "start-storybook -p 8080 --quiet --no-manager-cache",
+    "storybook": "start-storybook -p 8080 --quiet",
     "test": "jest",
     "watch": "lerna run watch --parallel",
     "build-storybook": "build-storybook"
@@ -28,8 +27,8 @@
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
     "@storybook/addon-links": "^6.5.15",
-    "@storybook/builder-webpack4": "^6.5.15",
-    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@testing-library/dom": "^8.19.0",
