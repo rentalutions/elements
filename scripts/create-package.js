@@ -14,10 +14,16 @@ const packageJson = `
   "name": "@rent_avail/${name}",
   "version": "0.0.1",
   "description": "${description}",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.mjs"
+  },
+  "types": "dist/index.d.ts"   
   "files": [
     "dist"
   ],

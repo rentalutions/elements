@@ -4,8 +4,8 @@
   "description": "Styling reset and theme",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "files": [
     "dist"
   ],

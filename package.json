@@ -16,8 +16,7 @@
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
     "storybook": "start-storybook -p 8080 --quiet",
     "test": "jest",
-    "watch": "lerna run watch --parallel",
-    "build-storybook": "yarn build && build-storybook"
+    "watch": "lerna run watch --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

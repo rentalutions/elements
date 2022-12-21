@@ -20,7 +20,7 @@ node_modules
 
 # Build files
 dist
-storybook-static
+storybook
 
 # Mac OS
 .DS_Store

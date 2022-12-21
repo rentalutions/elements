@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "jsx": "preserve",
     "noImplicitAny": true,
@@ -15,11 +11,11 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules":true,
+    "isolatedModules": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "."
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules"]
 }

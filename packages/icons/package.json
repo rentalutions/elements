@@ -5,7 +5,6 @@
   "description": "Icon library for Avail Design System",
   "main": "build/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "dist"
