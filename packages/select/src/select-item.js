@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   useContext,
-  useImperativeHandle,
   useRef,
   useEffect,
   useState,

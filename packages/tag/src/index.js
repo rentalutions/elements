@@ -1,4 +1,4 @@
-import React, { memo, useState, forwardRef, createElement } from "react"
+import React, { memo, forwardRef, createElement } from "react"
 import styled from "styled-components"
 // import { Check } from "react-feather"
 // import { noop, wrapEvent } from "@rent_avail/utils"

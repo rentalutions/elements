@@ -1,7 +1,6 @@
 import React, {
   cloneElement,
   forwardRef,
-  useImperativeHandle,
   createContext,
   useReducer,
   useRef,
