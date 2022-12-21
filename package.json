@@ -5,7 +5,7 @@
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
     "build": "lerna run build",
-    "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
+    "build:storybook": "build-storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "check": "lerna changed --include-merged-tags",
     "clean": "lerna clean --yes && rm -rf node_modules",
@@ -14,13 +14,12 @@
     "release": "lerna publish from-package --yes",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
-    "storybook": "start-storybook -p 8080 --quiet",
+    "storybook": "start-storybook -p 8080",
     "test": "jest",
     "watch": "lerna run watch --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
-    "@mdx-js/react": "^2.2.1",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-docs": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",

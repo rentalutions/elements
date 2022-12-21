@@ -16,9 +16,14 @@ export const parameters = {
   backgrounds: {
     default: "light",
     values: [
-      { name: "app", value: "#f3f3f3" },
-      { name: "light", value: "#fff" },
-      { name: "dark", value: "#2d2d2d" },
+      { name: "app", value: "#F3F3F3" },
+      { name: "light", value: "#FFFFFF" },
+      { name: "dark", value: "#2D2D2D" },
     ],
+  },
+  options: {
+    storySort: {
+      order: ["Intro", "Packages", "Patterns"],
+    },
   },
 }
