@@ -33,8 +33,8 @@
     "@rent_avail/layout": "^0.3.14",
     "@rent_avail/utils": "^0.5.2",
     "@styled-system/props": "^5.1.5",
-    "clsx": "^1.1.0",
-    "react-feather": "^2.0.9",
+    "clsx": "^1.2.1",
+    "react-feather": "^2.0.10",
     "styled-system": "^5.1.5"
   }
 }

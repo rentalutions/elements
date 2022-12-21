@@ -1,14 +1,12 @@
 import React from "react"
-import { ThemeProvider } from "styled-components"
-import { Base, theme } from "@rent_avail/base"
+import { ElementsProvider } from "@rent_avail/core"
 
 export const decorators = [
   (Story) => {
     return (
-      <ThemeProvider theme={theme}>
-        <Base />
+      <ElementsProvider>
         <Story />
-      </ThemeProvider>
+      </ElementsProvider>
     )
   },
 ]
