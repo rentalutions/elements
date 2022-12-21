@@ -1,4 +1,4 @@
 export { Dialog, DialogTarget } from "./dialog-context"
-export { FullscreenDialog } from "./fullscreen"
-export { ConfirmationDialog } from "./confirm"
-export { DialogHeader } from "./header"
+export { FullscreenDialog } from "./fullscreen-dialog"
+export { ConfirmationDialog } from "./confirm-dialog"
+export { DialogHeader } from "./dialog-header"
