@@ -5,7 +5,7 @@
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
     "build": "lerna run build",
-    "build:storybook": "build-storybook -o storybook",
+    "build:storybook": "yarn build && build-storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "check": "lerna changed --include-merged-tags",
     "clean": "lerna clean --yes && rm -rf node_modules",
