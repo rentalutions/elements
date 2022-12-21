@@ -4,7 +4,7 @@
   "repository": "https://github.com/rentalutions/elements.git",
   "author": "Patrick Krawczykowski <patrick@dreadful.design>",
   "scripts": {
-    "build": "lerna run build --stream",
+    "build": "lerna run build",
     "build:storybook": "build-storybook --quiet -c .storybook -o storybook",
     "build:docs": "yarn workspace @rent_avail/docs build",
     "check": "lerna changed --include-merged-tags",
@@ -17,7 +17,7 @@
     "storybook": "start-storybook -p 8080 --quiet",
     "test": "jest",
     "watch": "lerna run watch --parallel",
-    "build-storybook": "build-storybook"
+    "build-storybook": "yarn build && build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
