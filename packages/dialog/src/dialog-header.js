@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Box } from "@rent_avail/layout"
 import { Heading } from "@rent_avail/typography"
 import { X } from "react-feather"
-import { DialogContext } from "./dialogContext"
+import { DialogContext } from "./dialog-context"
 
 const HeaderWrapper = styled(Box)`
   display: flex;

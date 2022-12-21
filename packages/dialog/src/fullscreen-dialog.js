@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { color, background } from "styled-system"
 import { usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
-import { DialogContext } from "./dialogContext"
+import { DialogContext } from "./dialog-context"
 
 const FullscreenWrapper = styled(motion.section)`
   position: fixed;
