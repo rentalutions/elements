@@ -15,7 +15,7 @@
     "compile": "svgo -f ./svg --config svgo.config.js && rm -rf src/icons && node ./scripts/build.js",
     "build": "concurrently \"yarn:build:*\"",
     "build:module": "rm -rf dist && babel --root-mode upward src --out-dir dist --copy-files",
-    "build:bundle": "rm -rf build && rollup --config rollup.config.js",
+    "build:bundle": "rm -rf build && rollup --config rollup.config.js --bundleConfigAsCjs",
     "prepack": "yarn build"
   },
   "publishConfig": {
