@@ -14,7 +14,7 @@
     "release": "lerna publish from-package --yes",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
     "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
-    "storybook": "start-storybook -p 8080",
+    "storybook": "start-storybook -p 8080 --quiet",
     "test": "jest",
     "watch": "lerna run watch --parallel"
   },
@@ -54,10 +54,14 @@
     "typescript": "^4.9.4"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "prettier": {
     "semi": false
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "resolutions": {
+    "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2"
+  }
 }
