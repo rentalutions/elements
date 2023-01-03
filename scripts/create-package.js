@@ -1,6 +1,6 @@
 const { spawn } = require("child_process")
 const { writeFileSync, readdirSync, renameSync } = require("fs")
-const { cp, mkdir } = require("shelljs")
+const { cp } = require("shelljs")
 
 const name = process.argv[2]
 
@@ -19,11 +19,10 @@ const packageJson = `
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
   "exports": {
-    
     "require": "./dist/index.js",
     "default": "./dist/index.modern.mjs"
   },
-  "types": "dist/index.d.ts"   
+  "types": "dist/index.d.ts",   
   "files": [
     "dist"
   ],
@@ -55,14 +54,12 @@ if (!packages.includes(name)) {
   cp("-r", "template", `packages/${name}`)
   writeFileSync(`packages/${name}/package.json`, packageJson)
   renameSync(
-    `packages/${name}/package.stories.js`,
-    `packages/${name}/${name}.stories.js`
+    `packages/${name}/stories/package.stories.tsx`,
+    `packages/${name}/stories/${name}.stories.tsx`
   )
   renameSync(
-    `packages/${name}/package.test.js`,
-    `packages/${name}/${name}.test.js`
+    `packages/${name}/tests/package.test.tsx`,
+    `packages/${name}/tests/${name}.test.tsx`
   )
-  spawn("lerna", ["bootstrap"], {
-    stdio: "inherit",
-  })
+  spawn("yarn")
 }

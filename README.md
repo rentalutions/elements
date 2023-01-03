@@ -31,7 +31,7 @@ packages
 │   └── [package].stories.js
 │   └── package.json
 │   └── CHANGELOG.md
-#testing.js
+@testing.js
 ```
 
 ## Contributing

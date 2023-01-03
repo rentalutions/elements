@@ -5,7 +5,7 @@ import { Calendar } from "react-feather"
 import clsx from "clsx"
 import { omit, pick } from "@styled-system/props"
 
-function Input(
+export const Input = forwardRef(function Input(
   {
     as = "input",
     className,
@@ -188,6 +188,4 @@ function Input(
       )}
     </Box>
   )
-}
-
-export default forwardRef(Input)
+})

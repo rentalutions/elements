@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen } from "#testing"
+import { render, screen } from "testing"
 import { Grid, Col } from "../src"
 
 describe("<Grid />", () => {
