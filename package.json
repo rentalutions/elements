@@ -13,7 +13,6 @@
     "graduate": "lerna version --no-push --no-private --include-merged-tags",
     "release": "lerna publish from-package --yes",
     "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
-    "start:docs": "rm -rf ./docs/.mdx-data && yarn workspace @rent_avail/docs dev",
     "storybook": "start-storybook -p 8080 --quiet",
     "test": "jest",
     "watch": "lerna run watch --parallel"
@@ -57,7 +56,6 @@
     "react-is": "^18.2.0",
     "shelljs": "^0.8.5",
     "styled-components": "^5.3.6",
-    "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
   },
   "workspaces": [

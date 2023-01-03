@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { Container, Box, Grid, Col } from "@rent_avail/layout"
 import { Dialog, DialogHeader, ConfirmationDialog } from "@rent_avail/dialog"
-import Input from "@rent_avail/input"
-import { Button } from "@rent_avail/controls"
+import { Button, Input } from "@rent_avail/controls"
 import {
   Autocomplete as AutocompleteComponent,
   AutocompleteProvider,

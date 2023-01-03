@@ -11,8 +11,7 @@ import {
   Flex,
 } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
-import { Button } from "@rent_avail/controls"
-import Input from "@rent_avail/input"
+import { Button, Input } from "@rent_avail/controls"
 import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
 import { Plus } from "react-feather"

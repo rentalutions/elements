@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from "react"
 import { Container } from "@rent_avail/layout"
 import { Text, Heading } from "@rent_avail/typography"
-import Input from "@rent_avail/input"
-import { Button } from "@rent_avail/controls"
+import { Button, Input } from "@rent_avail/controls"
 import {
   Dialog,
   DialogTarget,
@@ -44,7 +43,7 @@ export function DialogWithBackdropStyles() {
         <DialogTarget>
           <Button onClick={handleClick}>Open Modal</Button>
         </DialogTarget>
-        <ConfirmationDialog scrimSx={{zIndex: 4}}>
+        <ConfirmationDialog scrimSx={{ zIndex: 4 }}>
           <DialogHeader title="Are you sure?" />
           <Text>This action will delete 46 files.</Text>
         </ConfirmationDialog>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
-import Input from "@rent_avail/input"
+import { Input } from "@rent_avail/controls"
 import { Box } from "@rent_avail/layout"
 import { noop } from "@rent_avail/utils"
 import Popover from "@rent_avail/popover"

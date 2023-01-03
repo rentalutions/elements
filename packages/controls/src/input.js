@@ -1,7 +1,7 @@
 import React, { forwardRef, useState, useEffect, useRef } from "react"
 import { wrapEvent, noop, useId, mergeRefs } from "@rent_avail/utils"
-import { Box } from "@rent_avail/layout"
-import { Calendar } from "react-feather"
+import { Box } from "@rent_avail/core"
+import { Calendar } from "@rent_avail/icons"
 import clsx from "clsx"
 import { omit, pick } from "@styled-system/props"
 
