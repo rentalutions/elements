@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
-    "@rent_avail/layout": "^0.3.14",
+    "@rent_avail/core": "workspace:^",
     "@rent_avail/utils": "^0.5.2",
     "styled-system": "^5.1.5"
   }

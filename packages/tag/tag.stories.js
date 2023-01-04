@@ -1,7 +1,7 @@
 import React from "react"
 import Tag from "./src"
 import { Check } from "react-feather"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 
 export default { title: "Packages/Tag" }
 

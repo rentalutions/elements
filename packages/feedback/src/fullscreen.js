@@ -3,7 +3,7 @@ import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { usePortal, noop } from "@rent_avail/utils"
 import { Text } from "@rent_avail/typography"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
 import { Illustration } from "./fullscreen_illustration"
 

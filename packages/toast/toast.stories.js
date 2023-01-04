@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import { motion } from "framer-motion"
 import { Loader } from "react-feather"
 import { ToastProvider, useToast } from "./src"

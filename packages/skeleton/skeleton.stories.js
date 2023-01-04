@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Skeleton from "./src"
 import { Heading, Text } from "@rent_avail/typography"
-import { Container, Card, Stack, Box, Grid, Col } from "@rent_avail/layout"
+import { Container, Card, Stack, Box, Grid, Col } from "@rent_avail/core"
 import { Switch } from "@rent_avail/controls"
 import Tag from "@rent_avail/tag"
 import { ChevronRight } from "react-feather"

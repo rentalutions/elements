@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Input } from "@rent_avail/controls"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import { noop } from "@rent_avail/utils"
 import Popover from "@rent_avail/popover"
 import { X } from "react-feather"

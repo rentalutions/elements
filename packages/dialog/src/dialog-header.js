@@ -1,6 +1,6 @@
 import React, { forwardRef, useContext } from "react"
 import styled from "styled-components"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import { Heading } from "@rent_avail/typography"
 import { X } from "react-feather"
 import { DialogContext } from "./dialog-context"

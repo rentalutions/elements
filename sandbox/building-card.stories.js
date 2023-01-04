@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Grid, Col, Box, Card, Container } from "@rent_avail/layout"
+import { Grid, Col, Box, Card, Container } from "@rent_avail/core"
 import { Avatar, AvatarGroup } from "@rent_avail/avatar"
 import {
   Dialog,

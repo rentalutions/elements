@@ -1,5 +1,5 @@
 import * as icons from "./src"
-import { Box, Container } from "@rent_avail/layout"
+import { Box, Container } from "@rent_avail/core"
 
 export default { title: "Packages/Icons" }
 

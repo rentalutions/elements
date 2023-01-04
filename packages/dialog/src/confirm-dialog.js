@@ -3,7 +3,7 @@ import { createPortal } from "react-dom"
 import { usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
 import { DialogContext } from "./dialog-context"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 
 const backdropVariants = {
   hidden: {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Container, Box, Grid, Col } from "@rent_avail/layout"
+import { Container, Box, Grid, Col } from "@rent_avail/core"
 import { Dialog, DialogHeader, ConfirmationDialog } from "@rent_avail/dialog"
 import { Button, Input } from "@rent_avail/controls"
 import {

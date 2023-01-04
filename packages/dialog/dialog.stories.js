@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react"
-import { Container } from "@rent_avail/layout"
+import { Container } from "@rent_avail/core"
 import { Text, Heading } from "@rent_avail/typography"
 import { Button, Input } from "@rent_avail/controls"
 import {

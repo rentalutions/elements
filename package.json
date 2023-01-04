@@ -6,16 +6,15 @@
   "scripts": {
     "build": "lerna run build",
     "build:storybook": "yarn build && build-storybook -o storybook",
-    "build:docs": "yarn workspace @rent_avail/docs build",
     "check": "lerna changed --include-merged-tags",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "create-package": "node ./scripts/create-package.js",
+    "dev": "concurrently 'yarn:dev:*' -c",
+    "dev:packages": "lerna run watch --parallel",
+    "dev:storybook": "start-storybook -p 8080 --quiet",
     "graduate": "lerna version --no-push --no-private --include-merged-tags",
     "release": "lerna publish from-package --yes",
-    "start": "concurrently -n storybook,lerna \"yarn storybook\" \"yarn watch\"",
-    "storybook": "start-storybook -p 8080 --quiet",
-    "test": "jest",
-    "watch": "lerna run watch --parallel"
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

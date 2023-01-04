@@ -3522,7 +3522,7 @@ __metadata:
   dependencies:
     "@rent_avail/base": ^0.5.0
     "@rent_avail/controls": ^0.2.25
-    "@rent_avail/layout": ^0.3.14
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/popover": ^0.3.15
     "@rent_avail/utils": ^0.5.2
     styled-system: ^5.1.5
@@ -3539,7 +3539,7 @@ __metadata:
   resolution: "@rent_avail/avatar@workspace:packages/avatar"
   dependencies:
     "@rent_avail/base": ^0.5.0
-    "@rent_avail/layout": ^0.3.14
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/utils": ^0.5.2
     styled-system: ^5.1.5
   peerDependencies:
@@ -3585,7 +3585,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rent_avail/core@^0.0.3, @rent_avail/core@workspace:packages/core":
+"@rent_avail/core@^0.0.3, @rent_avail/core@workspace:^, @rent_avail/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@rent_avail/core@workspace:packages/core"
   dependencies:
@@ -3605,7 +3605,7 @@ __metadata:
   resolution: "@rent_avail/dialog@workspace:packages/dialog"
   dependencies:
     "@rent_avail/base": ^0.5.0
-    "@rent_avail/layout": ^0.3.14
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/typography": ^0.1.22
     "@rent_avail/utils": ^0.5.2
     framer-motion: ^4.1.17
@@ -3624,6 +3624,7 @@ __metadata:
   resolution: "@rent_avail/feedback@workspace:packages/feedback"
   dependencies:
     "@rent_avail/base": ^0.5.0
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/typography": ^0.1.22
     "@rent_avail/utils": ^0.5.2
     framer-motion: ^4.1.17
@@ -3653,21 +3654,6 @@ __metadata:
     uppercamelcase: ^3.0.0
   peerDependencies:
     react: ^17.0.0
-  languageName: unknown
-  linkType: soft
-
-"@rent_avail/layout@^0.3.14, @rent_avail/layout@workspace:packages/layout":
-  version: 0.0.0-use.local
-  resolution: "@rent_avail/layout@workspace:packages/layout"
-  dependencies:
-    "@rent_avail/base": ^0.5.0
-    "@rent_avail/utils": ^0.5.2
-    styled-system: ^5.1.5
-  peerDependencies:
-    react: ^16.13.1 || ^17.0.0
-    react-dom: ^16.13.1 || ^17.0.0
-    react-is: ^16.13.1 || ^17.0.0
-    styled-components: ^5.1.1
   languageName: unknown
   linkType: soft
 
@@ -3722,7 +3708,7 @@ __metadata:
   resolution: "@rent_avail/skeleton@workspace:packages/skeleton"
   dependencies:
     "@rent_avail/base": ^0.5.0
-    "@rent_avail/layout": ^0.3.14
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/utils": ^0.5.2
     clsx: ^1.2.1
     styled-system: ^5.1.5
@@ -3753,7 +3739,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rent_avail/toast@workspace:packages/toast"
   dependencies:
-    "@rent_avail/layout": ^0.3.14
+    "@rent_avail/core": "workspace:^"
     "@rent_avail/utils": ^0.5.2
     framer-motion: ^4.1.17
   peerDependencies:

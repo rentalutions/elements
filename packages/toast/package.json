@@ -29,7 +29,7 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/layout": "^0.3.14",
+    "@rent_avail/core": "workspace:^",
     "@rent_avail/utils": "^0.5.2",
     "framer-motion": "^4.1.17"
   }
