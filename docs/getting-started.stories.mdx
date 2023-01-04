@@ -1,7 +1,242 @@
 import { Meta } from "@storybook/addon-docs"
 
-<Meta title="Intro/Getting Started" />
+<Meta title="Intro / Getting Started" />
 
-# Getting Started
+# Doors Design System
 
-Here's how to get started with Storybook.
+The avail design system is made up of small UI packages that can be mostly imported into projects as needed. This allows updating a package to happen without worrying about breaking changes that might be in development on another components.
+
+---
+
+## Packages
+
+| Package           | Description                                                |
+| ----------------- | ---------------------------------------------------------- |
+| @doors/core       | Base providers and layout components.                      |
+| @doors/controls   | User interface controls and inputs.                        |
+| @doors/display    | Components used for data display.                          |
+| @doors/hooks      | Common react hooks.                                        |
+| @doors/icons      | Collection of branded svg icons.                           |
+| @doors/overlays   | Components positioned outside of the normal document flow. |
+| @doors/navigation | Components requiring interaction to display all data.      |
+| @doors/utils      | Utility functions.                                         |
+
+## Patterns
+
+| Pattern              | Description                                                                   |
+| -------------------- | ----------------------------------------------------------------------------- |
+| Address Autocomplete | Address search using the select component and the useAddressAutocomplete hook |
+| Stepper              | Display content divided into a sequence.                                      |
+
+| @rent_avail/autocomplete | Address Autocomplete | |
+| @rent_avail/avatar | Avatar, Avatar Group | |
+| @rent_avail/controls | Button, Checkbox, Input, Radio, Radio Group, Switch | |
+| @rent_avail/dialog | Confirmation Dialog, Fullscreen Dialog | |
+| @rent_avail/feedback | Inline Feedback, Fullscreen Feedback | |
+| @rent_avail/menu | Menu | |
+| @rent_avail/popover | Popover | |
+| @rent_avail/progress | Fluid Progress, Fixed Progress | |
+| @rent_avail/select | Select Input | |
+| @rent_avail/skeleton | Skeleton Loader | |
+| @rent_avail/tag | Tag | |
+| @rent_avail/toast | Toast | |
+| @rent_avail/tooltip | Tooltip | |
+
+## Getting Started
+
+### Style Objects
+
+Avail elements use [`styled-system`](https://styled-system.com) to help you quickly build custom components with constraint based styles. All components--unless otherwise noted--accept an `sx` prop that is a style object supercharged with theme powers. This method let's you leverage the consistency of our theme while allowing you to override when needed to.
+
+```jsx
+function YourComponent() {
+  return (
+    <Card
+      sx={{
+        my: "4rem",
+        p: "4rem",
+        bg: "blue_100",
+      }}
+    >
+      I'm a card with a margin top and bottom of 4rem, a padding of 4rem, and a
+      background of our brand color blue_100.
+    </Card>
+  )
+}
+```
+
+#### Nested & Psuedo Selectors
+
+You can nest selectors in the sx prop in much the same way as scss. This also works for pseudo selectors and elements.
+
+```jsx
+function Component() {
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        "&::before": {
+          content: '""',
+          width: "100%",
+        },
+        "& span": {
+          color: "ui_500",
+        },
+      }}
+    />
+  )
+}
+```
+
+**Note**
+For before and after psuedo elements, you'll need to wrap the content value in double quotes because of how styled object keys are parsed.
+
+`content: '""';`
+
+## Getting Started
+
+Install the design system and peer dependencies
+
+```bash
+yarn add react react-dom styled-components @doors/core
+```
+
+Bootstrap your react app and in the root component import the `ThemeProvider` from `@rent_avail/core`
+
+```jsx
+import { ThemeProvider } from "@rent_avail/core"
+
+const customTheme = {}
+
+function App() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <Routes />
+    </ThemeProvider>
+  )
+}
+```
+
+Now you're ready to start using layout components to quickly build complex UIs.
+
+```jsx
+import { Card, Container } from "@rent_avail/core"
+
+const cardBackgrounds = [
+  "blue_100",
+  "blue_300",
+  "blue_500",
+  "blue_700",
+  "blue_900",
+]
+
+function DashboardPage() {
+  return (
+    <Box as="main" my="4rem">
+      <Container as={Stack}>
+        {cardBackgrounds.map((bg) => (
+          <Card key={bg} sx={{ bg }} />
+        ))}
+      </Container>
+    </Box>
+  )
+}
+```
+
+## Responsive Styles
+
+Styled system allows us to responsively style our ui components with array props. All styled props accept an array that will map to the breakpoints in the theme spec.
+
+```jsx
+<Box sx={{ width: [1, 1 / 2, 1 / 3] }}>
+  I'll be 100% on the smallest screens, then 50%, then 33.33%.
+</Box>
+```
+
+## Theme
+
+You can use the theme properties in any styled component below the `ElementsProvider` component.
+
+```jsx
+const Wrapper = styled.div`
+  box-shadow: ${({ theme }) => theme.shadows[0]};
+  font-size: ${({ theme }) => theme.fontSizes.body};
+`
+```
+
+#### Theme object exported by `@rent_avail/base`
+
+```js
+const colors = {
+  ui_100: "#ffffff",
+  ui_300: "#f3f3f3",
+  ui_500: "#c7c7c7",
+  ui_700: "#6f6f6f",
+  ui_900: "#2d2d2d",
+
+  blue_100: "#e9edf1",
+  blue_300: "#7c95b0",
+  blue_500: "#0f3e6f",
+  blue_700: "#0b2e51",
+  blue_900: "#0a2847",
+
+  gold_100: "#fdf9e9",
+  gold_300: "#fbeab3",
+  gold_500: "#f9de89",
+  gold_700: "#b6a264",
+  gold_900: "#443d26",
+
+  green_100: "#dff9f3",
+  green_300: "#9fefdd",
+  green_500: "#50e3c2",
+  green_700: "#3ba68e",
+  green_900: "#163e35",
+
+  straw_100: "#fefef5",
+  straw_300: "#fefce3",
+  straw_500: "#fefacc",
+  straw_700: "#e7e4ba",
+  straw_900: "#a2a082",
+
+  red_300: "#F6A5B4",
+  red_500: "#EC4261",
+
+  purple_300: "#B7B5EE",
+  purple_500: "#6965D5",
+}
+
+const theme = {
+  breakpoints: ["40rem", "60rem", "80rem", "100rem", "120rem"],
+  colors,
+  fonts: {
+    body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
+    legal: "'Noto Serif', serif",
+    monospace: "'IBM Plex Mono', monospace",
+  },
+  fontSizes: {
+    small: "1.334rem",
+    body: "1.5rem",
+    subtitle: "2rem",
+    title: "3rem",
+    headline: "4rem",
+    hero: "5rem",
+  },
+  fontWeights: {
+    light: 200,
+    regular: 400,
+    bold: 600,
+    black: 800,
+  },
+  lineHeights: {
+    small: "1.5",
+    body: "1.334",
+    heading: "1.25",
+  },
+  space: [0, 12, 24, 36, 48, 60, 72, 84, 96],
+  shadows: [
+    "0 1px 3px rgba(0,0,0.12)",
+    "0 3px 6px rgba(0,0,0,0.24)",
+    "0 12px 24px -12px rgba(0,0,0,0.36)",
+  ],
+}
+```
