@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 
 function AvatarGroup({ sx = {}, clipColor = "ui_100", ...props }) {
   return (

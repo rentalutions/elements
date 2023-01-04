@@ -1,6 +1,16 @@
-require("dotenv").config()
-
 module.exports = {
-  stories: ["../packages/**/*.stories.js", "../sandbox/**/*.stories.js"],
-  addons: ["@storybook/addon-essentials", "@storybook/addon-storysource"],
+  stories: [
+    "../docs/**/*.stories.mdx",
+    "../packages/**/*.stories.mdx",
+    "../packages/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+  ],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
 }

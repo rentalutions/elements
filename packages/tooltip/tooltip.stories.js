@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Container } from "@rent_avail/layout"
+import { Container } from "@rent_avail/core"
 import { Heading } from "@rent_avail/typography"
 import {
   Dialog,

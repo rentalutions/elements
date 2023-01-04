@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react"
 import styled, { keyframes } from "styled-components"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import clsx from "clsx"
 
 const bounce = (startColor, endColor) => keyframes`

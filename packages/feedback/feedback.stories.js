@@ -1,18 +1,9 @@
 import React, { useState, Fragment } from "react"
 import { FullscreenFeedback, InlineFeedback } from "./src"
 import { Avatar } from "@rent_avail/avatar"
-import {
-  Box,
-  Container,
-  Card,
-  Stack,
-  Grid,
-  Col,
-  Flex,
-} from "@rent_avail/layout"
+import { Box, Container, Card, Stack, Grid, Col, Flex } from "@rent_avail/core"
 import { Heading, Text } from "@rent_avail/typography"
-import { Button } from "@rent_avail/controls"
-import Input from "@rent_avail/input"
+import { Button, Input } from "@rent_avail/controls"
 import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
 import { Plus } from "react-feather"

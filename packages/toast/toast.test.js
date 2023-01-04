@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { render, screen } from "#testing"
+import { render, screen } from "testing"
 import { useToast, ToastProvider } from "./src"
 
 function ToastExample() {

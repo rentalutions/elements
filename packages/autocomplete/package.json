@@ -4,8 +4,8 @@
   "description": "Component and hooks for using Google Places autocomplete.",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
-    "@rent_avail/input": "^0.4.9",
-    "@rent_avail/layout": "^0.3.14",
+    "@rent_avail/controls": "^0.2.25",
+    "@rent_avail/core": "workspace:^",
     "@rent_avail/popover": "^0.3.15",
     "@rent_avail/utils": "^0.5.2",
     "styled-system": "^5.1.5"

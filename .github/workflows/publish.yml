@@ -13,9 +13,9 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+          cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: yarn lerna run build --ignore @rent_avail/docs
-      # - run: yarn test
+      - run: yarn lerna run build
       - run: yarn release
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

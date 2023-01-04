@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen } from "#testing"
+import { render, screen } from "testing"
 import { Button } from "../src"
 
 describe("<Button />", () => {

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Grid, Col, Box, Card, Container } from "@rent_avail/layout"
+import { Grid, Col, Box, Card, Container } from "@rent_avail/core"
 import { Avatar, AvatarGroup } from "@rent_avail/avatar"
 import {
   Dialog,
@@ -7,9 +7,14 @@ import {
   DialogTarget,
   ConfirmationDialog,
 } from "@rent_avail/dialog"
-import Input from "@rent_avail/input"
-import { Select, SelectInput, SelectList, SelectItem } from "@rent_avail/select"
-import { Button } from "@rent_avail/controls"
+import {
+  Button,
+  Input,
+  Select,
+  SelectInput,
+  SelectList,
+  SelectItem,
+} from "@rent_avail/controls"
 import {
   Edit,
   Key,

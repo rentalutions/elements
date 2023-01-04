@@ -4,8 +4,8 @@
   "description": "Feedback components.",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "esmodule": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -30,10 +30,11 @@
   },
   "dependencies": {
     "@rent_avail/base": "^0.5.0",
+    "@rent_avail/core": "workspace:^",
     "@rent_avail/typography": "^0.1.22",
     "@rent_avail/utils": "^0.5.2",
     "framer-motion": "^4.1.17",
-    "react-feather": "^2.0.9",
+    "react-feather": "^2.0.10",
     "styled-system": "^5.1.5"
   }
 }

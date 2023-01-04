@@ -31,16 +31,20 @@ packages
 │   └── [package].stories.js
 │   └── package.json
 │   └── CHANGELOG.md
-#testing.js
+@testing.js
 ```
 
-## Contributing
+## Getting Started
 
 The best way to contribute to this library is to look at open issues or file an issue yourself if one doesn't already exist.
 
 To suggest a component be added to the library open an issue and spec out the component with it's API. No component will be added without proper documentation. You can tag [@pkrawc](https://github.com/pkrawc) or [@wade00](https://github.com/wade00) with reviewing the issue and weighing in when necessary.
 
 To finish, create a pull request that solves the issue. At least one commit in the PR should be `resolves #[ISSUE_NUMER]`, this will auto-close the issue when the PR is merged into master.
+
+## Development
+
+This system uses [storybook](https://storybook.js.org) to maintain documentation. Use `yarn dev` to run a development enviroment. While creating or updating a component, check your work using the story files in the same package. Updating stories will build and publish a new dev build to vercel on every commit thats part of a PR.
 
 ### Conventional Commits
 

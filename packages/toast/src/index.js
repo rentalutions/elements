@@ -7,7 +7,7 @@ import React, {
   useMemo,
 } from "react"
 import { createPortal } from "react-dom"
-import { Box } from "@rent_avail/layout"
+import { Box } from "@rent_avail/core"
 import { getId, usePortal } from "@rent_avail/utils"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -105,7 +105,11 @@ function ToastProvider({ position = "bottom-left", ...props }) {
   const positionStyles = getPositionStyles(position)
   function createToast(type = "blank") {
     return function (children, options = {}) {
-      const { id = getId(), duration = durationDefaults[type], ...opts } = options
+      const {
+        id = getId(),
+        duration = durationDefaults[type],
+        ...opts
+      } = options
       const toast = {
         "aria-live": "polite",
         children,
