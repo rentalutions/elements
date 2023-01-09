@@ -1,8 +1,6 @@
 import React, { Fragment } from "react"
 import { ChevronRight } from "react-feather"
-import { Avatar, AvatarGroup } from "./src"
-
-export default { title: "Packages/Avatar" }
+import { Avatar, AvatarGroup } from "../src"
 
 export function Default() {
   return (

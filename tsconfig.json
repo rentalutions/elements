@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "downlevelIteration": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "testing": ["./utils/testing"]

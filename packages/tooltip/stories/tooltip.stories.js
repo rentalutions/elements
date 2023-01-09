@@ -8,7 +8,7 @@ import {
   FullscreenDialog,
 } from "@rent_avail/dialog"
 import { Button } from "@rent_avail/controls"
-import { Tooltip, TooltipContent, TooltipTarget } from "./src"
+import { Tooltip, TooltipContent, TooltipTarget } from "../src"
 
 export default { title: "Packages/Tooltip" }
 

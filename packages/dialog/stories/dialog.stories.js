@@ -8,7 +8,7 @@ import {
   DialogHeader,
   ConfirmationDialog,
   FullscreenDialog,
-} from "./src"
+} from "../src"
 
 export default { title: "Packages/Dialog" }
 

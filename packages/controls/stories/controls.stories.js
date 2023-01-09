@@ -11,18 +11,18 @@ import {
   SelectList,
   SelectItem,
   SelectContext,
-} from "./src"
+} from "../src"
 
-export default {
-  title: "Packages/Controls",
-  decorators: [
-    (Story) => (
-      <Container sx={{ mt: "4rem" }}>
-        <Story />
-      </Container>
-    ),
-  ],
-}
+// export default {
+//   title: "Packages/Controls",
+//   decorators: [
+//     (Story) => (
+//       <Container sx={{ mt: "4rem" }}>
+//         <Story />
+//       </Container>
+//     ),
+//   ],
+// }
 
 export function CheckboxUsage() {
   return <Checkbox />

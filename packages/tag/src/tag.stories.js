@@ -1,5 +1,5 @@
 import React from "react"
-import Tag from "./src"
+import Tag from "."
 import { Check } from "react-feather"
 import { Box } from "@rent_avail/core"
 

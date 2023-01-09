@@ -5,9 +5,9 @@ import { Button, Input } from "@rent_avail/controls"
 import {
   Autocomplete as AutocompleteComponent,
   AutocompleteProvider,
-} from "./src"
+} from "../src"
 
-export default { title: "Packages/Autocomplete" }
+// export default { title: "Packages/Autocomplete" }
 
 export function ManualOption() {
   const [response, setResponse] = useState(null)
@@ -54,13 +54,13 @@ export function ManualOption() {
             )
           }}
         />
-        <Box mt="2rem">
+        <Box sx={{ mt: 2 }}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatum
           nulla cupiditate, deserunt est placeat iure similique rem dolor
           adipisci molestiae quasi ipsum quisquam? Sed veritatis iusto ipsa
           quidem mollitia?
         </Box>
-        <Box as="pre" my="2rem" fontSize="1.25rem">
+        <Box as="pre" sx={{ my: 2, fontSize: "body" }}>
           <Box as="code">{JSON.stringify(response, null, 2)}</Box>
         </Box>
       </Container>

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react"
-import { FullscreenFeedback, InlineFeedback } from "./src"
+import { FullscreenFeedback, InlineFeedback } from "../src"
 import { Avatar } from "@rent_avail/avatar"
 import { Box, Container, Card, Stack, Grid, Col, Flex } from "@rent_avail/core"
 import { Heading, Text } from "@rent_avail/typography"

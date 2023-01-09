@@ -1,6 +1,14 @@
 import styled from "styled-components"
 import css, { SystemStyleObject } from "@styled-system/css"
-import { space, layout, system, GridGapProps } from "styled-system"
+import {
+  space,
+  layout,
+  system,
+  GridGapProps,
+  SpaceProps,
+  LayoutProps,
+  compose,
+} from "styled-system"
 
 export type SXObject = SystemStyleObject & { text?: string | string[] }
 
@@ -9,19 +17,56 @@ export const sx = ({ sx = {} }: { sx?: SXObject }) => {
   if (text) {
     const textArray = Array.isArray(text) ? text : [text]
     return css({
-      variant: textArray.map((txt: string) => `text.${txt}`),
+      variant: textArray.map((textVariant: string) => `text.${textVariant}`),
       ...styleProps,
     })
   }
   return css(styleProps)
 }
 
-export const Box = styled.div(sx)
+/**
+ * Box: A low level layout component.
+ *
+ * Boxes should be treated as a completely customizable node charged with theme aware
+ * super powers. Use `as` to change the underlying html tag. To view helpful examples go
+ * to https://design.avail.co/elements/core#box
+ *
+ * @example
+ *
+ * <Box as="h2" sx={{background: "blue_500"}}>Hello World</Box>
+ */
 
-export const Container = styled.section(space, layout, sx)
+export const Box = styled("div")<{ sx?: SXObject }>(sx)
+interface ContainerProps extends SpaceProps, LayoutProps {
+  sx?: SXObject
+}
+
+/**
+ * Container: A wrapper for repsonsive design.
+ *
+ * Containers should wrap most if not all layout sections on the screen. Containers are
+ * responsible for keeping the layout from growing too large horizontally and becoming
+ * unreadable. To view helpful examples go to
+ * https://design.avail.co/elements/core#container
+ *
+ * @example
+ *
+ * <Container>
+ *   <PageLayout />
+ * </Container>
+ */
+
+const maxWidth = system({
+  maxWidth: { property: "maxWidth", scale: "containerWidth" },
+})
+
+export const Container = styled.section<ContainerProps>(
+  compose(layout, space),
+  css({ maxWidth: (theme) => theme.containerWidth }),
+  sx
+)
 
 Container.defaultProps = {
-  maxWidth: "84rem",
   mx: "auto",
   px: "2rem",
 }
@@ -30,6 +75,20 @@ interface GridProps extends GridGapProps {
   columns?: number
   sx?: SXObject
 }
+
+/**
+ * Grid: A container for grid based layouts.
+ *
+ * Grids should be the direct parents of any Col components in your layout. You can
+ * customize the columns, and the gap between rows and columns using props. To view
+ * helpful examples go to https://design.avail.co/elements/core#grid
+ *
+ * @example
+ *
+ * <Grid gap="3rem">
+ *   <Col span={6}>6 columns, or half the default 12 grid.</Col>
+ * </Grid>
+ */
 
 export const Grid = styled.section<GridProps>(
   system({
@@ -53,6 +112,25 @@ interface ColProps {
   span?: string | number | (string | number)[] | [string, string]
   sx?: SXObject
 }
+
+/**
+ * Col: A column component.
+ *
+ * Use columns as direct children of a Grid. Cols can span multiple rows without needing
+ * multiple grid parents. The number of columns a Col stretches is set using `span`, if a
+ * column needs to span more than one row, use `spanRow`. To view helpful examples go to
+ * https://design.avail.co/elements/core#col
+ *
+ * @example
+ *
+ * <Grid>
+ *   <Col span={6}>Span 6</Col>
+ *   <Col span={6}>Span 6</Col>
+ *   <Col span={4}>Span 4</Col>
+ *   <Col span={4}>Span 4</Col>
+ *   <Col span={4}>Span 4</Col>
+ * </Grid>
+ */
 
 export const Col = styled.div<ColProps>(
   system({
@@ -85,14 +163,30 @@ interface CardProps {
   sx?: SXObject
 }
 
+/**
+ * Card: A container for info and actions on a single subject.
+ *
+ * Cards should be scannable for relevant content. Elements like headers, and buttons
+ * should be laid out in a way that clearly indicated hierarchy. Cards should be ideally
+ * reserved for lists with complex data structures. To view helpful examples go to
+ * https://design.avail.co/elements/core#card
+ *
+ * @example
+ *
+ * <Card>
+ *   <Box as="h3">Rent Roll</Box>
+ *   <Box as="p">This is your rent collection report across all units.</Box>
+ * </Card>
+ */
+
 export const Card = styled.div<CardProps>(
   css({
     p: "2rem",
     borderRadius: 4,
     border: "1px solid transparent",
-    borderColor: "ui_500",
+    borderColor: "uiSecondary",
     boxShadow: 2,
-    bg: "ui_100",
+    bg: "ui",
   }),
   sx
 )
@@ -100,6 +194,20 @@ export const Card = styled.div<CardProps>(
 interface FlexProps {
   sx?: SXObject
 }
+
+/**
+ * Flex: A container with flex layout by default.
+ *
+ * Flex is just a div that has display flex applied to it. Can be used to dry out layouts
+ * a bit and give more semantic understanding to anyone going through the layout.
+ *
+ * @example
+ *
+ * <Flex>
+ *   <Box>I'm flexible</Box>
+ *   <Box>I'm flexible</Box>
+ * </Flex>
+ */
 
 export const Flex = styled.div<FlexProps>({ display: "flex" }, sx)
 
@@ -109,17 +217,29 @@ interface StackProps {
   gap?: string | string[]
 }
 
+/**
+ * Stack: A flexible container with a built in gap between children.
+ *
+ * Stacks can be used as a way to quickly layout lists of items whether vertically or
+ * horizontally. The gap between components can be adjusted using `gap`.
+ *
+ * @example
+ *
+ * <Stack>
+ *   <Box>There's a gap below me.</Box>
+ *   <Box>Me too</Box>
+ *   <Box>Not me.</Box>
+ * </Stack>
+ */
+
 export const Stack = styled.div<StackProps>(
-  css({ display: "flex" }),
+  css({ display: "inline-flex", alignItems: "start", gap: "2rem" }),
   system({
     direction: {
       property: "flexDirection",
-    },
-    gap: {
-      property: "gap",
     },
   }),
   sx
 )
 
-Stack.defaultProps = { direction: "column", gap: "2rem" }
+Stack.defaultProps = { direction: "column" }

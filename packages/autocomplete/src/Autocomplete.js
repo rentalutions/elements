@@ -74,7 +74,7 @@ export default function Autocomplete({
     }
   }, [defaultValue])
   return (
-    <Box position="relative" sx={sx}>
+    <Box sx={{ position: "relative", ...sx }}>
       <Input
         {...props}
         ref={targetRef}
@@ -87,7 +87,7 @@ export default function Autocomplete({
         <Box
           sx={{
             position: "absolute",
-            top: "3.25rem",
+            top: "3.5rem",
             left: "2rem",
             display: "flex",
             px: "0.5rem",

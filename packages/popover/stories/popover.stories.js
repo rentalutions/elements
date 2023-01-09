@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, Fragment } from "react"
-import Popover from "./src"
+import Popover from "../src"
 import { Container, Box, Flex } from "@rent_avail/core"
 import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"

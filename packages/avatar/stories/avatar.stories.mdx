@@ -1,16 +1,17 @@
----
-title: Avatars
-layout: elements
-package_name: "avatar"
-install: "yarn add @rent_avail/avatar"
-source: "https://github.com/rentalutions/elements/tree/release/packages/avatar"
----
+import { Meta, Story } from "@storybook/addon-docs"
+import { Default, NoEmail } from "./avatar.stories"
+
+<Meta title="Packages / Avatar" />
+
+# Avatar
+
+<Story story={Default} />
 
 ```js
 import Avatar, { AvatarGroup } from "@rent_avail/avatar"
 ```
 
-```jsx live
+```js
 <Flex>
   <Avatar small initials="DT" mr="2rem" />
   <Avatar
@@ -44,3 +45,5 @@ An avatar component is used to display user information to another user. It can 
 | email     | `string`  | User email, used if name is not present.                                                            |
 | photoUrl  | `string`  | Thumbnail of the users profile photo.                                                               |
 | icon      | `Element` | Icon element rendered to the right of the users name or email.                                      |
+
+<Story story={NoEmail} />
