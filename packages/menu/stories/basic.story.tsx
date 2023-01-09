@@ -1,4 +1,3 @@
-import React from "react"
 import { Button } from "@rent_avail/controls"
 import { Flex, Box } from "@rent_avail/core"
 import { Menu, MenuTarget, MenuList, MenuItem } from "../src"

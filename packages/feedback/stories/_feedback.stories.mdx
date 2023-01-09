@@ -1,10 +1,8 @@
----
-title: Feedback
-layout: elements
-package_name: feedback
-install: "yarn add @rent_avail/feedback"
-source: "https://github.com/rentalutions/elements/tree/release/packages/feedback"
----
+import { Meta, Story } from "@storybook/addon-docs"
+
+<Meta title="Packages / Feedback" />
+
+# Feedback
 
 ```js
 import { FullscreenFeedback, InlineFeedback } from "@rent_avail/feedback"
@@ -14,7 +12,7 @@ This package contains elements to provide users with feedback to showcase value 
 
 ## InlineFeedback
 
-```jsx live
+```js
 function FeedbackElement() {
   return (
     <InlineFeedback
@@ -42,7 +40,7 @@ Inline feedback loops should be used if the user can take action while waiting f
 
 ## FullscreenFeedback
 
-```jsx live
+```js
 function FeedbackElement() {
   const [open, setOpen] = useState(false)
   return (

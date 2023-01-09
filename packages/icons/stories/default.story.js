@@ -1,8 +1,6 @@
 import * as icons from "../src"
 import { Box, Container } from "@rent_avail/core"
 
-export default { title: "Packages/Icons" }
-
 const iconsArray = []
 
 for (let icon in icons) {

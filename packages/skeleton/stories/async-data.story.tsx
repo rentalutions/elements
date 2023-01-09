@@ -1,53 +1,8 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Skeleton from "../src"
 import { Container, Card, Stack, Box, Grid, Col } from "@rent_avail/core"
 import Tag from "@rent_avail/tag"
-import { ChevronRight } from "react-feather"
-
-export default { title: "Packages/Skeleton" }
-
-export function WrappingChildren() {
-  const [loaded, setLoaded] = useState(false)
-  useEffect(() => {
-    const handleLoaded = () => setLoaded(true)
-    setTimeout(handleLoaded, 4000)
-    return () => clearTimeout(handleLoaded)
-  })
-  return (
-    <Container mt="4rem">
-      <Skeleton loaded={loaded}>
-        <Box>Hello World</Box>
-      </Skeleton>
-      <Skeleton loaded={loaded}>
-        <Box mt="2rem">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-          nostrum rerum quibusdam natus magni consequuntur illum sapiente eos,
-          possimus neque molestiae ratione omnis a eligendi illo, consectetur
-          fugiat minima temporibus.
-        </Box>
-      </Skeleton>
-      <Skeleton loaded={loaded}>
-        <Box mt="4rem">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error omnis
-          porro, veritatis blanditiis commodi odio optio veniam fugiat,
-          excepturi harum velit possimus pariatur reprehenderit ad consequatur
-          facilis laborum perferendis. Accusantium?
-        </Box>
-      </Skeleton>
-      <Skeleton loaded={loaded}>
-        <Card mt="4rem">
-          <Box as="h4">A very loadable card.</Box>
-          <Box mt="2rem">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            impedit minima in quasi tempore minus ullam ducimus odit deserunt
-            architecto sunt commodi consequatur fugiat perspiciatis at et
-            asperiores, reprehenderit expedita!
-          </Box>
-        </Card>
-      </Skeleton>
-    </Container>
-  )
-}
+import { ChevronRight } from "@rent_avail/icons"
 
 export function PaymentList() {
   const [loaded, setLoaded] = useState(false)

@@ -1,9 +1,7 @@
-import React, { useState, useRef, useCallback, Fragment } from "react"
+import { useState, useRef, useCallback, Fragment } from "react"
 import Popover from "../src"
 import { Container, Box, Flex } from "@rent_avail/core"
 import { Button } from "@rent_avail/controls"
-
-export default { title: "Packages/Popover" }
 
 export function PopoverExample({ position }) {
   const targetRef = useRef(null)

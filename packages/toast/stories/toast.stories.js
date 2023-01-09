@@ -1,19 +1,17 @@
 import { Fragment } from "react"
 import { Box } from "@rent_avail/core"
-import { motion } from "framer-motion"
-import { Loader } from "react-feather"
 import { ToastProvider, useToast } from "../src"
 
-export default {
-  title: "Packages/Toast",
-  decorators: [
-    (Story) => (
-      <ToastProvider>
-        <Story />
-      </ToastProvider>
-    ),
-  ],
-}
+// export default {
+//   title: "Packages/Toast",
+//   decorators: [
+//     (Story) => (
+//       <ToastProvider>
+//         <Story />
+//       </ToastProvider>
+//     ),
+//   ],
+// }
 
 const buttonStyle = {
   appearance: "none",

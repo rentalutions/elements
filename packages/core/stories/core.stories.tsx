@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Col, Card, Flex } from "../src/layout"
 
-export default { title: "Packages/Core" }
+// export default { title: "Packages/Core" }
 
 export function BoxUsage() {
   return <Box>Hello world</Box>
