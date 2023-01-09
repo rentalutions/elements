@@ -2,7 +2,6 @@ import React, { useState, Fragment } from "react"
 import { FullscreenFeedback, InlineFeedback } from "../src"
 import { Avatar } from "@rent_avail/avatar"
 import { Box, Container, Card, Stack, Grid, Col, Flex } from "@rent_avail/core"
-import { Heading, Text } from "@rent_avail/typography"
 import { Button, Input } from "@rent_avail/controls"
 import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
@@ -16,34 +15,34 @@ export function FullpagePayments() {
   return (
     <Container mt="4rem">
       <Stack>
-        <Heading as="h4">Schedule a payment</Heading>
+        <Box as="h4">Schedule a payment</Box>
         <Grid>
           <Col span={["12", "6"]}>
-            <Heading as="h5">Balance Remaining</Heading>
-            <Heading>$1,200</Heading>
+            <Box as="h5">Balance Remaining</Box>
+            <Box>$1,200</Box>
           </Col>
           <Col span={["12", "6"]}>
-            <Heading as="h5" textAlign="right">
+            <Box as="h5" textAlign="right">
               Due Date
-            </Heading>
-            <Heading textAlign="right">May 1, 2020</Heading>
+            </Box>
+            <Box textAlign="right">May 1, 2020</Box>
           </Col>
         </Grid>
-        <Heading as="h5" mt="2rem">
+        <Box as="h5" mt="2rem">
           1. Choose amount
-        </Heading>
+        </Box>
         <Input
           label="Payment Amount"
           value={amount}
           onChange={({ target }) => setAmount(target.value)}
         />
-        <Heading as="h5" mt="2rem">
+        <Box as="h5" mt="2rem">
           2. Choose date
-        </Heading>
+        </Box>
         <Input type="date" label="Deposit Date" />
-        <Heading as="h5" mt="2rem">
+        <Box as="h5" mt="2rem">
           3. Choose account to pay from
-        </Heading>
+        </Box>
         <Box
           p="2rem"
           bg="blue_100"
@@ -51,11 +50,11 @@ export function FullpagePayments() {
             position: relative;
           `}
         >
-          <Text mb="1rem" fontWeight="black">
+          <Box mb="1rem" fontWeight="black">
             Janet's Checking Account
-          </Text>
-          <Text>Chase Account | 0124</Text>
-          <Text
+          </Box>
+          <Box>Chase Account | 0124</Box>
+          <Box
             fontWeight="black"
             css={`
               position: absolute;
@@ -65,28 +64,28 @@ export function FullpagePayments() {
             `}
           >
             Edit Payment Source
-          </Text>
+          </Box>
         </Box>
-        <Heading as="h5" mt="2rem">
+        <Box as="h5" mt="2rem">
           Payment Details
-        </Heading>
+        </Box>
         <Grid>
-          <Col span={[6]} as={Text}>
+          <Col span={[6]} as={Box}>
             Payment
           </Col>
-          <Col span={[6]} as={Text} textAlign="right">
+          <Col span={[6]} as={Box} textAlign="right">
             ${amount || 0}
           </Col>
-          <Col span={[6]} as={Text}>
+          <Col span={[6]} as={Box}>
             CreditBoost
           </Col>
-          <Col span={[6]} as={Text} textAlign="right">
+          <Col span={[6]} as={Box} textAlign="right">
             $3.99
           </Col>
-          <Col span={[6]} as={Text}>
+          <Col span={[6]} as={Box}>
             Total
           </Col>
-          <Col span={[6]} as={Text} textAlign="right">
+          <Col span={[6]} as={Box} textAlign="right">
             ${Number(amount) + 3.99}
           </Col>
         </Grid>
@@ -116,14 +115,14 @@ export function FullpageSendLease() {
     <Container mt="4rem">
       <Stack>
         <Card>
-          <Heading mb="2rem">Send for signing</Heading>
-          <Text>
+          <Box mb="2rem">Send for signing</Box>
+          <Box>
             Once you send this lease for signing you'll be unable to edit it. To
             change anything you'll need to revoke access and re-send.
-          </Text>
-          <Heading as="h5" mt="2rem">
+          </Box>
+          <Box as="h5" mt="2rem">
             Lessees
-          </Heading>
+          </Box>
           <Stack direction={["row"]} flexWrap="wrap">
             <Avatar
               mt="2rem"
@@ -164,48 +163,46 @@ export function FullpageSendLease() {
           px={["2rem", "4rem", "8rem"]}
           bg="ui_100"
         >
-          <Heading fontFamily="legal">Chicago Residential Lease</Heading>
-          <Text fontFamily="legal">Created on Aug 7th 2019</Text>
-          <Heading as="h4" fontFamily="legal" mt="4rem">
+          <Box fontFamily="legal">Chicago Residential Lease</Box>
+          <Box fontFamily="legal">Created on Aug 7th 2019</Box>
+          <Box as="h4" fontFamily="legal" mt="4rem">
             Premises
-          </Heading>
-          <Text fontFamily="legal">
-            2024 N California Ave Chicago IL, 60647
-          </Text>
-          <Heading as="h4" fontFamily="legal" mt="4rem">
+          </Box>
+          <Box fontFamily="legal">2024 N California Ave Chicago IL, 60647</Box>
+          <Box as="h4" fontFamily="legal" mt="4rem">
             Clauses
-          </Heading>
+          </Box>
           <Stack mt="1rem">
-            <Text fontFamily="legal">
+            <Box fontFamily="legal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               quis laborum assumenda minus labore aperiam, explicabo dolor ea
               consequuntur qui totam, optio modi, suscipit magni aliquid tempore
               officiis possimus distinctio.
-            </Text>
-            <Text fontFamily="legal">
+            </Box>
+            <Box fontFamily="legal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               quis laborum assumenda minus labore aperiam, explicabo dolor ea
               consequuntur qui totam, optio modi, suscipit magni aliquid tempore
               officiis possimus distinctio.
-            </Text>
-            <Text fontFamily="legal">
+            </Box>
+            <Box fontFamily="legal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               quis laborum assumenda minus labore aperiam, explicabo dolor ea
               consequuntur qui totam, optio modi, suscipit magni aliquid tempore
               officiis possimus distinctio.
-            </Text>
-            <Text fontFamily="legal">
+            </Box>
+            <Box fontFamily="legal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               quis laborum assumenda minus labore aperiam, explicabo dolor ea
               consequuntur qui totam, optio modi, suscipit magni aliquid tempore
               officiis possimus distinctio.
-            </Text>
-            <Text fontFamily="legal">
+            </Box>
+            <Box fontFamily="legal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
               quis laborum assumenda minus labore aperiam, explicabo dolor ea
               consequuntur qui totam, optio modi, suscipit magni aliquid tempore
               officiis possimus distinctio.
-            </Text>
+            </Box>
           </Stack>
         </Box>
       </Stack>
@@ -218,9 +215,9 @@ export function FullpageSendLease() {
         ]}
         success={
           <Flex flexDirection="column" alignItems="center">
-            <Heading textAlign="center" as="h3">
+            <Box textAlign="center" as="h3">
               Lease Sent for Signing
-            </Heading>
+            </Box>
             <Button mt="2rem" variant="primary" onClick={(e) => setOpen(false)}>
               Got It
             </Button>
@@ -257,16 +254,16 @@ export function InlineVerification() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <Heading as="h3" mb="2rem">
+            <Box as="h3" mb="2rem">
               Great, your account is secured.
-            </Heading>
-            <Text>You're all set to start using your Avail account.</Text>
+            </Box>
+            <Box>You're all set to start using your Avail account.</Box>
             <Box my="2rem" p="2rem" bg="blue_100" borderRadius="0.25rem">
-              <Text fontWeight="bold">Account Security</Text>
-              <Text>
+              <Box fontWeight="bold">Account Security</Box>
+              <Box>
                 The next time you log in from a new device, you'll recive an
                 authentication code for this number to keep your account secure.
-              </Text>
+              </Box>
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="2rem">
               <Button variant="primary">Continue</Button>
@@ -287,7 +284,7 @@ export function InlineTransunion() {
     alignItems: "center",
     p: "0.25rem",
   }
-  const reportHeadingProps = {
+  const reportBoxProps = {
     as: "h3",
     flexBasis: "50%",
     bg: "ui_100",
@@ -307,7 +304,7 @@ export function InlineTransunion() {
           mb="2rem"
           pb="2rem"
         >
-          <Text>Application Details</Text>
+          <Box>Application Details</Box>
         </Box>
         <InlineFeedback
           steps={[
@@ -318,7 +315,7 @@ export function InlineTransunion() {
           ]}
           onAnimationEnd={() => setLoaded(true)}
         />
-        <Heading mt="2rem">Screening Reports</Heading>
+        <Box mt="2rem">Screening Reports</Box>
         {loaded && (
           <Box
             as={motion.section}
@@ -330,16 +327,16 @@ export function InlineTransunion() {
             gridGap="2rem"
           >
             <Box {...reportProps}>
-              <Heading {...reportHeadingProps}>720</Heading>
-              <Heading {...reportLabelProps}>Credit Score</Heading>
+              <Box {...reportBoxProps}>720</Box>
+              <Box {...reportLabelProps}>Credit Score</Box>
             </Box>
             <Box {...reportProps}>
-              <Heading {...reportHeadingProps}>0</Heading>
-              <Heading {...reportLabelProps}>Criminal Records</Heading>
+              <Box {...reportBoxProps}>0</Box>
+              <Box {...reportLabelProps}>Criminal Records</Box>
             </Box>
             <Box {...reportProps}>
-              <Heading {...reportHeadingProps}>0</Heading>
-              <Heading {...reportLabelProps}>Eviction Records</Heading>
+              <Box {...reportBoxProps}>0</Box>
+              <Box {...reportLabelProps}>Eviction Records</Box>
             </Box>
             <Box gridColumn="span 3" justifySelf="end">
               <Button variant="primary">submit reports</Button>
@@ -390,11 +387,11 @@ export function InlinePublishListing() {
                     animate={{ opacity: 1, y: 0 }}
                     mt="2rem"
                   >
-                    <Heading as="h3">Listing Published</Heading>
-                    <Text mt="2rem">
+                    <Box as="h3">Listing Published</Box>
+                    <Box mt="2rem">
                       Successfully published to 12 sites, it can take up to 4
                       hours for your listing to appear on our partner sites.
-                    </Text>
+                    </Box>
                   </Box>
                 )}
               </ConfirmationDialog>

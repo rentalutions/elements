@@ -58,8 +58,8 @@ if (!packages.includes(name)) {
     `packages/${name}/stories/${name}.stories.tsx`
   )
   renameSync(
-    `packages/${name}/tests/package.test.tsx`,
-    `packages/${name}/tests/${name}.test.tsx`
+    `packages/${name}/__tests__/package.tsx`,
+    `packages/${name}/__tests__/${name}.tsx`
   )
   spawn("yarn")
 }

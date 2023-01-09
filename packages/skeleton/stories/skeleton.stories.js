@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Skeleton from "../src"
-import { Heading, Text } from "@rent_avail/typography"
 import { Container, Card, Stack, Box, Grid, Col } from "@rent_avail/core"
-import { Switch } from "@rent_avail/controls"
 import Tag from "@rent_avail/tag"
 import { ChevronRight } from "react-feather"
 
@@ -18,33 +16,33 @@ export function WrappingChildren() {
   return (
     <Container mt="4rem">
       <Skeleton loaded={loaded}>
-        <Heading>Hello World</Heading>
+        <Box>Hello World</Box>
       </Skeleton>
       <Skeleton loaded={loaded}>
-        <Text mt="2rem">
+        <Box mt="2rem">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
           nostrum rerum quibusdam natus magni consequuntur illum sapiente eos,
           possimus neque molestiae ratione omnis a eligendi illo, consectetur
           fugiat minima temporibus.
-        </Text>
+        </Box>
       </Skeleton>
       <Skeleton loaded={loaded}>
-        <Text mt="4rem">
+        <Box mt="4rem">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error omnis
           porro, veritatis blanditiis commodi odio optio veniam fugiat,
           excepturi harum velit possimus pariatur reprehenderit ad consequatur
           facilis laborum perferendis. Accusantium?
-        </Text>
+        </Box>
       </Skeleton>
       <Skeleton loaded={loaded}>
         <Card mt="4rem">
-          <Heading as="h4">A very loadable card.</Heading>
-          <Text mt="2rem">
+          <Box as="h4">A very loadable card.</Box>
+          <Box mt="2rem">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
             impedit minima in quasi tempore minus ullam ducimus odit deserunt
             architecto sunt commodi consequatur fugiat perspiciatis at et
             asperiores, reprehenderit expedita!
-          </Text>
+          </Box>
         </Card>
       </Skeleton>
     </Container>
@@ -88,8 +86,8 @@ export function PaymentList() {
   }, [])
   return (
     <Container mt="4rem">
-      <Heading>Payments</Heading>
-      <Text mt="1rem">
+      <Box>Payments</Box>
+      <Box mt="1rem">
         You have{" "}
         <Box
           as="span"
@@ -101,21 +99,21 @@ export function PaymentList() {
           1
         </Box>{" "}
         payments upcoming.
-      </Text>
+      </Box>
       <Card mt="4rem" p="0">
         <Grid as="header" p="2rem">
           <Col span={[12, 6]}>
-            <Heading as="h5">Lease Dates: Jan 01 2020 - Jan 31 2021</Heading>
-            <Heading as="h5" mt="1rem">
+            <Box as="h5">Lease Dates: Jan 01 2020 - Jan 31 2021</Box>
+            <Box as="h5" mt="1rem">
               2024 N California Ave 3A
-            </Heading>
-            <Text mt="3rem">
+            </Box>
+            <Box mt="3rem">
               {" "}
-              <Text as="span" fontWeight="black">
+              <Box as="span" fontWeight="black">
                 Mailing Address
-              </Text>{" "}
+              </Box>{" "}
               900 N Franklin Chicago IL 60610
-            </Text>
+            </Box>
           </Col>
           <Col span={[12, 6]} css="text-align: right;">
             <Tag mr="1rem">AutoPay | OFF</Tag>

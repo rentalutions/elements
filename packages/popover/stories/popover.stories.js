@@ -1,7 +1,6 @@
 import React, { useState, useRef, useCallback, Fragment } from "react"
 import Popover from "../src"
 import { Container, Box, Flex } from "@rent_avail/core"
-import { Heading, Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 
 export default { title: "Packages/Popover" }
@@ -13,9 +12,9 @@ export function PopoverExample({ position }) {
       <Button ref={targetRef}>Button</Button>
       <Popover targetRef={targetRef} position={position}>
         <Box sx={{ p: 2, bg: "blue_100" }}>
-          <Heading as="h3" mb="1rem">
+          <Box as="h3" mb="1rem">
             Popover
-          </Heading>
+          </Box>
         </Box>
       </Popover>
     </Container>
@@ -113,9 +112,9 @@ export function PopoverExample4() {
         <Button ref={targetRef1}>Button</Button>
         <Popover targetRef={targetRef1} paddingY={50}>
           <Box sx={{ p: 2, bg: "blue_100" }}>
-            <Heading as="h3" mb="1rem">
+            <Box as="h3" mb="1rem">
               Popover
-            </Heading>
+            </Box>
           </Box>
         </Popover>
       </Container>
@@ -123,9 +122,9 @@ export function PopoverExample4() {
         <Button ref={targetRef2}>Button</Button>
         <Popover targetRef={targetRef2} paddingY={50} position={{ y: "top" }}>
           <Box sx={{ p: 2, bg: "blue_100" }}>
-            <Heading as="h3" mb="1rem">
+            <Box as="h3" mb="1rem">
               Popover
-            </Heading>
+            </Box>
           </Box>
         </Popover>
       </Container>
@@ -190,10 +189,10 @@ const TagWithPopover = ({ title = "Hello Target" }) => {
             onMouseEnter={cancelClosePopover}
             onMouseLeave={closePopover}
           >
-            <Heading as="h5">Popover Target Title</Heading>
-            <Text my="1rem">
+            <Box as="h5">Popover Target Title</Box>
+            <Box my="1rem">
               Include copy and even a CTA to provide further interaction.
-            </Text>
+            </Box>
             <Button width="100%" variant="primary">
               Does Nothing
             </Button>

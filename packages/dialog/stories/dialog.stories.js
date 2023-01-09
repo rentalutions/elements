@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react"
-import { Container } from "@rent_avail/core"
-import { Text, Heading } from "@rent_avail/typography"
+import { Fragment, useState } from "react"
+import { Box, Container } from "@rent_avail/core"
 import { Button, Input } from "@rent_avail/controls"
 import {
   Dialog,
@@ -25,7 +24,7 @@ export function ConfirmationUsage() {
         </DialogTarget>
         <ConfirmationDialog>
           <DialogHeader title="Are you sure?" />
-          <Text>This action will delete 46 files.</Text>
+          <Box as="p">This action will delete 46 files.</Box>
         </ConfirmationDialog>
       </Dialog>
     </Fragment>
@@ -45,7 +44,7 @@ export function DialogWithBackdropStyles() {
         </DialogTarget>
         <ConfirmationDialog scrimSx={{ zIndex: 4 }}>
           <DialogHeader title="Are you sure?" />
-          <Text>This action will delete 46 files.</Text>
+          <Box as="p">This action will delete 46 files.</Box>
         </ConfirmationDialog>
       </Dialog>
     </Fragment>
@@ -65,70 +64,82 @@ export function FullscreenUsage() {
       <FullscreenDialog>
         <Container>
           <DialogHeader title="Application Settings" />
-          <Heading as="h4" mb="2rem">
+          <Box as="h4" sx={{ mb: 2 }}>
             Updating these settings will not effect in progress applications.
-          </Heading>
+          </Box>
           <Input label="Hello World" />
-          <Text>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
-          <Text mt="2rem">
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             voluptatem non, a possimus nemo eius pariatur amet. Minima iste
             corrupti quas! Neque praesentium distinctio officiis enim dolorum
             quibusdam quasi repudiandae.
-          </Text>
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Box>
+          <Box as="p" sx={{ my: 1 }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            voluptatem non, a possimus nemo eius pariatur amet. Minima iste
+            corrupti quas! Neque praesentium distinctio officiis enim dolorum
+            quibusdam quasi repudiandae.
+          </Box>
         </Container>
       </FullscreenDialog>
     </Dialog>

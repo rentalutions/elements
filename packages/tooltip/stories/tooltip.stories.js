@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react"
+import { useState } from "react"
 import { Container } from "@rent_avail/core"
-import { Heading } from "@rent_avail/typography"
 import {
   Dialog,
   DialogHeader,
@@ -17,13 +16,9 @@ export function BasicUsage() {
     <Container>
       <Tooltip>
         <TooltipTarget>
-          <Heading
-            as="h5"
-            style={{ textDecoration: "underline" }}
-            color="blue_500"
-          >
+          <Box as="h5" style={{ textDecoration: "underline" }} color="blue_500">
             Hello World
-          </Heading>
+          </Box>
         </TooltipTarget>
         <TooltipContent>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptatum
