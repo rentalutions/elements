@@ -17,9 +17,10 @@
     "dist"
   ],
   "scripts": {
+    "mb": "microbundle --jsx React.createElement",
     "test": "echo 'run tests from the root directory'",
     "build": "microbundle --jsx React.createElement",
-    "watch": "microbundle watch --no-compress --jsx React.createElement",
+    "watch": "microbundle --jsx React.createElement --no-compress watch",
     "prepack": "yarn build"
   },
   "publishConfig": {
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
+    "polished": "^4.2.2",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {

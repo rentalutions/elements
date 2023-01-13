@@ -1,45 +1,54 @@
-import { Meta, Story } from "@storybook/addon-docs"
+import {
+  Meta,
+  Story,
+  Canvas,
+  ColorPalette,
+  ColorItem,
+} from "@storybook/addon-docs"
+import { BoxUsage, CardUsage } from "./layout.story"
+import { baseTheme } from "../src/base-theme"
+import { Box } from "../src/layout"
 
 <Meta title="Packages / Core" />
 
 # Core
 
-```js
-import { Box, Card, Container, Flex, Grid, Col, Stack } from "@rent_avail/core"
-```
+The core package combines a number or useful primitive components to quickly build layouts and complex UI.
 
-The layout package combines a number or useful primitive components to quickly build layouts and complex UI.
+## Theme
 
-## Box
+The Avail design system is built on a standardized theme that can be customized to support any number of products in the RDC ecosystem.
 
-```jsx live
-<Box bg="blue_100" p="1rem">
-  I'm a light blue box with 1rem of padding.
-</Box>
-```
+### Color Tokens
 
-### Description
+<ColorPalette>
+  <ColorItem title="colors.background" colors={baseTheme.colors.background} />
+  <ColorItem title="colors.border" colors={baseTheme.colors.border} />
+  <ColorItem title="colors.brand" colors={baseTheme.colors.brand} />
+  <ColorItem title="colors.text" colors={baseTheme.colors.text} />
+  <ColorItem title="colors.interactive" colors={baseTheme.colors.interactive} />
+  <ColorItem title="colors.status" colors={baseTheme.colors.status} />
+</ColorPalette>
+
+## Layout Components
+
+Layout components are the basic building blocks of all elements. All implement the `sx` prop, which is object styles super powered with our theme keys.
+
+### Box
 
 A box is the most basic component in this system. It's a drop in replacement for a `div` and can be used as the backbone of any element with the `as` prop.
 
-#### Style Props
+<Canvas>
+  <Story name="Box">
+    <Box>Hello World</Box>
+  </Story>
+</Canvas>
 
-`space, layout, color, flexbox, background, border, grid, typography, position`
+### Card
 
-#### Props
-
-No component props
-
----
-
-## Card
-
-```jsx live
-<Card>
-  <Heading as="h3">Rent Collection</Heading>
-  <Text>This is an overview of your rent collection across units.</Text>
-</Card>
-```
+<Canvas>
+  <Story story={CardUsage} />
+</Canvas>
 
 ### Description
 

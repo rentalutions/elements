@@ -19,6 +19,7 @@
       "testing": ["./utils/testing"]
     }
   },
+  "include": ["**/*.d.ts"],
   "exclude": [
     "./node_modules",
     "./docs",

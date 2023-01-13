@@ -37,6 +37,7 @@ export const sx = ({ sx = {} }: { sx?: SXObject }) => {
  */
 
 export const Box = styled("div")<{ sx?: SXObject }>(sx)
+
 interface ContainerProps extends SpaceProps, LayoutProps {
   sx?: SXObject
 }
@@ -56,20 +57,10 @@ interface ContainerProps extends SpaceProps, LayoutProps {
  * </Container>
  */
 
-const maxWidth = system({
-  maxWidth: { property: "maxWidth", scale: "containerWidth" },
-})
-
 export const Container = styled.section<ContainerProps>(
-  compose(layout, space),
-  css({ maxWidth: (theme) => theme.containerWidth }),
+  css({ maxWidth: (theme) => theme.containerWidth, mx: "auto", px: "2rem" }),
   sx
 )
-
-Container.defaultProps = {
-  mx: "auto",
-  px: "2rem",
-}
 
 interface GridProps extends GridGapProps {
   columns?: number
@@ -184,9 +175,9 @@ export const Card = styled.div<CardProps>(
     p: "2rem",
     borderRadius: 4,
     border: "1px solid transparent",
-    borderColor: "uiSecondary",
+    borderColor: "border.secondary",
     boxShadow: 2,
-    bg: "ui",
+    bg: "background.primary",
   }),
   sx
 )
