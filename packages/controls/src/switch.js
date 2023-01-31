@@ -2,7 +2,7 @@ import { forwardRef } from "react"
 import { Box } from "@rent_avail/core"
 
 export const Switch = forwardRef(function Switch(
-  { className, children, block, ...props },
+  { className, children, block, sx = {}, ...props },
   ref
 ) {
   return (
@@ -12,6 +12,7 @@ export const Switch = forwardRef(function Switch(
         position: "relative",
         display: block ? "flex" : "inline-flex",
         flexDirection: block ? "row-reverse" : "row",
+        ...sx,
       }}
     >
       <Box
