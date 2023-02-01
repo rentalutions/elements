@@ -51,7 +51,7 @@ export function DialogWithBackdropStyles() {
   )
 }
 
-export function FullscreenUsage() {
+export function Fullscreen() {
   const [open, set] = useState(false)
   function handleClick() {
     set((o) => !o)
