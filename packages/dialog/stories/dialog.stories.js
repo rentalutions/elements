@@ -11,7 +11,7 @@ import {
 
 // export default { title: "Packages/Dialog" }
 
-export function ConfirmationUsage() {
+export function Confirmation() {
   const [open, set] = useState(false)
   function handleClick() {
     set((o) => !o)

@@ -1,8 +1,18 @@
-import { Meta, Story } from "@storybook/addon-docs"
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
+import { Confirmation } from "./dialog.stories"
+import {
+  Dialog,
+  DialogTarget,
+  DialogHeader,
+  FullscreenDialog,
+  ConfirmationDialog,
+} from "../src"
 
 <Meta title="Packages / Dialog" />
 
 # Dialog
+
+This package contains the different types of dialogs used at Avail. All variants need to be wrapped in the `<Dialog />` for accessability and performance. Components that open and close the dialog need to be wrapped by the `<DialogTarget />` element.
 
 ```js
 import {
@@ -14,9 +24,13 @@ import {
 } from "@rent_avail/dialog"
 ```
 
-This package contains the different types of dialogs used at Avail. All variants need to be wrapped in the `<Dialog />` for accessability and performance. Components that open and close the dialog need to be wrapped by the `<DialogTarget />` element.
-
 ## Dialog
+
+<Canvas>
+  <Story name="Confirmation" story={Confirmation} />
+</Canvas>
+
+<ArgsTable of={Dialog} />
 
 #### Dialog Props
 
