@@ -1,108 +1,124 @@
-import { Meta, Story } from "@storybook/addon-docs"
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
+import { Flex, Box } from "@rent_avail/core"
+import { Search } from "@rent_avail/icons"
+import {
+  Button,
+  Checkbox,
+  Input,
+  Radio,
+  Select,
+  SelectItem,
+  Switch,
+} from "../src"
+import { SelectStory } from "./select.story"
 
 <Meta title="Packages / Controls" />
 
 # Controls
 
-```js
-import { Button, Checkbox, Radio, Switch } from "@rent_avail/controls"
-```
-
 This package contains a set of elements that allow a user to control state on a page.
+
+```js
+import {
+  Button,
+  Checkbox,
+  Input,
+  Radio,
+  Select,
+  SelectItem,
+  Switch,
+} from "@rent_avail/controls"
+```
 
 ## Button
 
-```jsx live
-<Stack direction={["row"]} flexWrap="wrap" mt="-2rem">
-  <Button mt="2rem">default</Button>
-  <Button mt="2rem" variant="primary">
-    primary
-  </Button>
-  <Button mt="2rem" variant="danger">
-    danger
-  </Button>
-  <Button mt="2rem" color="gold_700" borderColor="gold_700">
-    custom
-  </Button>
-  <Button mt="2rem" disabled>
-    disabled
-  </Button>
-  <Button mt="2rem" loading>
-    loading
-  </Button>
-</Stack>
-```
-
-### Description
-
 Buttons at Avail have uppercase text labels. Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting. If you have a set of buttons together use the primary button to distinguish the most desirable action.
 
-#### Style Props
+<Canvas>
+  <Story name="Button">
+    <Flex sx={{ gap: 2 }}>
+      <Button>Standard</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="danger">Danger</Button>
+      <Button disabled>Disabled</Button>
+      <Button loading>Loading</Button>
+    </Flex>
+  </Story>
+</Canvas>
 
-`color, space, layout, flexbox, border, buttonStyle`
-
----
+<ArgsTable of={Button} />
 
 ## Checkbox
 
-```jsx live
-<Checkbox />
-```
-
-### Description
-
 Checkboxes are user selection tools when multiple options can be chosen at the same time. A user should be able to select one or more options from a set.
 
-#### Style Props
+<Canvas>
+  <Story name="Checkbox">
+    <Flex sx={{ gap: 2 }}>
+      <Checkbox />
+      <Checkbox defaultChecked />
+    </Flex>
+  </Story>
+</Canvas>
 
-`space, layout, flexbox`
-
-#### Props
-
-| Name    | Type      | Description                         |
-| ------- | --------- | ----------------------------------- |
-| checked | `boolean` | Controls the state of the checkbox. |
+<ArgsTable of={Checkbox} />
 
 ---
 
 ## Radio
 
-```jsx live
-<Radio />
-```
-
-### Description
-
 Radio buttons are used to select one option from a set. Use radio buttons when it's helpful for the user to see all the available choices when selecting.
 
-#### Style Props
+<Canvas>
+  <Story name="Radio">
+    <Flex sx={{ gap: 2 }}>
+      <Radio />
+      <Radio defaultChecked />
+    </Flex>
+  </Story>
+</Canvas>
 
-`space, layout, flexbox`
-
-#### Props
-
-| Name    | Type      | Description                            |
-| ------- | --------- | -------------------------------------- |
-| checked | `boolean` | Controls the state of the radio button |
-
----
+<ArgsTable of={Radio} />
 
 ## Switch
 
-```jsx live
-<Switch />
-```
+Switches selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
 
-### Description
+<Canvas>
+  <Story name="Switch">
+    <Flex sx={{ gap: 2 }}>
+      <Switch />
+      <Switch defaultChecked />
+    </Flex>
+  </Story>
+</Canvas>
 
-Toggles are selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
+<ArgsTable of={Switch} />
 
-#### Style Props
+## Input
 
-`space, layout, flexbox`
+Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
 
-#### Props
+<Canvas isColumn>
+  <Story name="Input">
+    <Input icon={Search} label="Find Your Next Property" />
+  </Story>
+  <Story name="Input Error">
+    <Input
+      icon={Search}
+      label="Find Your Next Property"
+      error="Property Not Found"
+    />
+  </Story>
+  <Story name="Input Disabled">
+    <Input icon={Search} label="Find Your Next Property" disabled />
+  </Story>
+</Canvas>
 
-| Name    | Type      | Description                       |
-| ------- | --------- | --------------------------------- |
-| checked | `boolean` | Controls the state of the switch. |
+<ArgsTable of={Input} />
+
+## Select
+
+<Canvas>
+  <Story story={SelectStory} name="Select" />
+</Canvas>

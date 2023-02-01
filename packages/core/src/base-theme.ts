@@ -83,7 +83,7 @@ export const baseTheme = {
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
-    monospace: "'IBM Plex Mono', monospace",
+    monospace: "'IBM Plex Mono', Courier, monospace",
   },
   fontSizes: {
     small: "1.334rem",
