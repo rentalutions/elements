@@ -78,6 +78,7 @@ const availColors = {
 }
 
 export const baseTheme = {
+  containerWidth: "80rem",
   breakpoints: ["480px", "720px", "960px", "1200px", "1440px"],
   colors: { ...baseColors, ...availColors },
   fonts: {

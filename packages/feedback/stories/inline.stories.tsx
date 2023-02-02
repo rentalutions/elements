@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { Box, Container, Card, Flex } from "@rent_avail/core"
 import { Button } from "@rent_avail/controls"
 import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
@@ -16,9 +16,11 @@ export function InlineTransunion() {
   }
   const reportBoxProps = {
     as: "h3",
-    flexBasis: "50%",
-    bg: "ui_100",
-    p: "2rem",
+    sx: {
+      flexBasis: "50%",
+      bg: "ui_100",
+      p: "2rem",
+    },
   }
   const reportLabelProps = {
     as: "h5",
@@ -29,10 +31,12 @@ export function InlineTransunion() {
       <Card>
         <Box
           as="header"
-          borderBottom="1px solid"
-          borderBottomColor="ui_500"
-          mb="2rem"
-          pb="2rem"
+          sx={{
+            borderBottom: "1px solid",
+            borderBottomColor: "ui_500",
+            mb: "2rem",
+            pb: "2rem",
+          }}
         >
           <Box>Application Details</Box>
         </Box>
@@ -45,30 +49,32 @@ export function InlineTransunion() {
           ]}
           onAnimationEnd={() => setLoaded(true)}
         />
-        <Box mt="2rem">Screening Reports</Box>
+        <Box sx={{ mt: 2 }}>Screening Reports</Box>
         {loaded && (
           <Box
             as={motion.section}
             initial={{ opacity: 0, y: "1rem" }}
             animate={{ opacity: 1, y: 0 }}
-            display="grid"
-            gridTemplateColumns={["1fr", "1fr", "repeat(3, 1fr)"]}
-            mt="2rem"
-            gridGap="2rem"
+            sx={{
+              display: "grid",
+              gridTemplateColumns: ["1fr", "1fr", "repeat(3, 1fr)"],
+              mt: "2rem",
+              gap: "2rem",
+            }}
           >
             <Box {...reportProps}>
-              <Box {...reportBoxProps}>720</Box>
-              <Box {...reportLabelProps}>Credit Score</Box>
+              <Box as="h3">720</Box>
+              <Box as="h5">Credit Score</Box>
             </Box>
             <Box {...reportProps}>
-              <Box {...reportBoxProps}>0</Box>
-              <Box {...reportLabelProps}>Criminal Records</Box>
+              <Box as="h3">0</Box>
+              <Box as="h5">Criminal Records</Box>
             </Box>
             <Box {...reportProps}>
-              <Box {...reportBoxProps}>0</Box>
-              <Box {...reportLabelProps}>Eviction Records</Box>
+              <Box as="h3">0</Box>
+              <Box as="h5">Eviction Records</Box>
             </Box>
-            <Box gridColumn="span 3" justifySelf="end">
+            <Box sx={{ gridColumn: "span 3", justifySelf: "end" }}>
               <Button variant="primary">submit reports</Button>
             </Box>
           </Box>

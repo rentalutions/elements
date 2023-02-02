@@ -1,14 +1,6 @@
 import styled from "styled-components"
 import css, { SystemStyleObject } from "@styled-system/css"
-import {
-  space,
-  layout,
-  system,
-  GridGapProps,
-  SpaceProps,
-  LayoutProps,
-  compose,
-} from "styled-system"
+import { system, GridGapProps, SpaceProps, LayoutProps } from "styled-system"
 
 export type SXObject = SystemStyleObject & { text?: string | string[] }
 

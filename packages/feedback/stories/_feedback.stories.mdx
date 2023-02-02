@@ -1,36 +1,24 @@
-import { Meta, Story } from "@storybook/addon-docs"
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
+import { FullscreenFeedback, InlineFeedback } from "../src"
+import { InlineTransunion } from "./inline.stories"
 
 <Meta title="Packages / Feedback" />
 
 # Feedback
 
+This package contains elements to provide users with feedback to showcase value that the product is delivering.
+
 ```js
 import { FullscreenFeedback, InlineFeedback } from "@rent_avail/feedback"
 ```
 
-This package contains elements to provide users with feedback to showcase value that the product is delivering.
-
 ## InlineFeedback
-
-```js
-function FeedbackElement() {
-  return (
-    <InlineFeedback
-      steps={["Verifying Phone", "Generating Device Data", "Securing Account"]}
-    />
-  )
-}
-```
-
-### Description
 
 Inline feedback loops should be used if the user can take action while waiting for our work to successfull finish.
 
-#### Style Props
-
-`space, flexbox, layout, grid`
-
-#### Props
+<Canvas>
+  <Story story={InlineTransunion} />
+</Canvas>
 
 | name  | type  | description                                                                                                                       |
 | ----- | ----- | --------------------------------------------------------------------------------------------------------------------------------- |
