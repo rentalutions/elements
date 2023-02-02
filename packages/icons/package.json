@@ -33,7 +33,7 @@
     "feather-icons": "^4.29.0",
     "html-minifier": "^4.0.0",
     "prettier-eslint": "^15.0.1",
-    "rollup": "^3.10.0",
+    "rollup": "^3.12.1",
     "rollup-plugin-babel": "^4.4.0",
     "svgo": "^3.0.2",
     "uppercamelcase": "^3.0.0"
