@@ -20,6 +20,8 @@ Inline feedback loops should be used if the user can take action while waiting f
   <Story story={InlineTransunion} />
 </Canvas>
 
+<ArgsTable of={InlineFeedback} />
+
 | name  | type  | description                                                                                                                       |
 | ----- | ----- | --------------------------------------------------------------------------------------------------------------------------------- |
 | steps | array | An array of steps to animate, each step should be a string that tells the user a little about what's happening behind the scenes. |
@@ -27,6 +29,8 @@ Inline feedback loops should be used if the user can take action while waiting f
 ---
 
 ## FullscreenFeedback
+
+Fullscreen feedback loops should be used when the we're expecting the user to wait for longer than 3 seconds or if there is no success object that the user must interact with (eg. a credit report)
 
 ```js
 function FeedbackElement() {
@@ -49,13 +53,7 @@ function FeedbackElement() {
 }
 ```
 
-### Description
-
-Fullscreen feedback loops should be used when the we're expecting the user to wait for longer than 3 seconds or if there is no success object that the user must interact with (eg. a credit report)
-
-#### Style Props
-
-`n/a`
+<ArgsTable of={FullscreenFeedback} />
 
 #### Props
 

@@ -7,25 +7,6 @@ import { InlineFeedback } from "../src"
 
 export function InlineTransunion() {
   const [loaded, setLoaded] = useState(false)
-  const reportProps = {
-    bg: "blue_100",
-    borderRadius: "0.25rem",
-    display: "flex",
-    alignItems: "center",
-    p: "0.25rem",
-  }
-  const reportBoxProps = {
-    as: "h3",
-    sx: {
-      flexBasis: "50%",
-      bg: "ui_100",
-      p: "2rem",
-    },
-  }
-  const reportLabelProps = {
-    as: "h5",
-    p: "2rem",
-  }
   return (
     <Container mt="4rem">
       <Card>
@@ -62,15 +43,15 @@ export function InlineTransunion() {
               gap: "2rem",
             }}
           >
-            <Box {...reportProps}>
+            <Box>
               <Box as="h3">720</Box>
               <Box as="h5">Credit Score</Box>
             </Box>
-            <Box {...reportProps}>
+            <Box>
               <Box as="h3">0</Box>
               <Box as="h5">Criminal Records</Box>
             </Box>
-            <Box {...reportProps}>
+            <Box>
               <Box as="h3">0</Box>
               <Box as="h5">Eviction Records</Box>
             </Box>
@@ -84,57 +65,59 @@ export function InlineTransunion() {
   )
 }
 
-export function InlinePublishListing() {
-  const [open, setOpen] = useState(false)
-  const [loaded, setLoaded] = useState(false)
-  function handleToggle() {
-    setOpen(false)
-    setLoaded(false)
-  }
-  return (
-    <Box
-      display="grid"
-      gridTemplateColumns="25rem auto"
-      gridTemplateRows="15rem auto"
-      minHeight="calc(100vh - 4rem)"
-    >
-      <Box gridRow="span 2" bg="blue_100" />
-      <Box bg="blue_500" />
-      <Box bg="ui_300">
-        <Container mt="4rem">
-          <Flex justifyContent="flex-end">
-            <Dialog open={open} toggle={handleToggle} id="success-listing">
-              <DialogTarget>
-                <Button onClick={(e) => setOpen(true)}>Publish Listing</Button>
-              </DialogTarget>
-              <ConfirmationDialog>
-                <InlineFeedback
-                  steps={[
-                    "Optimizing Photos",
-                    "Connecting to Syndicates",
-                    "Updating Feed",
-                  ]}
-                  onAnimationEnd={() => setLoaded(true)}
-                />
-                {loaded && (
-                  <Box
-                    as={motion.div}
-                    initial={{ opacity: 0, y: "1rem" }}
-                    animate={{ opacity: 1, y: 0 }}
-                    mt="2rem"
-                  >
-                    <Box as="h3">Listing Published</Box>
-                    <Box mt="2rem">
-                      Successfully published to 12 sites, it can take up to 4
-                      hours for your listing to appear on our partner sites.
-                    </Box>
-                  </Box>
-                )}
-              </ConfirmationDialog>
-            </Dialog>
-          </Flex>
-        </Container>
-      </Box>
-    </Box>
-  )
-}
+// export function InlinePublishListing() {
+//   const [open, setOpen] = useState(false)
+//   const [loaded, setLoaded] = useState(false)
+//   function handleToggle() {
+//     setOpen(false)
+//     setLoaded(false)
+//   }
+//   return (
+//     <Box
+//       sx={{
+//         display: "grid",
+//         gridTemplateColumns: "25rem auto",
+//         gridTemplateRows: "15rem auto",
+//         minHeight: "calc(100vh - 4rem)",
+//       }}
+//     >
+//       <Box sx={{ gridRow: "span 2", bg: "brand.primary" }} />
+//       <Box sx={{ bg: "brand.primary" }} />
+//       <Box sx={{ bg: "background.secondary" }}>
+//         <Container sx={{ mt: 4 }}>
+//           <Flex sx={{ justifyContent: "end" }}>
+//             <Dialog open={open} toggle={handleToggle} id="success-listing">
+//               <DialogTarget>
+//                 <Button onClick={(e) => setOpen(true)}>Publish Listing</Button>
+//               </DialogTarget>
+//               <ConfirmationDialog>
+//                 <InlineFeedback
+//                   steps={[
+//                     "Optimizing Photos",
+//                     "Connecting to Syndicates",
+//                     "Updating Feed",
+//                   ]}
+//                   onAnimationEnd={() => setLoaded(true)}
+//                 />
+//                 {loaded && (
+//                   <Box
+//                     as={motion.div}
+//                     initial={{ opacity: 0, y: "1rem" }}
+//                     animate={{ opacity: 1, y: 0 }}
+//                     sx={{ mt: 2 }}
+//                   >
+//                     <Box as="h3">Listing Published</Box>
+//                     <Box sx={{ mt: 2 }}>
+//                       Successfully published to 12 sites, it can take up to 4
+//                       hours for your listing to appear on our partner sites.
+//                     </Box>
+//                   </Box>
+//                 )}
+//               </ConfirmationDialog>
+//             </Dialog>
+//           </Flex>
+//         </Container>
+//       </Box>
+//     </Box>
+//   )
+// }
