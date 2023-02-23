@@ -1,8 +1,7 @@
-import React from "react"
 import { render, fireEvent } from "testing"
 import { Switch } from "../src"
 
-describe("<Toggle />", () => {
+describe("<Switch />", () => {
   it("Should be checked when clicked.", async () => {
     const { container, findByTestId } = render(<Switch data-testid="toggle" />)
     const element = container.firstChild

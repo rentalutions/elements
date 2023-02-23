@@ -1,0 +1,47 @@
+import { Meta, Story } from "@storybook/addon-docs"
+import { BasicUsage } from "./basic-usage.story"
+
+<Meta title="Packages / Tooltip" />
+
+# Tooltip
+
+<Story story={BasicUsage} />
+
+```jsx
+import { Tooltip, TooltipContent, TooltipTarget } from "@rent_avail/tooltip"
+```
+
+```jsx live
+<Tooltip id="button-target">
+  <TooltipTarget>
+    <Box as="strong" px="1rem" bg="ui_300" borderRadius="4px" cursor="pointer">
+      i
+    </Box>
+  </TooltipTarget>
+  <TooltipContent>
+    <p>I'm a small expainer for the text you just read.</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+### Description
+
+Tooltips offer greater context to an action or element on the page. Tooltips should never contain information needed to complete a task.
+
+## Tooltip
+
+This element should always wrap the tooltip component. It provides the show/hide state to the content as well as adding accesability.
+
+#### Props
+
+| Name | Type     | Description                                                                |
+| ---- | -------- | -------------------------------------------------------------------------- |
+| id   | `string` | A unique identifier for the tooltip, should not be duplicated on the page. |
+
+## Tooltip Target
+
+This element wraps whatever the user will interact with to toggle the tooltip showing. It's child can be any valid element.
+
+## Tooltip Content
+
+This element contains the extra information that the user will have to toggle on to view. It's accesable to screen readers and can through the focus attribute.

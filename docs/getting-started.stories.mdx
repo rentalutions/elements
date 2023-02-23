@@ -1,7 +1,142 @@
 import { Meta } from "@storybook/addon-docs"
 
-<Meta title="Intro/Getting Started" />
+<Meta title="Intro / Getting Started" />
 
-# Getting Started
+# Avail Design System
 
-Here's how to get started with Storybook.
+The avail design system is made up of small UI packages that can be mostly imported into projects as needed. This allows updating a package to happen without worrying about breaking changes that might be in development on another components.
+
+| Package                  | Exports                                             |
+| ------------------------ | --------------------------------------------------- |
+| @rent_avail/autocomplete | Address Autocomplete                                |
+| @rent_avail/avatar       | Avatar, Avatar Group                                |
+| @rent_avail/core         | Provider, Box, Grid, Col, Container, Flex           |
+| @rent_avail/controls     | Button, Checkbox, Input, Radio, Radio Group, Switch |
+| @rent_avail/dialog       | Confirmation Dialog, Fullscreen Dialog              |
+| @rent_avail/feedback     | Inline Feedback, Fullscreen Feedback                |
+| @rent_avail/menu         | Menu                                                |
+| @rent_avail/popover      | Popover                                             |
+| @rent_avail/progress     | Fluid Progress, Fixed Progress                      |
+| @rent_avail/select       | Select Input                                        |
+| @rent_avail/skeleton     | Skeleton Loader                                     |
+| @rent_avail/tag          | Tag                                                 |
+| @rent_avail/toast        | Toast                                               |
+| @rent_avail/tooltip      | Tooltip                                             |
+
+---
+
+## Getting Started
+
+Install the design system and peer dependencies
+
+```bash
+yarn add react react-dom styled-components @doors/core
+```
+
+Bootstrap your react app and in the root component import the `ThemeProvider` from `@rent_avail/core`
+
+```jsx
+import { ThemeProvider } from "@rent_avail/core"
+
+const customTheme = {}
+
+function App() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <Routes />
+    </ThemeProvider>
+  )
+}
+```
+
+Now you're ready to start using layout components to quickly build complex UIs.
+
+```jsx
+import { Card, Container } from "@rent_avail/core"
+
+const cardBackgrounds = [
+  "blue_100",
+  "blue_300",
+  "blue_500",
+  "blue_700",
+  "blue_900",
+]
+
+function DashboardPage() {
+  return (
+    <Box as="main" my="4rem">
+      <Container as={Stack}>
+        {cardBackgrounds.map((bg) => (
+          <Card key={bg} sx={{ bg }} />
+        ))}
+      </Container>
+    </Box>
+  )
+}
+```
+
+## Style Objects
+
+The ADS (Avail Design System) uses [`styled-system`](https://styled-system.com) to help you quickly build custom components with constraint based styles. All components--unless otherwise noted--accept an `sx` prop that is a style object supercharged with theme powers. This method let's you leverage the consistency of our theme while allowing you to override when needed to.
+
+```jsx
+function YourComponent() {
+  return (
+    <Card
+      sx={{
+        my: "4rem",
+        p: "4rem",
+        bg: "blue_100",
+      }}
+    >
+      I'm a card with a margin top and bottom of 4rem, a padding of 4rem, and a
+      background of our brand color blue_100.
+    </Card>
+  )
+}
+```
+
+## Nested & Psuedo Selectors
+
+You can nest selectors in the sx prop in much the same way as scss. This also works for pseudo selectors and elements.
+
+```jsx
+function Component() {
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        "&::before": {
+          content: '""',
+          width: "100%",
+        },
+        "& span": {
+          color: "ui_500",
+        },
+      }}
+    />
+  )
+}
+```
+
+**Note**
+For before and after psuedo elements, you'll need to wrap the content value in double quotes because of how styled object keys are parsed.
+
+`content: '""';`
+
+## Responsive Styles
+
+Styled system allows us to responsively style our ui components with array props. All styled props accept an array that will map to the breakpoints in the theme spec.
+
+```jsx
+<Box
+  sx={{
+    width: ["100%", "50%", "33%"],
+    color: ["brand.primary", "brand.secondary"],
+  }}
+>
+  This box will take up 100% of it's parent on small screens, then 50% on the
+  next largest breakpoint, and 33% after that. It will also switch colors from
+  the primary to secondary brand colors as the screen grows in size.
+</Box>
+```

@@ -29,7 +29,6 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.5.0",
     "@rent_avail/core": "workspace:^",
     "@rent_avail/typography": "^0.1.22",
     "@rent_avail/utils": "^0.5.2",
