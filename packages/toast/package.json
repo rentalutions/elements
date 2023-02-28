@@ -31,6 +31,6 @@
   "dependencies": {
     "@rent_avail/core": "workspace:^",
     "@rent_avail/utils": "^0.5.2",
-    "framer-motion": "^4.1.17"
+    "framer-motion": "^10.0.1"
   }
 }

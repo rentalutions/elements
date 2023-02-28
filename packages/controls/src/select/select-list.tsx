@@ -1,7 +1,13 @@
+import { PropsWithChildren } from "react"
 import Popover from "@rent_avail/popover"
 import { useSelectList } from "../controls-hooks"
 
-export function SelectList({ children, ...props }) {
+interface SelectListProps {}
+
+export function SelectList({
+  children,
+  ...props
+}: PropsWithChildren<SelectListProps>) {
   const { open, targetWidth, listProps } = useSelectList(props)
   return open ? (
     <Popover
