@@ -1,6 +1,6 @@
 import React, { Fragment, PropsWithChildren } from "react"
 import { ThemeProvider } from "styled-components"
-import { baseTheme } from "./theme"
+import { baseTheme } from "./base-theme"
 import { Reset } from "./reset"
 
 export function ElementsProvider({
