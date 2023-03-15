@@ -8,7 +8,10 @@ export const Reset = createGlobalStyle(
     }
 
     :root {
-      --base-grid: ${theme.space[1]}px;
+      --base-grid: ${
+        // @ts-ignore
+        theme.space[1]
+      }px;
       font-size: var(--base-grid);
     }
 
