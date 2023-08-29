@@ -115,6 +115,7 @@ function useComponent({ ref, ...props }) {
     ref: mergeRefs(innerRef, ref),
   }
 }
+
 function Component(props, ref) {
   const { bg, ...htmlProps } = useComponent({ ...props, ref })
   return <Box {...htmlProps} sx={{ bg }} />
