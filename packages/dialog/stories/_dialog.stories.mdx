@@ -1,0 +1,74 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
+import {
+  Dialog,
+  DialogTarget,
+  DialogHeader,
+  FullscreenDialog,
+  ConfirmationDialog,
+} from "../src"
+import { Confirmation, Fullscreen } from "./dialog.stories"
+
+<Meta title="Packages / Dialog" />
+
+# Dialog
+
+This package contains the different types of dialogs used at Avail. All variants need to be wrapped in the `<Dialog />` for accessability and performance. Components that open and close the dialog need to be wrapped by the `<DialogTarget />` element.
+
+```js
+import {
+  Dialog,
+  DialogTarget,
+  DialogHeader,
+  FullscreenDialog,
+  ConfirmationDialog,
+} from "@rent_avail/dialog"
+```
+
+## Dialog
+
+<Canvas isColumn>
+  <Story story={Confirmation} />
+  <Story story={Fullscreen} />
+</Canvas>
+
+#### Dialog Props
+
+Context wrapper for all dialog variants. Controls open state.
+
+<ArgsTable of={Dialog} />
+
+| name   | type       | description                                                                                        |
+| ------ | ---------- | -------------------------------------------------------------------------------------------------- |
+| open   | `boolean`  | Controls whether the dialog is visible.                                                            |
+| toggle | `function` | Handler that is called when the user clicks the close button on the dialog.                        |
+| id     | `string`   | Identifier for the target node. This will set the proper aria controls and handle keyboard events. |
+
+---
+
+## DialogHeader
+
+This element can be placed in all dialogs to give a consistent header text and close button. You can also implement this functionality yourself.
+
+<ArgsTable of={DialogHeader} />
+
+#### Props
+
+| name  | type   | description                                                                    |
+| ----- | ------ | ------------------------------------------------------------------------------ |
+| title | string | If present, adds a title to the fullscreen dialog inline with the close button |
+
+---
+
+## FullscreenDialog
+
+Fullscreen dialogs should be used for complex forms, and whenever we ask the user to create an object that we'll save for them. Common use cases would be requesting an application, adding an addendum to a lease, and editing a rent payment.
+
+<ArgsTable of={FullscreenDialog} />
+
+---
+
+## ConfirmationDialog
+
+Confirmation dialogs should be used to confirm the action that the user or the system has just taken.
+
+<ArgsTable of={ConfirmationDialog} />

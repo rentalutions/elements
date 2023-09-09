@@ -1,4 +1,6 @@
-const colors = {
+import { transparentize } from "polished"
+
+const baseColors = {
   ui_100: "#ffffff",
   ui_300: "#f3f3f3",
   ui_500: "#c7c7c7",
@@ -36,13 +38,53 @@ const colors = {
   purple_500: "#6965D5",
 }
 
+const availColors = {
+  background: {
+    primary: baseColors.ui_100,
+    secondary: baseColors.ui_300,
+    reverse: baseColors.ui_900,
+    overlay: transparentize(0.3, baseColors.ui_900),
+  },
+  brand: {
+    primary: baseColors.blue_500,
+    secondary: baseColors.gold_500,
+  },
+  text: {
+    primary: baseColors.ui_900,
+    secondary: baseColors.ui_700,
+    reverse: baseColors.ui_100,
+    subtle: baseColors.ui_500,
+  },
+  border: {
+    primary: baseColors.ui_700,
+    secondary: baseColors.ui_500,
+    subtle: baseColors.blue_300,
+  },
+  interactive: {
+    default: baseColors.ui_900,
+    hover: baseColors.ui_700,
+    focus: baseColors.blue_500,
+    disabled: baseColors.ui_500,
+  },
+  status: {
+    error: baseColors.red_500,
+    warning: baseColors.purple_500,
+    success: baseColors.green_500,
+    info: baseColors.blue_500,
+  },
+  alpha(alpha) {
+    return transparentize(alpha, baseColors.ui_900)
+  },
+}
+
 export const baseTheme = {
+  containerWidth: "80rem",
   breakpoints: ["480px", "720px", "960px", "1200px", "1440px"],
-  colors,
+  colors: { ...baseColors, ...availColors },
   fonts: {
     body: "'Nunito', -apple-system, 'Segoe UI', sans-serif",
     legal: "'Noto Serif', serif",
-    monospace: "'IBM Plex Mono', monospace",
+    monospace: "'IBM Plex Mono', Courier, monospace",
   },
   fontSizes: {
     small: "1.334rem",

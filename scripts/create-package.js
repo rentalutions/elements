@@ -54,12 +54,12 @@ if (!packages.includes(name)) {
   cp("-r", "template", `packages/${name}`)
   writeFileSync(`packages/${name}/package.json`, packageJson)
   renameSync(
-    `packages/${name}/stories/package.stories.tsx`,
-    `packages/${name}/stories/${name}.stories.tsx`
+    `packages/${name}/stories/_package.stories.mdx`,
+    `packages/${name}/stories/_${name}.stories.mdx`
   )
   renameSync(
-    `packages/${name}/tests/package.test.tsx`,
-    `packages/${name}/tests/${name}.test.tsx`
+    `packages/${name}/__tests__/package.tsx`,
+    `packages/${name}/__tests__/${name}.tsx`
   )
   spawn("yarn")
 }
