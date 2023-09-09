@@ -1,7 +1,6 @@
-import React, { forwardRef, useContext } from "react"
+import { forwardRef, useContext } from "react"
 import styled from "styled-components"
 import { Box } from "@rent_avail/core"
-import { Heading } from "@rent_avail/typography"
 import { X } from "react-feather"
 import { DialogContext } from "./dialog-context"
 
@@ -22,7 +21,7 @@ function Header({ title = null, ...props }, ref) {
   const { toggle } = useContext(DialogContext)
   return (
     <HeaderWrapper {...props} ref={ref} as="header">
-      {title && <Heading as="h5">{title}</Heading>}
+      {title && <Box as="h5">{title}</Box>}
       <X className="dialog__close" onClick={toggle} />
     </HeaderWrapper>
   )

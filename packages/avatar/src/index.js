@@ -71,6 +71,8 @@ const Avatar = forwardRef(function Avatar(
               sx={{
                 objectFit: "cover",
                 bg: "ui_500",
+                width: "4rem",
+                aspectRatio: "1/1",
                 borderRadius: "2rem",
                 display: "block",
               }}
@@ -83,6 +85,8 @@ const Avatar = forwardRef(function Avatar(
             flexDirection: "column",
             justifyContent: "center",
             mr: "1.5rem",
+            overflow: "hidden",
+            overflowWrap: "anywhere",
           }}
         >
           {name && (

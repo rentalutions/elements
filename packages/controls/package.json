@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/controls",
-  "version": "0.2.25",
+  "version": "0.2.26",
   "description": "User control components",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -29,11 +29,10 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/base": "^0.5.0",
-    "@rent_avail/core": "^0.0.3",
-    "@rent_avail/icons": "0.0.1",
-    "@rent_avail/popover": "^0.3.15",
-    "@rent_avail/utils": "^0.5.2",
+    "@rent_avail/core": "^0.0.4",
+    "@rent_avail/icons": "workspace:^",
+    "@rent_avail/popover": "^0.3.16",
+    "@rent_avail/utils": "^0.5.3",
     "@styled-system/props": "^5.1.5",
     "framer-motion": "^4.1.17",
     "styled-system": "^5.1.5"

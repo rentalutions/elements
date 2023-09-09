@@ -1,64 +1,66 @@
-import React, { forwardRef } from "react"
-import styled, { css } from "styled-components"
+import { forwardRef } from "react"
+import { Box } from "@rent_avail/core"
 
-const StyledToggle = styled.label`
-  position: relative;
-  display: inline-flex;
-  cursor: pointer;
-  input {
-    display: none;
-    &:checked + .slider {
-      background-color: ${({ theme }) => theme.colors.blue_500};
-      &:before {
-        background-color: ${({ theme }) => theme.colors.ui_100};
-        border: 0.25rem solid ${({ theme }) => theme.colors.blue_500};
-        transform: translateX(2rem);
-      }
-    }
-  }
-  .slider {
-    position: relative;
-    height: 2rem;
-    width: 4rem;
-    background-color: ${({ theme }) => theme.colors.ui_500};
-    border-radius: 1rem;
-    transition: 200ms;
-    flex-shrink: 0;
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 50%;
-      height: 2rem;
-      width: 2rem;
-      background-color: ${({ theme }) => theme.colors.ui_100};
-      border: 0.25rem solid ${({ theme }) => theme.colors.ui_500};
-      transition: 200ms;
-    }
-  }
-  .label {
-    margin-left: 1rem;
-  }
-  ${({ block }) => block && blockStyles}
-`
-
-const blockStyles = css`
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-  .label {
-    margin-right: auto;
-    margin-left: 0;
-  }
-`
-
-export default forwardRef(({ className, children, block, ...props }, ref) => {
+export const Switch = forwardRef(function Switch(
+  { className, children, block, sx = {}, ...props },
+  ref
+) {
   return (
-    <StyledToggle className={className} block={block}>
-      <input type="checkbox" {...props} ref={ref} />
-      <div className="slider" />
-      {children && <p className="label">{children}</p>}
-    </StyledToggle>
+    <Box
+      as="label"
+      sx={{
+        position: "relative",
+        display: block ? "flex" : "inline-flex",
+        flexDirection: block ? "row-reverse" : "row",
+        ...sx,
+      }}
+    >
+      <Box
+        as="input"
+        type="checkbox"
+        ref={ref}
+        sx={{
+          display: "none",
+          "&:checked + .slider": {
+            bg: "brand.primary",
+            "&::before": {
+              borderColor: "brand.primary",
+              translate: "2rem",
+            },
+          },
+        }}
+        {...props}
+      />
+      <Box
+        className="slider"
+        sx={{
+          position: "relative",
+          height: "2rem",
+          width: "4rem",
+          bg: "background.secondary",
+          borderRadius: "1rem",
+          transition: "200ms",
+          flexShrink: 0,
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            borderRadius: "50%",
+            height: "2rem",
+            width: "2rem",
+            bg: "background.primary",
+            border: "0.25rem solid transparent",
+            borderColor: "border.secondary",
+            transition: "200ms",
+            boxSizing: "border-box",
+          },
+        }}
+      />
+      {children && (
+        <Box as="p" sx={{ ml: block ? 0 : 1 }}>
+          {children}
+        </Box>
+      )}
+    </Box>
   )
 })
