@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/autocomplete",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "description": "Component and hooks for using Google Places autocomplete.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -29,10 +29,10 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@rent_avail/controls": "^0.0.1",
+    "@rent_avail/controls": "^0.2.26",
     "@rent_avail/core": "workspace:^",
-    "@rent_avail/popover": "^0.3.15",
-    "@rent_avail/utils": "^0.5.2",
+    "@rent_avail/popover": "^0.3.16",
+    "@rent_avail/utils": "^0.5.3",
     "styled-system": "^5.1.5"
   }
 }
