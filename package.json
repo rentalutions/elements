@@ -68,6 +68,9 @@
   "packageManager": "yarn@3.4.1",
   "resolutions": {
     "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2",
-    "ansi-regex": "npm:ansi-regex@5.0.1"
+    "ansi-regex": "npm:ansi-regex@5.0.1",
+    "semver@npm:2 || 3 || 4 || 5": "^5.7.2",
+    "semver@npm:^6.0.0": "^6.3.1",
+    "semver@npm:^7.1.1": "^7.5.3"
   }
 }
