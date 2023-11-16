@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/dialog",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Dialog components",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -32,7 +32,7 @@
     "@rent_avail/core": "workspace:^",
     "@rent_avail/typography": "^0.1.22",
     "@rent_avail/utils": "^0.5.3",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^10.0.1",
     "react-feather": "^2.0.10",
     "styled-system": "^5.1.5"
   }

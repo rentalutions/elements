@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
 import { Flex, Box } from "@rent_avail/core"
 import { Search } from "@rent_avail/icons"
@@ -30,6 +31,16 @@ import {
 } from "@rent_avail/controls"
 ```
 
+export function LoadingButton() {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }, [])
+  return <Button loading={loading}>Loaded Successfully</Button>
+}
+
 ## Button
 
 Buttons at Avail have uppercase text labels. Buttons come with two variants baked in and are extendable in whatever way you wish. The default button should be used the most. It is seen as clickable without being too distracting. If you have a set of buttons together use the primary button to distinguish the most desirable action.
@@ -40,8 +51,9 @@ Buttons at Avail have uppercase text labels. Buttons come with two variants bake
       <Button>Standard</Button>
       <Button variant="primary">Primary</Button>
       <Button variant="danger">Danger</Button>
+      <Button variant="success">Success</Button>
       <Button disabled>Disabled</Button>
-      <Button loading>Loading</Button>
+      <LoadingButton />
     </Flex>
   </Story>
 </Canvas>

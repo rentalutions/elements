@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.19](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.14...@rent_avail/menu@0.2.19) (2023-08-29)
+## [0.2.19](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.19) (2023-03-15)
 
 ### Reverts
 

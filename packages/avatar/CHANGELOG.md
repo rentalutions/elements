@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.3.15](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.12...@rent_avail/avatar@0.3.15) (2023-08-29)
+## [0.3.15](https://github.com/rentalutions/elements/compare/@rent_avail/avatar@0.3.10...@rent_avail/avatar@0.3.15) (2023-03-15)
 
 **Note:** Version bump only for package @rent_avail/avatar
 

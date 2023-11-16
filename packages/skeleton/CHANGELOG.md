@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.24](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.22...@rent_avail/skeleton@0.1.24) (2023-08-29)
+## [0.1.24](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.22...@rent_avail/skeleton@0.1.24) (2023-03-15)
 
 **Note:** Version bump only for package @rent_avail/skeleton
 

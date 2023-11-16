@@ -3,9 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.26](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.21...@rent_avail/controls@0.2.26) (2023-08-29)
+# [0.3.0](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.20...@rent_avail/controls@0.3.0) (2023-03-15)
 
-**Note:** Version bump only for package @rent_avail/controls
+### Features
+
+- **controls:** upgrade to typescript ([460f664](https://github.com/rentalutions/elements/commit/460f6642822e6586a9a54fec26fb2c61a0dd7d35))
 
 ## [0.2.25](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.23...@rent_avail/controls@0.2.25) (2022-11-09)
 

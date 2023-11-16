@@ -42,7 +42,7 @@ const availColors = {
   background: {
     primary: baseColors.ui_100,
     secondary: baseColors.ui_300,
-    reverse: baseColors.ui_900,
+    inverse: baseColors.ui_900,
     overlay: transparentize(0.3, baseColors.ui_900),
   },
   brand: {
@@ -52,7 +52,7 @@ const availColors = {
   text: {
     primary: baseColors.ui_900,
     secondary: baseColors.ui_700,
-    reverse: baseColors.ui_100,
+    inverse: baseColors.ui_100,
     subtle: baseColors.ui_500,
   },
   border: {
@@ -61,8 +61,8 @@ const availColors = {
     subtle: baseColors.blue_300,
   },
   interactive: {
-    default: baseColors.ui_900,
-    hover: baseColors.ui_700,
+    default: baseColors.blue_900,
+    hover: baseColors.blue_700,
     focus: baseColors.blue_500,
     disabled: baseColors.ui_500,
   },
@@ -111,6 +111,13 @@ export const baseTheme = {
     "0 0.25rem 0.5rem rgba(0,0,0,0.12)",
     "0 1rem 1rem -1rem rgba(0,0,0,0.12)",
   ],
+  radii: {
+    button: "0.25rem",
+    card: "0.25rem",
+    input: "0.25rem",
+    modal: "0.25rem",
+    round: "99999px",
+  },
   text: {
     body: {
       lineHeight: "body",

@@ -3,9 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.3](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.2...@rent_avail/icons@0.1.3) (2023-08-29)
+# [0.2.0](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.2...@rent_avail/icons@0.2.0) (2023-03-15)
 
-**Note:** Version bump only for package @rent_avail/icons
+### Features
+
+- **controls:** upgrade to typescript ([460f664](https://github.com/rentalutions/elements/commit/460f6642822e6586a9a54fec26fb2c61a0dd7d35))
 
 ## [0.1.2](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.1...@rent_avail/icons@0.1.2) (2022-04-18)
 
