@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://github.com/rentalutions/elements/compare/@rent_avail/core@0.0.3...@rent_avail/core@0.0.5) (2023-11-17)
+
+**Note:** Version bump only for package @rent_avail/core
+
 ## [0.0.4](https://github.com/rentalutions/elements/compare/@rent_avail/core@0.0.3...@rent_avail/core@0.0.4) (2023-08-29)
 
 **Note:** Version bump only for package @rent_avail/core

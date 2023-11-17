@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.20](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.20) (2023-11-17)
+
+### Reverts
+
+- Revert "updated package.json and changelog" ([1c5a0ec](https://github.com/rentalutions/elements/commit/1c5a0ec302294e925831d75b231f908ff3eb5a2a))
+
 ## [0.2.19](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.14...@rent_avail/menu@0.2.19) (2023-08-29)
 
 ### Reverts

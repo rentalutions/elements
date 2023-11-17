@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.17](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.10...@rent_avail/popover@0.3.17) (2023-11-17)
+
+**Note:** Version bump only for package @rent_avail/popover
+
 ## [0.3.16](https://github.com/rentalutions/elements/compare/@rent_avail/popover@0.3.11...@rent_avail/popover@0.3.16) (2023-08-29)
 
 **Note:** Version bump only for package @rent_avail/popover
