@@ -71,6 +71,7 @@
     "ansi-regex": "npm:ansi-regex@5.0.1",
     "semver@npm:2 || 3 || 4 || 5": "^5.7.2",
     "semver@npm:^6.0.0": "^6.3.1",
-    "semver@npm:^7.1.1": "^7.5.3"
+    "semver@npm:^7.1.1": "^7.5.3",
+    "socks": "^2.7.3"
   }
 }
