@@ -1,16 +1,28 @@
+import { dirname, join } from "path";
 module.exports = {
   stories: [
     "../docs/**/*.stories.mdx",
     "../packages/**/*.stories.mdx",
     "../packages/**/*.stories.@(js|jsx|ts|tsx)",
   ],
+
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-mdx-gfm")
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+
+  framework: {
+    name: getAbsolutePath("@storybook/react-webpack5"),
+    options: {}
   },
+
+  docs: {
+    autodocs: true
+  }
+}
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
 }

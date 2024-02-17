@@ -9,9 +9,9 @@ import {
   FullscreenDialog,
 } from "../src"
 
-// export default { title: "Packages/Dialog" }
+export default { title: "Packages/Dialog" }
 
-export function Confirmation() {
+export function DialogConfirmation() {
   const [open, set] = useState(false)
   function handleClick() {
     set((o) => !o)
@@ -51,7 +51,7 @@ export function DialogWithBackdropStyles() {
   )
 }
 
-export function Fullscreen() {
+export function DialogFullscreen() {
   const [open, set] = useState(false)
   function handleClick() {
     set((o) => !o)

@@ -9,9 +9,9 @@ import {
 import { Button } from "@rent_avail/controls"
 import { Tooltip, TooltipContent, TooltipTarget } from "../src"
 
-// export default { title: "Packages/Tooltip" }
+export default { title: "Packages/Tooltip" }
 
-export function BasicUsage() {
+export function TooltipBasicUsage() {
   return (
     <Container>
       <Tooltip>
@@ -31,7 +31,7 @@ export function BasicUsage() {
   )
 }
 
-export function PortalUsage() {
+export function TooltipPortalUsage() {
   const [open, setOpen] = useState(true)
   function handleClick() {
     setOpen((o) => !o)

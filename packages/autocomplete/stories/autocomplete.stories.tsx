@@ -7,9 +7,9 @@ import {
   AutocompleteProvider,
 } from "../src"
 
-// export default { title: "Packages/Autocomplete" }
+export default { title: "Packages/Autocomplete" }
 
-export function ManualOption() {
+export function AutocompleteManualOption() {
   const [response, setResponse] = useState(null)
   return (
     <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
@@ -68,7 +68,7 @@ export function ManualOption() {
   )
 }
 
-export function DefaultValue() {
+export function AutocompleteDefaultValue() {
   return (
     <AutocompleteProvider apiKey={process.env.PLACES_KEY}>
       <Container>

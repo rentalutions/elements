@@ -2,7 +2,9 @@ import React, { Fragment } from "react"
 import { ChevronRight } from "react-feather"
 import { Avatar, AvatarGroup } from "../src"
 
-export function Default() {
+export default { title: "Packages/Avatar" }
+
+export function AvatarDefault() {
   return (
     // Any prop not defined here will be forwarded as expected
     <Avatar
@@ -21,7 +23,7 @@ export function Default() {
   )
 }
 
-export function NoEmail() {
+export function AvatarNoEmail() {
   return (
     <Fragment>
       <Avatar
@@ -40,7 +42,7 @@ export function NoEmail() {
   )
 }
 
-export function SmallGroup() {
+export function AvatarSmallGroup() {
   return (
     <AvatarGroup>
       <Avatar size="small" initials="PK" />

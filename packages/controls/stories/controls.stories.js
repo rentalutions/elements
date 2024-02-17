@@ -13,22 +13,22 @@ import {
   SelectContext,
 } from "../src"
 
-// export default {
-//   title: "Packages/Controls",
-//   decorators: [
-//     (Story) => (
-//       <Container sx={{ mt: "4rem" }}>
-//         <Story />
-//       </Container>
-//     ),
-//   ],
-// }
+export default {
+  title: "Packages/Controls",
+  decorators: [
+    (Story) => (
+      <Container sx={{ mt: "4rem" }}>
+        <Story />
+      </Container>
+    ),
+  ],
+}
 
-export function CheckboxUsage() {
+export function ControlsCheckboxUsage() {
   return <Checkbox />
 }
 
-export function ButtonUsage() {
+export function ControlsButtonUsage() {
   const [loading, set] = useState(false)
   function fakeFetch() {
     set(true)
@@ -55,18 +55,18 @@ export function ButtonUsage() {
   )
 }
 
-export function RadioUsage() {
+export function ControlsRadioUsage() {
   return <Radio />
 }
 
-export function SwitchUsage() {
+export function ControlsSwitchUsage() {
   return <Switch />
 }
 
 const statesUrl =
   "https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json"
 
-export function SelectUsage() {
+export function ControlsSelectUsage() {
   const [state, setStatesHash] = useState({ loaded: false, statesArray: [] })
   useEffect(() => {
     async function getStates() {
@@ -133,7 +133,7 @@ export function SelectUsage() {
   )
 }
 
-function CustomToken({ name, photo, id }) {
+function ControlsCustomToken({ name, photo, id }) {
   const { dispatch } = useContext(SelectContext)
   function removeToken() {
     dispatch({
@@ -195,7 +195,7 @@ const initialState = [
   },
 ]
 
-export function SelectCustomTokenUsage() {
+export function ControlsSelectCustomTokenUsage() {
   const [applicants, setApplicants] = useState(initialState)
   function handleChange(e) {
     if (!e.target.value.length) return setApplicants(initialState)

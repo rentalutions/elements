@@ -5,6 +5,8 @@ import { Dialog, DialogTarget, ConfirmationDialog } from "@rent_avail/dialog"
 import { motion } from "framer-motion"
 import { InlineFeedback } from "../src"
 
+export default { title: "Packages/InlineTransunion" }
+
 export function InlineTransunion() {
   const [loaded, setLoaded] = useState(false)
   return (

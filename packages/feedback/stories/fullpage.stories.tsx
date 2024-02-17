@@ -5,6 +5,8 @@ import { Button, Input } from "@rent_avail/controls"
 import { Plus } from "@rent_avail/icons"
 import { FullscreenFeedback } from "../src"
 
+export default { title: "Packages/FullpagePayments" }
+
 export function FullpagePayments() {
   const [open, setOpen] = useState(false)
   const [amount, setAmount] = useState("")
