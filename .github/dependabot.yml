@@ -4,6 +4,7 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+
 updates:
   - package-ecosystem: "npm"
     directory: "/"
@@ -17,3 +18,5 @@ updates:
     commit-message:
         prefix: "chore"
         include: "scope"
+    # only open security PRs
+    open-pull-requests-limit: 0
