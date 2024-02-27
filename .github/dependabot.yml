@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "mzbeetnoff"
+      - "jgrubard"
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+        prefix: "chore"
+        include: "scope"
