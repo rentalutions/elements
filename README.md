@@ -10,7 +10,9 @@ A set of components built to be `composable`, `extendable`, and `usable`
 
 1. Clone the repo with `gh repo clone rentalutions/elements`.
 2. Install dependencies with `yarn install`.
-3. Start a storybook container that builds all the packages and watches for changes with `yarn start`.
+3. Start a storybook container that builds all the packages and watches for changes with:
+    * `yarn build:storybook`
+    * `yarn dev:storybook`
 
 ## Project Structure
 
