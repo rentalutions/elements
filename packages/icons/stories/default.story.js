@@ -16,11 +16,12 @@ export function Icons() {
           title={icon.displayName}
           sx={{
             m: "1rem",
-            p: "1rem",
+            p: "2rem",
             width: "10rem",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            rowGap: "1rem",
             bg: "ui_100",
             borderRadius: "4px",
             boxShadow: `0px 1px 5px ${baseTheme.colors.ui_500}`,
@@ -30,7 +31,7 @@ export function Icons() {
           }}
         >
           <Box as={icon} />
-          <Box sx={{ text: "small", fontSize: "1rem", mt: "1rem" }}>{icon.displayName}</Box>
+          <Box sx={{ text: "small", fontSize: "1rem" }}>{icon.displayName}</Box>
         </Flex>
       ))}
     </Container>
