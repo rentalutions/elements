@@ -9,7 +9,7 @@ for (let icon in icons) {
 
 export function Icons() {
   return (
-    <Container as={Flex} sx={{ p: "2rem", my: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
+    <Container as={Flex} sx={{ p: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
       {iconsArray.map((icon) => (
         <Flex
           key={icon.displayName}
