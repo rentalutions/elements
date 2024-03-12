@@ -67,7 +67,7 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
 
 <Canvas>
   <Story name="Date">
-    <Container as={Flex} sx={{ p: "2rem", flexDirection: "column" }}>
+    <Container>
       <Box as="section">
         <Input type="date" label="Start Date" />
       </Box>
@@ -114,6 +114,12 @@ Radio buttons are used to select one option from a set. Use radio buttons when i
 
 <ArgsTable of={Radio} />
 
+## Select
+
+<Canvas>
+  <Story story={SelectUsage} name="Select" />
+</Canvas>
+
 ## Switch
 
 Switches selection controls that change data immediately. They need to be understood as a boolean (on/off). Toggles are the preferred way to update settings on mobile.
@@ -128,9 +134,3 @@ Switches selection controls that change data immediately. They need to be unders
 </Canvas>
 
 <ArgsTable of={Switch} />
-
-## Select
-
-<Canvas>
-  <Story story={SelectUsage} name="Select" />
-</Canvas>
