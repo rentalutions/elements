@@ -118,7 +118,6 @@ export const Input = forwardRef(function Input(
               position: "absolute",
               right: "2rem",
               top: "3rem",
-              zIndex: 100,
               fontSize: "24px",
             },
             "&::-webkit-calendar-picker-indicator:hover + svg": {
@@ -138,7 +137,6 @@ export const Input = forwardRef(function Input(
               position: "absolute",
               right: "2rem",
               top: "3rem",
-              cursor: "pointer",
             }}
           />
         )}
