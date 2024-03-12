@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
-import { Flex, Box } from "@rent_avail/core"
+import { Container, Box, Flex } from "@rent_avail/core"
 import { Search } from "@rent_avail/icons"
 import {
   Button,
@@ -63,6 +63,40 @@ Checkboxes are user selection tools when multiple options can be chosen at the s
 
 <ArgsTable of={Checkbox} />
 
+## Date
+
+<Canvas>
+  <Story name="Date">
+    <Container as={Flex} sx={{ p: "2rem", flexDirection: "column" }}>
+      <Box as="section">
+        <Input type="date" label="Start Date" />
+      </Box>
+    </Container>
+  </Story>
+</Canvas>
+
+## Input
+
+Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
+
+<Canvas isColumn>
+  <Story name="Input">
+    <Input icon={Search} label="Find Your Next Property" />
+  </Story>
+  <Story name="Input Disabled">
+    <Input icon={Search} label="Find Your Next Property" disabled />
+  </Story>
+  <Story name="Input Error">
+    <Input
+      icon={Search}
+      label="Find Your Next Property"
+      error="Property Not Found"
+    />
+  </Story>
+</Canvas>
+
+<ArgsTable of={Input} />
+
 ---
 
 ## Radio
@@ -94,28 +128,6 @@ Switches selection controls that change data immediately. They need to be unders
 </Canvas>
 
 <ArgsTable of={Switch} />
-
-## Input
-
-Text inputs let users enter and edit text information. They are made up of a label, value, helper text, and optionally a leading / trailing icon.
-
-<Canvas isColumn>
-  <Story name="Input">
-    <Input icon={Search} label="Find Your Next Property" />
-  </Story>
-  <Story name="Input Error">
-    <Input
-      icon={Search}
-      label="Find Your Next Property"
-      error="Property Not Found"
-    />
-  </Story>
-  <Story name="Input Disabled">
-    <Input icon={Search} label="Find Your Next Property" disabled />
-  </Story>
-</Canvas>
-
-<ArgsTable of={Input} />
 
 ## Select
 
