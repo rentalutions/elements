@@ -115,6 +115,11 @@ export const Input = forwardRef(function Input(
               background: "transparent",
               opacity: 1,
               cursor: "pointer",
+              position: "absolute",
+              right: "2rem",
+              top: "3rem",
+              zIndex: 100,
+              fontSize: "24px",
             },
             "&::-webkit-calendar-picker-indicator:hover + svg": {
               color: "ui_300",
@@ -133,6 +138,7 @@ export const Input = forwardRef(function Input(
               position: "absolute",
               right: "2rem",
               top: "3rem",
+              cursor: "pointer",
             }}
           />
         )}
