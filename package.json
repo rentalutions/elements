@@ -45,7 +45,7 @@
     "@types/styled-system__css": "^5.0.17",
     "@types/styled-system__theme-get": "^5.0.2",
     "babel-loader": "^9.1.2",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.2.2",
     "dotenv": "^16.0.3",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
