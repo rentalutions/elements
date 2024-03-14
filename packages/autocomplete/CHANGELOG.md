@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.25](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.3.22...@rent_avail/autocomplete@0.3.25) (2024-03-14)
+
+**Note:** Version bump only for package @rent_avail/autocomplete
+
 ## [0.3.24](https://github.com/rentalutions/elements/compare/@rent_avail/autocomplete@0.3.23...@rent_avail/autocomplete@0.3.24) (2024-03-01)
 
 **Note:** Version bump only for package @rent_avail/autocomplete

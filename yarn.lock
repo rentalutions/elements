@@ -3377,7 +3377,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rent_avail/autocomplete@workspace:packages/autocomplete"
   dependencies:
-    "@rent_avail/controls": ^0.2.28
+    "@rent_avail/controls": ^0.2.29
     "@rent_avail/core": "workspace:^"
     "@rent_avail/popover": ^0.3.17
     "@rent_avail/utils": ^0.5.4
@@ -3421,7 +3421,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rent_avail/controls@^0.2.28, @rent_avail/controls@workspace:packages/controls":
+"@rent_avail/controls@^0.2.29, @rent_avail/controls@workspace:packages/controls":
   version: 0.0.0-use.local
   resolution: "@rent_avail/controls@workspace:packages/controls"
   dependencies:
