@@ -41,7 +41,7 @@ const baseColors = {
 const availColors = {
   background: {
     primary: baseColors.ui_100,
-    secondary: baseColors.ui_300,
+    secondary: baseColors.ui_500,
     reverse: baseColors.ui_900,
     overlay: transparentize(0.3, baseColors.ui_900),
   },
