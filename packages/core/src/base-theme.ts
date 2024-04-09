@@ -41,7 +41,7 @@ const baseColors = {
 const availColors = {
   background: {
     primary: baseColors.ui_100,
-    secondary: baseColors.ui_500,
+    secondary: baseColors.ui_300,
     reverse: baseColors.ui_900,
     overlay: transparentize(0.3, baseColors.ui_900),
   },
@@ -62,6 +62,7 @@ const availColors = {
   },
   interactive: {
     default: baseColors.ui_900,
+    secondary: baseColors.ui_500,
     hover: baseColors.ui_700,
     focus: baseColors.blue_500,
     disabled: baseColors.ui_500,

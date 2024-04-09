@@ -37,7 +37,7 @@ export const Switch = forwardRef(function Switch(
           position: "relative",
           height: "2rem",
           width: "4rem",
-          bg: "background.secondary",
+          bg: "interactive.secondary",
           borderRadius: "1rem",
           transition: "200ms",
           flexShrink: 0,
