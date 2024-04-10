@@ -62,6 +62,7 @@ const availColors = {
   },
   interactive: {
     default: baseColors.ui_900,
+    secondary: baseColors.ui_500,
     hover: baseColors.ui_700,
     focus: baseColors.blue_500,
     disabled: baseColors.ui_500,

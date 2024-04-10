@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/skeleton",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "Skeleton component",
   "source": "src/index.js",
   "main": "dist/index.js",
