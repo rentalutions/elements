@@ -254,6 +254,7 @@ export const Triangle: Icon;
 export const Truck: Icon;
 export const Tv: Icon;
 export const Twitter: Icon;
+export const TwitterX: Icon;
 export const Type: Icon;
 export const Umbrella: Icon;
 export const Underline: Icon;
