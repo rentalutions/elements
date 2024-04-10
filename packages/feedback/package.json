@@ -1,6 +1,6 @@
 {
   "name": "@rent_avail/feedback",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "Feedback components.",
   "source": "src/index.js",
   "main": "dist/index.js",
