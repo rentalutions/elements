@@ -1,10 +1,13 @@
 import React, { forwardRef } from "react"
 import p from "prop-types"
-export const TwitterX = forwardRef(function Twitter(props, ref) {
+export const TwitterX = forwardRef(function TwitterX(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+      <path
+        class="st0"
+        d="M21.3 21.1 9.9 2.9 2.7 2.9 14.1 21.1zM2.7 21.1 9.9 14.5M14.1 9.5 21.3 2.9"
+      ></path>
     </svg>
   )
 })
@@ -15,8 +18,8 @@ TwitterX.propTypes = {
 }
 
 TwitterX.defaultProps = {
-  viewBox: "0 0 1200 1227",
-  fill: "currentColor",
+  viewBox: "0 0 24 24",
+  fill: "none",
   strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round",
