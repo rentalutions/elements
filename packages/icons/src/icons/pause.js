@@ -4,8 +4,7 @@ export const Pause = forwardRef(function Pause(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M10 4H6V20H10V4Z"></path>
-      <path d="M18 4H14V20H18V4Z"></path>
+      <path d="M10 4H6V20H10V4ZM18 4H14V20H18V4Z"></path>
     </svg>
   )
 })

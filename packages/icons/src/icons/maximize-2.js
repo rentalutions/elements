@@ -4,10 +4,7 @@ export const Maximize2 = forwardRef(function Maximize2(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M15 3H21V9"></path>
-      <path d="M9 21H3V15"></path>
-      <path d="M21 3L14 10"></path>
-      <path d="M3 21L10 14"></path>
+      <path d="M15 3H21V9M9 21H3V15M21 3 14 10M3 21 10 14"></path>
     </svg>
   )
 })

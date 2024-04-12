@@ -5,13 +5,11 @@ export const List = forwardRef(function List(props, ref) {
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
       <g clip-path="url(#clip0)">
-        <path d="M8 6H21"></path>
-        <path d="M8 12H21"></path>
-        <path d="M8 18H21"></path>
+        <path d="M8 6H21M8 12H21M8 18H21"></path>
       </g>
       <defs>
         <clippath id="clip0">
-          <rect width="24" height="24"></rect>
+          <path d="M0 0H24V24H0z"></path>
         </clippath>
       </defs>
     </svg>

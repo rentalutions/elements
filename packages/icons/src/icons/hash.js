@@ -4,10 +4,7 @@ export const Hash = forwardRef(function Hash(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M4 9H20"></path>
-      <path d="M4 15H20"></path>
-      <path d="M10 3L8 21"></path>
-      <path d="M16 3L14 21"></path>
+      <path d="M4 9H20M4 15H20M10 3 8 21M16 3 14 21"></path>
     </svg>
   )
 })

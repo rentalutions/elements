@@ -4,9 +4,7 @@ export const Layers = forwardRef(function Layers(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
-      <path d="M2 17L12 22L22 17"></path>
-      <path d="M2 12L12 17L22 12"></path>
+      <path d="M12 2 2 7 12 12 22 7 12 2ZM2 17 12 22 22 17M2 12 12 17 22 12"></path>
     </svg>
   )
 })
