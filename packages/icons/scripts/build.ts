@@ -19,15 +19,27 @@ const SVG_DIR = path.join(ROOT_DIR, "svg")
 const SOURCE_DIR = path.join(ROOT_DIR, "src")
 const ICON_DIR = path.join(SOURCE_DIR, "icons")
 
-;(async () => {
-  await prepareIconsDir()
+/**
+ * This script builds icon components.
+ * It performs the following steps:
+ * 1. Prepares the icons directory.
+ * 2. Loads icons.
+ * 3. Creates icon components.
+ * 4. Creates an export file.
+ * 5. Creates a type file.
+ */
+async function buildIcons() {
+  await prepareIconsDir() // Step 1: Prepare icons directory (remove old one and create a new)
 
-  const icons = await loadIcons()
+  const icons = await loadIcons() // Step 2: Load icons content
 
-  await createIconComponents(icons)
-  await createExportFile(icons)
-  await createTypeFile(icons)
-})()
+  await createIconComponents(icons) // Step 3: Create react icon components
+  await createExportFile(icons) // Step 4: Create export file
+  await createTypeFile(icons) // Step 5: Create type definition file
+}
+
+// Execute the buildIcons function
+buildIcons()
 
 async function loadIcons(): Promise<Array<Icon>> {
   // recursively loads all svg icons from svg folder
