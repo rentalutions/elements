@@ -31,7 +31,10 @@ export function Icons() {
           }}
         >
           <Box as={icon} />
-          <Box sx={{ text: "small", fontSize: "1rem" }}>{icon.displayName}</Box>
+          <Box sx={{ text: "small", fontSize: "1rem", textDecoration: icon.deprecated ? 'line-through' : null, textAlign: 'center' }}>
+            {icon.displayName}<br />
+            {icon.deprecated ? "(deprecated)" : null}
+          </Box>
         </Flex>
       ))}
     </Container>
