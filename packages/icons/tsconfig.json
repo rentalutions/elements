@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "ts-node": {
+    "moduleTypes": {
+      // This override matches only scripts files to compile and execute as CommonJS.
+      // Otherwise we need to set type="module" in package.json 
+      // which breaks existing functionality.
+      "scripts/*": "cjs"
+    }
+  }
+}

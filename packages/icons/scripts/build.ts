@@ -1,9 +1,9 @@
-const fs = require("fs")
-const path = require("path")
-const format = require("prettier-eslint")
-const upperCamelCase = require("uppercamelcase")
-const cheerio = require("cheerio")
-const { minify } = require("html-minifier")
+import fs from "fs"
+import path from "path"
+import format from "prettier-eslint"
+import upperCamelCase from "uppercamelcase"
+import { load as loadSvg } from "cheerio"
+import { minify } from "html-minifier"
 
 const svgDirectory = path.resolve(__dirname, "../svg")
 const svgFiles = fs.readdirSync(svgDirectory)
@@ -13,7 +13,11 @@ const icons = svgFiles.reduce((icons, file) => {
   const svg = fs.readFileSync(path.resolve(svgDirectory, file), {
     encoding: "utf8",
   })
-  const contents = cheerio.load(svg)("svg").html()
+  const contents = loadSvg(svg)("svg").html()
+  if (!contents) {
+    return icons
+  }
+
   icons[name] = minify(contents)
   return icons
 }, {})
