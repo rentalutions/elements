@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.25](https://github.com/rentalutions/elements/compare/@rent_avail/progress@0.1.21...@rent_avail/progress@0.1.25) (2024-04-17)
+
+**Note:** Version bump only for package @rent_avail/progress
+
 ## [0.1.24](https://github.com/rentalutions/elements/compare/@rent_avail/progress@0.1.21...@rent_avail/progress@0.1.24) (2023-11-17)
 
 **Note:** Version bump only for package @rent_avail/progress
