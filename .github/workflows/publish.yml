@@ -1,12 +1,14 @@
 name: Publish Packages
 
 on:
-  push:
+  pull_request:
     branches: [release]
+    types: [closed]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'graduate-')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
