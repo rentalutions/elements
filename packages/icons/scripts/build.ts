@@ -111,7 +111,7 @@ async function createExportFile(icons: Array<Icon>) {
 
   await fs.writeFile(
     path.join(SOURCE_DIR, "index.js"),
-    icons.map(({ name }) => `export * from "./icons/${name}"`).join("\n"),
+    icons.map(({ name }) => `export * from "./icons/${name}"`).join("\r\n"),
     FILE_ENCODING
   )
 
