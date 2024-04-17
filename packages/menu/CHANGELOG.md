@@ -5,9 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.22](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.22) (2024-04-17)
 
-### Reverts
-
-- Revert "updated package.json and changelog" ([1c5a0ec](https://github.com/rentalutions/elements/commit/1c5a0ec302294e925831d75b231f908ff3eb5a2a))
+**Note:** Version bump only for package @rent_avail/menu
 
 ## [0.2.21](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.20...@rent_avail/menu@0.2.21) (2024-04-10)
 

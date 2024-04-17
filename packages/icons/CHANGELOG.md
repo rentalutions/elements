@@ -5,7 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.8](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.2...@rent_avail/icons@0.1.8) (2024-04-17)
 
-**Note:** Version bump only for package @rent_avail/icons
+**Note:**
+
+1. Updates Build script for icons package
+2. Adds `TwitterX` icon to icons package
 
 ## [0.1.7](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.4...@rent_avail/icons@0.1.7) (2024-04-10)
 
