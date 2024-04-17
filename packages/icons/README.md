@@ -4,7 +4,7 @@
 
 ## Installation
 
-To use these icons in your project, you can install the package via npm or yarn:
+To use these icons in your project, you can install the package via yarn:
 
 ```bash
 yarn add @rent_avail/icons
