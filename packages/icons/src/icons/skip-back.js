@@ -4,8 +4,7 @@ export const SkipBack = forwardRef(function SkipBack(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M19 20L9 12L19 4V20Z"></path>
-      <path d="M5 19V5"></path>
+      <path d="M19 20 9 12 19 4V20ZM5 19V5"></path>
     </svg>
   )
 })

@@ -4,10 +4,7 @@ export const Minimize2 = forwardRef(function Minimize2(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M4 14H10V20"></path>
-      <path d="M20 10H14V4"></path>
-      <path d="M14 10L21 3"></path>
-      <path d="M3 21L10 14"></path>
+      <path d="M4 14H10V20M20 10H14V4M14 10 21 3M3 21 10 14"></path>
     </svg>
   )
 })

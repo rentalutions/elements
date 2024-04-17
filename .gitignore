@@ -20,6 +20,7 @@ node_modules
 
 # Build files
 dist
+build
 storybook
 
 # Mac OS

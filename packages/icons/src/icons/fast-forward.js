@@ -4,8 +4,7 @@ export const FastForward = forwardRef(function FastForward(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M13 19L22 12L13 5V19Z"></path>
-      <path d="M2 19L11 12L2 5V19Z"></path>
+      <path d="M13 19 22 12 13 5V19ZM2 19 11 12 2 5V19Z"></path>
     </svg>
   )
 })

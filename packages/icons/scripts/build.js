@@ -43,7 +43,7 @@ fs.writeFileSync(
   "utf-8"
 )
 
-keys.forEach((name) => {
+keys.forEach(async (name) => {
   const location = path.resolve(iconDirectory, `${name}.js`)
   const ComponentName = upperCamelCase(name)
   const element = `
@@ -77,11 +77,8 @@ keys.forEach((name) => {
     ${ComponentName}.displayName = "${ComponentName}"
   `
 
-  const component = format({
+  const component = await format({
     text: element,
-    eslintConfig: {
-      extends: "airbnb",
-    },
     prettierOptions: {
       bracketSpacing: true,
       singleQuote: false,

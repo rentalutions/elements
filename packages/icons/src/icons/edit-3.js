@@ -4,8 +4,7 @@ export const Edit3 = forwardRef(function Edit3(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M14 2L18 6L7 17H3V13L14 2Z"></path>
-      <path d="M3 22H21"></path>
+      <path d="M14 2 18 6 7 17H3V13L14 2ZM3 22H21"></path>
     </svg>
   )
 })
