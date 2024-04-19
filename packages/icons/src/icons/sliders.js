@@ -4,15 +4,7 @@ export const Sliders = forwardRef(function Sliders(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M4 21V14"></path>
-      <path d="M4 10V3"></path>
-      <path d="M12 21V12"></path>
-      <path d="M12 8V3"></path>
-      <path d="M20 21V16"></path>
-      <path d="M20 12V3"></path>
-      <path d="M1 14H7"></path>
-      <path d="M9 8H15"></path>
-      <path d="M17 16H23"></path>
+      <path d="M4 21V14M4 10V3M12 21V12M12 8V3M20 21V16M20 12V3M1 14H7M9 8H15M17 16H23"></path>
     </svg>
   )
 })

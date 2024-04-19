@@ -9,7 +9,7 @@ export const Thermometer = forwardRef(function Thermometer(props, ref) {
       </g>
       <defs>
         <clippath id="clip0">
-          <rect width="24" height="24"></rect>
+          <path d="M0 0H24V24H0z"></path>
         </clippath>
       </defs>
     </svg>

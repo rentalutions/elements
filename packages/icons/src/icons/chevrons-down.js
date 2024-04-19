@@ -4,8 +4,7 @@ export const ChevronsDown = forwardRef(function ChevronsDown(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M7 13L12 18L17 13"></path>
-      <path d="M7 6L12 11L17 6"></path>
+      <path d="M7 13 12 18 17 13M7 6 12 11 17 6"></path>
     </svg>
   )
 })

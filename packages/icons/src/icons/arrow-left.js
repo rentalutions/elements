@@ -4,8 +4,7 @@ export const ArrowLeft = forwardRef(function ArrowLeft(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M19 12H5"></path>
-      <path d="M12 19L5 12L12 5"></path>
+      <path d="M19 12H5M12 19 5 12 12 5"></path>
     </svg>
   )
 })
