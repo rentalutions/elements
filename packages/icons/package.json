@@ -12,7 +12,7 @@
   "scripts": {
     "test": "echo 'run tests from the root directory'",
     "optimize:svg": "svgo -f ./svg --config svgo.config.js",
-    "generate:icons": "ts-node --esm ./scripts/build.ts",
+    "generate:icons": "ts-node ./scripts/build.ts",
     "compile": "yarn optimize:svg && yarn generate:icons",
     "build": "concurrently \"yarn:build:*\"",
     "build:module": "rm -rf dist && babel --root-mode upward src --out-dir dist --copy-files",
