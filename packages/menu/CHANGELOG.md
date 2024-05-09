@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.23](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.19...@rent_avail/menu@0.2.23) (2024-05-09)
+
+**Note:** Version bump only for package @rent_avail/menu
+
 ## [0.2.22](https://github.com/rentalutions/elements/compare/@rent_avail/menu@0.2.12...@rent_avail/menu@0.2.22) (2024-04-17)
 
 **Note:** Version bump only for package @rent_avail/menu
