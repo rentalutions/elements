@@ -4,14 +4,7 @@ export const Sunrise = forwardRef(function Sunrise(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M17 18C17 16.6739 16.4732 15.4021 15.5355 14.4645C14.5979 13.5268 13.3261 13 12 13C10.6739 13 9.40215 13.5268 8.46447 14.4645C7.52678 15.4021 7 16.6739 7 18"></path>
-      <path d="M12 2V9"></path>
-      <path d="M4.22 10.22L5.64 11.64"></path>
-      <path d="M1 18H3"></path>
-      <path d="M21 18H23"></path>
-      <path d="M18.36 11.64L19.78 10.22"></path>
-      <path d="M23 22H1"></path>
-      <path d="M8 6L12 2L16 6"></path>
+      <path d="M17 18C17 16.6739 16.4732 15.4021 15.5355 14.4645 14.5979 13.5268 13.3261 13 12 13 10.6739 13 9.40215 13.5268 8.46447 14.4645 7.52678 15.4021 7 16.6739 7 18M12 2V9M4.22 10.22 5.64 11.64M1 18H3M21 18H23M18.36 11.64 19.78 10.22M23 22H1M8 6 12 2 16 6"></path>
     </svg>
   )
 })

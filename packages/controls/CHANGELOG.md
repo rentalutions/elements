@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.32](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.29...@rent_avail/controls@0.2.32) (2024-05-09)
+
+**Note:** Version bump only for package @rent_avail/controls
+
+## [0.2.31](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.20...@rent_avail/controls@0.2.31) (2024-04-17)
+
+**Note:** Version bump only for package @rent_avail/controls
+
+## [0.2.30](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.27...@rent_avail/controls@0.2.30) (2024-04-10)
+
+**Note:** Version bump only for package @rent_avail/controls
+
 ## [0.2.29](https://github.com/rentalutions/elements/compare/@rent_avail/controls@0.2.26...@rent_avail/controls@0.2.29) (2024-03-14)
 
 **Note:** Version bump only for package @rent_avail/controls

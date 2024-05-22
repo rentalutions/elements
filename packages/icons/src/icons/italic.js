@@ -4,9 +4,7 @@ export const Italic = forwardRef(function Italic(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M19 4H10"></path>
-      <path d="M14 20H5"></path>
-      <path d="M15 4L9 20"></path>
+      <path d="M19 4H10M14 20H5M15 4 9 20"></path>
     </svg>
   )
 })

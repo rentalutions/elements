@@ -5,8 +5,7 @@ export const PenTool = forwardRef(function PenTool(props, ref) {
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
       <path d="M12 19L19 12L22 15L15 22L12 19Z"></path>
-      <path d="M18 13L16.5 5.5L2 2L5.5 16.5L13 18L18 13Z"></path>
-      <path d="M2 2L9.58579 9.58579"></path>
+      <path d="M18 13 16.5 5.5 2 2 5.5 16.5 13 18 18 13ZM2 2 9.58579 9.58579"></path>
       <circle cx="11" cy="11" r="2"></circle>
     </svg>
   )

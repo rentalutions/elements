@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.7...@rent_avail/toast@0.1.11) (2024-05-09)
+
+**Note:** Version bump only for package @rent_avail/toast
+
+## [0.1.10](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.5...@rent_avail/toast@0.1.10) (2024-04-17)
+
+**Note:** Version bump only for package @rent_avail/toast
+
+## [0.1.9](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.8...@rent_avail/toast@0.1.9) (2024-04-10)
+
+**Note:** Version bump only for package @rent_avail/toast
+
 ## [0.1.8](https://github.com/rentalutions/elements/compare/@rent_avail/toast@0.1.5...@rent_avail/toast@0.1.8) (2023-11-17)
 
 **Note:** Version bump only for package @rent_avail/toast
