@@ -4,8 +4,7 @@ export const ChevronsRight = forwardRef(function ChevronsRight(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M13 17L18 12L13 7"></path>
-      <path d="M6 17L11 12L6 7"></path>
+      <path d="M13 17 18 12 13 7M6 17 11 12 6 7"></path>
     </svg>
   )
 })

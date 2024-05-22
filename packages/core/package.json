@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "@rent_avail/core",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "Avail design system core package",
   "source": "src/index.ts",
   "main": "dist/index.js",

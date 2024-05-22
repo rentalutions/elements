@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.6...@rent_avail/icons@0.1.9) (2024-05-09)
+
+**Note:** Version bump only for package @rent_avail/icons
+
+## [0.1.8](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.2...@rent_avail/icons@0.1.8) (2024-04-17)
+
+**Note:**
+
+1. Updates Build script for icons package
+2. Adds `TwitterX` icon to icons package
+
+## [0.1.7](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.4...@rent_avail/icons@0.1.7) (2024-04-10)
+
+**Note:** Version bump only for package @rent_avail/icons
+
 ## [0.1.6](https://github.com/rentalutions/elements/compare/@rent_avail/icons@0.1.3...@rent_avail/icons@0.1.6) (2024-03-14)
 
 **Note:** Version bump only for package @rent_avail/icons

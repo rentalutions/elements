@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.28](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.24...@rent_avail/skeleton@0.1.28) (2024-05-09)
+
+**Note:** Version bump only for package @rent_avail/skeleton
+
+## [0.1.27](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.22...@rent_avail/skeleton@0.1.27) (2024-04-17)
+
+**Note:** Version bump only for package @rent_avail/skeleton
+
+## [0.1.26](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.25...@rent_avail/skeleton@0.1.26) (2024-04-10)
+
+**Note:** Version bump only for package @rent_avail/skeleton
+
 ## [0.1.25](https://github.com/rentalutions/elements/compare/@rent_avail/skeleton@0.1.22...@rent_avail/skeleton@0.1.25) (2023-11-17)
 
 **Note:** Version bump only for package @rent_avail/skeleton

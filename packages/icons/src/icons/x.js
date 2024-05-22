@@ -4,8 +4,7 @@ export const X = forwardRef(function X(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M18 6L6 18"></path>
-      <path d="M6 6L18 18"></path>
+      <path d="M18 6 6 18M6 6 18 18"></path>
     </svg>
   )
 })

@@ -4,8 +4,7 @@ export const Code = forwardRef(function Code(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
     <svg {...rest} ref={ref} stroke={color} width={size} height={size}>
-      <path d="M16 18L22 12L16 6"></path>
-      <path d="M8 6L2 12L8 18"></path>
+      <path d="M16 18 22 12 16 6M8 6 2 12 8 18"></path>
     </svg>
   )
 })
