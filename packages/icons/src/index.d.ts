@@ -254,7 +254,6 @@ export const Triangle: Icon;
 export const Truck: Icon;
 export const Tv: Icon;
 export const TwitterX: Icon;
-export const Twitter: Icon;
 export const Type: Icon;
 export const Umbrella: Icon;
 export const Underline: Icon;
@@ -286,3 +285,5 @@ export const ZapOff: Icon;
 export const Zap: Icon;
 export const ZoomIn: Icon;
 export const ZoomOut: Icon;
+/** @deprecated */
+export const Twitter: Icon;
