@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react"
 import p from "prop-types"
+/** @deprecated */
 export const Twitter = forwardRef(function Twitter(props, ref) {
   const { color = "currentColor", size = 24, ...rest } = props
   return (
@@ -23,3 +24,4 @@ Twitter.defaultProps = {
 }
 
 Twitter.displayName = "Twitter"
+Twitter.deprecated = true

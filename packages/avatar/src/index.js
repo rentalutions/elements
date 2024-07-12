@@ -20,11 +20,11 @@ function AvatarGroup({ sx = {}, clipColor = "ui_100", ...props }) {
 }
 
 const defaultPhoto =
-  "https://rentalutions-assets.s3.amazonaws.com/avatars/not-found.svg"
+  "https://prod-avail-assets.s3.amazonaws.com/avatars/not-found.svg"
 
 const Avatar = forwardRef(function Avatar(
   {
-    photo = "https://rentalutions-assets.s3.amazonaws.com/avatars/not-found.svg",
+    photo = defaultPhoto,
     name,
     email,
     size = "large",

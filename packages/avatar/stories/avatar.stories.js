@@ -21,6 +21,15 @@ export function Default() {
   )
 }
 
+export function NoPhotoOrInitials() {
+  return (
+    <Avatar
+      name="Chicago Properties & Financials of Streeterville Coast"
+      email="janet.wooderhousen@email.com"
+    />
+  )
+}
+
 export function NoEmail() {
   return (
     <Fragment>
