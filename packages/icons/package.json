@@ -11,7 +11,9 @@
   ],
   "scripts": {
     "test": "echo 'run tests from the root directory'",
-    "compile": "svgo -f ./svg --config svgo.config.js && rm -rf src/icons && node ./scripts/build.js",
+    "optimize:svg": "svgo -f ./svg --config svgo.config.js",
+    "generate:icons": "ts-node ./scripts/build.ts",
+    "compile": "yarn optimize:svg && yarn generate:icons",
     "build": "concurrently \"yarn:build:*\"",
     "build:module": "rm -rf dist && babel --root-mode upward src --out-dir dist --copy-files",
     "build:bundle": "rm -rf build && rollup --config rollup.config.js --bundleConfigAsCjs",
@@ -28,6 +30,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
+    "@types/html-minifier": "^4.0.5",
+    "@types/uppercamelcase": "^3.0.2",
     "cheerio": "^1.0.0-rc.12",
     "concurrently": "^8.2.2",
     "feather-icons": "^4.29.0",
@@ -36,6 +40,7 @@
     "rollup": "^3.12.1",
     "rollup-plugin-babel": "^4.4.0",
     "svgo": "^3.0.2",
+    "ts-node": "^10.9.2",
     "uppercamelcase": "^3.0.0"
   }
 }
